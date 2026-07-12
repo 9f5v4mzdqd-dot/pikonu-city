@@ -231,11 +231,12 @@
 
     paint(0);
 
-    fetch("https://api.countapi.xyz/hit/piconu-city.kirokubunko/toppage")
+    fetch("https://countapi.mileshilliard.com/api/v1/hit/piconu_city_kirokubunko_toppage")
       .then(function (res) { return res.json(); })
       .then(function (data) {
-        if (data && typeof data.value === "number") {
-          paint(data.value);
+        var num = data && data.value !== undefined ? parseInt(data.value, 10) : NaN;
+        if (!isNaN(num)) {
+          paint(num);
         }
       })
       .catch(function () {
