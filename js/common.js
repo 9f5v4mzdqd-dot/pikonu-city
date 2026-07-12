@@ -133,6 +133,7 @@
       "<div><h2>市政情報</h2><ul>" +
       '<li><a href="' + BASE + 'about/gaiyou.html">市の概要</a></li>' +
       '<li><a href="' + BASE + 'about/aisatsu.html">市長のごあいさつ</a></li>' +
+      '<li><a href="' + BASE + 'about/jorei.html">条例集</a></li>' +
       '<li><a href="' + BASE + 'news/index.html">お知らせ一覧</a></li>' +
       '<li><a href="' + BASE + 'index.html">広報ぬかピコ</a></li>' +
       '<li><a href="' + BASE + 'about/kiriban.html">キリ番について</a></li>' +
