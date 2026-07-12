@@ -134,7 +134,7 @@
       '<li><a href="' + BASE + 'about/gaiyou.html">市の概要</a></li>' +
       '<li><a href="' + BASE + 'news/index.html">お知らせ一覧</a></li>' +
       '<li><a href="' + BASE + 'index.html">広報ぬかピコ</a></li>' +
-      '<li><a href="' + BASE + 'index.html">統計資料</a></li>' +
+      '<li><a href="' + BASE + 'about/kiriban.html">キリ番について</a></li>' +
       "</ul></div>" +
       "<div><h2>お問い合わせ</h2>" +
       '<p class="footer-address">ピコぬ市役所 記録政策課<br>' +
@@ -214,11 +214,41 @@
     });
   }
 
+  function renderKiribanCounter() {
+    var el = document.getElementById("kiriban-counter");
+    if (!el) return;
+
+    var digitsWrap = el.querySelector(".kiriban-digits");
+    var DIGITS = 6;
+
+    function paint(value) {
+      var padded = String(value).padStart(DIGITS, "0").slice(-DIGITS);
+      digitsWrap.innerHTML = padded
+        .split("")
+        .map(function (d) { return '<span class="kiriban-digit">' + d + "</span>"; })
+        .join("");
+    }
+
+    paint(0);
+
+    fetch("https://api.countapi.xyz/hit/piconu-city.kirokubunko/toppage")
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data && typeof data.value === "number") {
+          paint(data.value);
+        }
+      })
+      .catch(function () {
+        el.setAttribute("data-status", "unavailable");
+      });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     renderHeader();
     renderFooter();
     bindA11yTools();
     bindNavToggle();
     bindPageTop();
+    renderKiribanCounter();
   });
 })();
