@@ -488,6 +488,56 @@ table { border-collapse: collapse; width: 100%; }
 }
 .pagetop.visible { opacity: 1; pointer-events: auto; }
 
+/* ---------- 8b. アクセス記録(キリ番カウンター) ---------- */
+.kiriban-section {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 26px 0;
+}
+.kiriban-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.kiriban-label {
+  font-size: .8rem;
+  color: var(--color-text-sub);
+  letter-spacing: .04em;
+}
+.kiriban-digits {
+  display: inline-flex;
+  gap: 3px;
+  vertical-align: middle;
+}
+.kiriban-digit {
+  display: inline-block;
+  min-width: 1.1em;
+  padding: 3px 5px;
+  background: #12210f;
+  color: #35e05a;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-align: center;
+  border: 1px solid #06110a;
+  border-radius: 2px;
+  box-shadow: inset 0 0 3px rgba(0,0,0,.7);
+  letter-spacing: 0;
+}
+html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
+.kiriban-caption {
+  font-size: .76rem;
+  color: var(--color-text-sub);
+}
+.kiriban-caption a { color: var(--color-accent); }
+
 /* ---------- 9. レスポンシブ ---------- */
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; }
