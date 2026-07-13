@@ -75,7 +75,7 @@
       '<div class="site-header-utility"><div class="utility-inner">' +
       '<ul class="utility-links">' +
       '<li><a href="' + BASE + 'index.html">サイトマップ</a></li>' +
-      '<li><a href="' + BASE + 'index.html">よくある質問</a></li>' +
+      '<li><a href="' + BASE + 'about/faq.html">よくある質問</a></li>' +
       '<li><a href="' + BASE + 'index.html">English</a></li>' +
       '<li><a href="' + BASE + 'about/gaiyou.html">組織一覧</a></li>' +
       "</ul>" +
