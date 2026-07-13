@@ -104,21 +104,21 @@ table { border-collapse: collapse; width: 100%; }
 .site-header-utility {
   background: var(--color-bg-alt);
   border-bottom: 1px solid var(--color-border);
-  font-size: .8rem;
+  font-size: .92rem;
 }
 .utility-inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 6px 20px;
+  padding: 9px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
 }
-.utility-links { display: flex; gap: 14px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
-.utility-links a { text-decoration: none; color: var(--color-text-sub); }
-.utility-links a:hover { text-decoration: underline; }
+.utility-links { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.utility-links a { text-decoration: none; color: var(--color-text); font-weight: 600; }
+.utility-links a:hover { text-decoration: underline; color: var(--color-accent); }
 
 .a11y-tools { display: flex; align-items: center; gap: 10px; }
 .a11y-tools .group { display: flex; align-items: center; gap: 4px; }
