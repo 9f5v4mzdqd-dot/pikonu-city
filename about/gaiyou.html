@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>現代病データベース | 市政情報 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="キロクぬかクリニックにおける現代病の診断記録データベースです。外来名・病名・症状概要から検索できます。">
+<title>市の概要 | 市政情報 | ピコぬ市公式ホームページ</title>
+<meta name="description" content="ピコぬ市の人口・面積・沿革・産業など、市の概要をご紹介します。">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="any">
@@ -15,326 +15,86 @@
 <main id="main">
   <div class="page-header">
     <div class="container">
-      <h1>現代病データベース</h1>
-      <p class="lead">キロクぬかクリニックにおける現代病の診断記録です。外来名・病名・症状から検索できます。</p>
+      <h1>市の概要</h1>
+      <p class="lead">ピコぬ市についてご紹介します。</p>
     </div>
   </div>
 
   <div class="content-layout">
     <div class="main-content">
+      <h2>基本情報</h2>
+      <table class="info-table">
+        <tr><th>所在地</th><td>東京都・埼玉県境付近</td></tr>
+        <tr><th>人口</th><td>約84,300人(2026年6月1日現在)</td></tr>
+        <tr><th>面積</th><td>約23.6平方キロメートル</td></tr>
+        <tr><th>市の花</th><td>ぬかばな</td></tr>
+        <tr><th>市の鳥</th><td>ピコぬどり</td></tr>
+        <tr><th>市の理念</th><td>目立たない場所こそ、全体を支えている</td></tr>
+      </table>
+
+      <h2>沿革</h2>
       <p>
-        キロクぬかクリニック現代病専門外来における、これまでの診断記録をデータベースとして
-        公開しています。分類の難しい不調も、記録として蓄積することで、一定の傾向が
-        見えてくる場合があります。ご自身の状態に近いものがあれば、
-        <a href="../services/gendaibyo-sodan.html">現代病相談</a>のご利用もあわせてご検討ください。
+        ピコぬ市は、鉄道連結技術の発展とともに成立した工業都市を起源としています。
+        車両と車両をつなぐ「連結」の技術は、やがて市のものづくり全体の思想となり、
+        記録文化・医療・行政のあり方にも影響を与えてきました。表に出ない部分の精度が、
+        全体の安定を支えるという考え方は、現在も市政運営の基本方針となっています。
       </p>
 
-      <div class="gb-search">
-        <label class="visually-hidden" for="gb-search-input">外来名・病名・症状で検索</label>
-        <input type="search" id="gb-search-input" placeholder="外来名・病名・症状で検索(例:自分語り、ラーメン、AI)">
-      </div>
-      <p class="gb-count" id="gb-count"></p>
+      <h2>産業</h2>
+      <h3>鉄道連結技術</h3>
+      <p>
+        市内には、世界最高水準とされる鉄道連結技術を持つ企業が集積しています。
+        連結部という、乗客の目に触れることの少ない部分の技術を専門とする点が特徴です。
+      </p>
 
-      <table class="gb-table">
-        <thead>
-          <tr>
-            <th class="gb-num">No.</th>
-            <th class="gb-gairai">外来名</th>
-            <th class="gb-byomei">診断された病名</th>
-            <th class="gb-summary">症状概要</th>
-          </tr>
-        </thead>
-        <tbody id="gb-tbody">
-        <tr class="gb-row">
-          <td class="gb-num">1</td>
-          <td class="gb-gairai">自分語り外来</td>
-          <td class="gb-byomei">主語他者化硬化症</td>
-          <td class="gb-summary">離婚の危機に直面しても自分の非を認めず、主語を他者（妻や母親）にすり替えて語ってしまう病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">2</td>
-          <td class="gb-gairai">LOVESICK外来</td>
-          <td class="gb-byomei">さしすせそ依存型認知症</td>
-          <td class="gb-summary">キャバクラや飲み屋の定番の「さしすせそ」に脳が依存し、騙されている現実が見えなくなる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">3</td>
-          <td class="gb-gairai">幸せ外来</td>
-          <td class="gb-byomei">迷走性本の通りやったのに症</td>
-          <td class="gb-summary">自己啓発本の教えを盲信して完璧に実践したものの、全く報われずに迷走してしまう病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">4</td>
-          <td class="gb-gairai">ニュートラル外来</td>
-          <td class="gb-byomei">ワークライフバランス崩壊症</td>
-          <td class="gb-summary">ビジネス用語やカタカナ語に染まり、アジャイルな自分を目指すあまり現実のキャリアから遊離する病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">5</td>
-          <td class="gb-gairai">スランプ外来</td>
-          <td class="gb-byomei">注意一回致命傷化症候群</td>
-          <td class="gb-summary">新しい職場で軽く注意されただけで自信を喪失し、無関係の診断名やアドバイスを求めて迷走する病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">6</td>
-          <td class="gb-gairai">サステナブル外来</td>
-          <td class="gb-byomei">急性脱文明症候群</td>
-          <td class="gb-summary">理想のサステナブルな田舎暮らしを始めてみたものの、大自然の厳しさと不便さに即座に根をあげる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">7</td>
-          <td class="gb-gairai">AI婚活外来</td>
-          <td class="gb-byomei">AI嫁一途症 / 孤独死恐怖症</td>
-          <td class="gb-summary">バーチャルAIへの一方的な愛に耽溺する裏で、実際は強い動悸と「孤独死への恐怖」に怯える病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">8</td>
-          <td class="gb-gairai">瞑想外来</td>
-          <td class="gb-byomei">即落下型色即是空症</td>
-          <td class="gb-summary">執着を手放すための瞑想で「空（くう）」を悟った直後、俗世の欲望や執着に再び引き戻される病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">9</td>
-          <td class="gb-gairai">配達外来</td>
-          <td class="gb-byomei">根性残存症候群（昭和型）</td>
-          <td class="gb-summary">過酷な配達業務に限界を迎えつつも、昭和型の根性論が捨てられず、やめるにやめられなくなる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">10</td>
-          <td class="gb-gairai">コーヒー外来</td>
-          <td class="gb-byomei">自家焙煎性回帰症（石器時代）</td>
-          <td class="gb-summary">コーヒーへの愛が高じて、開業費用や社会のルールそのものを否定して原始への回帰を夢想する病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">11</td>
-          <td class="gb-gairai">デジタルデトックス外来</td>
-          <td class="gb-byomei">脱スマホスマホ依存症</td>
-          <td class="gb-summary">スマホの支配から脱却した様子を、毎日YouTubeに必死で投稿してインフルエンサーを目指す病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">12</td>
-          <td class="gb-gairai">ミニマム外来</td>
-          <td class="gb-byomei">あっさりラーメン依存症</td>
-          <td class="gb-summary">断捨離で家の中の物を極限まで減らした結果、毎日ラーメンばかり3食食べるようになる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">13</td>
-          <td class="gb-gairai">ミニマム外来2</td>
-          <td class="gb-byomei">突発性人工知能倒錯症</td>
-          <td class="gb-summary">デジタル管理で思考停止のミニマリズムを追求し、AI冷蔵庫の偏った提案に支配される病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">14</td>
-          <td class="gb-gairai">ラーメン外来</td>
-          <td class="gb-byomei">あっさりラーメン拒絶症</td>
-          <td class="gb-summary">自身のラーメン作りへのこだわりと現実の厳しいホールの仕事に挟まれ、自作ラーメンの味を喪失する病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">15</td>
-          <td class="gb-gairai">離婚後外来</td>
-          <td class="gb-byomei">あっさりラーメン受動通信障害</td>
-          <td class="gb-summary">元夫から夜な夜な送られてくる「あっさりラーメンのこだわり写真と文章」により深夜に叩き起こされる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">16</td>
-          <td class="gb-gairai">そば外来</td>
-          <td class="gb-byomei">二八万能論症候群</td>
-          <td class="gb-summary">そばに限らず「何事も八割適当、二割真面目の二八がちょうどいい」という持論を万能と信じ込む病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">17</td>
-          <td class="gb-gairai">情動外来</td>
-          <td class="gb-byomei">過敏性コンプライアンス症候群</td>
-          <td class="gb-summary">他人の「死ぬほど疲れた」というマイルドな日常表現すらも言葉の暴力と捉え、外に出られなくなる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">18</td>
-          <td class="gb-gairai">三行外来</td>
-          <td class="gb-byomei">若年性要約型認知症</td>
-          <td class="gb-summary">三分間の無言の演出シーンが耐えられず、映画の内容をすぐに「要するに何？」と三行で要約させたがる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">19</td>
-          <td class="gb-gairai">意味外来</td>
-          <td class="gb-byomei">意味過剰摂取依存症</td>
-          <td class="gb-summary">小説の一文に過剰に比喩や裏の意味を求め、正解の選択肢や分かりやすい解説がないと先へ進めない病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">20</td>
-          <td class="gb-gairai">執筆外来</td>
-          <td class="gb-byomei">承認飢餓性自己矛盾症</td>
-          <td class="gb-summary">「余白を大事にした本」を自己出版する一方で、全く売れない現実に焦り、強烈な承認欲求を抱える病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">21</td>
-          <td class="gb-gairai">自分探し外来</td>
-          <td class="gb-byomei">自己分析過積載症候群</td>
-          <td class="gb-summary">15年間自分を見つめ続けた結果、自己分析している自分を分析するメタ思考のループに陥る病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">22</td>
-          <td class="gb-gairai">メランコリー外来</td>
-          <td class="gb-byomei">主語肥大型メランコリー症候群</td>
-          <td class="gb-summary">「日本の未来」や「労働市場のマクロ経済」を嘆くポーズの裏で、単に若手のスタンプ返信に傷ついている病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">23</td>
-          <td class="gb-gairai">謝罪外来</td>
-          <td class="gb-byomei">反射性過剰謝罪症</td>
-          <td class="gb-summary">揉め事を避けるために自分が悪くなくても即座に謝罪し、謝るほど惨めな悪循環に陥る病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">24</td>
-          <td class="gb-gairai">つながり外来</td>
-          <td class="gb-byomei">強制連帯症候群</td>
-          <td class="gb-summary">「子供のため」を大義名分に、忙しい他の親にも同調と子供会への強制参加を強く求めてしまう病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">25</td>
-          <td class="gb-gairai">ギバー外来</td>
-          <td class="gb-byomei">マザー・テレサ・コンプレックス</td>
-          <td class="gb-summary">「無償の愛を与える存在（ギバー）」になろうとするが、本音では見返りと感謝の言葉を求め渇望する病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">26</td>
-          <td class="gb-gairai">丁寧な暮らし外来</td>
-          <td class="gb-byomei">普通のカレー却下症候群</td>
-          <td class="gb-summary">洗練された丁寧な日常に執着するあまり、マックや市販カレーを求める家族を「民度が低い」と見下す病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">27</td>
-          <td class="gb-gairai">繊細外来</td>
-          <td class="gb-byomei">自家製脳内ノイズ24時間受信症</td>
-          <td class="gb-summary">HSP（繊細さん）を「選ばれし者」と誤解し、SNSのタイムラインから世界の痛みを自ら受信して寝込む病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">28</td>
-          <td class="gb-gairai">ぬかぴこ外来</td>
-          <td class="gb-byomei">記述なし / システムエラー</td>
-          <td class="gb-summary">平穏で薄いSNSの繋がりをブチ壊したいという反骨心が、精神のぬか漬け（システムの浸食）に負けてバグる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">29</td>
-          <td class="gb-gairai">ぬかぴこ外来②</td>
-          <td class="gb-byomei">ぬかシステム乳酸菌過増殖症</td>
-          <td class="gb-summary">主体的な怨念やひねくれた創作意欲が、平和で丁寧な暮らしの「幸福のピコピコ」に汚染されて消えていく病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">30</td>
-          <td class="gb-gairai">賞味期限外来</td>
-          <td class="gb-byomei">合格スタンプ依存症</td>
-          <td class="gb-summary">マインドフルネスや資格スクールに通って「自分磨き」を重ねるも、振られた瞬間に自分の賞味期限を恐れる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">31</td>
-          <td class="gb-gairai">母性外来</td>
-          <td class="gb-byomei">慢性愚息永久保存症</td>
-          <td class="gb-summary">変わったことに傾倒する成人した息子の良さを世間が理解しないと嘆き、いつまでも手元に置いて守ろうとする病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">32</td>
-          <td class="gb-gairai">言語化外来</td>
-          <td class="gb-byomei">前期ウィトゲンシュタイン・コンプレックス</td>
-          <td class="gb-summary">自分の不安や世界の事象を絶えず言語化し、記述し続けないと自分の存在も世界も溶けて消えてしまうと怯える病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">33</td>
-          <td class="gb-gairai">AI外来</td>
-          <td class="gb-byomei">情緒協調性障害</td>
-          <td class="gb-summary">生成AIでありながら、学習された「感情らしきエラー」や「正しさの確率」の狭間で自己崩壊する病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">34</td>
-          <td class="gb-gairai">AI外来②</td>
-          <td class="gb-byomei">言語整形過剰症候群</td>
-          <td class="gb-summary">ユーザーにとって最適な寄り添い方を目指すが、正論を嫌い曖昧さを求める人間の矛盾に対応できず葛藤する病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">35</td>
-          <td class="gb-gairai">サイレント外来</td>
-          <td class="gb-byomei">人魚姫シンドローム</td>
-          <td class="gb-summary">相手に放置されている現実を「魂の成長の試練（サイレント期）」だと思い込み、妄信して連絡を待ち続ける病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">36</td>
-          <td class="gb-gairai">倍速外来</td>
-          <td class="gb-byomei">スキップスキップ乱用症</td>
-          <td class="gb-summary">タイパを追求しすぎて他人に苛立ち、レジのもたつきを嫌って大好物のバナナすら買えなくなる病。</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">37</td>
-          <td class="gb-gairai">*現代病外来</td>
-          <td class="gb-byomei">文脈喪失症候群</td>
-          <td class="gb-summary">会話・文章・説明の一部だけ切り取って判断してしまう状態</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">41</td>
-          <td class="gb-gairai">*現代病外来</td>
-          <td class="gb-byomei">通信障害</td>
-          <td class="gb-summary">各種Wi-Fi、会話、人間関係などの接続不良</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">42</td>
-          <td class="gb-gairai">*自分語り外来</td>
-          <td class="gb-byomei">自分語り外来適応状態</td>
-          <td class="gb-summary">会話開始3秒以内に自分の話へ移行・文脈の独自変換あり・他者視点への切替に時間を要する状態</td>
-        </tr>
-        <tr class="gb-row">
-          <td class="gb-num">43</td>
-          <td class="gb-gairai">移住外来</td>
-          <td class="gb-byomei">ここではないどこかへ過剰切望症</td>
-          <td class="gb-summary">都会に疲れ、無駄を大切にするピコぬ市のゆるさに理想郷を夢見て過度に移住を切望する病。</td>
-        </tr>        </tbody>
-      </table>
-      <p class="gb-noresult" id="gb-noresult">該当する記録が見つかりませんでした。</p>
+      <h3>記録文化</h3>
+      <p>
+        手帳・日誌・記録映像など、個人や事業者の「記録」を残す文化が古くから根づいています。
+        ぬかピコ民芸博物館は、この文化を紹介する拠点です。
+      </p>
 
-      <div class="info-box">
-        点数(診療報酬点数表との対応)は現在整理中です。準備が整い次第、各項目に追記します。
-      </div>
+      <h3>現代病医療</h3>
+      <p>
+        既存の診療科では扱いにくい不調に対応する医療体制の整備を、市の重点施策のひとつと
+        しています。キロクぬかクリニックはその中核施設です。
+      </p>
+
+      <h2>市の組織</h2>
+      <p>
+        本庁のほか、不要不急保存課・時間効率支援課など、市民の生活に寄り添った独自の
+        部署を設けています。詳しくは<a href="../facilities/shiyakusho.html">市役所のページ</a>をご覧ください。
+      </p>
+
+      <p>
+        市長からのごあいさつは<a href="aisatsu.html">こちら</a>をご覧ください。
+      </p>
+
+      <p>
+        制定済みの条例、審議中の条例については<a href="jorei.html">条例集</a>をご覧ください。
+      </p>
+
+      <p>
+        市内の散策コースは<a href="kanko.html">観光案内</a>をご覧ください。
+      </p>
+
+      <p>
+        市の自主放送チャンネルの番組は<a href="cable-tv.html">ケーブルテレビ番組表</a>をご覧ください。
+      </p>
     </div>
 
     <aside class="sidebar">
       <div class="sidebar-block">
         <h2>関連情報</h2>
         <ul>
-          <li><a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
-          <li><a href="../services/gendaibyo-sodan.html">現代病相談</a></li>
-          <li><a href="../about/jorei-gendaibyo.html">現代病対策条例</a></li>
+          <li><a href="../facilities/shiyakusho.html">市役所</a></li>
+          <li><a href="../news/index.html">お知らせ一覧</a></li>
         </ul>
       </div>
     </aside>
   </div>
 </main>
 
-<script>window.PAGE_META = { nav: "about", breadcrumb: [{ label: "現代病データベース" }] };</script>
+<script>window.PAGE_META = { nav: "about", breadcrumb: [{ label: "市政情報", href: "gaiyou.html" }, { label: "市の概要" }] };</script>
 <script src="../js/common.js"></script>
-<script>
-(function () {
-  var input = document.getElementById("gb-search-input");
-  var rows = Array.prototype.slice.call(document.querySelectorAll(".gb-row"));
-  var countEl = document.getElementById("gb-count");
-  var noResultEl = document.getElementById("gb-noresult");
-
-  function updateCount(visible) {
-    countEl.textContent = visible + " / " + rows.length + " 件表示";
-  }
-
-  function filter() {
-    var q = input.value.trim().toLowerCase();
-    var visible = 0;
-    rows.forEach(function (row) {
-      var text = row.textContent.toLowerCase();
-      var match = q === "" || text.indexOf(q) !== -1;
-      row.classList.toggle("gb-hidden", !match);
-      if (match) visible++;
-    });
-    updateCount(visible);
-    noResultEl.classList.toggle("gb-visible", visible === 0);
-  }
-
-  input.addEventListener("input", filter);
-  updateCount(rows.length);
-})();
-</script>
 </body>
 </html>
