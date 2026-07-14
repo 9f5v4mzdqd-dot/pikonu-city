@@ -590,7 +590,46 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
 }
 .kiriban-caption a { color: var(--color-accent); }
 
-/* ---------- 9. レスポンシブ ---------- */
+.gb-search {
+  margin: 1.4em 0;
+  display: flex;
+  gap: 8px;
+}
+.gb-search input[type="search"] {
+  flex: 1;
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  font-size: .95rem;
+  font-family: inherit;
+  border-radius: 3px;
+}
+.gb-count {
+  font-size: .85rem;
+  color: var(--color-text-sub);
+  margin-bottom: .8em;
+}
+.gb-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.gb-table th, .gb-table td {
+  border: 1px solid var(--color-border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.gb-table th { background: var(--color-bg-alt); font-weight: 600; }
+.gb-num { width: 3em; color: var(--color-text-sub); }
+.gb-gairai { width: 9em; white-space: nowrap; }
+.gb-byomei { width: 13em; font-weight: 600; }
+.gb-row.gb-hidden { display: none; }
+.gb-noresult { display: none; padding: 2em 0; text-align: center; color: var(--color-text-sub); }
+.gb-noresult.gb-visible { display: block; }
+
+@media (max-width: 680px) {
+  .gb-table, .gb-table thead, .gb-table tbody, .gb-table th, .gb-table td, .gb-table tr { display: block; }
+  .gb-table thead { display: none; }
+  .gb-table tr { border: 1px solid var(--color-border); margin-bottom: 10px; padding: 8px; }
+  .gb-table td { border: none; padding: 4px 2px; }
+  .gb-num::before { content: "No. "; color: var(--color-text-sub); }
+}
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-graphic { display: none; }

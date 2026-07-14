@@ -137,6 +137,7 @@
       '<li><a href="' + BASE + 'about/jorei.html">条例集</a></li>' +
       '<li><a href="' + BASE + 'about/kanko.html">観光案内</a></li>' +
       '<li><a href="' + BASE + 'about/cable-tv.html">ケーブルテレビ番組表</a></li>' +
+      '<li><a href="' + BASE + 'about/gendaibyo-db.html">現代病データベース</a></li>' +
       '<li><a href="' + BASE + 'news/index.html">お知らせ一覧</a></li>' +
       '<li><a href="' + BASE + 'index.html">広報ぬかピコ</a></li>' +
       '<li><a href="' + BASE + 'about/kiriban.html">キリ番について</a></li>' +
