@@ -380,7 +380,7 @@ table { border-collapse: collapse; width: 100%; }
   background: #fff;
   text-align: center;
 }
-.symbol-card img { width: 100%; height: 180px; object-fit: contain; background: #f5f7fa; }
+.symbol-card img { width: 100%; height: 180px; object-fit: cover; background: #f5f7fa; }
 .symbol-card .caption { padding: 14px 16px; }
 .symbol-card .caption .kind { font-size: .74rem; color: var(--color-primary); font-weight: 600; letter-spacing: .04em; }
 .symbol-card .caption h3 { font-size: 1.05rem; margin: .3em 0; }
