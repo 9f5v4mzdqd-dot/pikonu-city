@@ -135,6 +135,7 @@
       '<li><a href="' + BASE + 'about/gaiyou.html">市の概要</a></li>' +
       '<li><a href="' + BASE + 'about/aisatsu.html">市長のごあいさつ</a></li>' +
       '<li><a href="' + BASE + 'about/jorei.html">条例集</a></li>' +
+      '<li><a href="' + BASE + 'about/shingikai.html">審議会・附属機関一覧</a></li>' +
       '<li><a href="' + BASE + 'about/kanko.html">観光案内</a></li>' +
       '<li><a href="' + BASE + 'about/cable-tv.html">ケーブルテレビ番組表</a></li>' +
       '<li><a href="' + BASE + 'about/gendaibyo-db.html">現代病データベース</a></li>' +
