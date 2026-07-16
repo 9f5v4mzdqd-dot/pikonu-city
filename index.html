@@ -38,6 +38,21 @@
   <section class="section">
     <div class="container">
       <div class="section-heading">
+        <h2>PR動画</h2>
+      </div>
+      <div class="pr-video-box" id="pr-video-box">
+        <button type="button" class="btn pr-video-btn" id="pr-video-btn">▶ PR動画を見る</button>
+        <video id="pr-video" controls style="display:none;">
+          <source src="piconu-city-pr.mp4" type="video/mp4">
+          お使いのブラウザは動画の再生に対応していません。
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
         <h2>お知らせ</h2>
         <a class="more" href="news/index.html">お知らせ一覧を見る &gt;</a>
       </div>
@@ -227,5 +242,17 @@
 
 <script>window.PAGE_META = { nav: "home" };</script>
 <script src="js/common.js"></script>
+<script>
+  (function () {
+    var btn = document.getElementById("pr-video-btn");
+    var video = document.getElementById("pr-video");
+    if (!btn || !video) return;
+    btn.addEventListener("click", function () {
+      btn.style.display = "none";
+      video.style.display = "block";
+      video.play();
+    });
+  })();
+</script>
 </body>
 </html>
