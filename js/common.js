@@ -142,6 +142,7 @@
       '<li><a href="' + BASE + 'news/index.html">お知らせ一覧</a></li>' +
       '<li><a href="' + BASE + 'index.html">広報ぬかピコ</a></li>' +
       '<li><a href="' + BASE + 'about/kiriban.html">キリ番について</a></li>' +
+      '<li><a href="' + BASE + 'about/piconu-diary.html">ピコぬ君業務日誌</a></li>' +
       "</ul></div>" +
       "<div><h2>お問い合わせ</h2>" +
       '<p class="footer-address">ピコぬ市役所 記録政策課<br>' +

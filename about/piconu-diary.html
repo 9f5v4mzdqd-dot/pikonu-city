@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ピコぬ君業務日誌 | 市政情報 | ピコぬ市公式ホームページ</title>
+<meta name="description" content="ピコぬ君による業務日誌です。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body id="top">
+
+<main id="main">
+  <div class="page-header">
+    <div class="container">
+      <h1>ピコぬ君業務日誌</h1>
+      <p class="lead">ピコぬ君による、日々の記録です。</p>
+    </div>
+  </div>
+
+  <div class="content-layout full">
+    <div class="main-content">
+      <div id="diary-list">
+        <p>読み込み中だぬ...</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>window.PAGE_META = { nav: "about", breadcrumb: [{ label: "ピコぬ君業務日誌" }] };</script>
+<script src="../js/common.js"></script>
+<script>
+  (function () {
+    var listEl = document.getElementById("diary-list");
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\n/g, "<br>");
+    }
+
+    fetch("../data/piconu-diary.json")
+      .then(function (res) { return res.json(); })
+      .then(function (entries) {
+        if (!Array.isArray(entries) || entries.length === 0) {
+          listEl.innerHTML = "<p>まだ記録がないだぬ。</p>";
+          return;
+        }
+        entries.sort(function (a, b) { return b.date.localeCompare(a.date); });
+        listEl.innerHTML = entries.map(function (e) {
+          return (
+            '<div class="diary-entry">' +
+              '<div class="diary-date">' + escapeHtml(e.date) + '</div>' +
+              '<div class="diary-title">' + escapeHtml(e.title) + '</div>' +
+              '<div class="diary-body">' + escapeHtml(e.body) + '</div>' +
+            '</div>'
+          );
+        }).join("");
+      })
+      .catch(function () {
+        listEl.innerHTML = "<p>読み込みに失敗しただぬ。時間をおいて試してほしいだぬ。</p>";
+      });
+  })();
+</script>
+</body>
+</html>

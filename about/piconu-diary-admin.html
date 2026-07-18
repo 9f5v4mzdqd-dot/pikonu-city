@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>業務日誌 投稿フォーム(管理者用)</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .admin-wrap { max-width: 640px; margin: 40px auto; padding: 0 20px; }
+  .admin-field { margin-bottom: 18px; }
+  .admin-field label { display: block; font-weight: 600; margin-bottom: 6px; font-size: .92rem; }
+  .admin-field input[type="text"],
+  .admin-field input[type="date"],
+  .admin-field input[type="password"],
+  .admin-field textarea {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-size: .95rem;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+  .admin-field textarea { min-height: 140px; resize: vertical; }
+  .admin-checkbox { font-size: .85rem; color: var(--color-text-sub); margin-top: 6px; }
+  .admin-status { margin-top: 14px; font-size: .9rem; white-space: pre-wrap; }
+  .admin-warning {
+    background: var(--color-notice-bg);
+    border: 1px solid var(--color-notice-border);
+    border-left-width: 5px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: .88rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="admin-wrap">
+  <h1 style="font-size:1.4rem;">業務日誌 投稿フォーム(管理者用)</h1>
+
+  <div class="admin-warning">
+    このページは管理者専用です。GitHubのアクセストークンが無いと投稿できません。
+    トークンは他人に教えないでください。
+  </div>
+
+  <div class="admin-field">
+    <label for="f-token">GitHubアクセストークン</label>
+    <input type="password" id="f-token" placeholder="ghp_... または github_pat_...">
+    <div class="admin-checkbox">
+      <label><input type="checkbox" id="f-remember"> このブラウザにトークンを保存する(自分専用のPCでのみ推奨)</label>
+    </div>
+  </div>
+
+  <div class="admin-field">
+    <label for="f-date">日付</label>
+    <input type="date" id="f-date">
+  </div>
+
+  <div class="admin-field">
+    <label for="f-title">タイトル</label>
+    <input type="text" id="f-title" placeholder="例:今日もぼちぼちだぬ">
+  </div>
+
+  <div class="admin-field">
+    <label for="f-body">本文</label>
+    <textarea id="f-body" placeholder="ピコぬ君の口調(〜だぬ)で書いてほしいだぬ"></textarea>
+  </div>
+
+  <button type="button" class="btn" id="f-submit">投稿する</button>
+  <a href="piconu-diary.html" class="btn btn-outline" style="margin-left:8px;">公開ページを見る</a>
+
+  <div class="admin-status" id="f-status"></div>
+</div>
+
+<script>
+(function () {
+  var GITHUB_OWNER = "9f5v4mzdqd-dot";
+  var GITHUB_REPO = "pikonu-city";
+  var GITHUB_BRANCH = "main";
+  var FILE_PATH = "data/piconu-diary.json";
+  var API_URL = "https://api.github.com/repos/" + GITHUB_OWNER + "/" + GITHUB_REPO + "/contents/" + FILE_PATH;
+
+  var tokenEl = document.getElementById("f-token");
+  var rememberEl = document.getElementById("f-remember");
+  var dateEl = document.getElementById("f-date");
+  var titleEl = document.getElementById("f-title");
+  var bodyEl = document.getElementById("f-body");
+  var statusEl = document.getElementById("f-status");
+  var submitBtn = document.getElementById("f-submit");
+
+  // 今日の日付を初期値に
+  var today = new Date();
+  dateEl.value = today.toISOString().slice(0, 10);
+
+  // 保存済みトークンの復元
+  try {
+    var saved = localStorage.getItem("piconu-diary-token");
+    if (saved) {
+      tokenEl.value = saved;
+      rememberEl.checked = true;
+    }
+  } catch (e) {}
+
+  function b64EncodeUtf8(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64DecodeUtf8(str) {
+    return decodeURIComponent(escape(atob(str.replace(/\n/g, ""))));
+  }
+
+  submitBtn.addEventListener("click", function () {
+    var token = tokenEl.value.trim();
+    var date = dateEl.value;
+    var title = titleEl.value.trim();
+    var body = bodyEl.value.trim();
+
+    if (!token) { statusEl.textContent = "トークンを入力してほしいだぬ。"; return; }
+    if (!date || !title || !body) { statusEl.textContent = "日付・タイトル・本文、全部入力してほしいだぬ。"; return; }
+
+    try {
+      if (rememberEl.checked) {
+        localStorage.setItem("piconu-diary-token", token);
+      } else {
+        localStorage.removeItem("piconu-diary-token");
+      }
+    } catch (e) {}
+
+    submitBtn.disabled = true;
+    statusEl.textContent = "送信中だぬ...";
+
+    fetch(API_URL, { headers: { Authorization: "Bearer " + token } })
+      .then(function (res) {
+        if (!res.ok) throw new Error("現在のファイルの取得に失敗しただぬ(" + res.status + ")");
+        return res.json();
+      })
+      .then(function (fileData) {
+        var sha = fileData.sha;
+        var currentEntries = JSON.parse(b64DecodeUtf8(fileData.content));
+        currentEntries.unshift({ date: date, title: title, body: body });
+        var newContent = JSON.stringify(currentEntries, null, 2);
+
+        return fetch(API_URL, {
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: "業務日誌: " + title,
+            content: b64EncodeUtf8(newContent),
+            sha: sha,
+            branch: GITHUB_BRANCH,
+          }),
+        });
+      })
+      .then(function (res) {
+        if (!res.ok) {
+          return res.json().then(function (err) {
+            throw new Error("投稿に失敗しただぬ: " + (err.message || res.status));
+          });
+        }
+        statusEl.textContent = "投稿できただぬ!反映まで1分ほどかかるだぬ。";
+        titleEl.value = "";
+        bodyEl.value = "";
+      })
+      .catch(function (err) {
+        statusEl.textContent = "エラーだぬ: " + err.message;
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+      });
+  });
+})();
+</script>
+</body>
+</html>
