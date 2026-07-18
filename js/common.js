@@ -130,6 +130,7 @@
       '<li><a href="' + BASE + 'facilities/jikan-koritsu-shien-ka.html">時間効率支援課</a></li>' +
       '<li><a href="' + BASE + 'facilities/shiyakusho.html">市役所</a></li>' +
       '<li><a href="' + BASE + 'facilities/toshokan.html">市立図書館</a></li>' +
+      '<li><a href="' + BASE + 'facilities/shokokai.html">ピコぬ市商工会</a></li>' +
       "</ul></div>" +
       "<div><h2>市政情報</h2><ul>" +
       '<li><a href="' + BASE + 'about/gaiyou.html">市の概要</a></li>' +
