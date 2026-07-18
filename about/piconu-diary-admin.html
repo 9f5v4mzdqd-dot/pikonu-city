@@ -34,6 +34,31 @@
     margin-bottom: 24px;
     font-size: .88rem;
   }
+  .admin-section-title { font-size: 1.1rem; font-weight: 700; margin: 40px 0 14px; border-top: 1px solid var(--color-border); padding-top: 30px; }
+  .admin-entry {
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .admin-entry-meta { font-size: .85rem; color: var(--color-text-sub); }
+  .admin-entry-title { font-weight: 600; margin: 2px 0; }
+  .admin-entry-actions { display: flex; gap: 6px; flex-shrink: 0; }
+  .admin-entry-actions button {
+    font-size: .82rem;
+    padding: .4em .8em;
+    border: 1px solid var(--color-border);
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .admin-entry-actions button.danger { color: #a3281f; border-color: #a3281f; }
+  .admin-cancel-edit { font-size: .85rem; margin-left: 10px; }
 </style>
 </head>
 <body>
@@ -42,7 +67,7 @@
   <h1 style="font-size:1.4rem;">業務日誌 投稿フォーム(管理者用)</h1>
 
   <div class="admin-warning">
-    このページは管理者専用です。GitHubのアクセストークンが無いと投稿できません。
+    このページは管理者専用です。GitHubのアクセストークンが無いと投稿・編集・削除できません。
     トークンは他人に教えないでください。
   </div>
 
@@ -70,9 +95,14 @@
   </div>
 
   <button type="button" class="btn" id="f-submit">投稿する</button>
+  <a href="#" id="f-cancel-edit" class="admin-cancel-edit" style="display:none;">編集をやめて新規投稿に戻る</a>
   <a href="piconu-diary.html" class="btn btn-outline" style="margin-left:8px;">公開ページを見る</a>
 
   <div class="admin-status" id="f-status"></div>
+
+  <div class="admin-section-title">既存の記事</div>
+  <button type="button" class="btn btn-outline" id="f-load-list">記事一覧を読み込む</button>
+  <div id="f-entry-list" style="margin-top:14px;"></div>
 </div>
 
 <script>
@@ -90,12 +120,15 @@
   var bodyEl = document.getElementById("f-body");
   var statusEl = document.getElementById("f-status");
   var submitBtn = document.getElementById("f-submit");
+  var cancelEditEl = document.getElementById("f-cancel-edit");
+  var loadListBtn = document.getElementById("f-load-list");
+  var entryListEl = document.getElementById("f-entry-list");
 
-  // 今日の日付を初期値に
+  var editingId = null; // null = 新規投稿モード
+
   var today = new Date();
   dateEl.value = today.toISOString().slice(0, 10);
 
-  // 保存済みトークンの復元
   try {
     var saved = localStorage.getItem("piconu-diary-token");
     if (saved) {
@@ -104,15 +137,75 @@
     }
   } catch (e) {}
 
-  function b64EncodeUtf8(str) {
-    return btoa(unescape(encodeURIComponent(str)));
-  }
-  function b64DecodeUtf8(str) {
-    return decodeURIComponent(escape(atob(str.replace(/\n/g, ""))));
+  function getToken() {
+    var t = tokenEl.value.trim();
+    try {
+      if (rememberEl.checked && t) localStorage.setItem("piconu-diary-token", t);
+      if (!rememberEl.checked) localStorage.removeItem("piconu-diary-token");
+    } catch (e) {}
+    return t;
   }
 
+  function b64EncodeUtf8(str) { return btoa(unescape(encodeURIComponent(str))); }
+  function b64DecodeUtf8(str) { return decodeURIComponent(escape(atob(str.replace(/\n/g, "")))); }
+
+  function makeId() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return "id-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+  }
+
+  // 現在のファイル(sha・中身)を取得し、id が無いエントリには補完する
+  function fetchCurrent(token) {
+    return fetch(API_URL, { headers: { Authorization: "Bearer " + token } })
+      .then(function (res) {
+        if (!res.ok) throw new Error("現在のファイルの取得に失敗しただぬ(" + res.status + ")");
+        return res.json();
+      })
+      .then(function (fileData) {
+        var entries = JSON.parse(b64DecodeUtf8(fileData.content));
+        entries.forEach(function (e) { if (!e.id) e.id = makeId(); });
+        return { sha: fileData.sha, entries: entries };
+      });
+  }
+
+  function saveEntries(token, entries, sha, message) {
+    var newContent = JSON.stringify(entries, null, 2);
+    return fetch(API_URL, {
+      method: "PUT",
+      headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: message,
+        content: b64EncodeUtf8(newContent),
+        sha: sha,
+        branch: GITHUB_BRANCH,
+      }),
+    }).then(function (res) {
+      if (!res.ok) {
+        return res.json().then(function (err) {
+          throw new Error("保存に失敗しただぬ: " + (err.message || res.status));
+        });
+      }
+      return res.json();
+    });
+  }
+
+  function resetFormToNew() {
+    editingId = null;
+    titleEl.value = "";
+    bodyEl.value = "";
+    dateEl.value = new Date().toISOString().slice(0, 10);
+    submitBtn.textContent = "投稿する";
+    cancelEditEl.style.display = "none";
+  }
+
+  cancelEditEl.addEventListener("click", function (e) {
+    e.preventDefault();
+    resetFormToNew();
+    statusEl.textContent = "";
+  });
+
   submitBtn.addEventListener("click", function () {
-    var token = tokenEl.value.trim();
+    var token = getToken();
     var date = dateEl.value;
     var title = titleEl.value.trim();
     var body = bodyEl.value.trim();
@@ -120,57 +213,98 @@
     if (!token) { statusEl.textContent = "トークンを入力してほしいだぬ。"; return; }
     if (!date || !title || !body) { statusEl.textContent = "日付・タイトル・本文、全部入力してほしいだぬ。"; return; }
 
-    try {
-      if (rememberEl.checked) {
-        localStorage.setItem("piconu-diary-token", token);
-      } else {
-        localStorage.removeItem("piconu-diary-token");
-      }
-    } catch (e) {}
-
     submitBtn.disabled = true;
     statusEl.textContent = "送信中だぬ...";
 
-    fetch(API_URL, { headers: { Authorization: "Bearer " + token } })
-      .then(function (res) {
-        if (!res.ok) throw new Error("現在のファイルの取得に失敗しただぬ(" + res.status + ")");
-        return res.json();
-      })
-      .then(function (fileData) {
-        var sha = fileData.sha;
-        var currentEntries = JSON.parse(b64DecodeUtf8(fileData.content));
-        currentEntries.unshift({ date: date, title: title, body: body });
-        var newContent = JSON.stringify(currentEntries, null, 2);
-
-        return fetch(API_URL, {
-          method: "PUT",
-          headers: {
-            Authorization: "Bearer " + token,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            message: "業務日誌: " + title,
-            content: b64EncodeUtf8(newContent),
-            sha: sha,
-            branch: GITHUB_BRANCH,
-          }),
-        });
-      })
-      .then(function (res) {
-        if (!res.ok) {
-          return res.json().then(function (err) {
-            throw new Error("投稿に失敗しただぬ: " + (err.message || res.status));
-          });
+    fetchCurrent(token)
+      .then(function (current) {
+        var entries = current.entries;
+        if (editingId) {
+          var idx = entries.findIndex(function (e) { return e.id === editingId; });
+          if (idx === -1) throw new Error("編集対象の記事が見つからなかっただぬ。");
+          entries[idx] = { id: editingId, date: date, title: title, body: body };
+        } else {
+          entries.unshift({ id: makeId(), date: date, title: title, body: body });
         }
-        statusEl.textContent = "投稿できただぬ!反映まで1分ほどかかるだぬ。";
-        titleEl.value = "";
-        bodyEl.value = "";
+        var msg = (editingId ? "業務日誌 編集: " : "業務日誌: ") + title;
+        return saveEntries(token, entries, current.sha, msg);
+      })
+      .then(function () {
+        statusEl.textContent = (editingId ? "更新できただぬ!" : "投稿できただぬ!") + " 反映まで1分ほどかかるだぬ。";
+        resetFormToNew();
+        entryListEl.innerHTML = "";
       })
       .catch(function (err) {
         statusEl.textContent = "エラーだぬ: " + err.message;
       })
       .finally(function () {
         submitBtn.disabled = false;
+      });
+  });
+
+  function renderList(entries) {
+    if (!entries.length) {
+      entryListEl.innerHTML = "<p>まだ記事がないだぬ。</p>";
+      return;
+    }
+    var sorted = entries.slice().sort(function (a, b) { return b.date.localeCompare(a.date); });
+    entryListEl.innerHTML = "";
+    sorted.forEach(function (e) {
+      var row = document.createElement("div");
+      row.className = "admin-entry";
+      row.innerHTML =
+        '<div>' +
+          '<div class="admin-entry-meta">' + e.date + '</div>' +
+          '<div class="admin-entry-title"></div>' +
+        '</div>' +
+        '<div class="admin-entry-actions">' +
+          '<button type="button" data-action="edit">編集</button>' +
+          '<button type="button" data-action="delete" class="danger">削除</button>' +
+        '</div>';
+      row.querySelector(".admin-entry-title").textContent = e.title;
+
+      row.querySelector('[data-action="edit"]').addEventListener("click", function () {
+        editingId = e.id;
+        dateEl.value = e.date;
+        titleEl.value = e.title;
+        bodyEl.value = e.body;
+        submitBtn.textContent = "更新する";
+        cancelEditEl.style.display = "inline";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      row.querySelector('[data-action="delete"]').addEventListener("click", function () {
+        if (!confirm('「' + e.title + '」を削除するだぬ。よろしいだぬか?')) return;
+        var token = getToken();
+        if (!token) { statusEl.textContent = "トークンを入力してほしいだぬ。"; return; }
+        statusEl.textContent = "削除中だぬ...";
+        fetchCurrent(token)
+          .then(function (current) {
+            var newEntries = current.entries.filter(function (x) { return x.id !== e.id; });
+            return saveEntries(token, newEntries, current.sha, "業務日誌 削除: " + e.title);
+          })
+          .then(function () {
+            statusEl.textContent = "削除しただぬ。反映まで1分ほどかかるだぬ。";
+            loadListBtn.click();
+          })
+          .catch(function (err) {
+            statusEl.textContent = "エラーだぬ: " + err.message;
+          });
+      });
+
+      entryListEl.appendChild(row);
+    });
+  }
+
+  loadListBtn.addEventListener("click", function () {
+    var token = getToken();
+    if (!token) { statusEl.textContent = "トークンを入力してほしいだぬ。"; return; }
+    entryListEl.innerHTML = "<p>読み込み中だぬ...</p>";
+    fetchCurrent(token)
+      .then(function (current) { renderList(current.entries); })
+      .catch(function (err) {
+        entryListEl.innerHTML = "";
+        statusEl.textContent = "エラーだぬ: " + err.message;
       });
   });
 })();
