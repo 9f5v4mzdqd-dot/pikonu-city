@@ -333,7 +333,17 @@
   }
 
   input.addEventListener("input", filter);
-  updateCount(rows.length);
+
+  // URLの ?q=キーワード があれば初期検索語として反映する
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var initialQuery = params.get("q");
+    if (initialQuery) {
+      input.value = initialQuery;
+    }
+  } catch (e) {}
+
+  filter();
 })();
 </script>
 </body>
