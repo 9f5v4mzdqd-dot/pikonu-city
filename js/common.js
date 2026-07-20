@@ -137,6 +137,7 @@
       '<li><a href="' + BASE + 'about/gaiyou.html">市の概要</a></li>' +
       '<li><a href="' + BASE + 'about/aisatsu.html">市長のごあいさつ</a></li>' +
       '<li><a href="' + BASE + 'about/jorei.html">条例集</a></li>' +
+      '<li><a href="' + BASE + 'about/pubcomment.html">パブリックコメント</a></li>' +
       '<li><a href="' + BASE + 'about/shingikai.html">審議会・附属機関一覧</a></li>' +
       '<li><a href="' + BASE + 'about/saiyo.html">職員採用情報</a></li>' +
       '<li><a href="' + BASE + 'about/kanko.html">観光案内</a></li>' +
