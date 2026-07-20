@@ -40,7 +40,8 @@
     { key: "news", label: "お知らせ", href: "news/index.html" },
     { key: "services", label: "くらしの情報", href: "services/index.html" },
     { key: "facilities", label: "施設案内", href: "facilities/index.html" },
-    { key: "about", label: "市政情報", href: "about/gaiyou.html" }
+    { key: "gaiyou", label: "市の概要", href: "about/gaiyou.html" },
+    { key: "about", label: "市政情報", href: "about/shisei-joho.html" }
   ];
 
   function el(html) {
@@ -133,21 +134,27 @@
       '<li><a href="' + BASE + 'facilities/shokokai.html">ピコぬ市商工会</a></li>' +
       '<li><a href="' + BASE + 'facilities/goods.html">公式グッズ</a></li>' +
       "</ul></div>" +
-      "<div><h2>市政情報</h2><ul>" +
+      "<div><h2>市の概要</h2><ul>" +
       '<li><a href="' + BASE + 'about/gaiyou.html">市の概要</a></li>' +
       '<li><a href="' + BASE + 'about/aisatsu.html">市長のごあいさつ</a></li>' +
+      '<li><a href="' + BASE + 'about/nukabana.html">ぬかばな(市の花)</a></li>' +
+      '<li><a href="' + BASE + 'about/piconu-dori.html">ピコぬどり(市の鳥)</a></li>' +
+      '<li><a href="' + BASE + 'about/kanko.html">観光案内</a></li>' +
+      '<li><a href="' + BASE + 'about/tokei.html">統計資料</a></li>' +
+      '<li><a href="' + BASE + 'about/cable-tv.html">ケーブルテレビ番組表</a></li>' +
+      '<li><a href="' + BASE + 'index.html">広報ぬかピコ</a></li>' +
+      '<li><a href="' + BASE + 'about/kiriban.html">キリ番について</a></li>' +
+      '<li><a href="' + BASE + 'about/piconu-diary.html">ピコぬ君業務日誌</a></li>' +
+      "</ul></div>" +
+      "<div><h2>市政情報</h2><ul>" +
+      '<li><a href="' + BASE + 'about/shisei-joho.html">市政情報トップ</a></li>' +
       '<li><a href="' + BASE + 'about/jorei.html">条例集</a></li>' +
       '<li><a href="' + BASE + 'about/pubcomment.html">パブリックコメント</a></li>' +
       '<li><a href="' + BASE + 'about/gijiroku.html">議事録・会議録</a></li>' +
       '<li><a href="' + BASE + 'about/shingikai.html">審議会・附属機関一覧</a></li>' +
       '<li><a href="' + BASE + 'about/saiyo.html">職員採用情報</a></li>' +
-      '<li><a href="' + BASE + 'about/kanko.html">観光案内</a></li>' +
-      '<li><a href="' + BASE + 'about/cable-tv.html">ケーブルテレビ番組表</a></li>' +
       '<li><a href="' + BASE + 'about/gendaibyo-db.html">現代病データベース</a></li>' +
       '<li><a href="' + BASE + 'news/index.html">お知らせ一覧</a></li>' +
-      '<li><a href="' + BASE + 'index.html">広報ぬかピコ</a></li>' +
-      '<li><a href="' + BASE + 'about/kiriban.html">キリ番について</a></li>' +
-      '<li><a href="' + BASE + 'about/piconu-diary.html">ピコぬ君業務日誌</a></li>' +
       "</ul></div>" +
       "<div><h2>お問い合わせ</h2>" +
       '<p class="footer-address">ピコぬ市役所 記録政策課<br>' +
