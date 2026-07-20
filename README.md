@@ -15,7 +15,7 @@ pikonu-city/
 ├── css/style.css             共通スタイルシート
 ├── js/common.js              共通ヘッダー/フッター/アクセシビリティ機能
 ├── data/
-│   └── piconu-diary.json     ピコぬ君業務日誌のデータ(下記参照)
+│   └── piconu-diary.json     ピコぬくん業務日誌のデータ(下記参照)
 ├── news/                     お知らせ
 │   ├── index.html            お知らせ一覧
 │   └── news-YYYYMMDD-NN.html お知らせ詳細(日付+連番で命名)
@@ -80,12 +80,12 @@ JavaScriptで動的に生成します。各ページのHTMLには本文(`<main i
   ケーブルテレビ番組表 / 職員採用情報 / サイトマップ**(`about/`)
 - **キリ番カウンター**(トップページ): 外部の無料カウントAPI(countapi.mileshilliard.com)
   を利用したアクセス数表示。`about/kiriban.html` に申告制度の案内あり
-- **ピコぬ君業務日誌**(`about/piconu-diary.html`): 下記「業務日誌システム」参照
+- **ピコぬくん業務日誌**(`about/piconu-diary.html`): 下記「業務日誌システム」参照
 - **PR動画**(トップページ): ボタン押下で `piconu-city-pr.mp4` を再生
 - **各種PDF**(ルート直下): 広報ぬかピコ、現代人診療報酬点数表、図書館だより、
   半日お散歩コースのチラシ、商店街だより
 
-## ピコぬ君業務日誌システム(`data/piconu-diary.json`)
+## ピコぬくん業務日誌システム(`data/piconu-diary.json`)
 
 サーバーを持たない静的サイトのため、GitHub REST API をブラウザから直接呼び出す方式で
 簡易CMSを実現しています。

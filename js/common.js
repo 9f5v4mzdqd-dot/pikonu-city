@@ -144,8 +144,8 @@
       '<li><a href="' + BASE + 'about/cable-tv.html">ケーブルテレビ番組表</a></li>' +
       '<li><a href="' + BASE + 'index.html">広報ぬかピコ</a></li>' +
       '<li><a href="' + BASE + 'about/kiriban.html">キリ番について</a></li>' +
-      '<li><a href="' + BASE + 'about/piconu-kun.html">ピコぬ君とは</a></li>' +
-      '<li><a href="' + BASE + 'about/piconu-diary.html">ピコぬ君業務日誌</a></li>' +
+      '<li><a href="' + BASE + 'about/piconu-kun.html">ピコぬくんとは</a></li>' +
+      '<li><a href="' + BASE + 'about/piconu-diary.html">ピコぬくん業務日誌</a></li>' +
       "</ul></div>" +
       "<div><h2>市政情報</h2><ul>" +
       '<li><a href="' + BASE + 'about/shisei-joho.html">市政情報トップ</a></li>' +
