@@ -131,6 +131,7 @@
       '<li><a href="' + BASE + 'facilities/shiyakusho.html">市役所</a></li>' +
       '<li><a href="' + BASE + 'facilities/toshokan.html">市立図書館</a></li>' +
       '<li><a href="' + BASE + 'facilities/shokokai.html">ピコぬ市商工会</a></li>' +
+      '<li><a href="' + BASE + 'facilities/goods.html">公式グッズ</a></li>' +
       "</ul></div>" +
       "<div><h2>市政情報</h2><ul>" +
       '<li><a href="' + BASE + 'about/gaiyou.html">市の概要</a></li>' +
