@@ -73,7 +73,7 @@
         <div id="scene-title" class="scene active">
             <div id="title-text">ピコぬ市役所からの脱出<br>〜閉ざされた畳敷き相談室〜</div>
             
-            <!-- タイトル用 ピコぬ君 -->
+            <!-- タイトル用 ピコぬくん -->
             <div id="title-piconu">
                 <svg width="140" height="180">
                     <rect x="20" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffe082" stroke-width="5"/>
@@ -152,7 +152,7 @@
                 </svg>
             </div>
 
-            <!-- 🤖 ピコぬ君 -->
+            <!-- 🤖 ピコぬくん -->
             <div id="obj-piconu" class="obj" onclick="clickPiconuInRoom()">
                 <svg width="130" height="180">
                     <rect x="15" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffe082" stroke-width="5"/>
@@ -168,11 +168,11 @@
             </div>
         </div>
 
-        <!-- (2) ピコぬ君の背中画面 -->
+        <!-- (2) ピコぬくんの背中画面 -->
         <div id="scene-piconu-back" class="scene">
             <button class="back-btn" onclick="moveScene('room', event)">← 部屋に戻る</button>
             <div id="piconu-back-body">
-                <p style="font-weight:bold; color:#5d4037; font-size:1.2rem; margin-bottom:20px;">ピコぬ君の背中</p>
+                <p style="font-weight:bold; color:#5d4037; font-size:1.2rem; margin-bottom:20px;">ピコぬくんの背中</p>
                 <div id="btn-back-button" onclick="pressPiconuButton()"></div>
                 <p style="font-size:0.9rem; color:#795548; margin-top:25px; font-weight:bold;">（中央のボタンを押すぬ）</p>
             </div>
@@ -192,9 +192,9 @@
             <button onclick="closeModal('code-modal')" class="secondary">キャンセル</button>
         </div>
 
-        <!-- ピコぬ君のメニューモーダル -->
+        <!-- ピコぬくんのメニューモーダル -->
         <div id="piconu-menu-modal" class="modal">
-            <h3 style="margin:0 0 15px 0; color:#5d4037;">ピコぬ君「どうするぬ？」</h3>
+            <h3 style="margin:0 0 15px 0; color:#5d4037;">ピコぬくん「どうするぬ？」</h3>
             <button class="blue" onclick="choosePiconuOption('back', event)">背中をみる</button>
             <button onclick="choosePiconuOption('reset', event)">最初に戻る</button>
             <button class="secondary" onclick="choosePiconuOption('cancel', event)">やめる</button>
@@ -253,7 +253,7 @@
     }
 
     function clickTable() {
-        showMsg('机の上に「福祉課の記録ファイル」があるぬ。<br>『鍵の暗号は、ピコぬ君のモニターに映る数字…』と書かれているぬ！');
+        showMsg('机の上に「福祉課の記録ファイル」があるぬ。<br>『鍵の暗号は、ピコぬくんのモニターに映る数字…』と書かれているぬ！');
     }
 
     function clickShelf() {
@@ -284,7 +284,7 @@
     function pressPiconuButton() {
         state.knowCode = true;
         document.getElementById('piconu-screen-text').textContent = 'PIO-2026';
-        showMsg('ポチッ！<br>ピコぬ君「温故知新！ピコぬ君のお腹のモニターを見るんだぬ！【2026】が表示されたぬ！」');
+        showMsg('ポチッ！<br>ピコぬくん「温故知新！ピコぬくんのお腹のモニターを見るんだぬ！【2026】が表示されたぬ！」');
     }
 
     function clickDoor() {
