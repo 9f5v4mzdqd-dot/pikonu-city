@@ -116,6 +116,14 @@
   }
 
   function renderFooter() {
+    var bannerHtml =
+      '<div class="banner-strip"><div class="banner-strip-inner">' +
+      '<a href="https://kirokubunko.base.shop/" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-kirokubunko.jpg" alt="キロク文庫(BASE)"></a>' +
+      '<a href="https://suzuri.jp/PIKONU-CITY" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-suzuri.jpg" alt="ピコぬ市公式ショップ(SUZURI)"></a>' +
+      '<a href="https://note.com/rich_whale740" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-note.jpg" alt="ピコぬ市記録室(note)"></a>' +
+      '<a href="' + BASE + 'about/piconu-kun-game.html"><img src="' + BASE + 'images/banners/banner-game.jpg" alt="ピコぬくん脱出ゲーム"></a>' +
+      "</div></div>";
+
     var footerHtml =
       '<footer class="site-footer">' +
       '<div class="footer-nav">' +
@@ -175,7 +183,7 @@
       "</footer>" +
       '<a href="#top" class="pagetop" id="pagetop" aria-label="ページの先頭へ戻る">↑</a>';
 
-    document.body.insertAdjacentHTML("beforeend", footerHtml);
+    document.body.insertAdjacentHTML("beforeend", bannerHtml + footerHtml);
   }
 
   function bindA11yTools() {

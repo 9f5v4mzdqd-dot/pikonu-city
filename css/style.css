@@ -387,7 +387,35 @@ table { border-collapse: collapse; width: 100%; }
 .symbol-card .caption p { font-size: .85rem; color: var(--color-text-sub); margin: 0; }
 
 /* ---------- 7. フッター ---------- */
-.site-footer { background: var(--color-primary-dark); color: #dfe7f0; margin-top: 40px; }
+.banner-strip {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  padding: 20px 0;
+  margin-top: 40px;
+}
+.banner-strip-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.banner-strip-inner img {
+  width: 220px;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  display: block;
+}
+.banner-strip-inner a:hover img { opacity: .85; }
+
+@media (max-width: 680px) {
+  .banner-strip-inner img { width: 44%; }
+}
+
+.site-footer { background: var(--color-primary-dark); color: #dfe7f0; margin-top: 0; }
 .footer-nav {
   max-width: var(--max-width);
   margin: 0 auto;
