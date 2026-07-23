@@ -132,6 +132,8 @@
       '<li><a href="' + BASE + 'facilities/shiyakusho.html">市役所</a></li>' +
       '<li><a href="' + BASE + 'facilities/toshokan.html">市立図書館</a></li>' +
       '<li><a href="' + BASE + 'facilities/shokokai.html">ピコぬ市商工会</a></li>' +
+      '<li><a href="' + BASE + 'facilities/koutsukyoku.html">ピコぬ市交通局</a></li>' +
+      '<li><a href="' + BASE + 'facilities/keisatsu.html">ピコぬ市警察署</a></li>' +
       '<li><a href="' + BASE + 'facilities/goods.html">公式グッズ</a></li>' +
       "</ul></div>" +
       "<div><h2>市の概要</h2><ul>" +
@@ -145,7 +147,6 @@
       '<li><a href="' + BASE + 'index.html">広報ぬかピコ</a></li>' +
       '<li><a href="' + BASE + 'about/kiriban.html">キリ番について</a></li>' +
       '<li><a href="' + BASE + 'about/piconu-kun.html">ピコぬくんとは</a></li>' +
-      '<li><a href="' + BASE + 'about/piconu-kun-game.html">ピコぬくんとミニゲーム</a></li>' +
       '<li><a href="' + BASE + 'about/piconu-diary.html">ピコぬくん業務日誌</a></li>' +
       "</ul></div>" +
       "<div><h2>市政情報</h2><ul>" +
