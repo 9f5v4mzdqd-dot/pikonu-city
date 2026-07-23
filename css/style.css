@@ -769,3 +769,15 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
 @media print {
   .site-header-utility, .global-nav, .breadcrumb, .pagetop, .sidebar { display: none; }
 }
+/* ---------- 10. フロア案内カード(facilities/shiyakusho-floor.html 専用) ---------- */
+.floor-list { display: flex; flex-direction: column; gap: 14px; margin: 1.5em 0; }
+.floor-card { border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: #fff; }
+.floor-card .floor-label {
+  background: var(--color-primary-dark); color: #fff;
+  padding: 10px 18px; font-weight: 700; font-size: 1.02rem;
+}
+.floor-card ul { list-style: none; margin: 0; padding: 6px 18px; }
+.floor-card li { padding: 8px 0; border-bottom: 1px solid var(--color-border); font-size: .92rem; }
+.floor-card li:last-child { border-bottom: none; }
+.floor-card a { color: var(--color-accent); text-decoration: none; }
+.floor-card a:hover { text-decoration: underline; }
