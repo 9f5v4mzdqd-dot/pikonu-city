@@ -136,14 +136,12 @@
       "<div><h2>施設案内</h2><ul>" +
       '<li><a href="' + BASE + 'facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>' +
       '<li><a href="' + BASE + 'facilities/nukapiko-museum.html">ぬかピコ民芸博物館</a></li>' +
-      '<li><a href="' + BASE + 'facilities/jikan-koritsu-shien-ka.html">時間効率支援課</a></li>' +
       '<li><a href="' + BASE + 'facilities/shiyakusho.html">市役所</a></li>' +
       '<li><a href="' + BASE + 'facilities/toshokan.html">市立図書館</a></li>' +
       '<li><a href="' + BASE + 'facilities/shokokai.html">ピコぬ市商工会</a></li>' +
       '<li><a href="' + BASE + 'facilities/koutsukyoku.html">ピコぬ市交通局</a></li>' +
       '<li><a href="' + BASE + 'facilities/keisatsu.html">ピコぬ市警察署</a></li>' +
       '<li><a href="' + BASE + 'facilities/goods.html">公式グッズ</a></li>' +
-      '<li><a href="' + BASE + 'facilities/fukushika.html">福祉課</a></li>' +
       "</ul></div>" +
       "<div><h2>市の概要</h2><ul>" +
       '<li><a href="' + BASE + 'about/gaiyou.html">市の概要</a></li>' +
