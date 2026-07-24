@@ -211,14 +211,18 @@
     /* ===== ファミコン風サウンドエンジン（Web Audio APIのみ・音声ファイル不要） ===== */
     let actx = null;
     function getAudioCtx() {
-        if (!actx) {
-            actx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (actx.state === 'suspended') {
-            actx.resume();
-        }
-        return actx;
+    if (!actx) {
+        actx = new (window.AudioContext || window.webkitAudioContext)();
     }
+
+    if (actx.state === 'suspended') {
+        actx.resume().then(() => {
+            console.log("Audio resumed");
+        });
+    }
+
+    return actx;
+}
 
     // 1音鳴らす。type: 'square'(パルス系) / 'triangle'(低音系) / 'noise'(打撃・破裂音)
     function beep(freq, startTime, dur, type, vol) {
