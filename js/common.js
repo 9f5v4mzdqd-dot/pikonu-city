@@ -61,7 +61,8 @@
       var items = ['<li><a href="' + BASE + 'index.html">ホーム</a></li>'];
       breadcrumb.forEach(function (b, i) {
         if (b.href && i < breadcrumb.length - 1) {
-          items.push('<li><a href="' + b.href + '">' + b.label + "</a></li>");        } else {
+          items.push('<li><a href="' + b.href + '">' + b.label + "</a></li>");
+        } else {
           items.push("<li>" + b.label + "</li>");
         }
       });
@@ -139,6 +140,7 @@
       '<li><a href="' + BASE + 'facilities/toshokan.html">市立図書館</a></li>' +
       '<li><a href="' + BASE + 'facilities/shokokai.html">ピコぬ市商工会</a></li>' +
       '<li><a href="' + BASE + 'facilities/koutsukyoku.html">ピコぬ市交通局</a></li>' +
+      '<li><a href="' + BASE + 'facilities/suidoukyoku.html">上下水道局</a></li>' +
       '<li><a href="' + BASE + 'facilities/keisatsu.html">ピコぬ市警察署</a></li>' +
       '<li><a href="' + BASE + 'facilities/goods.html">公式グッズ</a></li>' +
       "</ul></div>" +
