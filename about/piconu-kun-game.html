@@ -66,20 +66,12 @@
 </head>
 <body>
 
-    <div style="position:fixed; top:0; left:0; right:0; z-index:500; font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.78rem; background:rgba(93,64,55,0.9); padding:8px 16px; color:#ffe0b2;">
-        <a href="../index.html" style="color:#ffe0b2; text-decoration:none;">ピコぬ市公式ホームページ</a>
-        <span style="margin:0 6px; opacity:0.7;">&rsaquo;</span>
-        <a href="piconu-kun.html" style="color:#ffe0b2; text-decoration:none;">ピコぬくんとは</a>
-        <span style="margin:0 6px; opacity:0.7;">&rsaquo;</span>
-        <span style="opacity:0.85;">ミニゲーム</span>
-    </div>
-
     <div id="game-container">
         <!-- (0) タイトル画面 -->
         <div id="scene-title" class="scene active">
             <div id="title-text">ピコぬ市役所からの脱出<br>〜閉ざされた畳敷き相談室〜</div>
             
-            <!-- タイトル用 ピコぬくん -->
+            <!-- タイトル用 ピコぬ君 -->
             <div id="title-piconu">
                 <svg width="140" height="180">
                     <rect x="20" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffe082" stroke-width="5"/>
@@ -158,7 +150,7 @@
                 </svg>
             </div>
 
-            <!-- 🤖 ピコぬくん -->
+            <!-- 🤖 ピコぬ君 -->
             <div id="obj-piconu" class="obj" onclick="clickPiconuInRoom()">
                 <svg width="130" height="180">
                     <rect x="15" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffe082" stroke-width="5"/>
@@ -174,11 +166,11 @@
             </div>
         </div>
 
-        <!-- (2) ピコぬくんの背中画面 -->
+        <!-- (2) ピコぬ君の背中画面 -->
         <div id="scene-piconu-back" class="scene">
-            <button class="back-btn" onclick="moveScene('room', event)">← 部屋に戻る</button>
+            <button class="back-btn" onclick="sfxCancel(); moveScene('room', event)">← 部屋に戻る</button>
             <div id="piconu-back-body">
-                <p style="font-weight:bold; color:#5d4037; font-size:1.2rem; margin-bottom:20px;">ピコぬくんの背中</p>
+                <p style="font-weight:bold; color:#5d4037; font-size:1.2rem; margin-bottom:20px;">ピコぬ君の背中</p>
                 <div id="btn-back-button" onclick="pressPiconuButton()"></div>
                 <p style="font-size:0.9rem; color:#795548; margin-top:25px; font-weight:bold;">（中央のボタンを押すぬ）</p>
             </div>
@@ -198,9 +190,9 @@
             <button onclick="closeModal('code-modal')" class="secondary">キャンセル</button>
         </div>
 
-        <!-- ピコぬくんのメニューモーダル -->
+        <!-- ピコぬ君のメニューモーダル -->
         <div id="piconu-menu-modal" class="modal">
-            <h3 style="margin:0 0 15px 0; color:#5d4037;">ピコぬくん「どうするぬ？」</h3>
+            <h3 style="margin:0 0 15px 0; color:#5d4037;">ピコぬ君「どうするぬ？」</h3>
             <button class="blue" onclick="choosePiconuOption('back', event)">背中をみる</button>
             <button onclick="choosePiconuOption('reset', event)">最初に戻る</button>
             <button class="secondary" onclick="choosePiconuOption('cancel', event)">やめる</button>
@@ -216,12 +208,124 @@
 <script>
     let state = { hasCard: false, knowCode: false, isEscaped: false };
 
+    /* ===== ファミコン風サウンドエンジン（Web Audio APIのみ・音声ファイル不要） ===== */
+    let actx = null;
+    function getAudioCtx() {
+        if (!actx) {
+            actx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (actx.state === 'suspended') {
+            actx.resume();
+        }
+        return actx;
+    }
+
+    // 1音鳴らす。type: 'square'(パルス系) / 'triangle'(低音系) / 'noise'(打撃・破裂音)
+    function beep(freq, startTime, dur, type, vol) {
+        const ctx = getAudioCtx();
+        vol = vol === undefined ? 0.12 : vol;
+
+        if (type === 'noise') {
+            const bufferSize = ctx.sampleRate * dur;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(vol, startTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, startTime + dur);
+            noise.connect(gain).connect(ctx.destination);
+            noise.start(startTime);
+            noise.stop(startTime + dur);
+            return;
+        }
+
+        const osc = ctx.createOscillator();
+        osc.type = type || 'square';
+        osc.frequency.setValueAtTime(freq, startTime);
+
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(vol, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + dur);
+
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(startTime);
+        osc.stop(startTime + dur);
+    }
+
+    // 音階を並べて鳴らす。notes: [[周波数(Hzまたはnullで休符), 長さ(秒), 音色], ...]
+    function playSequence(notes) {
+        const ctx = getAudioCtx();
+        let t = ctx.currentTime;
+        notes.forEach(([freq, dur, type, vol]) => {
+            if (freq) beep(freq, t, dur * 0.9, type || 'square', vol);
+            t += dur;
+        });
+    }
+
+    // --- 効果音セット ---
+    function sfxClick() {
+        // オブジェクトを調べたときの「ピッ」
+        playSequence([[880, 0.05, 'square']]);
+    }
+    function sfxOpenMenu() {
+        // モーダル・メニューを開く「ピロッ」
+        playSequence([[660, 0.04, 'square'], [990, 0.05, 'square']]);
+    }
+    function sfxCancel() {
+        // 閉じる・キャンセル「ポッ」（下降）
+        playSequence([[440, 0.05, 'square'], [330, 0.06, 'square']]);
+    }
+    function sfxGetItem() {
+        // アイテム入手「ピロリロリン」上昇アルペジオ
+        playSequence([
+            [523.25, 0.06, 'square'],
+            [659.25, 0.06, 'square'],
+            [783.99, 0.06, 'square'],
+            [1046.5, 0.12, 'square']
+        ]);
+    }
+    function sfxButtonPress() {
+        // ピコぬ君ボタンを押す「ポチッ」
+        playSequence([[220, 0.03, 'triangle'], [0, 0.02, null], [1500, 0.02, 'noise', 0.06]]);
+    }
+    function sfxError() {
+        // 不正解「ブブー」低い二音
+        playSequence([[196, 0.14, 'square', 0.14], [147, 0.22, 'square', 0.14]]);
+    }
+    function sfxCorrectNoCard() {
+        // 暗号は合っているが未達成「ピコン」中立音
+        playSequence([[523.25, 0.08, 'triangle'], [659.25, 0.1, 'triangle']]);
+    }
+    function sfxWin() {
+        // 脱出成功ファンファーレ
+        playSequence([
+            [523.25, 0.1, 'square'],
+            [659.25, 0.1, 'square'],
+            [783.99, 0.1, 'square'],
+            [1046.5, 0.1, 'square'],
+            [0, 0.02, null],
+            [1046.5, 0.22, 'square', 0.15]
+        ]);
+    }
+    function sfxStart() {
+        // ゲーム開始ジングル
+        playSequence([
+            [659.25, 0.08, 'square'],
+            [830.61, 0.08, 'square'],
+            [987.77, 0.16, 'square']
+        ]);
+    }
+    /* ===== サウンドエンジンここまで ===== */
+
     function showMsg(text) {
         document.getElementById('msg-text').innerHTML = text;
         document.getElementById('msg-box').style.display = 'block';
     }
     
     function hideMsg() {
+        sfxClick();
         document.getElementById('msg-box').style.display = 'none';
         if (state.isEscaped) {
             moveScene('title');
@@ -230,6 +334,7 @@
 
     function startGame(e) {
         if(e) e.stopPropagation();
+        sfxStart();
         state = { hasCard: false, knowCode: false, isEscaped: false };
         
         document.getElementById('slot-0').innerHTML = '';
@@ -255,24 +360,29 @@
     }
 
     function clickWindow() {
+        sfxClick();
         showMsg('窓の外にはのどかなピコぬ市の風景が広がっているぬ。ここからは脱出できないぬ。');
     }
 
     function clickTable() {
-        showMsg('机の上に「福祉課の記録ファイル」があるぬ。<br>『鍵の暗号は、ピコぬくんのモニターに映る数字…』と書かれているぬ！');
+        sfxClick();
+        showMsg('机の上に「福祉課の記録ファイル」があるぬ。<br>『鍵の暗号は、ピコぬ君のモニターに映る数字…』と書かれているぬ！');
     }
 
     function clickShelf() {
         if (!state.hasCard) {
             state.hasCard = true;
+            sfxGetItem();
             document.getElementById('slot-0').innerHTML = '💳';
             showMsg('棚の隙間から「PIOカード（市民証）」を見つけたぬ！<br>（アイテム欄に入ったぬ）');
         } else {
+            sfxClick();
             showMsg('棚には過去の「福祉課だより」や、市民相談の記録ファイルが大切に保管されているぬ。<br><b>「誰かの困りごとも、街の大切な記録なんだぬ」</b>');
         }
     }
 
     function clickPiconuInRoom() {
+        sfxOpenMenu();
         document.getElementById('piconu-menu-modal').style.display = 'block';
     }
 
@@ -281,23 +391,30 @@
         document.getElementById('piconu-menu-modal').style.display = 'none';
         
         if (option === 'back') {
+            sfxClick();
             moveScene('piconu-back');
         } else if (option === 'reset') {
+            sfxCancel();
             moveScene('title');
+        } else {
+            sfxCancel();
         }
     }
 
     function pressPiconuButton() {
+        sfxButtonPress();
         state.knowCode = true;
         document.getElementById('piconu-screen-text').textContent = 'PIO-2026';
-        showMsg('ポチッ！<br>ピコぬくん「温故知新！ピコぬくんのお腹のモニターを見るんだぬ！【2026】が表示されたぬ！」');
+        showMsg('ポチッ！<br>ピコぬ君「温故知新！ピコぬ君のお腹のモニターを見るんだぬ！【2026】が表示されたぬ！」');
     }
 
     function clickDoor() {
+        sfxOpenMenu();
         document.getElementById('code-modal').style.display = 'block';
     }
 
     function closeModal(modalId) {
+        sfxCancel();
         document.getElementById(modalId).style.display = 'none';
         if (modalId === 'code-modal') {
             document.getElementById('code-input').value = '';
@@ -310,13 +427,16 @@
             if (state.hasCard) {
                 state.isEscaped = true;
                 closeModal('code-modal');
+                sfxWin();
                 showMsg('🔑 ガチャッ！！<br>暗号が解除され、PIOカードをかざしてドアが開いたぬ！<br><br>🎉 <b>「やったぬ！脱出成功だぬ！<br>帰ったらちゃんと休むぬ。休む時間も大切な生活の一部だぬ。」</b> 🎉');
             } else {
                 closeModal('code-modal');
+                sfxCorrectNoCard();
                 showMsg('暗号は合っているぬが、カードリーダーがピカピカ光っているぬ。<br>「市民証（PIOカード）」が必要みたいだぬ！');
             }
         } else {
             closeModal('code-modal');
+            sfxError();
             showMsg('「ブブー！暗号が違うぬ。」');
         }
     }
