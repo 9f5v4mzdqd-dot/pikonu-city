@@ -61,8 +61,7 @@
       var items = ['<li><a href="' + BASE + 'index.html">ホーム</a></li>'];
       breadcrumb.forEach(function (b, i) {
         if (b.href && i < breadcrumb.length - 1) {
-          items.push('<li><a href="' + BASE + b.href + '">' + b.label + "</a></li>");
-        } else {
+          items.push('<li><a href="' + b.href + '">' + b.label + "</a></li>");        } else {
           items.push("<li>" + b.label + "</li>");
         }
       });
