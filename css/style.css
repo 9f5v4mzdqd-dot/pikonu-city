@@ -767,6 +767,7 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
   .goods-grid { grid-template-columns: 1fr; }
   .utility-inner { flex-direction: column; align-items: flex-start; }
   .footer-nav { grid-template-columns: 1fr 1fr; padding: 28px 20px 10px; }
+  .brand-mark img { height: 100px; }
 }
 
 @media print {
@@ -786,9 +787,14 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
 .floor-card a:hover { text-decoration: underline; }
 /* ---------- 11. ブランドマーク(全ページ共通フッター下) ---------- */
 .brand-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   background: var(--color-primary-dark);
-  text-align: center;
-  padding: 10px 0 14px;
+  padding: 22px 0 28px;
+  box-sizing: border-box;
 }
-.brand-mark img { height: 34px; width: auto; opacity: .9; border-radius: 3px; }
+.brand-mark a { display: inline-block; }
+.brand-mark img { display: block; height: 170px; width: auto; max-width: 90%; opacity: .92; border-radius: 6px; }
 .brand-mark a:hover img { opacity: 1; }
