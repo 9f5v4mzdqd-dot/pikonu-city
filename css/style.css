@@ -293,6 +293,9 @@ table { border-collapse: collapse; width: 100%; }
   color: var(--color-primary);
   border-radius: 2px;
   flex-shrink: 0;
+  width: 6.8em;
+  box-sizing: border-box;
+  text-align: center;
 }
 .notice-tag.important { border-color: var(--color-notice-border); color: var(--color-notice-text); }
 .notice-list a { color: var(--color-text); text-decoration: none; }
