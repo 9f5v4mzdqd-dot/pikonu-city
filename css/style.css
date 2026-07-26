@@ -657,11 +657,13 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
 .gb-noresult.gb-visible { display: block; }
 
 @media (max-width: 680px) {
-  .gb-table, .gb-table thead, .gb-table tbody, .gb-table th, .gb-table td, .gb-table tr { display: block; }
-  .gb-table thead { display: none; }
-  .gb-table tr { border: 1px solid var(--color-border); margin-bottom: 10px; padding: 8px; }
-  .gb-table td { border: none; padding: 4px 2px; }
-  .gb-num::before { content: "No. "; color: var(--color-text-sub); }
+  .pr-video-box {
+    background-image: url("../images/pr-bg.jpg");
+    background-size: 200% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 180px;
+  }
 }
 .pr-video-box {
   text-align: center;
