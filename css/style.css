@@ -784,3 +784,11 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
 .floor-card li:last-child { border-bottom: none; }
 .floor-card a { color: var(--color-accent); text-decoration: none; }
 .floor-card a:hover { text-decoration: underline; }
+/* ---------- 11. ブランドマーク(全ページ共通フッター下) ---------- */
+.brand-mark {
+  background: var(--color-primary-dark);
+  text-align: center;
+  padding: 10px 0 14px;
+}
+.brand-mark img { height: 34px; width: auto; opacity: .9; border-radius: 3px; }
+.brand-mark a:hover img { opacity: 1; }
