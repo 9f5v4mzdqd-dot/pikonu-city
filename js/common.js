@@ -180,7 +180,7 @@
       '<a href="' + BASE + 'index.html" style="color:#cdd9e6;">サイトのご利用について</a></span>' +
       "</div>" +
       "</footer>" +
-      '<div class="brand-mark"><a href="' + BASE + 'about/gaiyou.html"><img src="' + BASE + 'images/hero-tsunagu.jpg" alt="ピコぬ市 鉄道連結技術・記録文化・現代病医療"></a></div>' +
+      '<div class="brand-mark"><a href="' + BASE + 'index.html"><img src="' + BASE + 'images/hero-tsunagu.jpg" alt="ピコぬ市 鉄道連結技術・記録文化・現代病医療"></a></div>' +
       '<a href="#top" class="pagetop" id="pagetop" aria-label="ページの先頭へ戻る">↑</a>';
 
     document.body.insertAdjacentHTML("beforeend", bannerHtml + footerHtml);

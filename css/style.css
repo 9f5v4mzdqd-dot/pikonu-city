@@ -767,7 +767,7 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
   .goods-grid { grid-template-columns: 1fr; }
   .utility-inner { flex-direction: column; align-items: flex-start; }
   .footer-nav { grid-template-columns: 1fr 1fr; padding: 28px 20px 10px; }
-  .brand-mark img { height: 100px; }
+  .brand-mark img { height: 130px; }
 }
 
 @media print {
@@ -792,9 +792,9 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
   align-items: center;
   width: 100%;
   background: var(--color-primary-dark);
-  padding: 22px 0 28px;
+  padding: 26px 0 32px;
   box-sizing: border-box;
 }
 .brand-mark a { display: inline-block; }
-.brand-mark img { display: block; height: 170px; width: auto; max-width: 90%; opacity: .92; border-radius: 6px; }
+.brand-mark img { display: block; height: 220px; width: auto; max-width: 92%; opacity: .92; border-radius: 6px; }
 .brand-mark a:hover img { opacity: 1; }
