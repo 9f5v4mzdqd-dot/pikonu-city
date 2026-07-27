@@ -10,9 +10,12 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
 <style>
-  /* このページのみ: 制度カードにアイコンを表示するための最小限の追加スタイル */
-  .pickup-item .icon-img { width: 44px; height: 44px; display: block; margin-bottom: .6em; }
-  .pickup-item h3 { display: flex; align-items: center; }
+  /* このページのみ: 制度カードをアイコン+説明文の横並びレイアウトにする追加スタイル */
+  .pickup-list .pickup-item { display: flex; align-items: stretch; gap: 1em; }
+  .pickup-item .icon-img { width: 92px; height: 92px; flex-shrink: 0; align-self: center; object-fit: contain; }
+  .pickup-item .pickup-text { flex: 1; min-width: 0; }
+  .pickup-item .pickup-text h3 { margin: .2em 0; }
+  .pickup-item .pickup-text p { margin: 0; }
 </style>
 </head>
 <body id="top">
@@ -55,45 +58,59 @@
       <div class="pickup-list">
         <a class="pickup-item" href="niwa-zukuri-josei.html">
           <img class="icon-img" src="../images/icons/icon-niwa-zukuri.png" alt="">
-          <span class="cat">助成制度</span>
-          <h3>市民庭づくり助成制度</h3>
-          <p>多年草・在来植物の植栽や家庭菜園づくりなど、「育てる庭」を応援する助成制度です。</p>
+          <div class="pickup-text">
+            <span class="cat">助成制度</span>
+            <h3>市民庭づくり助成制度</h3>
+            <p>多年草・在来植物の植栽や家庭菜園づくりなど、「育てる庭」を応援する助成制度です。</p>
+          </div>
         </a>
         <div class="pickup-item" style="cursor:default;">
           <img class="icon-img" src="../images/icons/icon-ryokka-suishin.png" alt="">
-          <span class="cat">緑化 (準備中)</span>
-          <h3>ピコぬ市 緑化推進制度</h3>
-          <p>庭やベランダ、路地など身近な場所の緑化を支援する制度です。詳細ページは現在準備しています。</p>
+          <div class="pickup-text">
+            <span class="cat">緑化 (準備中)</span>
+            <h3>ピコぬ市 緑化推進制度</h3>
+            <p>庭やベランダ、路地など身近な場所の緑化を支援する制度です。詳細ページは現在準備しています。</p>
+          </div>
         </div>
         <a class="pickup-item" href="ikimono-kyosei-teien.html">
           <img class="icon-img" src="../images/icons/icon-ikimono-kyosei.png" alt="">
-          <span class="cat">認定制度</span>
-          <h3>生き物共生型庭園認定制度</h3>
-          <p>蝶や蜂が訪れる庭、季節の草花が残る庭など、生き物と共にある庭を市が認定する制度です。</p>
+          <div class="pickup-text">
+            <span class="cat">認定制度</span>
+            <h3>生き物共生型庭園認定制度</h3>
+            <p>蝶や蜂が訪れる庭、季節の草花が残る庭など、生き物と共にある庭を市が認定する制度です。</p>
+          </div>
         </a>
         <a class="pickup-item" href="neo-taihi-box.html">
           <img class="icon-img" src="../images/icons/icon-neo-taihi.png" alt="">
-          <span class="cat">循環事業</span>
-          <h3>ネオ堆肥ボックス事業</h3>
-          <p>調理くずなどの有機資源を地域資源として活用し、堆肥化・再利用を進める市民参加型事業です。</p>
+          <div class="pickup-text">
+            <span class="cat">循環事業</span>
+            <h3>ネオ堆肥ボックス事業</h3>
+            <p>調理くずなどの有機資源を地域資源として活用し、堆肥化・再利用を進める市民参加型事業です。</p>
+          </div>
         </a>
         <a class="pickup-item" href="nuka.html">
           <img class="icon-img" src="../images/icons/icon-nuka.png" alt="">
-          <span class="cat">循環事業</span>
-          <h3>ぬか資源係</h3>
-          <p>精米時に発生する米ぬかを地域資源として活用し、土づくり、家庭利用、環境配慮型舗装研究など、街の循環につなげる取り組みです。</p>
+          <div class="pickup-text">
+            <span class="cat">循環事業</span>
+            <h3>ぬか資源係</h3>
+            <p>精米時に発生する米ぬかを地域資源として活用し、土づくり、家庭利用、環境配慮型舗装研究など、街の循環につなげる取り組みです。</p>
+          </div>
         </a>
         <a class="pickup-item" href="pio-card.html">
           <img class="icon-img" src="../images/icons/icon-pio-card.png" alt="">
-          <span class="cat">記録カード</span>
-          <h3>Pioカード</h3>
-          <p>市民一人ひとりの環境活動や資源循環への参加を記録するカードです。暮らしの小さな営みを、街の記録として残します。</p>
+          <div class="pickup-text">
+            <span class="cat">記録カード</span>
+            <h3>Pioカード</h3>
+            <p>市民一人ひとりの環境活動や資源循環への参加を記録するカードです。暮らしの小さな営みを、街の記録として残します。</p>
+          </div>
         </a>
         <div class="pickup-item" style="cursor:default;">
           <img class="icon-img" src="../images/icons/icon-usui-junkan.png" alt="">
-          <span class="cat">水循環 (準備中)</span>
-          <h3>雨水循環対策</h3>
-          <p>雨水の貯留・活用にまつわる取り組みです。詳細ページは現在準備しています。</p>
+          <div class="pickup-text">
+            <span class="cat">水循環 (準備中)</span>
+            <h3>雨水循環対策</h3>
+            <p>雨水の貯留・活用にまつわる取り組みです。詳細ページは現在準備しています。</p>
+          </div>
         </div>
       </div>
 
