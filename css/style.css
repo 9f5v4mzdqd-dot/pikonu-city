@@ -656,12 +656,11 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
 .gb-noresult { display: none; padding: 2em 0; text-align: center; color: var(--color-text-sub); }
 .gb-noresult.gb-visible { display: block; }
 
-
-}
 .pr-video-box {
-  text-align: center;
-  padding: 0;
-  height: 180px;
+  position: relative;
+  min-height: 220px;
+  padding: 20px;
+  box-sizing: border-box;
   background-color: #e8f0f9;
   background-image: url("../images/pr-bg.jpg");
   background-size: cover;
@@ -669,7 +668,6 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
   background-repeat: no-repeat;
   border: 1px solid var(--color-border);
   border-radius: 4px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -677,11 +675,9 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
 .pr-video-box video {
   width: 100%;
   max-width: 720px;
-  margin-top: 18px;
   border-radius: 4px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   background: #000;
 }
 .pr-video-btn {
@@ -774,6 +770,7 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
   .utility-inner { flex-direction: column; align-items: flex-start; }
   .footer-nav { grid-template-columns: 1fr 1fr; padding: 28px 20px 10px; }
   .brand-mark img { height: 130px; }
+  .pr-video-box { min-height: 160px; padding: 14px; }
 }
 
 @media print {
