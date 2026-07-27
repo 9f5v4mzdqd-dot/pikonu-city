@@ -667,7 +667,7 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
 }
 .pr-video-box {
   text-align: center;
-  padding: 30px 20px;
+  padding: 0;
   height: 180px;
   background-color: #e8f0f9;
   /* background-image: url("../images/pr-bg.jpg"); */
