@@ -669,10 +669,7 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
   text-align: center;
   padding: 30px 20px;
   background-color: #e8f0f9;
-  background-image: url("../images/pr-bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+  /* background-image: url("../images/pr-bg.jpg"); */
   border: 1px solid var(--color-border);
   border-radius: 4px;
 }
