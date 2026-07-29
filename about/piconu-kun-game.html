@@ -179,7 +179,7 @@
         <div id="scene-s1-piconu-back" class="scene">
             <button class="back-btn" onclick="moveScene('s1-room')">← 部屋に戻る</button>
             <div id="s1-piconu-back-body">
-                <div style="font-size: 1.2rem; font-weight: bold; color: #5d4037; margin-bottom: 20px;">ピコぬ君の背中</div>
+                <div style="font-size: 1.2rem; font-weight: bold; color: #5d4037; margin-bottom: 20px;">ピコぬくんの背中</div>
                 <div id="s1-btn-back-button" onclick="s1_pressPiconuButton()"></div>
                 <div style="margin-top: 15px; color: #8d6e63; font-weight: bold;">【おなかスイッチ】</div>
             </div>
@@ -516,9 +516,9 @@
         function s1_clickPiconu() {
             sfxOpenMenu();
             if (!s1_state.knowCode) {
-                showMsg('ピコぬ君「ぬぬ？ボクの背中に何かがついてるぬ…？クリックして見てみるぬ！」<br><br><button onclick="s1_viewBack()" style="margin-top:8px; padding:6px 14px; background:#ff8f00; color:white; border:none; border-radius:4px; cursor:pointer; font-weight:bold;">ピコぬ君の背中を見るぬ</button>');
+                showMsg('ピコぬくん「ぬぬ？ボクの背中に何かがついてるぬ…？クリックして見てみるぬ！」<br><br><button onclick="s1_viewBack()" style="margin-top:8px; padding:6px 14px; background:#ff8f00; color:white; border:none; border-radius:4px; cursor:pointer; font-weight:bold;">ピコぬくんの背中を見るぬ</button>');
             } else {
-                showMsg('ピコぬ君「お腹のモニターに表示された【2026】が鍵の暗号だぬ！PIOカードと一緒に使ってみるぬ！」');
+                showMsg('ピコぬくん「お腹のモニターに表示された【2026】が鍵の暗号だぬ！PIOカードと一緒に使ってみるぬ！」');
             }
         }
 
@@ -531,7 +531,7 @@
             sfxButtonPress();
             s1_state.knowCode = true;
             document.getElementById('s1-piconu-screen-text').textContent = '2026';
-            showMsg('ポチッ！<br>ピコぬ君「……ん？ピコぬ君のお腹のモニターが光ったぬ！【2026】が表示されたぬ！」');
+            showMsg('ポチッ！<br>ピコぬくん「……ん？ピコぬくんのお腹のモニターが光ったぬ！【2026】が表示されたぬ！」');
         }
 
         // ================= STAGE 2 (図書館) =================
@@ -669,11 +669,11 @@
 
         function s3_clickPiconu() {
             if (!s3_state.hasBooklet) {
-                showMsg('ピコぬ君「まずは【記録具の間】のケースを調べてみるぬ！『キロク文庫』の冊子があるかもぬ。」');
+                showMsg('ピコぬくん「まずは【記録具の間】のケースを調べてみるぬ！『キロク文庫』の冊子があるかもぬ。」');
             } else if (!s3_state.solvedCoupler) {
-                showMsg('ピコぬ君「手に入れた冊子（📖）の余白を見るぬ！連結技術の3桁の数字【1・8・5】が書いてあったぬ！」');
+                showMsg('ピコぬくん「手に入れた冊子（📖）の余白を見るぬ！連結技術の3桁の数字【1・8・5】が書いてあったぬ！」');
             } else {
-                showMsg('ピコぬ君「当館の公式説明を思い出すぬ！<br>『使われ方の痕跡（こんせき）』……【痕跡】（ひらがな4文字）だぬ！」');
+                showMsg('ピコぬくん「当館の公式説明を思い出すぬ！<br>『使われ方の痕跡（こんせき）』……【痕跡】（ひらがな4文字）だぬ！」');
             }
         }
 
@@ -688,7 +688,7 @@
                 s3_state.isEscaped = true;
                 closeModal('s3-door-modal');
                 sfxWin();
-               showMsg('🔑 ガシャーン！！<br>寺院の重厚な格子戸がゆっくりと開いたぬ！<br><br>🎉 <b>「やったぬ！全3ステージ完全クリア！大脱出成功だぬ！」</b> 🎉<br><br>ピコぬ君「最後まで遊んでくれてありがとうだぬ！帰っておやつを食べてゆっくり休むぬ〜！」<br><br><button onclick="backToTitle()" style="margin-top:10px; padding:8px 20px; background:#e91e63; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">タイトルへ戻るぬ！</button>');
+               showMsg('🔑 ガシャーン！！<br>寺院の重厚な格子戸がゆっくりと開いたぬ！<br><br>🎉 <b>「やったぬ！全3ステージ完全クリア！大脱出成功だぬ！」</b> 🎉<br><br>ピコぬくん「最後まで遊んでくれてありがとうだぬ！帰っておやつを食べてゆっくり休むぬ〜！」<br><br><button onclick="backToTitle()" style="margin-top:10px; padding:8px 20px; background:#e91e63; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">タイトルへ戻るぬ！</button>');
             } else {
                 sfxCancel();
                 alert('格子戸が開かないぬ…合言葉のひらがなを見直してみるぬ！');
