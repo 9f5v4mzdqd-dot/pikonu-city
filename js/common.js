@@ -118,6 +118,7 @@
   function renderFooter() {
     var bannerHtml =
       '<div class="banner-strip"><div class="banner-strip-inner">' +
+      '<a href="' + BASE + 'about/rekishi.html"><img src="' + BASE + 'images/banners/banner-rekishi.jpg" alt="市史編纂室 ピコぬ市の歴史成立に関する記録を公開しています"></a>' +
       '<a href="https://kirokubunko.base.shop/" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-kirokubunko.jpg" alt="キロク文庫(BASE)"></a>' +
       '<a href="https://suzuri.jp/PIKONU-CITY" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-suzuri.jpg" alt="ピコぬ市公式ショップ(SUZURI)"></a>' +
       '<a href="https://note.com/rich_whale740" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-note.jpg" alt="ピコぬ市記録室(note)"></a>' +
