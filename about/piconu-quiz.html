@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ピコぬ市検定（初級）</title>
+
+    <!-- ファビコン（確定版だぬ！） -->
+    <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><g fill='%233455a6'><polygon points='128,12 168,48 88,48'/><circle cx='128' cy='36' r='14' fill='%23ffffff'/><path d='M 128 40 A 96 96 0 0 0 32 136 L 32 160 A 96 96 0 0 0 224 160 L 224 136 A 96 96 0 0 0 128 40 Z'/></g><path d='M 128 58 A 78 78 0 0 0 50 136 L 50 160 A 78 78 0 0 0 206 160 L 206 136 A 78 78 0 0 0 128 58 Z' fill='%23fff8e1'/><circle cx='92' cy='120' r='16' fill='%233e2723'/><circle cx='164' cy='120' r='16' fill='%233e2723'/><path d='M 98 145 Q 128 168 158 145' stroke='%233e2723' stroke-width='9' stroke-linecap='round' fill='none'/><rect x='60' y='188' width='136' height='52' rx='14' fill='%2337474f'/><rect x='110' y='206' width='36' height='16' rx='6' fill='%2300e676'/></svg>" type="image/svg+xml">
+
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #1c2833; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        #quiz-container { position: relative; width: 100%; max-width: 600px; background: #eceff1; border: 6px solid #2f4f4f; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.6); padding: 25px; box-sizing: border-box; text-align: center; color: #263238; }
+        
+        .screen { display: none; }
+        .active { display: block; }
+
+        /* タイトル画面 */
+        h1 { font-size: 1.8rem; margin-top: 10px; color: #004d40; }
+        .subtitle { font-size: 1.1rem; color: #00897b; font-weight: bold; margin-bottom: 20px; }
+        
+        /* ボタン基本 */
+        .btn { padding: 12px 28px; font-size: 1.1rem; background: #00897b; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.2s; margin-top: 15px; }
+        .btn:hover { background: #00695c; transform: scale(1.03); }
+
+        /* 問題画面 */
+        .progress-bar { width: 100%; background: #cfd8dc; border-radius: 10px; height: 12px; margin-bottom: 20px; overflow: hidden; }
+        .progress-fill { width: 0%; height: 100%; background: #00e676; transition: width 0.3s ease; }
+        .q-number { font-size: 1.1rem; font-weight: bold; color: #546e7a; margin-bottom: 10px; }
+        .q-text { font-size: 1.25rem; font-weight: bold; color: #263238; margin-bottom: 25px; line-height: 1.5; min-height: 3rem; }
+
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option-btn { padding: 14px 20px; font-size: 1.05rem; background: #ffffff; border: 3px solid #b0bec5; border-radius: 10px; color: #263238; font-weight: bold; cursor: pointer; text-align: left; transition: all 0.2s; }
+        .option-btn:hover { background: #e0f2f1; border-color: #80cbc4; }
+
+        /* フィードバック表示 */
+        #feedback-box { display: none; margin-top: 20px; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 1.2rem; }
+        .correct-bg { background: #e8f5e9; color: #2e7d32; border: 2px solid #a5d6a7; }
+        .wrong-bg { background: #ffebee; color: #c62828; border: 2px solid #ef9a9a; }
+
+        /* 結果画面 */
+        .result-title { font-size: 1.8rem; font-weight: bold; margin-bottom: 15px; }
+        .result-score { font-size: 2.2rem; color: #00897b; font-weight: bold; margin: 15px 0; }
+        .result-msg { background: #fffde7; border: 2px dashed #fbc02d; padding: 20px; border-radius: 10px; text-align: left; line-height: 1.7; font-size: 1.05rem; margin-bottom: 20px; color: #3e2723; }
+    </style>
+</head>
+<body>
+
+    <a href="piconu-kun.html" style="position:fixed; top:10px; right:14px; z-index:500; font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.8rem; color:#eceff1; background:rgba(38,50,56,0.9); padding:6px 12px; border-radius:14px; text-decoration:none;">← ピコぬ市公式サイトに戻る</a>
+
+    <div id="quiz-container">
+        
+        <!-- ① タイトル画面 -->
+        <div id="screen-title" class="screen active">
+            <h1>ピコぬ市検定（初級）</h1>
+            <div class="subtitle">全10問</div>
+            
+            <div style="margin: 20px 0;">
+                <!-- 黒板の前で角帽をかぶったピコぬくん（学生スタイル）だぬ -->
+                <svg width="150" height="150" viewBox="0 0 64 64">
+                    <!-- 黒板（木枠つき） -->
+                    <rect x="2" y="2" width="60" height="56" rx="2" fill="#2e5339" stroke="#8d6748" stroke-width="4"/>
+                    <!-- チョークトレイ -->
+                    <rect x="4" y="54" width="56" height="3" fill="#8d6748"/>
+                    <!-- 黒板の落書き（チョーク風の白線） -->
+                    <path d="M 8 10 L 16 10" stroke="#eceff1" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+                    <path d="M 8 13 L 13 13" stroke="#eceff1" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                    <text x="6" y="24" font-family="'Courier New', monospace" font-size="6" fill="#eceff1" opacity="0.85">ぬ市</text>
+                    <path d="M 50 10 Q 54 8 57 11" stroke="#eceff1" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7"/>
+                    <circle cx="55" cy="16" r="1.4" fill="#eceff1" opacity="0.6"/>
+                    <rect x="26" y="52" width="5" height="1.6" fill="#eceff1" opacity="0.7"/>
+
+                    <!-- ピコぬくん本体 -->
+                    <rect x="8" y="20" width="48" height="38" rx="16" fill="#fff8e1" stroke="#3455a6" stroke-width="3"/>
+                    <circle cx="23" cy="33" r="3" fill="#3e2723"/>
+                    <circle cx="41" cy="33" r="3" fill="#3e2723"/>
+                    <path d="M 25 40 Q 32 45 37 40" stroke="#3e2723" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <circle cx="18" cy="37" r="3" fill="#ffab91" opacity="0.7"/>
+                    <circle cx="46" cy="37" r="3" fill="#ffab91" opacity="0.7"/>
+                    <rect x="14" y="47" width="36" height="10" rx="2" fill="#37474f"/>
+                    <rect x="16.5" y="49" width="31" height="6" fill="#000000"/>
+                    <circle cx="32" cy="52" r="1.6" fill="#00e676"/>
+
+                    <!-- 角帽（学生帽） -->
+                    <rect x="18" y="14" width="28" height="6" rx="1" fill="#1a1a1a"/>
+                    <polygon points="32,4 55,11 32,18 9,11" fill="#1a1a1a"/>
+                    <circle cx="32" cy="11" r="2" fill="#e8b923"/>
+                    <path d="M 32 11 Q 44 14 46 24" stroke="#e8b923" stroke-width="1.3" fill="none"/>
+                    <circle cx="46" cy="26" r="2.2" fill="#e8b923"/>
+                </svg>
+            </div>
+
+            <p style="color:#546e7a;">あなたはピコぬ市についてどれくらい知ってるぬ？<br>全問正解を目指して挑戦するぬ！</p>
+            <button class="btn" onclick="startQuiz()">検定スタートだぬ！</button>
+        </div>
+
+        <!-- ② クイズ画面 -->
+        <div id="screen-quiz" class="screen">
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <div id="q-number" class="q-number">第 1 問</div>
+            <div id="q-text" class="q-text">問題文がここに入ります</div>
+            
+            <div id="options-container" class="options-grid"></div>
+
+            <div id="feedback-box"></div>
+            <button id="next-btn" class="btn" style="display:none;" onclick="nextQuestion()">次の問題へ進むぬ！</button>
+        </div>
+
+        <!-- ③ 結果画面 -->
+        <div id="screen-result" class="screen">
+            <div id="result-header" class="result-title"></div>
+            <div id="result-score" class="result-score"></div>
+            <div id="result-msg" class="result-msg"></div>
+            <button class="btn" onclick="startQuiz()">もう一度挑戦するぬ！</button>
+        </div>
+
+    </div>
+
+<script>
+    // ---- レトロ効果音（ファミコン風ピコピコ音） ----
+    let audioCtx = null;
+    function beep(freq, duration, type) {
+        try {
+            audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = type || 'square';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        } catch (e) { /* 音が出せない環境は無視 */ }
+    }
+    function beepClick() { beep(880, 0.06, 'square'); }
+    function beepCorrect() {
+        beep(988, 0.08, 'square');
+        setTimeout(() => beep(1568, 0.12, 'square'), 80);
+    }
+    function beepWrong() {
+        beep(196, 0.18, 'square');
+    }
+
+    // クイズデータ（全10問）
+    const quizData = [
+        {
+            q: "ピコぬ市はどことどこの間にある架空都市？",
+            options: ["A. 東京と神奈川", "B. 東京と埼玉", "C. 埼玉と群馬"],
+            answer: 1 // B
+        },
+        {
+            q: "ピコぬ市で特に有名な技術は？",
+            options: ["A. 宇宙開発", "B. 鉄道連結技術", "C. 飛行船製造"],
+            answer: 1 // B
+        },
+        {
+            q: "ピコぬ市のマスコットの名前は？",
+            options: ["A. ピコぬくん", "B. ピコ丸", "C. ぬか太郎"],
+            answer: 0 // A
+        },
+        {
+            q: "キロクぬかクリニックが専門としているものは？",
+            options: ["A. 骨折", "B. 現代病", "C. 歯科"],
+            answer: 1 // B
+        },
+        {
+            q: "ぬかピコ民芸博物館で大切にしているものは？",
+            options: ["A. 新品の美しさ", "B. 高価な宝石", "C. 日用品に残された使われ方の痕跡"],
+            answer: 2 // C
+        },
+        {
+            q: "ピコぬ市の公式広報紙の名前は？",
+            options: ["A. 市報ピコぬ", "B. 広報ぬかピコ", "C. ピコぬ新聞"],
+            answer: 1 // B
+        },
+        {
+            q: "記録町を流れる川の名前は？",
+            options: ["A. ピコ川", "B. ぬかピコ川", "C. キロク川"],
+            answer: 1 // B
+        },
+        {
+            q: "ピコぬ市役所には待ち時間を減らすため、各階に何がいる？",
+            options: ["A. 市長", "B. AI搭載ピコぬくん", "C. ネコ型ロボット"],
+            answer: 1 // B
+        },
+        {
+            q: "ぬかピコ民芸博物館からの脱出ゲームの最後の合言葉は？",
+            options: ["A. れきし", "B. こんせき", "C. きろく"],
+            answer: 1 // B
+        },
+        {
+            q: "ピコぬ市のキャッチコピーは？",
+            options: ["A. 未来へ走る街", "B. 誰もが主役の街", "C. 目立たない場所こそ、全体を支えている。"],
+            answer: 2 // C
+        }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(`screen-${screenId}`).classList.add('active');
+    }
+
+    function startQuiz() {
+        beepClick();
+        currentQ = 0;
+        score = 0;
+        showScreen('quiz');
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = quizData[currentQ];
+        
+        // 進捗バーと問題番号
+        document.getElementById('progress-fill').style.width = `${((currentQ) / quizData.length) * 100}%`;
+        document.getElementById('q-number').textContent = `第 ${currentQ + 1} 問 / 全 ${quizData.length} 問`;
+        document.getElementById('q-text').textContent = qData.q;
+        
+        // フィードバックリセット
+        const fb = document.getElementById('feedback-box');
+        fb.style.display = 'none';
+        fb.className = '';
+        document.getElementById('next-btn').style.display = 'none';
+
+        // 選択肢ボタン生成
+        const optsContainer = document.getElementById('options-container');
+        optsContainer.innerHTML = '';
+
+        qData.options.forEach((optText, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.textContent = optText;
+            btn.onclick = () => selectOption(index);
+            optsContainer.appendChild(btn);
+        });
+    }
+
+    function selectOption(selectedIndex) {
+        const qData = quizData[currentQ];
+        const fb = document.getElementById('feedback-box');
+        const buttons = document.querySelectorAll('.option-btn');
+
+        // 二重クリック防止のため全ボタン無効化
+        buttons.forEach(b => b.onclick = null);
+
+        if (selectedIndex === qData.answer) {
+            score++;
+            fb.textContent = "⭕ 正解だぬ！";
+            fb.className = "correct-bg";
+            beepCorrect();
+        } else {
+            fb.textContent = `❌ 残念！正解は 「${qData.options[qData.answer]}」 だぬ！`;
+            fb.className = "wrong-bg";
+            beepWrong();
+        }
+
+        fb.style.display = 'block';
+        document.getElementById('next-btn').style.display = 'inline-block';
+    }
+
+    function nextQuestion() {
+        beepClick();
+        currentQ++;
+        if (currentQ < quizData.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        showScreen('result');
+        const header = document.getElementById('result-header');
+        const scoreEl = document.getElementById('result-score');
+        const msgEl = document.getElementById('result-msg');
+
+        scoreEl.textContent = `${quizData.length}問中 ${score}問 正解！`;
+
+        if (score === quizData.length) {
+            // 🎉 全問正解
+            header.textContent = "🎖️ 全問正解だぬ！！";
+            header.style.color = "#00897b";
+            msgEl.innerHTML = "<b>🎉 ピコぬ市検定 全問正解！おめでとうだぬ！</b><br><br>あなたは立派なピコぬ市民だぬ！<br>市役所で住民登録……は特にしなくて大丈夫だぬ。<br><br>でもまた遊びに来てくれるとうれしいぬ！";
+        } else if (score >= 7) {
+            // おしい！
+            header.textContent = "✨ 惜しいぬ！もう少し！";
+            header.style.color = "#f57c00";
+            msgEl.innerHTML = "すごくピコぬ市に詳しいぬ！<br>あと少しでパーフェクト達成だぬ！もう一度チャレンジしてみるぬ？";
+        } else {
+            // もう一度！
+            header.textContent = "🌱 挑戦ありがとうだぬ！";
+            header.style.color = "#546e7a";
+            msgEl.innerHTML = "ピコぬ市にはまだまだ面白くて目立たない魅力がたくさんあるぬ！<br>街のガイドやサイトをチェックして、またチャレンジしてみてねぬ！";
+        }
+    }
+</script>
+
+</body>
+</html>
