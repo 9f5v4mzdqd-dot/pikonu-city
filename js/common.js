@@ -123,6 +123,7 @@
       '<a href="https://suzuri.jp/PIKONU-CITY" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-suzuri.jpg" alt="ピコぬ市公式ショップ(SUZURI)"></a>' +
       '<a href="https://note.com/rich_whale740" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-note.jpg" alt="ピコぬ市記録室(note)"></a>' +
       '<a href="' + BASE + 'about/piconu-kun-game.html"><img src="' + BASE + 'images/banners/banner-game.jpg" alt="ピコぬくん脱出ゲーム"></a>' +
+      '<a href="' + BASE + 'about/piconu-quiz.html"><img src="' + BASE + 'images/banners/banner-quiz.jpg" alt="ピコぬ市検定(初級)"></a>' +
       "</div></div>";
 
     var footerHtml =
