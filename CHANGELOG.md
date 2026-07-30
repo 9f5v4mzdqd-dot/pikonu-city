@@ -16,6 +16,7 @@
 
 ### 追加
 - `images/banners/banner-quiz.jpg`:ピコぬ市検定(初級)のバナー画像(既存バナーと同じ300×120px)
+- `images/facilities/ikimono-kyosei-teien.jpg` `neo-taihi-box.jpg` `ryokka-suishin.jpg`:各ページ本文冒頭に写真を追加(`facility-photo`クラス、既存の写真付きページと同じ形式)
 - `js/common.js`:全ページ共通のバナーストリップに検定バナーを追加(脱出ゲームの直後、`about/piconu-quiz.html`へリンク)
 
 ### 追加
