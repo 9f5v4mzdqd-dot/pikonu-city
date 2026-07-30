@@ -14,6 +14,9 @@
 
 ## 2026-07-30
 
+### 変更
+- `index.html`:「お問い合わせ」セクションを、ページ最下部(キリ番カウンター手前)から「暮らしの場面から探す」の直後へ移動(中身は変更なし)
+
 ### 追加
 - `about/rekishi.html` へのリンクを `about/shisei-joho.html`(市政情報トップのサービスカード)と `about/sitemap.html` に追加
 - `images/icons/icon-rekishi.png` を新規作成(市政情報トップのカード用アイコン)
