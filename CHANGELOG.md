@@ -17,9 +17,9 @@
 ### 追加
 - `about/rekishi.html` へのリンクを `about/shisei-joho.html`(市政情報トップのサービスカード)と `about/sitemap.html` に追加
 - `images/icons/icon-rekishi.png` を新規作成(市政情報トップのカード用アイコン)
-
-### 未対応(要相談)
-- `about/sitemap.html` に未掲載のページが他にもあり: `telephone.html` / `gyousei-kouzou.html` / `gijiroku-rinji-2026-3.html` / `seikatsu-kyosei-ka.html` / `kurashi-junkan-ka.html`(および庭づくり助成・緑化推進・生き物共生・ネオ堆肥・雨水循環・ぬか資源係の各ページ)/ `kiroku-seisaku-ka.html` / `toshikeikaku.html` / `kankyoka.html` / `fuyoufukyuhozonka.html` / `kaikeika.html` / `shiminka.html` / `gikai.html`
+- `about/sitemap.html`:未掲載だった以下を追加
+  - 施設案内:市役所のフロア案内、市民課、会計課、記録政策課、環境課、暮らしと循環推進課(市民庭づくり助成制度・緑化推進制度・生き物共生型庭園認定制度・ネオ堆肥ボックス事業・雨水循環対策・Pioカード・ぬか資源係の7サブページ含む)、時間効率支援課、生活共生課(困りごと相談室含む)、都市計画課、不要不急保存課、議会事務局
+  - 市政情報:2026年第3回臨時会 会議録、ピコぬ市 行政構造図、部署別電話番号一覧
 
 ## 2026-07-29 まで(まとめ記録)
 
