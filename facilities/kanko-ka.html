@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>観光課 | 市の観光案内 | ピコぬ市公式ホームページ</title>
+<meta name="description" content="ピコぬ市観光課のご案内です。記録・技術・自然という3つの切り口から、市内に残る小さな発見を紹介しています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  /* 観光課ページ専用(お知らせカード)。既存の共通CSS変数のみを使用しています。 */
+  .kanko-notice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 1.4em 0 1.8em;
+  }
+  .kanko-notice-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .kanko-notice-card .cat {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-bottom: .7em;
+  }
+  .kanko-notice-card h3 { font-size: .96rem; margin: 0 0 .5em; }
+  .kanko-notice-card p { font-size: .84rem; color: var(--color-text-sub); margin: 0; }
+  .kanko-route-group {
+    background: var(--color-bg-alt);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+  }
+  .kanko-route-group h3 {
+    margin-top: 0 !important;
+    border-left: 5px solid var(--color-primary);
+    padding-left: 10px;
+  }
+  .kanko-route-group ul { list-style: none; margin: 0; padding: 0; }
+  .kanko-route-group li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: .92rem;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .kanko-route-group li:last-child { border-bottom: none; }
+  .kanko-route-group li a { font-weight: 600; }
+  .kanko-soon { font-size: .78rem; color: var(--color-text-sub); }
+  @media (max-width: 860px) {
+    .kanko-notice-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body id="top">
+
+<main id="main">
+  <div class="page-header">
+    <div class="container">
+      <h1>観光課</h1>
+      <p class="lead">小さな発見から、まちの魅力を伝える</p>
+    </div>
+  </div>
+
+  <div class="content-layout">
+    <div class="main-content">
+
+      <img class="facility-photo" src="../images/facilities/kanko-ka.jpg" alt="桜の咲く記録町を走る鉄道車両と、線路沿いの花を眺める市民の様子">
+
+      <h2>観光課からのお知らせ</h2>
+      <div class="kanko-notice-grid">
+        <div class="kanko-notice-card">
+          <span class="cat">文化</span>
+          <h3>ぬかピコ民芸博物館 特別展示のお知らせ</h3>
+          <p>収蔵資料の中から選んだ品々を、期間限定で展示しています。</p>
+        </div>
+        <div class="kanko-notice-card">
+          <span class="cat">自然</span>
+          <h3>季節の観察記録</h3>
+          <p>市内で確認された生き物や植物の様子を、時期ごとに記録しています。</p>
+        </div>
+        <div class="kanko-notice-card">
+          <span class="cat">イベント</span>
+          <h3>市内イベント情報</h3>
+          <p>記録町周辺で行われる催しについて、順次ご案内します。</p>
+        </div>
+      </div>
+
+      <h2>ピコぬ市を歩く</h2>
+      <p>ピコぬ市には、大きく分けて3つの視点から巡ることのできる見どころがあります。</p>
+
+      <div class="kanko-route-group">
+        <h3>記録を巡る</h3>
+        <ul>
+          <li><a href="nukapiko-museum.html">ぬかピコ民芸博物館</a></li>
+          <li>市政資料展示室 <span class="kanko-soon">(準備中)</span></li>
+          <li><a href="../about/rekishi.html">キロク町の歴史資料</a></li>
+        </ul>
+      </div>
+
+      <div class="kanko-route-group">
+        <h3>技術を巡る</h3>
+        <ul>
+          <li><a href="koutsukyoku.html">鉄道連結技術関連施設</a></li>
+          <li>連結器記念展示 <span class="kanko-soon">(準備中)</span></li>
+        </ul>
+      </div>
+
+      <div class="kanko-route-group">
+        <h3>自然を巡る</h3>
+        <ul>
+          <li><a href="../about/nukabana.html">季節の植物</a></li>
+          <li><a href="../about/ikimono-zukan.html">生き物観察記録</a></li>
+          <li><a href="kurashi-junkan-ka.html">市内の自然環境</a></li>
+        </ul>
+      </div>
+
+      <h2>観光案内</h2>
+      <p>
+        ピコぬ市では、日常の中にある小さな発見も大切な観光資源として記録しています。
+        訪れる人が街の歴史や自然、人々の営みに触れられるよう、案内や情報発信を行っています。
+      </p>
+      <p>
+        観光は、目立つ名所を紹介するだけの役割ではありません。
+        目立たない場所にこそ、この街を支えてきた営みが積み重なっています。
+        観光課では、そうした記録・技術・自然のつながりを、市外の方にも伝えられるよう努めています。
+      </p>
+
+      <h2>お問い合わせ</h2>
+      <table class="info-table">
+        <tr><th>所属</th><td>ピコぬ市役所 観光課</td></tr>
+        <tr><th>所在地</th><td>ピコぬ市役所3階</td></tr>
+        <tr><th>電話番号</th><td>ぬぬ-ぬかピコ-5535(ごーごーかんこー)</td></tr>
+      </table>
+
+    </div>
+
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <h2>関連情報</h2>
+        <ul>
+          <li><a href="index.html">施設案内トップ</a></li>
+          <li><a href="../about/kanko.html">観光案内</a></li>
+          <li><a href="nukapiko-museum.html">ぬかピコ民芸博物館</a></li>
+          <li><a href="koutsukyoku.html">ピコぬ市交通局</a></li>
+          <li><a href="../about/ikimono-zukan.html">ピコぬ市生き物図鑑</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <h2>お問い合わせ</h2>
+        <ul>
+          <li><a href="../about/telephone.html">部署別電話番号一覧</a></li>
+          <li><a href="../about/faq.html">よくある質問</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "観光課" }] };</script>
+<script src="../js/common.js"></script>
+</body>
+</html>
