@@ -12,6 +12,42 @@
 
 ---
 
+## 2026-08-01
+
+### 追加
+- `news/news-20260801-01.html`:広報ぬかピコ令和八年八月号(特集号)の掲載お知らせページを新規作成
+- `koho-nukapiko-202608.pdf`:広報ぬかピコ令和八年八月号PDF(ルート直下に配置)
+- `facilities/hisho-kouhou-ka.html`:秘書広報課ページを新規作成(業務内容、コラム「記録を残すという仕事」、基本情報)
+- `images/sections/kouhou-archive.jpg`:秘書広報課ページのヘッダー画像(アーカイブ室)
+- `about/koho-archive.html`:広報ぬかピコ デジタルアーカイブページを新規作成(令和8年度、7月号・8月号の2件を一覧表示)
+
+### 変更
+- `index.html`:トップページのお知らせ欄に8月号掲載のお知らせを追加(最下段の古い項目を送り出し)
+- `news/index.html`:お知らせ一覧の先頭に8月号掲載のお知らせを追加
+- `about/telephone.html`:部署別電話番号一覧に秘書広報課を追加(ぬぬ-ぬかピコ-5555)
+- `facilities/shiyakusho-floor.html`:3階フロア一覧に秘書広報課を追加
+- `about/sitemap.html`:施設案内リストに秘書広報課、市の概要リストに広報ぬかピコ デジタルアーカイブを追加
+
+---
+
+## 2026-07-31
+
+### 追加
+- `about/shisei-joho.html`:サービスカードに「ピコぬ市生き物図鑑」を追加
+- `images/icons/icon-ikimono.png`:生き物図鑑カード用アイコンを新規作成
+- `about/sitemap.html`:市政情報リストに「ピコぬ市生き物図鑑」、施設案内リストに「観光課」を追加
+- `facilities/kanko-ka.html`:観光課ページを新規作成(お知らせカード、記録・技術・自然を巡る、半日お散歩コース案内、観光案内文、お問い合わせ)
+- `images/facilities/kanko-ka.jpg`:観光課ページのヘッダー画像
+- `images/kanko/piconu-kun-ekimae.jpg`:`about/kanko.html`「9:30 ピコぬ中央駅」用の画像
+
+### 変更
+- `facilities/shiyakusho-floor.html`:3階フロア一覧・主な手続き表に観光課を追加
+- `about/telephone.html`:部署別電話番号一覧に観光課を追加(ぬぬ-ぬかピコ-5535)
+- `about/gaiyou.html`:「市の文化・観光」リストに観光課へのリンクを追加
+- `about/kanko.html`:「9:30 ピコぬ中央駅」の直後にピコぬくんの画像を追加
+
+---
+
 ## 2026-07-30
 
 ### 追加
