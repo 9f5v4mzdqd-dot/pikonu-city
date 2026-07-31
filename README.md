@@ -22,9 +22,15 @@ pikonu-city/
 ├── services/                 くらしの情報(住民票・戸籍・ごみ収集・現代病相談 等)
 ├── facilities/                施設案内(市役所・クリニック・博物館・図書館・商工会 等)
 ├── about/                     市政情報(条例集・審議会・FAQ・観光案内・業務日誌 等)
-├── images/                    画像(facilities/ museum/ kanko/ cable-tv/ 等サブフォルダあり)
+├── images/                    画像(sections/ facilities/ museum/ kanko/ cable-tv/ 等サブフォルダあり。運用ルールは下記「画像フォルダの運用」参照)
 └── 各種PDF・動画(ルート直下)  広報誌・点数表・チラシ・PR動画など
 ```
+
+## 画像フォルダの運用
+
+- `images/facilities/`:これまでの施設・課ページの写真が入っている(レガシー)。既存ファイルはそのまま維持し、移行は行わない。
+- `images/sections/`:**2026-08-01以降、施設・課ページ(市役所、クリニック、各課など)の新規写真はこちらに追加していく。** `images/facilities/`が増えすぎたための切り替え。
+- それ以外(`images/kanko/` `images/ikimono/` `images/banners/` `images/goods/` `images/icons/` 等)は用途別サブフォルダとして従来通り。
 
 ## 共通ヘッダー/フッターの仕組み
 
