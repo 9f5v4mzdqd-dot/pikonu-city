@@ -1,0 +1,377 @@
+[
+  {
+    "title": "ホーム",
+    "url": "index.html",
+    "category": "トップページ"
+  },
+  {
+    "title": "くらしの情報 トップ",
+    "url": "services/index.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "住民票",
+    "url": "services/juminhyo.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "戸籍",
+    "url": "services/koseki.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "ごみ収集",
+    "url": "services/gomi.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "現代病相談",
+    "url": "services/gendaibyo-sodan.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "各種申請",
+    "url": "services/shinsei.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "施設案内(くらしの情報より)",
+    "url": "services/shisetsu-annai.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "施設案内 トップ",
+    "url": "facilities/index.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "キロクぬかクリニック",
+    "url": "facilities/kiroku-nuka-clinic.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "診療科目一覧",
+    "url": "facilities/shinryo-kamoku.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "ぬかピコ民芸博物館",
+    "url": "facilities/nukapiko-museum.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "博物館デジタルアーカイブ",
+    "url": "facilities/museum-archive.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "ミュージアムショップ",
+    "url": "facilities/museum-shop.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "市役所",
+    "url": "facilities/shiyakusho.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "フロア案内",
+    "url": "facilities/shiyakusho-floor.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "市民課",
+    "url": "facilities/shiminka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "会計課",
+    "url": "facilities/kaikeika.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "記録政策課",
+    "url": "facilities/kiroku-seisaku-ka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "環境課",
+    "url": "facilities/kankyoka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "暮らしと循環推進課",
+    "url": "facilities/kurashi-junkan-ka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "市民庭づくり助成制度",
+    "url": "facilities/niwa-zukuri-josei.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "緑化推進制度",
+    "url": "facilities/ryokka-suishin.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "生き物共生型庭園認定制度",
+    "url": "facilities/ikimono-kyosei-teien.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "ネオ堆肥ボックス事業",
+    "url": "facilities/neo-taihi-box.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "雨水循環対策",
+    "url": "facilities/usui-junkan-taisaku.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "Pioカード",
+    "url": "facilities/pio-card.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "ぬか資源係",
+    "url": "facilities/nuka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "時間効率支援課",
+    "url": "facilities/jikan-koritsu-shien-ka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "観光課",
+    "url": "facilities/kanko-ka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "秘書広報課",
+    "url": "facilities/hisho-kouhou-ka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "生活共生課(旧 高齢福祉課)",
+    "url": "facilities/seikatsu-kyosei-ka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "困りごと相談室",
+    "url": "facilities/fukushika.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "都市計画課",
+    "url": "facilities/toshikeikaku.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "不要不急保存課",
+    "url": "facilities/fuyoufukyuhozonka.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "議会事務局",
+    "url": "facilities/gikai.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "市立図書館",
+    "url": "facilities/toshokan.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "ピコぬ市商工会",
+    "url": "facilities/shokokai.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "加盟店紹介",
+    "url": "facilities/shoten.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "ピコぬ市交通局",
+    "url": "facilities/koutsukyoku.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "ピコぬ市警察署",
+    "url": "facilities/keisatsu.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "公式グッズ",
+    "url": "facilities/goods.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "市の概要",
+    "url": "about/gaiyou.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "市長のごあいさつ",
+    "url": "about/aisatsu.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ぬかばな(市の花)",
+    "url": "about/nukabana.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ピコぬどり(市の鳥)",
+    "url": "about/piconu-dori.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "観光案内",
+    "url": "about/kanko.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "統計資料",
+    "url": "about/tokei.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ケーブルテレビ番組表",
+    "url": "about/cable-tv.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "キリ番について",
+    "url": "about/kiriban.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ピコぬくんとは",
+    "url": "about/piconu-kun.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ピコぬくんとミニゲーム",
+    "url": "about/piconu-kun-game.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ピコぬくん業務日誌",
+    "url": "about/piconu-diary.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "広報ぬかピコ デジタルアーカイブ",
+    "url": "about/koho-archive.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "市政情報トップ",
+    "url": "about/shisei-joho.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "ピコぬ市の歴史",
+    "url": "about/rekishi.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "ピコぬ市生き物図鑑",
+    "url": "about/ikimono-zukan.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "条例集",
+    "url": "about/jorei.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "グラデーション保持条例",
+    "url": "about/jorei-gradation.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "不要不急保存条例",
+    "url": "about/jorei-fuyofukyu.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "現代病対策条例",
+    "url": "about/jorei-gendaibyo.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "記録文化保護条例",
+    "url": "about/jorei-kiroku-bunka.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "非効率的時間保護条例",
+    "url": "about/jorei-jikan.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "目的のない事業に対する助成条例(仮称・審議中)",
+    "url": "about/jorei-mokuteki-nashi.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "パブリックコメント",
+    "url": "about/pubcomment.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "議事録・会議録",
+    "url": "about/gijiroku.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "2026年第2回定例会 会議録",
+    "url": "about/gijiroku-2026-02.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "2026年第3回臨時会 会議録",
+    "url": "about/gijiroku-rinji-2026-3.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "審議会・附属機関一覧",
+    "url": "about/shingikai.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "職員採用情報",
+    "url": "about/saiyo.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "現代病データベース",
+    "url": "about/gendaibyo-db.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "ピコぬ市 行政構造図",
+    "url": "about/gyousei-kouzou.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "部署別電話番号一覧",
+    "url": "about/telephone.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "よくある質問",
+    "url": "about/faq.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "サイトマップ",
+    "url": "about/sitemap.html",
+    "category": "市政情報"
+  }
+]

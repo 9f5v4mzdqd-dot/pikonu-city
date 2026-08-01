@@ -50,7 +50,26 @@
     return wrap.firstElementChild;
   }
 
+  function injectSearchStyles() {
+    if (document.getElementById("site-search-style")) return;
+    var style = document.createElement("style");
+    style.id = "site-search-style";
+    style.textContent =
+      ".header-search{position:relative;}" +
+      ".site-search-results{position:absolute; top:100%; left:0; right:0; margin-top:4px; background:#fff; border:1px solid var(--color-border,#d5dbe0); border-radius:3px; box-shadow:0 4px 10px rgba(0,0,0,.12); z-index:50; max-height:340px; overflow-y:auto;}" +
+      ".site-search-results ul{list-style:none; margin:0; padding:0;}" +
+      ".site-search-results li{border-bottom:1px solid var(--color-border,#eee);}" +
+      ".site-search-results li:last-child{border-bottom:none;}" +
+      ".site-search-results a{display:flex; justify-content:space-between; align-items:baseline; gap:.6em; padding:.55em .8em; color:var(--color-text,#2b2b2b); text-decoration:none; font-size:.88rem;}" +
+      ".site-search-results a:hover, .site-search-results a:focus{background:#f2f6fa;}" +
+      ".site-search-title{flex:1;}" +
+      ".site-search-category{font-size:.75rem; color:var(--color-text-sub,#767676); white-space:nowrap;}" +
+      ".site-search-empty{margin:0; padding:.7em .8em; font-size:.85rem; color:var(--color-text-sub,#767676);}";
+    document.head.appendChild(style);
+  }
+
   function renderHeader() {
+    injectSearchStyles();
     var navHtml = NAV_ITEMS.map(function (item) {
       var current = item.key === navCurrent ? ' aria-current="page"' : "";
       return '<a href="' + BASE + item.href + '"' + current + ">" + item.label + "</a>";
@@ -101,8 +120,9 @@
       "</span></a>" +
       '<form class="header-search" role="search" action="#" onsubmit="return false;">' +
       '<label class="visually-hidden" for="site-search">サイト内検索</label>' +
-      '<input id="site-search" type="search" placeholder="サイト内検索">' +
+      '<input id="site-search" type="search" placeholder="サイト内検索" autocomplete="off">' +
       '<button type="submit">検索</button>' +
+      '<div id="site-search-results" class="site-search-results" hidden></div>' +
       "</form>" +
       "</div></div>" +
       '<nav class="global-nav" aria-label="グローバルナビゲーション">' +
@@ -278,6 +298,113 @@
       });
   }
 
+  var searchIndexCache = null;
+  var searchIndexPromise = null;
+
+  function loadNewsIndex() {
+    return fetch(BASE + "news/index.html")
+      .then(function (res) { return res.text(); })
+      .then(function (html) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(html, "text/html");
+        var items = [];
+        var lis = doc.querySelectorAll(".notice-list li");
+        lis.forEach(function (li) {
+          var a = li.querySelector("a");
+          if (!a) return;
+          var href = a.getAttribute("href");
+          if (!href || href === "#") return; // 実ページ未作成のダミーリンクは対象外
+          var tag = li.querySelector(".notice-tag");
+          items.push({
+            title: a.textContent.trim(),
+            url: "news/" + href,
+            category: "お知らせ" + (tag ? "・" + tag.textContent.trim() : "")
+          });
+        });
+        return items;
+      })
+      .catch(function () { return []; });
+  }
+
+  function loadSearchIndex() {
+    if (searchIndexCache) return Promise.resolve(searchIndexCache);
+    if (searchIndexPromise) return searchIndexPromise;
+    searchIndexPromise = Promise.all([
+      fetch(BASE + "data/search-index.json")
+        .then(function (res) { return res.json(); })
+        .catch(function () { return []; }),
+      loadNewsIndex()
+    ]).then(function (results) {
+      var combined = results[0].concat(results[1]);
+      searchIndexCache = combined;
+      return combined;
+    });
+    return searchIndexPromise;
+  }
+
+  function renderSearchResults(container, query, items) {
+    if (!query) {
+      container.hidden = true;
+      container.innerHTML = "";
+      return;
+    }
+    if (!items.length) {
+      container.innerHTML = '<p class="site-search-empty">「' + query + '」に一致するページが見つかりませんでした。</p>';
+      container.hidden = false;
+      return;
+    }
+    var listHtml = items.slice(0, 8).map(function (item) {
+      return (
+        '<li><a href="' + BASE + item.url + '">' +
+        '<span class="site-search-title">' + item.title + "</span>" +
+        '<span class="site-search-category">' + item.category + "</span>" +
+        "</a></li>"
+      );
+    }).join("");
+    container.innerHTML = "<ul>" + listHtml + "</ul>";
+    container.hidden = false;
+  }
+
+  function bindSiteSearch() {
+    var input = document.getElementById("site-search");
+    var container = document.getElementById("site-search-results");
+    var form = input ? input.closest("form") : null;
+    if (!input || !container || !form) return;
+
+    function runSearch() {
+      var query = input.value.trim();
+      if (!query) {
+        renderSearchResults(container, "", []);
+        return;
+      }
+      loadSearchIndex().then(function (items) {
+        var q = query.toLowerCase();
+        var matched = items.filter(function (item) {
+          return item.title.toLowerCase().indexOf(q) !== -1;
+        });
+        renderSearchResults(container, query, matched);
+      });
+    }
+
+    input.addEventListener("input", runSearch);
+    input.addEventListener("focus", function () {
+      if (input.value.trim()) runSearch();
+    });
+
+    form.addEventListener("submit", function () {
+      var firstLink = container.querySelector("a");
+      if (firstLink) {
+        window.location.href = firstLink.getAttribute("href");
+      }
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!form.contains(e.target)) {
+        container.hidden = true;
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     renderHeader();
     renderFooter();
@@ -285,5 +412,6 @@
     bindNavToggle();
     bindPageTop();
     renderKiribanCounter();
+    bindSiteSearch();
   });
 })();
