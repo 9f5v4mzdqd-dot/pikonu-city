@@ -9,6 +9,32 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
+<style>
+  .archive-filter { display: flex; gap: 8px; flex-wrap: wrap; }
+  .archive-filter button {
+    font-size: .85rem;
+    padding: .45em 1em;
+    border: 1px solid var(--color-border, #d5dbe0);
+    background: #fff;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--color-text, #2b2b2b);
+  }
+  .archive-filter button.active {
+    background: var(--color-primary, #2b5c8a);
+    border-color: var(--color-primary, #2b5c8a);
+    color: #fff;
+  }
+  .archive-category-badge {
+    display: inline-block;
+    font-size: .75rem;
+    padding: .15em .7em;
+    border-radius: 999px;
+    background: var(--color-notice-bg, #eef3f7);
+    color: var(--color-text-sub, #767676);
+    margin-right: .6em;
+  }
+</style>
 </head>
 <body id="top">
 
@@ -27,6 +53,7 @@
         描いた短編集です。ここでは、これまでの作品を記録として残しています。
       </p>
 
+      <div id="archive-filter" class="archive-filter" style="display:none; margin-bottom:18px;"></div>
       <div id="archive-list">
         <p>読み込み中だぬ...</p>
       </div>
@@ -50,6 +77,10 @@
 <script>
   (function () {
     var listEl = document.getElementById("archive-list");
+    var filterEl = document.getElementById("archive-filter");
+    var allEntries = [];
+    var activeCategory = "すべて";
+    var CATEGORIES = ["すべて", "外来シリーズ", "○○の話"];
 
     function escapeHtml(s) {
       return String(s)
@@ -57,6 +88,47 @@
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/\n/g, "<br>");
+    }
+
+    function renderFilter() {
+      filterEl.style.display = "flex";
+      filterEl.innerHTML = CATEGORIES.map(function (c) {
+        return '<button type="button" data-category="' + escapeHtml(c) + '" class="' +
+          (c === activeCategory ? "active" : "") + '">' + escapeHtml(c) + "</button>";
+      }).join("");
+      Array.prototype.forEach.call(filterEl.querySelectorAll("button"), function (btn) {
+        btn.addEventListener("click", function () {
+          activeCategory = btn.getAttribute("data-category");
+          renderFilter();
+          renderList();
+        });
+      });
+    }
+
+    function renderList() {
+      var entries = allEntries.filter(function (e) {
+        var cat = e.category || "外来シリーズ";
+        return activeCategory === "すべて" || cat === activeCategory;
+      });
+      if (entries.length === 0) {
+        listEl.innerHTML = "<p>該当する作品がありません。</p>";
+        return;
+      }
+      listEl.innerHTML = entries.map(function (e) {
+        var cat = e.category || "外来シリーズ";
+        var noteLink = e.note_url
+          ? '<p class="diary-date"><a href="' + escapeHtml(e.note_url) + '" target="_blank" rel="noopener">note版を読む &gt;</a></p>'
+          : "";
+        return (
+          '<div class="diary-entry">' +
+            '<span class="archive-category-badge">' + escapeHtml(cat) + '</span>' +
+            (e.date ? '<span class="diary-date">' + escapeHtml(e.date) + '</span>' : "") +
+            '<div class="diary-title">' + escapeHtml(e.title) + '</div>' +
+            '<div class="diary-body">' + escapeHtml(e.body) + '</div>' +
+            noteLink +
+          '</div>'
+        );
+      }).join("");
     }
 
     fetch("../data/gairai-archive.json")
@@ -69,19 +141,9 @@
         entries.sort(function (a, b) {
           return (b.date || "").localeCompare(a.date || "");
         });
-        listEl.innerHTML = entries.map(function (e) {
-          var noteLink = e.note_url
-            ? '<p class="diary-date"><a href="' + escapeHtml(e.note_url) + '" target="_blank" rel="noopener">note版を読む &gt;</a></p>'
-            : "";
-          return (
-            '<div class="diary-entry">' +
-              (e.date ? '<div class="diary-date">' + escapeHtml(e.date) + '</div>' : "") +
-              '<div class="diary-title">' + escapeHtml(e.title) + '</div>' +
-              '<div class="diary-body">' + escapeHtml(e.body) + '</div>' +
-              noteLink +
-            '</div>'
-          );
-        }).join("");
+        allEntries = entries;
+        renderFilter();
+        renderList();
       })
       .catch(function () {
         listEl.innerHTML = "<p>読み込みに失敗しました。時間をおいて試してください。</p>";
