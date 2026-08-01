@@ -101,7 +101,14 @@
   <div class="admin-status" id="f-status"></div>
 
   <div class="admin-section-title">既存の記事</div>
-  <button type="button" class="btn btn-outline" id="f-load-list">記事一覧を読み込む</button>
+  <p style="font-size:.85rem; color:var(--color-text-sub);">
+    月別アーカイブは「書庫に登録した日」を基準にしているだぬ。過去の記事にはまだその日付が無いので、
+    下のボタンで一度だけ補完してほしいだぬ(今日の日付が入るだぬ)。
+  </p>
+  <button type="button" class="btn btn-outline" id="f-backfill-added-at">登録日が無い記事に今日の日付を補完する</button>
+  <div class="admin-status" id="f-backfill-status"></div>
+
+  <button type="button" class="btn btn-outline" id="f-load-list" style="margin-top:20px;">記事一覧を読み込む</button>
   <div id="f-entry-list" style="margin-top:14px;"></div>
 </div>
 
@@ -222,9 +229,10 @@
         if (editingId) {
           var idx = entries.findIndex(function (e) { return e.id === editingId; });
           if (idx === -1) throw new Error("編集対象の記事が見つからなかっただぬ。");
-          entries[idx] = { id: editingId, date: date, title: title, body: body };
+          var addedAt = entries[idx].added_at || new Date().toISOString().slice(0, 10);
+          entries[idx] = { id: editingId, date: date, title: title, body: body, added_at: addedAt };
         } else {
-          entries.unshift({ id: makeId(), date: date, title: title, body: body });
+          entries.unshift({ id: makeId(), date: date, title: title, body: body, added_at: new Date().toISOString().slice(0, 10) });
         }
         var msg = (editingId ? "業務日誌 編集: " : "業務日誌: ") + title;
         return saveEntries(token, entries, current.sha, msg);
@@ -295,6 +303,45 @@
       entryListEl.appendChild(row);
     });
   }
+
+  var backfillBtn = document.getElementById("f-backfill-added-at");
+  var backfillStatusEl = document.getElementById("f-backfill-status");
+
+  backfillBtn.addEventListener("click", function () {
+    var token = getToken();
+    if (!token) { backfillStatusEl.textContent = "トークンを入力してほしいだぬ。"; return; }
+
+    backfillBtn.disabled = true;
+    backfillStatusEl.textContent = "確認中だぬ...";
+
+    fetchCurrent(token)
+      .then(function (current) {
+        var todayStr = new Date().toISOString().slice(0, 10);
+        var count = 0;
+        current.entries.forEach(function (e) {
+          if (!e.added_at) { e.added_at = todayStr; count++; }
+        });
+        if (count === 0) {
+          backfillStatusEl.textContent = "補完が必要な記事は無かっただぬ。";
+          return null;
+        }
+        backfillStatusEl.textContent = count + "件を補完中だぬ...";
+        return saveEntries(token, current.entries, current.sha, "業務日誌: 登録日を補完(" + count + "件)")
+          .then(function () { return count; });
+      })
+      .then(function (count) {
+        if (count) {
+          backfillStatusEl.textContent = count + "件を補完しただぬ! 反映まで1分ほどかかるだぬ。";
+          entryListEl.innerHTML = "";
+        }
+      })
+      .catch(function (err) {
+        backfillStatusEl.textContent = "エラーだぬ: " + err.message;
+      })
+      .finally(function () {
+        backfillBtn.disabled = false;
+      });
+  });
 
   loadListBtn.addEventListener("click", function () {
     var token = getToken();
