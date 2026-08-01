@@ -64,7 +64,13 @@
       ".site-search-results a:hover, .site-search-results a:focus{background:#f2f6fa;}" +
       ".site-search-title{flex:1;}" +
       ".site-search-category{font-size:.75rem; color:var(--color-text-sub,#767676); white-space:nowrap;}" +
-      ".site-search-empty{margin:0; padding:.7em .8em; font-size:.85rem; color:var(--color-text-sub,#767676);}";
+      ".site-search-empty{margin:0; padding:.7em .8em; font-size:.85rem; color:var(--color-text-sub,#767676);}" +
+      ".nav-search-mobile{display:none;}" +
+      "@media (max-width:680px){" +
+      ".nav-search-mobile{display:block; padding:12px 14px; background:rgba(0,0,0,.12);}" +
+      ".nav-search-mobile .header-search{display:flex;}" +
+      ".nav-search-mobile input[type=search]{flex:1; min-width:0;}" +
+      "}";
     document.head.appendChild(style);
   }
 
@@ -126,7 +132,16 @@
       "</form>" +
       "</div></div>" +
       '<nav class="global-nav" aria-label="グローバルナビゲーション">' +
-      '<div class="global-nav-inner" id="global-nav-inner">' + navHtml + "</div>" +
+      '<div class="global-nav-inner" id="global-nav-inner">' +
+      '<div class="nav-search-mobile">' +
+      '<form class="header-search" role="search" action="#" onsubmit="return false;">' +
+      '<label class="visually-hidden" for="site-search-mobile">サイト内検索</label>' +
+      '<input id="site-search-mobile" type="search" placeholder="サイト内検索" autocomplete="off">' +
+      '<button type="submit">検索</button>' +
+      '<div id="site-search-results-mobile" class="site-search-results" hidden></div>' +
+      "</form>" +
+      "</div>" +
+      navHtml + "</div>" +
       '<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="global-nav-inner">メニュー ☰</button>' +
       "</nav>" +
       breadcrumbHtml +
@@ -365,9 +380,9 @@
     container.hidden = false;
   }
 
-  function bindSiteSearch() {
-    var input = document.getElementById("site-search");
-    var container = document.getElementById("site-search-results");
+  function bindSiteSearchInstance(inputId, containerId) {
+    var input = document.getElementById(inputId);
+    var container = document.getElementById(containerId);
     var form = input ? input.closest("form") : null;
     if (!input || !container || !form) return;
 
@@ -403,6 +418,11 @@
         container.hidden = true;
       }
     });
+  }
+
+  function bindSiteSearch() {
+    bindSiteSearchInstance("site-search", "site-search-results");
+    bindSiteSearchInstance("site-search-mobile", "site-search-results-mobile");
   }
 
   document.addEventListener("DOMContentLoaded", function () {
