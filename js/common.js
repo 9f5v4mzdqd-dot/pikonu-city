@@ -69,7 +69,7 @@
       ".nav-search-mobile-label{margin:0 0 6px; font-size:.78rem; color:#fff; opacity:.85;}" +
       ".nav-search-hint{display:none;}" +
       "@media (max-width:680px){" +
-      ".nav-toggle{display:inline-block !important; width:auto;}" +
+      ".nav-toggle-row{display:flex; align-items:center;}" +
       ".nav-search-mobile{display:block; padding:12px 14px; background:rgba(0,0,0,.12);}" +
       ".nav-search-mobile .header-search{display:flex;}" +
       ".nav-search-mobile input[type=search]{flex:1; min-width:0;}" +
@@ -147,8 +147,10 @@
       "</form>" +
       "</div>" +
       navHtml + "</div>" +
+      '<div class="nav-toggle-row">' +
       '<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="global-nav-inner">メニュー ☰</button>' +
       '<span class="nav-search-hint">メニューを押すと検索画面が出ます</span>' +
+      "</div>" +
       "</nav>" +
       breadcrumbHtml +
       "</header>";
