@@ -66,6 +66,7 @@
       ".site-search-category{font-size:.75rem; color:var(--color-text-sub,#767676); white-space:nowrap;}" +
       ".site-search-empty{margin:0; padding:.7em .8em; font-size:.85rem; color:var(--color-text-sub,#767676);}" +
       ".nav-search-mobile{display:none;}" +
+      ".nav-search-mobile-label{margin:0 0 6px; font-size:.78rem; color:#fff; opacity:.85;}" +
       "@media (max-width:680px){" +
       ".nav-search-mobile{display:block; padding:12px 14px; background:rgba(0,0,0,.12);}" +
       ".nav-search-mobile .header-search{display:flex;}" +
@@ -134,6 +135,7 @@
       '<nav class="global-nav" aria-label="グローバルナビゲーション">' +
       '<div class="global-nav-inner" id="global-nav-inner">' +
       '<div class="nav-search-mobile">' +
+      '<p class="nav-search-mobile-label">サイト内を検索</p>' +
       '<form class="header-search" role="search" action="#" onsubmit="return false;">' +
       '<label class="visually-hidden" for="site-search-mobile">サイト内検索</label>' +
       '<input id="site-search-mobile" type="search" placeholder="サイト内検索" autocomplete="off">' +
