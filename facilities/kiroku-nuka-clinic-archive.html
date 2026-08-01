@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>外来シリーズ 書庫 | キロクぬかクリニック | ピコぬ市公式ホームページ</title>
+<meta name="description" content="キロクぬかクリニックのオンライン診察を舞台にした短編シリーズ「外来シリーズ」の書庫です。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body id="top">
+
+<main id="main">
+  <div class="page-header">
+    <div class="container">
+      <h1>外来シリーズ 書庫</h1>
+      <p class="lead">キロクぬかクリニックのオンライン診察を舞台にした短編の記録です。</p>
+    </div>
+  </div>
+
+  <div class="content-layout">
+    <div class="main-content">
+      <p>
+        「外来シリーズ」は、既存の診療科では扱いにくい不調を、オンライン診察の形式で
+        描いた短編集です。ここでは、これまでの作品を記録として残しています。
+      </p>
+
+      <div id="archive-list">
+        <p>読み込み中だぬ...</p>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <h2>関連情報</h2>
+        <ul>
+          <li><a href="kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
+          <li><a href="shinryo-kamoku.html">診療科目一覧</a></li>
+          <li><a href="../about/gendaibyo-db.html">現代病データベース</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "キロクぬかクリニック", href: "kiroku-nuka-clinic.html" }, { label: "外来シリーズ 書庫" }] };</script>
+<script src="../js/common.js"></script>
+<script>
+  (function () {
+    var listEl = document.getElementById("archive-list");
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\n/g, "<br>");
+    }
+
+    fetch("../data/gairai-archive.json")
+      .then(function (res) { return res.json(); })
+      .then(function (entries) {
+        if (!Array.isArray(entries) || entries.length === 0) {
+          listEl.innerHTML = "<p>ただいま準備中です。近日公開予定です。</p>";
+          return;
+        }
+        entries.sort(function (a, b) {
+          return (b.date || "").localeCompare(a.date || "");
+        });
+        listEl.innerHTML = entries.map(function (e) {
+          var noteLink = e.note_url
+            ? '<p class="diary-date"><a href="' + escapeHtml(e.note_url) + '" target="_blank" rel="noopener">note版を読む &gt;</a></p>'
+            : "";
+          return (
+            '<div class="diary-entry">' +
+              (e.date ? '<div class="diary-date">' + escapeHtml(e.date) + '</div>' : "") +
+              '<div class="diary-title">' + escapeHtml(e.title) + '</div>' +
+              '<div class="diary-body">' + escapeHtml(e.body) + '</div>' +
+              noteLink +
+            '</div>'
+          );
+        }).join("");
+      })
+      .catch(function () {
+        listEl.innerHTML = "<p>読み込みに失敗しました。時間をおいて試してください。</p>";
+      });
+  })();
+</script>
+</body>
+</html>
