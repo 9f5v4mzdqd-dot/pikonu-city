@@ -67,10 +67,12 @@
       ".site-search-empty{margin:0; padding:.7em .8em; font-size:.85rem; color:var(--color-text-sub,#767676);}" +
       ".nav-search-mobile{display:none;}" +
       ".nav-search-mobile-label{margin:0 0 6px; font-size:.78rem; color:#fff; opacity:.85;}" +
+      ".nav-search-hint{display:none;}" +
       "@media (max-width:680px){" +
       ".nav-search-mobile{display:block; padding:12px 14px; background:rgba(0,0,0,.12);}" +
       ".nav-search-mobile .header-search{display:flex;}" +
       ".nav-search-mobile input[type=search]{flex:1; min-width:0;}" +
+      ".nav-search-hint{display:inline-block; margin-left:10px; font-size:.75rem; color:#fff; opacity:.8; vertical-align:middle;}" +
       "}";
     document.head.appendChild(style);
   }
@@ -145,6 +147,7 @@
       "</div>" +
       navHtml + "</div>" +
       '<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="global-nav-inner">メニュー ☰</button>' +
+      '<span class="nav-search-hint">メニューを押すと検索画面が出ます</span>' +
       "</nav>" +
       breadcrumbHtml +
       "</header>";
