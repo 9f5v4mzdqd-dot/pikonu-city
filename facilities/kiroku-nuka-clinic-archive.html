@@ -34,6 +34,9 @@
     color: var(--color-text-sub, #767676);
     margin-right: .6em;
   }
+  #archive-month-list a { display: flex; justify-content: space-between; }
+  #archive-month-list a.active { font-weight: 700; color: var(--color-primary, #2b5c8a); }
+  #archive-month-list .month-count { color: var(--color-text-sub, #767676); font-size: .85em; }
 </style>
 </head>
 <body id="top">
@@ -68,6 +71,13 @@
           <li><a href="../about/gendaibyo-db.html">現代病データベース</a></li>
         </ul>
       </div>
+
+      <div class="sidebar-block">
+        <h2>月別アーカイブ</h2>
+        <ul id="archive-month-list">
+          <li>読み込み中...</li>
+        </ul>
+      </div>
     </aside>
   </div>
 </main>
@@ -78,9 +88,12 @@
   (function () {
     var listEl = document.getElementById("archive-list");
     var filterEl = document.getElementById("archive-filter");
+    var monthListEl = document.getElementById("archive-month-list");
     var allEntries = [];
     var activeCategory = "すべて";
+    var activeMonth = null; // null = すべての月
     var CATEGORIES = ["すべて", "外来シリーズ", "○○の話"];
+    var NO_MONTH_KEY = "日付未設定";
 
     function escapeHtml(s) {
       return String(s)
@@ -88,6 +101,13 @@
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/\n/g, "<br>");
+    }
+
+    function monthKeyOf(e) {
+      var d = e.added_at || e.date;
+      if (!d) return NO_MONTH_KEY;
+      var m = String(d).match(/^(\d{4})-(\d{2})/);
+      return m ? (m[1] + "年" + parseInt(m[2], 10) + "月") : NO_MONTH_KEY;
     }
 
     function renderFilter() {
@@ -105,10 +125,46 @@
       });
     }
 
+    function renderMonthList() {
+      var counts = {};
+      var order = [];
+      allEntries.forEach(function (e) {
+        var key = monthKeyOf(e);
+        if (!(key in counts)) { counts[key] = 0; order.push(key); }
+        counts[key]++;
+      });
+      order.sort(function (a, b) {
+        if (a === NO_MONTH_KEY) return 1;
+        if (b === NO_MONTH_KEY) return -1;
+        return b.localeCompare(a, "ja", { numeric: true });
+      });
+
+      var html = '<li><a href="#" data-month="" class="' + (activeMonth === null ? "active" : "") + '">' +
+        "すべて表示<span class=\"month-count\">" + allEntries.length + "</span></a></li>";
+      html += order.map(function (key) {
+        return '<li><a href="#" data-month="' + escapeHtml(key) + '" class="' +
+          (activeMonth === key ? "active" : "") + '">' + escapeHtml(key) +
+          '<span class="month-count">' + counts[key] + "</span></a></li>";
+      }).join("");
+      monthListEl.innerHTML = html;
+
+      Array.prototype.forEach.call(monthListEl.querySelectorAll("a"), function (a) {
+        a.addEventListener("click", function (ev) {
+          ev.preventDefault();
+          var m = a.getAttribute("data-month");
+          activeMonth = m === "" ? null : m;
+          renderMonthList();
+          renderList();
+        });
+      });
+    }
+
     function renderList() {
       var entries = allEntries.filter(function (e) {
         var cat = e.category || "外来シリーズ";
-        return activeCategory === "すべて" || cat === activeCategory;
+        var catOk = activeCategory === "すべて" || cat === activeCategory;
+        var monthOk = activeMonth === null || monthKeyOf(e) === activeMonth;
+        return catOk && monthOk;
       });
       if (entries.length === 0) {
         listEl.innerHTML = "<p>該当する作品がありません。</p>";
@@ -136,6 +192,7 @@
       .then(function (entries) {
         if (!Array.isArray(entries) || entries.length === 0) {
           listEl.innerHTML = "<p>ただいま準備中です。近日公開予定です。</p>";
+          monthListEl.innerHTML = "<li>-</li>";
           return;
         }
         entries.sort(function (a, b) {
@@ -143,10 +200,12 @@
         });
         allEntries = entries;
         renderFilter();
+        renderMonthList();
         renderList();
       })
       .catch(function () {
         listEl.innerHTML = "<p>読み込みに失敗しました。時間をおいて試してください。</p>";
+        monthListEl.innerHTML = "<li>-</li>";
       });
   })();
 </script>

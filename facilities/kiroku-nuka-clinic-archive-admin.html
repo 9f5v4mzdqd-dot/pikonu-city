@@ -256,9 +256,11 @@
           var idx = entries.findIndex(function (e) { return e.id === editingId; });
           if (idx === -1) throw new Error("編集対象の記事が見つかりませんでした。");
           entryData.id = editingId;
+          entryData.added_at = entries[idx].added_at || new Date().toISOString().slice(0, 10);
           entries[idx] = entryData;
         } else {
           entryData.id = makeId();
+          entryData.added_at = new Date().toISOString().slice(0, 10);
           entries.unshift(entryData);
         }
         var msg = (editingId ? "外来シリーズ書庫 編集: " : "外来シリーズ書庫: ") + title;
@@ -347,23 +349,33 @@
 
     fetchCurrent(token)
       .then(function (current) {
+        var todayStr = new Date().toISOString().slice(0, 10);
         var existingTitles = {};
-        current.entries.forEach(function (e) { existingTitles[e.title] = true; });
+        var backfilled = 0;
+        current.entries.forEach(function (e) {
+          existingTitles[e.title] = true;
+          if (!e.added_at) { e.added_at = todayStr; backfilled++; }
+        });
 
         var toAdd = BULK_ENTRIES.filter(function (e) { return !existingTitles[e.title]; });
-        if (toAdd.length === 0) {
-          bulkStatusEl.textContent = "すべて投稿済みのようです(新規追加はありませんでした)。";
+        toAdd.forEach(function (e) { e.added_at = todayStr; });
+
+        if (toAdd.length === 0 && backfilled === 0) {
+          bulkStatusEl.textContent = "すべて投稿済み・登録日設定済みのようです(変更はありませんでした)。";
           return null;
         }
 
         var newEntries = current.entries.concat(toAdd);
         bulkStatusEl.textContent = toAdd.length + "件を投稿中...";
-        return saveEntries(token, newEntries, current.sha, "外来シリーズ書庫: 一括インポート(" + toAdd.length + "件)")
-          .then(function () { return toAdd.length; });
+        return saveEntries(token, newEntries, current.sha, "外来シリーズ書庫: 一括インポート(" + toAdd.length + "件, 登録日補完" + backfilled + "件)")
+          .then(function () { return { added: toAdd.length, backfilled: backfilled }; });
       })
-      .then(function (addedCount) {
-        if (addedCount) {
-          bulkStatusEl.textContent = addedCount + "件を投稿しました! 反映まで1分ほどかかります。";
+      .then(function (result) {
+        if (result) {
+          var msg = [];
+          if (result.added) msg.push(result.added + "件を新規投稿");
+          if (result.backfilled) msg.push(result.backfilled + "件の登録日を補完");
+          bulkStatusEl.textContent = msg.join("・") + "しました! 反映まで1分ほどかかります。";
           entryListEl.innerHTML = "";
         }
       })
