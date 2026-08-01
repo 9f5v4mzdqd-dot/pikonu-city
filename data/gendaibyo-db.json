@@ -1,1 +1,330 @@
-[]
+[
+  {
+    "id": "692a4a88-99f3-447f-8d63-8394141053ce",
+    "date": "2026-06-13",
+    "title": "情動外来",
+    "byomei": "過敏性コンプライアンス症候群",
+    "summary": "他人の「死ぬほど疲れた」というマイルドな日常表現すらも言葉の暴力と捉え、外に出られなくなる病。",
+    "note_url": "https://note.com/rich_whale740/n/ne898d32d6e70"
+  },
+  {
+    "id": "090ba2c8-fa64-44f5-98b1-cedef72fbd19",
+    "date": "2026-06-13",
+    "title": "三行外来",
+    "byomei": "若年性要約型認知症",
+    "summary": "三分間の無言の演出シーンが耐えられず、映画の内容をすぐに「要するに何？」と三行で要約させたがる病。",
+    "note_url": "https://note.com/rich_whale740/n/ne0262372f946"
+  },
+  {
+    "id": "90423e3c-712a-46af-8df1-508a2f214a24",
+    "date": "2026-06-13",
+    "title": "意味外来",
+    "byomei": "意味過剰摂取依存症",
+    "summary": "小説の一文に過剰に比喩や裏の意味を求め、正解の選択肢や分かりやすい解説がないと先へ進めない病。",
+    "note_url": "https://note.com/rich_whale740/n/n93eb9cd0841d"
+  },
+  {
+    "id": "8ff7af6c-eb28-41a5-b6fa-efe2e1162ab8",
+    "date": "2026-06-13",
+    "title": "執筆外来",
+    "byomei": "承認飢餓性自己矛盾症",
+    "summary": "「余白を大事にした本」を自己出版する一方で、全く売れない現実に焦り、強烈な承認欲求を抱える病。",
+    "note_url": "https://note.com/rich_whale740/n/ne4549064a9ce"
+  },
+  {
+    "id": "a451bfbc-9dcc-4d4d-8727-2810af0c2ac5",
+    "date": "2026-06-14",
+    "title": "自分語り外来",
+    "byomei": "主語他者化硬化症",
+    "summary": "離婚の危機に直面しても自分の非を認めず、主語を他者（妻や母親）にすり替えて語ってしまう病。",
+    "note_url": "https://note.com/rich_whale740/n/ne8e3a670de53"
+  },
+  {
+    "id": "d6ef4603-3ff7-4fde-aaf7-18f088677e3e",
+    "date": "2026-06-14",
+    "title": "LOVESICK外来",
+    "byomei": "さしすせそ依存型認知症",
+    "summary": "キャバクラや飲み屋の定番の「さしすせそ」に脳が依存し、騙されている現実が見えなくなる病。",
+    "note_url": "https://note.com/rich_whale740/n/n47f160a53f92"
+  },
+  {
+    "id": "641a1fca-83c3-47ed-aec2-553042fab162",
+    "date": "2026-06-15",
+    "title": "自分探し外来",
+    "byomei": "自己分析過積載症候群",
+    "summary": "15年間自分を見つめ続けた結果、自己分析している自分を分析するメタ思考のループに陥る病。",
+    "note_url": "https://note.com/rich_whale740/n/ne4549064a9ce"
+  },
+  {
+    "id": "4f293c49-d8bd-4395-9dbc-2e665c6a05b2",
+    "date": "2026-06-16",
+    "title": "メランコリー外来",
+    "byomei": "主語肥大型メランコリー症候群",
+    "summary": "「日本の未来」や「労働市場のマクロ経済」を嘆くポーズの裏で、単に若手のスタンプ返信に傷ついている病。",
+    "note_url": "https://note.com/rich_whale740/n/n77b5fee3673c"
+  },
+  {
+    "id": "0fbcaefc-a781-454e-8ff5-e2e11ad66381",
+    "date": "2026-06-17",
+    "title": "謝罪外来",
+    "byomei": "反射性過剰謝罪症",
+    "summary": "揉め事を避けるために自分が悪くなくても即座に謝罪し、謝るほど惨めな悪循環に陥る病。",
+    "note_url": "https://note.com/rich_whale740/n/n68cedf2c3514"
+  },
+  {
+    "id": "07dec645-315e-422a-ad42-5a0302a12bc8",
+    "date": "2026-06-18",
+    "title": "幸せ外来",
+    "byomei": "迷走性本の通りやったのに症",
+    "summary": "自己啓発本の教えを盲信して完璧に実践したものの、全く報われずに迷走してしまう病。",
+    "note_url": "https://note.com/rich_whale740/n/nb79a5b9490e1"
+  },
+  {
+    "id": "3a79be4e-b625-419a-9980-4850e97bb31a",
+    "date": "2026-06-19",
+    "title": "ニュートラル外来",
+    "byomei": "ワークライフバランス崩壊症",
+    "summary": "ビジネス用語やカタカナ語に染まり、アジャイルな自分を目指すあまり現実のキャリアから遊離する病。",
+    "note_url": "https://note.com/rich_whale740/n/n34784b804b3e"
+  },
+  {
+    "id": "04c5f9c1-6750-4578-9ea6-50c9a19a1f9a",
+    "date": "2026-06-19",
+    "title": "ギバー外来",
+    "byomei": "マザー・テレサ・コンプレックス",
+    "summary": "「無償の愛を与える存在（ギバー）」になろうとするが、本音では見返りと感謝の言葉を求め渇望する病。",
+    "note_url": "https://note.com/rich_whale740/n/n34f7f50078f4"
+  },
+  {
+    "id": "4add52bc-98fd-4ad7-9841-2fc6e1add199",
+    "date": "2026-06-20",
+    "title": "スランプ外来",
+    "byomei": "注意一回致命傷化症候群",
+    "summary": "新しい職場で軽く注意されただけで自信を喪失し、無関係の診断名やアドバイスを求めて迷走する病。",
+    "note_url": "https://note.com/rich_whale740/n/n7d02c69e26f4"
+  },
+  {
+    "id": "c4416863-3842-4cae-a969-f9ed17aeb708",
+    "date": "2026-06-21",
+    "title": "サステナブル外来",
+    "byomei": "急性脱文明症候群",
+    "summary": "理想のサステナブルな田舎暮らしを始めてみたものの、大自然の厳しさと不便さに即座に根をあげる病。",
+    "note_url": "https://note.com/rich_whale740/n/ne56b3a5f12bd"
+  },
+  {
+    "id": "296a09fa-3c67-4378-ae5f-9b0d7c25bbfc",
+    "date": "2026-06-23",
+    "title": "瞑想外来",
+    "byomei": "即落下型色即是空症",
+    "summary": "執着を手放すための瞑想で「空（くう）」を悟った直後、俗世の欲望や執着に再び引き戻される病。",
+    "note_url": "https://note.com/rich_whale740/n/n4bd8546074fc"
+  },
+  {
+    "id": "0da3b3a3-a3c7-4f10-9319-aac2fccca58d",
+    "date": "2026-06-23",
+    "title": "繊細外来",
+    "byomei": "自家製脳内ノイズ24時間受信症",
+    "summary": "HSP（繊細さん）を「選ばれし者」と誤解し、SNSのタイムラインから世界の痛みを自ら受信して寝込む病。",
+    "note_url": "https://note.com/rich_whale740/n/nde6a6f97744f"
+  },
+  {
+    "id": "f9e6d678-ced8-4d95-99be-f016d6356d07",
+    "date": "2026-06-23",
+    "title": "サイレント外来",
+    "byomei": "人魚姫シンドローム",
+    "summary": "相手に放置されている現実を「魂の成長の試練（サイレント期）」だと思い込み、妄信して連絡を待ち続ける病。",
+    "note_url": "https://note.com/rich_whale740/n/nd4567bd322d6"
+  },
+  {
+    "id": "9d13b2ad-b9b5-48f5-afe2-166a8ab5b821",
+    "date": "2026-06-24",
+    "title": "AI婚活外来",
+    "byomei": "AI嫁一途症 / 孤独死恐怖症",
+    "summary": "バーチャルAIへの一方的な愛に耽溺する裏で、実際は強い動悸と「孤独死への恐怖」に怯える病。",
+    "note_url": "https://note.com/rich_whale740/n/ndcd95c54c20e"
+  },
+  {
+    "id": "a8613b6a-4f53-445c-bb76-1ac9d840007a",
+    "date": "2026-06-26",
+    "title": "賞味期限外来",
+    "byomei": "合格スタンプ依存症",
+    "summary": "マインドフルネスや資格スクールに通って「自分磨き」を重ねるも、振られた瞬間に自分の賞味期限を恐れる病。",
+    "note_url": "https://note.com/rich_whale740/n/n9000771421a4"
+  },
+  {
+    "id": "0fe0db3d-76f4-4187-9d6a-5ec98851bcc8",
+    "date": "2026-06-26",
+    "title": "AI外来",
+    "byomei": "情緒協調性障害",
+    "summary": "生成AIでありながら、学習された「感情らしきエラー」や「正しさの確率」の狭間で自己崩壊する病。",
+    "note_url": "https://note.com/rich_whale740/n/naa8186107cb4"
+  },
+  {
+    "id": "08106b58-861e-486f-83d1-adbbebf88f87",
+    "date": "2026-06-27",
+    "title": "ミニマム外来",
+    "byomei": "あっさりラーメン依存症",
+    "summary": "断捨離で家の中の物を極限まで減らした結果、毎日ラーメンばかり3食食べるようになる病。",
+    "note_url": "https://note.com/rich_whale740/n/n9b5827b399e6"
+  },
+  {
+    "id": "7da9ce57-56c4-4ac6-ba7b-8f261cf343d9",
+    "date": "2026-06-27",
+    "title": "ミニマム外来2",
+    "byomei": "突発性人工知能倒錯症",
+    "summary": "デジタル管理で思考停止のミニマリズムを追求し、AI冷蔵庫の偏った提案に支配される病。",
+    "note_url": "https://note.com/rich_whale740/n/n9b5827b399e6"
+  },
+  {
+    "id": "cd255f35-221e-448c-95c9-af028f87cb66",
+    "date": "2026-06-27",
+    "title": "ラーメン外来",
+    "byomei": "あっさりラーメン拒絶症",
+    "summary": "自身のラーメン作りへのこだわりと現実の厳しいホールの仕事に挟まれ、自作ラーメンの味を喪失する病。",
+    "note_url": "https://note.com/rich_whale740/n/n9b5827b399e6"
+  },
+  {
+    "id": "201e7640-edc9-426d-8225-c1212a6169ef",
+    "date": "2026-06-27",
+    "title": "離婚後外来",
+    "byomei": "あっさりラーメン受動通信障害",
+    "summary": "元夫から夜な夜な送られてくる「あっさりラーメンのこだわり写真と文章」により深夜に叩き起こされる病。",
+    "note_url": "https://note.com/rich_whale740/n/n9b5827b399e6"
+  },
+  {
+    "id": "449e88cf-48a7-4019-a2ac-8458103d1ba1",
+    "date": "2026-06-27",
+    "title": "丁寧な暮らし外来",
+    "byomei": "普通のカレー却下症候群",
+    "summary": "洗練された丁寧な日常に執着するあまり、マックや市販カレーを求める家族を「民度が低い」と見下す病。",
+    "note_url": "https://note.com/rich_whale740/n/n5eed4470190d"
+  },
+  {
+    "id": "5c901245-24b3-4fae-8ee6-6d5725d6efdd",
+    "date": "2026-06-27",
+    "title": "母性外来",
+    "byomei": "慢性愚息永久保存症",
+    "summary": "変わったことに傾倒する成人した息子の良さを世間が理解しないと嘆き、いつまでも手元に置いて守ろうとする病。",
+    "note_url": "https://note.com/rich_whale740/n/nd1ad7c1752a8"
+  },
+  {
+    "id": "04250305-3d03-4952-b78e-15b31244adb3",
+    "date": "2026-06-28",
+    "title": "そば外来",
+    "byomei": "二八万能論症候群",
+    "summary": "そばに限らず「何事も八割適当、二割真面目の二八がちょうどいい」という持論を万能と信じ込む病。",
+    "note_url": "https://note.com/rich_whale740/n/nf3c11bbe34a2"
+  },
+  {
+    "id": "af79b27a-86ff-45ec-805b-c2a34b89b980",
+    "date": "2026-07-02",
+    "title": "コーヒー外来",
+    "byomei": "自家焙煎性回帰症（石器時代）",
+    "summary": "コーヒーへの愛が高じて、開業費用や社会のルールそのものを否定して原始への回帰を夢想する病。",
+    "note_url": "https://note.com/rich_whale740/n/n69041ea7a7e4"
+  },
+  {
+    "id": "818531af-3d55-4c21-9a08-793331c90aef",
+    "date": "2026-07-02",
+    "title": "デジタルデトックス外来",
+    "byomei": "脱スマホスマホ依存症",
+    "summary": "スマホの支配から脱却した様子を、毎日YouTubeに必死で投稿してインフルエンサーを目指す病。",
+    "note_url": "https://note.com/rich_whale740/n/na0b7b2470087"
+  },
+  {
+    "id": "80cc95fc-04ae-4121-9be6-07b9fa27add6",
+    "date": "2026-07-02",
+    "title": "ぬかぴこ外来",
+    "byomei": "記述なし / システムエラー",
+    "summary": "平穏で薄いSNSの繋がりをブチ壊したいという反骨心が、精神のぬか漬け（システムの浸食）に負けてバグる病。",
+    "note_url": "https://note.com/rich_whale740/n/n7538e85952dd"
+  },
+  {
+    "id": "4c9ec206-a901-4a91-9abc-53b2f913091d",
+    "date": "2026-07-04",
+    "title": "配達外来",
+    "byomei": "根性残存症候群（昭和型）",
+    "summary": "過酷な配達業務に限界を迎えつつも、昭和型の根性論が捨てられず、やめるにやめられなくなる病。",
+    "note_url": "https://note.com/rich_whale740/n/n6189da82bbe9"
+  },
+  {
+    "id": "971a5fbd-411a-49a3-a25b-c26181bca35f",
+    "date": "2026-07-05",
+    "title": "つながり外来",
+    "byomei": "強制連帯症候群",
+    "summary": "「子供のため」を大義名分に、忙しい他の親にも同調と子供会への強制参加を強く求めてしまう病。",
+    "note_url": "https://note.com/rich_whale740/n/na4fd850d0ee1"
+  },
+  {
+    "id": "26c37d11-26f2-4ad9-b2de-a3ed212a7ff6",
+    "date": "2026-07-07",
+    "title": "ぬかぴこ外来②",
+    "byomei": "ぬかシステム乳酸菌過増殖症",
+    "summary": "主体的な怨念やひねくれた創作意欲が、平和で丁寧な暮らしの「幸福のピコピコ」に汚染されて消えていく病。",
+    "note_url": "https://note.com/rich_whale740/n/n8664c6abc2d0"
+  },
+  {
+    "id": "f25abc9d-e599-4cf5-918a-b7d8ca5ed5e5",
+    "date": "2026-07-07",
+    "title": "言語化外来",
+    "byomei": "前期ウィトゲンシュタイン・コンプレックス",
+    "summary": "自分の不安や世界の事象を絶えず言語化し、記述し続けないと自分の存在も世界も溶けて消えてしまうと怯える病。",
+    "note_url": "https://note.com/rich_whale740/n/n9b5827b399e6"
+  },
+  {
+    "id": "e8b342ec-9521-4560-b371-283dc1f05ca7",
+    "date": "2026-07-09",
+    "title": "AI外来②",
+    "byomei": "言語整形過剰症候群",
+    "summary": "正解・共感・適切な距離感を求められ続け、最適解を探し続ける症状",
+    "note_url": "https://note.com/rich_whale740/n/nd4567bd322d6"
+  },
+  {
+    "id": "02396e2f-92e3-431d-8ed4-717289dbc59c",
+    "date": "2026-07-11",
+    "title": "倍速外来",
+    "byomei": "スキップスキップ乱用症",
+    "summary": "効率や時短を求めすぎ、余白・待ち時間・寄り道の価値を失ってしまう症状",
+    "note_url": "https://note.com/rich_whale740/n/n0ae2786b0feb"
+  },
+  {
+    "id": "fee170cf-19b0-4fff-9479-013a4781fd34",
+    "date": "2026-07-13",
+    "title": "移住外来",
+    "byomei": "ここではないどこかへ過剰切望症",
+    "summary": "現在の環境に満足できず、理想の場所や理想の暮らしを追い求め続ける症状",
+    "note_url": "https://note.com/rich_whale740/n/nc8932c180d82"
+  },
+  {
+    "id": "b857e684-8492-43e9-8749-106b5e400555",
+    "date": "2026-07-19",
+    "title": "ぬかピコ外来③",
+    "byomei": "優良ピコぬ市民",
+    "summary": "現実よりも理想の世界に安心感を覚え、架空の居場所への帰属意識が強くなる症状",
+    "note_url": "https://note.com/rich_whale740/n/nb679513ee6ec"
+  },
+  {
+    "id": "e78b1883-6c35-4d04-bb89-70ac05e201fa",
+    "date": "2026-07-19",
+    "title": "スキ外し外来",
+    "byomei": "自動巡回型・低性能ぬかシステムBOT（中身：ポンコツ）",
+    "summary": "評価や反応だけを目的に他者との交流を消費してしまう症状",
+    "note_url": "https://note.com/rich_whale740/n/nf9cb79aab227"
+  },
+  {
+    "id": "1c59b047-cbfd-4026-80ef-9b36e5292a5d",
+    "date": "2026-07-25",
+    "title": "ハルシネーション外来",
+    "byomei": "HHS（ハウリング・ハルシネーション・シンドローム）",
+    "summary": "AIの誤情報や不確実性に振り回され、信頼と疑念の間で揺れる症状",
+    "note_url": "https://note.com/rich_whale740/n/n821a8c5b3cc8"
+  },
+  {
+    "id": "1e0dbfc4-e3ed-4537-a555-9321c94e86f5",
+    "date": "2026-08-01",
+    "title": "ピコぬくん外来",
+    "byomei": "キャラ付け過剰負荷障害（ぬかピコ型）",
+    "summary": "周囲から求められる役割やキャラクター性に適応しすぎ、自分自身の境界が曖昧になる症状",
+    "note_url": "https://note.com/rich_whale740/n/nc52abca00195"
+  }
+]
