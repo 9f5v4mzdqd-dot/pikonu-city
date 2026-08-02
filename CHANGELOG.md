@@ -10,8 +10,17 @@
 - ファイルパス: 内容
 ```
 
----
 
+## 2026-08-02(2)
+---
+### 追加
+- `about/piconu-chat.html`:本文冒頭にヘッダー画像(images/piconu-chat.jpg)を追加
+- `about/gaiyou.html`・`about/shisei-joho.html`・`services/index.html`:各ページ冒頭にヘッダー画像を追加(images/gaiyou.jpg・images/shisei-joho.jpg・images/services-index.jpg)
+- `about/cable-tv.html`:新番組「がんばれ! ピコぬくん」(月〜金17:00〜17:25、アニメ形式のご当地ヒーロー番組)を週間番組表・番組紹介の両方に追加。画像はimages/cable-tv/ganbare-piconukun.jpg
+- `about/cable-tv.html`:「がんばれ! ピコぬくん」テーマ曲「自動ドアの前で」を追加。audio/ganbare-piconukun-theme.mp3を`<audio>`タグで再生可能にし、歌詞は`<details>`要素で折りたたみ表示
+
+### 変更
+- `about/cable-tv.html`:コンプライアンス上の懸念から「シロタ株」の表記を「ピコタ株」に修正(2箇所)
 
 ## 2026-08-02
 
