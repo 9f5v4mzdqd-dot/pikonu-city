@@ -110,7 +110,10 @@
       choices: [
         { label: "市の施設について教えて", next: "shisetsu" },
         { label: "現代病について教えて", next: "gendaibyo" },
+        { label: "交通局について教えて", next: "koutsu" },
         { label: "ピコぬくんのことを教えて", next: "about_me" },
+        { label: "ピコぬ市検定について", next: "link_quiz" },
+        { label: "ゲームで遊びたい", next: "link_game" },
         { label: "特に用はないぬ", next: "nothing" }
       ]
     },
@@ -142,6 +145,8 @@
       text: "ピコぬくんは市が導入しているAI搭載型支援ロボットだぬ。案内役をしながら、業務日誌もこつこつつけているだぬ。",
       choices: [
         { label: "業務日誌を見たい", next: "link_diary" },
+        { label: "ピコぬくんについてもっと知りたい", next: "link_about_page" },
+        { label: "ピコぬくんグッズが欲しい", next: "link_goods" },
         { label: "他のことを聞きたい", next: "start" }
       ]
     },
@@ -170,6 +175,31 @@
       text: "ピコぬくんの業務日誌はこちらだぬ。",
       link: { href: "piconu-diary.html", label: "ピコぬくん業務日誌へ &gt;" },
       choices: [{ label: "他のことを聞きたい", next: "start" }]
+    },
+    koutsu: {
+      text: "鉄道の連結技術がピコぬ市の名物だぬ、路線図はこちらから見れるだぬ。",
+      link: { href: "../facilities/koutsukyoku.html", label: "交通局のページへ &gt;" },
+      choices: [{ label: "他のことを聞きたい", next: "start" }]
+    },
+    link_quiz: {
+      text: "ピコぬ市検定は初級から受けられるだぬ。",
+      link: { href: "piconu-quiz.html", label: "ピコぬ市検定へ &gt;" },
+      choices: [{ label: "他のことを聞きたい", next: "start" }]
+    },
+    link_game: {
+      text: "ゲームで遊びながらピコぬ市のことを学べるだぬ。",
+      link: { href: "piconu-kun-game.html", label: "脱出ゲームへ &gt;" },
+      choices: [{ label: "他のことを聞きたい", next: "start" }]
+    },
+    link_about_page: {
+      text: "ここにボクのことが書いてあるから読んでほしいだぬ。",
+      link: { href: "piconu-kun.html", label: "ピコぬくんとは へ &gt;" },
+      choices: [{ label: "他のことを聞きたい", next: "start" }]
+    },
+    link_goods: {
+      text: "公式グッズはSUZURIで販売してるぬ。",
+      link: { href: "https://suzuri.jp/PIKONU-CITY", label: "SUZURIショップへ &gt;", external: true },
+      choices: [{ label: "他のことを聞きたい", next: "start" }]
     }
   };
 
@@ -184,7 +214,8 @@
       '<div class="icon"><img src="../images/piconu-icon.jpg" alt=""></div>' +
       '<div class="text">' + text;
     if (linkInfo) {
-      html += '<br><a href="' + linkInfo.href + '">' + linkInfo.label + '</a>';
+      var targetAttr = linkInfo.external ? ' target="_blank" rel="noopener"' : "";
+      html += '<br><a href="' + linkInfo.href + '"' + targetAttr + '>' + linkInfo.label + '</a>';
     }
     html += '</div>';
     bubble.innerHTML = html;
