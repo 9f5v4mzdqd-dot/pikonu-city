@@ -12,6 +12,23 @@
 
 ---
 
+## 2026-08-02
+
+### 追加
+- `about/piconu-chat.html`:「ピコぬくんとおはなし」ページを新規作成。選択肢分岐型のなんちゃってチャットボット(施設案内・現代病・交通局・ピコぬくん自身・検定・脱出ゲーム・グッズなどへの導線を用意)
+- グローバルナビ(`js/common.js`)の一番右に「ピコぬくんとチャット」を追加(全ページ共通ヘッダーに反映)
+- `images/piconu-icon.jpg`:チャット吹き出し用の専用アイコン画像を追加
+- `images/piconu-chat.jpg`:チャットページのヘッダー画像を追加
+- `images/gendaibyo-db.jpg`・`images/facilities/kiroku-nuka-clinic-archive.jpg`・`images/piconu-diary.jpg`:現代病データベース・外来シリーズ書庫・業務日誌の各ページにヘッダー画像を追加
+- `images/banners/banner-diary.jpg`・`images/banners/banner-gendaibyo-db.jpg`:サイト共通バナー群にピコぬくん業務日誌・現代病データベースのバナーを追加
+
+### 変更
+- `facilities/kiroku-nuka-clinic-archive.html`・`about/piconu-diary.html`:サイドバーに「月別アーカイブ」を追加(基準日は登録(コミット)日、投稿・編集・一括インポート時に自動付与)
+- `facilities/kiroku-nuka-clinic-archive.html`:カテゴリ機能(「外来シリーズ」「○○の話」)の絞り込みタブ・ラベル表示を追加、一括インポートを外来35本+「〜の話」7本の計42本版に更新
+- `index.html`:「PR動画」セクションを2カラムに変更(動画ボックスを半分幅にし、横に現代病データベース・外来シリーズ書庫・業務日誌へのピックアップリンク3件を配置)、背景画像を差し替え、スマホ幅でのbackground-position調整
+- `about/sitemap.html`:「外来シリーズ書庫」へのリンクの記載漏れを追加
+- `about/gendaibyo-db-admin.html`・`about/piconu-diary-admin.html`:一括インポート・登録日補完ボタンにカテゴリ・登録日(added_at)関連の処理を追加
+
 
 ## 2026-08-01(2)
 
