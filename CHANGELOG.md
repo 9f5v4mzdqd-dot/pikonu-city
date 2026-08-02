@@ -33,11 +33,8 @@
 - `images/banners/banner-diary.jpg`・`images/banners/banner-gendaibyo-db.jpg`:サイト共通バナー群にピコぬくん業務日誌・現代病データベースのバナーを追加
 
 ### 変更
-- `facilities/kiroku-nuka-clinic-archive.html`・`about/piconu-diary.html`:サイドバーに「月別アーカイブ」を追加(基準日は登録(コミット)日、投稿・編集・一括インポート時に自動付与)
-- `facilities/kiroku-nuka-clinic-archive.html`:カテゴリ機能(「外来シリーズ」「○○の話」)の絞り込みタブ・ラベル表示を追加、一括インポートを外来35本+「〜の話」7本の計42本版に更新
 - `index.html`:「PR動画」セクションを2カラムに変更(動画ボックスを半分幅にし、横に現代病データベース・外来シリーズ書庫・業務日誌へのピックアップリンク3件を配置)、背景画像を差し替え、スマホ幅でのbackground-position調整
 - `about/sitemap.html`:「外来シリーズ書庫」へのリンクの記載漏れを追加
-- `about/gendaibyo-db-admin.html`・`about/piconu-diary-admin.html`:一括インポート・登録日補完ボタンにカテゴリ・登録日(added_at)関連の処理を追加
 
 
 ## 2026-08-01(2)
@@ -62,6 +59,8 @@
 
 ### 変更
 - `facilities/kiroku-nuka-clinic.html`:本文とサイドバー「関連情報」に「外来シリーズ 書庫」へのリンクを追加
+- `facilities/kiroku-nuka-clinic-archive.html`・`about/piconu-diary.html`:サイドバーに「月別アーカイブ」を追加(基準日は登録(コミット)日、投稿・編集・一括インポート時に自動付与)
+- `about/gendaibyo-db-admin.html`・`about/piconu-diary-admin.html`:一括インポート・登録日補完ボタンにカテゴリ・登録日(added_at)関連の処理を追加
 
 
 
