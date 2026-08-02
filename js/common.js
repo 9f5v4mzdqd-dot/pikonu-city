@@ -41,7 +41,8 @@
     { key: "services", label: "くらしの情報", href: "services/index.html" },
     { key: "facilities", label: "施設案内", href: "facilities/index.html" },
     { key: "gaiyou", label: "市の概要", href: "about/gaiyou.html" },
-    { key: "about", label: "市政情報", href: "about/shisei-joho.html" }
+    { key: "about", label: "市政情報", href: "about/shisei-joho.html" },
+    { key: "piconu-chat", label: "ピコぬくんとチャット", href: "about/piconu-chat.html" }
   ];
 
   function el(html) {
