@@ -170,6 +170,7 @@
       '<a href="' + BASE + 'about/piconu-quiz.html"><img src="' + BASE + 'images/banners/banner-quiz.jpg" alt="ピコぬ市検定(初級)"></a>' +
       '<a href="' + BASE + 'about/piconu-diary.html"><img src="' + BASE + 'images/banners/banner-diary.jpg" alt="ピコぬくん業務日誌 ピコぬくんによる、日々の記録だぬ。"></a>' +
       '<a href="' + BASE + 'about/gendaibyo-db.html"><img src="' + BASE + 'images/banners/banner-gendaibyo-db.jpg" alt="現代病データベース キロクぬかクリニックにおける診断記録です。"></a>' +
+      '<a href="' + BASE + 'about/neko-game.html"><img src="' + BASE + 'images/banners/banner-neko-game.jpg" alt="ピコぬ市 Ifシミュレーション 宝くじと猫と、世界経済の終焉 遊んでみる"></a>' +
       "</div></div>";
 
     var footerHtml =
