@@ -662,7 +662,7 @@ html[data-contrast="high"] .kiriban-digit { background: #000; color: #0f0; }
   padding: 20px;
   box-sizing: border-box;
   background-color: #e8f0f9;
-  background-image: url("../images/pr-bg.jpg");
+  background-image: url("../images/sections/pr-bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
