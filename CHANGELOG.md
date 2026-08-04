@@ -10,6 +10,11 @@
 - ファイルパス: 内容
 ```
 
+## 2026-08-03
+---
+### 変更
+- `about/gaiyou.html`・`about/piconu-kun.html`・`about/nukabana.html`・`about/piconu-dori.html`・`about/gendaibyo-db.html`・`about/aisatsu.html`・`about/piconu-diary.html`・`services/index.html`・`about/shisei-joho.html`・`about/piconu-chat.html`・`index.html`・`css/style.css`・`js/common.js`:images直下にあった単発画像13枚(hero-tsunagu・pr-bg・gaiyou・piconu-kun・piconu-diary・gendaibyo-db・mayor-photo・nukabana・piconu-dori・piconu-chat・piconu-icon・services-index・shisei-joho)を`images/sections/`にまとめ、参照パスを一括修正
+- `pdfs/`フォルダを新設し、リポジトリ直下に散らばっていたPDF8本を整理:`pdfs/koho-nukapiko/`(広報ぬかピコ2本)・`pdfs/shotengai-dayori/`(商店街だより)・`pdfs/toshokan-dayori/`(図書館だより)にシリーズ別サブフォルダ、単発の2本(お散歩コースチラシ・現代人診療報酬点数表)は`pdfs/`直下に配置。参照している9ファイルのリンクパスも修正
 
 ## 2026-08-02(2)
 ---
