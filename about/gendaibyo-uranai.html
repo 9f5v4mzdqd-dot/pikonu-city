@@ -58,6 +58,17 @@
     margin: 0 0 14px;
     text-align: left;
   }
+  .gu-result-shohou {
+    font-size: .92rem;
+    line-height: 1.7;
+    color: #2c6e49;
+    background: #eef7f0;
+    border-left: 3px solid #2c6e49;
+    padding: 10px 14px;
+    margin: 0 0 14px;
+    text-align: left;
+    border-radius: 2px;
+  }
   .gu-result-note a { font-size: .85rem; }
   .gu-loading { color: var(--color-text-sub); }
 </style>
@@ -90,6 +101,8 @@
         <p class="gu-result-title" id="guTitle"></p>
         <p class="gu-result-byomei" id="guByomei"></p>
         <p class="gu-result-summary" id="guSummary"></p>
+        <p class="gu-result-label" style="margin-top:6px;">処方</p>
+        <p class="gu-result-shohou" id="guShohou"></p>
         <p class="gu-result-note"><a id="guNoteLink" href="#" target="_blank" rel="noopener">note記事を読む →</a></p>
       </div>
 
@@ -123,6 +136,7 @@
   var titleEl = document.getElementById("guTitle");
   var byomeiEl = document.getElementById("guByomei");
   var summaryEl = document.getElementById("guSummary");
+  var shohouEl = document.getElementById("guShohou");
   var noteLinkEl = document.getElementById("guNoteLink");
 
   var entries = [];
@@ -144,6 +158,7 @@
     titleEl.textContent = entry.title || "";
     byomeiEl.textContent = entry.byomei || "";
     summaryEl.textContent = entry.summary || "";
+    shohouEl.textContent = entry.shohou || "経過観察となります。";
     if (entry.note_url) {
       noteLinkEl.href = entry.note_url;
       noteLinkEl.parentElement.style.display = "block";
