@@ -8,7 +8,15 @@
 ## YYYY-MM-DD
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
-```
+
+
+## 2026-08-06
+---
+### 追加
+
+- サイト共通バナー(js/common.js)に「ピコぬくんとおはなし」(about/piconu-chat.html)を追加(images/banners/banner-piconu-chat.jpg、300x120)
+---
+
 
 ## 2026-08-03
 ---
