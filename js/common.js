@@ -171,6 +171,7 @@
       '<a href="' + BASE + 'about/piconu-diary.html"><img src="' + BASE + 'images/banners/banner-diary.jpg" alt="ピコぬくん業務日誌 ピコぬくんによる、日々の記録だぬ。"></a>' +
       '<a href="' + BASE + 'about/gendaibyo-db.html"><img src="' + BASE + 'images/banners/banner-gendaibyo-db.jpg" alt="現代病データベース キロクぬかクリニックにおける診断記録です。"></a>' +
       '<a href="' + BASE + 'about/piconu-chat.html"><img src="' + BASE + 'images/banners/banner-piconu-chat.jpg" alt="ピコぬくんとチャット 気になることを聞いてみるだぬ。"></a>' +
+      '<a href="' + BASE + 'about/gendaibyo-uranai.html"><img src="' + BASE + 'images/banners/banner-gendaibyo-uranai.jpg" alt="今日のラッキー現代病占い あなたに処方される現代病はどれだぬ?"></a>' +
       '<a href="' + BASE + 'about/neko-game.html"><img src="' + BASE + 'images/banners/banner-neko-game.jpg" alt="ピコぬ市 Ifシミュレーション 宝くじと猫と、世界経済の終焉 遊んでみる"></a>' +
       "</div></div>";
 

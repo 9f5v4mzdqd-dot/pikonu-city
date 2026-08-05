@@ -139,6 +139,7 @@
       choices: [
         { label: "現代病データベースを見たい", next: "link_gendaibyo_db" },
         { label: "外来シリーズ書庫を見たい", next: "link_archive" },
+        { label: "今日の運勢を占いたい", next: "link_uranai" },
         { label: "他のことを聞きたい", next: "start" }
       ]
     },
@@ -170,6 +171,11 @@
     link_gendaibyo_db: {
       text: "現代病データベースはこちらだぬ。",
       link: { href: "gendaibyo-db.html", label: "現代病データベースへ &gt;" },
+      choices: [{ label: "他のことを聞きたい", next: "start" }]
+    },
+    link_uranai: {
+      text: "今日のラッキー現代病占いはこちらだぬ。当たるも八卦、当たらぬも八卦だぬ。",
+      link: { href: "gendaibyo-uranai.html", label: "今日のラッキー現代病占いへ &gt;" },
       choices: [{ label: "他のことを聞きたい", next: "start" }]
     },
     link_diary: {
