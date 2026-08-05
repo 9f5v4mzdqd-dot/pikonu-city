@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ピコぬ市 バナーパーツ</title>
+    <style>
+        .pikonu-banner {
+            display: inline-block;
+            width: 468px;
+            height: 60px;
+            background: #fdfbf7;
+            border: 3px solid #2c3e50;
+            border-radius: 4px;
+            text-decoration: none;
+            box-shadow: 3px 3px 0px #2c3e50;
+            position: relative;
+            overflow: hidden;
+            font-family: "Courier New", Courier, monospace, sans-serif;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .pikonu-banner:hover {
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0px #2c3e50;
+            background: #fffdf9;
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 15px;
+        }
+
+        .banner-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* SVGアイコンを収める丸い枠 */
+        .banner-icon {
+            width: 40px;
+            height: 40px;
+            background: #d4e6f1; 
+            border: 2px solid #2980b9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .banner-text-group {
+            text-align: left;
+        }
+
+        .banner-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .banner-sub {
+            font-size: 10px;
+            color: #718096;
+            margin: 3px 0 0 0;
+        }
+
+        .banner-tag {
+            background: #2980b9;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 2px solid #2c3e50;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body style="background: #eef2f7; text-align: center; padding: 40px;">
+
+    <!-- バナー本体：ここから -->
+    <a href="#" class="pikonu-banner">
+        <div class="banner-content">
+            <div class="banner-left">
+                <div class="banner-icon">
+                    <svg width="28" height="28" viewBox="0 0 64 64">
+                      <circle cx="30" cy="32" r="16" fill="#3498db"/>
+                      <circle cx="43" cy="24" r="10" fill="#3498db"/>
+                      <polygon points="53,24 60,27 53,30" fill="#f39c12"/>
+                      <circle cx="46" cy="22" r="2" fill="#2c3e50"/>
+                      <path d="M18 45 Q10 48 8 56 Q18 52 24 48" fill="#3498db"/>
+                    </svg>
+                </div>
+                <div class="banner-text-group">
+                    <p class="banner-title">ピコぬ市 特別住民票 発行所</p>
+                    <p class="banner-sub">本日も、いい塩梅で生きている証明を。</p>
+                </div>
+            </div>
+            <div class="banner-tag">発行する ➔</div>
+        </div>
+    </a>
+    <!-- バナー本体：ここまで -->
+
+</body>
+</html>
