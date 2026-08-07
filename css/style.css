@@ -417,7 +417,7 @@ table { border-collapse: collapse; width: 100%; }
 .banner-strip-inner a:hover img { opacity: .85; }
 
 @media (max-width: 680px) {
-  .banner-strip-inner img { width: 44%; }
+  .banner-strip-inner img { width: 90%; max-width: 340px; }
 }
 
 .site-footer { background: var(--color-primary-dark); color: #dfe7f0; margin-top: 0; }
