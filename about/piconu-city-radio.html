@@ -10,10 +10,45 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
 <style>
-  .radio-video { display: block; width: 100%; max-width: 420px; margin: 0 auto 10px; border: 1px solid var(--color-border); background: #000; }
-  .radio-ep { border: 1px solid var(--color-border); border-radius: 4px; padding: 20px; margin-bottom: 24px; background: var(--color-bg-alt); }
-  .radio-ep h3 { margin-top: 0; }
-  .radio-ep-meta { font-size: .85rem; color: var(--color-text-sub); margin: -4px 0 12px; }
+  .radio-video { display: block; width: 100%; max-width: 420px; margin: 0 auto 10px; border: 2px solid #c49a3c; border-radius: 4px; background: #000; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
+  .radio-ep {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    padding: 22px 20px;
+    margin-bottom: 26px;
+    background:
+      radial-gradient(circle at 88% 12%, rgba(196,154,60,.18), transparent 45%),
+      linear-gradient(135deg, #0f2743 0%, #1a4b8c 60%, #123a6b 100%);
+    box-shadow: 0 3px 10px rgba(15,39,67,.35);
+    color: #f4f6fb;
+  }
+  .radio-ep::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 160px;
+    height: 160px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23c49a3c' stroke-width='3' opacity='0.35'%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3Ccircle cx='100' cy='100' r='55'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .radio-ep h3 {
+    margin: 0 0 6px;
+    display: inline-block;
+    background: #c49a3c;
+    color: #1a2c4a;
+    font-size: .85rem;
+    padding: 3px 12px;
+    border-radius: 3px;
+    letter-spacing: .05em;
+  }
+  .radio-ep-meta { font-size: .88rem; color: #d9e2f2; margin: 10px 0 14px; position: relative; z-index: 1; }
+  .radio-ep .radio-video, .radio-ep audio { position: relative; z-index: 1; }
+  .radio-ep audio { width: 100%; max-width: 420px; display: block; margin-bottom: 8px; }
+  .radio-ep a { color: #f4d792; }
   .radio-station { display: inline-block; font-size: .8rem; font-weight: bold; color: #fff; background: var(--color-primary); padding: 3px 10px; border-radius: 3px; margin-bottom: 10px; }
 </style>
 </head>
@@ -31,9 +66,9 @@
   <div class="content-layout">
     <div class="main-content">
       <p>
-       「ピックアップ！ピコぬ市ラジオ」は、FMピコぬで放送している市政広報番組です。
-       清掃・広報支援ロボット 「P-800型 ピコぬくん」 がパーソナリティを務め、市内の出来事や行政からのお知らせ、各種イベント情報などをお伝えしています。
-       配信済みの放送回は、こちらからご視聴いただけます。
+        「ピックアップ! ピコぬ市ラジオ」は、FMピコぬの番組のひとつで、清掃・広報支援ロボット・
+        P-800型ピコぬくんがパーソナリティを務める市政広報ラジオ番組です。市内のできごとや案内を
+        中心に、時折コーナー企画をはさみながらお届けします。配信済みの回はこちらから視聴できます。
       </p>
 
       <div class="info-box">
