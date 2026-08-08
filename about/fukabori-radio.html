@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>深掘りラジオ | FMピコぬ | 市政情報 | ピコぬ市公式ホームページ</title>
+<meta name="description" content="FMピコぬの番組「深掘りラジオ」のアーカイブです。ピコぬ市公式ホームページの内容を2人のパーソナリティがじっくり読み解きます。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .radio-station { display: inline-block; font-size: .8rem; font-weight: bold; color: #fff; background: var(--color-primary); padding: 3px 10px; border-radius: 3px; margin-bottom: 10px; }
+
+  .radio-layout { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 20px; }
+
+  .radio-player {
+    flex: 1 1 460px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    padding: 20px;
+    background:
+      radial-gradient(circle at 88% 12%, rgba(196,154,60,.18), transparent 45%),
+      linear-gradient(135deg, #0f2743 0%, #1a4b8c 60%, #123a6b 100%);
+    box-shadow: 0 3px 10px rgba(15,39,67,.35);
+    color: #f4f6fb;
+    text-align: center;
+  }
+  .radio-player::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 160px;
+    height: 160px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23c49a3c' stroke-width='3' opacity='0.35'%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3Ccircle cx='100' cy='100' r='55'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .radio-player h3 {
+    margin: 0 0 6px;
+    display: inline-block;
+    background: #c49a3c;
+    color: #1a2c4a;
+    font-size: .85rem;
+    padding: 3px 12px;
+    border-radius: 3px;
+    letter-spacing: .05em;
+    position: relative; z-index: 1;
+  }
+  .radio-ep-meta { font-size: .9rem; color: #d9e2f2; margin: 10px 0 14px; position: relative; z-index: 1; }
+  .radio-player img { display: block; width: 100%; max-width: 280px; margin: 0 auto 14px; border-radius: 4px; border: 2px solid #c49a3c; position: relative; z-index: 1; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
+  .radio-player audio { width: 100%; max-width: 420px; display: block; margin: 0 auto 8px; position: relative; z-index: 1; }
+  .radio-player a.radio-mp3-link { position: relative; z-index: 1; display: inline-block; color: #f4d792; }
+
+  .radio-list {
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 620px;
+    overflow-y: auto;
+  }
+  .radio-list-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .radio-list-item:hover { background: #eef2f8; }
+  .radio-list-item.active {
+    background: #eaf1fb;
+    border-color: #1a4b8c;
+    box-shadow: inset 0 0 0 1px #1a4b8c;
+  }
+  .radio-list-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 3px; flex-shrink: 0; border: 1px solid var(--color-border); }
+  .radio-list-item-text { min-width: 0; }
+  .radio-list-item-title { font-size: .85rem; font-weight: bold; color: var(--color-text); margin: 0 0 2px; }
+  .radio-list-item-meta { font-size: .78rem; color: var(--color-text-sub); margin: 0; line-height: 1.4; }
+
+  @media (max-width: 680px) {
+    .radio-list { max-height: none; }
+  }
+</style>
+</head>
+<body id="top">
+
+<main id="main">
+  <div class="page-header">
+    <div class="container">
+      <p class="radio-station">FMピコぬ</p>
+      <h1>深掘りラジオ</h1>
+      <p class="lead">目立たないものを重んじる — ピコぬ市公式ホームページの内容を、2人のパーソナリティがじっくり読み解くポッドキャスト番組です。</p>
+    </div>
+  </div>
+
+  <div class="content-layout">
+    <div class="main-content">
+      <p>
+        「深掘りラジオ」は、ピコぬ市公式ホームページに書かれている内容をもとに、
+        2人のパーソナリティが対話形式でじっくり掘り下げていく音声番組です。
+        「ピックアップ! ピコぬ市ラジオ」とは別番組で、こちらは音声のみでお届けします。
+      </p>
+
+      <h2>配信済みエピソード</h2>
+
+      <div class="radio-layout">
+        <div class="radio-player">
+          <h3 id="rpTitle">第1回</h3>
+          <img id="rpImg" src="../images/cable-tv/fukabori-radio-ep01.jpg" alt="深掘りラジオ 第1回">
+          <p class="radio-ep-meta" id="rpMeta">何もしない時間を肯定するピコぬ市</p>
+          <audio id="rpAudio" controls>
+            <source id="rpSource" src="../audio/fukabori-radio-ep01.mp3" type="audio/mpeg">
+            お使いのブラウザは音声の再生に対応していません。
+          </audio>
+          <a class="radio-mp3-link" id="rpMp3" href="../audio/fukabori-radio-ep01.mp3" download>MP3をダウンロード</a>
+        </div>
+
+        <div class="radio-list" id="radioList"></div>
+      </div>
+
+      <div class="info-box">
+        次回配信は未定です。配信され次第、このページに追加していきます。
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <h2>関連情報</h2>
+        <ul>
+          <li><a href="fm-piconu.html">FMピコぬ トップ</a></li>
+          <li><a href="piconu-city-radio.html">ピックアップ! ピコぬ市ラジオ</a></li>
+          <li><a href="cable-tv.html">ケーブルテレビ番組表</a></li>
+          <li><a href="../facilities/hisho-kouhou-ka.html">秘書広報課</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>window.PAGE_META = { nav: "radio", breadcrumb: [{ label: "FMピコぬ", href: "fm-piconu.html" }, { label: "深掘りラジオ" }] };</script>
+<script src="../js/common.js"></script>
+<script>
+(function () {
+  // 新しい回ほど先頭。今後増やすときはこの配列の先頭に1件追加するだけでOK。
+  var EPISODES = [
+    { title: "第1回", meta: "何もしない時間を肯定するピコぬ市", mp3: "../audio/fukabori-radio-ep01.mp3", img: "../images/cable-tv/fukabori-radio-ep01.jpg" }
+  ];
+
+  var listEl = document.getElementById("radioList");
+  var rpTitle = document.getElementById("rpTitle");
+  var rpMeta = document.getElementById("rpMeta");
+  var rpImg = document.getElementById("rpImg");
+  var rpAudio = document.getElementById("rpAudio");
+  var rpSource = document.getElementById("rpSource");
+  var rpMp3 = document.getElementById("rpMp3");
+
+  function showEpisode(ep, idx) {
+    rpTitle.textContent = ep.title;
+    rpMeta.textContent = ep.meta;
+    rpImg.src = ep.img;
+    rpSource.src = ep.mp3;
+    rpAudio.load();
+    rpMp3.href = ep.mp3;
+
+    var items = listEl.querySelectorAll(".radio-list-item");
+    items.forEach(function (el, i) {
+      el.classList.toggle("active", i === idx);
+    });
+  }
+
+  EPISODES.forEach(function (ep, idx) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "radio-list-item" + (idx === 0 ? " active" : "");
+    btn.innerHTML =
+      '<img src="' + ep.img + '" alt="">' +
+      '<span class="radio-list-item-text">' +
+        '<p class="radio-list-item-title">' + ep.title + '</p>' +
+        '<p class="radio-list-item-meta">' + ep.meta + '</p>' +
+      '</span>';
+    btn.addEventListener("click", function () {
+      showEpisode(ep, idx);
+      document.querySelector(".radio-player").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    listEl.appendChild(btn);
+  });
+})();
+</script>
+</body>
+</html>
