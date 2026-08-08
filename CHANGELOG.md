@@ -10,6 +10,21 @@
 - ファイルパス: 内容
 ```
 
+## 2026-08-08
+---
+### 追加
+- `about/fm-piconu.html`:FMピコぬのハブページを新規作成。番組一覧(カード形式)から「ピックアップ! ピコぬ市ラジオ」「深掘りラジオ」の2番組に分岐する構成
+- `about/fukabori-radio.html`:新番組「深掘りラジオ」のアーカイブページを新規作成。NotebookLM生成の音声のみ(動画なし)、パーソナリティによるポッドキャスト形式。YouTube風の大きい再生プレイヤー+右側/下に過去回サムネイルリスト(クリックで切替)、各回の文字起こし全文を「テキストで読む」の折りたたみ欄に掲載
+  - 第1回「何もしない時間を肯定するピコぬ市」(男女2人の対話形式)・第2回「ピコぬ市の患者は全員同一人物だった⁈」(対話形式)・第3回「三笠イマ2026年作品群の見えない軸」(対話形式)・第4回「まともさの探求」(単独ナレーション形式)・第5回「ピコぬ市で本当に何もしない人を探せ」(単独ナレーション形式)
+- `audio/fukabori-radio-ep01〜05.mp3`、`images/cable-tv/fukabori-radio-ep01.jpg`・`ep02.jpg`:各回の音声・サムネイル素材(サムネは全回共通画像を使用する方針)
+
+### 変更
+- `about/piconu-city-radio.html`(ピックアップ! ピコぬ市ラジオ):YouTube風の構成に全面リニューアル。大きい再生プレイヤー+右側/下に過去回サムネイルリストの2カラム構成に変更し、動画・台本ともにクリックで切り替わる作りに変更。今後の追加はJS内のEPISODES配列に1件追加+台本用`<template>`を1つ足すだけで反映される作りにした
+- `about/piconu-city-radio.html`:ラジオ第5回を追加。8/9「図書館で失踪⁈」
+- `about/piconu-city-radio.html`・`about/sitemap.html`・`about/cable-tv.html`・`facilities/hisho-kouhou-ka.html`:FMピコぬ関連リンクの参照先をハブページ(`about/fm-piconu.html`)に変更・相互リンクを整理
+- `js/common.js`:グローバルナビ「FMピコぬ」のリンク先を`about/piconu-city-radio.html`から`about/fm-piconu.html`に修正。共通バナー(banner-fm-piconu.jpg)のリンクに含まれていた`about/about/`の重複パスを修正
+- `js/common.js`:フッターに「音楽・効果音の一部はCanvaが提供する素材を利用しています」のクレジット行を追加(既存の「無断複写・転載を禁じます」の下)
+
 ## 2026-08-07
 ---
 ### 追加
