@@ -8,9 +8,32 @@
 ## YYYY-MM-DD
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
+```
 
+## 2026-08-07
+---
+### 追加
+- `about/gendaibyo-uranai.html`:「今日のラッキー現代病占い」新規作成。現代病データベース(41件)からアクセスごとに完全ランダムで1件を病名+処方とともに表示
+- `data/gendaibyo-db.json`:全41件に`shohou`(処方)フィールドを追加(占いページのみで表示、データベース側のテーブルには非表示の方針)
+- `images/banners/banner-gendaibyo-uranai.jpg`:占いページ用の共通バナー画像を追加、`js/common.js`のバナー一覧に追加
+- `about/piconu-city-radio.html`:ラジオ番組「ピックアップ! ピコぬ市ラジオ」(局名:FMピコぬ)のアーカイブページを新規作成。第1〜4回の動画・MP3バックナンバー・台本(折りたたみ表示)を掲載
+  - 第1回 8/3「巨大ネギあらわる?!」・第2回 8/6「市民プール、温泉施設へ」・第3回 8/7「巨大マシュマロあらわる⁈」・第4回 8/8「公園にきな粉⁉」
+- `audio/piconu-city-radio-ep01〜04.mp4`・`.mp3`、`images/cable-tv/piconu-city-radio-ep01〜04.jpg`:各回の動画・音声・サムネイル素材
+- `images/banners/banner-fm-piconu.jpg`:FMピコぬの番組紹介バナーを追加、`js/common.js`のバナー一覧・グローバルナビ(「ピコぬくんとチャット」の隣)に追加
 
+### 変更
+- `js/common.js`:グローバルナビに「FMピコぬ」を追加。バナー一覧に占い・FMピコぬの2本を追加
+- `about/gendaibyo-db.html`・`facilities/kiroku-nuka-clinic.html`・`about/piconu-chat.html`・`about/sitemap.html`:今日のラッキー現代病占いへの導線を追加(ピコぬくん自身が遊ぶコンテンツではないため`about/piconu-kun.html`には設置せず)
+- `about/cable-tv.html`・`about/sitemap.html`・`facilities/hisho-kouhou-ka.html`:ピックアップ! ピコぬ市ラジオへの導線を追加(相互リンク)
+- `index.html`:PR動画`piconu-city-pr.mp4`をリポジトリ直下から`audio/`フォルダに移動し、参照パスを更新
+- `css/style.css`:共通バナー群のスマホ表示を、1行2個(横幅44%)から1行1個(横幅90%・最大340px)に変更し視認性を改善
+- `about/piconu-city-radio.html`:各回ブロックの背景をネイビー×ゴールドのスタジオ風デザインに変更(電波の同心円装飾を追加)
+- `IDEAS.md`:2026年8月5日追加分の拡張案6件を記載。「住民票自動発行ジェネレーター」を実装済みに、「ピコぬ市ラジオ・防災無線アーカイブ」を一部実装済みに更新
+- `about/sitemap.html`:住民票自動発行ジェネレーター(`services/juminhyo-generator.html`)へのリンクを追加
 
+### 修正
+- `about/aisatsu.html`:市長の写真パスが存在しない`images/mayor-photo.jpg`を指していたリンク切れを`images/sections/mayor-photo.jpg`に修正
+- `about/piconu-city-radio.html`:パーソナリティ設定の誤りを修正。「ピコぬくん」は個体ごとに型番が異なる総称であり、P-800型もその1体という設定に訂正(「別個体」表記を削除)。普段の担当も「庶務全般」から「清掃・広報支援」に修正
 
 ## 2026-08-06
 ---
@@ -18,7 +41,6 @@
 
 - サイト共通バナー(js/common.js)に「ピコぬくんとおはなし」(about/piconu-chat.html)を追加(images/banners/banner-piconu-chat.jpg、300x120)
 ---
-
 
 ## 2026-08-03
 ---
@@ -51,7 +73,6 @@
 - `index.html`:「PR動画」セクションを2カラムに変更(動画ボックスを半分幅にし、横に現代病データベース・外来シリーズ書庫・業務日誌へのピックアップリンク3件を配置)、背景画像を差し替え、スマホ幅でのbackground-position調整
 - `about/sitemap.html`:「外来シリーズ書庫」へのリンクの記載漏れを追加
 
-
 ## 2026-08-01(2)
 
 ### 変更
@@ -61,7 +82,6 @@
 - `about/gendaibyo-db-admin.html`:現代病データベースの投稿フォーム(管理者用)を新規作成。業務日誌・外来シリーズ書庫と同じGitHub API方式で投稿・編集・削除に対応
 - `data/gendaibyo-db.json`:現代病データベースのデータファイルを新規作成
 - 一括インポート機能:スプレッドシートから抽出した41件を一度に投稿できるボタンを管理画面に追加(重複タイトルは自動スキップ)
-
 
 ## 2026-08-01
 
@@ -76,8 +96,6 @@
 - `facilities/kiroku-nuka-clinic.html`:本文とサイドバー「関連情報」に「外来シリーズ 書庫」へのリンクを追加
 - `facilities/kiroku-nuka-clinic-archive.html`・`about/piconu-diary.html`:サイドバーに「月別アーカイブ」を追加(基準日は登録(コミット)日、投稿・編集・一括インポート時に自動付与)
 - `about/gendaibyo-db-admin.html`・`about/piconu-diary-admin.html`:一括インポート・登録日補完ボタンにカテゴリ・登録日(added_at)関連の処理を追加
-
-
 
 ## 2026-07-31
 
