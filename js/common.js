@@ -231,6 +231,9 @@
       '<span><a href="' + BASE + 'index.html" style="color:#cdd9e6;">個人情報保護方針</a> / ' +
       '<a href="' + BASE + 'index.html" style="color:#cdd9e6;">サイトのご利用について</a></span>' +
       "</div>" +
+       '<div class="footer-bottom" style="border-top:none; padding-top:0;">' +
+      '<span style="font-size:.78rem; color:#a9b8ca;">音楽・効果音の一部はCanvaが提供する素材を利用しています。</span>' +
+      "</div>" +
       "</footer>" +
       '<div class="brand-mark"><a href="' + BASE + 'index.html"><img src="' + BASE + 'images/sections/hero-tsunagu.jpg" alt="ピコぬ市 鉄道連結技術・記録文化・現代病医療"></a></div>' +
       '<a href="#top" class="pagetop" id="pagetop" aria-label="ページの先頭へ戻る">↑</a>';
