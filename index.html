@@ -41,6 +41,37 @@
   </section>
 
   
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2>リアルタイム・ピコぬ市 混雑状況(体感値)</h2>
+      </div>
+      <p style="font-size:.85rem; color:var(--color-text-sub); margin:-8px 0 14px;">
+        職員の体感によるおおよその目安です。正確な待ち時間を保証するものではありません。
+      </p>
+      <ul id="congestion-list" style="list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+      </ul>
+    </div>
+  </section>
+  <script>
+  (function () {
+    var spots = ["市役所1階 市民課窓口", "市立図書館", "自動ドアの前", "市役所食堂", "キロクぬかクリニック 待合室"];
+    var levels = [
+      "平和", "やや猫多め", "少しざわつき", "静か", "まあまあ賑やか",
+      "そこそこ落ち着き", "猫がやや多め", "小康状態", "微妙にそわそわ"
+    ];
+    var listEl = document.getElementById("congestion-list");
+    if (!listEl) return;
+    spots.forEach(function (spot) {
+      var level = levels[Math.floor(Math.random() * levels.length)];
+      var li = document.createElement("li");
+      li.style.cssText = "background:var(--color-bg-alt); border:1px solid var(--color-border); border-radius:3px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; font-size:.9rem;";
+      li.innerHTML = '<span>' + spot + '</span><strong style="color:var(--color-primary);">' + level + '</strong>';
+      listEl.appendChild(li);
+    });
+  })();
+  </script>
+
   <section class="section">
     <div class="container">
       <div class="section-heading">
