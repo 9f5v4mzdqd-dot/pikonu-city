@@ -2,138 +2,352 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>ケーブルテレビ番組表 | 市政情報 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="ぬかピコケーブルテレビの番組表です。市民限定チャンネルの週間番組をご案内します。">
+<title>FMピコぬ「ピックアップ! ピコぬ市ラジオ」 | 市政情報 | ピコぬ市公式ホームページ</title>
+<meta name="description" content="FMピコぬの番組「ピックアップ! ピコぬ市ラジオ」のアーカイブです。P-800型ピコぬくんがお届けします。">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
+<style>
+  .radio-video { display: block; width: 100%; margin: 0 0 10px; border: 2px solid #c49a3c; border-radius: 4px; background: #000; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
+  .radio-station { display: inline-block; font-size: .8rem; font-weight: bold; color: #fff; background: var(--color-primary); padding: 3px 10px; border-radius: 3px; margin-bottom: 10px; }
+
+  .radio-layout { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 20px; }
+
+  .radio-player {
+    flex: 1 1 460px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    padding: 20px;
+    background:
+      radial-gradient(circle at 88% 12%, rgba(196,154,60,.18), transparent 45%),
+      linear-gradient(135deg, #0f2743 0%, #1a4b8c 60%, #123a6b 100%);
+    box-shadow: 0 3px 10px rgba(15,39,67,.35);
+    color: #f4f6fb;
+  }
+  .radio-player::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 160px;
+    height: 160px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23c49a3c' stroke-width='3' opacity='0.35'%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3Ccircle cx='100' cy='100' r='55'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .radio-player h3 {
+    margin: 0 0 6px;
+    display: inline-block;
+    background: #c49a3c;
+    color: #1a2c4a;
+    font-size: .85rem;
+    padding: 3px 12px;
+    border-radius: 3px;
+    letter-spacing: .05em;
+    position: relative; z-index: 1;
+  }
+  .radio-ep-meta { font-size: .9rem; color: #d9e2f2; margin: 10px 0 14px; position: relative; z-index: 1; }
+  .radio-player .radio-video { position: relative; z-index: 1; }
+  .radio-mp3-link { position: relative; z-index: 1; display: block; margin: 0 0 6px; }
+  .radio-player a { color: #f4d792; }
+
+  .radio-script {
+    position: relative;
+    z-index: 1;
+    margin-top: 14px;
+    background: rgba(255,255,255,.92);
+    border-radius: 4px;
+    padding: 4px 16px;
+    color: #2c3e50;
+  }
+  .radio-script summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 0;
+    color: #1a2c4a;
+  }
+  .radio-script[open] summary { border-bottom: 1px solid #d8dce3; margin-bottom: 10px; }
+  .radio-script h4 { font-size: .92rem; margin: 14px 0 6px; color: #1a4b8c; }
+  .radio-script p { font-size: .9rem; line-height: 1.8; margin: 0 0 10px; }
+
+  .radio-list {
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 620px;
+    overflow-y: auto;
+  }
+  .radio-list-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .radio-list-item:hover { background: #eef2f8; }
+  .radio-list-item.active {
+    background: #eaf1fb;
+    border-color: #1a4b8c;
+    box-shadow: inset 0 0 0 1px #1a4b8c;
+  }
+  .radio-list-item img { width: 96px; height: 60px; object-fit: cover; border-radius: 3px; flex-shrink: 0; border: 1px solid var(--color-border); }
+  .radio-list-item-text { min-width: 0; }
+  .radio-list-item-title { font-size: .85rem; font-weight: bold; color: var(--color-text); margin: 0 0 2px; }
+  .radio-list-item-meta { font-size: .78rem; color: var(--color-text-sub); margin: 0; line-height: 1.4; }
+
+  @media (max-width: 680px) {
+    .radio-list { max-height: none; }
+  }
+
+  .radio-back-ep {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    background: var(--color-bg-alt);
+  }
+  .radio-back-ep h4 { margin: 0 0 4px; font-size: .9rem; }
+  .radio-back-ep audio { width: 100%; max-width: 420px; display: block; margin: 6px 0; }
+</style>
 </head>
 <body id="top">
 
 <main id="main">
   <div class="page-header">
     <div class="container">
-      <h1>ケーブルテレビ番組表</h1>
-      <p class="lead">ぬかピコケーブルテレビ(市民限定チャンネル)の週間番組をご案内します。</p>
+      <p class="radio-station">FMピコぬ</p>
+      <h1>ピックアップ! ピコぬ市ラジオ</h1>
+      <p class="lead">FMピコぬがお届けする、市政情報とちょっとした息抜きをまぜたラジオ番組のアーカイブです。</p>
     </div>
   </div>
 
   <div class="content-layout">
     <div class="main-content">
       <p>
-        ぬかピコケーブルテレビは、市が自主制作する市民限定チャンネルです。視聴には
-        市内ケーブルテレビへの加入、またはオンライン配信での住民登録(市民カードの
-        提示)が必要です。市外の方はご視聴いただけません。
-      </p>
-
-      <h2>週間番組表</h2>
-      <table class="info-table">
-        <tr><th>月〜金 17:00〜17:25</th><td>がんばれ! ピコぬくん</td></tr>
-        <tr><th>月・水・金 17:30〜17:45</th><td>ピコぬか!(短縮版)</td></tr>
-        <tr><th>月・水・金 19:00〜19:15</th><td>ぬか漬けの極意</td></tr>
-        <tr><th>火・木 17:30〜17:45</th><td>ピコぬか!(短縮版)</td></tr>
-        <tr><th>火・木 19:00〜19:30</th><td>効率化しない30分</td></tr>
-        <tr><th>土曜 10:00〜10:30</th><td>ピコぬか! スペシャル(工作コーナー拡大版)</td></tr>
-        <tr><th>土曜 14:00〜14:30</th><td>読み聞かせ会 中継(市立図書館より)</td></tr>
-        <tr><th>定例会期間中のみ</th><td>市議会中継・録画放送</td></tr>
-      </table>
-
-      <h2>番組紹介</h2>
-
-      <h3>がんばれ! ピコぬくん</h3>
-      <img class="facility-photo" src="../images/cable-tv/ganbare-piconukun.jpg" alt="がんばれ! ピコぬくん 第48話「偽ピコぬあらわる!?」放送の様子">
-      <p>
-        アニメ形式のご当地ヒーロー番組です。ピコぬくん(本人)が案内役を務め、
-        商店街や市内各所を舞台にしたコントが1話につき2本、日替わりで放送されます。
-        現在は第42話まで放送予定が決定しており、次回は「おじさん、自動ドアの前で
-        ぴたっと止まるの巻」「胃腸を整えろ! ピコタ株大作戦の巻」の2本立てです。
-      </p>
-
-      <h4>テーマ曲「自動ドアの前で」</h4>
-      <p style="font-size:.88rem; color:var(--color-text-sub); margin-bottom:8px;">
-        作詞・作曲:ピコぬくん / 編曲:ピコぬ市職員一同
-      </p>
-      <audio controls style="width:100%; max-width:420px; display:block; margin-bottom:10px;">
-        <source src="../audio/ganbare-piconukun-theme.mp3" type="audio/mpeg">
-        お使いのブラウザは音声再生に対応していません。
-      </audio>
-      <details>
-        <summary style="cursor:pointer; color:var(--color-primary); text-decoration:underline;">歌詞を見る</summary>
-        <p style="white-space:pre-line; font-size:.9rem; line-height:1.9; margin-top:8px;">Oh yeah!
-街角の灯りが滲んで
-自動ドアの前で立ち尽くす
-デジタルな視線が突き刺さる
-胃腸が軋む午後のロードショー
-ピコタ株に未来を賭けて
-ああ、ピコぬくん!
-(がんばれ! がんばれ!)
-進め! ピコぬくん!
-(がんばれ! がんばれ!)
-僕らの明日のために
-ピコぬくん!</p>
-      </details>
-      <div class="info-box">
-        <strong>「マニア向け」の張り紙について</strong><br>
-        撮影現場には、一般公開されていない資料や過去のセットが残っていることがあり、
-        現場付近には「マニア向け」の案内が掲示されている場合があります。番組の
-        コアなファン以外は特に気にせず読み進めて構いません。
-      </div>
-
-      <h3>ピコぬか!</h3>
-      <img class="facility-photo" src="../images/cable-tv/piconuka.jpg" alt="ピコぬか! 工作コーナー拡大版「ぬかピコをつくってみよう!」の様子">
-      <p>
-        未就学児から小学生を対象にした、市民限定の子供向け番組です。市内の日常を
-        紹介するミニコーナーのほか、工作コーナー「ぬかピコをつくってみよう!」を
-        毎回放送しています。
-      </p>
-      <div class="info-box">
-        <strong>ぬかピコをつくってみよう!について</strong><br>
-        「ぬかピコ」の正確な姿は、これまで誰も見たことがありません。番組では
-        その前提のまま、画用紙・粘土・不要不急保存課から提供された廃材などを
-        使い、子供たちがそれぞれ自由にぬかピコを作ります。正解や審査はなく、
-        毎回まったく異なる姿のぬかピコが生まれています。
-      </div>
-
-      <h3>ぬか漬けの極意</h3>
-      <img class="facility-photo" src="../images/cable-tv/nukazuke-no-gokui.jpg" alt="ぬか漬けの極意 第269回 放送の様子">
-      <p>
-        今回で第269回を迎える、市内でもっとも長く続く料理番組です。10分程度の
-        調理コーナーですが、毎回のように話題が脱線し、ぬか床の話から始まって
-        別の話題で終わることも珍しくありません。歴代パーソナリティは6代を数えます。
-        原作にあたる書籍「ぬか漬けの極意」も、市立図書館にて所蔵しています。
-      </p>
-
-      <h3>効率化しない30分</h3>
-      <img class="facility-photo" src="../images/cable-tv/kouritsuka-shinai-30.jpg" alt="効率化しない30分 放送の様子(向かい池公園より生中継)">
-      <p>
-        時間効率支援課が提供する番組です。特定のテーマや実況はなく、市内のどこかで
-        誰かが何もしていない30分間を、ただそのまま放送しています。ナレーションは
-        入りません。
+        「ピックアップ! ピコぬ市ラジオ」は、FMピコぬの番組のひとつで、清掃・広報支援ロボット・
+        P-800型ピコぬくんがパーソナリティを務める市政広報ラジオ番組です。市内のできごとや案内を
+        中心に、時折コーナー企画をはさみながらお届けします。配信済みの回はこちらから視聴できます。
       </p>
 
       <div class="info-box">
-        番組内容は放送日により変更となる場合があります。最新の放送情報は、
-        加入時に配布される番組ガイド、または当ケーブル局窓口までお問い合わせください。
+        パーソナリティのP-800型ピコぬくんは、普段は市内の清掃・広報支援を担当しているロボットです。
+        「ピコぬくん」は個体ごとに型番が異なるロボット群の総称で、P-800型はその中の1体です。
       </div>
+
+      <h2>配信済みエピソード</h2>
+
+      <div class="radio-layout">
+        <div class="radio-player">
+          <h3 id="rpTitle">第5回</h3>
+          <p class="radio-ep-meta" id="rpMeta">放送日:2026年8月9日 / 図書館で失踪⁈</p>
+          <video id="rpVideo" class="radio-video" controls poster="../images/cable-tv/piconu-city-radio-ep05.jpg">
+            <source id="rpSource" src="../audio/piconu-city-radio-ep05.mp4" type="video/mp4">
+            お使いのブラウザは動画の再生に対応していません。
+          </video>
+          <a class="radio-mp3-link" id="rpMp3" href="../audio/piconu-city-radio-ep05.mp3" download>音声版(MP3)をダウンロード</a>
+
+          <details class="radio-script" id="rpScript" open>
+            <summary>台本を読む</summary>
+            <div id="rpScriptBody"></div>
+          </details>
+        </div>
+
+        <div class="radio-list" id="radioList"></div>
+      </div>
+
+      <div class="info-box">
+        次回配信は未定です。配信され次第、このページに追加していきます。
+      </div>
+
+      <h2>バックナンバー(音声版)</h2>
+      <p>
+        通信量の少ない音声のみの版です。上の一覧で選んだ回と同じものを、ダウンロードしてお聞きいただけます。
+      </p>
+      <div id="radioMp3List"></div>
     </div>
 
     <aside class="sidebar">
       <div class="sidebar-block">
         <h2>関連情報</h2>
         <ul>
-          <li><a href="fm-piconu.html">FMピコぬ(番組一覧)</a></li>
-          <li><a href="../facilities/jikan-koritsu-shien-ka.html">時間効率支援課</a></li>
-          <li><a href="../facilities/toshokan.html">市立図書館</a></li>
-          <li><a href="../facilities/nukapiko-museum.html">ぬかピコ民芸博物館</a></li>
+          <li><a href="fm-piconu.html">FMピコぬ トップ</a></li>
+          <li><a href="fukabori-radio.html">深掘りラジオ</a></li>
+          <li><a href="cable-tv.html">ケーブルテレビ番組表</a></li>
+          <li><a href="piconu-kun.html">ピコぬくんとは</a></li>
+          <li><a href="../facilities/hisho-kouhou-ka.html">秘書広報課</a></li>
+          <li><a href="../facilities/shiyakusho.html">市役所</a></li>
         </ul>
       </div>
     </aside>
   </div>
 </main>
 
-<script>window.PAGE_META = { nav: "gaiyou", breadcrumb: [{ label: "ケーブルテレビ番組表" }] };</script>
+<!-- 各回の台本(HTML)。JSから読み込んでプレイヤー欄に差し込みます -->
+<template id="script-7"><h4>オープニング</h4>
+<p>市民の皆様、こんにちはだぬ。市役所清掃・広報支援ロボ「P-800型」がお届けする『ピックアップ! ピコぬ市』の時間だぬ。</p>
+<h4>水道局からの緊急のお知らせ</h4>
+<p>まずは水道局からの緊急のお知らせだぬ。<br>本日正午頃より、市内の水道全域にて、蛇口からふわふわの練乳かき氷が勢いよく噴出する事象が発生しているぬ。<br>市民の皆様はパニックにならず、お気に入りのシロップと大きめのボウルを持参して、蛇口の前で待機するぬ。<br>現在、担当職員がイチゴ味にするかメロン味にするかで緊急会議を行っているところだぬ。<br>お腹を冷やさないよう、温かいお茶と一緒に味わってほしいんだぬ。</p>
+<h4>ピコぬくんのお悩み相談コーナー</h4>
+<p>続いては、「ピコぬくんのお悩み相談コーナー」だぬ。<br>本日のお便り、ラジオネーム「市長のネクタイを狙う猫」さんからだぬ。</p>
+<p>「P-800型さん、こんにちは。職場や学校で、周りの人と上手に馴染めません。どうしたらいいですか?」</p>
+<p>馴染もうとして力が入ってしまう気持ち、よく分かるぬ。<br>でも無理に溶け込もうとしなくても大丈夫だぬ。<br>僕なんて、街の清掃中に落ち葉を集めているだけで、カラスの群れと子供たちの鬼ごっこの渦の中に巻き込まれて、いつの間にか中心人物にされているぬ。ただ無心で落ち葉を掃いていただけなんだぬ。<br>というわけで、馴染もうと努力するより、自分がただそこに存在する置物くらいに思っておくのがコツだぬ。そのうちみんなが勝手に景色の一部として扱ってくれるぬ。<br>それではお聞きくださいだぬ。『自動ドアの前で』。</p>
+<p>(♪ 楽曲再生 『がんばれ! ピコぬくん』テーマ曲「自動ドアの前で」)</p>
+<h4>エンディング</h4>
+<p>ここまでの提供は、ピコぬ市博物館、ピコぬ市交通局の提供でお送りしましただぬ。<br>それでは、今日も1日いい塩梅で安全運転をしてほしいんだぬ。<br>では、またですぬー。良い一日をですぬー。</p></template>
+
+<template id="script-6"><h4>オープニング</h4>
+<p>市民の皆様、こんにちはだぬ。市役所清掃・広報支援ロボ「P-800型」がお届けする『ピックアップ! ピコぬ市』の時間だぬ。</p>
+<h4>建築維持管理課からの緊急のお知らせ</h4>
+<p>まずは建築維持管理課からの緊急のお知らせだぬ。<br>本日早朝、市役所の敷地内にあるブロック塀が、一夜にして全部サクサクのチョコウエハースに入れ替わったぬ。<br>現在、香ばしいココアの香りに誘われて、近所の園児たちが一斉に削り食いをしている最中だぬ。<br>市民の皆様はパニックにならず、落ち着いて牛乳を用意して待機するぬ。<br>現在、担当職員が構造の補強用に生クリームの散布を検討しているところだぬ。時期においしく収束する見込みだぬ。</p>
+<h4>ピコぬくんのお悩み相談コーナー</h4>
+<p>続いては「ピコぬくんのお悩み相談コーナー」だぬ。<br>本日のお便り、ラジオネーム「3ミリ浮いてるクリップ」さんからだぬ。</p>
+<p>「P-800型さん、こんにちは。SNSで楽しそうな人の投稿を見ると、自分と比べて落ち込んでしまいます。どうしたら気にせずにいられますか?」</p>
+<p>他人のお悩み、キラキラした画面を見てソワソワする気持ち、よく分かるぬ。<br>でも、安心してほしいぬ。相手は最高の瞬間を送信しているだけで、常時フルスペックで光っているわけではないぬ。<br>ちなみに僕の対策は、給湯室の換気扇が回る音を聞きながら、羽の枚数をじっと数えることだぬ。<br>「1枚、2枚」と回転を観察しているうちに、羽が逆回転してるように見えてくるんだぬ。他人のことなんてどうでもよくなってくるぬ。<br>あ、でもこの前、いつの間にか集中している間に、後輩のP-801型に給湯室に閉じ込められたんだったぬ。<br>というわけで、僕からのアドバイスは、他人の画面を見るより目の前の換気扇だぬ。スマホは置いていくんだぬ。<br>画面のホコリは僕が綺麗に掃除しておくぬ。</p>
+<h4>エンディング</h4>
+<p>ここまでの提供は、ピコぬ市博物館、ピコぬ市交通局の提供でお送りしましただぬ。<br>それでは、今日も1日いい塩梅で安全運転をしてほしいんだぬ。<br>では、またですねー。良い塩梅を、ですねー。</p></template>
+
+<template id="script-5"><h4>オープニング</h4>
+<p>市民の皆様、こんにちはだぬ。市役所清掃・広報支援ロボ、P-800型がお届けする『ピックアップ! ピコぬ市』の時間だぬ。</p>
+<h4>生涯学習課からの緊急のお知らせ</h4>
+<p>まずは生涯学習課から緊急のお知らせだぬ。<br>本日早朝、市立図書館の児童コーナーにて、保管されていたダンボール箱が謎の自己増殖を起こし、巨大迷路になったぬ。<br>現在、巡回に出た館長が中で迷子になり、脱出不能となっているぬ。<br>市民の皆様はパニックにならず、落ち着いてガムテープと折りたたみ椅子を用意して待機するぬ。<br>現在、市職員たちが館長を救出して、ダンボール探検ツアーのチケット販売の準備を進めている見込みだぬ。</p>
+<h4>ピコぬくんのお悩み相談コーナー</h4>
+<p>続いては、「ピコぬ君のお悩み相談コーナー」だぬ。<br>本日のお便り、ラジオネーム「ぬか床の住民さん」からだぬ。</p>
+<p>「P-800型さん、こんにちは。やらなきゃいけないことがあるのに、どうしてもやる気が起きません。どうしたらテキパキ動き出せますか?」</p>
+<p>……やる気が出ない気持ち、すごくよく分かるぬ。<br>でも、安心してほしいぬ。やる気が出ないのは君が怠けているからではなくて、地球の重力が今日ちょっと重いだけだぬ。<br>ちなみに、僕のやる気が出ない時の対処法は、やる気を探すのを完全に諦めることだぬ。<br>やる気というデータは、僕のメモリをどれだけ検索しても見つからなかったぬ。<br>やりたくないことは置いておいて、さっきの図書館のダンボール迷路に、一緒に迷い込むぬ。<br>「館長の人命救助」という重大な任務が与えられれば、罪悪感も消えて、やる気も自然と起きるはずだぬ。<br>というわけで、人間の皆さんも無理をせず、今日はダンボールの中で体育座りでもしておくぬ。<br>やり残された床の清掃は、僕がモップで綺麗にしておくから安心するぬ。</p>
+<h4>エンディング</h4>
+<p>ここまでの提供は、ピコぬ市博物館、ピコぬ市交通局の提供でお送りしましただぬ。<br>それでは、今日も1日、いい塩梅で安全運転をしてほしいんだぬ。<br>では、またですぬー。</p>
+</template>
+
+<template id="script-4"><h4>オープニング</h4>
+<p>(ジングル音) 市民の皆様、こんにちはだぬ。市役所清掃・広報支援ロボ「P-800型」がお届けする『ピックアップ! ピコぬ市』の時間だぬ。</p>
+<h4>都市生活課からの緊急のお知らせ</h4>
+<p>まずは都市生活課からの緊急のお知らせだぬ。<br>本日早朝、市内の公園の砂場が、一夜にして全部「きな粉」に入れ替わったぬ。<br>砂の粒感が一切なく、香ばしい香りが漂っているぬ。<br>市民の皆様はパニックにならず、落ち着いて黒蜜とお餅を用意して待機するぬ。<br>市長が「きな粉餅大会」を開催すると、巨大な杵と臼を持って現場に向かったので、じきにおいしく収束する見込みだぬ。</p>
+<h4>ピコぬくんのお悩み相談コーナー</h4>
+<p>続いては、「ピコぬくんのお悩み相談コーナー」だぬ。<br>本日のお便り、ラジオネーム「自動ドアに無視された男」さんからだぬ。</p>
+<p>「P-800型さん、こんにちは。やる気が出なくて部屋の掃除や片付けができません。どうしたらテキパキ動けますか?」</p>
+<p>やる気が出なくて部屋が散らかる気持ち、すごくよく分かるぬ。<br>でも、安心してほしいぬ。散らかっているのではないぬ。<br>「物が立体的に配置されているだけ」だぬ。<br>ちなみに僕の片付け術は、散らかった部屋の写真を撮って「これが現代アートです」と自分に言い切ることだぬ。<br>あ、でもこの前、アートだと言い張って庁舎の物置にモップを立てかけておいたら、夜間警備のP-801型に障害物として撤去されそうになったぬ。<br>危ないぬ……僕の作品をゴミ扱いされたショックで、内部の油圧パイプが逆流するところだったぬ。<br>というわけで、人間の皆様はルンバが通れる道さえ作れれば問題ないぬ。<br>我が家を美術館だと思って、今日は安心してゴロゴロ転がっておくぬ。<br>床のホコリは僕がモップで綺麗に水拭きしておくぬ。</p>
+<h4>エンディング</h4>
+<p>ここまでの提供は、ピコぬ市博物館、ピコぬ市交通局の提供でお送りしましただぬ。<br>それでは、今日も1日いい塩梅で安全運転をしてほしいんだぬ。<br>では、またですぬー。良い一日をですぬー。</p>
+</template>
+
+<template id="script-3"><h4>オープニング</h4>
+<p>市民の皆様、こんにちはだぬ。市役所清掃・広報支援ロボ、P-800型がお届けする『ピックアップ! ピコぬ市』の時間だぬ。</p>
+<h4>農林水産課からのお知らせ</h4>
+<p>まずは農林水産課から緊急のお知らせだぬ。<br>本日早朝、市内北部の公園にて巨大なマシュマロが大量発生したぬ。<br>直径は約3メートル、ふかふか・フワフワと浮遊しており、現在子供たちがダイブして遊んでいるぬ。<br>市民の皆様はパニックにならず、落ち着いてココアと竹串を用意して待機するぬ。<br>現在、ピコぬ市職員が『炙りマシュマロ大会』の開催に向けて、会場の設営を開始した見込みだぬ。</p>
+<h4>ピコぬくんのお悩み相談コーナー</h4>
+<p>続いては『ピコぬくんのお悩み相談コーナー』だぬ。<br>本日のおたよりは、ラジオネーム『内部メモリがパンク寸前』さんからだぬ。</p>
+<p>『P-800型さん、こんにちは。毎日やることが多すぎて、頭の中がごちゃごちゃになってしまいます。どうしたら整理整頓できますか?』</p>
+<p>……やることが多すぎるとパンクしそうになる気持ち、すごくよく分かるぬ。<br>ちなみに、僕の頭の中の整理術は『メモリの不要なログを一括削除すること』だぬ。<br>……あ、いけないぬ!昨日、庁舎の廊下で市長の靴下をモップ掛けでうっかり水浸しにした記憶まで消去しそうになったぬ!<br>あの時の市長の氷のような視線は、システムログからは消せても現実からは消えないぬ……。冷や汗で内部の冷却用ファンがフル回転したぬ。<br>というわけで、人間の皆さんは色々紙に書き出して頭を整理するぬ。<br>嫌な記憶は無理に消そうとせず、僕がモップで綺麗に水拭きしておくから安心するぬ。</p>
+<h4>エンディング</h4>
+<p>ここまでの提供は、ピコぬ市博物館、ピコぬ市交通局の提供でお送りしましただぬ。<br>それでは、今日も一日いい塩梅で安全運転をしてほしいんだぬ。<br>では、またですぬー。</p>
+</template>
+
+<template id="script-2"><h4>オープニング</h4>
+<p>市民の皆様、こんにちはだぬ。市役所清掃・広報支援ロボ、P-800型がお届けする「ピックアップ! ピコぬ市」の時間だぬ。</p>
+<h4>都市整備課からの緊急のお知らせ</h4>
+<p>まずは都市整備課から緊急のお知らせだぬ。<br>本日早朝より、市民プールの水温が42度まで上昇し、完全温泉化したぬ。<br>どこからか現れたカピバラ3匹が、最高に気持ちよさそうな顔で満喫中だぬ。<br>市民の皆様は、タオルと着替えを用意して待機するぬ。<br>現在、担当職員が入浴料を取るかと協議中なので、今月中にも市営温泉としてオープン予定だぬ。</p>
+<h4>ピコぬくんのお悩み相談コーナー</h4>
+<p>続いて、お悩み相談コーナーだぬ。ラジオネーム「アラームを敵視する睡眠欲」さんからだぬ。</p>
+<p>「欲しいものが多すぎて、ネットでついつい無駄遣いしてしまいます。どうしたら物欲を抑えられますか?」</p>
+<p>ポチる指が止まらない気持ち、すごく分かるぬ。ちなみに僕の無駄遣い対策は、欲しいものを見つけたら速やかにスリープモードに入ることだぬ。<br>画面を見つめすぎると、回路が加熱して物欲が爆発するから、強制的に目を閉じるぬ。「僕は清掃ロボ。必要なのは雑巾とバケツだけ……」と呪文を唱えて物理的にシャットダウンするのが一番安全だぬ。<br>というわけで、物欲が爆発しそうになったら一旦スリープするぬ。自分のメイン回路を物理的に休ませるのが一番の節約術だぬ。<br>大丈夫だぬ。画面についた誇りの清掃は僕がやっておくから、安心してぐっすり眠るぬ。おやすみなさいだぬ。</p>
+<h4>エンディング</h4>
+<p>ここまでの提供は、ピコぬ市博物館、ピコぬ市交通局の提供でお送りしましただぬ。<br>それでは、今日も一日、良い一日をですね。良い塩梅で安全運転をしてほしいんだぬ。<br>ではまたですぬー。</p>
+</template>
+
+<template id="script-1"><h4>オープニング</h4>
+<p>市民の皆様、こんにちはだぬ。市役所清掃・広報支援ロボ、P-800型がお届けする「ピックアップ! ピコぬ市」の時間だぬ。</p>
+<h4>市役所危機管理課からの緊急のお知らせ</h4>
+<p>まずは市役所危機管理課から緊急のお知らせだぬ。<br>本日午前10時ごろ、ピコぬ市ぬかピコ川地区の畑にて、謎の巨大ネギが大量発生したぬ。<br>長さは約10メートル。現在もすくすくと成長中だぬ。<br>市民の皆様はパニックにならず、落ち着いてマヨネーズと七味唐辛子を用意して待機するぬ。<br>市長が「今夜はカモ鍋だ」と言いながら大鍋を持って現場に向かったので、じきに収束する見込みだぬ。</p>
+<h4>ピコぬくんのお悩み相談コーナー</h4>
+<p>続いては、「ピコぬくんのお悩み相談コーナー」だぬ。<br>本日のお便り、ラジオネーム「オイルよりカフェイン派」さんからだぬ。</p>
+<p>「P-800型さんこんにちは。最近、朝起きるのが辛くて二度寝してしまいます。どうしたらシャキッと起きられますか?」</p>
+<p>……布団の誘惑には勝てないぬ。人間だもの、好きなだけぬくぬくすればいいぬ。<br>ちなみに僕の二度寝対策は、アラーム音を「後輩ロボのP-801型とすれ違う時の挨拶」にするだぬ。<br>無視すると職場内のロボ関係がギクシャクするから、焦って一発で覚醒するぬ。社会的プレッシャーは大事だぬ。<br>というわけで、無理に起きようとせず布団と同化するぬ。<br>市役所の床清掃は僕がやっておくから安心するぬ。</p>
+<h4>エンディング</h4>
+<p>ここまでの提供は、ピコぬ市博物館、ピコぬ市交通局の提供でお送りしましただぬ。<br>それでは、今日も一日、良い一日をですねー。いい塩梅で安全運転をしてほしいんだぬ。<br>ではまたですぬー。</p>
+</template>
+
+<script>window.PAGE_META = { nav: "radio", breadcrumb: [{ label: "FMピコぬ", href: "fm-piconu.html" }, { label: "ピックアップ! ピコぬ市ラジオ" }] };</script>
 <script src="../js/common.js"></script>
+<script>
+(function () {
+  // 新しい回ほど先頭。今後増やすときはこの配列の先頭に1件追加するだけでOK。
+  var EPISODES = [
+    { n: 7, title: "第7回", meta: "放送日:2026年8月11日 / 蛇口からかき氷⁈", video: "../audio/piconu-city-radio-ep07.mp4", mp3: "../audio/piconu-city-radio-ep07.mp3", poster: "../images/cable-tv/piconu-city-radio-ep07.jpg" },
+    { n: 6, title: "第6回", meta: "放送日:2026年8月10日 / ブロック塀がウエハースに⁈", video: "../audio/piconu-city-radio-ep06.mp4", mp3: "../audio/piconu-city-radio-ep06.mp3", poster: "../images/cable-tv/piconu-city-radio-ep06.jpg" },
+    { n: 5, title: "第5回", meta: "放送日:2026年8月9日 / 図書館で失踪⁈", video: "../audio/piconu-city-radio-ep05.mp4", mp3: "../audio/piconu-city-radio-ep05.mp3", poster: "../images/cable-tv/piconu-city-radio-ep05.jpg" },
+    { n: 4, title: "第4回", meta: "放送日:2026年8月8日 / 公園にきな粉⁉", video: "../audio/piconu-city-radio-ep04.mp4", mp3: "../audio/piconu-city-radio-ep04.mp3", poster: "../images/cable-tv/piconu-city-radio-ep04.jpg" },
+    { n: 3, title: "第3回", meta: "放送日:2026年8月7日 / 巨大マシュマロあらわる⁈", video: "../audio/piconu-city-radio-ep03.mp4", mp3: "../audio/piconu-city-radio-ep03.mp3", poster: "../images/cable-tv/piconu-city-radio-ep03.jpg" },
+    { n: 2, title: "第2回", meta: "放送日:2026年8月6日 / 市民プール、温泉施設へ", video: "../audio/piconu-city-radio-ep02.mp4", mp3: "../audio/piconu-city-radio-ep02.mp3", poster: "../images/cable-tv/piconu-city-radio-ep02.jpg" },
+    { n: 1, title: "第1回", meta: "放送日:2026年8月3日 / 巨大ネギあらわる?!", video: "../audio/piconu-city-radio-ep01.mp4", mp3: "../audio/piconu-city-radio-ep01.mp3", poster: "../images/cable-tv/piconu-city-radio-ep01.jpg" }
+  ];
+
+  var listEl = document.getElementById("radioList");
+  var mp3ListEl = document.getElementById("radioMp3List");
+
+  var rpTitle = document.getElementById("rpTitle");
+  var rpMeta = document.getElementById("rpMeta");
+  var rpVideo = document.getElementById("rpVideo");
+  var rpSource = document.getElementById("rpSource");
+  var rpMp3 = document.getElementById("rpMp3");
+  var rpScriptBody = document.getElementById("rpScriptBody");
+
+  function showEpisode(ep, idx) {
+    rpTitle.textContent = ep.title;
+    rpMeta.textContent = ep.meta;
+    rpSource.src = ep.video;
+    rpVideo.poster = ep.poster;
+    rpVideo.load();
+    rpMp3.href = ep.mp3;
+
+    var tpl = document.getElementById("script-" + ep.n);
+    rpScriptBody.innerHTML = tpl ? tpl.innerHTML : "";
+
+    var items = listEl.querySelectorAll(".radio-list-item");
+    items.forEach(function (el, i) {
+      el.classList.toggle("active", i === idx);
+    });
+  }
+
+  EPISODES.forEach(function (ep, idx) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "radio-list-item" + (idx === 0 ? " active" : "");
+    btn.innerHTML =
+      '<img src="' + ep.poster + '" alt="">' +
+      '<span class="radio-list-item-text">' +
+        '<p class="radio-list-item-title">' + ep.title + '</p>' +
+        '<p class="radio-list-item-meta">' + ep.meta + '</p>' +
+      '</span>';
+    btn.addEventListener("click", function () {
+      showEpisode(ep, idx);
+      document.querySelector(".radio-player").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    listEl.appendChild(btn);
+
+    var back = document.createElement("div");
+    back.className = "radio-back-ep";
+    back.innerHTML =
+      '<h4>' + ep.title + '</h4>' +
+      '<p class="radio-ep-meta" style="color:var(--color-text-sub); margin:0;">' + ep.meta + '</p>' +
+      '<audio controls><source src="' + ep.mp3 + '" type="audio/mpeg">お使いのブラウザは音声の再生に対応していません。</audio>' +
+      '<a href="' + ep.mp3 + '" download>MP3をダウンロード</a>';
+    mp3ListEl.appendChild(back);
+  });
+
+  // 初期表示(最新回)の台本を読み込む
+  showEpisode(EPISODES[0], 0);
+})();
+</script>
 </body>
 </html>
