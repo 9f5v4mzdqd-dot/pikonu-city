@@ -49,7 +49,7 @@
       <p style="font-size:.85rem; color:var(--color-text-sub); margin:-8px 0 14px;">
         職員の体感によるおおよその目安です。正確な待ち時間を保証するものではありません。
       </p>
-      <ul id="congestion-list" style="list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+      <ul id="congestion-list" style="list-style:none; margin:0; padding:0; border-top:1px solid var(--color-border);">
       </ul>
     </div>
   </section>
@@ -65,8 +65,10 @@
     spots.forEach(function (spot) {
       var level = levels[Math.floor(Math.random() * levels.length)];
       var li = document.createElement("li");
-      li.style.cssText = "background:var(--color-bg-alt); border:1px solid var(--color-border); border-radius:3px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; font-size:.9rem;";
-      li.innerHTML = '<span>' + spot + '</span><strong style="color:var(--color-primary);">' + level + '</strong>';
+      li.style.cssText = "border-bottom:1px solid var(--color-border); padding:14px 4px; display:flex; gap:16px; align-items:baseline; flex-wrap:wrap;";
+      li.innerHTML =
+        '<span style="font-size:.72rem; padding:2px 8px; border:1px solid var(--color-primary); color:var(--color-primary); border-radius:2px; flex-shrink:0; width:9em; box-sizing:border-box; text-align:center;">' + spot + '</span>' +
+        '<span style="color:var(--color-text);">' + level + '</span>';
       listEl.appendChild(li);
     });
   })();
