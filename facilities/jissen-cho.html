@@ -13,7 +13,7 @@
   .jissen-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 20px;
     margin-top: 1.5em;
   }
   @media (max-width: 900px) {
@@ -26,6 +26,7 @@
     display: block;
     border: 1px solid #ddd;
     line-height: 0;
+    position: relative;
   }
   .jissen-card img {
     width: 100%;
@@ -34,6 +35,21 @@
   .jissen-card:hover {
     border-color: #999;
   }
+  .jissen-caption {
+    line-height: 1.5;
+    font-size: .78rem;
+    color: var(--color-text-sub);
+    padding: 6px 2px 0;
+  }
+  .jissen-dl {
+    display: inline-block;
+    font-size: .78rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-top: 2px;
+  }
+  .jissen-dl:hover { text-decoration: underline; }
+  .jissen-item { display: flex; flex-direction: column; }
 </style>
 </head>
 <body id="top">
@@ -54,27 +70,36 @@
         お手すきの際に、順不同でお試しください。
       </p>
 
+      <p>
+        <a href="../images/jissen/fuyoufukyu-jissen-cho-all.zip" download>全20枚をまとめてダウンロード(ZIP) &#8595;</a>
+      </p>
+
+      <div class="info-box">
+        こちらの画像は、個人でお楽しみいただく範囲でご自由にお使いください。<br>
+        再配布や商用利用、ご本人以外への提供を目的とした二次利用はお控えください。
+      </div>
+
       <div class="jissen-grid">
-        <a class="jissen-card" href="../images/jissen/card_01.png" target="_blank"><img src="../images/jissen/card_01.png" alt="No.01 冷蔵庫から何も取らずに、冷気に10秒当たる。"></a>
-        <a class="jissen-card" href="../images/jissen/card_02.png" target="_blank"><img src="../images/jissen/card_02.png" alt="No.02 回っている換気扇の羽の数を数える。"></a>
-        <a class="jissen-card" href="../images/jissen/card_03.png" target="_blank"><img src="../images/jissen/card_03.png" alt="No.03 車のタイヤの溝を指でなぞる。"></a>
-        <a class="jissen-card" href="../images/jissen/card_04.png" target="_blank"><img src="../images/jissen/card_04.png" alt="No.04 塀のブロックの穴に、石を一つ入れる。"></a>
-        <a class="jissen-card" href="../images/jissen/card_05.png" target="_blank"><img src="../images/jissen/card_05.png" alt="No.05 ボタンの穴に、クリップを通してみる。"></a>
-        <a class="jissen-card" href="../images/jissen/card_06.png" target="_blank"><img src="../images/jissen/card_06.png" alt="No.06 窓のくもりに、指で絵を描く。"></a>
-        <a class="jissen-card" href="../images/jissen/card_07.png" target="_blank"><img src="../images/jissen/card_07.png" alt="No.07 ストローの袋に、水を一滴垂らす。"></a>
-        <a class="jissen-card" href="../images/jissen/card_08.png" target="_blank"><img src="../images/jissen/card_08.png" alt="No.08 チョコレートの包み紙を、綺麗な球体にする。"></a>
-        <a class="jissen-card" href="../images/jissen/card_09.png" target="_blank"><img src="../images/jissen/card_09.png" alt="No.09 落ちてきた桜の花びらを、1分間に何枚手で捕まえられるか競う。"></a>
-        <a class="jissen-card" href="../images/jissen/card_10.png" target="_blank"><img src="../images/jissen/card_10.png" alt="No.10 かけているメガネを反対にして、ものを見てみる。"></a>
-        <a class="jissen-card" href="../images/jissen/card_11.png" target="_blank"><img src="../images/jissen/card_11.png" alt="No.11 電球を外して、また元に戻す。"></a>
-        <a class="jissen-card" href="../images/jissen/card_12.png" target="_blank"><img src="../images/jissen/card_12.png" alt="No.12 チップスターの円柱の入れ物に、ペンを1本立ててみる。"></a>
-        <a class="jissen-card" href="../images/jissen/card_13.png" target="_blank"><img src="../images/jissen/card_13.png" alt="No.13 つま先だけで、玄関まで歩く。"></a>
-        <a class="jissen-card" href="../images/jissen/card_14.png" target="_blank"><img src="../images/jissen/card_14.png" alt="No.14 水道の水を流しながら、吐水口に触る。シャワーでも可。"></a>
-        <a class="jissen-card" href="../images/jissen/card_15.png" target="_blank"><img src="../images/jissen/card_15.png" alt="No.15 部屋のドアの隙間に、豆を一つ挟んでおく。"></a>
-        <a class="jissen-card" href="../images/jissen/card_16.png" target="_blank"><img src="../images/jissen/card_16.png" alt="No.16 テーブルについた、コップの底由来の水で絵を描く。"></a>
-        <a class="jissen-card" href="../images/jissen/card_17.png" target="_blank"><img src="../images/jissen/card_17.png" alt="No.17 2枚組のティッシュを一枚ずつ剥がし、少しだけふわりとさせてから使う。"></a>
-        <a class="jissen-card" href="../images/jissen/card_18.png" target="_blank"><img src="../images/jissen/card_18.png" alt="No.18 ハイソックスの端をくるぶしまでくるくる丸め、また膝の方へ戻す。"></a>
-        <a class="jissen-card" href="../images/jissen/card_19.png" target="_blank"><img src="../images/jissen/card_19.png" alt="No.19 引き出しの持ち手のネジを外し、また元に戻す。"></a>
-        <a class="jissen-card" href="../images/jissen/card_20.png" target="_blank"><img src="../images/jissen/card_20.png" alt="No.20 折れた色鉛筆の芯を、瓶に入れて集める。"></a>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_01.png" target="_blank"><img src="../images/jissen/card_01.png" alt="No.01 冷蔵庫から何も取らずに、冷気に10秒当たる。"></a><p class="jissen-caption">No.01 冷蔵庫から何も取らずに、冷気に10秒当たる。</p><a class="jissen-dl" href="../images/jissen/card_01.png" download="pikonu-city-fuyoufukyu-card_01.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_02.png" target="_blank"><img src="../images/jissen/card_02.png" alt="No.02 回っている換気扇の羽の数を数える。"></a><p class="jissen-caption">No.02 回っている換気扇の羽の数を数える。</p><a class="jissen-dl" href="../images/jissen/card_02.png" download="pikonu-city-fuyoufukyu-card_02.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_03.png" target="_blank"><img src="../images/jissen/card_03.png" alt="No.03 車のタイヤの溝を指でなぞる。"></a><p class="jissen-caption">No.03 車のタイヤの溝を指でなぞる。</p><a class="jissen-dl" href="../images/jissen/card_03.png" download="pikonu-city-fuyoufukyu-card_03.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_04.png" target="_blank"><img src="../images/jissen/card_04.png" alt="No.04 塀のブロックの穴に、石を一つ入れる。"></a><p class="jissen-caption">No.04 塀のブロックの穴に、石を一つ入れる。</p><a class="jissen-dl" href="../images/jissen/card_04.png" download="pikonu-city-fuyoufukyu-card_04.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_05.png" target="_blank"><img src="../images/jissen/card_05.png" alt="No.05 ボタンの穴に、クリップを通してみる。"></a><p class="jissen-caption">No.05 ボタンの穴に、クリップを通してみる。</p><a class="jissen-dl" href="../images/jissen/card_05.png" download="pikonu-city-fuyoufukyu-card_05.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_06.png" target="_blank"><img src="../images/jissen/card_06.png" alt="No.06 窓のくもりに、指で絵を描く。"></a><p class="jissen-caption">No.06 窓のくもりに、指で絵を描く。</p><a class="jissen-dl" href="../images/jissen/card_06.png" download="pikonu-city-fuyoufukyu-card_06.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_07.png" target="_blank"><img src="../images/jissen/card_07.png" alt="No.07 ストローの袋に、水を一滴垂らす。"></a><p class="jissen-caption">No.07 ストローの袋に、水を一滴垂らす。</p><a class="jissen-dl" href="../images/jissen/card_07.png" download="pikonu-city-fuyoufukyu-card_07.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_08.png" target="_blank"><img src="../images/jissen/card_08.png" alt="No.08 チョコレートの包み紙を、綺麗な球体にする。"></a><p class="jissen-caption">No.08 チョコレートの包み紙を、綺麗な球体にする。</p><a class="jissen-dl" href="../images/jissen/card_08.png" download="pikonu-city-fuyoufukyu-card_08.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_09.png" target="_blank"><img src="../images/jissen/card_09.png" alt="No.09 落ちてきた桜の花びらを、1分間に何枚手で捕まえられるか競う。"></a><p class="jissen-caption">No.09 落ちてきた桜の花びらを、1分間に何枚手で捕まえられるか競う。</p><a class="jissen-dl" href="../images/jissen/card_09.png" download="pikonu-city-fuyoufukyu-card_09.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_10.png" target="_blank"><img src="../images/jissen/card_10.png" alt="No.10 かけているメガネを反対にして、ものを見てみる。"></a><p class="jissen-caption">No.10 かけているメガネを反対にして、ものを見てみる。</p><a class="jissen-dl" href="../images/jissen/card_10.png" download="pikonu-city-fuyoufukyu-card_10.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_11.png" target="_blank"><img src="../images/jissen/card_11.png" alt="No.11 電球を外して、また元に戻す。"></a><p class="jissen-caption">No.11 電球を外して、また元に戻す。</p><a class="jissen-dl" href="../images/jissen/card_11.png" download="pikonu-city-fuyoufukyu-card_11.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_12.png" target="_blank"><img src="../images/jissen/card_12.png" alt="No.12 チップスターの円柱の入れ物に、ペンを1本立ててみる。"></a><p class="jissen-caption">No.12 チップスターの円柱の入れ物に、ペンを1本立ててみる。</p><a class="jissen-dl" href="../images/jissen/card_12.png" download="pikonu-city-fuyoufukyu-card_12.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_13.png" target="_blank"><img src="../images/jissen/card_13.png" alt="No.13 つま先だけで、玄関まで歩く。"></a><p class="jissen-caption">No.13 つま先だけで、玄関まで歩く。</p><a class="jissen-dl" href="../images/jissen/card_13.png" download="pikonu-city-fuyoufukyu-card_13.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_14.png" target="_blank"><img src="../images/jissen/card_14.png" alt="No.14 水道の水を流しながら、吐水口に触る。シャワーでも可。"></a><p class="jissen-caption">No.14 水道の水を流しながら、吐水口に触る。シャワーでも可。</p><a class="jissen-dl" href="../images/jissen/card_14.png" download="pikonu-city-fuyoufukyu-card_14.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_15.png" target="_blank"><img src="../images/jissen/card_15.png" alt="No.15 部屋のドアの隙間に、豆を一つ挟んでおく。"></a><p class="jissen-caption">No.15 部屋のドアの隙間に、豆を一つ挟んでおく。</p><a class="jissen-dl" href="../images/jissen/card_15.png" download="pikonu-city-fuyoufukyu-card_15.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_16.png" target="_blank"><img src="../images/jissen/card_16.png" alt="No.16 テーブルについた、コップの底由来の水で絵を描く。"></a><p class="jissen-caption">No.16 テーブルについた、コップの底由来の水で絵を描く。</p><a class="jissen-dl" href="../images/jissen/card_16.png" download="pikonu-city-fuyoufukyu-card_16.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_17.png" target="_blank"><img src="../images/jissen/card_17.png" alt="No.17 2枚組のティッシュを一枚ずつ剥がし、少しだけふわりとさせてから使う。"></a><p class="jissen-caption">No.17 2枚組のティッシュを一枚ずつ剥がし、少しだけふわりとさせてから使う。</p><a class="jissen-dl" href="../images/jissen/card_17.png" download="pikonu-city-fuyoufukyu-card_17.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_18.png" target="_blank"><img src="../images/jissen/card_18.png" alt="No.18 ハイソックスの端をくるぶしまでくるくる丸め、また膝の方へ戻す。"></a><p class="jissen-caption">No.18 ハイソックスの端をくるぶしまでくるくる丸め、また膝の方へ戻す。</p><a class="jissen-dl" href="../images/jissen/card_18.png" download="pikonu-city-fuyoufukyu-card_18.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_19.png" target="_blank"><img src="../images/jissen/card_19.png" alt="No.19 引き出しの持ち手のネジを外し、また元に戻す。"></a><p class="jissen-caption">No.19 引き出しの持ち手のネジを外し、また元に戻す。</p><a class="jissen-dl" href="../images/jissen/card_19.png" download="pikonu-city-fuyoufukyu-card_19.png">画像をダウンロード &#8595;</a></div>
+        <div class="jissen-item"><a class="jissen-card" href="../images/jissen/card_20.png" target="_blank"><img src="../images/jissen/card_20.png" alt="No.20 折れた色鉛筆の芯を、瓶に入れて集める。"></a><p class="jissen-caption">No.20 折れた色鉛筆の芯を、瓶に入れて集める。</p><a class="jissen-dl" href="../images/jissen/card_20.png" download="pikonu-city-fuyoufukyu-card_20.png">画像をダウンロード &#8595;</a></div>
       </div>
 
     </div>
