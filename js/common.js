@@ -226,6 +226,9 @@
       "開庁時間:平日 8:30〜17:15</p>" +
       "</div>" +
       "</div>" +
+      '<div class="footer-bottom" style="border-top:none; padding-top:0;">' +
+'<span style="font-size:.78rem; color:#a9b8ca;">当サイトは、架空の自治体「ピコぬ市」を舞台にした創作サイトです。実在の自治体・団体・人物とは一切関係ありません。</span>' +
+"</div>" +
       '<div class="footer-bottom">' +
       "<span>&copy; Piconu City. 無断複写・転載を禁じます。</span>" +
       '<span><a href="' + BASE + 'index.html" style="color:#cdd9e6;">個人情報保護方針</a> / ' +
