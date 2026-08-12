@@ -14,8 +14,11 @@
 ---
 ### 追加
 - `about/gyousei-kiroku-01.html`:行政記録 第一号「診療情報提供兼意見書(時間効率支援課宛)」を実際の書式風デザインで新規作成
+- `pdfs/gomi-shushu-calendar.pdf`:ごみ収集カレンダー(全戸配布版)を新規作成。記録町・塩梅町・ぬかが丘一丁目・外来通三丁目・連結町の5地区別に収集日程をまとめた1枚もの
 ### 変更
 - `about/rekishi.html`:「行政記録　第一号」の表記を「閲覧準備中」から `gyousei-kiroku-01.html` へのリンク(「閲覧可能」)に変更
+- `services/gomi.html`:収集カレンダーの案内を「PDF版準備中」から `pdfs/gomi-shushu-calendar.pdf` へのリンクに変更
+
 ## 2026-08-11
 ---
 ### 追加
