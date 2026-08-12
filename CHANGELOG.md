@@ -16,11 +16,13 @@
 - `about/gyousei-kiroku-01.html`:行政記録 第一号「診療情報提供兼意見書(時間効率支援課宛)」を実際の書式風デザインで新規作成
 - `pdfs/gomi-shushu-calendar.pdf`:ごみ収集カレンダー(全戸配布版)を新規作成。記録町・塩梅町・ぬかが丘一丁目・外来通三丁目・連結町の5地区別に収集日程をまとめた1枚もの
 - `facilities/chiiki-shigen-saiiyou.html`:暮らしと循環推進課「地域資源再利用事業」を新規作成。市民間リユース・シェア、建築解体材のアップサイクル、公共施設の備品循環の3本柱で構成
+- `about/unei-rireki.html`:「当ホームページの運営履歴」を新規作成。開設(2026年7月11日)から現在までの主な更新を時系列でご案内
 ### 変更
-- `about/rekishi.html`:「行政記録　第一号」の表記を「閲覧準備中」から `gyousei-kiroku-01.html` へのリンク(「閲覧可能」)に変更
+- `about/rekishi.html`:「行政記録　第一号」の表記を「閲覧準備中」から `gyousei-kiroku-01.html` へのリンク(「閲覧可能」)に変更。「関連資料」表に `unei-rireki.html` へのリンクを追加
 - `services/gomi.html`:収集カレンダーの案内を「PDF版準備中」から `pdfs/gomi-shushu-calendar.pdf` へのリンクに変更。粗大ごみとカレンダーの間に「分別しても行き先が決まらないものについて(黒い塊)」セクションを新規追加(散文詩「くろいもの」を含む)。サイドバー「関連サービス」に `chiiki-shigen-saiiyou.html` へのリンクを追加
 - `facilities/kurashi-junkan-ka.html`:制度一覧・サイドバーに「地域資源再利用事業」への導線を追加
 - `facilities/kankyoka.html`:壊れていたHTML構造(サイドバーの閉じタグ抜け)を修正。「ピコぬ市環境方針」の一文に `chiiki-shigen-saiiyou.html` へのリンクを追加。本文の「関連ページ」セクション(サイドバー「関連情報」と重複)を削除し、サイドバー側に `chiiki-shigen-saiiyou.html` へのリンクを追加して一本化
+- `about/sitemap.html`:市政情報リストに `unei-rireki.html` へのリンクを追加
 ### 修正
 - `facilities/kankyoka.html`:HTML構造の崩れ(`<aside>`・`<div class="sidebar-block">`の閉じタグ抜け、サイドバー中身の欠落)を修正
 
@@ -33,6 +35,8 @@
 - `about/fm-piconu.html`:番組一覧に「どうでもいいラジオ」の番組カードを追加
 - `about/fukabori-radio.html` / `about/piconu-city-radio.html` / `about/piconu-kun.html` / `facilities/fuyoufukyuhozonka.html`:サイドバー等の関連情報リンクに「どうでもいいラジオ」への導線を追加
 - `about/fukabori-radio.html`:番組紹介文を一部修正(「ピコぬ市公式ホームページの内容」→「ピコぬ市にまつわる文化」、パーソナリティを「市外在住」と明記)
+
+
 ## 2026-08-10
 ---
 ### 追加
