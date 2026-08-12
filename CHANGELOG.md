@@ -9,6 +9,22 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 ```
+
+## 2026-08-12
+---
+### 追加
+- `about/gyousei-kiroku-01.html`:行政記録 第一号「診療情報提供兼意見書(時間効率支援課宛)」を実際の書式風デザインで新規作成
+### 変更
+- `about/rekishi.html`:「行政記録　第一号」の表記を「閲覧準備中」から `gyousei-kiroku-01.html` へのリンク(「閲覧可能」)に変更
+## 2026-08-11
+---
+### 追加
+- `about/dodemoii-radio.html`:FMピコぬ第3番組「どうでもいいラジオ」を新規作成(「深掘りラジオ」と同レイアウト)。P-800型ピコぬくんが淡々と「どうでもいい話」を届ける番組、不要不急保存課提供
+- `audio/dodemoii-radio-ep01.mp3`・`images/cable-tv/dodemoii-radio-ep01.jpg`:第1回(2026年8月11日配信)の音声・サムネイル
+### 変更
+- `about/fm-piconu.html`:番組一覧に「どうでもいいラジオ」の番組カードを追加
+- `about/fukabori-radio.html` / `about/piconu-city-radio.html` / `about/piconu-kun.html` / `facilities/fuyoufukyuhozonka.html`:サイドバー等の関連情報リンクに「どうでもいいラジオ」への導線を追加
+- `about/fukabori-radio.html`:番組紹介文を一部修正(「ピコぬ市公式ホームページの内容」→「ピコぬ市にまつわる文化」、パーソナリティを「市外在住」と明記)
 ## 2026-08-10
 ---
 ### 追加
