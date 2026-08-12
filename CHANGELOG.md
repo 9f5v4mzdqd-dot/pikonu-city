@@ -18,8 +18,11 @@
 - `facilities/chiiki-shigen-saiiyou.html`:暮らしと循環推進課「地域資源再利用事業」を新規作成。市民間リユース・シェア、建築解体材のアップサイクル、公共施設の備品循環の3本柱で構成
 ### 変更
 - `about/rekishi.html`:「行政記録　第一号」の表記を「閲覧準備中」から `gyousei-kiroku-01.html` へのリンク(「閲覧可能」)に変更
-- `services/gomi.html`:収集カレンダーの案内を「PDF版準備中」から `pdfs/gomi-shushu-calendar.pdf` へのリンクに変更
+- `services/gomi.html`:収集カレンダーの案内を「PDF版準備中」から `pdfs/gomi-shushu-calendar.pdf` へのリンクに変更。粗大ごみとカレンダーの間に「分別しても行き先が決まらないものについて(黒い塊)」セクションを新規追加(散文詩「くろいもの」を含む)。サイドバー「関連サービス」に `chiiki-shigen-saiiyou.html` へのリンクを追加
 - `facilities/kurashi-junkan-ka.html`:制度一覧・サイドバーに「地域資源再利用事業」への導線を追加
+- `facilities/kankyoka.html`:壊れていたHTML構造(サイドバーの閉じタグ抜け)を修正。「ピコぬ市環境方針」の一文に `chiiki-shigen-saiiyou.html` へのリンクを追加。本文の「関連ページ」セクション(サイドバー「関連情報」と重複)を削除し、サイドバー側に `chiiki-shigen-saiiyou.html` へのリンクを追加して一本化
+### 修正
+- `facilities/kankyoka.html`:HTML構造の崩れ(`<aside>`・`<div class="sidebar-block">`の閉じタグ抜け、サイドバー中身の欠落)を修正
 
 ## 2026-08-11
 ---
