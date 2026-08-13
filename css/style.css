@@ -297,7 +297,7 @@ table { border-collapse: collapse; width: 100%; }
   box-sizing: border-box;
   text-align: center;
 }
-.notice-tag.important { border-color: var(--color-notice-border); color: var(--color-notice-text); }
+.notice-tag.important { }
 .notice-list a { color: var(--color-text); text-decoration: none; }
 .notice-list a:hover { color: var(--color-accent); text-decoration: underline; }
 
