@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,94 +10,155 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=M+PLUS+1+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cl-bg: #f3f1f6;
-    --cl-panel: #fbfafc;
-    --cl-accent: #6b5b73;
-    --cl-accent-soft: #ded4e2;
-    --cl-text: #443a4d;
-    --cl-text-sub: #7c6e83;
-    --cl-border: #ded4e2;
+    --cl-bg: #0b0e14;
+    --cl-panel: #101720;
+    --cl-panel-2: #0e1420;
+    --cl-accent: #3cffdc;
+    --cl-accent-dim: #1f9c8a;
+    --cl-accent-soft: #22383a;
+    --cl-text: #d7ece9;
+    --cl-text-sub: #7d9591;
+    --cl-border: #22383a;
+    --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, "Courier New", monospace;
+    --cl-sans: "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
   }
 
-  .clinic-shell { background: var(--cl-bg); border-radius: 16px; padding: 32px 34px; }
+  .clinic-page { font-family: var(--cl-sans); }
+  .clinic-page h1, .clinic-page .lead { font-family: var(--cl-sans); }
+  .page-header h1, .page-header .lead { font-family: var(--cl-sans); }
 
-  .clinic-badge-row { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+  .clinic-shell {
+    background: var(--cl-bg);
+    border-radius: 10px;
+    padding: 32px 34px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--cl-border);
+  }
+  .clinic-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(60,255,220,0.025) 3px, rgba(60,255,220,0.025) 4px);
+  }
+
+  .clinic-badge-row { position: relative; display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
   .clinic-badge {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--cl-accent); color: #fff;
+    width: 52px; height: 52px; border-radius: 4px;
+    background: transparent; color: var(--cl-accent);
+    border: 1px solid var(--cl-accent);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem; letter-spacing: .02em; flex-shrink: 0;
+    font-size: 1.2rem; letter-spacing: .02em; flex-shrink: 0;
+    font-family: var(--cl-mono);
   }
-  .clinic-badge-text .clinic-name { font-size: 1.15rem; font-weight: bold; color: var(--cl-text); letter-spacing: .03em; margin: 0; }
-  .clinic-badge-text .clinic-tagline { font-size: .82rem; color: var(--cl-text-sub); margin: 3px 0 0; }
+  .clinic-badge-text .clinic-name {
+    font-size: 1.05rem; font-weight: bold; color: var(--cl-accent);
+    letter-spacing: .06em; margin: 0; font-family: var(--cl-mono);
+  }
+  .clinic-badge-text .clinic-tagline { font-size: .8rem; color: var(--cl-text-sub); margin: 4px 0 0; font-family: var(--cl-mono); }
 
-  .clinic-page .facility-photo { border-radius: 12px; border-color: var(--cl-border); margin-bottom: 22px; }
+  .clinic-page .facility-photo {
+    border-radius: 6px; border: 1px solid var(--cl-border);
+    margin-bottom: 24px; filter: saturate(.7) contrast(1.05);
+  }
+
+  .clinic-page { position: relative; }
 
   .clinic-page h2 {
     border-left: none;
     padding-left: 0;
-    color: var(--cl-text);
-    font-size: 1.05rem;
-    letter-spacing: .04em;
-    margin-top: 2.2em;
+    color: var(--cl-accent);
+    font-size: .82rem;
+    letter-spacing: .12em;
+    margin-top: 2.4em;
     padding-bottom: 8px;
-    border-bottom: 2px solid var(--cl-accent-soft);
+    border-bottom: 1px solid var(--cl-accent-soft);
+    font-family: var(--cl-mono);
+    text-transform: uppercase;
   }
+  .clinic-page h2::before { content: "// "; color: var(--cl-accent-dim); }
   .clinic-page p { color: var(--cl-text); }
 
   .clinic-panel {
     background: var(--cl-panel);
     border: 1px solid var(--cl-border);
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 18px 22px;
     margin: 0 0 1.4em;
+    position: relative;
+  }
+  .clinic-panel::before {
+    content: attr(data-tag);
+    position: absolute;
+    top: -9px; left: 14px;
+    background: var(--cl-bg);
+    padding: 0 8px;
+    font-family: var(--cl-mono);
+    font-size: .68rem;
+    color: var(--cl-text-sub);
+    letter-spacing: .08em;
   }
 
   .clinic-deflist { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px 24px; }
-  .clinic-deflist dt { font-size: .78rem; color: var(--cl-text-sub); letter-spacing: .03em; margin-bottom: 4px; }
-  .clinic-deflist dd { font-size: .92rem; color: var(--cl-text); margin: 0; line-height: 1.6; }
+  .clinic-deflist dt {
+    font-size: .74rem; color: var(--cl-accent); letter-spacing: .04em;
+    margin-bottom: 5px; font-family: var(--cl-mono);
+  }
+  .clinic-deflist dt::before { content: "> "; }
+  .clinic-deflist dd { font-size: .9rem; color: var(--cl-text); margin: 0; line-height: 1.6; }
 
   .clinic-link {
     display: inline-block;
     margin-top: 6px;
     padding: 7px 18px;
-    background: var(--cl-accent);
-    color: #fff;
-    font-size: .85rem;
-    border-radius: 20px;
+    background: transparent;
+    color: var(--cl-accent);
+    border: 1px solid var(--cl-accent);
+    font-size: .82rem;
+    font-family: var(--cl-mono);
+    border-radius: 3px;
     text-decoration: none;
+    letter-spacing: .03em;
   }
-  .clinic-link:hover { opacity: .88; }
+  .clinic-link:hover { background: rgba(60,255,220,0.08); }
 
   .clinic-steps { list-style: none; padding: 0; margin: 0; counter-reset: clinic-step; }
   .clinic-steps li {
     position: relative;
-    padding: 0 0 22px 40px;
-    border-left: 2px solid var(--cl-accent-soft);
+    padding: 0 0 22px 44px;
+    border-left: 1px solid var(--cl-accent-soft);
     margin-left: 12px;
-    font-size: .92rem;
+    font-size: .9rem;
     color: var(--cl-text);
   }
   .clinic-steps li:last-child { border-left-color: transparent; padding-bottom: 0; }
   .clinic-steps li::before {
-    content: counter(clinic-step);
+    content: counter(clinic-step, decimal-leading-zero);
     counter-increment: clinic-step;
     position: absolute;
-    left: -14px; top: -2px;
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    background: var(--cl-accent);
-    color: #fff;
-    font-size: .78rem;
+    left: -15px; top: -3px;
+    width: 28px; height: 28px;
+    border-radius: 4px;
+    background: var(--cl-bg);
+    border: 1px solid var(--cl-accent);
+    color: var(--cl-accent);
+    font-size: .72rem;
+    font-family: var(--cl-mono);
     display: flex; align-items: center; justify-content: center;
   }
 
   .clinic-page .info-box {
-    background: var(--cl-panel);
-    border-color: var(--cl-accent);
+    background: var(--cl-panel-2);
+    border: 1px solid var(--cl-accent-dim);
+    border-left: 3px solid var(--cl-accent);
     color: var(--cl-text);
+    border-radius: 4px;
   }
 
   .clinic-page a { color: var(--cl-accent); }
@@ -104,11 +166,14 @@
   .clinic-sidebar .sidebar-block {
     background: var(--cl-panel);
     border: 1px solid var(--cl-border);
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 16px 18px;
   }
-  .clinic-sidebar .sidebar-block h2 { color: var(--cl-text); font-size: .95rem; margin-top: 0; }
-  .clinic-sidebar .sidebar-block a { color: var(--cl-text); }
+  .clinic-sidebar .sidebar-block h2 {
+    color: var(--cl-accent); font-size: .8rem; margin-top: 0;
+    font-family: var(--cl-mono); letter-spacing: .08em; text-transform: uppercase;
+  }
+  .clinic-sidebar .sidebar-block a { color: var(--cl-text-sub); }
   .clinic-sidebar .sidebar-block a:hover { color: var(--cl-accent); }
 </style>
 </head>
@@ -143,7 +208,7 @@
         </p>
 
         <h2>診療科目</h2>
-        <div class="clinic-panel">
+        <div class="clinic-panel" data-tag="DEPT_LIST">
           <dl class="clinic-deflist">
             <div>
               <dt>現代病専門外来</dt>
@@ -180,7 +245,7 @@
         </ul>
 
         <h2>診療時間・アクセス</h2>
-        <div class="clinic-panel">
+        <div class="clinic-panel" data-tag="ACCESS_INFO">
           <dl class="clinic-deflist">
             <div><dt>診療時間</dt><dd>平日9:00〜17:00(現代病専門外来は火・木のみ)</dd></div>
             <div><dt>休診日</dt><dd>土日祝、年末年始</dd></div>
