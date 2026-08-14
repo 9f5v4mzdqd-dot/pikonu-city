@@ -9,6 +9,68 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
+<style>
+  /* キロクぬかクリニック専用配色(main-content内のみ) */
+  .clinic-page { --clinic-bg: #f3f1f6; --clinic-accent: #6b5b73; --clinic-text: #443a4d; --clinic-border: #d9d0de; }
+  .clinic-page h2 {
+    border-left-color: var(--clinic-accent);
+    color: var(--clinic-text);
+  }
+  .clinic-page .facility-photo {
+    border-radius: 10px;
+    border-color: var(--clinic-border);
+  }
+  .clinic-card {
+    background: var(--clinic-bg);
+    border: 1px solid var(--clinic-border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 0 0 1.6em;
+  }
+  .clinic-card .info-table { margin: 0; }
+  .clinic-card .info-table th { color: var(--clinic-text); }
+  .clinic-page .info-table th,
+  .clinic-page .info-table td { border-color: var(--clinic-border); }
+  .clinic-link {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 6px 16px;
+    background: var(--clinic-accent);
+    color: #fff;
+    font-size: .85rem;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+  .clinic-link:hover { opacity: .88; }
+  .clinic-steps { list-style: none; padding: 0; margin: 0; counter-reset: clinic-step; }
+  .clinic-steps li {
+    counter-increment: clinic-step;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--clinic-border);
+  }
+  .clinic-steps li:last-child { border-bottom: none; }
+  .clinic-steps li::before {
+    content: counter(clinic-step);
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--clinic-accent);
+    color: #fff;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .clinic-page .info-box {
+    background: var(--clinic-bg);
+    border-color: var(--clinic-border);
+    color: var(--clinic-text);
+  }
+</style>
 </head>
 <body id="top">
 
@@ -21,7 +83,7 @@
   </div>
 
   <div class="content-layout">
-    <div class="main-content">
+    <div class="main-content clinic-page">
       <img class="facility-photo" src="../images/facilities/kiroku-nuka-clinic.jpg" alt="キロクぬかクリニック 外観">
       <p>
         キロクぬかクリニックは、既存の診療科では扱いにくい不調を専門に受け付ける、
@@ -30,15 +92,17 @@
       </p>
 
       <h2>診療科目</h2>
-      <table class="info-table">
-        <tr><th>現代病専門外来</th><td>既視感過多、語尾伸長傾向など、分類の難しい不調全般</td></tr>
-        <tr><th>記録内科</th><td>生活記録・睡眠記録などをもとにした一般的な体調相談</td></tr>
-        <tr><th>オンライン外来</th><td>ビデオ通話による初診・再診(要事前登録)</td></tr>
-      </table>
-      <p>
-        現代病専門外来は、症状の傾向に応じてさらに細分化されています。
-        <a href="shinryo-kamoku.html">診療科目一覧はこちら &gt;</a>
-      </p>
+      <div class="clinic-card">
+        <table class="info-table">
+          <tr><th>現代病専門外来</th><td>既視感過多、語尾伸長傾向など、分類の難しい不調全般</td></tr>
+          <tr><th>記録内科</th><td>生活記録・睡眠記録などをもとにした一般的な体調相談</td></tr>
+          <tr><th>オンライン外来</th><td>ビデオ通話による初診・再診(要事前登録)</td></tr>
+        </table>
+        <p style="margin:14px 0 0;">
+          現代病専門外来は、症状の傾向に応じてさらに細分化されています。<br>
+          <a class="clinic-link" href="shinryo-kamoku.html">診療科目一覧はこちら</a>
+        </p>
+      </div>
 
       <h2>診察について</h2>
       <p>
@@ -48,20 +112,24 @@
       </p>
 
       <h2>受診の流れ</h2>
-      <ul>
-        <li>1. 現代病相談窓口、または直接クリニックへ予約</li>
-        <li>2. 問診(生活記録をお持ちの場合はご持参ください)</li>
-        <li>3. 必要に応じて検査・処方</li>
-        <li>4. 記録カルテの作成(次回受診時の参考資料となります)</li>
-      </ul>
+      <div class="clinic-card">
+        <ul class="clinic-steps">
+          <li>現代病相談窓口、または直接クリニックへ予約</li>
+          <li>問診(生活記録をお持ちの場合はご持参ください)</li>
+          <li>必要に応じて検査・処方</li>
+          <li>記録カルテの作成(次回受診時の参考資料となります)</li>
+        </ul>
+      </div>
 
       <h2>診療時間・アクセス</h2>
-      <table class="info-table">
-        <tr><th>診療時間</th><td>平日9:00〜17:00(現代病専門外来は火・木のみ)</td></tr>
-        <tr><th>休診日</th><td>土日祝、年末年始</td></tr>
-        <tr><th>所在地</th><td>ピコぬ市記録町3丁目2番地</td></tr>
-        <tr><th>アクセス</th><td>ピコぬ中央駅より連結バス「記録町線」で12分</td></tr>
-      </table>
+      <div class="clinic-card">
+        <table class="info-table">
+          <tr><th>診療時間</th><td>平日9:00〜17:00(現代病専門外来は火・木のみ)</td></tr>
+          <tr><th>休診日</th><td>土日祝、年末年始</td></tr>
+          <tr><th>所在地</th><td>ピコぬ市記録町3丁目2番地</td></tr>
+          <tr><th>アクセス</th><td>ピコぬ中央駅より連結バス「記録町線」で12分</td></tr>
+        </table>
+      </div>
 
       <div class="info-box">
         初診の方は、問診票の「症状」欄が埋まらなくても受診いただけます。「なんとなく」という
