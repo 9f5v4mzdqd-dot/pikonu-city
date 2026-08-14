@@ -10,66 +10,106 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
 <style>
-  /* キロクぬかクリニック専用配色(main-content内のみ) */
-  .clinic-page { --clinic-bg: #f3f1f6; --clinic-accent: #6b5b73; --clinic-text: #443a4d; --clinic-border: #d9d0de; }
+  :root {
+    --cl-bg: #f3f1f6;
+    --cl-panel: #fbfafc;
+    --cl-accent: #6b5b73;
+    --cl-accent-soft: #ded4e2;
+    --cl-text: #443a4d;
+    --cl-text-sub: #7c6e83;
+    --cl-border: #ded4e2;
+  }
+
+  .clinic-shell { background: var(--cl-bg); border-radius: 16px; padding: 32px 34px; }
+
+  .clinic-badge-row { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+  .clinic-badge {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--cl-accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; letter-spacing: .02em; flex-shrink: 0;
+  }
+  .clinic-badge-text .clinic-name { font-size: 1.15rem; font-weight: bold; color: var(--cl-text); letter-spacing: .03em; margin: 0; }
+  .clinic-badge-text .clinic-tagline { font-size: .82rem; color: var(--cl-text-sub); margin: 3px 0 0; }
+
+  .clinic-page .facility-photo { border-radius: 12px; border-color: var(--cl-border); margin-bottom: 22px; }
+
   .clinic-page h2 {
-    border-left-color: var(--clinic-accent);
-    color: var(--clinic-text);
+    border-left: none;
+    padding-left: 0;
+    color: var(--cl-text);
+    font-size: 1.05rem;
+    letter-spacing: .04em;
+    margin-top: 2.2em;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--cl-accent-soft);
   }
-  .clinic-page .facility-photo {
-    border-radius: 10px;
-    border-color: var(--clinic-border);
-  }
-  .clinic-card {
-    background: var(--clinic-bg);
-    border: 1px solid var(--clinic-border);
-    border-radius: 10px;
+  .clinic-page p { color: var(--cl-text); }
+
+  .clinic-panel {
+    background: var(--cl-panel);
+    border: 1px solid var(--cl-border);
+    border-radius: 12px;
     padding: 18px 22px;
-    margin: 0 0 1.6em;
+    margin: 0 0 1.4em;
   }
-  .clinic-card .info-table { margin: 0; }
-  .clinic-card .info-table th { color: var(--clinic-text); }
-  .clinic-page .info-table th,
-  .clinic-page .info-table td { border-color: var(--clinic-border); }
+
+  .clinic-deflist { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px 24px; }
+  .clinic-deflist dt { font-size: .78rem; color: var(--cl-text-sub); letter-spacing: .03em; margin-bottom: 4px; }
+  .clinic-deflist dd { font-size: .92rem; color: var(--cl-text); margin: 0; line-height: 1.6; }
+
   .clinic-link {
     display: inline-block;
-    margin-top: 4px;
-    padding: 6px 16px;
-    background: var(--clinic-accent);
+    margin-top: 6px;
+    padding: 7px 18px;
+    background: var(--cl-accent);
     color: #fff;
     font-size: .85rem;
     border-radius: 20px;
     text-decoration: none;
   }
   .clinic-link:hover { opacity: .88; }
+
   .clinic-steps { list-style: none; padding: 0; margin: 0; counter-reset: clinic-step; }
   .clinic-steps li {
-    counter-increment: clinic-step;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--clinic-border);
+    position: relative;
+    padding: 0 0 22px 40px;
+    border-left: 2px solid var(--cl-accent-soft);
+    margin-left: 12px;
+    font-size: .92rem;
+    color: var(--cl-text);
   }
-  .clinic-steps li:last-child { border-bottom: none; }
+  .clinic-steps li:last-child { border-left-color: transparent; padding-bottom: 0; }
   .clinic-steps li::before {
     content: counter(clinic-step);
-    flex-shrink: 0;
-    width: 26px;
-    height: 26px;
+    counter-increment: clinic-step;
+    position: absolute;
+    left: -14px; top: -2px;
+    width: 26px; height: 26px;
     border-radius: 50%;
-    background: var(--clinic-accent);
+    background: var(--cl-accent);
     color: #fff;
-    font-size: .8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: .78rem;
+    display: flex; align-items: center; justify-content: center;
   }
+
   .clinic-page .info-box {
-    background: var(--clinic-bg);
-    border-color: var(--clinic-border);
-    color: var(--clinic-text);
+    background: var(--cl-panel);
+    border-color: var(--cl-accent);
+    color: var(--cl-text);
   }
+
+  .clinic-page a { color: var(--cl-accent); }
+
+  .clinic-sidebar .sidebar-block {
+    background: var(--cl-panel);
+    border: 1px solid var(--cl-border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .clinic-sidebar .sidebar-block h2 { color: var(--cl-text); font-size: .95rem; margin-top: 0; }
+  .clinic-sidebar .sidebar-block a { color: var(--cl-text); }
+  .clinic-sidebar .sidebar-block a:hover { color: var(--cl-accent); }
 </style>
 </head>
 <body id="top">
@@ -84,73 +124,93 @@
 
   <div class="content-layout">
     <div class="main-content clinic-page">
-      <img class="facility-photo" src="../images/facilities/kiroku-nuka-clinic.jpg" alt="キロクぬかクリニック 外観">
-      <p>
-        キロクぬかクリニックは、既存の診療科では扱いにくい不調を専門に受け付ける、
-        ピコぬ市立の医療センターです。「症状として説明しづらいものを、まず記録する」ことを
-        診療の出発点としています。
-      </p>
+      <div class="clinic-shell">
 
-      <h2>診療科目</h2>
-      <div class="clinic-card">
-        <table class="info-table">
-          <tr><th>現代病専門外来</th><td>既視感過多、語尾伸長傾向など、分類の難しい不調全般</td></tr>
-          <tr><th>記録内科</th><td>生活記録・睡眠記録などをもとにした一般的な体調相談</td></tr>
-          <tr><th>オンライン外来</th><td>ビデオ通話による初診・再診(要事前登録)</td></tr>
-        </table>
-        <p style="margin:14px 0 0;">
-          現代病専門外来は、症状の傾向に応じてさらに細分化されています。<br>
-          <a class="clinic-link" href="shinryo-kamoku.html">診療科目一覧はこちら</a>
+        <div class="clinic-badge-row">
+          <div class="clinic-badge">記</div>
+          <div class="clinic-badge-text">
+            <p class="clinic-name">キロクぬかクリニック</p>
+            <p class="clinic-tagline">症状として説明しづらいものを、まず記録する。</p>
+          </div>
+        </div>
+
+        <img class="facility-photo" src="../images/facilities/kiroku-nuka-clinic.jpg" alt="キロクぬかクリニック 外観">
+
+        <p>
+          キロクぬかクリニックは、既存の診療科では扱いにくい不調を専門に受け付ける、
+          ピコぬ市立の医療センターです。「症状として説明しづらいものを、まず記録する」ことを
+          診療の出発点としています。
         </p>
-      </div>
 
-      <h2>診察について</h2>
-      <p>
-        担当医は、基本的にサングラスを着用したまま低い声で問診を行います。派手な演出はなく、
-        淡々とした受け答えの中で症状の輪郭を確認していく方式です。処方には、服薬に加えて
-        「今週の記録の付け方を変えてみる」といった生活記録上の提案が含まれることもあります。
-      </p>
+        <h2>診療科目</h2>
+        <div class="clinic-panel">
+          <dl class="clinic-deflist">
+            <div>
+              <dt>現代病専門外来</dt>
+              <dd>既視感過多、語尾伸長傾向など、分類の難しい不調全般</dd>
+            </div>
+            <div>
+              <dt>記録内科</dt>
+              <dd>生活記録・睡眠記録などをもとにした一般的な体調相談</dd>
+            </div>
+            <div>
+              <dt>オンライン外来</dt>
+              <dd>ビデオ通話による初診・再診(要事前登録)</dd>
+            </div>
+          </dl>
+          <p style="margin:16px 0 0;">
+            現代病専門外来は、症状の傾向に応じてさらに細分化されています。<br>
+            <a class="clinic-link" href="shinryo-kamoku.html">診療科目一覧はこちら</a>
+          </p>
+        </div>
 
-      <h2>受診の流れ</h2>
-      <div class="clinic-card">
+        <h2>診察について</h2>
+        <p>
+          担当医は、基本的にサングラスを着用したまま低い声で問診を行います。派手な演出はなく、
+          淡々とした受け答えの中で症状の輪郭を確認していく方式です。処方には、服薬に加えて
+          「今週の記録の付け方を変えてみる」といった生活記録上の提案が含まれることもあります。
+        </p>
+
+        <h2>受診の流れ</h2>
         <ul class="clinic-steps">
           <li>現代病相談窓口、または直接クリニックへ予約</li>
           <li>問診(生活記録をお持ちの場合はご持参ください)</li>
           <li>必要に応じて検査・処方</li>
           <li>記録カルテの作成(次回受診時の参考資料となります)</li>
         </ul>
-      </div>
 
-      <h2>診療時間・アクセス</h2>
-      <div class="clinic-card">
-        <table class="info-table">
-          <tr><th>診療時間</th><td>平日9:00〜17:00(現代病専門外来は火・木のみ)</td></tr>
-          <tr><th>休診日</th><td>土日祝、年末年始</td></tr>
-          <tr><th>所在地</th><td>ピコぬ市記録町3丁目2番地</td></tr>
-          <tr><th>アクセス</th><td>ピコぬ中央駅より連結バス「記録町線」で12分</td></tr>
-        </table>
-      </div>
+        <h2>診療時間・アクセス</h2>
+        <div class="clinic-panel">
+          <dl class="clinic-deflist">
+            <div><dt>診療時間</dt><dd>平日9:00〜17:00(現代病専門外来は火・木のみ)</dd></div>
+            <div><dt>休診日</dt><dd>土日祝、年末年始</dd></div>
+            <div><dt>所在地</dt><dd>ピコぬ市記録町3丁目2番地</dd></div>
+            <div><dt>アクセス</dt><dd>ピコぬ中央駅より連結バス「記録町線」で12分</dd></div>
+          </dl>
+        </div>
 
-      <div class="info-box">
-        初診の方は、問診票の「症状」欄が埋まらなくても受診いただけます。「なんとなく」という
-        表現のままお持ちいただいて構いません。
-      </div>
+        <div class="info-box">
+          初診の方は、問診票の「症状」欄が埋まらなくても受診いただけます。「なんとなく」という
+          表現のままお持ちいただいて構いません。
+        </div>
 
-      <h2>関連資料</h2>
-      <p>
-        現代病外来の診療報酬体系をまとめた資料「<a href="../pdfs/gendaijin-shinryohoshu-tensuhyo.pdf">現代人診療報酬点数表</a>」
-        (PDF)を公開しています。制度の周知を目的としたものであり、実際の医療機関の窓口等では
-        ご使用いただけません。
-      </p>
-      <p>
-        これまでの診断記録は<a href="../about/gendaibyo-db.html">現代病データベース</a>から検索・閲覧いただけます。
-        オンライン外来を舞台にした短編は<a href="kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a>にまとめています。
-        「今、自分は何に警戒すべきか」が気になる方は、外来の医師による簡易診断(占い)
-        「<a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a>」もお試しください。
-      </p>
+        <h2>関連資料</h2>
+        <p>
+          現代病外来の診療報酬体系をまとめた資料「<a href="../pdfs/gendaijin-shinryohoshu-tensuhyo.pdf">現代人診療報酬点数表</a>」
+          (PDF)を公開しています。制度の周知を目的としたものであり、実際の医療機関の窓口等では
+          ご使用いただけません。
+        </p>
+        <p>
+          これまでの診断記録は<a href="../about/gendaibyo-db.html">現代病データベース</a>から検索・閲覧いただけます。
+          オンライン外来を舞台にした短編は<a href="kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a>にまとめています。
+          「今、自分は何に警戒すべきか」が気になる方は、外来の医師による簡易診断(占い)
+          「<a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a>」もお試しください。
+        </p>
+
+      </div>
     </div>
 
-    <aside class="sidebar">
+    <aside class="sidebar clinic-sidebar">
       <div class="sidebar-block">
         <h2>関連情報</h2>
         <ul>
