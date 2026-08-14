@@ -36,15 +36,7 @@
     border-radius: 0;
     padding: 32px 34px;
     position: relative;
-    overflow: hidden;
     border: 1px solid var(--cl-border);
-  }
-  .clinic-shell::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(60,255,220,0.025) 3px, rgba(60,255,220,0.025) 4px);
   }
 
   .clinic-badge-row { position: relative; display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
@@ -74,34 +66,19 @@
     overflow: hidden;
     margin-bottom: 24px;
   }
-  .clinic-scan-panel::before {
-    content: attr(data-tag);
-    position: absolute;
-    top: -9px; left: 14px;
-    background: var(--cl-bg);
-    padding: 0 8px;
-    font-family: var(--cl-mono);
-    font-size: .68rem;
-    color: var(--cl-text-sub);
-    letter-spacing: .08em;
-    z-index: 2;
-  }
 
   .clinic-page { position: relative; }
 
   .clinic-page h2 {
     border-left: none;
     padding-left: 0;
-    color: var(--cl-accent);
-    font-size: .82rem;
-    letter-spacing: .12em;
+    color: var(--cl-text);
+    font-size: .95rem;
+    letter-spacing: .04em;
     margin-top: 2.4em;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--cl-accent-soft);
-    font-family: var(--cl-mono);
-    text-transform: uppercase;
+    border-bottom: 1px solid var(--cl-border);
   }
-  .clinic-page h2::before { content: "// "; color: var(--cl-accent-dim); }
   .clinic-page p { color: var(--cl-text); }
 
   .clinic-panel {
@@ -110,26 +87,13 @@
     border-radius: 0;
     padding: 18px 22px;
     margin: 0 0 1.4em;
-    position: relative;
-  }
-  .clinic-panel::before {
-    content: attr(data-tag);
-    position: absolute;
-    top: -9px; left: 14px;
-    background: var(--cl-bg);
-    padding: 0 8px;
-    font-family: var(--cl-mono);
-    font-size: .68rem;
-    color: var(--cl-text-sub);
-    letter-spacing: .08em;
   }
 
   .clinic-deflist { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px 24px; }
   .clinic-deflist dt {
-    font-size: .74rem; color: var(--cl-accent); letter-spacing: .04em;
-    margin-bottom: 5px; font-family: var(--cl-mono);
+    font-size: .78rem; color: var(--cl-text-sub); letter-spacing: .04em;
+    margin-bottom: 5px;
   }
-  .clinic-deflist dt::before { content: "> "; }
   .clinic-deflist dd { font-size: .9rem; color: var(--cl-text); margin: 0; line-height: 1.6; }
 
   .clinic-link {
@@ -158,7 +122,7 @@
   }
   .clinic-steps li:last-child { border-left-color: transparent; padding-bottom: 0; }
   .clinic-steps li::before {
-    content: counter(clinic-step, decimal-leading-zero);
+    content: counter(clinic-step);
     counter-increment: clinic-step;
     position: absolute;
     left: -15px; top: -3px;
@@ -189,8 +153,7 @@
     padding: 16px 18px;
   }
   .clinic-sidebar .sidebar-block h2 {
-    color: var(--cl-accent); font-size: .8rem; margin-top: 0;
-    font-family: var(--cl-mono); letter-spacing: .08em; text-transform: uppercase;
+    color: var(--cl-text); font-size: .95rem; margin-top: 0;
   }
   .clinic-sidebar .sidebar-block a { color: var(--cl-text-sub); }
   .clinic-sidebar .sidebar-block a:hover { color: var(--cl-accent); }
@@ -218,7 +181,7 @@
           </div>
         </div>
 
-        <div class="clinic-scan-panel" data-tag="SCAN_DISPLAY" role="img" aria-label="生体記録スキャン画面のイメージ">
+        <div class="clinic-scan-panel" role="img" aria-label="生体記録スキャン画面のイメージ">
           <svg viewBox="0 0 1200 460" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
             <rect x="0" y="0" width="1200" height="460" fill="#0b0e14"></rect>
             <g stroke="#1a2a2c" stroke-width="1">
@@ -240,8 +203,8 @@
             <circle cx="600" cy="230" r="70" fill="none" stroke="#1f9c8a" stroke-width="1"></circle>
             <circle cx="600" cy="230" r="130" fill="none" stroke="#16302e" stroke-width="1"></circle>
             <circle cx="600" cy="230" r="190" fill="none" stroke="#16302e" stroke-width="1"></circle>
-            <text x="40" y="40" fill="#3cffdc" font-family="'M PLUS 1 Code', monospace" font-size="15" letter-spacing="1">SYMPTOM_LOG :: RECORDING</text>
-            <text x="40" y="428" fill="#5f7a76" font-family="'M PLUS 1 Code', monospace" font-size="12">CH.01 説明困難不調 / STATUS: 記録中</text>
+            <text x="40" y="40" fill="#3cffdc" font-family="'M PLUS 1 Code', monospace" font-size="15" letter-spacing="1">症状記録スキャン</text>
+            <text x="40" y="428" fill="#5f7a76" font-family="'M PLUS 1 Code', monospace" font-size="12">CH.01 説明困難不調</text>
             <text x="960" y="40" fill="#5f7a76" font-family="'M PLUS 1 Code', monospace" font-size="12">KIROKU-NUKA CLINIC</text>
           </svg>
         </div>
@@ -253,7 +216,7 @@
         </p>
 
         <h2>診療科目</h2>
-        <div class="clinic-panel" data-tag="DEPT_LIST">
+        <div class="clinic-panel">
           <dl class="clinic-deflist">
             <div>
               <dt>現代病専門外来</dt>
@@ -290,7 +253,7 @@
         </ul>
 
         <h2>診療時間・アクセス</h2>
-        <div class="clinic-panel" data-tag="ACCESS_INFO">
+        <div class="clinic-panel">
           <dl class="clinic-deflist">
             <div><dt>診療時間</dt><dd>平日9:00〜17:00(現代病専門外来は火・木のみ)</dd></div>
             <div><dt>休診日</dt><dd>土日祝、年末年始</dd></div>
