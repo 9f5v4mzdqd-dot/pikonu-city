@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>今日のあなたにおすすめの不要不急な時間の過ごし方 | 不要不急保存課 | ピコぬ市公式ホームページ</title>
+<meta name="description" content="不要不急実践帳20種の中から、今日のあなたにおすすめの不要不急な時間の過ごし方を1つお知らせします。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .fu-box {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-alt);
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .fu-btn { padding: 14px 32px; font-size: 1.05rem; }
+  .fu-result {
+    display: none;
+    border: 2px solid var(--color-primary);
+    border-radius: 4px;
+    background: #fdfbf7;
+    padding: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .fu-result.show { display: block; }
+  .fu-result-label {
+    font-size: .85rem;
+    color: var(--color-text-sub);
+    letter-spacing: .05em;
+    margin-bottom: 10px;
+  }
+  .fu-result img {
+    width: 100%;
+    max-width: 320px;
+    border: 1px solid #ddd;
+    margin: 0 auto 14px;
+    display: block;
+  }
+  .fu-result-caption {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--color-text);
+    margin: 0 0 16px;
+    line-height: 1.6;
+  }
+  .fu-result-dl {
+    display: inline-block;
+    font-size: .85rem;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .fu-result-dl:hover { text-decoration: underline; }
+</style>
+</head>
+<body id="top">
+
+<main id="main">
+  <div class="page-header">
+    <div class="container">
+      <h1>今日のあなたにおすすめの不要不急な時間の過ごし方</h1>
+      <p class="lead">不要不急実践帳20種の中から、今日のあなたにおすすめの過ごし方を1つお知らせします。</p>
+    </div>
+  </div>
+
+  <div class="content-layout">
+    <div class="main-content">
+      <p>
+        <p> ボタンを押すたびに、
+          <a href="../facilities/jissen-cho.html">不要不急実践帳
+          </a>の20種から結果が変わります。当たるも八卦、当たらぬも八卦。
+        </p>
+      <div class="fu-box">
+        <button type="button" class="btn fu-btn" id="fuDrawBtn">今日の過ごし方を引く</button>
+      </div>
+
+      <div class="fu-result" id="fuResult">
+        <p class="fu-result-label">本日のあなたにおすすめの不要不急な時間の過ごし方</p>
+        <img id="fuImg" src="" alt="">
+        <p class="fu-result-caption" id="fuCaption"></p>
+        <a class="fu-result-dl" id="fuDlLink" href="#" download>画像をダウンロード &#8595;</a>
+      </div>
+
+      <div class="info-box">
+        全20種は<a href="../facilities/jissen-cho.html">不要不急実践帳</a>にまとめて掲載しています。
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <h2>関連情報</h2>
+        <ul>
+          <li><a href="../facilities/jissen-cho.html">不要不急実践帳</a></li>
+          <li><a href="fuyoufukyu-4koma.html">不要不急な4コマ漫画</a></li>
+          <li><a href="hibussitsu-tokusanhin.html">非物品系特産品一覧</a></li>
+          <li><a href="../facilities/fuyoufukyuhozonka.html">不要不急保存課</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "不要不急保存課", href: "../facilities/fuyoufukyuhozonka.html" }, { label: "今日のあなたにおすすめの不要不急な時間の過ごし方" }] };</script>
+<script src="../js/common.js"></script>
+<script>
+(function () {
+  var CARDS = [
+    { file: "card_01.png", caption: "冷蔵庫から何も取らずに、冷気に10秒当たる。" },
+    { file: "card_02.png", caption: "回っている換気扇の羽の数を数える。" },
+    { file: "card_03.png", caption: "車のタイヤの溝を指でなぞる。" },
+    { file: "card_04.png", caption: "塀のブロックの穴に、石を一つ入れる。" },
+    { file: "card_05.png", caption: "ボタンの穴に、クリップを通してみる。" },
+    { file: "card_06.png", caption: "窓のくもりに、指で絵を描く。" },
+    { file: "card_07.png", caption: "ストローの袋に、水を一滴垂らす。" },
+    { file: "card_08.png", caption: "チョコレートの包み紙を、綺麗な球体にする。" },
+    { file: "card_09.png", caption: "落ちてきた桜の花びらを、1分間に何枚手で捕まえられるか競う。" },
+    { file: "card_10.png", caption: "かけているメガネを反対にして、ものを見てみる。" },
+    { file: "card_11.png", caption: "電球を外して、また元に戻す。" },
+    { file: "card_12.png", caption: "ポテトチップの円柱の入れ物に、ペンを1本立ててみる。" },
+    { file: "card_13.png", caption: "つま先だけで、玄関まで歩く。" },
+    { file: "card_14.png", caption: "水道の水を流しながら、吐水口に触る。シャワーでも可。" },
+    { file: "card_15.png", caption: "部屋のドアの隙間に、豆を一つ挟んでおく。" },
+    { file: "card_16.png", caption: "テーブルについた、コップの底由来の水で絵を描く。" },
+    { file: "card_17.png", caption: "2枚組のティッシュを一枚ずつ剥がし、少しだけふわりとさせてから使う。" },
+    { file: "card_18.png", caption: "ハイソックスの端をくるぶしまでくるくる丸め、また膝の方へ戻す。" },
+    { file: "card_19.png", caption: "引き出しの持ち手のネジを外し、また元に戻す。" },
+    { file: "card_20.png", caption: "折れた色鉛筆の芯を、瓶に入れて集める。" }
+  ];
+
+  var drawBtn = document.getElementById("fuDrawBtn");
+  var resultEl = document.getElementById("fuResult");
+  var imgEl = document.getElementById("fuImg");
+  var captionEl = document.getElementById("fuCaption");
+  var dlLinkEl = document.getElementById("fuDlLink");
+
+  drawBtn.addEventListener("click", function () {
+    var pick = CARDS[Math.floor(Math.random() * CARDS.length)];
+    var path = "../images/jissen/" + pick.file;
+    imgEl.src = path;
+    imgEl.alt = pick.caption;
+    captionEl.textContent = pick.caption;
+    dlLinkEl.href = path;
+    dlLinkEl.setAttribute("download", "pikonu-city-fuyoufukyu-" + pick.file);
+    resultEl.classList.add("show");
+  });
+})();
+</script>
+</body>
+</html>
