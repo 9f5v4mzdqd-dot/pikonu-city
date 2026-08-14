@@ -67,6 +67,26 @@
     margin-bottom: 24px; filter: saturate(.7) contrast(1.05);
   }
 
+  .clinic-scan-panel {
+    position: relative;
+    border: 1px solid var(--cl-border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .clinic-scan-panel::before {
+    content: attr(data-tag);
+    position: absolute;
+    top: -9px; left: 14px;
+    background: var(--cl-bg);
+    padding: 0 8px;
+    font-family: var(--cl-mono);
+    font-size: .68rem;
+    color: var(--cl-text-sub);
+    letter-spacing: .08em;
+    z-index: 2;
+  }
+
   .clinic-page { position: relative; }
 
   .clinic-page h2 {
@@ -198,7 +218,33 @@
           </div>
         </div>
 
-        <img class="facility-photo" src="../images/facilities/kiroku-nuka-clinic.jpg" alt="キロクぬかクリニック 外観">
+        <div class="clinic-scan-panel" data-tag="SCAN_DISPLAY" role="img" aria-label="生体記録スキャン画面のイメージ">
+          <svg viewBox="0 0 1200 460" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+            <rect x="0" y="0" width="1200" height="460" fill="#0b0e14"></rect>
+            <g stroke="#1a2a2c" stroke-width="1">
+              <line x1="0" y1="76" x2="1200" y2="76"></line>
+              <line x1="0" y1="153" x2="1200" y2="153"></line>
+              <line x1="0" y1="230" x2="1200" y2="230"></line>
+              <line x1="0" y1="307" x2="1200" y2="307"></line>
+              <line x1="0" y1="384" x2="1200" y2="384"></line>
+              <line x1="150" y1="0" x2="150" y2="460"></line>
+              <line x1="300" y1="0" x2="300" y2="460"></line>
+              <line x1="450" y1="0" x2="450" y2="460"></line>
+              <line x1="600" y1="0" x2="600" y2="460"></line>
+              <line x1="750" y1="0" x2="750" y2="460"></line>
+              <line x1="900" y1="0" x2="900" y2="460"></line>
+              <line x1="1050" y1="0" x2="1050" y2="460"></line>
+            </g>
+            <polyline points="0,240 60,240 90,150 120,320 150,240 220,240 250,190 280,270 310,240 420,240 450,120 480,340 510,240 700,240 730,175 760,300 790,240 1000,240 1030,160 1060,310 1090,240 1200,240"
+              fill="none" stroke="#3cffdc" stroke-width="2"></polyline>
+            <circle cx="600" cy="230" r="70" fill="none" stroke="#1f9c8a" stroke-width="1"></circle>
+            <circle cx="600" cy="230" r="130" fill="none" stroke="#16302e" stroke-width="1"></circle>
+            <circle cx="600" cy="230" r="190" fill="none" stroke="#16302e" stroke-width="1"></circle>
+            <text x="40" y="40" fill="#3cffdc" font-family="'M PLUS 1 Code', monospace" font-size="15" letter-spacing="1">SYMPTOM_LOG :: RECORDING</text>
+            <text x="40" y="428" fill="#5f7a76" font-family="'M PLUS 1 Code', monospace" font-size="12">CH.01 説明困難不調 / STATUS: 記録中</text>
+            <text x="960" y="40" fill="#5f7a76" font-family="'M PLUS 1 Code', monospace" font-size="12">KIROKU-NUKA CLINIC</text>
+          </svg>
+        </div>
 
         <p>
           キロクぬかクリニックは、既存の診療科では扱いにくい不調を専門に受け付ける、
