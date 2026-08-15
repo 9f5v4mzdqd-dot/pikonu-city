@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&family=M+PLUS+1+Code:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=M+PLUS+1+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --cl-bg: #0b0e14;
@@ -25,18 +25,11 @@
     --cl-border: #22383a;
     --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, "Courier New", monospace;
     --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
-    --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
   }
 
   .clinic-page { font-family: var(--cl-sans); }
-  .clinic-page h1, .clinic-page .lead { font-family: var(--cl-mincho); }
-  .page-header h1, .page-header .lead { font-family: var(--cl-mincho); }
-  .clinic-page h2 { font-family: var(--cl-mincho); font-weight: 600; }
-  .clinic-badge-text .clinic-name { font-family: var(--cl-mincho) !important; font-weight: 700; }
-  .clinic-badge-text .clinic-tagline { font-family: var(--cl-mincho) !important; }
-  .clinic-page p { font-family: var(--cl-mincho); line-height: 1.9; letter-spacing: .02em; }
-  .clinic-deflist dd { font-family: var(--cl-mincho); }
-  .clinic-page .info-box { font-family: var(--cl-mincho); }
+  .clinic-page h1, .clinic-page .lead { font-family: var(--cl-sans); }
+  .page-header h1, .page-header .lead { font-family: var(--cl-sans); }
 
   body { background: var(--cl-bg); }
   .page-header { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
@@ -66,7 +59,7 @@
     border: 1px solid var(--cl-accent);
     display: flex; align-items: center; justify-content: center;
     font-size: 1.2rem; letter-spacing: .02em; flex-shrink: 0;
-    font-family: var(--cl-mincho);
+    font-family: var(--cl-mono);
   }
   .clinic-badge-text .clinic-name {
     font-size: 1.05rem; font-weight: bold; color: var(--cl-accent);
@@ -271,12 +264,21 @@
           <li>必要に応じて検査・処方</li>
           <li>記録カルテの作成(次回受診時の参考資料となります)</li>
         </ul>
+        <p>
+          note「キロクぬかクリニック通院プラン」会員の方は、来院前に
+          <a class="clinic-link" href="../services/kiroku-nuka-monshinhyo.html">問診表</a>
+          にご記入いただけます。
+        </p>
 
-        <div><dt>診療時間</dt><dd>平日9:00〜17:00(現代病専門外来は火・木のみ)</dd></div>
-        <div><dt>休診日</dt><dd>土日祝、年末年始</dd></div>
-        <div><dt>電話番号</dt><dd>ぬぬ-ぬかピコ-8881(はあ・はい)</dd></div>
-        <div><dt>所在地</dt><dd>ピコぬ市記録町3丁目2番地</dd></div>
-        <div><dt>アクセス</dt><dd>ピコぬ中央駅より連結バス「記録町線」で12分</dd></div>
+        <h2>診療時間・アクセス</h2>
+        <div class="clinic-panel">
+          <dl class="clinic-deflist">
+            <div><dt>診療時間</dt><dd>平日9:00〜17:00(現代病専門外来は火・木のみ)</dd></div>
+            <div><dt>休診日</dt><dd>土日祝、年末年始</dd></div>
+            <div><dt>所在地</dt><dd>ピコぬ市記録町3丁目2番地</dd></div>
+            <div><dt>アクセス</dt><dd>ピコぬ中央駅より連結バス「記録町線」で12分</dd></div>
+          </dl>
+        </div>
 
         <div class="info-box">
           初診の方は、問診票の「症状」欄が埋まらなくても受診いただけます。「なんとなく」という
