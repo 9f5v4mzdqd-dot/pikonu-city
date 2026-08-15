@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>キロクぬかクリニック | 施設案内 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="現代病専門医療センター、キロクぬかクリニックのご案内です。診療科目、受診方法、アクセスを掲載しています。">
+<title>医師紹介 | キロクぬかクリニック | ピコぬ市公式ホームページ</title>
+<meta name="description" content="キロクぬかクリニック院長のプロフィールです。">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="any">
@@ -16,170 +16,117 @@
   :root {
     --cl-bg: #0b0e14;
     --cl-panel: #101720;
-    --cl-panel-2: #0e1420;
     --cl-accent: #3cffdc;
     --cl-accent-dim: #1f9c8a;
-    --cl-accent-soft: #22383a;
     --cl-text: #d7ece9;
-    --cl-text-sub: #7d9591;
+    --cl-text-sub: #8fa8a4;
     --cl-border: #22383a;
-    --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, "Courier New", monospace;
+    --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
     --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
   }
 
-  @media (max-width: 600px) {
-    .director-header {
-      flex-wrap: wrap;
-      justify-content: center;
-      text-align: center;
-    }
-    .director-header img {
-      margin: 10px auto 0 !important;
-    }
-  }
-
-  .clinic-page { font-family: var(--cl-sans); }
-  .clinic-page h1, .clinic-page .lead { font-family: var(--cl-sans); }
-  .page-header h1, .page-header .lead { font-family: var(--cl-sans); }
-
   body { background: var(--cl-bg); }
   .page-header { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
+  .page-header h1, .page-header .lead { font-family: var(--cl-sans); color: var(--cl-text); }
   .content-layout { background: var(--cl-bg); }
-  .clinic-sidebar { background: transparent; }
-  .site-footer {
-    background: var(--cl-bg);
-    border-top: 1px solid var(--cl-border);
-    color: var(--cl-text-sub);
-  }
-  .site-footer a { color: var(--cl-text-sub); }
-  .site-footer .footer-nav a:hover, .site-footer a:hover { color: var(--cl-accent); }
   .breadcrumb { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
   .breadcrumb a { color: var(--cl-text-sub); }
   .breadcrumb li:last-child { color: var(--cl-text); }
-  .breadcrumb li:not(:last-child)::after { color: var(--cl-text-sub); }
+  .site-footer { background: var(--cl-bg); border-top: 1px solid var(--cl-border); color: var(--cl-text-sub); }
+  .site-footer a { color: var(--cl-text-sub); }
+  .site-footer a:hover { color: var(--cl-accent); }
 
-  .clinic-shell {
-    padding: 4px 0 0;
-    position: relative;
-  }
-
-  .clinic-badge-row { position: relative; display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-  .clinic-badge {
-    width: 52px; height: 52px; border-radius: 0;
-    background: transparent; color: var(--cl-accent);
-    border: 1px solid var(--cl-accent);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; letter-spacing: .02em; flex-shrink: 0;
-    font-family: var(--cl-mono);
-  }
-  .clinic-badge-text .clinic-name {
-    font-size: 1.05rem; font-weight: bold; color: var(--cl-accent);
-    letter-spacing: .06em; margin: 0; font-family: var(--cl-mono);
-  }
-  .clinic-badge-text .clinic-tagline { font-size: .8rem; color: var(--cl-text-sub); margin: 4px 0 0; font-family: var(--cl-mono); }
-
-  .clinic-page .facility-photo {
-    border-radius: 0; border: 1px solid var(--cl-border);
-    margin-bottom: 24px; filter: saturate(.7) contrast(1.05);
-  }
-
-  .clinic-scan-panel {
-    position: relative;
-    border: 1px solid var(--cl-border);
-    border-radius: 0;
-    overflow: hidden;
-    margin-bottom: 24px;
-  }
-
-  .clinic-page { position: relative; }
-
+  .clinic-page { font-family: var(--cl-sans); color: var(--cl-text); }
+  .clinic-page p { color: var(--cl-text); }
   .clinic-page h2 {
-    border-left: none;
-    padding-left: 0;
-    color: var(--cl-text);
-    font-size: .95rem;
-    letter-spacing: .04em;
-    margin-top: 2.4em;
-    padding-bottom: 8px;
+    border-left: none; padding-left: 0; color: var(--cl-text);
+    font-size: .95rem; margin-top: 2.2em; padding-bottom: 8px;
     border-bottom: 1px solid var(--cl-border);
   }
-  .clinic-page p { color: var(--cl-text); }
+  .clinic-page a { color: var(--cl-accent); }
+
+  .director-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    background: var(--cl-panel);
+    border: 1px solid var(--cl-border);
+    padding: 22px 26px;
+    margin-bottom: 1.4em;
+  }
+  .director-header > div { flex: 1 1 160px; min-width: 160px; }
+  .director-header img { flex-shrink: 0; }
+  .director-badge {
+    width: 60px; height: 60px;
+    flex-shrink: 0;
+    border: 1px solid var(--cl-accent);
+    color: var(--cl-accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--cl-mono); font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .director-name-jp { font-size: 1.15rem; font-weight: bold; color: var(--cl-text); margin: 0; }
+  .director-name-en {
+    font-family: var(--cl-mono); font-size: .78rem; color: var(--cl-text-sub);
+    margin: 4px 0 0; letter-spacing: .04em;
+  }
+  .director-title {
+    display: inline-block;
+    font-family: var(--cl-mono); font-size: .7rem; color: var(--cl-accent-dim);
+    border: 1px solid var(--cl-accent-dim); padding: 1px 8px; margin-bottom: 6px;
+  }
 
   .clinic-panel {
     background: var(--cl-panel);
     border: 1px solid var(--cl-border);
-    border-radius: 0;
     padding: 18px 22px;
     margin: 0 0 1.4em;
   }
 
-  .clinic-deflist { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px 24px; }
-  .clinic-deflist dt {
-    font-size: .78rem; color: var(--cl-text-sub); letter-spacing: .04em;
-    margin-bottom: 5px;
+  .director-history { list-style: none; margin: 0; padding: 0; }
+  .director-history li {
+    display: flex;
+    gap: 14px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--cl-border);
+    font-size: .88rem;
   }
-  .clinic-deflist dd { font-size: .9rem; color: var(--cl-text); margin: 0; line-height: 1.6; }
-
-  .clinic-link {
-    display: inline-block;
-    margin-top: 6px;
-    padding: 7px 18px;
-    background: transparent;
+  .director-history li:last-child { border-bottom: none; }
+  .director-history .year {
+    font-family: var(--cl-mono);
     color: var(--cl-accent);
-    border: 1px solid var(--cl-accent);
+    flex-shrink: 0;
+    min-width: 6.5em;
     font-size: .82rem;
-    font-family: var(--cl-mono);
-    border-radius: 0;
-    text-decoration: none;
-    letter-spacing: .03em;
   }
-  .clinic-link:hover { background: rgba(60,255,220,0.08); }
 
-  .clinic-steps { list-style: none; padding: 0; margin: 0; counter-reset: clinic-step; }
-  .clinic-steps li {
-    position: relative;
-    padding: 0 0 22px 44px;
-    border-left: 1px solid var(--cl-accent-soft);
-    margin-left: 12px;
-    font-size: .9rem;
-    color: var(--cl-text);
-  }
-  .clinic-steps li:last-child { border-left-color: transparent; padding-bottom: 0; }
-  .clinic-steps li::before {
-    content: counter(clinic-step);
-    counter-increment: clinic-step;
-    position: absolute;
-    left: -15px; top: -3px;
-    width: 28px; height: 28px;
-    border-radius: 0;
+  .clinic-deflist { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px 24px; }
+  .clinic-deflist dt { font-size: .78rem; color: var(--cl-text-sub); margin-bottom: 5px; }
+  .clinic-deflist dd { font-size: .9rem; color: var(--cl-text); margin: 0; line-height: 1.7; }
+
+  .prescription-box {
     background: var(--cl-bg);
-    border: 1px solid var(--cl-accent);
-    color: var(--cl-accent);
-    font-size: .72rem;
-    font-family: var(--cl-mono);
-    display: flex; align-items: center; justify-content: center;
+    border: 1px dashed var(--cl-border);
+    padding: 16px 20px;
+    margin-top: 14px;
   }
+  .prescription-box p { margin: 0 0 8px; font-size: .88rem; }
+  .prescription-box p:last-child { margin-bottom: 0; }
+  .prescription-box .rx-label { font-family: var(--cl-mono); color: var(--cl-text-sub); font-size: .72rem; }
 
   .clinic-page .info-box {
-    background: var(--cl-panel-2);
+    background: var(--cl-panel);
     border: 1px solid var(--cl-accent-dim);
     border-left: 3px solid var(--cl-accent);
     color: var(--cl-text);
-    border-radius: 0;
   }
-
-  .clinic-page a { color: var(--cl-accent); }
 
   .clinic-sidebar .sidebar-block {
-    background: var(--cl-panel);
-    border: 1px solid var(--cl-border);
-    border-radius: 0;
-    padding: 16px 18px;
+    background: var(--cl-panel); border: 1px solid var(--cl-border); padding: 16px 18px;
   }
-  .clinic-sidebar .sidebar-block h2 {
-    color: var(--cl-text); font-size: .95rem; margin-top: 0;
-  }
-  .clinic-sidebar .sidebar-block a { color: #f2f6f5 !important; }
+  .clinic-sidebar .sidebar-block h2 { color: var(--cl-text); font-size: .95rem; margin-top: 0; }
+  .clinic-sidebar .sidebar-block a { color: var(--cl-text) !important; }
   .clinic-sidebar .sidebar-block a:hover { color: var(--cl-accent) !important; }
 </style>
 </head>
@@ -188,159 +135,104 @@
 <main id="main">
   <div class="page-header">
     <div class="container">
-      <h1>キロクぬかクリニック</h1>
-      <p class="lead">現代病専門医療センター</p>
+      <h1>医師紹介</h1>
+      <p class="lead">Director Profile</p>
     </div>
   </div>
 
   <div class="content-layout">
     <div class="main-content clinic-page">
-      <div class="clinic-shell">
 
-        <div class="clinic-badge-row">
-          <div class="clinic-badge">記</div>
-          <div class="clinic-badge-text">
-            <p class="clinic-name">キロクぬかクリニック</p>
-            <p class="clinic-tagline">症状として説明しづらいものを、まず記録する。</p>
-          </div>
+      <div class="director-header">
+        <div class="director-badge">✚</div>
+        <div>
+          <span class="director-title">院長</span>
+          <p class="director-name-jp">ぬ ぬ コピコピ</p>
+          <p class="director-name-en">Nu Nu Ko-pico-pi</p>
         </div>
-
-        <div class="clinic-scan-panel" role="img" aria-label="生体記録スキャン画面のイメージ">
-          <svg viewBox="0 0 1200 460" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
-            <rect x="0" y="0" width="1200" height="460" fill="#0b0e14"></rect>
-            <g stroke="#1a2a2c" stroke-width="1">
-              <line x1="0" y1="76" x2="1200" y2="76"></line>
-              <line x1="0" y1="153" x2="1200" y2="153"></line>
-              <line x1="0" y1="230" x2="1200" y2="230"></line>
-              <line x1="0" y1="307" x2="1200" y2="307"></line>
-              <line x1="0" y1="384" x2="1200" y2="384"></line>
-              <line x1="150" y1="0" x2="150" y2="460"></line>
-              <line x1="300" y1="0" x2="300" y2="460"></line>
-              <line x1="450" y1="0" x2="450" y2="460"></line>
-              <line x1="600" y1="0" x2="600" y2="460"></line>
-              <line x1="750" y1="0" x2="750" y2="460"></line>
-              <line x1="900" y1="0" x2="900" y2="460"></line>
-              <line x1="1050" y1="0" x2="1050" y2="460"></line>
-            </g>
-            <polyline points="0,240 60,240 90,150 120,320 150,240 220,240 250,190 280,270 310,240 420,240 450,120 480,340 510,240 700,240 730,175 760,300 790,240 1000,240 1030,160 1060,310 1090,240 1200,240"
-              fill="none" stroke="#3cffdc" stroke-width="2"></polyline>
-            <circle cx="600" cy="230" r="70" fill="none" stroke="#1f9c8a" stroke-width="1"></circle>
-            <circle cx="600" cy="230" r="130" fill="none" stroke="#16302e" stroke-width="1"></circle>
-            <circle cx="600" cy="230" r="190" fill="none" stroke="#16302e" stroke-width="1"></circle>
-            <text x="40" y="40" fill="#3cffdc" font-family="'M PLUS 1 Code', monospace" font-size="15" letter-spacing="1">症状記録スキャン</text>
-            <text x="40" y="428" fill="#5f7a76" font-family="'M PLUS 1 Code', monospace" font-size="12">CH.01 説明困難不調</text>
-            <text x="960" y="40" fill="#5f7a76" font-family="'M PLUS 1 Code', monospace" font-size="12">KIROKU-NUKA CLINIC</text>
-          </svg>
-        </div>
-
-        <p>
-          キロクぬかクリニックは、既存の診療科では扱いにくい不調を専門に受け付ける、
-          ピコぬ市立の医療センターです。「症状として説明しづらいものを、まず記録する」ことを
-          診療の出発点としています。
-        </p>
-
-        <h2>診療科目</h2>
-        <div class="clinic-panel">
-          <dl class="clinic-deflist">
-            <div>
-              <dt>現代病専門外来</dt>
-              <dd>既視感過多、語尾伸長傾向など、分類の難しい不調全般</dd>
-            </div>
-            <div>
-              <dt>記録内科</dt>
-              <dd>生活記録・睡眠記録などをもとにした一般的な体調相談</dd>
-            </div>
-            <div>
-              <dt>オンライン外来</dt>
-              <dd>ビデオ通話による初診・再診(要事前登録)</dd>
-            </div>
-          </dl>
-          <p style="margin:16px 0 0;">
-            現代病専門外来は、症状の傾向に応じてさらに細分化されています。<br>
-            <a class="clinic-link" href="shinryo-kamoku.html">診療科目一覧はこちら</a>
-          </p>
-        </div>
-
-        <h2>診察について</h2>
-        <p>
-          担当医は、基本的にサングラスを着用したまま低い声で問診を行います。派手な演出はなく、
-          淡々とした受け答えの中で症状の輪郭を確認していく方式です。処方には、服薬に加えて
-          「今週の記録の付け方を変えてみる」といった生活記録上の提案が含まれることもあります。
-        </p>
-        <p>
-          院長のプロフィールは<a href="kiroku-nuka-clinic-director.html">医師紹介</a>をご覧ください。
-　　　　</p>
-
-        <h2>受診の流れ</h2>
-        <ul class="clinic-steps">
-          <li>現代病相談窓口、または直接クリニックへ予約</li>
-          <li>問診(生活記録をお持ちの場合はご持参ください)</li>
-          <li>必要に応じて検査・処方</li>
-          <li>記録カルテの作成(次回受診時の参考資料となります)</li>
-        </ul>
-        <p>
-          ※ note「キロクぬかクリニック通院プラン」会員の方は、来院前に
-          <a class="clinic-link" href="../services/kiroku-nuka-monshinhyo.html">問診表</a>
-          にご記入いただけます。
-        </p>
-
-        <h2>診療時間・アクセス</h2>
-        <div class="clinic-panel">
-          <dl class="clinic-deflist">
-            <div><dt>診療時間</dt><dd>平日9:00〜17:00(現代病専門外来は火・木のみ)</dd></div>
-            <div><dt>休診日</dt><dd>土日祝、年末年始</dd></div>
-            <div><dt>所在地</dt><dd>ピコぬ市記録町3丁目2番地</dd></div>
-            <div><dt>アクセス</dt><dd>ピコぬ中央駅より連結バス「記録町線」で12分</dd></div>
-            <div><dt>電話番号</dt><dd>ぬぬ-ぬかピコ-8881(はあ・はい)</dd></div>
-          </dl>
-        </div>
-
-        <div class="info-box">
-          初診の方は、問診票の「症状」欄が埋まらなくても受診いただけます。「なんとなく」という
-          表現のままお持ちいただいて構いません。
-        </div>
-
-        <h2>関連資料</h2>
-        <p>
-          現代病外来の診療報酬体系をまとめた資料「<a href="../pdfs/gendaijin-shinryohoshu-tensuhyo.pdf">現代人診療報酬点数表</a>」
-          (PDF)を公開しています。制度の周知を目的としたものであり、実際の医療機関の窓口等では
-          ご使用いただけません。
-        </p>
-        <p>
-          これまでの診断記録は<a href="../about/gendaibyo-db.html">現代病データベース</a>から検索・閲覧いただけます。
-          オンライン外来を舞台にした短編は<a href="kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a>にまとめています。
-          「今、自分は何に警戒すべきか」が気になる方は、外来の医師による簡易診断(占い)
-          「<a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a>」もお試しください。
-        </p>
-
+        <img src="../images/facilities/kiroku-nuka-clinic-director.png" alt="院長シルエット" style="width:110px; height:auto; margin-left:auto; flex-shrink:0;">
       </div>
+
+      <h2>略歴</h2>
+      <div class="clinic-panel">
+        <ul class="director-history">
+          <li><span class="year">20XX年3月</span><span>ピコぬ国立大学 医学部 卒業</span></li>
+          <li><span class="year">20XX年4月</span><span>ピコぬ市立総合病院 精神科 勤務</span></li>
+          <li><span class="year">202X年</span><span>現代病研究センター 設立に関与</span></li>
+          <li><span class="year">2026年6月</span><span>キロクぬかクリニック 開院</span></li>
+        </ul>
+      </div>
+
+      <h2>専門・診療</h2>
+      <div class="clinic-panel">
+        <dl class="clinic-deflist">
+          <div>
+            <dt>専門領域</dt>
+            <dd>現代病全般、意味過剰摂取依存症、主語他者化硬化症、要約型認知症など</dd>
+          </div>
+          <div>
+            <dt>診療方法</dt>
+            <dd>オンライン診察</dd>
+          </div>
+        </dl>
+
+        <div class="prescription-box">
+          <p class="rx-label">処方:言葉の処方箋</p>
+          <p>「私が」 1日3回 毎食後1語</p>
+          <p>「しらんがな」 不穏時1回</p>
+        </div>
+
+        <p style="margin-top:14px; font-size:.86rem; color:var(--cl-text-sub);">
+          治療の効果について尋ねられた場合は、「効能には個人差があります」と答えています。
+        </p>
+      </div>
+
+      <h2>所属学会・活動</h2>
+      <div class="clinic-panel">
+        <ul style="margin:0; padding-left:1.2em;">
+          <li>日本現代病理学会 理事</li>
+          <li>ピコぬ市医師会 顧問</li>
+        </ul>
+      </div>
+
+      <h2>診察室</h2>
+      <div class="clinic-panel">
+        <p>電子カルテを使用しています。「AIカルテ添削ボタン」を備えていますが、AIからの修正提案を拒否することがあります。</p>
+        <p>診察中は「はい」「はあ」「そうですか」などの相槌が多く見られます。</p>
+        <p>診察の最後には、沈黙するか、通信が切れることがあります。</p>
+      </div>
+
+      <h2>趣味・嗜好</h2>
+      <div class="clinic-panel">
+        <p>豆苗栽培・塩</p>
+      </div>
+
+      <h2>診察記録</h2>
+      <div class="clinic-panel">
+        <p>診察記録は、noteにて公開しています。患者から預かった言葉をもとに、<a href="kiroku-nuka-clinic-archive.html">外来シリーズ</a>として記録しています。</p>
+        <p>人間だけでなく、生成AIの診察も行っています。</p>
+      </div>
+
+      <div class="info-box">
+        ※本クリニックは架空の施設です。実際の医療機関ではありません。診察・診断・治療等の医療行為は行っていません。
+      </div>
+
     </div>
 
     <aside class="sidebar clinic-sidebar">
       <div class="sidebar-block">
-       <div class="sidebar-block">
-  <h2>関連情報</h2>
-  <ul>
-    <li><a href="kiroku-nuka-clinic-director.html">医師紹介</a></li>
-    <li><a href="../services/kiroku-nuka-monshinhyo.html">問診表</a></li>
-    <li><a href="../services/gendaibyo-sodan.html">現代病相談</a></li>
-    <li><a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
-    <li><a href="../news/news-20260620-01.html">ぬかピコ感染予防ワクチン</a></li>
-    <li><a href="kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a></li>
-  </ul>
-</div>
-      <div class="sidebar-block">
-        <h2>他の施設</h2>
+        <h2>関連情報</h2>
         <ul>
-          <li><a href="nukapiko-museum.html">ぬかピコ民芸博物館</a></li>
-          <li><a href="jikan-koritsu-shien-ka.html">時間効率支援課</a></li>
+          <li><a href="kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
+          <li><a href="../services/kiroku-nuka-monshinhyo.html">問診表</a></li>
+          <li><a href="kiroku-nuka-clinic-archive.html">外来シリーズ</a></li>
         </ul>
       </div>
     </aside>
   </div>
 </main>
 
-<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "キロクぬかクリニック" }] };</script>
+<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "キロクぬかクリニック", href: "kiroku-nuka-clinic.html" }, { label: "医師紹介" }] };</script>
 <script src="../js/common.js"></script>
 </body>
 </html>
