@@ -9,6 +9,74 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&family=M+PLUS+1+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cl-bg: #0b0e14;
+    --cl-panel: #101720;
+    --cl-accent: #3cffdc;
+    --cl-accent-dim: #1f9c8a;
+    --cl-text: #d7ece9;
+    --cl-text-sub: #8fa8a4;
+    --cl-border: #22383a;
+    --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
+    --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
+    --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
+  }
+
+  body { background: var(--cl-bg); }
+  .page-header { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
+  .page-header h1, .page-header .lead { font-family: var(--cl-mincho); color: var(--cl-text); }
+  .content-layout { background: var(--cl-bg); }
+  .breadcrumb { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
+  .breadcrumb a { color: var(--cl-text-sub); }
+  .breadcrumb li:last-child { color: var(--cl-text); }
+  .site-footer { background: var(--cl-bg); border-top: 1px solid var(--cl-border); color: var(--cl-text-sub); }
+  .site-footer a { color: var(--cl-text-sub); }
+  .site-footer a:hover { color: var(--cl-accent); }
+
+  .clinic-page { font-family: var(--cl-mincho); color: var(--cl-text); line-height: 1.9; letter-spacing: .02em; }
+  .clinic-page p { color: var(--cl-text); }
+  .clinic-page h2 {
+    border-left: none; padding-left: 0; color: var(--cl-text);
+    font-family: var(--cl-mincho); font-weight: 600;
+    font-size: 1.02rem; margin-top: 2.2em; padding-bottom: 8px;
+    border-bottom: 1px solid var(--cl-border);
+  }
+  .clinic-page a { color: var(--cl-accent); }
+
+  .kamoku-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 1.4em 0; }
+  .kamoku-tag {
+    display: inline-block;
+    padding: .55em 1.1em;
+    background: var(--cl-panel);
+    color: var(--cl-accent);
+    border: 1px solid var(--cl-accent-dim);
+    border-radius: 0;
+    text-decoration: none;
+    font-family: var(--cl-mono);
+    font-size: .82rem;
+    letter-spacing: .02em;
+  }
+  .kamoku-tag:hover { background: rgba(60,255,220,0.1); border-color: var(--cl-accent); color: var(--cl-accent); }
+
+  .clinic-page .info-box {
+    background: var(--cl-panel);
+    border: 1px solid var(--cl-accent-dim);
+    border-left: 3px solid var(--cl-accent);
+    color: var(--cl-text);
+    font-family: var(--cl-mincho);
+  }
+
+  .clinic-sidebar .sidebar-block {
+    background: var(--cl-panel); border: 1px solid var(--cl-border); padding: 16px 18px;
+  }
+  .clinic-sidebar .sidebar-block h2 { color: var(--cl-text); font-size: .95rem; margin-top: 0; font-family: var(--cl-mincho); }
+  .clinic-sidebar .sidebar-block a { color: var(--cl-text) !important; }
+  .clinic-sidebar .sidebar-block a:hover { color: var(--cl-accent) !important; }
+</style>
 </head>
 <body id="top">
 
@@ -21,7 +89,7 @@
   </div>
 
   <div class="content-layout">
-    <div class="main-content">
+    <div class="main-content clinic-page">
       <p>
         現代病専門外来は、症状の傾向に応じて細分化された外来で構成されています。
         気になる科目をお選びいただくと、<a href="../about/gendaibyo-db.html">現代病データベース</a>
@@ -76,7 +144,7 @@
       </div>
     </div>
 
-    <aside class="sidebar">
+    <aside class="sidebar clinic-sidebar">
       <div class="sidebar-block">
         <h2>関連情報</h2>
         <ul>
