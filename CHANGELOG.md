@@ -10,6 +10,14 @@
 - ファイルパス: 内容
 ```
 ---
+## 2026-08-16
+---
+### 削除
+- `services/shisetsu-annai.html`:内容が`facilities/index.html`と重複していた簡易版の施設案内を削除
+### 変更
+- `index.html`・`services/index.html`・`about/sitemap.html`:「施設案内」へのリンクを、削除した`services/shisetsu-annai.html`から`facilities/index.html`に変更
+- `IDEAS.md`:実装済みの「🏥 キロクぬかクリニック専用ホームページ」の項目を削除
+
 ## 2026-08-15（4）
 ---
 ### 変更
