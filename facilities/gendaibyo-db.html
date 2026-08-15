@@ -23,6 +23,7 @@
     --cl-border: #22383a;
     --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
     --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
+    --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
   }
 
   body { background: var(--cl-bg); }
@@ -45,12 +46,12 @@
     background: var(--cl-panel);
     border: 1px solid var(--cl-border);
     color: var(--cl-text);
-    font-family: var(--cl-mono);
+    font-family: var(--cl-sans);
   }
   .gb-search input[type="search"]::placeholder { color: var(--cl-text-sub); }
   .gb-count { font-family: var(--cl-mono); font-size: .8rem; color: var(--cl-text-sub); }
 
-  .gb-table { font-family: var(--cl-mono); font-size: .84rem; }
+  .gb-table { font-family: var(--cl-sans); font-size: .84rem; }
   .gb-table th, .gb-table td { border-color: var(--cl-border); color: var(--cl-text); }
   .gb-table th { background: var(--cl-panel); color: var(--cl-accent); font-weight: normal; }
   .gb-date { color: var(--cl-text-sub); }
