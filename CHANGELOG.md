@@ -22,6 +22,16 @@
 - `about/kiroku-nuka-clinic.html` → `facilities/kiroku-nuka-clinic.html`へ移動。キロクぬかクリニックはサイトマップ上「施設案内」に分類されているため、今後のページ配置はサイトマップの分類を基準とする
 - クリニック関連ページの配置・リンクを整理。Claude（兄さん）による最終チェックを実施し、追加4件を修正後、再チェックで問題なしを確認
 
+## 2026-08-15（1）
+---
+### 追加
+- `facilities/kiroku-nuka-clinic-kenkyu.html`:「研究資料」を新規作成。研究資料No.001(主語他者化硬化症)を掲載、「研究資料を読む」で症例・記録・処方・追跡記録が展開される折りたたみ形式
+### 変更
+- `facilities/kiroku-nuka-clinic-director.html`:院長の紹介画像を、SVGシルエットから透過処理済みの写真シルエット(`images/facilities/kiroku-nuka-clinic-director.png`)に変更。「所属学会・活動」セクションを追加。スマホ表示でバッジ・名前・画像が縦1文字ずつ折り返されていた不具合を`flex-wrap`指定で修正
+- `facilities/kiroku-nuka-clinic.html`:誤って医師紹介ページの内容で上書きされていたのを復元。電話番号(ぬぬ-ぬかピコ-8881)、医師紹介・研究資料へのリンクを追加
+- `facilities/shinryo-kamoku.html`:クリニックと同じダーク×Zen Old Minchoデザインに変更(38件の外来タグはそのまま)
+- `about/sitemap.html`:キロクぬかクリニックの子ページとして「医師紹介」「研究資料」を追加
+
 ---
 ## 2026-08-14（2）
 ### 追加
