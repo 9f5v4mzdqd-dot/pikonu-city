@@ -10,6 +10,14 @@
 - ファイルパス: 内容
 ```
 ---
+
+## 2026-08-15（3）
+---
+### 変更
+- `facilities/kiroku-nuka-clinic-director.html`・`facilities/kiroku-nuka-clinic-kenkyu.html`・`facilities/kiroku-nuka-clinic-archive.html`:相互リンクの抜けを解消(医師紹介・研究資料・診療科目一覧・外来シリーズ書庫の間で行き来できるように)
+- `facilities/kiroku-nuka-clinic-director.html`・`facilities/kiroku-nuka-clinic-kenkyu.html`・`services/kiroku-nuka-monshinhyo.html`:Zen Old Minchoを読み込み、本文・見出しのフォントをクリニック本体(`kiroku-nuka-clinic.html`)と統一(それまではNoto Sans JPのままだった)
+- `facilities/gendaibyo-db.html`・`facilities/kiroku-nuka-clinic-director.html`・`facilities/kiroku-nuka-clinic-kenkyu.html`・`facilities/shinryo-kamoku.html`・`facilities/kiroku-nuka-clinic.html`・`services/kiroku-nuka-monshinhyo.html`:サイドバー見出し(「関連情報」「他の施設」)の文字色をアクセントカラー`#3cffdc`に統一
+
 ## 2026-08-15（2）
 ---
 ### 変更
