@@ -215,7 +215,7 @@
       '<li><a href="' + BASE + 'about/gijiroku.html">議事録・会議録</a></li>' +
       '<li><a href="' + BASE + 'about/shingikai.html">審議会・附属機関一覧</a></li>' +
       '<li><a href="' + BASE + 'about/saiyo.html">職員採用情報</a></li>' +
-      '<li><a href="' + BASE + 'about/gendaibyo-db.html">現代病データベース</a></li>' +
+      '<li><a href="' + BASE + 'facilities/gendaibyo-db.html">現代病データベース</a></li>' +
       '<li><a href="' + BASE + 'news/index.html">お知らせ一覧</a></li>' +
       "</ul></div>" +
       "<div><h2>お問い合わせ</h2>" +
