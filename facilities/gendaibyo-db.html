@@ -2,17 +2,75 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>現代病データベース | 市政情報 | ピコぬ市公式ホームページ</title>
+<title>現代病データベース | キロクぬかクリニック | ピコぬ市公式ホームページ</title>
 <meta name="description" content="キロクぬかクリニックにおける現代病の診断記録データベースです。外来名・病名・症状概要から検索できます。">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&family=M+PLUS+1+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  .gb-date { width: 6em; white-space: nowrap; color: var(--color-text-sub, #767676); font-size: .9em; }
-  .gb-note { width: 4.5em; white-space: nowrap; }
-  .gb-loading { padding: 1.5em 0; text-align: center; color: var(--color-text-sub, #767676); }
+  :root {
+    --cl-bg: #0b0e14;
+    --cl-panel: #101720;
+    --cl-accent: #3cffdc;
+    --cl-accent-dim: #1f9c8a;
+    --cl-text: #d7ece9;
+    --cl-text-sub: #8fa8a4;
+    --cl-border: #22383a;
+    --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
+    --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
+    --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  }
+
+  body { background: var(--cl-bg); }
+  .page-header { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
+  .page-header h1, .page-header .lead { font-family: var(--cl-mincho); color: var(--cl-text); }
+  .content-layout { background: var(--cl-bg); }
+  .breadcrumb { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
+  .breadcrumb a { color: var(--cl-text-sub); }
+  .breadcrumb li:last-child { color: var(--cl-text); }
+  .site-footer { background: var(--cl-bg); border-top: 1px solid var(--cl-border); color: var(--cl-text-sub); }
+  .site-footer a { color: var(--cl-text-sub); }
+  .site-footer a:hover { color: var(--cl-accent); }
+
+  .clinic-page { font-family: var(--cl-mincho); color: var(--cl-text); line-height: 1.9; letter-spacing: .02em; }
+  .clinic-page p { color: var(--cl-text); }
+  .clinic-page a { color: var(--cl-accent); }
+  .clinic-page .facility-photo { border-color: var(--cl-border); filter: saturate(.7) contrast(1.05); }
+
+  .gb-search input[type="search"] {
+    background: var(--cl-panel);
+    border: 1px solid var(--cl-border);
+    color: var(--cl-text);
+    font-family: var(--cl-sans);
+  }
+  .gb-search input[type="search"]::placeholder { color: var(--cl-text-sub); }
+  .gb-count { font-family: var(--cl-mono); font-size: .8rem; color: var(--cl-text-sub); }
+
+  .gb-table { font-family: var(--cl-sans); font-size: .84rem; }
+  .gb-table th, .gb-table td { border-color: var(--cl-border); color: var(--cl-text); }
+  .gb-table th { background: var(--cl-panel); color: var(--cl-accent); font-weight: normal; }
+  .gb-date { color: var(--cl-text-sub); }
+  .gb-byomei { color: var(--cl-accent); }
+  .gb-loading, .gb-noresult { color: var(--cl-text-sub); font-family: var(--cl-mincho); }
+
+  .clinic-page .info-box {
+    background: var(--cl-panel);
+    border: 1px solid var(--cl-accent-dim);
+    border-left: 3px solid var(--cl-accent);
+    color: var(--cl-text);
+  }
+
+  .clinic-sidebar .sidebar-block {
+    background: var(--cl-panel); border: 1px solid var(--cl-border); padding: 16px 18px;
+  }
+  .clinic-sidebar .sidebar-block h2 { color: var(--cl-text); font-size: .95rem; margin-top: 0; font-family: var(--cl-mincho); }
+  .clinic-sidebar .sidebar-block a { color: var(--cl-text) !important; }
+  .clinic-sidebar .sidebar-block a:hover { color: var(--cl-accent) !important; }
 </style>
 </head>
 <body id="top">
@@ -26,7 +84,7 @@
   </div>
 
   <div class="content-layout">
-    <div class="main-content">
+    <div class="main-content clinic-page">
       <img class="facility-photo" src="../images/sections/gendaibyo-db-monitor.jpg" alt="ネオン線で描かれた電子カルテ画面のイメージ">
       <p>
         キロクぬかクリニック現代病専門外来の診断記録をデータベース化し、公開しています。診断名や症状から記録を検索・閲覧できます。
@@ -61,12 +119,13 @@
       </div>
     </div>
 
-    <aside class="sidebar">
+    <aside class="sidebar clinic-sidebar">
       <div class="sidebar-block">
         <h2>関連情報</h2>
         <ul>
-          <li><a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
-          <li><a href="gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
+          <li><a href="kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
+          <li><a href="shinryo-kamoku.html">診療科目一覧</a></li>
+          <li><a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
           <li><a href="../services/gendaibyo-sodan.html">現代病相談</a></li>
           <li><a href="../about/jorei-gendaibyo.html">現代病対策条例</a></li>
         </ul>
@@ -75,7 +134,7 @@
   </div>
 </main>
 
-<script>window.PAGE_META = { nav: "about", breadcrumb: [{ label: "現代病データベース" }] };</script>
+<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "キロクぬかクリニック", href: "kiroku-nuka-clinic.html" }, { label: "現代病データベース" }] };</script>
 <script src="../js/common.js"></script>
 <script>
 (function () {
