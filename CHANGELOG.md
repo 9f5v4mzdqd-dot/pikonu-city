@@ -19,6 +19,8 @@
 - `about/sitemap.html`:「現代病データベース」の項目を市政情報リストからキロクぬかクリニック配下に移動
 - `robots.txt`:管理画面の除外パスを`/facilities/gendaibyo-db-admin.html`に修正
 - `js/common.js`・`facilities/goods.html`・`services/gendaibyo-sodan.html`・`services/kiroku-nuka-monshinhyo.html`:「現代病データベース」へのリンクを`facilities/gendaibyo-db.html`に修正(旧`about/`版へのリンク切れを解消)。あわせて`kiroku-nuka-monshinhyo.html`内の誤ったリンクテキスト(「現代人診療報酬点数表」→「現代病データベース」)も修正
+- `about/kiroku-nuka-clinic.html` → `facilities/kiroku-nuka-clinic.html`へ移動。キロクぬかクリニックはサイトマップ上「施設案内」に分類されているため、今後のページ配置はサイトマップの分類を基準とする
+- クリニック関連ページの配置・リンクを整理。Claude（兄さん）による最終チェックを実施し、追加4件を修正後、再チェックで問題なしを確認
 
 ---
 ## 2026-08-14（2）
