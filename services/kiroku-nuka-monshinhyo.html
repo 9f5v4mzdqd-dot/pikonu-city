@@ -22,12 +22,14 @@
     --cl-text-sub: #8fa8a4;
     --cl-border: #22383a;
     --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
+    --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
     --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
+    
   }
 
   body { background: var(--cl-bg); }
   .page-header { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
-  .page-header h1, .page-header .lead { font-family: var(--cl-sans); color: var(--cl-text); }
+  .page-header h1, .page-header .lead { font-family: var(--cl-mincho); color: var(--cl-text); }
   .content-layout { background: var(--cl-bg); }
   .breadcrumb { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
   .breadcrumb a { color: var(--cl-text-sub); }
@@ -36,7 +38,7 @@
   .site-footer a { color: var(--cl-text-sub); }
   .site-footer a:hover { color: var(--cl-accent); }
 
-  .monshin-page { font-family: var(--cl-sans); color: var(--cl-text); }
+  .monshin-page { font-family: var(--cl-mincho); color: var(--cl-text); }
   .monshin-page p { color: var(--cl-text); }
   .monshin-page h2 {
     border-left: none; padding-left: 0; color: var(--cl-text);
@@ -76,7 +78,7 @@
     border: 1px solid var(--cl-border);
     color: var(--cl-text);
     padding: 9px 11px;
-    font-family: var(--cl-sans);
+    font-family: var(--cl-mincho);
     font-size: .88rem;
   }
   .monshin-field textarea { min-height: 70px; resize: vertical; }
