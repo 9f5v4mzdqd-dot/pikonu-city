@@ -10,6 +10,17 @@
 - ファイルパス: 内容
 ```
 ---
+## 2026-08-15（2）
+---
+### 変更
+- `facilities/gendaibyo-db.html`:検索窓・テーブルのフォントをモノスペースからNoto Sans JPに統一。画像を新しいカルテモニター風ビジュアルに差し替え
+- `about/gendaibyo-db.html`を削除:`facilities/gendaibyo-db.html`(リニューアル版)に一本化
+- `about/gendaibyo-db-admin.html` → `facilities/gendaibyo-db-admin.html`へ移動(公開ページと管理画面を同じフォルダに揃える方針に統一)
+- `about/sitemap.html`:「現代病データベース」の項目を市政情報リストからキロクぬかクリニック配下に移動
+- `robots.txt`:管理画面の除外パスを`/facilities/gendaibyo-db-admin.html`に修正
+- `js/common.js`・`facilities/goods.html`・`services/gendaibyo-sodan.html`・`services/kiroku-nuka-monshinhyo.html`:「現代病データベース」へのリンクを`facilities/gendaibyo-db.html`に修正(旧`about/`版へのリンク切れを解消)。あわせて`kiroku-nuka-monshinhyo.html`内の誤ったリンクテキスト(「現代人診療報酬点数表」→「現代病データベース」)も修正
+
+---
 ## 2026-08-14（2）
 ### 追加
 - `about/fuyoufukyu-uranai.html`:「今日のあなたにおすすめの不要不急な時間の過ごし方」を新規作成。不要不急実践帳の全20種からランダムでカードを1枚表示するジェネレーター(既存のカード画像を流用、ダウンロードボタン付き)
