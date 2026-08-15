@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /about/piconu-diary-admin.html
-Disallow: /about/gendaibyo-db-admin.html
+Disallow: /facilities/gendaibyo-db-admin.html
 Disallow: /facilities/kiroku-nuka-clinic-archive-admin.html
