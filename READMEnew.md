@@ -23,7 +23,7 @@ pikonu-city/
 ├── news/                      お知らせ(18記事)
 │   ├── index.html             お知らせ一覧
 │   └── news-YYYYMMDD-NN.html  お知らせ詳細(日付+連番で命名)
-├── services/                  くらしの情報(住民票・戸籍・ごみ収集・現代病相談 等、11ページ)
+├── services/                  くらしの情報(住民票・戸籍・ごみ収集・現代病相談 等、10ページ)
 ├── facilities/                施設案内(市役所・クリニック・博物館・図書館・商工会・交通局 等、45ページ)
 ├── about/                     市の概要・市政情報(条例集・審議会・FAQ・歴史・FMピコぬ 等、49ページ)
 ├── images/                    画像(sections/ facilities/ museum/ kanko/ cable-tv/ jissen/ rekishi/ 等。運用ルールは下記参照)
@@ -115,7 +115,8 @@ JavaScriptで動的に生成します。各ページのHTMLには本文(`<main i
 ```html
 <script>
   window.PAGE_META = {
-    nav: "news",                              // グローバルナビの現在地(home/news/services/facilities/about)
+    nav: "news",                              // グローバルナビの現在地(home/news/services/facilities/gaiyou/about/piconu-chat/radio)
+                                               // 「市の概要」配下は "gaiyou"、「市政情報」配下は "about" (別キーなので混同注意)
     breadcrumb: [{ label: "お知らせ", href: "index.html" }, { label: "ページタイトル" }]
   };
 </script>
