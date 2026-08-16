@@ -11,6 +11,21 @@
 ```
 ---
 ---
+## 2026-08-16（7）
+---
+### 変更
+- `facilities/neo-taihi-box.html`:「この課の制度・事業」に「ぬか資源係」「地域資源再利用事業」へのリンクを追加(未反映だった差分を再適用)
+- `facilities/shinryo-kamoku.html`:サイドバーに医師紹介・研究資料・外来シリーズ書庫へのリンクを追加
+- `about/cable-tv.html`・`facilities/hisho-kouhou-ka.html`:ラジオ番組3本(ピックアップ!ピコぬ市ラジオ・深掘りラジオ・どうでもいいラジオ)への個別リンクを追加
+- `facilities/kiroku-seisaku-ka.html`:「ピコぬ市グラデーション保持条例」「目的のない事業に対する助成条例(仮称)」へのリンクを追加
+- `facilities/nukapiko-museum.html`:「ピコぬ市記録文化保護条例」へのリンクを追加
+- `facilities/kiroku-nuka-clinic.html`:「現代病対策条例」へのリンクを追加
+- `about/jorei.html`:「各条例の所管部署」セクションを新設し、6条例それぞれの所管部署(記録政策課・不要不急保存課・現代病相談・時間効率支援課)への相互リンクを追加
+- `about/jorei-kiroku-bunka.html`:「関連情報」に記録政策課へのリンクを追加
+- `about/jorei-gendaibyo.html`:リンク切れになっていた`gendaibyo-db.html`のパスを`../facilities/gendaibyo-db.html`に修正(facilities/移行時の一括置換漏れ)
+---
+## 2026-08-16（6）
+---
 ## 2026-08-16（6）
 ---
 ### 変更
