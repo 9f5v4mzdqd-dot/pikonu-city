@@ -10,6 +10,16 @@
 - ファイルパス: 内容
 ```
 ---
+---
+## 2026-08-16（6）
+---
+### 変更
+- `facilities/kiroku-nuka-clinic-archive.html`:サイドバーの重複していた「診療科目一覧」を整理し、「問診表」へのリンクを追加
+- `facilities/kiroku-nuka-clinic-director.html`:サイドバーの閉じ忘れていた`</ul>`タグを修正。「外来シリーズ 書庫」へのリンクを追加
+- `facilities/kiroku-nuka-clinic-kenkyu.html`:サイドバーに「診療科目一覧」へのリンクを追加
+- `facilities/gendaibyo-db.html`:サイドバーにクリニックファミリー内(医師紹介・研究資料・外来シリーズ書庫・診療科目一覧・問診表)へのリンクを追加
+- `services/kiroku-nuka-monshinhyo.html`:サイドバーに医師紹介・研究資料・外来シリーズ書庫・現代病データベースへのリンクを追加
+- クリニック関連主要6ページ(本体・医師紹介・研究資料・外来シリーズ書庫・現代病データベース・問診表)の相互リンクを完全化
 ## 2026-08-16（5）
 ---
 ### 変更
