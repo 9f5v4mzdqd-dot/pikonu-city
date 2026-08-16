@@ -23,8 +23,7 @@
 - `about/jorei.html`:「各条例の所管部署」セクションを新設し、6条例それぞれの所管部署(記録政策課・不要不急保存課・現代病相談・時間効率支援課)への相互リンクを追加
 - `about/jorei-kiroku-bunka.html`:「関連情報」に記録政策課へのリンクを追加
 - `about/jorei-gendaibyo.html`:リンク切れになっていた`gendaibyo-db.html`のパスを`../facilities/gendaibyo-db.html`に修正(facilities/移行時の一括置換漏れ)
----
-## 2026-08-16（6）
+
 ---
 ## 2026-08-16（6）
 ---
