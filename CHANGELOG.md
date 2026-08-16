@@ -10,7 +10,15 @@
 - ファイルパス: 内容
 ```
 ---
-## 2026-08-16（3）
+
+---
+## 2026-08-16（4）
+---
+### 変更
+- `README.md`:旧版を削除し、`READMEnew.md`を正式な`README.md`として確定。`services/`ページ数を実数(10ページ)に修正、共通ヘッダーの`nav`キー説明に`gaiyou`(市の概要)と`about`(市政情報)が別キーである旨を追記
+- `about/shisei-joho.html`:サービスカードに「ピコぬ市 行政構造図」「部署別電話番号一覧」を追加(サイトマップとの不一致を解消、5→7項目)。メイン画像を新しいものに差し替え、alt文言を「条例集や部署別電話番号一覧などの行政資料が並ぶ机」に変更
+- `images/icons/icon-gyousei-kouzou.svg`:「ピコぬ市 行政構造図」カード用に新規作成(六角形の連結モチーフ、既存アイコンと同系色の線画)
+- `facilities/chiiki-shigen-saiiyou.html`・`facilities/nuka.html`・`facilities/neo-taihi-box.html`・`facilities/niwa-zukuri-josei.html`・`facilities/pio-card.html`・`facilities/ryokka-suishin.html`・`facilities/ikimono-kyosei-teien.html`・`facilities/usui-junkan-taisaku.html`:暮らしと循環推進課ファミリー内のサイドバー相互リンク漏れを解消。特に`nuka.html`・`chiiki-shigen-saiiyou.html`は「関連情報」1ブロックのみで情報量が薄かったため、他の兄弟ページと同じ「関連情報」+「この課の制度・事業」の2ブロック構成に統一
 ---
 ### 変更
 - `README.md`:「『市の概要』と『市政情報』の区別」の節を新設。「新しいページを追加する手順」の置き場所判断にも参照を追記
