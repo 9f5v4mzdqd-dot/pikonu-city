@@ -9,6 +9,17 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 ```
+
+## 2026-08-16（9）
+---
+### 変更
+- `about/kanko.html`・`facilities/nukapiko-museum.html`・`facilities/koutsukyoku.html`・`about/ikimono-zukan.html`:観光課への戻りリンクを追加(相互リンク化)
+- `facilities/shiyakusho.html`:簡易フロア表の3階に観光課・秘書広報課を追加
+- `about/aisatsu.html`:関連情報に秘書広報課へのリンクを追加
+- `services/gomi.html`・`facilities/fuyoufukyuhozonka.html`・`facilities/kiroku-seisaku-ka.html`:都市計画課への戻りリンクを追加(相互リンク化)
+- `facilities/jissen-cho.html`・`about/fuyoufukyu-4koma.html`・`about/hibussitsu-tokusanhin.html`:不要不急保存課ファミリー内の相互リンクの抜け(実践帳↔4コマ漫画、4コマ漫画→過ごし方、特産品一覧→過ごし方)を解消
+- `about/shisei-joho.html`・`about/gijiroku.html`・`about/shingikai.html`・`about/jorei.html`・`facilities/fuyoufukyuhozonka.html`:議場・議会事務局への戻りリンクを追加(相互リンク化)。`gijiroku.html`本文中の「議会事務局」もリンク化
+- `about/shingikai.html`:リンク切れになっていた`gendaibyo-db.html`のパスを`../facilities/gendaibyo-db.html`に修正(facilities/移行時の一括置換漏れ)
 ---
 ## 2026-08-16（8）
 ---
