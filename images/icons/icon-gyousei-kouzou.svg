@@ -1,0 +1,20 @@
+<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#1a4b8c" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <!-- connectors -->
+    <line x1="80" y1="62" x2="80" y2="38"></line>
+    <line x1="66" y1="88" x2="46" y2="100"></line>
+    <line x1="94" y1="88" x2="114" y2="100"></line>
+
+    <!-- center hexagon -->
+    <polygon points="80,58 97,68 97,88 80,98 63,88 63,68"></polygon>
+
+    <!-- top hexagon (smaller) -->
+    <polygon points="80,20 92,27 92,41 80,48 68,41 68,27"></polygon>
+
+    <!-- bottom-left hexagon -->
+    <polygon points="34,100 46,107 46,121 34,128 22,121 22,107"></polygon>
+
+    <!-- bottom-right hexagon -->
+    <polygon points="126,100 138,107 138,121 126,128 114,121 114,107"></polygon>
+  </g>
+</svg>
