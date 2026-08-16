@@ -10,6 +10,16 @@
 - ファイルパス: 内容
 ```
 ---
+## 2026-08-16（5）
+---
+### 変更
+- `facilities/kiroku-seisaku-ka.html`:「関連情報」に行政記録第一号・年表・市史編纂事業について・未整理資料室へのリンクを追加(相互リンク化)
+- `facilities/jikan-koritsu-shien-ka.html`:「他の施設」にキロクぬかクリニック・ぬかピコ民芸博物館以外の5部署(困りごと相談室・不要不急保存課・記録政策課・ピコぬ市交通局・市立図書館)へのリンクを追加。「関連情報」に非効率的時間保護条例・行政記録第一号へのリンクを追加
+- `about/gyousei-kiroku-01.html`:「関連情報」に時間効率支援課へのリンクを追加(相互リンク化)
+- `facilities/shiminka.html`・`services/juminhyo.html`・`services/koseki.html`:市民課まわりの片方向リンクを解消(住所変更・各種届出、住民票自動発行ジェネレーターを含め相互リンク化)
+- `services/juminhyo-generator.html`:本文末尾に「お問い合わせ」欄(市民課)を追加
+- `facilities/nukapiko-museum.html`・`facilities/jikan-koritsu-shien-ka.html`・`facilities/hisho-kouhou-ka.html`・`about/jorei-jikan.html`・`about/jorei-fuyofukyu.html`:「広報ぬかピコ最新号」への個別リンク(号が変わるたびに要更新)を、`about/koho-archive.html`(デジタルアーカイブ、更新不要)への案内に変更。一括置換時にパスが壊れていた4ファイルを修正
+- `facilities/fuyoufukyuhozonka.html`・`about/jorei-fuyofukyu.html`:不要不急保存条例への相互リンクを追加
 
 ---
 ## 2026-08-16（4）
