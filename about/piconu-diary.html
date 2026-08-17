@@ -1,145 +1,172 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>ピコぬくん業務日誌 | 市政情報 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="ピコぬくんによる業務日誌です。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
-<style>
-  #diary-month-list a { display: flex; justify-content: space-between; }
-  #diary-month-list a.active { font-weight: 700; color: var(--color-primary, #2b5c8a); }
-  #diary-month-list .month-count { color: var(--color-text-sub, #767676); font-size: .85em; }
-</style>
+  <meta charset="UTF-8">
+  <title>ピコぬくん業務日誌 | 市政情報 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬくんによる業務日誌です。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    #diary-month-list a {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #diary-month-list a.active {
+      font-weight: 700;
+      color: var(--color-primary, #2b5c8a);
+    }
+
+    #diary-month-list .month-count {
+      color: var(--color-text-sub, #767676);
+      font-size: .85em;
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>ピコぬくん業務日誌</h1>
-      <p class="lead">ピコぬくんによる、日々の記録です。</p>
-    </div>
-  </div>
-
-  <div class="content-layout">
-    <div class="main-content">
-      <img class="facility-photo" src="../images/sections/piconu-diary.jpg" alt="デスクで日誌をつけるピコぬくん">
-      <div id="diary-list">
-        <p>読み込み中だぬ...</p>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>ピコぬくん業務日誌</h1>
+        <p class="lead">ピコぬくんによる、日々の記録です。</p>
       </div>
     </div>
 
-    <aside class="sidebar">
-      <div class="sidebar-block">
-        <h2>月別アーカイブ</h2>
-        <ul id="diary-month-list">
-          <li>読み込み中...</li>
-        </ul>
+    <div class="content-layout">
+      <div class="main-content">
+        <img class="facility-photo" src="../images/sections/piconu-diary.jpg" alt="デスクで日誌をつけるピコぬくん">
+        <div id="diary-list">
+          <p>読み込み中だぬ...</p>
+        </div>
       </div>
-    </aside>
-  </div>
-</main>
 
-<script>window.PAGE_META = { nav: "gaiyou", breadcrumb: [{ label: "ピコぬくん業務日誌" }] };</script>
-<script src="../js/common.js"></script>
-<script>
-  (function () {
-    var listEl = document.getElementById("diary-list");
-    var monthListEl = document.getElementById("diary-month-list");
-    var allEntries = [];
-    var activeMonth = null; // null = すべての月
-    var NO_MONTH_KEY = "日付未設定";
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>月別アーカイブ</h2>
+          <ul id="diary-month-list">
+            <li>読み込み中...</li>
+          </ul>
+        </div>
 
-    function escapeHtml(s) {
-      return String(s)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/\n/g, "<br>");
-    }
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="piconu-kun.html">ピコぬくんとは</a></li>
+            <li><a href="../facilities/fukushika.html">相談支援用ピコぬくん（困りごと相談室）</a></li>
+            <li><a href="piconu-city-radio.html">ピックアップ! ピコぬ市ラジオ</a></li>
+            <li><a href="dodemoii-radio.html">どうでもいいラジオ</a></li>
+            <li><a href="piconu-kun-game.html">脱出ゲームで遊ぶ</a></li>
+            <li><a href="piconu-quiz.html">ピコぬ市検定（初級）で遊ぶ</a></li>
+            <li><a href="../facilities/shiyakusho.html">市役所</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
 
-    function monthKeyOf(e) {
-      var d = e.added_at || e.date;
-      if (!d) return NO_MONTH_KEY;
-      var m = String(d).match(/^(\d{4})-(\d{2})/);
-      return m ? (m[1] + "年" + parseInt(m[2], 10) + "月") : NO_MONTH_KEY;
-    }
+  <script>window.PAGE_META = {nav: "gaiyou", breadcrumb: [{label: "ピコぬくん業務日誌"}]};</script>
+  <script src="../js/common.js"></script>
+  <script>
+    (function () {
+      var listEl = document.getElementById("diary-list");
+      var monthListEl = document.getElementById("diary-month-list");
+      var allEntries = [];
+      var activeMonth = null; // null = すべての月
+      var NO_MONTH_KEY = "日付未設定";
 
-    function renderMonthList() {
-      var counts = {};
-      var order = [];
-      allEntries.forEach(function (e) {
-        var key = monthKeyOf(e);
-        if (!(key in counts)) { counts[key] = 0; order.push(key); }
-        counts[key]++;
-      });
-      order.sort(function (a, b) {
-        if (a === NO_MONTH_KEY) return 1;
-        if (b === NO_MONTH_KEY) return -1;
-        return b.localeCompare(a, "ja", { numeric: true });
-      });
-
-      var html = '<li><a href="#" data-month="" class="' + (activeMonth === null ? "active" : "") + '">' +
-        "すべて表示<span class=\"month-count\">" + allEntries.length + "</span></a></li>";
-      html += order.map(function (key) {
-        return '<li><a href="#" data-month="' + escapeHtml(key) + '" class="' +
-          (activeMonth === key ? "active" : "") + '">' + escapeHtml(key) +
-          '<span class="month-count">' + counts[key] + "</span></a></li>";
-      }).join("");
-      monthListEl.innerHTML = html;
-
-      Array.prototype.forEach.call(monthListEl.querySelectorAll("a"), function (a) {
-        a.addEventListener("click", function (ev) {
-          ev.preventDefault();
-          var m = a.getAttribute("data-month");
-          activeMonth = m === "" ? null : m;
-          renderMonthList();
-          renderList();
-        });
-      });
-    }
-
-    function renderList() {
-      var entries = allEntries.filter(function (e) {
-        return activeMonth === null || monthKeyOf(e) === activeMonth;
-      });
-      if (entries.length === 0) {
-        listEl.innerHTML = "<p>該当する記録がないだぬ。</p>";
-        return;
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\n/g, "<br>");
       }
-      listEl.innerHTML = entries.map(function (e) {
-        return (
-          '<div class="diary-entry">' +
+
+      function monthKeyOf(e) {
+        var d = e.added_at || e.date;
+        if (!d) return NO_MONTH_KEY;
+        var m = String(d).match(/^(\d{4})-(\d{2})/);
+        return m ? (m[1] + "年" + parseInt(m[2], 10) + "月") : NO_MONTH_KEY;
+      }
+
+      function renderMonthList() {
+        var counts = {};
+        var order = [];
+        allEntries.forEach(function (e) {
+          var key = monthKeyOf(e);
+          if (!(key in counts)) {counts[key] = 0; order.push(key);}
+          counts[key]++;
+        });
+        order.sort(function (a, b) {
+          if (a === NO_MONTH_KEY) return 1;
+          if (b === NO_MONTH_KEY) return -1;
+          return b.localeCompare(a, "ja", {numeric: true});
+        });
+
+        var html = '<li><a href="#" data-month="" class="' + (activeMonth === null ? "active" : "") + '">' +
+          "すべて表示<span class=\"month-count\">" + allEntries.length + "</span></a></li>";
+        html += order.map(function (key) {
+          return '<li><a href="#" data-month="' + escapeHtml(key) + '" class="' +
+            (activeMonth === key ? "active" : "") + '">' + escapeHtml(key) +
+            '<span class="month-count">' + counts[key] + "</span></a></li>";
+        }).join("");
+        monthListEl.innerHTML = html;
+
+        Array.prototype.forEach.call(monthListEl.querySelectorAll("a"), function (a) {
+          a.addEventListener("click", function (ev) {
+            ev.preventDefault();
+            var m = a.getAttribute("data-month");
+            activeMonth = m === "" ? null : m;
+            renderMonthList();
+            renderList();
+          });
+        });
+      }
+
+      function renderList() {
+        var entries = allEntries.filter(function (e) {
+          return activeMonth === null || monthKeyOf(e) === activeMonth;
+        });
+        if (entries.length === 0) {
+          listEl.innerHTML = "<p>該当する記録がないだぬ。</p>";
+          return;
+        }
+        listEl.innerHTML = entries.map(function (e) {
+          return (
+            '<div class="diary-entry">' +
             '<div class="diary-date">' + escapeHtml(e.date) + '</div>' +
             '<div class="diary-title">' + escapeHtml(e.title) + '</div>' +
             '<div class="diary-body">' + escapeHtml(e.body) + '</div>' +
-          '</div>'
-        );
-      }).join("");
-    }
+            '</div>'
+          );
+        }).join("");
+      }
 
-    fetch("../data/piconu-diary.json")
-      .then(function (res) { return res.json(); })
-      .then(function (entries) {
-        if (!Array.isArray(entries) || entries.length === 0) {
-          listEl.innerHTML = "<p>まだ記録がないだぬ。</p>";
+      fetch("../data/piconu-diary.json")
+        .then(function (res) {return res.json();})
+        .then(function (entries) {
+          if (!Array.isArray(entries) || entries.length === 0) {
+            listEl.innerHTML = "<p>まだ記録がないだぬ。</p>";
+            monthListEl.innerHTML = "<li>-</li>";
+            return;
+          }
+          entries.sort(function (a, b) {return b.date.localeCompare(a.date);});
+          allEntries = entries;
+          renderMonthList();
+          renderList();
+        })
+        .catch(function () {
+          listEl.innerHTML = "<p>読み込みに失敗しただぬ。時間をおいて試してほしいだぬ。</p>";
           monthListEl.innerHTML = "<li>-</li>";
-          return;
-        }
-        entries.sort(function (a, b) { return b.date.localeCompare(a.date); });
-        allEntries = entries;
-        renderMonthList();
-        renderList();
-      })
-      .catch(function () {
-        listEl.innerHTML = "<p>読み込みに失敗しただぬ。時間をおいて試してほしいだぬ。</p>";
-        monthListEl.innerHTML = "<li>-</li>";
-      });
-  })();
-</script>
+        });
+    })();
+  </script>
 </body>
+
 </html>
