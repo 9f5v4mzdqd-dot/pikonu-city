@@ -10,7 +10,15 @@
 - ファイルパス: 内容
 ```
 
-## 2026-08-18
+## 2026-08-18（2）
+---
+### 変更
+- `news/news-20260615-01.html`:「関連情報」に記録政策課へのリンクを追加
+- `facilities/jikan-koritsu-shien-ka.html`:「関連情報」に生活共生課（困りごと相談室）・不要不急保存課・記録政策課・キロクぬかクリニックへのリンクを追加
+- `facilities/kiroku-seisaku-ka.html`:「関連情報」にごみ収集・ピコぬ市の歴史・行政記録 第一号・ピコぬ市年表・市史編纂事業について・未整理資料室・グラデーション保持条例・目的のない事業に対する助成条例(仮称)・生活共生課（困りごと相談室）・時間効率支援課・都市計画課・市の概要・ぬかピコ民芸博物館へのリンクを整理・追加
+---
+
+## 2026-08-（1）
 ---
 ### 変更
 - `about/faq.html`:本文中のFAQ項目に、市営交通局・キリ番・広報ぬかピコ・議会・市長のごあいさつ・時間効率支援課・不要不急保存課・目的のない事業に対する助成金・キロクぬかクリニック・現代病相談・ごみ・記録ごみ・住民票への関連リンクを追加
@@ -23,7 +31,7 @@
 - `about/gaiyou.html`・`about/kanko.html`・その他about/配下:「関連情報」のリンク構成を再確認・整理
 - `facilities/gikai.html`・`facilities/goods.html`・`facilities/hisho-kouhou-ka.html`・`facilities/kanko-ka.html`・`facilities/kankyoka.html`・`facilities/koutsukyoku.html`・`facilities/seikatsu-kyosei-ka.html`・`facilities/shiminka.html`・`facilities/shokokai.html`・`facilities/toshikan.html`・`facilities/renketsu.html`など:「関連情報」のリンク構成を再確認・整理
 - `facilities/kaikeika.html`・`facilities/keisatsu.html`・`facilities/shiyakusho-floor.html`・`facilities/toshikeikaku.html`・`facilities/suidoukyoku.html`:「関連情報」の現状を確認
-- `facilities/toshikan.html`:関連情報に市役所へのリンクを追加
+- `facilities/toshokan.html`:関連情報に市役所へのリンクを追加
 - `facilities/goods.html`:関連情報からピコぬくん業務日誌を削除し、「ピコぬくんとは」へのリンクを追加
 - `facilities/hisho-kouhou-ka.html`:関連情報を整理し、市役所案内を「市役所」に訂正
 - `facilities/kanko-ka.html`:関連情報を整理し、ピコぬ市生き物図鑑をセクション下部へ移動。お問い合わせセクションを削除
