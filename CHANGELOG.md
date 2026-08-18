@@ -10,6 +10,48 @@
 - ファイルパス: 内容
 ```
 
+## 2026-08-18
+---
+### 変更
+- `about/faq.html`:本文中のFAQ項目に、市営交通局・キリ番・広報ぬかピコ・議会・市長のごあいさつ・時間効率支援課・不要不急保存課・目的のない事業に対する助成金・キロクぬかクリニック・現代病相談・ごみ・記録ごみ・住民票への関連リンクを追加
+- `about/faq.html`:サイドバー「関連情報」は追加せず、本文中の関連リンクのみを追加
+- `about/ikimono-zukan.html`:「市の花」「市の鳥」への関連情報リンクを追加
+- `about/nukabana.html`:「ピコぬ市生き物図鑑」への関連情報リンクを追加
+- `about/piconu-dori.html`:「ピコぬ市生き物図鑑」への関連情報リンクを追加
+- `about/jorei-gradation.html`:関連情報に市長のごあいさつへのリンクを追加
+- `about/saiyo.html`:関連情報から審議会・附属機関一覧へのリンクを削除
+- `about/gaiyou.html`・`about/kanko.html`・その他about/配下:「関連情報」のリンク構成を再確認・整理
+- `facilities/gikai.html`・`facilities/goods.html`・`facilities/hisho-kouhou-ka.html`・`facilities/kanko-ka.html`・`facilities/kankyoka.html`・`facilities/koutsukyoku.html`・`facilities/seikatsu-kyosei-ka.html`・`facilities/shiminka.html`・`facilities/shokokai.html`・`facilities/toshikan.html`・`facilities/renketsu.html`など:「関連情報」のリンク構成を再確認・整理
+- `facilities/kaikeika.html`・`facilities/keisatsu.html`・`facilities/shiyakusho-floor.html`・`facilities/toshikeikaku.html`・`facilities/suidoukyoku.html`:「関連情報」の現状を確認
+- `facilities/toshikan.html`:関連情報に市役所へのリンクを追加
+- `facilities/goods.html`:関連情報からピコぬくん業務日誌を削除し、「ピコぬくんとは」へのリンクを追加
+- `facilities/hisho-kouhou-ka.html`:関連情報を整理し、市役所案内を「市役所」に訂正
+- `facilities/kanko-ka.html`:関連情報を整理し、ピコぬ市生き物図鑑をセクション下部へ移動。お問い合わせセクションを削除
+- `facilities/kankyoka.html`:「暮らしと循環推進課『地域資源再利用事業』」の表記を修正
+- `facilities/koutsukyoku.html`:関連情報を整理
+- `facilities/seikatsu-kyosei-ka.html`:関連情報にフロア案内・ピコぬ市行政構造図を追加
+- `facilities/shokokai.html`:関連情報を整理
+- `facilities/toshokan.html`:関連情報を整理し、キロクぬかクリニック・ピコぬ市交通局を追加、市役所を追加
+- `facilities/renketsu.html`:関連情報を整理し、ピコぬくんとは・ピコぬ市商工会を追加
+- `facilities/shiminka.html`:関連情報を整理
+- `facilities/suidoukyoku.html`:連絡先を修正
+---
+## 2026-08-17
+---
+### 変更
+- `about/`配下:関連情報のリンク構成を全41ページについて確認・再精査
+- `about/faq.html`:関連情報は追加せず、本文中のFAQから必要なページへの関連リンクを追加する方針に変更
+- `about/gyousei-kouzou.html`:本文中の「組織図」を「市役所」に変更
+- `about/saiyo.html`:関連情報から審議会・附属機関一覧へのリンクを削除
+- `about/ikimono-zukan.html`:関連情報に市の花「ぬかばな」・市の鳥「ピコぬどり」を追加
+- `about/nukabana.html`:関連情報にピコぬ市生き物図鑑を追加
+- `about/piconu-dori.html`:関連情報にピコぬ市生き物図鑑を追加
+- `about/jorei-gradation.html`:関連情報に市長のごあいさつを追加
+- `about/`・`facilities/`配下:関連情報・他の施設の構成を再確認し、不要なリンクの削除・必要なリンクの追加・表記修正を実施
+- `about/`・`facilities/`配下:パンくずリストの構造・リンク先・階層を確認
+- `about/`・`facilities/`配下:関連リンクおよびパンくずについて、既存コードを確認したうえで修正対象を整理
+---
+
 ## 2026-08-16（9）
 ---
 ### 変更
