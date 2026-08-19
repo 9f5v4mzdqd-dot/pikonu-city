@@ -1,256 +1,331 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>住民票自動発行ジェネレーター | 住民票 | くらしの情報 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="お名前と肩書を入力すると、ピコぬ市特別住民票のサンプルを画像として発行できます。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
-<style>
-  .jg-form { border: 1px solid var(--color-border); border-radius: 4px; padding: 20px; background: var(--color-bg-alt); margin-bottom: 24px; }
-  .jg-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-  .jg-row label { width: 100%; max-width: 130px; font-weight: bold; font-size: .9rem; color: var(--color-text); }
-  .jg-row input[type="text"] { flex: 1; min-width: 180px; padding: 8px 10px; font-size: .9rem; border: 1px solid var(--color-border); border-radius: 3px; }
-  .jg-random-btn { padding: 8px 12px; font-size: .8rem; border: 1px solid var(--color-primary); background: #fff; color: var(--color-primary); border-radius: 3px; cursor: pointer; }
-  .jg-random-btn:hover { background: var(--color-primary-light); }
-  .jg-actions { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
-  #jgCanvas { display: block; max-width: 100%; height: auto; border: 1px solid var(--color-border); margin: 0 auto; background: #fdfbf7; }
-  .jg-canvas-wrap { text-align: center; margin-bottom: 20px; }
-  .jg-download { display: none; }
-</style>
+  <meta charset="UTF-8">
+  <title>住民票自動発行ジェネレーター | 住民票 | くらしの情報 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="お名前と肩書を入力すると、ピコぬ市特別住民票のサンプルを画像として発行できます。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .jg-form {
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 20px;
+      background: var(--color-bg-alt);
+      margin-bottom: 24px;
+    }
+
+    .jg-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .jg-row label {
+      width: 100%;
+      max-width: 130px;
+      font-weight: bold;
+      font-size: .9rem;
+      color: var(--color-text);
+    }
+
+    .jg-row input[type="text"] {
+      flex: 1;
+      min-width: 180px;
+      padding: 8px 10px;
+      font-size: .9rem;
+      border: 1px solid var(--color-border);
+      border-radius: 3px;
+    }
+
+    .jg-random-btn {
+      padding: 8px 12px;
+      font-size: .8rem;
+      border: 1px solid var(--color-primary);
+      background: #fff;
+      color: var(--color-primary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .jg-random-btn:hover {
+      background: var(--color-primary-light);
+    }
+
+    .jg-actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #jgCanvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--color-border);
+      margin: 0 auto;
+      background: #fdfbf7;
+    }
+
+    .jg-canvas-wrap {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .jg-download {
+      display: none;
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>住民票自動発行ジェネレーター</h1>
-      <p class="lead">お名前と肩書を入力すると、ピコぬ市特別住民票のサンプルを画像として発行できます。</p>
-    </div>
-  </div>
-
-  <div class="content-layout">
-    <div class="main-content">
-      <h2>ようこそ、ピコぬ市へ</h2>
-      <p>
-        当市では、新しく住民となられた方(あるいは、なんとなく通りすがった方)を対象に、
-        「ピコぬ市 特別住民票」をその場で即座に発行できるオンライン・ジェネレーターをご用意しております。
-        日々の生活にちょっとしたシュールさと、いい塩梅のユーモアを。ぜひあなただけの特別な証明書を
-        発行してみてください。
-      </p>
-
-      <div class="info-box">
-  ※ピコぬ市の行政サービス案内は、創作上の設定です。<br>
-  住民票の申請などの各種手続きについては、お住まいの自治体が提供する案内をご確認ください。<br>
-  ピコぬ市の住民票については、
-  <a href="juminhyo.html">住民票のご案内</a>をご覧ください。
-</div>
-
-      <h2>ジェネレーターの特徴・機能</h2>
-      <ul>
-        <li>
-          <strong>あなたのステータスを証明</strong><br>
-          お名前を入力し、「ランダム」ボタンを押すと、ピコぬ市ならではのシュールな肩書
-          (「ハト監視員」「自動ドアの目撃者」など)が自動で決定します。
-        </li>
-        <li>
-          <strong>完全ランダムな市民データ</strong><br>
-          発行されるたびに、市内のユニークな地区(「記録町」「塩梅町」「ぬかが丘１丁目」など)
-          からランダムで住所が割り振られます。さらに、謎の文字が混ざったピコぬ市独自の
-          識別コードも自動発行されます。
-        </li>
-        <li>
-          <strong>日替わりの「証明文ガチャ」</strong><br>
-          お役所感がありつつも、どこか脱力してしまう証明文(全10種類)がランダムで選ばれ、
-          あなたの本日のステータスをお墨付きいたします。
-        </li>
-        <li>
-          <strong>画像として保存&シェア可能</strong><br>
-          発行された特別住民票は、ボタン一つでPNG画像としてデバイスにダウンロードできます。
-          ぜひSNS等でシェアして、お友達にピコぬ市への移住(?)をお知らせください。
-        </li>
-      </ul>
-
-      <h2>ご利用方法</h2>
-      <ol>
-        <li>お名前を入力(未入力の場合は自動で「名無しのピコぬ市民」になります)</li>
-        <li>必要に応じて「🎲 ランダム」ボタンでお好みの肩書を決定</li>
-        <li>「住民票を発行する」ボタンをクリック</li>
-        <li>画面下にプレビューが表示されたら、「画像をダウンロードする」から保存</li>
-      </ol>
-
-      <p>皆さまの「いい塩梅」なご参加を、ピコぬ市役所一同、心よりお待ちしております。</p>
-
-      <div class="jg-form">
-        <div class="jg-row">
-          <label for="jgName">お名前</label>
-          <input type="text" id="jgName" placeholder="例：ピコ太郎">
-        </div>
-        <div class="jg-row">
-          <label for="jgTitle">肩書・ステータス</label>
-          <input type="text" id="jgTitle" placeholder="自動生成もできます">
-          <button type="button" id="jgRandomTitleBtn" class="jg-random-btn">ランダム</button>
-        </div>
-        <div class="jg-actions">
-          <button type="button" id="jgGenerateBtn" class="btn">住民票を発行する</button>
-        </div>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>住民票自動発行ジェネレーター</h1>
+        <p class="lead">お名前と肩書を入力すると、ピコぬ市特別住民票のサンプルを画像として発行できます。</p>
       </div>
-
-      <div class="jg-canvas-wrap">
-        <canvas id="jgCanvas" width="700" height="540"></canvas>
-      </div>
-
-      <div class="jg-actions" style="justify-content:center;">
-        <a id="jgDownloadLink" class="jg-download" download="pikonu_juminhyo.png">
-          <button type="button" class="btn-outline">画像をダウンロードする</button>
-        </a>
-      </div>
-
-      <h2 style="margin-top:2.6em;">お問い合わせ</h2>
-      <table class="info-table">
-        <tr><th>窓口</th><td>市役所1階 市民課</td></tr>
-        <tr><th>受付時間</th><td>平日 8:30〜16:00</td></tr>
-        <tr><th>電話</th><td>ぬぬ-ぬかピコ-4143(よいしみん)</td></tr>
-      </table>
     </div>
 
-    <aside class="sidebar">
-      <div class="sidebar-block">
-        <h2>関連情報</h2>
+    <div class="content-layout">
+      <div class="main-content">
+        <h2>ようこそ、ピコぬ市へ</h2>
+        <p>
+          当市では、新しく住民となられた方(あるいは、なんとなく通りすがった方)を対象に、
+          「ピコぬ市 特別住民票」をその場で即座に発行できるオンライン・ジェネレーターをご用意しております。
+          日々の生活にちょっとしたシュールさと、いい塩梅のユーモアを。ぜひあなただけの特別な証明書を
+          発行してみてください。
+        </p>
+
+        <div class="info-box">
+          ※ピコぬ市の行政サービス案内は、創作上の設定です。<br>
+          住民票の申請などの各種手続きについては、お住まいの自治体が提供する案内をご確認ください。<br>
+          ピコぬ市の住民票については、
+          <a href="juminhyo.html">住民票のご案内</a>をご覧ください。
+        </div>
+
+        <h2>ジェネレーターの特徴・機能</h2>
         <ul>
-          <li><a href="juminhyo.html">住民票</a></li>
-          <li><a href="koseki.html">戸籍</a></li>
-          <li><a href="index.html">くらしの情報</a></li>
-          <li><a href="../facilities/shiminka.html">市民課</a></li>
+          <li>
+            <strong>あなたのステータスを証明</strong><br>
+            お名前を入力し、「ランダム」ボタンを押すと、ピコぬ市ならではのシュールな肩書
+            (「ハト監視員」「自動ドアの目撃者」など)が自動で決定します。
+          </li>
+          <li>
+            <strong>完全ランダムな市民データ</strong><br>
+            発行されるたびに、市内のユニークな地区(「記録町」「塩梅町」「ぬかが丘１丁目」など)
+            からランダムで住所が割り振られます。さらに、謎の文字が混ざったピコぬ市独自の
+            識別コードも自動発行されます。
+          </li>
+          <li>
+            <strong>日替わりの「証明文ガチャ」</strong><br>
+            お役所感がありつつも、どこか脱力してしまう証明文(全10種類)がランダムで選ばれ、
+            あなたの本日のステータスをお墨付きいたします。
+          </li>
+          <li>
+            <strong>画像として保存&シェア可能</strong><br>
+            発行された特別住民票は、ボタン一つでPNG画像としてデバイスにダウンロードできます。
+            ぜひSNS等でシェアして、お友達にピコぬ市への移住(?)をお知らせください。
+          </li>
         </ul>
+
+        <h2>ご利用方法</h2>
+        <ol>
+          <li>お名前を入力(未入力の場合は自動で「名無しのピコぬ市民」になります)</li>
+          <li>必要に応じて「🎲 ランダム」ボタンでお好みの肩書を決定</li>
+          <li>「住民票を発行する」ボタンをクリック</li>
+          <li>画面下にプレビューが表示されたら、「画像をダウンロードする」から保存</li>
+        </ol>
+
+        <p>皆さまの「いい塩梅」なご参加を、ピコぬ市役所一同、心よりお待ちしております。</p>
+
+        <div class="jg-form">
+          <div class="jg-row">
+            <label for="jgName">お名前</label>
+            <input type="text" id="jgName" placeholder="例：ピコ太郎">
+          </div>
+          <div class="jg-row">
+            <label for="jgTitle">肩書・ステータス</label>
+            <input type="text" id="jgTitle" placeholder="自動生成もできます">
+            <button type="button" id="jgRandomTitleBtn" class="jg-random-btn">ランダム</button>
+          </div>
+          <div class="jg-actions">
+            <button type="button" id="jgGenerateBtn" class="btn">住民票を発行する</button>
+          </div>
+        </div>
+
+        <div class="jg-canvas-wrap">
+          <canvas id="jgCanvas" width="700" height="540"></canvas>
+        </div>
+
+        <div class="jg-actions" style="justify-content:center;">
+          <a id="jgDownloadLink" class="jg-download" download="pikonu_juminhyo.png">
+            <button type="button" class="btn-outline">画像をダウンロードする</button>
+          </a>
+        </div>
+
+        <h2 style="margin-top:2.6em;">お問い合わせ</h2>
+        <table class="info-table">
+          <tr>
+            <th>窓口</th>
+            <td>市役所1階 市民課</td>
+          </tr>
+          <tr>
+            <th>受付時間</th>
+            <td>平日 8:30〜16:00</td>
+          </tr>
+          <tr>
+            <th>電話</th>
+            <td>ぬぬ-ぬかピコ-4143(よいしみん)</td>
+          </tr>
+        </table>
       </div>
-    </aside>
-  </div>
-</main>
 
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const adjectives = [
-      "伝説の", "自称・世界一の", "通りすがりの", "猫に嫌われがちな",
-      "ピコぬどりに好かれた", "少し眠そうな", "現代病に怯える", "永遠の反抗期の"
-    ];
-    const nouns = [
-      "自動ドアの目撃者", "お昼寝マイスター", "ラジオ体操皆勤賞",
-      "無職のプロ", "お散歩エクスプローラー", "エナジードリンク愛好家", "妄想特命全権大使"
-    ];
-    const addressList = ["記録町", "塩梅町", "ぬかが丘１丁目", "外来通３丁目", "連結町"];
-    const proofMessages = [
-      { line1: "上記の者は、現代病に怯えつつも、何かしらのつながりを持ち、", line2: "いい塩梅で本日をどうにか生きていることをここに証明する。" },
-      { line1: "上記の者は、ピコぬ市特有の謎の気怠さに抗いながら、", line2: "とりあえず今日一日をやり過ごしたことをここに証明する。" },
-      { line1: "上記の者が、日頃から無駄な特技を磨き続け、", line2: "どうにか社会の隙間で息をしていることをここに証明する。" },
-      { line1: "上記の者は、青いピコぬどりの羽ばたきを目撃し、", line2: "本日を無事に生き延びる資格を得たことをここに証明する。" }
-    ];
-    const charPool = ["0","1","2","3","4","5","6","7","8","9","ぬ","か","ピ","コ"];
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="juminhyo.html">住民票</a></li>
+            <li><a href="koseki.html">戸籍</a></li>
+            <li><a href="index.html">くらしの情報</a></li>
+            <li><a href="../facilities/shiminka.html">市民課</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
 
-    const randomTitleBtn = document.getElementById('jgRandomTitleBtn');
-    const titleInput = document.getElementById('jgTitle');
-    if (randomTitleBtn && titleInput) {
-      randomTitleBtn.addEventListener('click', () => {
-        const randomAdj = adjectives[Math.floor(Math.random() * adjectives.length)];
-        const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
-        titleInput.value = randomAdj + randomNoun;
-      });
-    }
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const adjectives = [
+        "伝説の", "自称・世界一の", "通りすがりの", "猫に嫌われがちな",
+        "ピコぬどりに好かれた", "少し眠そうな", "現代病に怯える", "永遠の反抗期の"
+      ];
+      const nouns = [
+        "自動ドアの目撃者", "お昼寝マイスター", "ラジオ体操皆勤賞",
+        "無職のプロ", "お散歩エクスプローラー", "エナジードリンク愛好家", "妄想特命全権大使"
+      ];
+      const addressList = ["記録町", "塩梅町", "ぬかが丘１丁目", "外来通３丁目", "連結町"];
+      const proofMessages = [
+        {line1: "上記の者は、現代病に怯えつつも、何かしらのつながりを持ち、", line2: "いい塩梅で本日をどうにか生きていることをここに証明する。"},
+        {line1: "上記の者は、ピコぬ市特有の謎の気怠さに抗いながら、", line2: "とりあえず今日一日をやり過ごしたことをここに証明する。"},
+        {line1: "上記の者が、日頃から無駄な特技を磨き続け、", line2: "どうにか社会の隙間で息をしていることをここに証明する。"},
+        {line1: "上記の者は、青いピコぬどりの羽ばたきを目撃し、", line2: "本日を無事に生き延びる資格を得たことをここに証明する。"}
+      ];
+      const charPool = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "ぬ", "か", "ピ", "コ"];
 
-    const generateBtn = document.getElementById('jgGenerateBtn');
-    const canvas = document.getElementById('jgCanvas');
-    if (generateBtn && canvas) {
-      const ctx = canvas.getContext('2d');
-      generateBtn.addEventListener('click', () => {
-        const nameInput = document.getElementById('jgName');
-        const name = nameInput && nameInput.value.trim() !== "" ? nameInput.value : '名無しのピコぬ市民';
-        const userTitle = titleInput && titleInput.value.trim() !== "" ? titleInput.value : '一般市民';
+      const randomTitleBtn = document.getElementById('jgRandomTitleBtn');
+      const titleInput = document.getElementById('jgTitle');
+      if (randomTitleBtn && titleInput) {
+        randomTitleBtn.addEventListener('click', () => {
+          const randomAdj = adjectives[Math.floor(Math.random() * adjectives.length)];
+          const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
+          titleInput.value = randomAdj + randomNoun;
+        });
+      }
 
-        const today = new Date();
-        const dateStr = `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日`;
+      const generateBtn = document.getElementById('jgGenerateBtn');
+      const canvas = document.getElementById('jgCanvas');
+      if (generateBtn && canvas) {
+        const ctx = canvas.getContext('2d');
+        generateBtn.addEventListener('click', () => {
+          const nameInput = document.getElementById('jgName');
+          const name = nameInput && nameInput.value.trim() !== "" ? nameInput.value : '名無しのピコぬ市民';
+          const userTitle = titleInput && titleInput.value.trim() !== "" ? titleInput.value : '一般市民';
 
-        const randomTown = addressList[Math.floor(Math.random() * addressList.length)];
-        const randomBanchi = Math.floor(Math.random() * 99) + 1;
-        const fullAddress = `ピコぬ市 ${randomTown}${randomBanchi}番地`;
+          const today = new Date();
+          const dateStr = `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日`;
 
-        let rawMyNumber = "";
-        for (let i = 0; i < 12; i++) {
-          rawMyNumber += charPool[Math.floor(Math.random() * charPool.length)];
-        }
-        const formattedMyNumber = `${rawMyNumber.slice(0,4)}-${rawMyNumber.slice(4,8)}-${rawMyNumber.slice(8,12)}`;
-        const selectedProof = proofMessages[Math.floor(Math.random() * proofMessages.length)];
+          const randomTown = addressList[Math.floor(Math.random() * addressList.length)];
+          const randomBanchi = Math.floor(Math.random() * 99) + 1;
+          const fullAddress = `ピコぬ市 ${randomTown}${randomBanchi}番地`;
 
-        ctx.fillStyle = '#fdfbf7';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+          let rawMyNumber = "";
+          for (let i = 0; i < 12; i++) {
+            rawMyNumber += charPool[Math.floor(Math.random() * charPool.length)];
+          }
+          const formattedMyNumber = `${rawMyNumber.slice(0, 4)}-${rawMyNumber.slice(4, 8)}-${rawMyNumber.slice(8, 12)}`;
+          const selectedProof = proofMessages[Math.floor(Math.random() * proofMessages.length)];
 
-        ctx.strokeStyle = '#2c3e50';
-        ctx.lineWidth = 4;
-        ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
-        ctx.lineWidth = 1;
-        ctx.strokeRect(26, 26, canvas.width - 52, canvas.height - 52);
+          ctx.fillStyle = '#fdfbf7';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = '#2c3e50';
-        ctx.font = 'bold 26px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('ピコぬ市 特別住民票', canvas.width / 2, 75);
+          ctx.strokeStyle = '#2c3e50';
+          ctx.lineWidth = 4;
+          ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+          ctx.lineWidth = 1;
+          ctx.strokeRect(26, 26, canvas.width - 52, canvas.height - 52);
 
-        ctx.font = '16px sans-serif';
-        ctx.textAlign = 'left';
-        const startX = 60;
-        let startY = 130;
-        const lineSpacing = 32;
+          ctx.fillStyle = '#2c3e50';
+          ctx.font = 'bold 26px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('ピコぬ市 特別住民票', canvas.width / 2, 75);
 
-        ctx.fillText(`【 氏 名 】 ${name} （${userTitle}）`, startX, startY);
-        ctx.fillText(`【生年月日】 20ぬか年ぬ月ピコ日`, startX, startY += lineSpacing);
-        ctx.fillText(`【 性 別 】 どちらでもいいしなんでもいい`, startX, startY += lineSpacing);
-        ctx.fillText(`【 住 所 】 ${fullAddress}`, startX, startY += lineSpacing);
-        ctx.fillText(`【世帯主】 多分本人`, startX, startY += lineSpacing);
-        ctx.fillText(`【住民登録】 ${dateStr}`, startX, startY += lineSpacing);
-        ctx.fillText(`【 届 出 】 ピコぬ市戸籍課`, startX, startY += lineSpacing);
-        ctx.fillText(`【個人番号】 ${formattedMyNumber}`, startX, startY += lineSpacing);
+          ctx.font = '16px sans-serif';
+          ctx.textAlign = 'left';
+          const startX = 60;
+          let startY = 130;
+          const lineSpacing = 32;
 
-        ctx.font = '14px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#34495e';
-        ctx.fillText(selectedProof.line1, canvas.width / 2, 420);
-        ctx.fillText(selectedProof.line2, canvas.width / 2, 445);
+          ctx.fillText(`【 氏 名 】 ${name} （${userTitle}）`, startX, startY);
+          ctx.fillText(`【生年月日】 20ぬか年ぬ月ピコ日`, startX, startY += lineSpacing);
+          ctx.fillText(`【 性 別 】 どちらでもいいしなんでもいい`, startX, startY += lineSpacing);
+          ctx.fillText(`【 住 所 】 ${fullAddress}`, startX, startY += lineSpacing);
+          ctx.fillText(`【世帯主】 多分本人`, startX, startY += lineSpacing);
+          ctx.fillText(`【住民登録】 ${dateStr}`, startX, startY += lineSpacing);
+          ctx.fillText(`【 届 出 】 ピコぬ市戸籍課`, startX, startY += lineSpacing);
+          ctx.fillText(`【個人番号】 ${formattedMyNumber}`, startX, startY += lineSpacing);
 
-        ctx.font = '14px sans-serif';
-        ctx.textAlign = 'right';
-        ctx.fillText(`ピコぬ市長 塩梅 定治`, 630, 490);
+          ctx.font = '14px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#34495e';
+          ctx.fillText(selectedProof.line1, canvas.width / 2, 420);
+          ctx.fillText(selectedProof.line2, canvas.width / 2, 445);
 
-        ctx.strokeStyle = '#c0392b';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.arc(580, 480, 30, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.fillStyle = '#c0392b';
-        ctx.font = '11px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('ピコぬ市', 580, 475);
-        ctx.fillText('市長印', 580, 490);
+          ctx.font = '14px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(`ピコぬ市長 塩梅 定治`, 630, 490);
 
-        const downloadLink = document.getElementById('jgDownloadLink');
-        if (downloadLink) {
-          downloadLink.href = canvas.toDataURL('image/png');
-          downloadLink.style.display = 'inline-block';
-        }
-      });
-    }
-  });
-</script>
+          ctx.strokeStyle = '#c0392b';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.arc(580, 480, 30, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.fillStyle = '#c0392b';
+          ctx.font = '11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('ピコぬ市', 580, 475);
+          ctx.fillText('市長印', 580, 490);
 
-<script>window.PAGE_META = { nav: "services", breadcrumb: [
-  { label: "ホーム", href: "../index.html" },
-  { label: "施設案内", href: "../facilities/index.html" },
-  { label: "市役所", href: "../facilities/shiyakusho.html" },
-  { label: "市民課", href: "../facilities/shiminka.html" },
-  { label: "住民票", href: "juminhyo.html" },
-  { label: "住民票自動発行ジェネレーター" }
-] };</script>
-<script src="../js/common.js"></script>
+          const downloadLink = document.getElementById('jgDownloadLink');
+          if (downloadLink) {
+            downloadLink.href = canvas.toDataURL('image/png');
+            downloadLink.style.display = 'inline-block';
+          }
+        });
+      }
+    });
+  </script>
+
+  <script>window.PAGE_META = {
+      nav: "services", breadcrumb: [
+        {label: "ホーム", href: "../index.html"},
+        {label: "施設案内", href: "../facilities/index.html"},
+        {label: "市役所", href: "../facilities/shiyakusho.html"},
+        {label: "市民課", href: "../facilities/shiminka.html"},
+        {label: "住民票", href: "juminhyo.html"},
+        {label: "住民票自動発行ジェネレーター"}
+      ]
+    };</script>
+  <script src="../js/common.js"></script>
 </body>
+
 </html>

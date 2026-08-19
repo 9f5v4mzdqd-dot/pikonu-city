@@ -1,260 +1,307 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>不要不急な4コマ漫画 | 不要不急保存課 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="ピコぬ市における、不要不急な出来事を記録した4コマ漫画です。不要不急保存課により保存されています。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
-<style>
-  .comic-viewer {
-    max-width: 480px;
-    margin: 1.5em auto 0.5em;
-  }
-  .comic-stage {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background: #f3f1ea;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 2px 10px rgba(0,0,0,.12);
-    perspective: 1800px;
-    overflow: hidden;
-  }
-  .comic-stage img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: #fdfcf9;
-    backface-visibility: hidden;
-    display: block;
-  }
-  .comic-page-base { z-index: 1; }
-  .comic-page-flap {
-    z-index: 2;
-    transform-origin: right center;
-    transition: transform .55s cubic-bezier(.4,.1,.3,1);
-    box-shadow: -6px 0 16px rgba(0,0,0,0);
-  }
-  .comic-page-flap.flap-origin-left { transform-origin: left center; }
-  .comic-page-flap.flip-next { transform: rotateY(-160deg); box-shadow: -10px 0 24px rgba(0,0,0,.25); }
-  .comic-page-flap.flip-prev { transform: rotateY(160deg); box-shadow: 10px 0 24px rgba(0,0,0,.25); }
-  .comic-tap-zone {
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 50%;
-    z-index: 3;
-    cursor: pointer;
-  }
-  .comic-tap-zone.left { left: 0; }
-  .comic-tap-zone.right { right: 0; }
-  .comic-loading {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--color-text-sub); font-size: .9rem;
-    z-index: 4; background: #f3f1ea;
-  }
-  .comic-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2em;
-    margin-top: .8em;
-  }
-  .comic-controls button {
-    font-family: inherit;
-    font-size: .85rem;
-    padding: .4em 1em;
-    border: 1px solid var(--color-border);
-    background: #fff;
-    cursor: pointer;
-    border-radius: 3px;
-  }
-  .comic-controls button:disabled {
-    opacity: .4;
-    cursor: default;
-  }
-  .comic-page-count {
-    font-size: .85rem;
-    color: var(--color-text-sub);
-    min-width: 4.5em;
-    text-align: center;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>不要不急な4コマ漫画 | 不要不急保存課 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬ市における、不要不急な出来事を記録した4コマ漫画です。不要不急保存課により保存されています。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .comic-viewer {
+      max-width: 480px;
+      margin: 1.5em auto 0.5em;
+    }
+
+    .comic-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #f3f1ea;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
+      perspective: 1800px;
+      overflow: hidden;
+    }
+
+    .comic-stage img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fdfcf9;
+      backface-visibility: hidden;
+      display: block;
+    }
+
+    .comic-page-base {
+      z-index: 1;
+    }
+
+    .comic-page-flap {
+      z-index: 2;
+      transform-origin: right center;
+      transition: transform .55s cubic-bezier(.4, .1, .3, 1);
+      box-shadow: -6px 0 16px rgba(0, 0, 0, 0);
+    }
+
+    .comic-page-flap.flap-origin-left {
+      transform-origin: left center;
+    }
+
+    .comic-page-flap.flip-next {
+      transform: rotateY(-160deg);
+      box-shadow: -10px 0 24px rgba(0, 0, 0, .25);
+    }
+
+    .comic-page-flap.flip-prev {
+      transform: rotateY(160deg);
+      box-shadow: 10px 0 24px rgba(0, 0, 0, .25);
+    }
+
+    .comic-tap-zone {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      z-index: 3;
+      cursor: pointer;
+    }
+
+    .comic-tap-zone.left {
+      left: 0;
+    }
+
+    .comic-tap-zone.right {
+      right: 0;
+    }
+
+    .comic-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-sub);
+      font-size: .9rem;
+      z-index: 4;
+      background: #f3f1ea;
+    }
+
+    .comic-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2em;
+      margin-top: .8em;
+    }
+
+    .comic-controls button {
+      font-family: inherit;
+      font-size: .85rem;
+      padding: .4em 1em;
+      border: 1px solid var(--color-border);
+      background: #fff;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .comic-controls button:disabled {
+      opacity: .4;
+      cursor: default;
+    }
+
+    .comic-page-count {
+      font-size: .85rem;
+      color: var(--color-text-sub);
+      min-width: 4.5em;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>不要不急な4コマ漫画</h1>
-      <p class="lead">ピコぬ市における、不要不急な出来事を記録した4コマ漫画です。</p>
-    </div>
-  </div>
-
-  <div class="content-layout">
-    <div class="main-content">
-      <p>
-        本作品は、不要不急保存課により保存されている4コマ漫画です。市役所職員「ピコぬくん」の、
-        特に急ぐ必要のない日常の一場面を記録しています。
-      </p>
-
-      <div class="comic-viewer">
-        <div class="comic-stage" id="comicStage">
-          <div class="comic-loading" id="comicLoading">読み込み中…</div>
-          <img class="comic-page-base" id="comicBase" alt="">
-          <img class="comic-page-flap" id="comicFlap" alt="">
-          <div class="comic-tap-zone left" id="tapPrev" aria-label="前のページ"></div>
-          <div class="comic-tap-zone right" id="tapNext" aria-label="次のページ"></div>
-        </div>
-        <div class="comic-controls">
-          <button id="btnPrev" type="button">&lt; 前へ</button>
-          <span class="comic-page-count" id="pageCount">1 / 10</span>
-          <button id="btnNext" type="button">次へ &gt;</button>
-        </div>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>不要不急な4コマ漫画</h1>
+        <p class="lead">ピコぬ市における、不要不急な出来事を記録した4コマ漫画です。</p>
       </div>
-
-      <p style="text-align:center; font-size:.85rem; margin-top:.6em;">
-        <a href="../pdfs/fuyoufukyu-4koma.pdf" target="_blank" rel="noopener">PDFをそのまま開く</a>
-      </p>
-
-      <table class="info-table" style="margin-top:2em;">
-        <tr><th>保存対象</th><td>ピコぬくんの日常等</td></tr>
-        <tr><th>発行</th><td>不要不急保存課</td></tr>
-        <tr><th>保存開始</th><td>2026年8月</td></tr>
-      </table>
     </div>
 
-    <aside class="sidebar">
-      <div class="sidebar-block">
-        <h2>関連情報</h2>
-        <ul>
-         <li><a href="../facilities/fuyoufukyuhozonka.html">不要不急保存課</a></li>
-         <li><a href="../facilities/jissen-cho.html">不要不急実践帳</a></li>
-         <li><a href="hibussitsu-tokusanhin.html">非物品系特産品一覧</a></li>
-         <li><a href="fuyoufukyu-uranai.html">今日のあなたにおすすめの不要不急な時間の過ごし方</a></li>
-         <li><a href="piconu-diary.html">ピコぬくんの業務日誌</a></li>
-         <li><a href="piconu-kun.html">ぴこぬくんとは</a></li>
+    <div class="content-layout">
+      <div class="main-content">
+        <p>
+          本作品は、不要不急保存課により保存されている4コマ漫画です。市役所職員「ピコぬくん」の、
+          特に急ぐ必要のない日常の一場面を記録しています。
+        </p>
+
+        <div class="comic-viewer">
+          <div class="comic-stage" id="comicStage">
+            <div class="comic-loading" id="comicLoading">読み込み中…</div>
+            <img class="comic-page-base" id="comicBase" alt="">
+            <img class="comic-page-flap" id="comicFlap" alt="">
+            <div class="comic-tap-zone left" id="tapPrev" aria-label="前のページ"></div>
+            <div class="comic-tap-zone right" id="tapNext" aria-label="次のページ"></div>
+          </div>
+          <div class="comic-controls">
+            <button id="btnPrev" type="button">&lt; 前へ</button>
+            <span class="comic-page-count" id="pageCount">1 / 10</span>
+            <button id="btnNext" type="button">次へ &gt;</button>
+          </div>
+        </div>
+
+        <p style="text-align:center; font-size:.85rem; margin-top:.6em;">
+          <a href="../pdfs/fuyoufukyu-4koma.pdf" target="_blank" rel="noopener">PDFをそのまま開く</a>
+        </p>
+
+        <table class="info-table" style="margin-top:2em;">
+          <tr>
+            <th>保存対象</th>
+            <td>ピコぬくんの日常等</td>
+          </tr>
+          <tr>
+            <th>発行</th>
+            <td>不要不急保存課</td>
+          </tr>
+          <tr>
+            <th>保存開始</th>
+            <td>2026年8月</td>
+          </tr>
+        </table>
       </div>
-    </aside>
-  </div>
-</main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script>
-(function() {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="../facilities/fuyoufukyuhozonka.html">不要不急保存課</a></li>
+            <li><a href="../facilities/jissen-cho.html">不要不急実践帳</a></li>
+            <li><a href="hibussitsu-tokusanhin.html">非物品系特産品一覧</a></li>
+            <li><a href="fuyoufukyu-uranai.html">今日のあなたにおすすめの不要不急な時間の過ごし方</a></li>
+            <li><a href="piconu-diary.html">ピコぬくんの業務日誌</a></li>
+            <li><a href="piconu-kun.html">ぴこぬくんとは</a></li>
+        </div>
+      </aside>
+    </div>
+  </main>
 
-  var PDF_URL = "../pdfs/fuyoufukyu-4koma.pdf";
-  var pages = [];       // rendered image data URLs, index 0-based
-  var current = 0;
-  var total = 0;
-  var flipping = false;
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    (function () {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
-  var stage = document.getElementById("comicStage");
-  var loading = document.getElementById("comicLoading");
-  var base = document.getElementById("comicBase");
-  var flap = document.getElementById("comicFlap");
-  var btnPrev = document.getElementById("btnPrev");
-  var btnNext = document.getElementById("btnNext");
-  var tapPrev = document.getElementById("tapPrev");
-  var tapNext = document.getElementById("tapNext");
-  var pageCount = document.getElementById("pageCount");
+      var PDF_URL = "../pdfs/fuyoufukyu-4koma.pdf";
+      var pages = [];       // rendered image data URLs, index 0-based
+      var current = 0;
+      var total = 0;
+      var flipping = false;
 
-  function updateControls() {
-    pageCount.textContent = (current + 1) + " / " + total;
-    btnPrev.disabled = current <= 0;
-    btnNext.disabled = current >= total - 1;
-  }
+      var stage = document.getElementById("comicStage");
+      var loading = document.getElementById("comicLoading");
+      var base = document.getElementById("comicBase");
+      var flap = document.getElementById("comicFlap");
+      var btnPrev = document.getElementById("btnPrev");
+      var btnNext = document.getElementById("btnNext");
+      var tapPrev = document.getElementById("tapPrev");
+      var tapNext = document.getElementById("tapNext");
+      var pageCount = document.getElementById("pageCount");
 
-  function showStatic() {
-    base.src = pages[current];
-    flap.src = pages[current];
-    flap.style.transition = "none";
-    flap.classList.remove("flip-next", "flip-prev", "flap-origin-left");
-    flap.getBoundingClientRect();
-    flap.style.transition = "";
-    updateControls();
-  }
+      function updateControls() {
+        pageCount.textContent = (current + 1) + " / " + total;
+        btnPrev.disabled = current <= 0;
+        btnNext.disabled = current >= total - 1;
+      }
 
-  function goNext() {
-    if (flipping || current >= total - 1) return;
-    flipping = true;
-    flap.classList.remove("flap-origin-left");
-    flap.src = pages[current];
-    base.src = pages[current + 1];
-    flap.getBoundingClientRect();
-    flap.classList.add("flip-next");
-    flap.addEventListener("transitionend", function handler() {
-      flap.removeEventListener("transitionend", handler);
-      current++;
-      flipping = false;
-      showStatic();
-    });
-  }
+      function showStatic() {
+        base.src = pages[current];
+        flap.src = pages[current];
+        flap.style.transition = "none";
+        flap.classList.remove("flip-next", "flip-prev", "flap-origin-left");
+        flap.getBoundingClientRect();
+        flap.style.transition = "";
+        updateControls();
+      }
 
-  function goPrev() {
-    if (flipping || current <= 0) return;
-    flipping = true;
-    flap.classList.add("flap-origin-left");
-    flap.src = pages[current];
-    base.src = pages[current - 1];
-    flap.getBoundingClientRect();
-    flap.classList.add("flip-prev");
-    flap.addEventListener("transitionend", function handler() {
-      flap.removeEventListener("transitionend", handler);
-      current--;
-      flipping = false;
-      showStatic();
-    });
-  }
+      function goNext() {
+        if (flipping || current >= total - 1) return;
+        flipping = true;
+        flap.classList.remove("flap-origin-left");
+        flap.src = pages[current];
+        base.src = pages[current + 1];
+        flap.getBoundingClientRect();
+        flap.classList.add("flip-next");
+        flap.addEventListener("transitionend", function handler() {
+          flap.removeEventListener("transitionend", handler);
+          current++;
+          flipping = false;
+          showStatic();
+        });
+      }
 
-  btnNext.addEventListener("click", goNext);
-  btnPrev.addEventListener("click", goPrev);
-  tapNext.addEventListener("click", goNext);
-  tapPrev.addEventListener("click", goPrev);
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "ArrowRight") goNext();
-    if (e.key === "ArrowLeft") goPrev();
-  });
+      function goPrev() {
+        if (flipping || current <= 0) return;
+        flipping = true;
+        flap.classList.add("flap-origin-left");
+        flap.src = pages[current];
+        base.src = pages[current - 1];
+        flap.getBoundingClientRect();
+        flap.classList.add("flip-prev");
+        flap.addEventListener("transitionend", function handler() {
+          flap.removeEventListener("transitionend", handler);
+          current--;
+          flipping = false;
+          showStatic();
+        });
+      }
 
-  pdfjsLib.getDocument(PDF_URL).promise.then(function(pdf) {
-    total = pdf.numPages;
-    var renderTasks = [];
-    for (var i = 1; i <= total; i++) {
-      renderTasks.push(
-        pdf.getPage(i).then(function(page) {
-          var scale = 1400 / page.getViewport({ scale: 1 }).width;
-          var viewport = page.getViewport({ scale: scale });
-          var canvas = document.createElement("canvas");
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          var ctx = canvas.getContext("2d");
-          return page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function() {
-            return { num: page.pageNumber, url: canvas.toDataURL("image/jpeg", 0.88) };
-          });
-        })
-      );
-    }
-    return Promise.all(renderTasks);
-  }).then(function(results) {
-    results.sort(function(a, b) { return a.num - b.num; });
-    pages = results.map(function(r) { return r.url; });
-    loading.style.display = "none";
-    showStatic();
-  }).catch(function(err) {
-    loading.textContent = "読み込みに失敗しました。上の「PDFをそのまま開く」からご覧ください。";
-    console.error(err);
-  });
-})();
-</script>
+      btnNext.addEventListener("click", goNext);
+      btnPrev.addEventListener("click", goPrev);
+      tapNext.addEventListener("click", goNext);
+      tapPrev.addEventListener("click", goPrev);
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") goNext();
+        if (e.key === "ArrowLeft") goPrev();
+      });
 
-<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "../facilities/index.html" }, { label: "不要不急保存課", href: "../facilities/fuyoufukyuhozonka.html" }, { label: "不要不急な4コマ漫画" }] };</script>
-<script src="../js/common.js"></script>
+      pdfjsLib.getDocument(PDF_URL).promise.then(function (pdf) {
+        total = pdf.numPages;
+        var renderTasks = [];
+        for (var i = 1; i <= total; i++) {
+          renderTasks.push(
+            pdf.getPage(i).then(function (page) {
+              var scale = 1400 / page.getViewport({scale: 1}).width;
+              var viewport = page.getViewport({scale: scale});
+              var canvas = document.createElement("canvas");
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              var ctx = canvas.getContext("2d");
+              return page.render({canvasContext: ctx, viewport: viewport}).promise.then(function () {
+                return {num: page.pageNumber, url: canvas.toDataURL("image/jpeg", 0.88)};
+              });
+            })
+          );
+        }
+        return Promise.all(renderTasks);
+      }).then(function (results) {
+        results.sort(function (a, b) {return a.num - b.num;});
+        pages = results.map(function (r) {return r.url;});
+        loading.style.display = "none";
+        showStatic();
+      }).catch(function (err) {
+        loading.textContent = "読み込みに失敗しました。上の「PDFをそのまま開く」からご覧ください。";
+        console.error(err);
+      });
+    })();
+  </script>
+
+  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "../facilities/index.html"}, {label: "不要不急保存課", href: "../facilities/fuyoufukyuhozonka.html"}, {label: "不要不急な4コマ漫画"}]};</script>
+  <script src="../js/common.js"></script>
 </body>
+
 </html>

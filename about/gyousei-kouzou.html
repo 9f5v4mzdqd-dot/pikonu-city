@@ -1,176 +1,181 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>ピコぬ市 行政構造図 | 市の概要 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="六角形でつながる、ピコぬ市独自の行政構造をご紹介します。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <title>ピコぬ市 行政構造図 | 市の概要 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="六角形でつながる、ピコぬ市独自の行政構造をご紹介します。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>ピコぬ市 行政構造図</h1>
-      <p class="lead">〜六角形でつながる市政のかたち〜</p>
-    </div>
-  </div>
-
-  <div class="content-layout">
-    <div class="main-content">
-      <p>
-        ピコぬ市では、行政組織を単なる上下関係ではなく、それぞれの役割がつながり、支え合う構造として考えています。
-        蜂の巣などに見られる六角形の効率的な構造から着想を得て、異なる役割が連結することで全体を支える仕組みを表現しています。
-      </p>
-
-      <h2>市長は「頂点」ではなく「中心」</h2>
-      <p>
-        ピコぬ市では、市長を行政組織の最上位ではなく、各部署と市民の声をつなぐ中心的な役割として位置づけています。
-        各部署には異なる専門性があり、それぞれが重要な役割を担っています。
-        六角形は部署数を表すものではなく、役割同士が連結する行政の考え方を象徴しています。
-      </p>
-
-      <h2>行政構造図</h2>
-      <div style="max-width:640px; margin:1.5em auto;">
-        <svg viewBox="0 0 650 520" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;" role="img" aria-label="ピコぬ市の行政構造を表す六角形の連結図。中心に市長、周囲に主要行政機能、外側に議会事務局が配置されている。">
-
-          <!-- connecting lines: center to 6 surrounding departments -->
-          <g stroke="var(--color-primary)" stroke-width="2.5">
-            <line x1="350" y1="300" x2="350" y2="199.5"/>
-            <line x1="350" y1="300" x2="437" y2="249.8"/>
-            <line x1="350" y1="300" x2="437" y2="350.2"/>
-            <line x1="350" y1="300" x2="350" y2="400.5"/>
-            <line x1="350" y1="300" x2="263" y2="350.2"/>
-            <line x1="350" y1="300" x2="263" y2="249.8"/>
-          </g>
-
-          <!-- dashed line: outer 議会事務局 to core -->
-          <line x1="468" y1="95.6" x2="391" y2="228" stroke="var(--color-primary)" stroke-width="2.5" stroke-dasharray="6 6"/>
-
-          <!-- 6 surrounding department hexagons -->
-          <g fill="#ffffff" stroke="var(--color-primary)" stroke-width="3">
-            <polygon points="350.0,141.5 400.2,170.5 400.2,228.5 350.0,257.5 299.8,228.5 299.8,170.5"/>
-            <polygon points="437.0,191.8 487.2,220.8 487.2,278.8 437.0,307.8 386.8,278.8 386.8,220.8"/>
-            <polygon points="437.0,292.2 487.2,321.2 487.2,379.2 437.0,408.2 386.8,379.2 386.8,321.2"/>
-            <polygon points="350.0,342.5 400.2,371.5 400.2,429.5 350.0,458.5 299.8,429.5 299.8,371.5"/>
-            <polygon points="263.0,292.2 313.2,321.2 313.2,379.2 263.0,408.2 212.8,379.2 212.8,321.2"/>
-            <polygon points="263.0,191.8 313.2,220.8 313.2,278.8 263.0,307.8 212.8,278.8 212.8,220.8"/>
-          </g>
-
-          <!-- outer hexagon: 議会事務局 -->
-          <polygon points="468.0,45.6 511.3,70.6 511.3,120.6 468.0,145.6 424.7,120.6 424.7,70.6"
-            fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="3" stroke-dasharray="5 4"/>
-
-          <!-- center hexagon: 市長 -->
-          <polygon points="350.0,242.0 400.2,271.0 400.2,329.0 350.0,358.0 299.8,329.0 299.8,271.0"
-            fill="var(--color-primary)" stroke="var(--color-primary-dark)" stroke-width="3"/>
-
-          <!-- labels -->
-          <g font-family="inherit" text-anchor="middle" fill="var(--color-primary-dark)">
-            <text x="350" y="204" font-size="16">記録政策課</text>
-            <text x="437" y="254.5" font-size="16">市民協働部</text>
-            <text x="437" y="354.5" font-size="16">生活共生部</text>
-            <text x="350" y="405" font-size="16">都市整備部</text>
-            <text x="263" y="354.5" font-size="16">環境部</text>
-            <text x="263" y="244.5" font-size="14">
-              <tspan x="263" dy="-4">時間効率</tspan>
-              <tspan x="263" dy="18">支援課</tspan>
-            </text>
-            <text x="468" y="100" font-size="14">議会事務局</text>
-          </g>
-          <text x="350" y="308" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">市長</text>
-        </svg>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>ピコぬ市 行政構造図</h1>
+        <p class="lead">〜六角形でつながる市政のかたち〜</p>
       </div>
-      <p style="text-align:center; color:var(--color-text-sub); font-size:.85rem;">
-        中心の六角形が市長、周囲の六角形が各部署、点線でつながる外側の六角形が議会事務局を表しています。
-      </p>
-
-      <h2>各部署の役割</h2>
-
-<div class="pickup-list">
-
-  <a class="pickup-item" href="../facilities/kiroku-seisaku-ka.html">
-    <div class="pickup-text">
-      <h3>記録政策課</h3>
-      <p>市政記録の保存・活用をはじめ、記録文化の継承や情報発信に関する施策を担当します。</p>
     </div>
-  </a>
 
-  <a class="pickup-item" href="../facilities/shiminka.html">
-    <div class="pickup-text">
-      <h3>市民協働部</h3>
-      <p>市民課を中心に、市民生活に最も身近な窓口業務と、市民とのつながりを支える行政サービスを担当します。</p>
-    </div>
-  </a>
+    <div class="content-layout">
+      <div class="main-content">
+        <p>
+          ピコぬ市では、行政組織を単なる上下関係ではなく、それぞれの役割がつながり、支え合う構造として考えています。
+          蜂の巣などに見られる六角形の効率的な構造から着想を得て、異なる役割が連結することで全体を支える仕組みを表現しています。
+        </p>
 
-  <a class="pickup-item" href="../facilities/seikatsu-kyosei-ka.html">
-    <div class="pickup-text">
-      <h3>生活共生部</h3>
-      <p>共生生活課と現代病予防相談を中心に、暮らしの困りごとや、分類しにくい心身の不調に寄り添う施策を担当します。</p>
-    </div>
-  </a>
+        <h2>市長は「頂点」ではなく「中心」</h2>
+        <p>
+          ピコぬ市では、市長を行政組織の最上位ではなく、各部署と市民の声をつなぐ中心的な役割として位置づけています。
+          各部署には異なる専門性があり、それぞれが重要な役割を担っています。
+          六角形は部署数を表すものではなく、役割同士が連結する行政の考え方を象徴しています。
+        </p>
 
-  <a class="pickup-item" href="../facilities/toshikeikaku.html">
-    <div class="pickup-text">
-      <h3>都市整備部</h3>
-      <p>都市計画や鉄道連結技術をはじめ、安全で持続可能なまちづくりを担当します。</p>
-    </div>
-  </a>
+        <h2>行政構造図</h2>
+        <div style="max-width:640px; margin:1.5em auto;">
+          <svg viewBox="0 0 650 520" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;" role="img"
+            aria-label="ピコぬ市の行政構造を表す六角形の連結図。中心に市長、周囲に主要行政機能、外側に議会事務局が配置されている。">
 
-  <a class="pickup-item" href="../facilities/kankyoka.html">
-    <div class="pickup-text">
-      <h3>環境部</h3>
-      <p>自然環境の保全や資源循環を通じて、暮らしと環境の調和を支える施策を担当します。</p>
-    </div>
-  </a>
+            <!-- connecting lines: center to 6 surrounding departments -->
+            <g stroke="var(--color-primary)" stroke-width="2.5">
+              <line x1="350" y1="300" x2="350" y2="199.5" />
+              <line x1="350" y1="300" x2="437" y2="249.8" />
+              <line x1="350" y1="300" x2="437" y2="350.2" />
+              <line x1="350" y1="300" x2="350" y2="400.5" />
+              <line x1="350" y1="300" x2="263" y2="350.2" />
+              <line x1="350" y1="300" x2="263" y2="249.8" />
+            </g>
 
-  <a class="pickup-item" href="../facilities/jikan-koritsu-shien-ka.html">
-    <div class="pickup-text">
-      <h3>時間効率支援課</h3>
-      <p>時間との向き合い方を研究し、市民の可処分時間を支えるための施策や相談業務を担当します。</p>
-    </div>
-  </a>
+            <!-- dashed line: outer 議会事務局 to core -->
+            <line x1="468" y1="95.6" x2="391" y2="228" stroke="var(--color-primary)" stroke-width="2.5"
+              stroke-dasharray="6 6" />
 
-  <a class="pickup-item" href="../facilities/gikai.html">
-    <div class="pickup-text">
-      <h3>議会事務局</h3>
-      <p>市議会の運営を支援するとともに、議事録など議会活動の記録を担当します。</p>
-    </div>
-  </a>
+            <!-- 6 surrounding department hexagons -->
+            <g fill="#ffffff" stroke="var(--color-primary)" stroke-width="3">
+              <polygon points="350.0,141.5 400.2,170.5 400.2,228.5 350.0,257.5 299.8,228.5 299.8,170.5" />
+              <polygon points="437.0,191.8 487.2,220.8 487.2,278.8 437.0,307.8 386.8,278.8 386.8,220.8" />
+              <polygon points="437.0,292.2 487.2,321.2 487.2,379.2 437.0,408.2 386.8,379.2 386.8,321.2" />
+              <polygon points="350.0,342.5 400.2,371.5 400.2,429.5 350.0,458.5 299.8,429.5 299.8,371.5" />
+              <polygon points="263.0,292.2 313.2,321.2 313.2,379.2 263.0,408.2 212.8,379.2 212.8,321.2" />
+              <polygon points="263.0,191.8 313.2,220.8 313.2,278.8 263.0,307.8 212.8,278.8 212.8,220.8" />
+            </g>
 
-</div>
-      <h2>塩梅市長から</h2>
-      <div class="info-box">
-        市政は、一つの部署だけで成り立つものではありません。それぞれ異なる役割を持つ場所がつながることで、
-        まち全体が動いていきます。目立つ場所だけではなく、支える場所にも意味があります。
-        ピコぬ市は、これからも市民の声を中心に、各部署が連結するまちづくりを進めてまいります。
+            <!-- outer hexagon: 議会事務局 -->
+            <polygon points="468.0,45.6 511.3,70.6 511.3,120.6 468.0,145.6 424.7,120.6 424.7,70.6"
+              fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="3" stroke-dasharray="5 4" />
+
+            <!-- center hexagon: 市長 -->
+            <polygon points="350.0,242.0 400.2,271.0 400.2,329.0 350.0,358.0 299.8,329.0 299.8,271.0"
+              fill="var(--color-primary)" stroke="var(--color-primary-dark)" stroke-width="3" />
+
+            <!-- labels -->
+            <g font-family="inherit" text-anchor="middle" fill="var(--color-primary-dark)">
+              <text x="350" y="204" font-size="16">記録政策課</text>
+              <text x="437" y="254.5" font-size="16">市民協働部</text>
+              <text x="437" y="354.5" font-size="16">生活共生部</text>
+              <text x="350" y="405" font-size="16">都市整備部</text>
+              <text x="263" y="354.5" font-size="16">環境部</text>
+              <text x="263" y="244.5" font-size="14">
+                <tspan x="263" dy="-4">時間効率</tspan>
+                <tspan x="263" dy="18">支援課</tspan>
+              </text>
+              <text x="468" y="100" font-size="14">議会事務局</text>
+            </g>
+            <text x="350" y="308" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">市長</text>
+          </svg>
+        </div>
+        <p style="text-align:center; color:var(--color-text-sub); font-size:.85rem;">
+          中心の六角形が市長、周囲の六角形が各部署、点線でつながる外側の六角形が議会事務局を表しています。
+        </p>
+
+        <h2>各部署の役割</h2>
+
+        <div class="pickup-list">
+
+          <a class="pickup-item" href="../facilities/kiroku-seisaku-ka.html">
+            <div class="pickup-text">
+              <h3>記録政策課</h3>
+              <p>市政記録の保存・活用をはじめ、記録文化の継承や情報発信に関する施策を担当します。</p>
+            </div>
+          </a>
+
+          <a class="pickup-item" href="../facilities/shiminka.html">
+            <div class="pickup-text">
+              <h3>市民協働部</h3>
+              <p>市民課を中心に、市民生活に最も身近な窓口業務と、市民とのつながりを支える行政サービスを担当します。</p>
+            </div>
+          </a>
+
+          <a class="pickup-item" href="../facilities/seikatsu-kyosei-ka.html">
+            <div class="pickup-text">
+              <h3>生活共生部</h3>
+              <p>共生生活課と現代病予防相談を中心に、暮らしの困りごとや、分類しにくい心身の不調に寄り添う施策を担当します。</p>
+            </div>
+          </a>
+
+          <a class="pickup-item" href="../facilities/toshikeikaku.html">
+            <div class="pickup-text">
+              <h3>都市整備部</h3>
+              <p>都市計画や鉄道連結技術をはじめ、安全で持続可能なまちづくりを担当します。</p>
+            </div>
+          </a>
+
+          <a class="pickup-item" href="../facilities/kankyoka.html">
+            <div class="pickup-text">
+              <h3>環境部</h3>
+              <p>自然環境の保全や資源循環を通じて、暮らしと環境の調和を支える施策を担当します。</p>
+            </div>
+          </a>
+
+          <a class="pickup-item" href="../facilities/jikan-koritsu-shien-ka.html">
+            <div class="pickup-text">
+              <h3>時間効率支援課</h3>
+              <p>時間との向き合い方を研究し、市民の可処分時間を支えるための施策や相談業務を担当します。</p>
+            </div>
+          </a>
+
+          <a class="pickup-item" href="../facilities/gikai.html">
+            <div class="pickup-text">
+              <h3>議会事務局</h3>
+              <p>市議会の運営を支援するとともに、議事録など議会活動の記録を担当します。</p>
+            </div>
+          </a>
+
+        </div>
+        <h2>塩梅市長から</h2>
+        <div class="info-box">
+          市政は、一つの部署だけで成り立つものではありません。それぞれ異なる役割を持つ場所がつながることで、
+          まち全体が動いていきます。目立つ場所だけではなく、支える場所にも意味があります。
+          ピコぬ市は、これからも市民の声を中心に、各部署が連結するまちづくりを進めてまいります。
+        </div>
+
+        <p style="font-size:.8rem; color:var(--color-text-sub);">
+          ※六角形は部署数を示すものではなく、本市における行政機能の連携理念を表現したものです。<br>
+          ※組織一覧については市役所のページをご確認ください。
+        </p>
       </div>
 
-      <p style="font-size:.8rem; color:var(--color-text-sub);">
-        ※六角形は部署数を示すものではなく、本市における行政機能の連携理念を表現したものです。<br>
-        ※組織一覧については市役所のページをご確認ください。
-      </p>
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="gaiyou.html">市の概要</a></li>
+            <li><a href="aisatsu.html">市長のごあいさつ</a></li>
+            <li><a href="../facilities/shiyakusho.html">市役所</a></li>
+            <li><a href="../facilities/shiyakusho-floor.html">フロア案内</a></li>
+          </ul>
+        </div>
+      </aside>
     </div>
+  </main>
 
-    <aside class="sidebar">
-      <div class="sidebar-block">
-        <h2>関連情報</h2>
-        <ul>
-          <li><a href="gaiyou.html">市の概要</a></li>
-          <li><a href="aisatsu.html">市長のごあいさつ</a></li>
-          <li><a href="../facilities/shiyakusho.html">市役所</a></li>
-          <li><a href="../facilities/shiyakusho-floor.html">フロア案内</a></li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-</main>
-
-<script>window.PAGE_META = { nav: "gaiyou", breadcrumb: [{ label: "市の概要", href: "gaiyou.html" }, { label: "行政構造図" }] };</script>
-<script src="../js/common.js"></script>
+  <script>window.PAGE_META = {nav: "gaiyou", breadcrumb: [{label: "市の概要", href: "gaiyou.html"}, {label: "行政構造図"}]};</script>
+  <script src="../js/common.js"></script>
 </body>
+
 </html>

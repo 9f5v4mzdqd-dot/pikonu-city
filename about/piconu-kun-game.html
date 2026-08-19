@@ -1,114 +1,496 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>ピコぬの大冒険脱出ゲーム（全3ステージ）</title>
 
-    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3QgeD0iOCIgeT0iMTYiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0MiIgcng9IjE4IiBmaWxsPSIjZmZmOGUxIiBzdHJva2U9IiNmZmIzMDAiIHN0cm9rZS13aWR0aD0iMyIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzIsMiAyNCwxMCA0MCwxMCIgZmlsbD0iI2ZmYmMwMCIvPgogIDxjaXJjbGUgY3g9IjMyIiBjeT0iMTIiIHI9IjQuNSIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZmZiMzAwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxjaXJjbGUgY3g9IjIzIiBjeT0iMzAiIHI9IjM1IiBmaWxsPSIjM2UyNzIzIi8+CiAgPGNpcmNsZSBjeD0iNDEiIGN5PSIzNCIgcj0iMyIgZmlsbD0iIzNlMjcyMyIvPgogIDxwYXRoIGQ9Ik0gMjUgMzcgUSAzMiA0MiAzNyAzNyIgc3Ryb2tlPSIjM2UyNzIzIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjE4IiBjeT0iMzQiIHI9IjMiIGZpbGw9IiNmZmFiOTEiIG9wYWNpdHk9IjAuNyIvPgogIDxjaXJjbGUgY3g9IjQ2IiBjeT0iMzQiIHI9IjMiIGZpbGw9IiNmZmFiOTEiIG9wYWNpdHk9IjAuNyIvPgogIDxyZWN0IHg9IjE4IiB5PSI0NCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjEwIiByeD0iMiIgZmlsbD0iIzM3NDc0ZiIgc3Ryb2tlPSIjZmZiMzAwIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8cmVjdCB4PSIxNi41IiB5PSI0NiIgd2lkdGg9IjMxIiBoZWlnaHQ9IjYiIGZpbGw9IiMwMDAwMDAiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjQ5IiByPSIxLjYiIGZpbGw9IiMwMGU2NzYiLz4KPC9zdmc+" type="image/svg+xml">
+    <link rel="icon"
+        href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3QgeD0iOCIgeT0iMTYiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0MiIgcng9IjE4IiBmaWxsPSIjZmZmOGUxIiBzdHJva2U9IiNmZmIzMDAiIHN0cm9rZS13aWR0aD0iMyIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzIsMiAyNCwxMCA0MCwxMCIgZmlsbD0iI2ZmYmMwMCIvPgogIDxjaXJjbGUgY3g9IjMyIiBjeT0iMTIiIHI9IjQuNSIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZmZiMzAwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxjaXJjbGUgY3g9IjIzIiBjeT0iMzAiIHI9IjM1IiBmaWxsPSIjM2UyNzIzIi8+CiAgPGNpcmNsZSBjeD0iNDEiIGN5PSIzNCIgcj0iMyIgZmlsbD0iIzNlMjcyMyIvPgogIDxwYXRoIGQ9Ik0gMjUgMzcgUSAzMiA0MiAzNyAzNyIgc3Ryb2tlPSIjM2UyNzIzIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjE4IiBjeT0iMzQiIHI9IjMiIGZpbGw9IiNmZmFiOTEiIG9wYWNpdHk9IjAuNyIvPgogIDxjaXJjbGUgY3g9IjQ2IiBjeT0iMzQiIHI9IjMiIGZpbGw9IiNmZmFiOTEiIG9wYWNpdHk9IjAuNyIvPgogIDxyZWN0IHg9IjE4IiB5PSI0NCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjEwIiByeD0iMiIgZmlsbD0iIzM3NDc0ZiIgc3Ryb2tlPSIjZmZiMzAwIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8cmVjdCB4PSIxNi41IiB5PSI0NiIgd2lkdGg9IjMxIiBoZWlnaHQ9IjYiIGZpbGw9IiMwMDAwMDAiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjQ5IiByPSIxLjYiIGZpbGw9IiMwMGU2NzYiLz4KPC9zdmc+"
+        type="image/svg+xml">
 
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #1a1615; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        #game-container { position: relative; width: 800px; height: 500px; border: 6px solid #3e2723; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); overflow: hidden; background: #fdf6e3; }
-        
-        .scene { position: absolute; width: 100%; height: 100%; display: none; }
-        .active { display: block; }
-        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #1a1615;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            border: 6px solid #3e2723;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            background: #fdf6e3;
+        }
+
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
         /* タイトル画面 */
-        #scene-title { background: #3e2723; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        #title-text { font-size: 2.2rem; font-weight: bold; margin-bottom: 15px; text-align: center; color: #ffe0b2; }
-        #title-piconu { margin-bottom: 20px; animation: bounce 2s infinite ease-in-out; }
-        #start-button { padding: 12px 35px; font-size: 1.25rem; background: #e91e63; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.2s; }
-        #start-button:hover { background: #c2185b; transform: scale(1.05); }
+        #scene-title {
+            background: #3e2723;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #title-text {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #ffe0b2;
+        }
+
+        #title-piconu {
+            margin-bottom: 20px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        #start-button {
+            padding: 12px 35px;
+            font-size: 1.25rem;
+            background: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s;
+        }
+
+        #start-button:hover {
+            background: #c2185b;
+            transform: scale(1.05);
+        }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* 背景・床共通 */
-        .wood-floor { position: absolute; bottom: 0; width: 100%; height: 160px; background: #8d6e63; border-top: 5px solid #4e342e; }
-        .tatami-floor { position: absolute; bottom: 0; width: 100%; height: 180px; background: #c2b280; border-top: 4px solid #4a5d23; }
-        .museum-floor { position: absolute; bottom: 0; width: 100%; height: 160px; background: #5d4037; border-top: 6px solid #3e2723; }
-        .museum-tatami-line { position: absolute; bottom: 0; width: 100%; height: 160px; background: repeating-linear-gradient(90deg, #4e342e, #4e342e 20px, #3e2723 20px, #3e2723 22px); opacity: 0.3; }
+        .wood-floor {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 160px;
+            background: #8d6e63;
+            border-top: 5px solid #4e342e;
+        }
+
+        .tatami-floor {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 180px;
+            background: #c2b280;
+            border-top: 4px solid #4a5d23;
+        }
+
+        .museum-floor {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 160px;
+            background: #5d4037;
+            border-top: 6px solid #3e2723;
+        }
+
+        .museum-tatami-line {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 160px;
+            background: repeating-linear-gradient(90deg, #4e342e, #4e342e 20px, #3e2723 20px, #3e2723 22px);
+            opacity: 0.3;
+        }
 
         /* オブジェクト */
-        .obj { position: absolute; cursor: pointer; transition: transform 0.15s ease, filter 0.15s ease; }
-        .obj:hover { transform: scale(1.03); filter: drop-shadow(0 0 8px rgba(255, 235, 59, 0.8)); }
+        .obj {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.15s ease, filter 0.15s ease;
+        }
+
+        .obj:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 8px rgba(255, 235, 59, 0.8));
+        }
 
         /* STAGE 1 配置（市役所） */
-        #scene-s1-room { background: #f4ecdc; }
-        #s1-obj-door { top: 40px; left: 40px; width: 110px; height: 280px; }
-        #s1-obj-window { top: 30px; left: 190px; width: 150px; height: 160px; }
-        #s1-obj-shelf { top: 110px; left: 370px; width: 230px; height: 190px; }
-        #s1-obj-table { top: 330px; left: 240px; width: 260px; height: 120px; }
-        #s1-obj-piconu { top: 260px; left: 630px; width: 130px; height: 180px; }
+        #scene-s1-room {
+            background: #f4ecdc;
+        }
+
+        #s1-obj-door {
+            top: 40px;
+            left: 40px;
+            width: 110px;
+            height: 280px;
+        }
+
+        #s1-obj-window {
+            top: 30px;
+            left: 190px;
+            width: 150px;
+            height: 160px;
+        }
+
+        #s1-obj-shelf {
+            top: 110px;
+            left: 370px;
+            width: 230px;
+            height: 190px;
+        }
+
+        #s1-obj-table {
+            top: 330px;
+            left: 240px;
+            width: 260px;
+            height: 120px;
+        }
+
+        #s1-obj-piconu {
+            top: 260px;
+            left: 630px;
+            width: 130px;
+            height: 180px;
+        }
 
         /* S1背中画面 */
-        #scene-s1-piconu-back { background: #fff8e1; }
-        #s1-piconu-back-body { position: absolute; top: 40px; left: 200px; width: 400px; height: 400px; background: #ffecb3; border: 6px solid #ffa000; border-radius: 120px 120px 30px 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.05); }
-        #s1-btn-back-button { width: 90px; height: 90px; background: radial-gradient(circle, #ff8f00 0%, #d84315 100%); border: 5px solid #8d6e63; border-radius: 50%; cursor: pointer; box-shadow: 0 6px #5d4037; transition: all 0.1s; }
-        #s1-btn-back-button:active { transform: translateY(6px); box-shadow: none; }
+        #scene-s1-piconu-back {
+            background: #fff8e1;
+        }
+
+        #s1-piconu-back-body {
+            position: absolute;
+            top: 40px;
+            left: 200px;
+            width: 400px;
+            height: 400px;
+            background: #ffecb3;
+            border: 6px solid #ffa000;
+            border-radius: 120px 120px 30px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        #s1-btn-back-button {
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle, #ff8f00 0%, #d84315 100%);
+            border: 5px solid #8d6e63;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 6px #5d4037;
+            transition: all 0.1s;
+        }
+
+        #s1-btn-back-button:active {
+            transform: translateY(6px);
+            box-shadow: none;
+        }
 
         /* STAGE 2 配置（図書館） */
-        #scene-s2-room { background: #fdf6e3; }
-        #s2-obj-door { top: 50px; left: 40px; width: 110px; height: 290px; }
-        #s2-obj-bookshelf { top: 60px; left: 180px; width: 220px; height: 260px; }
-        #s2-obj-desk { top: 310px; left: 430px; width: 200px; height: 120px; }
-        #s2-obj-piconu { top: 250px; left: 650px; width: 120px; height: 170px; }
+        #scene-s2-room {
+            background: #fdf6e3;
+        }
+
+        #s2-obj-door {
+            top: 50px;
+            left: 40px;
+            width: 110px;
+            height: 290px;
+        }
+
+        #s2-obj-bookshelf {
+            top: 60px;
+            left: 180px;
+            width: 220px;
+            height: 260px;
+        }
+
+        #s2-obj-desk {
+            top: 310px;
+            left: 430px;
+            width: 200px;
+            height: 120px;
+        }
+
+        #s2-obj-piconu {
+            top: 250px;
+            left: 650px;
+            width: 120px;
+            height: 170px;
+        }
 
         /* STAGE 3 配置（博物館） */
-        #scene-s3-room { background: #efebe9; }
-        #s3-obj-door { top: 40px; left: 40px; width: 120px; height: 300px; }
-        #s3-obj-exhibit1 { top: 120px; left: 190px; width: 180px; height: 200px; }
-        #s3-obj-exhibit2 { top: 100px; left: 400px; width: 200px; height: 220px; }
-        #s3-obj-piconu { top: 250px; left: 640px; width: 120px; height: 170px; }
+        #scene-s3-room {
+            background: #efebe9;
+        }
+
+        #s3-obj-door {
+            top: 40px;
+            left: 40px;
+            width: 120px;
+            height: 300px;
+        }
+
+        #s3-obj-exhibit1 {
+            top: 120px;
+            left: 190px;
+            width: 180px;
+            height: 200px;
+        }
+
+        #s3-obj-exhibit2 {
+            top: 100px;
+            left: 400px;
+            width: 200px;
+            height: 220px;
+        }
+
+        #s3-obj-piconu {
+            top: 250px;
+            left: 640px;
+            width: 120px;
+            height: 170px;
+        }
 
         /* UI */
-        .back-btn { position: absolute; top: 15px; left: 15px; padding: 8px 16px; background: #5d4037; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; z-index: 100; }
-        #msg-box { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 85%; padding: 16px; background: rgba(30, 42, 56, 0.95); color: white; border: 3px solid #ffe0b2; border-radius: 8px; display: none; z-index: 300; text-align: center; line-height: 1.6; font-size: 1.05rem; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        #msg-close-btn { margin-top: 10px; padding: 6px 18px; background: #ffe0b2; color: #3e2723; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
-        
-        #item-bar { width: 800px; height: 50px; background: #2c1d11; display: flex; align-items: center; padding: 0 15px; box-sizing: border-box; }
-        .item-slot { width: 40px; height: 40px; background: #5d4037; margin-right: 10px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; border: 2px solid #8d6e63; color: white; }
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 8px 16px;
+            background: #5d4037;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        #msg-box {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            padding: 16px;
+            background: rgba(30, 42, 56, 0.95);
+            color: white;
+            border: 3px solid #ffe0b2;
+            border-radius: 8px;
+            display: none;
+            z-index: 300;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 1.05rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        #msg-close-btn {
+            margin-top: 10px;
+            padding: 6px 18px;
+            background: #ffe0b2;
+            color: #3e2723;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #item-bar {
+            width: 800px;
+            height: 50px;
+            background: #2c1d11;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .item-slot {
+            width: 40px;
+            height: 40px;
+            background: #5d4037;
+            margin-right: 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            border: 2px solid #8d6e63;
+            color: white;
+        }
 
         /* モーダル */
-        .modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff8e1; padding: 25px; border: 5px solid #5d4037; border-radius: 12px; display: none; z-index: 200; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
-        .modal input { font-size: 1.5rem; width: 180px; text-align: center; margin: 15px 0; border: 3px solid #8d6e63; border-radius: 6px; padding: 5px; }
-        .modal button { padding: 8px 16px; background: #e91e63; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: bold; margin: 5px; }
-        .modal button.secondary { background: #757575; }
+        .modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff8e1;
+            padding: 25px;
+            border: 5px solid #5d4037;
+            border-radius: 12px;
+            display: none;
+            z-index: 200;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal input {
+            font-size: 1.5rem;
+            width: 180px;
+            text-align: center;
+            margin: 15px 0;
+            border: 3px solid #8d6e63;
+            border-radius: 6px;
+            padding: 5px;
+        }
+
+        .modal button {
+            padding: 8px 16px;
+            background: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .modal button.secondary {
+            background: #757575;
+        }
 
         /* S2 本の並び替え */
-        .book-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-        .book-item { width: 45px; height: 110px; border-radius: 4px; cursor: pointer; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; user-select: none; box-shadow: 0 4px #333; transition: transform 0.1s; }
-        .book-item:active { transform: translateY(2px); }
-        .book-blue { background: #1e88e5; }
-        .book-green { background: #43a047; }
-        .book-red { background: #e53935; }
-        .book-orange { background: #fb8c00; }
+        .book-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .book-item {
+            width: 45px;
+            height: 110px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            user-select: none;
+            box-shadow: 0 4px #333;
+            transition: transform 0.1s;
+        }
+
+        .book-item:active {
+            transform: translateY(2px);
+        }
+
+        .book-blue {
+            background: #1e88e5;
+        }
+
+        .book-green {
+            background: #43a047;
+        }
+
+        .book-red {
+            background: #e53935;
+        }
+
+        .book-orange {
+            background: #fb8c00;
+        }
 
         /* S3 連結器パズル */
-        .coupler-container { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
-        .coupler-btn { width: 60px; height: 60px; border-radius: 50%; background: #37474f; color: #00e676; border: 4px solid #78909c; font-size: 1.4rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; user-select: none; }
+        .coupler-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .coupler-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #37474f;
+            color: #00e676;
+            border: 4px solid #78909c;
+            font-size: 1.4rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
     </style>
 </head>
+
 <body>
 
     <div id="game-container">
         <div id="scene-title" class="scene active">
-            <div id="title-text">ピコぬの大冒険脱出ゲーム<br><span style="font-size:1.2rem; color:#ffd54f;">〜全3ステージ連続脱出作戦〜</span></div>
-            
+            <div id="title-text">ピコぬの大冒険脱出ゲーム<br><span style="font-size:1.2rem; color:#ffd54f;">〜全3ステージ連続脱出作戦〜</span>
+            </div>
+
             <div id="title-piconu">
                 <svg width="140" height="180">
-                    <rect x="20" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffe082" stroke-width="5"/>
-                    <polygon points="70,5 50,25 90,25" fill="#ffb300"/>
-                    <circle cx="70" cy="30" r="10" fill="#ffffff" stroke="#ffb300" stroke-width="2"/>
-                    <circle cx="50" cy="75" r="6" fill="#3e2723"/>
-                    <circle cx="90" cy="75" r="6" fill="#3e2723"/>
-                    <path d="M 58 90 Q 70 100 82 90" stroke="#3e2723" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <circle cx="42" cy="85" r="6" fill="#ffab91" opacity="0.7"/>
-                    <circle cx="98" cy="85" r="6" fill="#ffab91" opacity="0.7"/>
-                    <rect x="35" y="110" width="70" height="45" rx="5" fill="#37474f" stroke="#ffb300" stroke-width="2"/>
-                    <rect x="40" y="115" width="60" height="35" fill="#000000"/>
+                    <rect x="20" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffe082"
+                        stroke-width="5" />
+                    <polygon points="70,5 50,25 90,25" fill="#ffb300" />
+                    <circle cx="70" cy="30" r="10" fill="#ffffff" stroke="#ffb300" stroke-width="2" />
+                    <circle cx="50" cy="75" r="6" fill="#3e2723" />
+                    <circle cx="90" cy="75" r="6" fill="#3e2723" />
+                    <path d="M 58 90 Q 70 100 82 90" stroke="#3e2723" stroke-width="3" fill="none"
+                        stroke-linecap="round" />
+                    <circle cx="42" cy="85" r="6" fill="#ffab91" opacity="0.7" />
+                    <circle cx="98" cy="85" r="6" fill="#ffab91" opacity="0.7" />
+                    <rect x="35" y="110" width="70" height="45" rx="5" fill="#37474f" stroke="#ffb300"
+                        stroke-width="2" />
+                    <rect x="40" y="115" width="60" height="35" fill="#000000" />
                     <text x="47" y="138" font-size="12" fill="#00e676" font-family="monospace">PICONU</text>
                 </svg>
             </div>
@@ -117,34 +499,37 @@
 
         <div id="scene-s1-room" class="scene">
             <div class="tatami-floor"></div>
-            
+
             <div id="s1-obj-door" class="obj" onclick="s1_clickDoor()">
                 <svg width="110" height="280">
-                    <rect x="5" y="5" width="100" height="270" fill="#8d6e63" stroke="#5d4037" stroke-width="4" rx="3"/>
-                    <rect x="15" y="20" width="80" height="110" fill="#d7ccc8" stroke="#5d4037" stroke-width="2"/>
-                    <circle cx="25" cy="150" r="6" fill="#ffe082"/>
-                    <rect x="50" y="140" width="40" height="25" fill="#37474f" rx="3"/>
+                    <rect x="5" y="5" width="100" height="270" fill="#8d6e63" stroke="#5d4037" stroke-width="4"
+                        rx="3" />
+                    <rect x="15" y="20" width="80" height="110" fill="#d7ccc8" stroke="#5d4037" stroke-width="2" />
+                    <circle cx="25" cy="150" r="6" fill="#ffe082" />
+                    <rect x="50" y="140" width="40" height="25" fill="#37474f" rx="3" />
                     <text x="56" y="157" font-size="10" fill="#00e676" font-family="monospace">CARD</text>
                 </svg>
             </div>
 
             <div id="s1-obj-window" class="obj" onclick="s1_clickWindow()">
                 <svg width="150" height="160">
-                    <rect x="5" y="5" width="140" height="150" fill="#e0f7fa" stroke="#5d4037" stroke-width="6"/>
-                    <line x1="75" y1="5" x2="75" y2="155" stroke="#5d4037" stroke-width="4"/>
-                    <line x1="5" y1="80" x2="145" y2="80" stroke="#5d4037" stroke-width="4"/>
+                    <rect x="5" y="5" width="140" height="150" fill="#e0f7fa" stroke="#5d4037" stroke-width="6" />
+                    <line x1="75" y1="5" x2="75" y2="155" stroke="#5d4037" stroke-width="4" />
+                    <line x1="5" y1="80" x2="145" y2="80" stroke="#5d4037" stroke-width="4" />
                 </svg>
             </div>
 
             <div id="s1-obj-shelf" class="obj" onclick="s1_clickShelf()">
                 <svg width="230" height="190">
-                    <rect x="5" y="5" width="220" height="180" fill="#a1887f" stroke="#4e342e" stroke-width="5" rx="4"/>
-                    <line x1="5" y1="95" x2="225" y2="95" stroke="#4e342e" stroke-width="4"/>
-                    <rect x="25" y="25" width="30" height="60" fill="#ef5350"/>
-                    <rect x="60" y="35" width="25" height="50" fill="#42a5f5"/>
-                    <rect x="90" y="20" width="35" height="65" fill="#66bb6a"/>
+                    <rect x="5" y="5" width="220" height="180" fill="#a1887f" stroke="#4e342e" stroke-width="5"
+                        rx="4" />
+                    <line x1="5" y1="95" x2="225" y2="95" stroke="#4e342e" stroke-width="4" />
+                    <rect x="25" y="25" width="30" height="60" fill="#ef5350" />
+                    <rect x="60" y="35" width="25" height="50" fill="#42a5f5" />
+                    <rect x="90" y="20" width="35" height="65" fill="#66bb6a" />
                     <g id="s1-card-on-shelf">
-                        <rect x="140" y="65" width="55" height="30" fill="#ffb300" rx="3" stroke="#ff6f00" stroke-width="2"/>
+                        <rect x="140" y="65" width="55" height="30" fill="#ffb300" rx="3" stroke="#ff6f00"
+                            stroke-width="2" />
                         <text x="148" y="84" font-size="12" fill="#fff" font-weight="bold">PIO</text>
                     </g>
                 </svg>
@@ -152,26 +537,30 @@
 
             <div id="s1-obj-table" class="obj" onclick="s1_clickTable()">
                 <svg width="260" height="120">
-                    <ellipse cx="130" cy="50" rx="120" ry="40" fill="#bcaaa4" stroke="#4e342e" stroke-width="4"/>
-                    <rect x="40" y="70" width="15" height="40" fill="#4e342e"/>
-                    <rect x="205" y="70" width="15" height="40" fill="#4e342e"/>
-                    <rect x="120" y="30" width="20" height="25" fill="#ffffff" stroke="#b0bec5" rx="2"/>
+                    <ellipse cx="130" cy="50" rx="120" ry="40" fill="#bcaaa4" stroke="#4e342e" stroke-width="4" />
+                    <rect x="40" y="70" width="15" height="40" fill="#4e342e" />
+                    <rect x="205" y="70" width="15" height="40" fill="#4e342e" />
+                    <rect x="120" y="30" width="20" height="25" fill="#ffffff" stroke="#b0bec5" rx="2" />
                 </svg>
             </div>
 
             <div id="s1-obj-piconu" class="obj" onclick="s1_clickPiconu()">
                 <svg width="130" height="180">
-                    <rect x="15" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffb300" stroke-width="4"/>
-                    <polygon points="65,5 45,25 85,25" fill="#ffb300"/>
-                    <circle cx="65" cy="25" r="9" fill="#ffffff" stroke="#ffb300" stroke-width="2"/>
-                    <circle cx="45" cy="70" r="6" fill="#3e2723"/>
-                    <circle cx="85" cy="70" r="6" fill="#3e2723"/>
-                    <path d="M 50 85 Q 65 95 80 85" stroke="#3e2723" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <circle cx="35" cy="80" r="6" fill="#ffab91" opacity="0.7"/>
-                    <circle cx="95" cy="80" r="6" fill="#ffab91" opacity="0.7"/>
-                    <rect x="30" y="105" width="70" height="45" rx="5" fill="#37474f" stroke="#ffb300" stroke-width="2"/>
-                    <rect x="35" y="110" width="60" height="35" fill="#000000"/>
-                    <text id="s1-piconu-screen-text" x="42" y="133" font-size="12" fill="#00e676" font-family="monospace">PICONU</text>
+                    <rect x="15" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffb300"
+                        stroke-width="4" />
+                    <polygon points="65,5 45,25 85,25" fill="#ffb300" />
+                    <circle cx="65" cy="25" r="9" fill="#ffffff" stroke="#ffb300" stroke-width="2" />
+                    <circle cx="45" cy="70" r="6" fill="#3e2723" />
+                    <circle cx="85" cy="70" r="6" fill="#3e2723" />
+                    <path d="M 50 85 Q 65 95 80 85" stroke="#3e2723" stroke-width="3" fill="none"
+                        stroke-linecap="round" />
+                    <circle cx="35" cy="80" r="6" fill="#ffab91" opacity="0.7" />
+                    <circle cx="95" cy="80" r="6" fill="#ffab91" opacity="0.7" />
+                    <rect x="30" y="105" width="70" height="45" rx="5" fill="#37474f" stroke="#ffb300"
+                        stroke-width="2" />
+                    <rect x="35" y="110" width="60" height="35" fill="#000000" />
+                    <text id="s1-piconu-screen-text" x="42" y="133" font-size="12" fill="#00e676"
+                        font-family="monospace">PICONU</text>
                 </svg>
             </div>
         </div>
@@ -189,49 +578,56 @@
             <div class="wood-floor"></div>
             <div id="s2-obj-door" class="obj" onclick="s2_clickDoor()">
                 <svg width="110" height="290">
-                    <rect x="5" y="5" width="100" height="280" rx="4" fill="#4e342e" stroke="#3e2723" stroke-width="4"/>
-                    <rect x="15" y="20" width="80" height="120" fill="#2c1d11" stroke="#3e2723" stroke-width="2"/>
-                    <circle cx="25" cy="160" r="6" fill="#ffe082"/>
-                    <rect x="50" y="150" width="40" height="25" fill="#212121" rx="3"/>
+                    <rect x="5" y="5" width="100" height="280" rx="4" fill="#4e342e" stroke="#3e2723"
+                        stroke-width="4" />
+                    <rect x="15" y="20" width="80" height="120" fill="#2c1d11" stroke="#3e2723" stroke-width="2" />
+                    <circle cx="25" cy="160" r="6" fill="#ffe082" />
+                    <rect x="50" y="150" width="40" height="25" fill="#212121" rx="3" />
                     <text x="58" y="167" font-size="11" fill="#ffb300" font-family="sans-serif">🔒</text>
                 </svg>
             </div>
             <div id="s2-obj-bookshelf" class="obj" onclick="s2_clickBookshelf()">
                 <svg width="220" height="260">
-                    <rect x="5" y="5" width="210" height="250" fill="#5d4037" stroke="#3e2723" stroke-width="5" rx="4"/>
-                    <line x1="5" y1="90" x2="215" y2="90" stroke="#3e2723" stroke-width="4"/>
-                    <line x1="5" y1="170" x2="215" y2="170" stroke="#3e2723" stroke-width="4"/>
-                    <rect x="20" y="20" width="25" height="70" fill="#e53935"/>
-                    <rect x="50" y="30" width="20" height="60" fill="#1e88e5"/>
-                    <rect x="75" y="15" width="30" height="75" fill="#43a047"/>
-                    <rect x="110" y="25" width="22" height="65" fill="#fb8c00"/>
-                    <rect x="20" y="100" width="30" height="70" fill="#8e24aa"/>
-                    <rect x="55" y="110" width="25" height="60" fill="#00acc1"/>
-                    <rect x="140" y="180" width="50" height="65" fill="#6d4c41"/>
+                    <rect x="5" y="5" width="210" height="250" fill="#5d4037" stroke="#3e2723" stroke-width="5"
+                        rx="4" />
+                    <line x1="5" y1="90" x2="215" y2="90" stroke="#3e2723" stroke-width="4" />
+                    <line x1="5" y1="170" x2="215" y2="170" stroke="#3e2723" stroke-width="4" />
+                    <rect x="20" y="20" width="25" height="70" fill="#e53935" />
+                    <rect x="50" y="30" width="20" height="60" fill="#1e88e5" />
+                    <rect x="75" y="15" width="30" height="75" fill="#43a047" />
+                    <rect x="110" y="25" width="22" height="65" fill="#fb8c00" />
+                    <rect x="20" y="100" width="30" height="70" fill="#8e24aa" />
+                    <rect x="55" y="110" width="25" height="60" fill="#00acc1" />
+                    <rect x="140" y="180" width="50" height="65" fill="#6d4c41" />
                 </svg>
             </div>
             <div id="s2-obj-desk" class="obj" onclick="s2_clickDesk()">
                 <svg width="200" height="120">
-                    <rect x="10" y="20" width="180" height="30" fill="#8d6e63" stroke="#4e342e" stroke-width="3" rx="2"/>
-                    <rect x="20" y="50" width="20" height="65" fill="#5d4037"/>
-                    <rect x="160" y="50" width="20" height="65" fill="#5d4037"/>
-                    <path d="M 140 20 Q 140 0 120 5" stroke="#ffb300" stroke-width="4" fill="none"/>
-                    <path d="M 110 5 L 130 5 L 125 15 Z" fill="#ffe082"/>
+                    <rect x="10" y="20" width="180" height="30" fill="#8d6e63" stroke="#4e342e" stroke-width="3"
+                        rx="2" />
+                    <rect x="20" y="50" width="20" height="65" fill="#5d4037" />
+                    <rect x="160" y="50" width="20" height="65" fill="#5d4037" />
+                    <path d="M 140 20 Q 140 0 120 5" stroke="#ffb300" stroke-width="4" fill="none" />
+                    <path d="M 110 5 L 130 5 L 125 15 Z" fill="#ffe082" />
                 </svg>
             </div>
             <div id="s2-obj-piconu" class="obj" onclick="s2_clickPiconu()">
                 <svg width="120" height="170">
-                    <rect x="15" y="35" width="90" height="120" rx="40" fill="#fff8e1" stroke="#ffb300" stroke-width="4"/>
-                    <polygon points="60,5 40,22 80,22" fill="#ffb300"/>
-                    <circle cx="60" cy="22" r="8" fill="#ffffff" stroke="#ffb300" stroke-width="2"/>
-                    <circle cx="42" cy="60" r="5" fill="#3e2723"/>
-                    <circle cx="78" cy="60" r="5" fill="#3e2723"/>
-                    <path d="M 48 73 Q 60 82 72 73" stroke="#3e2723" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <circle cx="33" cy="70" r="5" fill="#ffab91" opacity="0.7"/>
-                    <circle cx="87" cy="70" r="5" fill="#ffab91" opacity="0.7"/>
-                    <rect x="30" y="95" width="60" height="40" rx="4" fill="#37474f" stroke="#ffb300" stroke-width="2"/>
-                    <rect x="35" y="100" width="50" height="30" fill="#000000"/>
-                    <text id="s2-piconu-screen" x="38" y="120" font-size="10" fill="#00e676" font-family="monospace">BOOK-N3</text>
+                    <rect x="15" y="35" width="90" height="120" rx="40" fill="#fff8e1" stroke="#ffb300"
+                        stroke-width="4" />
+                    <polygon points="60,5 40,22 80,22" fill="#ffb300" />
+                    <circle cx="60" cy="22" r="8" fill="#ffffff" stroke="#ffb300" stroke-width="2" />
+                    <circle cx="42" cy="60" r="5" fill="#3e2723" />
+                    <circle cx="78" cy="60" r="5" fill="#3e2723" />
+                    <path d="M 48 73 Q 60 82 72 73" stroke="#3e2723" stroke-width="3" fill="none"
+                        stroke-linecap="round" />
+                    <circle cx="33" cy="70" r="5" fill="#ffab91" opacity="0.7" />
+                    <circle cx="87" cy="70" r="5" fill="#ffab91" opacity="0.7" />
+                    <rect x="30" y="95" width="60" height="40" rx="4" fill="#37474f" stroke="#ffb300"
+                        stroke-width="2" />
+                    <rect x="35" y="100" width="50" height="30" fill="#000000" />
+                    <text id="s2-piconu-screen" x="38" y="120" font-size="10" fill="#00e676"
+                        font-family="monospace">BOOK-N3</text>
                 </svg>
             </div>
         </div>
@@ -241,45 +637,51 @@
             <div class="museum-tatami-line"></div>
             <div id="s3-obj-door" class="obj" onclick="s3_clickDoor()">
                 <svg width="120" height="300">
-                    <rect x="5" y="5" width="110" height="290" fill="#3e2723" stroke="#1a1615" stroke-width="5" rx="2"/>
-                    <rect x="15" y="15" width="90" height="270" fill="#d7ccc8" stroke="#4e342e" stroke-width="3"/>
-                    <line x1="15" y1="80" x2="105" y2="80" stroke="#4e342e" stroke-width="3"/>
-                    <line x1="15" y1="145" x2="105" y2="145" stroke="#4e342e" stroke-width="3"/>
-                    <line x1="15" y1="210" x2="105" y2="210" stroke="#4e342e" stroke-width="3"/>
-                    <line x1="60" y1="15" x2="60" y2="285" stroke="#4e342e" stroke-width="3"/>
-                    <circle cx="25" cy="150" r="5" fill="#bcaaa4"/>
+                    <rect x="5" y="5" width="110" height="290" fill="#3e2723" stroke="#1a1615" stroke-width="5"
+                        rx="2" />
+                    <rect x="15" y="15" width="90" height="270" fill="#d7ccc8" stroke="#4e342e" stroke-width="3" />
+                    <line x1="15" y1="80" x2="105" y2="80" stroke="#4e342e" stroke-width="3" />
+                    <line x1="15" y1="145" x2="105" y2="145" stroke="#4e342e" stroke-width="3" />
+                    <line x1="15" y1="210" x2="105" y2="210" stroke="#4e342e" stroke-width="3" />
+                    <line x1="60" y1="15" x2="60" y2="285" stroke="#4e342e" stroke-width="3" />
+                    <circle cx="25" cy="150" r="5" fill="#bcaaa4" />
                 </svg>
             </div>
             <div id="s3-obj-exhibit1" class="obj" onclick="s3_clickExhibit1()">
                 <svg width="180" height="200">
-                    <rect x="10" y="80" width="160" height="110" fill="#4e342e" stroke="#2b1d14" stroke-width="4"/>
-                    <rect x="15" y="10" width="150" height="80" fill="rgba(224,247,250,0.5)" stroke="#bcaaa4" stroke-width="3"/>
-                    <rect x="60" y="30" width="60" height="45" fill="#8d6e63" stroke="#d7ccc8" stroke-width="2"/>
+                    <rect x="10" y="80" width="160" height="110" fill="#4e342e" stroke="#2b1d14" stroke-width="4" />
+                    <rect x="15" y="10" width="150" height="80" fill="rgba(224,247,250,0.5)" stroke="#bcaaa4"
+                        stroke-width="3" />
+                    <rect x="60" y="30" width="60" height="45" fill="#8d6e63" stroke="#d7ccc8" stroke-width="2" />
                     <text x="72" y="58" font-size="12" fill="#fff">キロク</text>
                 </svg>
             </div>
             <div id="s3-obj-exhibit2" class="obj" onclick="s3_clickExhibit2()">
                 <svg width="200" height="220">
-                    <rect x="10" y="100" width="180" height="110" fill="#3e2723" stroke="#2b1d14" stroke-width="4"/>
-                    <rect x="20" y="20" width="160" height="80" fill="rgba(224,247,250,0.4)" stroke="#bcaaa4" stroke-width="3"/>
-                    <rect x="50" y="45" width="45" height="30" fill="#78909c" rx="4"/>
-                    <rect x="105" y="45" width="45" height="30" fill="#78909c" rx="4"/>
-                    <circle cx="72" cy="60" r="6" fill="#37474f"/>
-                    <circle cx="127" cy="60" r="6" fill="#37474f"/>
+                    <rect x="10" y="100" width="180" height="110" fill="#3e2723" stroke="#2b1d14" stroke-width="4" />
+                    <rect x="20" y="20" width="160" height="80" fill="rgba(224,247,250,0.4)" stroke="#bcaaa4"
+                        stroke-width="3" />
+                    <rect x="50" y="45" width="45" height="30" fill="#78909c" rx="4" />
+                    <rect x="105" y="45" width="45" height="30" fill="#78909c" rx="4" />
+                    <circle cx="72" cy="60" r="6" fill="#37474f" />
+                    <circle cx="127" cy="60" r="6" fill="#37474f" />
                 </svg>
             </div>
             <div id="s3-obj-piconu" class="obj" onclick="s3_clickPiconu()">
                 <svg width="120" height="170">
-                    <rect x="15" y="35" width="90" height="120" rx="40" fill="#efebe9" stroke="#bcaaa4" stroke-width="4"/>
-                    <polygon points="60,5 40,22 80,22" fill="#8d6e63"/>
-                    <circle cx="60" cy="22" r="8" fill="#ffffff" stroke="#8d6e63" stroke-width="2"/>
-                    <circle cx="42" cy="60" r="5" fill="#3e2723"/>
-                    <circle cx="78" cy="60" r="5" fill="#3e2723"/>
-                    <path d="M 48 73 Q 60 82 72 73" stroke="#3e2723" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <circle cx="33" cy="70" r="5" fill="#ffab91" opacity="0.7"/>
-                    <circle cx="87" cy="70" r="5" fill="#ffab91" opacity="0.7"/>
-                    <rect x="30" y="95" width="60" height="40" rx="4" fill="#37474f" stroke="#bcaaa4" stroke-width="2"/>
-                    <rect x="35" y="100" width="50" height="30" fill="#000000"/>
+                    <rect x="15" y="35" width="90" height="120" rx="40" fill="#efebe9" stroke="#bcaaa4"
+                        stroke-width="4" />
+                    <polygon points="60,5 40,22 80,22" fill="#8d6e63" />
+                    <circle cx="60" cy="22" r="8" fill="#ffffff" stroke="#8d6e63" stroke-width="2" />
+                    <circle cx="42" cy="60" r="5" fill="#3e2723" />
+                    <circle cx="78" cy="60" r="5" fill="#3e2723" />
+                    <path d="M 48 73 Q 60 82 72 73" stroke="#3e2723" stroke-width="3" fill="none"
+                        stroke-linecap="round" />
+                    <circle cx="33" cy="70" r="5" fill="#ffab91" opacity="0.7" />
+                    <circle cx="87" cy="70" r="5" fill="#ffab91" opacity="0.7" />
+                    <rect x="30" y="95" width="60" height="40" rx="4" fill="#37474f" stroke="#bcaaa4"
+                        stroke-width="2" />
+                    <rect x="35" y="100" width="50" height="30" fill="#000000" />
                     <text x="40" y="120" font-size="10" fill="#00e676" font-family="monospace">MUSEUM</text>
                 </svg>
             </div>
@@ -356,7 +758,7 @@
             }
         }
 
-        function playTone(freq, type, duration, delay=0) {
+        function playTone(freq, type, duration, delay = 0) {
             if (!audioCtx) return;
             setTimeout(() => {
                 const osc = audioCtx.createOscillator();
@@ -563,7 +965,7 @@
         function renderBooks() {
             const container = document.getElementById('s2-book-container');
             container.innerHTML = '';
-            const labels = { blue: '青', green: '緑', red: '赤', orange: '橙' };
+            const labels = {blue: '青', green: '緑', red: '赤', orange: '橙'};
             currentBooks.forEach((color, idx) => {
                 const div = document.createElement('div');
                 div.className = `book-item book-${color}`;
@@ -688,39 +1090,40 @@
                 s3_state.isEscaped = true;
                 closeModal('s3-door-modal');
                 sfxWin();
-               showMsg('🔑 ガシャーン！！<br>寺院の重厚な格子戸がゆっくりと開いたぬ！<br><br>🎉 <b>「やったぬ！全3ステージ完全クリア！大脱出成功だぬ！」</b> 🎉<br><br>ピコぬくん「最後まで遊んでくれてありがとうだぬ！帰っておやつを食べてゆっくり休むぬ〜！」<br><br><a href="../index.html" style="display:inline-block; margin-top:10px; padding:8px 20px; background:#1a4b8c; color:white; border:none; border-radius:15px; font-weight:bold; text-decoration:none;">🏛 ピコぬ市役所へ帰庁する</a><br><br><button onclick="backToTitle()" style="margin-top:10px; padding:8px 20px; background:#e91e63; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">タイトルへ戻るぬ！</button>');
+                showMsg('🔑 ガシャーン！！<br>寺院の重厚な格子戸がゆっくりと開いたぬ！<br><br>🎉 <b>「やったぬ！全3ステージ完全クリア！大脱出成功だぬ！」</b> 🎉<br><br>ピコぬくん「最後まで遊んでくれてありがとうだぬ！帰っておやつを食べてゆっくり休むぬ〜！」<br><br><a href="../index.html" style="display:inline-block; margin-top:10px; padding:8px 20px; background:#1a4b8c; color:white; border:none; border-radius:15px; font-weight:bold; text-decoration:none;">🏛 ピコぬ市役所へ帰庁する</a><br><br><button onclick="backToTitle()" style="margin-top:10px; padding:8px 20px; background:#e91e63; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">タイトルへ戻るぬ！</button>');
             } else {
                 sfxCancel();
                 alert('格子戸が開かないぬ…合言葉のひらがなを見直してみるぬ！');
             }
         }
-function backToTitle() {
-    closeMsg();
-    clearInventory();
+        function backToTitle() {
+            closeMsg();
+            clearInventory();
 
-    s1_state = {
-        hasCard: false,
-        knowCode: false,
-        isEscaped: false
-    };
+            s1_state = {
+                hasCard: false,
+                knowCode: false,
+                isEscaped: false
+            };
 
-    s2_state = {
-        hasBookmark: false,
-        solvedBooks: false,
-        isEscaped: false
-    };
+            s2_state = {
+                hasBookmark: false,
+                solvedBooks: false,
+                isEscaped: false
+            };
 
-    s3_state = {
-        hasBooklet: false,
-        solvedCoupler: false,
-        isEscaped: false
-    };
+            s3_state = {
+                hasBooklet: false,
+                solvedCoupler: false,
+                isEscaped: false
+            };
 
-    currentBooks = ['blue', 'green', 'red', 'orange'];
-    s3_dials = [1, 1, 1];
+            currentBooks = ['blue', 'green', 'red', 'orange'];
+            s3_dials = [1, 1, 1];
 
-    moveScene('title');
-}
+            moveScene('title');
+        }
     </script>
 </body>
+
 </html>

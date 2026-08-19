@@ -1,257 +1,283 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>ピコぬくんとチャット | 市の概要 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="AI搭載型支援ロボット「ピコぬくん」と選択肢形式でおはなしできるページです。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
-<style>
-  .chat-window {
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    background: var(--color-bg-alt);
-    padding: 20px;
-    min-height: 360px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .chat-log { display: flex; flex-direction: column; gap: 10px; }
-  .chat-bubble {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .chat-bubble .icon {
-    width: 36px; height: 36px; flex-shrink: 0;
-    border-radius: 50%;
-    background: #fff;
-    border: 1px solid var(--color-border);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-  .chat-bubble .icon img { width: 100%; height: 100%; object-fit: cover; }
-  .chat-bubble .text {
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: 4px 12px 12px 12px;
-    padding: 10px 14px;
-    font-size: .95rem;
-    line-height: 1.7;
-    max-width: 26em;
-  }
-  .chat-choices {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .chat-choices button {
-    text-align: left;
-    background: #fff;
-    border: 1px solid var(--color-primary);
-    color: var(--color-primary);
-    border-radius: 999px;
-    padding: .6em 1.1em;
-    font-size: .9rem;
-    cursor: pointer;
-  }
-  .chat-choices button:hover { background: var(--color-primary-light); }
-  .chat-restart {
-    align-self: flex-start;
-    font-size: .85rem;
-    color: var(--color-text-sub);
-    background: none;
-    border: none;
-    text-decoration: underline;
-    cursor: pointer;
-    padding: 0;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>ピコぬくんとチャット | 市の概要 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="AI搭載型支援ロボット「ピコぬくん」と選択肢形式でおはなしできるページです。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .chat-window {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background: var(--color-bg-alt);
+      padding: 20px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chat-log {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-bubble {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .chat-bubble .icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .chat-bubble .icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chat-bubble .text {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 4px 12px 12px 12px;
+      padding: 10px 14px;
+      font-size: .95rem;
+      line-height: 1.7;
+      max-width: 26em;
+    }
+
+    .chat-choices {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .chat-choices button {
+      text-align: left;
+      background: #fff;
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      border-radius: 999px;
+      padding: .6em 1.1em;
+      font-size: .9rem;
+      cursor: pointer;
+    }
+
+    .chat-choices button:hover {
+      background: var(--color-primary-light);
+    }
+
+    .chat-restart {
+      align-self: flex-start;
+      font-size: .85rem;
+      color: var(--color-text-sub);
+      background: none;
+      border: none;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0;
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>ピコぬくんとチャット</h1>
-      <p class="lead">AI搭載型支援ロボット・ピコぬくんと、選択肢を選びながらおはなしできます。</p>
-    </div>
-  </div>
-
-  <div class="content-layout full">
-    <div class="main-content">
-      <img class="facility-photo" src="../images/sections/piconu-chat.jpg" alt="ヘッドセットをつけてPCの前に座るピコぬくん">
-      <p>
-        ピコぬくんは市内各施設で案内役をしているAI搭載型支援ロボットだぬ。
-        下の選択肢をタップして、気になることを聞いてみてほしいだぬ!
-        (※このページは、あらかじめ用意されたやり取りにしか答えられない、なんちゃってチャットだぬ。)
-      </p>
-
-      <div class="chat-window">
-        <div class="chat-log" id="chat-log"></div>
-        <div class="chat-choices" id="chat-choices"></div>
-        <button type="button" class="chat-restart" id="chat-restart">はじめからやり直す &gt;</button>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>ピコぬくんとチャット</h1>
+        <p class="lead">AI搭載型支援ロボット・ピコぬくんと、選択肢を選びながらおはなしできます。</p>
       </div>
     </div>
-  </div>
-</main>
 
-<script>window.PAGE_META = { nav: "piconu-chat", breadcrumb: [{ label: "市の概要", href: "gaiyou.html" }, { label: "ピコぬくんとチャット" }] };</script>
-<script src="../js/common.js"></script>
-<script>
-(function () {
-  var NODES = {
-    start: {
-      text: "ぬ! こんにちはだぬ。ピコぬくんに聞きたいことをえらんでほしいだぬ。ここで解決しないときは<a href=\"faq.html\">よくある質問</a>のページも見てみてほしいだぬ。",
-      choices: [
-        { label: "市の施設について教えて", next: "shisetsu" },
-        { label: "現代病について教えて", next: "gendaibyo" },
-        { label: "交通局について教えて", next: "koutsu" },
-        { label: "ピコぬくんのことを教えて", next: "about_me" },
-        { label: "ピコぬ市検定について", next: "link_quiz" },
-        { label: "ゲームで遊びたい", next: "link_game" },
-        { label: "特に用はないぬ", next: "nothing" }
-      ]
-    },
-    shisetsu: {
-      text: "施設案内なら、市役所やキロクぬかクリニック、ぬかピコ民芸博物館なんかがあるだぬ。どれか気になるのはあるだぬ?",
-      choices: [
-        { label: "キロクぬかクリニックについて", next: "clinic" },
-        { label: "施設一覧のページを見たい", next: "link_facilities" },
-        { label: "他のことを聞きたい", next: "start" }
-      ]
-    },
-    clinic: {
-      text: "キロクぬかクリニックは現代病専門の外来をやっているクリニックだぬ。オンライン診察の記録は「外来シリーズ書庫」にまとまっているだぬ。",
-      choices: [
-        { label: "外来シリーズ書庫を見たい", next: "link_archive" },
-        { label: "現代病データベースを見たい", next: "link_gendaibyo_db" },
-        { label: "他のことを聞きたい", next: "start" }
-      ]
-    },
-    gendaibyo: {
-      text: "現代人特有の不調は、キロクぬかクリニックで日々診断されているだぬ。これまでの診断記録は現代病データベースにまとめてあるだぬ。",
-      choices: [
-        { label: "現代病データベースを見たい", next: "link_gendaibyo_db" },
-        { label: "外来シリーズ書庫を見たい", next: "link_archive" },
-        { label: "今日の運勢を占いたい", next: "link_uranai" },
-        { label: "他のことを聞きたい", next: "start" }
-      ]
-    },
-    about_me: {
-      text: "ピコぬくんは市が導入しているAI搭載型支援ロボットだぬ。案内役をしながら、業務日誌もこつこつつけているだぬ。",
-      choices: [
-        { label: "業務日誌を見たい", next: "link_diary" },
-        { label: "ピコぬくんについてもっと知りたい", next: "link_about_page" },
-        { label: "ピコぬくんグッズが欲しい", next: "link_goods" },
-        { label: "他のことを聞きたい", next: "start" }
-      ]
-    },
-    nothing: {
-      text: "そうだぬか。また何か聞きたくなったら、いつでも呼んでほしいだぬ。",
-      choices: [
-        { label: "最初に戻る", next: "start" }
-      ]
-    },
-    link_facilities: {
-      text: "施設一覧のページはこちらだぬ。",
-      link: { href: "../facilities/index.html", label: "施設案内 トップへ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    link_archive: {
-      text: "外来シリーズ書庫はこちらだぬ。",
-      link: { href: "../facilities/kiroku-nuka-clinic-archive.html", label: "外来シリーズ 書庫へ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    link_gendaibyo_db: {
-      text: "現代病データベースはこちらだぬ。",
-      link: { href: "gendaibyo-db.html", label: "現代病データベースへ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    link_uranai: {
-      text: "今日のラッキー現代病占いはこちらだぬ。当たるも八卦、当たらぬも八卦だぬ。",
-      link: { href: "gendaibyo-uranai.html", label: "今日のラッキー現代病占いへ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    link_diary: {
-      text: "ピコぬくんの業務日誌はこちらだぬ。",
-      link: { href: "piconu-diary.html", label: "ピコぬくん業務日誌へ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    koutsu: {
-      text: "鉄道の連結技術がピコぬ市の名物だぬ、路線図はこちらから見れるだぬ。",
-      link: { href: "../facilities/koutsukyoku.html", label: "交通局のページへ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    link_quiz: {
-      text: "ピコぬ市検定は初級から受けられるだぬ。",
-      link: { href: "piconu-quiz.html", label: "ピコぬ市検定へ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    link_game: {
-      text: "ゲームで遊びながらピコぬ市のことを学べるだぬ。",
-      link: { href: "piconu-kun-game.html", label: "脱出ゲームへ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    link_about_page: {
-      text: "ここにボクのことが書いてあるから読んでほしいだぬ。",
-      link: { href: "piconu-kun.html", label: "ピコぬくんとは へ &gt;" },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    },
-    link_goods: {
-      text: "公式グッズはSUZURIで販売してるぬ。",
-      link: { href: "https://suzuri.jp/PIKONU-CITY", label: "SUZURIショップへ &gt;", external: true },
-      choices: [{ label: "他のことを聞きたい", next: "start" }]
-    }
-  };
+    <div class="content-layout full">
+      <div class="main-content">
+        <img class="facility-photo" src="../images/sections/piconu-chat.jpg" alt="ヘッドセットをつけてPCの前に座るピコぬくん">
+        <p>
+          ピコぬくんは市内各施設で案内役をしているAI搭載型支援ロボットだぬ。
+          下の選択肢をタップして、気になることを聞いてみてほしいだぬ!
+          (※このページは、あらかじめ用意されたやり取りにしか答えられない、なんちゃってチャットだぬ。)
+        </p>
 
-  var logEl = document.getElementById("chat-log");
-  var choicesEl = document.getElementById("chat-choices");
-  var restartBtn = document.getElementById("chat-restart");
+        <div class="chat-window">
+          <div class="chat-log" id="chat-log"></div>
+          <div class="chat-choices" id="chat-choices"></div>
+          <button type="button" class="chat-restart" id="chat-restart">はじめからやり直す &gt;</button>
+        </div>
+      </div>
+    </div>
+  </main>
 
-  function addBubble(text, linkInfo) {
-    var bubble = document.createElement("div");
-    bubble.className = "chat-bubble";
-    var html =
-      '<div class="icon"><img src="../images/sections/piconu-icon.jpg" alt=""></div>' +
-      '<div class="text">' + text;
-    if (linkInfo) {
-      var targetAttr = linkInfo.external ? ' target="_blank" rel="noopener"' : "";
-      html += '<br><a href="' + linkInfo.href + '"' + targetAttr + '>' + linkInfo.label + '</a>';
-    }
-    html += '</div>';
-    bubble.innerHTML = html;
-    logEl.appendChild(bubble);
-    logEl.scrollTop = logEl.scrollHeight;
-  }
+  <script>window.PAGE_META = {nav: "piconu-chat", breadcrumb: [{label: "市の概要", href: "gaiyou.html"}, {label: "ピコぬくんとチャット"}]};</script>
+  <script src="../js/common.js"></script>
+  <script>
+    (function () {
+      var NODES = {
+        start: {
+          text: "ぬ! こんにちはだぬ。ピコぬくんに聞きたいことをえらんでほしいだぬ。ここで解決しないときは<a href=\"faq.html\">よくある質問</a>のページも見てみてほしいだぬ。",
+          choices: [
+            {label: "市の施設について教えて", next: "shisetsu"},
+            {label: "現代病について教えて", next: "gendaibyo"},
+            {label: "交通局について教えて", next: "koutsu"},
+            {label: "ピコぬくんのことを教えて", next: "about_me"},
+            {label: "ピコぬ市検定について", next: "link_quiz"},
+            {label: "ゲームで遊びたい", next: "link_game"},
+            {label: "特に用はないぬ", next: "nothing"}
+          ]
+        },
+        shisetsu: {
+          text: "施設案内なら、市役所やキロクぬかクリニック、ぬかピコ民芸博物館なんかがあるだぬ。どれか気になるのはあるだぬ?",
+          choices: [
+            {label: "キロクぬかクリニックについて", next: "clinic"},
+            {label: "施設一覧のページを見たい", next: "link_facilities"},
+            {label: "他のことを聞きたい", next: "start"}
+          ]
+        },
+        clinic: {
+          text: "キロクぬかクリニックは現代病専門の外来をやっているクリニックだぬ。オンライン診察の記録は「外来シリーズ書庫」にまとまっているだぬ。",
+          choices: [
+            {label: "外来シリーズ書庫を見たい", next: "link_archive"},
+            {label: "現代病データベースを見たい", next: "link_gendaibyo_db"},
+            {label: "他のことを聞きたい", next: "start"}
+          ]
+        },
+        gendaibyo: {
+          text: "現代人特有の不調は、キロクぬかクリニックで日々診断されているだぬ。これまでの診断記録は現代病データベースにまとめてあるだぬ。",
+          choices: [
+            {label: "現代病データベースを見たい", next: "link_gendaibyo_db"},
+            {label: "外来シリーズ書庫を見たい", next: "link_archive"},
+            {label: "今日の運勢を占いたい", next: "link_uranai"},
+            {label: "他のことを聞きたい", next: "start"}
+          ]
+        },
+        about_me: {
+          text: "ピコぬくんは市が導入しているAI搭載型支援ロボットだぬ。案内役をしながら、業務日誌もこつこつつけているだぬ。",
+          choices: [
+            {label: "業務日誌を見たい", next: "link_diary"},
+            {label: "ピコぬくんについてもっと知りたい", next: "link_about_page"},
+            {label: "ピコぬくんグッズが欲しい", next: "link_goods"},
+            {label: "他のことを聞きたい", next: "start"}
+          ]
+        },
+        nothing: {
+          text: "そうだぬか。また何か聞きたくなったら、いつでも呼んでほしいだぬ。",
+          choices: [
+            {label: "最初に戻る", next: "start"}
+          ]
+        },
+        link_facilities: {
+          text: "施設一覧のページはこちらだぬ。",
+          link: {href: "../facilities/index.html", label: "施設案内 トップへ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        link_archive: {
+          text: "外来シリーズ書庫はこちらだぬ。",
+          link: {href: "../facilities/kiroku-nuka-clinic-archive.html", label: "外来シリーズ 書庫へ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        link_gendaibyo_db: {
+          text: "現代病データベースはこちらだぬ。",
+          link: {href: "gendaibyo-db.html", label: "現代病データベースへ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        link_uranai: {
+          text: "今日のラッキー現代病占いはこちらだぬ。当たるも八卦、当たらぬも八卦だぬ。",
+          link: {href: "gendaibyo-uranai.html", label: "今日のラッキー現代病占いへ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        link_diary: {
+          text: "ピコぬくんの業務日誌はこちらだぬ。",
+          link: {href: "piconu-diary.html", label: "ピコぬくん業務日誌へ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        koutsu: {
+          text: "鉄道の連結技術がピコぬ市の名物だぬ、路線図はこちらから見れるだぬ。",
+          link: {href: "../facilities/koutsukyoku.html", label: "交通局のページへ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        link_quiz: {
+          text: "ピコぬ市検定は初級から受けられるだぬ。",
+          link: {href: "piconu-quiz.html", label: "ピコぬ市検定へ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        link_game: {
+          text: "ゲームで遊びながらピコぬ市のことを学べるだぬ。",
+          link: {href: "piconu-kun-game.html", label: "脱出ゲームへ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        link_about_page: {
+          text: "ここにボクのことが書いてあるから読んでほしいだぬ。",
+          link: {href: "piconu-kun.html", label: "ピコぬくんとは へ &gt;"},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        },
+        link_goods: {
+          text: "公式グッズはSUZURIで販売してるぬ。",
+          link: {href: "https://suzuri.jp/PIKONU-CITY", label: "SUZURIショップへ &gt;", external: true},
+          choices: [{label: "他のことを聞きたい", next: "start"}]
+        }
+      };
 
-  function goTo(nodeId) {
-    var node = NODES[nodeId];
-    if (!node) return;
-    addBubble(node.text, node.link);
-    choicesEl.innerHTML = "";
-    (node.choices || []).forEach(function (c) {
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.textContent = c.label;
-      btn.addEventListener("click", function () { goTo(c.next); });
-      choicesEl.appendChild(btn);
-    });
-  }
+      var logEl = document.getElementById("chat-log");
+      var choicesEl = document.getElementById("chat-choices");
+      var restartBtn = document.getElementById("chat-restart");
 
-  function restart() {
-    logEl.innerHTML = "";
-    goTo("start");
-  }
+      function addBubble(text, linkInfo) {
+        var bubble = document.createElement("div");
+        bubble.className = "chat-bubble";
+        var html =
+          '<div class="icon"><img src="../images/sections/piconu-icon.jpg" alt=""></div>' +
+          '<div class="text">' + text;
+        if (linkInfo) {
+          var targetAttr = linkInfo.external ? ' target="_blank" rel="noopener"' : "";
+          html += '<br><a href="' + linkInfo.href + '"' + targetAttr + '>' + linkInfo.label + '</a>';
+        }
+        html += '</div>';
+        bubble.innerHTML = html;
+        logEl.appendChild(bubble);
+        logEl.scrollTop = logEl.scrollHeight;
+      }
 
-  restartBtn.addEventListener("click", restart);
-  restart();
-})();
-</script>
+      function goTo(nodeId) {
+        var node = NODES[nodeId];
+        if (!node) return;
+        addBubble(node.text, node.link);
+        choicesEl.innerHTML = "";
+        (node.choices || []).forEach(function (c) {
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = c.label;
+          btn.addEventListener("click", function () {goTo(c.next);});
+          choicesEl.appendChild(btn);
+        });
+      }
+
+      function restart() {
+        logEl.innerHTML = "";
+        goTo("start");
+      }
+
+      restartBtn.addEventListener("click", restart);
+      restart();
+    })();
+  </script>
 </body>
+
 </html>

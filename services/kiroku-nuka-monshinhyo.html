@@ -1,479 +1,698 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>問診表 | キロクぬかクリニック | ピコぬ市公式ホームページ</title>
-<meta name="description" content="キロクぬかクリニックの独自問診表です。受診前にご自身の状態を記録していただけます。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&family=M+PLUS+1+Code:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cl-bg: #0b0e14;
-    --cl-panel: #101720;
-    --cl-accent: #3cffdc;
-    --cl-accent-dim: #1f9c8a;
-    --cl-text: #d7ece9;
-    --cl-text-sub: #8fa8a4;
-    --cl-border: #22383a;
-    --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
-    --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
-    --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
-    
-  }
+  <meta charset="UTF-8">
+  <title>問診表 | キロクぬかクリニック | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="キロクぬかクリニックの独自問診表です。受診前にご自身の状態を記録していただけます。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&family=M+PLUS+1+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --cl-bg: #0b0e14;
+      --cl-panel: #101720;
+      --cl-accent: #3cffdc;
+      --cl-accent-dim: #1f9c8a;
+      --cl-text: #d7ece9;
+      --cl-text-sub: #8fa8a4;
+      --cl-border: #22383a;
+      --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
+      --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
+      --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
 
-  body { background: var(--cl-bg); }
-  .page-header { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
-  .page-header h1, .page-header .lead { font-family: var(--cl-mincho); color: var(--cl-text); }
-  .content-layout { background: var(--cl-bg); }
-  .breadcrumb { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
-  .breadcrumb a { color: var(--cl-text-sub); }
-  .breadcrumb li:last-child { color: var(--cl-text); }
-  .site-footer { background: var(--cl-bg); border-top: 1px solid var(--cl-border); color: var(--cl-text-sub); }
-  .site-footer a { color: var(--cl-text-sub); }
-  .site-footer a:hover { color: var(--cl-accent); }
-
-  .monshin-page { font-family: var(--cl-mincho); color: var(--cl-text); }
-  .monshin-page p { color: var(--cl-text); }
-  .monshin-page h2 {
-    border-left: none; padding-left: 0; color: var(--cl-text);
-    font-size: .95rem; margin-top: 2.2em; padding-bottom: 8px;
-    border-bottom: 1px solid var(--cl-border);
-  }
-  .monshin-page a { color: var(--cl-accent); }
-
-  .monshin-panel {
-    background: var(--cl-panel);
-    border: 1px solid var(--cl-border);
-    padding: 20px 24px;
-    margin-bottom: 1.2em;
-  }
-
-  .monshin-field { margin-bottom: 22px; }
-  .monshin-field:last-child { margin-bottom: 0; }
-  .monshin-field label.q {
-    display: block;
-    font-size: .9rem;
-    color: var(--cl-text);
-    margin-bottom: 8px;
-    line-height: 1.6;
-  }
-  .monshin-field label.q .qnum {
-    display: inline-block;
-    color: var(--cl-accent);
-    font-family: var(--cl-mono);
-    font-size: .78rem;
-    margin-right: 8px;
-  }
-
-  .monshin-field input[type="text"],
-  .monshin-field textarea {
-    width: 100%;
-    background: var(--cl-bg);
-    border: 1px solid var(--cl-border);
-    color: var(--cl-text);
-    padding: 9px 11px;
-    font-family: var(--cl-mincho);
-    font-size: .88rem;
-  }
-  .monshin-field textarea { min-height: 70px; resize: vertical; }
-  .monshin-field input:focus, .monshin-field textarea:focus {
-    outline: none; border-color: var(--cl-accent);
-  }
-
-  .monshin-choices { display: flex; flex-wrap: wrap; gap: 8px; }
-  .monshin-choices label {
-    border: 1px solid var(--cl-border);
-    padding: 7px 14px;
-    font-size: .84rem;
-    color: var(--cl-text-sub);
-    cursor: pointer;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .monshin-choices input { accent-color: var(--cl-accent); }
-  .monshin-choices label:has(input:checked) {
-    border-color: var(--cl-accent); color: var(--cl-text);
-  }
-
-  .monshin-scale { display: flex; align-items: center; gap: 10px; }
-  .monshin-scale input[type="range"] { flex: 1; accent-color: var(--cl-accent); }
-  .monshin-scale-val {
-    font-family: var(--cl-mono); font-size: .82rem; color: var(--cl-accent);
-    min-width: 2.4em; text-align: right;
-  }
-  .monshin-scale-labels { display: flex; justify-content: space-between; font-size: .72rem; color: var(--cl-text-sub); margin-top: 4px; }
-
-  .monshin-scale-guide {
-    list-style: none;
-    margin: 10px 0 0;
-    padding: 0;
-    font-size: .8rem;
-    color: var(--cl-text-sub);
-    line-height: 1.9;
-  }
-
-  .monshin-submit {
-    background: transparent;
-    border: 1px solid var(--cl-accent);
-    color: var(--cl-accent);
-    font-family: var(--cl-mono);
-    font-size: .88rem;
-    padding: 11px 26px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 8px;
-  }
-  .monshin-submit:hover { background: rgba(60,255,220,0.08); }
-
-  #monshinResult { display: none; }
-  #monshinForm.hidden { display: none; }
-
-  .monshin-result-panel {
-    background: var(--cl-panel);
-    border: 1px solid var(--cl-accent-dim);
-    border-left: 3px solid var(--cl-accent);
-    padding: 24px 26px;
-  }
-  .monshin-result-panel .rtag {
-    font-family: var(--cl-mono); font-size: .74rem; color: var(--cl-text-sub);
-    letter-spacing: .06em; margin-bottom: 10px;
-  }
-  .monshin-result-panel h3 {
-    color: var(--cl-accent); font-size: 1.1rem; margin: 0 0 12px;
-  }
-  .monshin-result-panel dl { margin: 0; }
-  .monshin-result-panel dt { font-size: .76rem; color: var(--cl-text-sub); margin-top: 12px; }
-  .monshin-result-panel dd { font-size: .9rem; color: var(--cl-text); margin: 3px 0 0; line-height: 1.7; }
-
-  .monshin-plan-notice {
-    background: var(--cl-bg);
-    border: 1px solid #a05a3c;
-    border-left: 3px solid #e08a4f;
-    padding: 12px 16px;
-    margin-bottom: 20px;
-  }
-  .monshin-plan-notice .plan-notice-title {
-    font-family: var(--cl-mono);
-    font-size: .78rem;
-    color: #e08a4f;
-    margin: 0 0 6px;
-    letter-spacing: .03em;
-  }
-  .monshin-plan-notice p { font-size: .82rem; color: var(--cl-text-sub); margin: 0; line-height: 1.7; }
-  .monshin-plan-notice p:first-child { margin-bottom: 6px; }
-  .monshin-plan-notice strong { color: var(--cl-text); }
-
-  .monshin-copy-block { margin-top: 20px; }
-  #copyStatus {
-    font-size: .82rem;
-    color: var(--cl-accent);
-    margin-top: 10px;
-    line-height: 1.8;
-  }
-  #copyStatus .note-target {
-    font-family: var(--cl-mono);
-    color: var(--cl-text);
-  }
-
-  .monshin-action-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .monshin-link-btn {
-    flex: 1;
-    min-width: 180px;
-    text-align: center;
-    background: transparent;
-    border: 1px solid var(--cl-border);
-    color: var(--cl-text-sub);
-    font-family: var(--cl-sans);
-    font-size: .84rem;
-    padding: 10px 16px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .monshin-link-btn:hover { border-color: var(--cl-accent); color: var(--cl-text); }
-  .monshin-link-btn.is-ready {
-    border-color: var(--cl-accent);
-    color: var(--cl-accent);
-  }
-
-  @media print {
-    body { background: #ffffff !important; }
-    .site-header-utility, .site-header-main, .global-nav, .breadcrumb,
-    .site-footer, .sidebar, .pagetop, .no-print, #monshinForm { display: none !important; }
-    .page-header { display: none !important; }
-    .content-layout { background: #ffffff !important; display: block !important; }
-    .main-content { width: 100% !important; max-width: none !important; }
-    .monshin-page, .monshin-page p { color: #000 !important; }
-    .monshin-result-panel {
-      background: #fff !important;
-      border: 1px solid #999 !important;
-      border-left: 1px solid #999 !important;
     }
-    .monshin-result-panel .rtag { color: #666 !important; }
-    .monshin-result-panel h3 { color: #000 !important; }
-    .monshin-result-panel dt { color: #555 !important; }
-    .monshin-result-panel dd { color: #000 !important; }
-    .monshin-plan-notice { border-color: #999 !important; border-left-color: #999 !important; background: #fff !important; }
-    .monshin-plan-notice .plan-notice-title { color: #000 !important; }
-    .monshin-plan-notice p, .monshin-plan-notice strong { color: #000 !important; }
-  }
 
-  .monshin-sidebar .sidebar-block {
-    background: var(--cl-panel); border: 1px solid var(--cl-border); padding: 16px 18px;
-  }
-  .monshin-sidebar .sidebar-block h2 { color: var(--cl-accent); font-size: .95rem; margin-top: 0; }
-  .monshin-sidebar .sidebar-block a { color: var(--cl-text) !important; }
-  .monshin-sidebar .sidebar-block a:hover { color: var(--cl-accent) !important; }
-</style>
+    body {
+      background: var(--cl-bg);
+    }
+
+    .page-header {
+      background: var(--cl-bg);
+      border-bottom: 1px solid var(--cl-border);
+    }
+
+    .page-header h1,
+    .page-header .lead {
+      font-family: var(--cl-mincho);
+      color: var(--cl-text);
+    }
+
+    .content-layout {
+      background: var(--cl-bg);
+    }
+
+    .breadcrumb {
+      background: var(--cl-bg);
+      border-bottom: 1px solid var(--cl-border);
+    }
+
+    .breadcrumb a {
+      color: var(--cl-text-sub);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--cl-text);
+    }
+
+    .site-footer {
+      background: var(--cl-bg);
+      border-top: 1px solid var(--cl-border);
+      color: var(--cl-text-sub);
+    }
+
+    .site-footer a {
+      color: var(--cl-text-sub);
+    }
+
+    .site-footer a:hover {
+      color: var(--cl-accent);
+    }
+
+    .monshin-page {
+      font-family: var(--cl-mincho);
+      color: var(--cl-text);
+    }
+
+    .monshin-page p {
+      color: var(--cl-text);
+    }
+
+    .monshin-page h2 {
+      border-left: none;
+      padding-left: 0;
+      color: var(--cl-text);
+      font-size: .95rem;
+      margin-top: 2.2em;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--cl-border);
+    }
+
+    .monshin-page a {
+      color: var(--cl-accent);
+    }
+
+    .monshin-panel {
+      background: var(--cl-panel);
+      border: 1px solid var(--cl-border);
+      padding: 20px 24px;
+      margin-bottom: 1.2em;
+    }
+
+    .monshin-field {
+      margin-bottom: 22px;
+    }
+
+    .monshin-field:last-child {
+      margin-bottom: 0;
+    }
+
+    .monshin-field label.q {
+      display: block;
+      font-size: .9rem;
+      color: var(--cl-text);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .monshin-field label.q .qnum {
+      display: inline-block;
+      color: var(--cl-accent);
+      font-family: var(--cl-mono);
+      font-size: .78rem;
+      margin-right: 8px;
+    }
+
+    .monshin-field input[type="text"],
+    .monshin-field textarea {
+      width: 100%;
+      background: var(--cl-bg);
+      border: 1px solid var(--cl-border);
+      color: var(--cl-text);
+      padding: 9px 11px;
+      font-family: var(--cl-mincho);
+      font-size: .88rem;
+    }
+
+    .monshin-field textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .monshin-field input:focus,
+    .monshin-field textarea:focus {
+      outline: none;
+      border-color: var(--cl-accent);
+    }
+
+    .monshin-choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .monshin-choices label {
+      border: 1px solid var(--cl-border);
+      padding: 7px 14px;
+      font-size: .84rem;
+      color: var(--cl-text-sub);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .monshin-choices input {
+      accent-color: var(--cl-accent);
+    }
+
+    .monshin-choices label:has(input:checked) {
+      border-color: var(--cl-accent);
+      color: var(--cl-text);
+    }
+
+    .monshin-scale {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .monshin-scale input[type="range"] {
+      flex: 1;
+      accent-color: var(--cl-accent);
+    }
+
+    .monshin-scale-val {
+      font-family: var(--cl-mono);
+      font-size: .82rem;
+      color: var(--cl-accent);
+      min-width: 2.4em;
+      text-align: right;
+    }
+
+    .monshin-scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: .72rem;
+      color: var(--cl-text-sub);
+      margin-top: 4px;
+    }
+
+    .monshin-scale-guide {
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 0;
+      font-size: .8rem;
+      color: var(--cl-text-sub);
+      line-height: 1.9;
+    }
+
+    .monshin-submit {
+      background: transparent;
+      border: 1px solid var(--cl-accent);
+      color: var(--cl-accent);
+      font-family: var(--cl-mono);
+      font-size: .88rem;
+      padding: 11px 26px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .monshin-submit:hover {
+      background: rgba(60, 255, 220, 0.08);
+    }
+
+    #monshinResult {
+      display: none;
+    }
+
+    #monshinForm.hidden {
+      display: none;
+    }
+
+    .monshin-result-panel {
+      background: var(--cl-panel);
+      border: 1px solid var(--cl-accent-dim);
+      border-left: 3px solid var(--cl-accent);
+      padding: 24px 26px;
+    }
+
+    .monshin-result-panel .rtag {
+      font-family: var(--cl-mono);
+      font-size: .74rem;
+      color: var(--cl-text-sub);
+      letter-spacing: .06em;
+      margin-bottom: 10px;
+    }
+
+    .monshin-result-panel h3 {
+      color: var(--cl-accent);
+      font-size: 1.1rem;
+      margin: 0 0 12px;
+    }
+
+    .monshin-result-panel dl {
+      margin: 0;
+    }
+
+    .monshin-result-panel dt {
+      font-size: .76rem;
+      color: var(--cl-text-sub);
+      margin-top: 12px;
+    }
+
+    .monshin-result-panel dd {
+      font-size: .9rem;
+      color: var(--cl-text);
+      margin: 3px 0 0;
+      line-height: 1.7;
+    }
+
+    .monshin-plan-notice {
+      background: var(--cl-bg);
+      border: 1px solid #a05a3c;
+      border-left: 3px solid #e08a4f;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+
+    .monshin-plan-notice .plan-notice-title {
+      font-family: var(--cl-mono);
+      font-size: .78rem;
+      color: #e08a4f;
+      margin: 0 0 6px;
+      letter-spacing: .03em;
+    }
+
+    .monshin-plan-notice p {
+      font-size: .82rem;
+      color: var(--cl-text-sub);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .monshin-plan-notice p:first-child {
+      margin-bottom: 6px;
+    }
+
+    .monshin-plan-notice strong {
+      color: var(--cl-text);
+    }
+
+    .monshin-copy-block {
+      margin-top: 20px;
+    }
+
+    #copyStatus {
+      font-size: .82rem;
+      color: var(--cl-accent);
+      margin-top: 10px;
+      line-height: 1.8;
+    }
+
+    #copyStatus .note-target {
+      font-family: var(--cl-mono);
+      color: var(--cl-text);
+    }
+
+    .monshin-action-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .monshin-link-btn {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      background: transparent;
+      border: 1px solid var(--cl-border);
+      color: var(--cl-text-sub);
+      font-family: var(--cl-sans);
+      font-size: .84rem;
+      padding: 10px 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .monshin-link-btn:hover {
+      border-color: var(--cl-accent);
+      color: var(--cl-text);
+    }
+
+    .monshin-link-btn.is-ready {
+      border-color: var(--cl-accent);
+      color: var(--cl-accent);
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+      }
+
+      .site-header-utility,
+      .site-header-main,
+      .global-nav,
+      .breadcrumb,
+      .site-footer,
+      .sidebar,
+      .pagetop,
+      .no-print,
+      #monshinForm {
+        display: none !important;
+      }
+
+      .page-header {
+        display: none !important;
+      }
+
+      .content-layout {
+        background: #ffffff !important;
+        display: block !important;
+      }
+
+      .main-content {
+        width: 100% !important;
+        max-width: none !important;
+      }
+
+      .monshin-page,
+      .monshin-page p {
+        color: #000 !important;
+      }
+
+      .monshin-result-panel {
+        background: #fff !important;
+        border: 1px solid #999 !important;
+        border-left: 1px solid #999 !important;
+      }
+
+      .monshin-result-panel .rtag {
+        color: #666 !important;
+      }
+
+      .monshin-result-panel h3 {
+        color: #000 !important;
+      }
+
+      .monshin-result-panel dt {
+        color: #555 !important;
+      }
+
+      .monshin-result-panel dd {
+        color: #000 !important;
+      }
+
+      .monshin-plan-notice {
+        border-color: #999 !important;
+        border-left-color: #999 !important;
+        background: #fff !important;
+      }
+
+      .monshin-plan-notice .plan-notice-title {
+        color: #000 !important;
+      }
+
+      .monshin-plan-notice p,
+      .monshin-plan-notice strong {
+        color: #000 !important;
+      }
+    }
+
+    .monshin-sidebar .sidebar-block {
+      background: var(--cl-panel);
+      border: 1px solid var(--cl-border);
+      padding: 16px 18px;
+    }
+
+    .monshin-sidebar .sidebar-block h2 {
+      color: var(--cl-accent);
+      font-size: .95rem;
+      margin-top: 0;
+    }
+
+    .monshin-sidebar .sidebar-block a {
+      color: var(--cl-text) !important;
+    }
+
+    .monshin-sidebar .sidebar-block a:hover {
+      color: var(--cl-accent) !important;
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>問診表</h1>
-      <p class="lead">キロクぬかクリニック 独自問診表</p>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>問診表</h1>
+        <p class="lead">キロクぬかクリニック 独自問診表</p>
+      </div>
     </div>
-  </div>
 
-  <div class="content-layout">
-    <div class="main-content monshin-page">
-      <p>
-        受診前に、ご自身の状態を記録してください。正しい答えを探す必要はありません。
-        入力内容は送信されず、この画面上でのみ処理されます。
-      </p>
+    <div class="content-layout">
+      <div class="main-content monshin-page">
+        <p>
+          受診前に、ご自身の状態を記録してください。正しい答えを探す必要はありません。
+          入力内容は送信されず、この画面上でのみ処理されます。
+        </p>
 
-      <form id="monshinForm">
-        <h2>基本情報</h2>
-        <div class="monshin-panel">
-          <div class="monshin-field">
-            <label class="q"><span class="qnum">Q1</span>お名前(記録名でも構いません)</label>
-            <input type="text" id="q1" placeholder="例:ｷﾞ:/rE-ﾌ^%a">
-          </div>
-          <div class="monshin-field">
-            <label class="q"><span class="qnum">Q2</span>本日、最も気になっていること</label>
-            <textarea id="q2" placeholder="うまく言葉にならない場合は、思いついた単語だけでも構いません"></textarea>
-          </div>
-        </div>
-
-        <h2>状態の記録</h2>
-        <div class="monshin-panel">
-          <div class="monshin-field">
-            <label class="q"><span class="qnum">Q3</span>他人の何気ない一言を、後から何度も思い返してしまうことがある</label>
-            <div class="monshin-choices">
-              <label><input type="radio" name="q3" value="よくある">よくある</label>
-              <label><input type="radio" name="q3" value="たまにある">たまにある</label>
-              <label><input type="radio" name="q3" value="あまりない">あまりない</label>
-              <label><input type="radio" name="q3" value="わからない">わからない</label>
+        <form id="monshinForm">
+          <h2>基本情報</h2>
+          <div class="monshin-panel">
+            <div class="monshin-field">
+              <label class="q"><span class="qnum">Q1</span>お名前(記録名でも構いません)</label>
+              <input type="text" id="q1" placeholder="例:ｷﾞ:/rE-ﾌ^%a">
+            </div>
+            <div class="monshin-field">
+              <label class="q"><span class="qnum">Q2</span>本日、最も気になっていること</label>
+              <textarea id="q2" placeholder="うまく言葉にならない場合は、思いついた単語だけでも構いません"></textarea>
             </div>
           </div>
 
-          <div class="monshin-field">
-            <label class="q"><span class="qnum">Q4</span>「要するに何が言いたいの?」と、自分でも思ってしまう瞬間がある</label>
-            <div class="monshin-choices">
-              <label><input type="radio" name="q4" value="よくある">よくある</label>
-              <label><input type="radio" name="q4" value="たまにある">たまにある</label>
-              <label><input type="radio" name="q4" value="あまりない">あまりない</label>
-              <label><input type="radio" name="q4" value="わからない">わからない</label>
+          <h2>状態の記録</h2>
+          <div class="monshin-panel">
+            <div class="monshin-field">
+              <label class="q"><span class="qnum">Q3</span>他人の何気ない一言を、後から何度も思い返してしまうことがある</label>
+              <div class="monshin-choices">
+                <label><input type="radio" name="q3" value="よくある">よくある</label>
+                <label><input type="radio" name="q3" value="たまにある">たまにある</label>
+                <label><input type="radio" name="q3" value="あまりない">あまりない</label>
+                <label><input type="radio" name="q3" value="わからない">わからない</label>
+              </div>
+            </div>
+
+            <div class="monshin-field">
+              <label class="q"><span class="qnum">Q4</span>「要するに何が言いたいの?」と、自分でも思ってしまう瞬間がある</label>
+              <div class="monshin-choices">
+                <label><input type="radio" name="q4" value="よくある">よくある</label>
+                <label><input type="radio" name="q4" value="たまにある">たまにある</label>
+                <label><input type="radio" name="q4" value="あまりない">あまりない</label>
+                <label><input type="radio" name="q4" value="わからない">わからない</label>
+              </div>
+            </div>
+
+            <div class="monshin-field">
+              <label class="q"><span class="qnum">Q5</span>語尾を伸ばしたり、間を埋める言葉が増えている自覚がある</label>
+              <div class="monshin-choices">
+                <label><input type="radio" name="q5" value="よくある">よくある</label>
+                <label><input type="radio" name="q5" value="たまにある">たまにある</label>
+                <label><input type="radio" name="q5" value="あまりない">あまりない</label>
+                <label><input type="radio" name="q5" value="わからない">わからない</label>
+              </div>
+            </div>
+
+            <div class="monshin-field">
+              <label class="q"><span class="qnum">Q6</span>「分かりやすい答え」がないと、落ち着かなくなる度合い</label>
+              <div class="monshin-scale">
+                <span style="font-family:var(--cl-mono); font-size:.78rem; color:var(--cl-text-sub);">低</span>
+                <input type="range" id="q6" min="0" max="10" value="5">
+                <span style="font-family:var(--cl-mono); font-size:.78rem; color:var(--cl-text-sub);">高</span>
+                <span class="monshin-scale-val" id="q6val">5</span>
+              </div>
+              <ul class="monshin-scale-guide">
+                <li>① まったく気にならない</li>
+                <li>② 少し気になる</li>
+                <li>③ まあまあ気になる</li>
+                <li>④ かなり気になる</li>
+                <li>⑤ 答えを出せぬままでは帰れない</li>
+              </ul>
+            </div>
+
+            <div class="monshin-field">
+              <label class="q"><span class="qnum">Q7</span>自分の話をしていたはずが、いつの間にか他人の話にすり替わっていた経験</label>
+              <div class="monshin-choices">
+                <label><input type="radio" name="q7" value="心当たりがある">心当たりがある</label>
+                <label><input type="radio" name="q7" value="ない">ない</label>
+                <label><input type="radio" name="q7" value="考えたくない">考えたくない</label>
+              </div>
             </div>
           </div>
 
-          <div class="monshin-field">
-            <label class="q"><span class="qnum">Q5</span>語尾を伸ばしたり、間を埋める言葉が増えている自覚がある</label>
-            <div class="monshin-choices">
-              <label><input type="radio" name="q5" value="よくある">よくある</label>
-              <label><input type="radio" name="q5" value="たまにある">たまにある</label>
-              <label><input type="radio" name="q5" value="あまりない">あまりない</label>
-              <label><input type="radio" name="q5" value="わからない">わからない</label>
+          <h2>備考</h2>
+          <div class="monshin-panel">
+            <div class="monshin-field">
+              <label class="q"><span class="qnum">Q8</span>その他、記録しておきたいこと</label>
+              <textarea id="q8" placeholder="任意"></textarea>
             </div>
           </div>
 
-          <div class="monshin-field">
-            <label class="q"><span class="qnum">Q6</span>「分かりやすい答え」がないと、落ち着かなくなる度合い</label>
-            <div class="monshin-scale">
-              <span style="font-family:var(--cl-mono); font-size:.78rem; color:var(--cl-text-sub);">低</span>
-              <input type="range" id="q6" min="0" max="10" value="5">
-              <span style="font-family:var(--cl-mono); font-size:.78rem; color:var(--cl-text-sub);">高</span>
-              <span class="monshin-scale-val" id="q6val">5</span>
+          <button type="submit" class="monshin-submit">確認する</button>
+        </form>
+
+        <div id="monshinResult">
+          <div class="monshin-result-panel">
+            <p class="rtag">RECORD COMPLETE</p>
+            <h3>記録を受け付けました</h3>
+
+            <div class="monshin-plan-notice">
+              <p class="plan-notice-title">通院プラン会員向けの受付です</p>
+              <p>
+                この問診票をnoteで送信できるのは、<strong>「キロクぬかクリニック通院プラン」(月額¥500)</strong>にご登録の方のみです。
+                未登録の方は、下記のコピー・送信は行わずにお戻りください。
+              </p>
             </div>
-            <ul class="monshin-scale-guide">
-              <li>① まったく気にならない</li>
-              <li>② 少し気になる</li>
-              <li>③ まあまあ気になる</li>
-              <li>④ かなり気になる</li>
-              <li>⑤ 答えを出せぬままでは帰れない</li>
-            </ul>
-          </div>
 
-          <div class="monshin-field">
-            <label class="q"><span class="qnum">Q7</span>自分の話をしていたはずが、いつの間にか他人の話にすり替わっていた経験</label>
-            <div class="monshin-choices">
-              <label><input type="radio" name="q7" value="心当たりがある">心当たりがある</label>
-              <label><input type="radio" name="q7" value="ない">ない</label>
-              <label><input type="radio" name="q7" value="考えたくない">考えたくない</label>
+            <dl id="monshinSummary"></dl>
+
+            <div class="monshin-copy-block">
+              <button type="button" id="copyMonshinBtn" class="monshin-submit">問診票をコピーする</button>
+              <p id="copyStatus"></p>
+              <div class="monshin-action-row no-print">
+                <a href="https://note.com/messages/rooms" target="_blank" rel="noopener" id="noteLink"
+                  class="monshin-link-btn">noteメッセージを開く</a>
+                <button type="button" id="printMonshinBtn" class="monshin-link-btn">問診票を印刷する</button>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <h2>備考</h2>
-        <div class="monshin-panel">
-          <div class="monshin-field">
-            <label class="q"><span class="qnum">Q8</span>その他、記録しておきたいこと</label>
-            <textarea id="q8" placeholder="任意"></textarea>
-          </div>
-        </div>
-
-        <button type="submit" class="monshin-submit">確認する</button>
-      </form>
-
-      <div id="monshinResult">
-        <div class="monshin-result-panel">
-          <p class="rtag">RECORD COMPLETE</p>
-          <h3>記録を受け付けました</h3>
-
-          <div class="monshin-plan-notice">
-            <p class="plan-notice-title">通院プラン会員向けの受付です</p>
-            <p>
-              この問診票をnoteで送信できるのは、<strong>「キロクぬかクリニック通院プラン」(月額¥500)</strong>にご登録の方のみです。
-              未登録の方は、下記のコピー・送信は行わずにお戻りください。
+            <p style="margin-top:20px; font-size:.82rem; color:var(--cl-text-sub);">
+              この記録は診断を確定するものではありません。気になる状態が続く場合は、
+              <a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a>までお越しください。
             </p>
           </div>
-
-          <dl id="monshinSummary"></dl>
-
-          <div class="monshin-copy-block">
-            <button type="button" id="copyMonshinBtn" class="monshin-submit">問診票をコピーする</button>
-            <p id="copyStatus"></p>
-            <div class="monshin-action-row no-print">
-              <a href="https://note.com/messages/rooms" target="_blank" rel="noopener" id="noteLink" class="monshin-link-btn">noteメッセージを開く</a>
-              <button type="button" id="printMonshinBtn" class="monshin-link-btn">問診票を印刷する</button>
-            </div>
-          </div>
-
-          <p style="margin-top:20px; font-size:.82rem; color:var(--cl-text-sub);">
-            この記録は診断を確定するものではありません。気になる状態が続く場合は、
-            <a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a>までお越しください。
-          </p>
         </div>
       </div>
+
+      <aside class="sidebar monshin-sidebar">
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
+            <li><a href="../facilities/kiroku-nuka-clinic-director.html">医師紹介</a></li>
+            <li><a href="../facilities/kiroku-nuka-clinic-kenkyu.html">研究資料</a></li>
+            <li><a href="../facilities/kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a></li>
+            <li><a href="../facilities/gendaibyo-db.html">現代病データベース</a></li>
+            <li><a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
+          </ul>
+        </div>
+      </aside>
     </div>
+  </main>
 
-    <aside class="sidebar monshin-sidebar">
-      <div class="sidebar-block">
-        <h2>関連情報</h2>
-       <ul>
-          <li><a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
-          <li><a href="../facilities/kiroku-nuka-clinic-director.html">医師紹介</a></li>
-          <li><a href="../facilities/kiroku-nuka-clinic-kenkyu.html">研究資料</a></li>
-          <li><a href="../facilities/kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a></li>
-          <li><a href="../facilities/gendaibyo-db.html">現代病データベース</a></li>
-          <li><a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-</main>
+  <script>
+    var form = document.getElementById("monshinForm");
+    var result = document.getElementById("monshinResult");
+    var summary = document.getElementById("monshinSummary");
+    var q6 = document.getElementById("q6");
+    var q6val = document.getElementById("q6val");
+    var copyBtn = document.getElementById("copyMonshinBtn");
+    var copyStatus = document.getElementById("copyStatus");
+    var noteLink = document.getElementById("noteLink");
+    var printBtn = document.getElementById("printMonshinBtn");
 
-<script>
-  var form = document.getElementById("monshinForm");
-  var result = document.getElementById("monshinResult");
-  var summary = document.getElementById("monshinSummary");
-  var q6 = document.getElementById("q6");
-  var q6val = document.getElementById("q6val");
-  var copyBtn = document.getElementById("copyMonshinBtn");
-  var copyStatus = document.getElementById("copyStatus");
-  var noteLink = document.getElementById("noteLink");
-  var printBtn = document.getElementById("printMonshinBtn");
+    var plainTextSummary = "";
 
-  var plainTextSummary = "";
+    q6.addEventListener("input", function () {q6val.textContent = q6.value;});
 
-  q6.addEventListener("input", function () { q6val.textContent = q6.value; });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    function radioVal(name) {
-      var el = form.querySelector('input[name="' + name + '"]:checked');
-      return el ? el.value : "未回答";
-    }
-
-    var rows = [
-      ["お名前", document.getElementById("q1").value || "未記入"],
-      ["気になっていること", document.getElementById("q2").value || "未記入"],
-      ["他人の一言を思い返す頻度", radioVal("q3")],
-      ["「要するに何」と思う頻度", radioVal("q4")],
-      ["語尾・間埋め言葉の自覚", radioVal("q5")],
-      ["分かりやすい答えへの依存度", q6.value + " / 10"],
-      ["主語すり替えの心当たり", radioVal("q7")],
-      ["備考", document.getElementById("q8").value || "なし"]
-    ];
-
-    summary.innerHTML = rows.map(function (r) {
-      return "<dt>" + r[0] + "</dt><dd>" + r[1].replace(/</g, "&lt;") + "</dd>";
-    }).join("");
-
-    plainTextSummary =
-      "【キロクぬかクリニック 問診票】\n\n" +
-      rows.map(function (r) { return r[0] + "：" + r[1]; }).join("\n") +
-      "\n\n(この問診票は「キロクぬかクリニック公式サイト」内の問診表フォームより送信されました)";
-
-    copyStatus.innerHTML = "";
-    form.classList.add("hidden");
-    result.style.display = "block";
-    result.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-
-  copyBtn.addEventListener("click", function () {
-    function showSentInstruction() {
-      copyStatus.innerHTML =
-        "コピーしました。下の「noteメッセージを開く」から <span class=\"note-target\">Patchwork Soul</span> 宛てに貼り付けて送信してください。<br>" +
-        "(通院プラン会員のnoteメッセージ機能からのみ送信できます)";
-      noteLink.classList.add("is-ready");
-    }
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(plainTextSummary).then(showSentInstruction, function () {
-        copyStatus.innerHTML = "コピーに失敗しました。お手数ですが、上の内容を手動でコピーしてください。";
-      });
-    } else {
-      var ta = document.createElement("textarea");
-      ta.value = plainTextSummary;
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      try {
-        document.execCommand("copy");
-        showSentInstruction();
-      } catch (e) {
-        copyStatus.innerHTML = "コピーに失敗しました。お手数ですが、上の内容を手動でコピーしてください。";
+      function radioVal(name) {
+        var el = form.querySelector('input[name="' + name + '"]:checked');
+        return el ? el.value : "未回答";
       }
-      document.body.removeChild(ta);
-    }
-  });
 
-  printBtn.addEventListener("click", function () {
-    window.print();
-  });
-</script>
+      var rows = [
+        ["お名前", document.getElementById("q1").value || "未記入"],
+        ["気になっていること", document.getElementById("q2").value || "未記入"],
+        ["他人の一言を思い返す頻度", radioVal("q3")],
+        ["「要するに何」と思う頻度", radioVal("q4")],
+        ["語尾・間埋め言葉の自覚", radioVal("q5")],
+        ["分かりやすい答えへの依存度", q6.value + " / 10"],
+        ["主語すり替えの心当たり", radioVal("q7")],
+        ["備考", document.getElementById("q8").value || "なし"]
+      ];
 
-<script>window.PAGE_META = { nav: "services", breadcrumb: [
-  { label: "ホーム", href: "../index.html" },
-  { label: "施設案内", href: "../facilities/index.html" },
-  { label: "キロクぬかクリニック", href: "../facilities/kiroku-nuka-clinic.html" },
-  { label: "問診表" }
-] };</script>
-<script src="../js/common.js"></script>
+      summary.innerHTML = rows.map(function (r) {
+        return "<dt>" + r[0] + "</dt><dd>" + r[1].replace(/</g, "&lt;") + "</dd>";
+      }).join("");
+
+      plainTextSummary =
+        "【キロクぬかクリニック 問診票】\n\n" +
+        rows.map(function (r) {return r[0] + "：" + r[1];}).join("\n") +
+        "\n\n(この問診票は「キロクぬかクリニック公式サイト」内の問診表フォームより送信されました)";
+
+      copyStatus.innerHTML = "";
+      form.classList.add("hidden");
+      result.style.display = "block";
+      result.scrollIntoView({behavior: "smooth", block: "start"});
+    });
+
+    copyBtn.addEventListener("click", function () {
+      function showSentInstruction() {
+        copyStatus.innerHTML =
+          "コピーしました。下の「noteメッセージを開く」から <span class=\"note-target\">Patchwork Soul</span> 宛てに貼り付けて送信してください。<br>" +
+          "(通院プラン会員のnoteメッセージ機能からのみ送信できます)";
+        noteLink.classList.add("is-ready");
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(plainTextSummary).then(showSentInstruction, function () {
+          copyStatus.innerHTML = "コピーに失敗しました。お手数ですが、上の内容を手動でコピーしてください。";
+        });
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = plainTextSummary;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try {
+          document.execCommand("copy");
+          showSentInstruction();
+        } catch (e) {
+          copyStatus.innerHTML = "コピーに失敗しました。お手数ですが、上の内容を手動でコピーしてください。";
+        }
+        document.body.removeChild(ta);
+      }
+    });
+
+    printBtn.addEventListener("click", function () {
+      window.print();
+    });
+  </script>
+
+  <script>window.PAGE_META = {
+      nav: "services", breadcrumb: [
+        {label: "ホーム", href: "../index.html"},
+        {label: "施設案内", href: "../facilities/index.html"},
+        {label: "キロクぬかクリニック", href: "../facilities/kiroku-nuka-clinic.html"},
+        {label: "問診表"}
+      ]
+    };</script>
+  <script src="../js/common.js"></script>
 </body>
+
 </html>

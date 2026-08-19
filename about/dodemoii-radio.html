@@ -1,288 +1,395 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>どうでもいいラジオ | FMピコぬ | 市政情報 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="FMピコぬの番組「どうでもいいラジオ」のアーカイブです。特に重要ではない話を、不要不急保存課提供でP-800型ピコぬくんがお届けします。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
-<style>
-  .radio-station { display: inline-block; font-size: .8rem; font-weight: bold; color: #fff; background: var(--color-primary); padding: 3px 10px; border-radius: 3px; margin-bottom: 10px; }
+  <meta charset="UTF-8">
+  <title>どうでもいいラジオ | FMピコぬ | 市政情報 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="FMピコぬの番組「どうでもいいラジオ」のアーカイブです。特に重要ではない話を、不要不急保存課提供でP-800型ピコぬくんがお届けします。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .radio-station {
+      display: inline-block;
+      font-size: .8rem;
+      font-weight: bold;
+      color: #fff;
+      background: var(--color-primary);
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
 
-  .radio-layout { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 20px; }
+    .radio-layout {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
 
-  .radio-player {
-    flex: 1 1 460px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 6px;
-    padding: 20px;
-    background:
-      radial-gradient(circle at 88% 12%, rgba(196,154,60,.18), transparent 45%),
-      linear-gradient(135deg, #0f2743 0%, #1a4b8c 60%, #123a6b 100%);
-    box-shadow: 0 3px 10px rgba(15,39,67,.35);
-    color: #f4f6fb;
-    text-align: center;
-  }
-  .radio-player::before {
-    content: "";
-    position: absolute;
-    top: -30px;
-    right: -30px;
-    width: 160px;
-    height: 160px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23c49a3c' stroke-width='3' opacity='0.35'%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3Ccircle cx='100' cy='100' r='55'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    pointer-events: none;
-  }
-  .radio-player h3 {
-    margin: 0 0 6px;
-    display: inline-block;
-    background: #c49a3c;
-    color: #1a2c4a;
-    font-size: .85rem;
-    padding: 3px 12px;
-    border-radius: 3px;
-    letter-spacing: .05em;
-    position: relative; z-index: 1;
-  }
-  .radio-ep-meta { font-size: .9rem; color: #d9e2f2; margin: 10px 0 14px; position: relative; z-index: 1; }
-  .radio-player img { display: block; width: 100%; max-width: 280px; margin: 0 auto 14px; border-radius: 4px; border: 2px solid #c49a3c; position: relative; z-index: 1; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
-  .radio-player audio { width: 100%; max-width: 420px; display: block; margin: 0 auto 8px; position: relative; z-index: 1; }
-  .radio-player a.radio-mp3-link { position: relative; z-index: 1; display: inline-block; color: #f4d792; }
+    .radio-player {
+      flex: 1 1 460px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(196, 154, 60, .18), transparent 45%),
+        linear-gradient(135deg, #0f2743 0%, #1a4b8c 60%, #123a6b 100%);
+      box-shadow: 0 3px 10px rgba(15, 39, 67, .35);
+      color: #f4f6fb;
+      text-align: center;
+    }
 
-  .radio-list {
-    flex: 0 0 280px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    max-height: 620px;
-    overflow-y: auto;
-  }
-  .radio-list-item {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    width: 100%;
-    text-align: left;
-    background: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: 8px;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .radio-list-item:hover { background: #eef2f8; }
-  .radio-list-item.active {
-    background: #eaf1fb;
-    border-color: #1a4b8c;
-    box-shadow: inset 0 0 0 1px #1a4b8c;
-  }
-  .radio-list-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 3px; flex-shrink: 0; border: 1px solid var(--color-border); }
-  .radio-list-item-text { min-width: 0; }
-  .radio-list-item-title { font-size: .85rem; font-weight: bold; color: var(--color-text); margin: 0 0 2px; }
-  .radio-list-item-meta { font-size: .78rem; color: var(--color-text-sub); margin: 0; line-height: 1.4; }
+    .radio-player::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 160px;
+      height: 160px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23c49a3c' stroke-width='3' opacity='0.35'%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3Ccircle cx='100' cy='100' r='55'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
 
-  @media (max-width: 680px) {
-    .radio-list { max-height: none; }
-  }
+    .radio-player h3 {
+      margin: 0 0 6px;
+      display: inline-block;
+      background: #c49a3c;
+      color: #1a2c4a;
+      font-size: .85rem;
+      padding: 3px 12px;
+      border-radius: 3px;
+      letter-spacing: .05em;
+      position: relative;
+      z-index: 1;
+    }
 
-  .radio-script {
-    margin-top: 20px;
-    background: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: 4px 18px;
-  }
-  .radio-script summary {
-    cursor: pointer;
-    font-weight: bold;
-    padding: 12px 0;
-    color: #1a2c4a;
-  }
-  .radio-script[open] summary { border-bottom: 1px solid #d8dce3; margin-bottom: 10px; }
-  .radio-script-body { max-height: 480px; overflow-y: auto; padding-right: 6px; }
-  .radio-script-body p { font-size: .9rem; line-height: 1.8; margin: 0 0 12px; color: var(--color-text); }
-  .radio-script-body p.dd-song { color: #7a5a1e; font-style: italic; }
-  .radio-script-body p.dd-note { font-size: .82rem; color: var(--color-text-sub); }
-</style>
+    .radio-ep-meta {
+      font-size: .9rem;
+      color: #d9e2f2;
+      margin: 10px 0 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .radio-player img {
+      display: block;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 14px;
+      border-radius: 4px;
+      border: 2px solid #c49a3c;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+    }
+
+    .radio-player audio {
+      width: 100%;
+      max-width: 420px;
+      display: block;
+      margin: 0 auto 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .radio-player a.radio-mp3-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      color: #f4d792;
+    }
+
+    .radio-list {
+      flex: 0 0 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 620px;
+      overflow-y: auto;
+    }
+
+    .radio-list-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 8px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .radio-list-item:hover {
+      background: #eef2f8;
+    }
+
+    .radio-list-item.active {
+      background: #eaf1fb;
+      border-color: #1a4b8c;
+      box-shadow: inset 0 0 0 1px #1a4b8c;
+    }
+
+    .radio-list-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 3px;
+      flex-shrink: 0;
+      border: 1px solid var(--color-border);
+    }
+
+    .radio-list-item-text {
+      min-width: 0;
+    }
+
+    .radio-list-item-title {
+      font-size: .85rem;
+      font-weight: bold;
+      color: var(--color-text);
+      margin: 0 0 2px;
+    }
+
+    .radio-list-item-meta {
+      font-size: .78rem;
+      color: var(--color-text-sub);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 680px) {
+      .radio-list {
+        max-height: none;
+      }
+    }
+
+    .radio-script {
+      margin-top: 20px;
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 4px 18px;
+    }
+
+    .radio-script summary {
+      cursor: pointer;
+      font-weight: bold;
+      padding: 12px 0;
+      color: #1a2c4a;
+    }
+
+    .radio-script[open] summary {
+      border-bottom: 1px solid #d8dce3;
+      margin-bottom: 10px;
+    }
+
+    .radio-script-body {
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .radio-script-body p {
+      font-size: .9rem;
+      line-height: 1.8;
+      margin: 0 0 12px;
+      color: var(--color-text);
+    }
+
+    .radio-script-body p.dd-song {
+      color: #7a5a1e;
+      font-style: italic;
+    }
+
+    .radio-script-body p.dd-note {
+      font-size: .82rem;
+      color: var(--color-text-sub);
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <p class="radio-station">FMピコぬ</p>
-      <h1>どうでもいいラジオ</h1>
-      <p class="lead">ピコぬ市から、特に重要ではない話をお届けするラジオ番組です。P-800型ピコぬくんが淡々とお届けします。</p>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <p class="radio-station">FMピコぬ</p>
+        <h1>どうでもいいラジオ</h1>
+        <p class="lead">ピコぬ市から、特に重要ではない話をお届けするラジオ番組です。P-800型ピコぬくんが淡々とお届けします。</p>
+      </div>
     </div>
-  </div>
 
-  <div class="content-layout">
-    <div class="main-content">
-      <p>
-        日々の暮らしの中で見つけた、どうでもいいこと。市内で起きた、どうでもいい出来事。
-        誰かに報告するほどではないけれど、なぜか少しだけ気になること。そんな話を、P-800型ピコぬくんが淡々とお届けしますぬ。
-      </p>
+    <div class="content-layout">
+      <div class="main-content">
+        <p>
+          日々の暮らしの中で見つけた、どうでもいいこと。市内で起きた、どうでもいい出来事。
+          誰かに報告するほどではないけれど、なぜか少しだけ気になること。そんな話を、P-800型ピコぬくんが淡々とお届けしますぬ。
+        </p>
 
-      <h2>放送内容</h2>
-      <ul>
-        <li>市内のどうでもいい情報</li>
-        <li>どうでもいいこと報告</li>
-        <li>どうでもいい歌</li>
-        <li>P-800のどうでもいい話</li>
-        <li>その他、そのとき思いついたどうでもいいこと</li>
-      </ul>
+        <h2>放送内容</h2>
+        <ul>
+          <li>市内のどうでもいい情報</li>
+          <li>どうでもいいこと報告</li>
+          <li>どうでもいい歌</li>
+          <li>P-800のどうでもいい話</li>
+          <li>その他、そのとき思いついたどうでもいいこと</li>
+        </ul>
 
-      <p>「どうでもいいラジオ」は、皆さまの生活に特に影響を与えないことを目指していますぬ。</p>
+        <p>「どうでもいいラジオ」は、皆さまの生活に特に影響を与えないことを目指していますぬ。</p>
 
-      <h2>配信済みエピソード</h2>
+        <h2>配信済みエピソード</h2>
 
-      <div class="radio-layout">
-        <div class="radio-player">
-          <h3 id="rpTitle">第1回</h3>
-          <img id="rpImg" src="../images/cable-tv/dodemoii-radio-ep01.jpg" alt="どうでもいいラジオ 第1回">
-          <p class="radio-ep-meta" id="rpMeta">2026年8月11日の、どうでもいい話</p>
-          <audio id="rpAudio" controls>
-            <source id="rpSource" src="../audio/dodemoii-radio-ep01.mp3" type="audio/mpeg">
-            お使いのブラウザは音声の再生に対応していません。
-          </audio>
-          <a class="radio-mp3-link" id="rpMp3" href="../audio/dodemoii-radio-ep01.mp3" download>MP3をダウンロード</a>
+        <div class="radio-layout">
+          <div class="radio-player">
+            <h3 id="rpTitle">第1回</h3>
+            <img id="rpImg" src="../images/cable-tv/dodemoii-radio-ep01.jpg" alt="どうでもいいラジオ 第1回">
+            <p class="radio-ep-meta" id="rpMeta">2026年8月11日の、どうでもいい話</p>
+            <audio id="rpAudio" controls>
+              <source id="rpSource" src="../audio/dodemoii-radio-ep01.mp3" type="audio/mpeg">
+              お使いのブラウザは音声の再生に対応していません。
+            </audio>
+            <a class="radio-mp3-link" id="rpMp3" href="../audio/dodemoii-radio-ep01.mp3" download>MP3をダウンロード</a>
+          </div>
+
+          <div class="radio-list" id="radioList"></div>
         </div>
 
-        <div class="radio-list" id="radioList"></div>
+        <details class="radio-script" id="rpScript">
+          <summary id="rpScriptSummary">テキストで読む(第1回)</summary>
+          <div class="radio-script-body" id="rpScriptBody"></div>
+        </details>
+
+        <div class="info-box">
+          次回配信は未定です。配信され次第、このページに追加していきます。
+        </div>
       </div>
 
-      <details class="radio-script" id="rpScript">
-        <summary id="rpScriptSummary">テキストで読む(第1回)</summary>
-        <div class="radio-script-body" id="rpScriptBody"></div>
-      </details>
-
-      <div class="info-box">
-        次回配信は未定です。配信され次第、このページに追加していきます。
-      </div>
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="fm-piconu.html">FMピコぬ トップ</a></li>
+            <li><a href="piconu-city-radio.html">ピックアップ! ピコぬ市ラジオ</a></li>
+            <li><a href="fukabori-radio.html">深掘りラジオ</a></li>
+            <li><a href="piconu-kun.html">ピコぬくんとは</a></li>
+            <li><a href="cable-tv.html">ケーブルテレビ番組表</a></li>
+            <li><a href="../facilities/fuyoufukyuhozonka.html">不要不急保存課</a></li>
+          </ul>
+        </div>
+      </aside>
     </div>
+  </main>
 
-    <aside class="sidebar">
-      <div class="sidebar-block">
-        <h2>関連情報</h2>
-        <ul>
-          <li><a href="fm-piconu.html">FMピコぬ トップ</a></li>
-          <li><a href="piconu-city-radio.html">ピックアップ! ピコぬ市ラジオ</a></li>
-          <li><a href="fukabori-radio.html">深掘りラジオ</a></li>
-          <li><a href="piconu-kun.html">ピコぬくんとは</a></li>
-          <li><a href="cable-tv.html">ケーブルテレビ番組表</a></li>
-          <li><a href="../facilities/fuyoufukyuhozonka.html">不要不急保存課</a></li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-</main>
+  <template id="dd-script-1">
+    <p>どうもですぬ。</p>
+    <p>今日はどうでもいい話をする番組だそうですぬ。</p>
+    <p>ええ、僕もね、なんで僕が呼ばれたのかよく分からないんですぬ。まあ、どうでもいいんでしょうぬ。</p>
+    <p>それで昨日、スーパーに行ったんですぬ。買うものは決まってたんですぬ。</p>
+    <p>卵と豆腐と…あと何でしたかぬ。忘れましたぬ。</p>
+    <p>でもね、スーパーには行ったんですぬ。</p>
+    <p>だからまあ、目的の半分くらいは達成したんじゃないですかぬ。</p>
+    <p>ええ、それで店内を歩いてたら、焼き芋が売ってたんですぬ。買いましたぬ。</p>
+    <p>卵と豆腐は買いませんでしたぬ。</p>
+    <p>まあ、焼き芋もぬ、美味しかったですけどぬ。それだけですぬ。</p>
+    <p>えーっと、続いては『市内どうでもいい情報』ですぬ。</p>
+    <p>環境保全課からのお知らせですぬ。</p>
+    <p>本日正午頃、市役所前のベンチに、昨日までなかった小さな葉っぱが1枚あったそうですぬ。</p>
+    <p>現在、地域の皆様が動かしたり触れたりすることのないよう、担当職員が入場規制に向けて準備しているとのことですぬ。</p>
+    <p>あ、緑だったそうですぬ。普通の。</p>
+    <p>えー、新しく入った情報によると、現在もあるとのことですぬ。</p>
+    <p>はい、良かったですぬ。</p>
+    <p>皆さんもお盆のお休みにご家族と出かけられてはいかがですかぬ。</p>
+    <p>まあ、僕は家族はいませんけどぬ。</p>
+    <p>え？ここで曲ですかぬ？ラジオネーム『煮干しの腹ワタ』さんからのリクエストで『特にありません』</p>
+    <p class="dd-song">(楽曲『特にありません』30秒)</p>
+    <p class="dd-song">
+      ♪スーパーの袋は冷蔵庫の横に置いてある<br>
+      今日の靴下は右と左で微妙に色が違う<br>
+      さっき時計を見たら16時03分だったけど<br>
+      ティッシュの買い置きはあるんだっけな<br>
+      ティッシュの買い置きはあるんだっけな
+    </p>
+    <p>はい。ここからは視聴者の皆さんからの『どうでもいいこと報告』コーナーですぬ。</p>
+    <p>えーっと、ラジオネーム『七味唐辛子の蓋』さんからですぬ。</p>
+    <p>『P-800さん、こんにちは。今日僕が発見したどうでもいいことは、自分の靴の裏に小さな小石が挟まっていたことです。』</p>
+    <p>・・・あー、そうですか。</p>
+    <p>はい、続いてはラジオネーム『伸びきった靴下』さんからですぬ。</p>
+    <p>『P-800さん、こんにちは。昨日僕が発見したどうでもいいことは、メガネを逆さまにかけても物は逆さまには見えなかったことです。』</p>
+    <p>・・・あー、そうですか。はい。</p>
+    <p>あ、そろそろ時間ですかぬ。はい。</p>
+    <p>まあこういうのも記録しておくとね、あとで見るかもしれないですぬ。</p>
+    <p>・・・まあ、大体見ないんですけどぬ。</p>
+    <p>その辺はまあ、どうでもいいんでしょうぬ。</p>
+    <p>ではまた来週ですぬ。</p>
+    <p class="dd-note">ここまでの放送は、ピコぬ市役所 不要不急保存課がお送りいたしました。</p>
+  </template>
 
-<template id="dd-script-1">
-<p>どうもですぬ。</p>
-<p>今日はどうでもいい話をする番組だそうですぬ。</p>
-<p>ええ、僕もね、なんで僕が呼ばれたのかよく分からないんですぬ。まあ、どうでもいいんでしょうぬ。</p>
-<p>それで昨日、スーパーに行ったんですぬ。買うものは決まってたんですぬ。</p>
-<p>卵と豆腐と…あと何でしたかぬ。忘れましたぬ。</p>
-<p>でもね、スーパーには行ったんですぬ。</p>
-<p>だからまあ、目的の半分くらいは達成したんじゃないですかぬ。</p>
-<p>ええ、それで店内を歩いてたら、焼き芋が売ってたんですぬ。買いましたぬ。</p>
-<p>卵と豆腐は買いませんでしたぬ。</p>
-<p>まあ、焼き芋もぬ、美味しかったですけどぬ。それだけですぬ。</p>
-<p>えーっと、続いては『市内どうでもいい情報』ですぬ。</p>
-<p>環境保全課からのお知らせですぬ。</p>
-<p>本日正午頃、市役所前のベンチに、昨日までなかった小さな葉っぱが1枚あったそうですぬ。</p>
-<p>現在、地域の皆様が動かしたり触れたりすることのないよう、担当職員が入場規制に向けて準備しているとのことですぬ。</p>
-<p>あ、緑だったそうですぬ。普通の。</p>
-<p>えー、新しく入った情報によると、現在もあるとのことですぬ。</p>
-<p>はい、良かったですぬ。</p>
-<p>皆さんもお盆のお休みにご家族と出かけられてはいかがですかぬ。</p>
-<p>まあ、僕は家族はいませんけどぬ。</p>
-<p>え？ここで曲ですかぬ？ラジオネーム『煮干しの腹ワタ』さんからのリクエストで『特にありません』</p>
-<p class="dd-song">(楽曲『特にありません』30秒)</p>
-<p class="dd-song">
-  ♪スーパーの袋は冷蔵庫の横に置いてある<br>
-  今日の靴下は右と左で微妙に色が違う<br>
-  さっき時計を見たら16時03分だったけど<br>
-  ティッシュの買い置きはあるんだっけな<br>
-  ティッシュの買い置きはあるんだっけな
-</p>
-<p>はい。ここからは視聴者の皆さんからの『どうでもいいこと報告』コーナーですぬ。</p>
-<p>えーっと、ラジオネーム『七味唐辛子の蓋』さんからですぬ。</p>
-<p>『P-800さん、こんにちは。今日僕が発見したどうでもいいことは、自分の靴の裏に小さな小石が挟まっていたことです。』</p>
-<p>・・・あー、そうですか。</p>
-<p>はい、続いてはラジオネーム『伸びきった靴下』さんからですぬ。</p>
-<p>『P-800さん、こんにちは。昨日僕が発見したどうでもいいことは、メガネを逆さまにかけても物は逆さまには見えなかったことです。』</p>
-<p>・・・あー、そうですか。はい。</p>
-<p>あ、そろそろ時間ですかぬ。はい。</p>
-<p>まあこういうのも記録しておくとね、あとで見るかもしれないですぬ。</p>
-<p>・・・まあ、大体見ないんですけどぬ。</p>
-<p>その辺はまあ、どうでもいいんでしょうぬ。</p>
-<p>ではまた来週ですぬ。</p>
-<p class="dd-note">ここまでの放送は、ピコぬ市役所 不要不急保存課がお送りいたしました。</p>
-</template>
+  <script>window.PAGE_META = {nav: "radio", breadcrumb: [{label: "FMピコぬ", href: "fm-piconu.html"}, {label: "どうでもいいラジオ"}]};</script>
+  <script src="../js/common.js"></script>
+  <script>
+    (function () {
+      // 新しい回ほど先頭。今後増やすときはこの配列の先頭に1件追加し、<template id="dd-script-○">を1つ足すだけでOK。
+      var EPISODES = [
+        {n: 1, title: "第1回", meta: "2026年8月11日", mp3: "../audio/dodemoii-radio-ep01.mp3", img: "../images/cable-tv/dodemoii-radio-ep01.jpg"}
+      ];
 
-<script>window.PAGE_META = { nav: "radio", breadcrumb: [{ label: "FMピコぬ", href: "fm-piconu.html" }, { label: "どうでもいいラジオ" }] };</script>
-<script src="../js/common.js"></script>
-<script>
-(function () {
-  // 新しい回ほど先頭。今後増やすときはこの配列の先頭に1件追加し、<template id="dd-script-○">を1つ足すだけでOK。
-  var EPISODES = [
-    { n: 1, title: "第1回", meta: "2026年8月11日", mp3: "../audio/dodemoii-radio-ep01.mp3", img: "../images/cable-tv/dodemoii-radio-ep01.jpg" }
-  ];
+      var listEl = document.getElementById("radioList");
+      var rpTitle = document.getElementById("rpTitle");
+      var rpMeta = document.getElementById("rpMeta");
+      var rpImg = document.getElementById("rpImg");
+      var rpAudio = document.getElementById("rpAudio");
+      var rpSource = document.getElementById("rpSource");
+      var rpMp3 = document.getElementById("rpMp3");
+      var rpScriptBody = document.getElementById("rpScriptBody");
+      var rpScriptSummary = document.getElementById("rpScriptSummary");
 
-  var listEl = document.getElementById("radioList");
-  var rpTitle = document.getElementById("rpTitle");
-  var rpMeta = document.getElementById("rpMeta");
-  var rpImg = document.getElementById("rpImg");
-  var rpAudio = document.getElementById("rpAudio");
-  var rpSource = document.getElementById("rpSource");
-  var rpMp3 = document.getElementById("rpMp3");
-  var rpScriptBody = document.getElementById("rpScriptBody");
-  var rpScriptSummary = document.getElementById("rpScriptSummary");
+      function showEpisode(ep, idx) {
+        rpTitle.textContent = ep.title;
+        rpMeta.textContent = ep.meta;
+        rpImg.src = ep.img;
+        rpSource.src = ep.mp3;
+        rpAudio.load();
+        rpMp3.href = ep.mp3;
+        rpScriptSummary.textContent = "テキストで読む(" + ep.title + ")";
+        var tpl = document.getElementById("dd-script-" + ep.n);
+        rpScriptBody.innerHTML = tpl ? tpl.innerHTML : "";
 
-  function showEpisode(ep, idx) {
-    rpTitle.textContent = ep.title;
-    rpMeta.textContent = ep.meta;
-    rpImg.src = ep.img;
-    rpSource.src = ep.mp3;
-    rpAudio.load();
-    rpMp3.href = ep.mp3;
-    rpScriptSummary.textContent = "テキストで読む(" + ep.title + ")";
-    var tpl = document.getElementById("dd-script-" + ep.n);
-    rpScriptBody.innerHTML = tpl ? tpl.innerHTML : "";
+        var items = listEl.querySelectorAll(".radio-list-item");
+        items.forEach(function (el, i) {
+          el.classList.toggle("active", i === idx);
+        });
+      }
 
-    var items = listEl.querySelectorAll(".radio-list-item");
-    items.forEach(function (el, i) {
-      el.classList.toggle("active", i === idx);
-    });
-  }
+      EPISODES.forEach(function (ep, idx) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "radio-list-item" + (idx === 0 ? " active" : "");
+        btn.innerHTML =
+          '<img src="' + ep.img + '" alt="">' +
+          '<span class="radio-list-item-text">' +
+          '<p class="radio-list-item-title">' + ep.title + '</p>' +
+          '<p class="radio-list-item-meta">' + ep.meta + '</p>' +
+          '</span>';
+        btn.addEventListener("click", function () {
+          showEpisode(ep, idx);
+          document.querySelector(".radio-player").scrollIntoView({behavior: "smooth", block: "start"});
+        });
+        listEl.appendChild(btn);
+      });
 
-  EPISODES.forEach(function (ep, idx) {
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "radio-list-item" + (idx === 0 ? " active" : "");
-    btn.innerHTML =
-      '<img src="' + ep.img + '" alt="">' +
-      '<span class="radio-list-item-text">' +
-        '<p class="radio-list-item-title">' + ep.title + '</p>' +
-        '<p class="radio-list-item-meta">' + ep.meta + '</p>' +
-      '</span>';
-    btn.addEventListener("click", function () {
-      showEpisode(ep, idx);
-      document.querySelector(".radio-player").scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    listEl.appendChild(btn);
-  });
-
-  // 初期表示(最新回)の台本を読み込む
-  showEpisode(EPISODES[0], 0);
-})();
-</script>
+      // 初期表示(最新回)の台本を読み込む
+      showEpisode(EPISODES[0], 0);
+    })();
+  </script>
 </body>
+
 </html>

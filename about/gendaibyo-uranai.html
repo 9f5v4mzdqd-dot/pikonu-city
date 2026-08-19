@@ -1,176 +1,195 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>今日のラッキー現代病占い | 市の概要 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="現代病データベースと連動した占いです。今日のあなたに警戒すべき現代病を1つ処方(診断)します。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
-<style>
-  .gu-box {
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background: var(--color-bg-alt);
-    padding: 24px;
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  .gu-btn {
-    padding: 14px 32px;
-    font-size: 1.05rem;
-  }
-  .gu-result {
-    display: none;
-    border: 2px solid var(--color-primary);
-    border-radius: 4px;
-    background: #fdfbf7;
-    padding: 24px;
-    margin-bottom: 24px;
-    text-align: center;
-    position: relative;
-  }
-  .gu-result.show { display: block; }
-  .gu-result-label {
-    font-size: .85rem;
-    color: var(--color-text-sub);
-    letter-spacing: .05em;
-    margin-bottom: 6px;
-  }
-  .gu-result-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--color-primary);
-    margin: 0 0 4px;
-  }
-  .gu-result-byomei {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #c0392b;
-    margin: 0 0 14px;
-  }
-  .gu-result-summary {
-    font-size: .95rem;
-    line-height: 1.7;
-    color: var(--color-text);
-    margin: 0 0 14px;
-    text-align: left;
-  }
-  .gu-result-shohou {
-    font-size: .92rem;
-    line-height: 1.7;
-    color: #2c6e49;
-    background: #eef7f0;
-    border-left: 3px solid #2c6e49;
-    padding: 10px 14px;
-    margin: 0 0 14px;
-    text-align: left;
-    border-radius: 2px;
-  }
-  .gu-result-note a { font-size: .85rem; }
-  .gu-loading { color: var(--color-text-sub); }
-</style>
+  <meta charset="UTF-8">
+  <title>今日のラッキー現代病占い | 市の概要 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="現代病データベースと連動した占いです。今日のあなたに警戒すべき現代病を1つ処方(診断)します。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .gu-box {
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      background: var(--color-bg-alt);
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .gu-btn {
+      padding: 14px 32px;
+      font-size: 1.05rem;
+    }
+
+    .gu-result {
+      display: none;
+      border: 2px solid var(--color-primary);
+      border-radius: 4px;
+      background: #fdfbf7;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .gu-result.show {
+      display: block;
+    }
+
+    .gu-result-label {
+      font-size: .85rem;
+      color: var(--color-text-sub);
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+    }
+
+    .gu-result-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--color-primary);
+      margin: 0 0 4px;
+    }
+
+    .gu-result-byomei {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #c0392b;
+      margin: 0 0 14px;
+    }
+
+    .gu-result-summary {
+      font-size: .95rem;
+      line-height: 1.7;
+      color: var(--color-text);
+      margin: 0 0 14px;
+      text-align: left;
+    }
+
+    .gu-result-shohou {
+      font-size: .92rem;
+      line-height: 1.7;
+      color: #2c6e49;
+      background: #eef7f0;
+      border-left: 3px solid #2c6e49;
+      padding: 10px 14px;
+      margin: 0 0 14px;
+      text-align: left;
+      border-radius: 2px;
+    }
+
+    .gu-result-note a {
+      font-size: .85rem;
+    }
+
+    .gu-loading {
+      color: var(--color-text-sub);
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>今日のラッキー現代病占い</h1>
-      <p class="lead">現代病データベースと連動した占いです。今日のあなたに警戒すべき現代病を1つ処方(診断)します。</p>
-    </div>
-  </div>
-
-  <div class="content-layout">
-    <div class="main-content">
-      <p>
-        キロクぬかクリニックの過去の診断記録の中から、本日のあなたに縁のある(かもしれない)現代病を
-        1件ランダムでお知らせします。当たるも八卦、当たらぬも八卦。ボタンを押すたびに結果は変わります。
-      </p>
-
-      <p class="gu-loading" id="guLoading">読み込み中...</p>
-
-      <div class="gu-box" id="guBox" style="display:none;">
-        <button type="button" class="btn gu-btn" id="guDrawBtn">占う</button>
-      </div>
-
-      <div class="gu-result" id="guResult">
-        <p class="gu-result-label">本日のあなたに警戒すべき現代病</p>
-        <p class="gu-result-title" id="guTitle"></p>
-        <p class="gu-result-byomei" id="guByomei"></p>
-        <p class="gu-result-summary" id="guSummary"></p>
-        <p class="gu-result-label" style="margin-top:6px;">処方</p>
-        <p class="gu-result-shohou" id="guShohou"></p>
-        <p class="gu-result-note"><a id="guNoteLink" href="#" target="_blank" rel="noopener">note記事を読む →</a></p>
-      </div>
-
-      <div class="info-box">
-        ※この占いは創作上のコンテンツです。実際の体調にご不安がある場合は、
-        <a href="../services/gendaibyo-sodan.html">現代病相談</a>のご利用や、医療機関の受診をご検討ください。
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>今日のラッキー現代病占い</h1>
+        <p class="lead">現代病データベースと連動した占いです。今日のあなたに警戒すべき現代病を1つ処方(診断)します。</p>
       </div>
     </div>
 
-    <aside class="sidebar">
-      <div class="sidebar-block">
-        <h2>関連情報</h2>
-        <ul>
-          <li><a href="../facilities/gendaibyo-db.html">現代病データベース</a></li>
-          <li><a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
-          <li><a href="../services/gendaibyo-sodan.html">現代病相談</a></li>
-        </ul>
+    <div class="content-layout">
+      <div class="main-content">
+        <p>
+          キロクぬかクリニックの過去の診断記録の中から、本日のあなたに縁のある(かもしれない)現代病を
+          1件ランダムでお知らせします。当たるも八卦、当たらぬも八卦。ボタンを押すたびに結果は変わります。
+        </p>
+
+        <p class="gu-loading" id="guLoading">読み込み中...</p>
+
+        <div class="gu-box" id="guBox" style="display:none;">
+          <button type="button" class="btn gu-btn" id="guDrawBtn">占う</button>
+        </div>
+
+        <div class="gu-result" id="guResult">
+          <p class="gu-result-label">本日のあなたに警戒すべき現代病</p>
+          <p class="gu-result-title" id="guTitle"></p>
+          <p class="gu-result-byomei" id="guByomei"></p>
+          <p class="gu-result-summary" id="guSummary"></p>
+          <p class="gu-result-label" style="margin-top:6px;">処方</p>
+          <p class="gu-result-shohou" id="guShohou"></p>
+          <p class="gu-result-note"><a id="guNoteLink" href="#" target="_blank" rel="noopener">note記事を読む →</a></p>
+        </div>
+
+        <div class="info-box">
+          ※この占いは創作上のコンテンツです。実際の体調にご不安がある場合は、
+          <a href="../services/gendaibyo-sodan.html">現代病相談</a>のご利用や、医療機関の受診をご検討ください。
+        </div>
       </div>
-    </aside>
-  </div>
-</main>
 
-<script>window.PAGE_META = { nav: "about", breadcrumb: [{ label: "今日のラッキー現代病占い" }] };</script>
-<script src="../js/common.js"></script>
-<script>
-(function () {
-  var loadingEl = document.getElementById("guLoading");
-  var boxEl = document.getElementById("guBox");
-  var drawBtn = document.getElementById("guDrawBtn");
-  var resultEl = document.getElementById("guResult");
-  var titleEl = document.getElementById("guTitle");
-  var byomeiEl = document.getElementById("guByomei");
-  var summaryEl = document.getElementById("guSummary");
-  var shohouEl = document.getElementById("guShohou");
-  var noteLinkEl = document.getElementById("guNoteLink");
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="../facilities/gendaibyo-db.html">現代病データベース</a></li>
+            <li><a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
+            <li><a href="../services/gendaibyo-sodan.html">現代病相談</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
 
-  var entries = [];
+  <script>window.PAGE_META = {nav: "about", breadcrumb: [{label: "今日のラッキー現代病占い"}]};</script>
+  <script src="../js/common.js"></script>
+  <script>
+    (function () {
+      var loadingEl = document.getElementById("guLoading");
+      var boxEl = document.getElementById("guBox");
+      var drawBtn = document.getElementById("guDrawBtn");
+      var resultEl = document.getElementById("guResult");
+      var titleEl = document.getElementById("guTitle");
+      var byomeiEl = document.getElementById("guByomei");
+      var summaryEl = document.getElementById("guSummary");
+      var shohouEl = document.getElementById("guShohou");
+      var noteLinkEl = document.getElementById("guNoteLink");
 
-  fetch("../data/gendaibyo-db.json")
-    .then(function (res) { return res.json(); })
-    .then(function (data) {
-      entries = data;
-      loadingEl.style.display = "none";
-      boxEl.style.display = "block";
-    })
-    .catch(function () {
-      loadingEl.textContent = "読み込みに失敗しました。時間をおいて再度お試しください。";
-    });
+      var entries = [];
 
-  function draw() {
-    if (!entries.length) return;
-    var entry = entries[Math.floor(Math.random() * entries.length)];
-    titleEl.textContent = entry.title || "";
-    byomeiEl.textContent = entry.byomei || "";
-    summaryEl.textContent = entry.summary || "";
-    shohouEl.textContent = entry.shohou || "経過観察となります。";
-    if (entry.note_url) {
-      noteLinkEl.href = entry.note_url;
-      noteLinkEl.parentElement.style.display = "block";
-    } else {
-      noteLinkEl.parentElement.style.display = "none";
-    }
-    resultEl.classList.add("show");
-    drawBtn.textContent = "もう一度占う";
-  }
+      fetch("../data/gendaibyo-db.json")
+        .then(function (res) {return res.json();})
+        .then(function (data) {
+          entries = data;
+          loadingEl.style.display = "none";
+          boxEl.style.display = "block";
+        })
+        .catch(function () {
+          loadingEl.textContent = "読み込みに失敗しました。時間をおいて再度お試しください。";
+        });
 
-  drawBtn.addEventListener("click", draw);
-})();
-</script>
+      function draw() {
+        if (!entries.length) return;
+        var entry = entries[Math.floor(Math.random() * entries.length)];
+        titleEl.textContent = entry.title || "";
+        byomeiEl.textContent = entry.byomei || "";
+        summaryEl.textContent = entry.summary || "";
+        shohouEl.textContent = entry.shohou || "経過観察となります。";
+        if (entry.note_url) {
+          noteLinkEl.href = entry.note_url;
+          noteLinkEl.parentElement.style.display = "block";
+        } else {
+          noteLinkEl.parentElement.style.display = "none";
+        }
+        resultEl.classList.add("show");
+        drawBtn.textContent = "もう一度占う";
+      }
+
+      drawBtn.addEventListener("click", draw);
+    })();
+  </script>
 </body>
+
 </html>

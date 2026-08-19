@@ -1,205 +1,218 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>ピコぬ市指定・非物品系特産品および無形文化財等一覧 | 不要不急保存課 | ピコぬ市公式ホームページ</title>
-<meta name="description" content="ピコぬ市が指定する、従来の特産品分類に該当しないものの文化的価値を有する「非物品系特産品」の一覧です。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
-<style>
-  .hibussitsu-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin-top: 1.6em;
-  }
-  @media (max-width: 700px) {
-    .hibussitsu-grid { grid-template-columns: 1fr; }
-  }
-  .hibussitsu-card {
-    border: 1px solid var(--color-border);
-    background: #fdfcf9;
-    padding: 1.2em 1.3em;
-  }
-  .hibussitsu-num {
-    display: inline-block;
-    font-size: .72rem;
-    font-weight: 700;
-    color: var(--color-text-sub);
-    border: 1px solid var(--color-border);
-    padding: 1px 7px;
-    border-radius: 3px;
-    margin-bottom: .5em;
-  }
-  .hibussitsu-card h3 {
-    margin: 0 0 .3em;
-    font-size: 1.02rem;
-    line-height: 1.5;
-  }
-  .hibussitsu-class {
-    font-size: .8rem;
-    color: var(--color-text-sub);
-    margin: 0 0 .8em;
-  }
-  .hibussitsu-card h4 {
-    font-size: .78rem;
-    margin: .8em 0 .3em;
-    color: var(--color-text-sub);
-  }
-  .hibussitsu-card p {
-    font-size: .88rem;
-    line-height: 1.8;
-    margin: 0;
-  }
-  .hibussitsu-card ul {
-    margin: 0;
-    padding-left: 1.2em;
-    font-size: .88rem;
-    line-height: 1.8;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>ピコぬ市指定・非物品系特産品および無形文化財等一覧 | 不要不急保存課 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬ市が指定する、従来の特産品分類に該当しないものの文化的価値を有する「非物品系特産品」の一覧です。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .hibussitsu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 1.6em;
+    }
+
+    @media (max-width: 700px) {
+      .hibussitsu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hibussitsu-card {
+      border: 1px solid var(--color-border);
+      background: #fdfcf9;
+      padding: 1.2em 1.3em;
+    }
+
+    .hibussitsu-num {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--color-text-sub);
+      border: 1px solid var(--color-border);
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-bottom: .5em;
+    }
+
+    .hibussitsu-card h3 {
+      margin: 0 0 .3em;
+      font-size: 1.02rem;
+      line-height: 1.5;
+    }
+
+    .hibussitsu-class {
+      font-size: .8rem;
+      color: var(--color-text-sub);
+      margin: 0 0 .8em;
+    }
+
+    .hibussitsu-card h4 {
+      font-size: .78rem;
+      margin: .8em 0 .3em;
+      color: var(--color-text-sub);
+    }
+
+    .hibussitsu-card p {
+      font-size: .88rem;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .hibussitsu-card ul {
+      margin: 0;
+      padding-left: 1.2em;
+      font-size: .88rem;
+      line-height: 1.8;
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>ピコぬ市指定・非物品系特産品および無形文化財等一覧</h1>
-      <p class="lead">従来の特産品分類に該当しないものの、文化的価値を有する物品・事象等の指定一覧です。</p>
-    </div>
-  </div>
-
-  <div class="content-layout">
-    <div class="main-content">
-      <p>
-        ピコぬ市では、地域文化の振興および生活文化の再評価を目的として、従来の特産品分類に該当しないものの
-        文化的価値を有する物品・事象等を「非物品系特産品」として指定・登録しています。
-      </p>
-
-      <div class="info-box">
-        なお、指定物品等の販売・通信販売・譲渡等の取扱いは行っておりません。<br>
-        市民の皆様は、各家庭内および日常生活圏において、各自発見・観賞していただくものとなります。
-      </div>
-
-      <h2>指定特産品一覧</h2>
-
-      <div class="hibussitsu-grid">
-        <div class="hibussitsu-card">
-          <span class="hibussitsu-num">指定番号 ピ特-001号</span>
-          <h3>金銀線状止具(俗称:ビニタイ)</h3>
-          <p class="hibussitsu-class">分類:概念系金属構造体</p>
-          <h4>概要</h4>
-          <p>包装材の封止に用いられる金属線被覆帯状部材。</p>
-          <h4>特徴</h4>
-          <ul>
-            <li>使用後も廃棄されず、指への巻付けや簡易造形物として再利用される事例が多い。</li>
-            <li>再利用実績は乏しいが、未処分状態のまま保管される傾向がある。</li>
-          </ul>
-        </div>
-
-        <div class="hibussitsu-card">
-          <span class="hibussitsu-num">指定番号 ピ特-002号</span>
-          <h3>ケーキ穿刺済蝋燭(生クリーム付着状態)</h3>
-          <p class="hibussitsu-class">分類:記念的残留事象</p>
-          <h4>概要</h4>
-          <p>慶事において使用後、ケーキから抜去された蝋燭。</p>
-          <h4>特徴</h4>
-          <ul>
-            <li>燃焼痕および生クリームの付着を有する。</li>
-            <li>処分判断が保留されることが多く、乾燥状態で長期保管される傾向がある。</li>
-          </ul>
-        </div>
-
-        <div class="hibussitsu-card">
-          <span class="hibussitsu-num">指定番号 ピ特-003号</span>
-          <h3>筆記具先端部保護用微小樹脂(ボールペン球部保護体)</h3>
-          <p class="hibussitsu-class">分類:感触性精密構造体</p>
-          <h4>概要</h4>
-          <p>未使用ボールペン先端を保護する球状樹脂。</p>
-          <h4>特徴</h4>
-          <ul>
-            <li>剥離時に特有の触覚的感覚を伴う。</li>
-            <li>剥離後は所在不明となることが多く、再回収は困難である。</li>
-          </ul>
-        </div>
-
-        <div class="hibussitsu-card">
-          <span class="hibussitsu-num">指定番号 ピ特-004号</span>
-          <h3>日めくりカレンダー破棄紙裏面(白地部)</h3>
-          <p class="hibussitsu-class">分類:未練系紙類</p>
-          <h4>概要</h4>
-          <p>日めくりカレンダーから切り離された紙片の裏面。</p>
-          <h4>特徴</h4>
-          <ul>
-            <li>メモ用途にはやや小さく、廃棄にも躊躇を生じさせる性質を持つ。</li>
-            <li>行政文書としての採用は見送られている。</li>
-          </ul>
-        </div>
-
-        <div class="hibussitsu-card">
-          <span class="hibussitsu-num">指定番号 ピ特-005号</span>
-          <h3>仮設鉄板通過時衝撃音(「ガタゴト」音)</h3>
-          <p class="hibussitsu-class">分類:環境音覚構造</p>
-          <h4>概要</h4>
-          <p>工事用仮設鉄板上を車両等が通過する際に発生する音。</p>
-          <h4>特徴</h4>
-          <ul>
-            <li>振動を伴い、工事実施状況を直感的に認識させる。</li>
-            <li>市内の代表的な環境音として登録されている。</li>
-          </ul>
-        </div>
-
-        <div class="hibussitsu-card">
-          <span class="hibussitsu-num">指定番号 ピ特-006号</span>
-          <h3>携帯型音響機器配線自然絡合体(有線イヤホンカオス構造)</h3>
-          <p class="hibussitsu-class">分類:自然発生幾何学構造</p>
-          <h4>概要</h4>
-          <p>収納時に発生する有線イヤホンの絡まり。</p>
-          <h4>特徴</h4>
-          <ul>
-            <li>意図せず形成される不可逆的構造であり、解消に時間を要する。</li>
-            <li>日常生活における時間消費要因として認定されている。</li>
-          </ul>
-        </div>
-
-        <div class="hibussitsu-card">
-          <span class="hibussitsu-num">指定番号 ピ特-007号</span>
-          <h3>時刻告知用防災行政無線周波数歪み音(夕刻5時チャイム)</h3>
-          <p class="hibussitsu-class">分類:郷愁系時報音</p>
-          <h4>概要</h4>
-          <p>毎日17時に放送される時報音。</p>
-          <h4>特徴</h4>
-          <ul>
-            <li>音質の特性により郷愁を喚起し、帰宅行動等を促す効果を持つ。</li>
-            <li>生活リズム形成に寄与する音響資源として登録されている。</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="info-box" style="margin-top:2em;">
-        本資料は、創始者の指示に基づきピコぬ市役所職員「ピコぬくん・P-801型」が作成したものです。<br>
-        決裁および市長による4コマ漫画に関する指導事項については、現在保留中です。
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>ピコぬ市指定・非物品系特産品および無形文化財等一覧</h1>
+        <p class="lead">従来の特産品分類に該当しないものの、文化的価値を有する物品・事象等の指定一覧です。</p>
       </div>
     </div>
 
-    <aside class="sidebar">
-      <div class="sidebar-block">
-        <h2>関連情報</h2>
-        <ul>
-          <li><a href="../facilities/fuyoufukyuhozonka.html">不要不急保存課</a></li>
-          <li><a href="../facilities/jissen-cho.html">不要不急実践帳</a></li>
-          <li><a href="fuyoufukyu-4koma.html">不要不急な4コマ漫画</a></li>
-          <li><a href="fuyoufukyu-uranai.html">今日のあなたにおすすめの不要不急な時間の過ごし方</a></li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-</main>
+    <div class="content-layout">
+      <div class="main-content">
+        <p>
+          ピコぬ市では、地域文化の振興および生活文化の再評価を目的として、従来の特産品分類に該当しないものの
+          文化的価値を有する物品・事象等を「非物品系特産品」として指定・登録しています。
+        </p>
 
-<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "../facilities/index.html" }, { label: "不要不急保存課", href: "../facilities/fuyoufukyuhozonka.html" }, { label: "非物品系特産品一覧" }] };</script>
-<script src="../js/common.js"></script>
+        <div class="info-box">
+          なお、指定物品等の販売・通信販売・譲渡等の取扱いは行っておりません。<br>
+          市民の皆様は、各家庭内および日常生活圏において、各自発見・観賞していただくものとなります。
+        </div>
+
+        <h2>指定特産品一覧</h2>
+
+        <div class="hibussitsu-grid">
+          <div class="hibussitsu-card">
+            <span class="hibussitsu-num">指定番号 ピ特-001号</span>
+            <h3>金銀線状止具(俗称:ビニタイ)</h3>
+            <p class="hibussitsu-class">分類:概念系金属構造体</p>
+            <h4>概要</h4>
+            <p>包装材の封止に用いられる金属線被覆帯状部材。</p>
+            <h4>特徴</h4>
+            <ul>
+              <li>使用後も廃棄されず、指への巻付けや簡易造形物として再利用される事例が多い。</li>
+              <li>再利用実績は乏しいが、未処分状態のまま保管される傾向がある。</li>
+            </ul>
+          </div>
+
+          <div class="hibussitsu-card">
+            <span class="hibussitsu-num">指定番号 ピ特-002号</span>
+            <h3>ケーキ穿刺済蝋燭(生クリーム付着状態)</h3>
+            <p class="hibussitsu-class">分類:記念的残留事象</p>
+            <h4>概要</h4>
+            <p>慶事において使用後、ケーキから抜去された蝋燭。</p>
+            <h4>特徴</h4>
+            <ul>
+              <li>燃焼痕および生クリームの付着を有する。</li>
+              <li>処分判断が保留されることが多く、乾燥状態で長期保管される傾向がある。</li>
+            </ul>
+          </div>
+
+          <div class="hibussitsu-card">
+            <span class="hibussitsu-num">指定番号 ピ特-003号</span>
+            <h3>筆記具先端部保護用微小樹脂(ボールペン球部保護体)</h3>
+            <p class="hibussitsu-class">分類:感触性精密構造体</p>
+            <h4>概要</h4>
+            <p>未使用ボールペン先端を保護する球状樹脂。</p>
+            <h4>特徴</h4>
+            <ul>
+              <li>剥離時に特有の触覚的感覚を伴う。</li>
+              <li>剥離後は所在不明となることが多く、再回収は困難である。</li>
+            </ul>
+          </div>
+
+          <div class="hibussitsu-card">
+            <span class="hibussitsu-num">指定番号 ピ特-004号</span>
+            <h3>日めくりカレンダー破棄紙裏面(白地部)</h3>
+            <p class="hibussitsu-class">分類:未練系紙類</p>
+            <h4>概要</h4>
+            <p>日めくりカレンダーから切り離された紙片の裏面。</p>
+            <h4>特徴</h4>
+            <ul>
+              <li>メモ用途にはやや小さく、廃棄にも躊躇を生じさせる性質を持つ。</li>
+              <li>行政文書としての採用は見送られている。</li>
+            </ul>
+          </div>
+
+          <div class="hibussitsu-card">
+            <span class="hibussitsu-num">指定番号 ピ特-005号</span>
+            <h3>仮設鉄板通過時衝撃音(「ガタゴト」音)</h3>
+            <p class="hibussitsu-class">分類:環境音覚構造</p>
+            <h4>概要</h4>
+            <p>工事用仮設鉄板上を車両等が通過する際に発生する音。</p>
+            <h4>特徴</h4>
+            <ul>
+              <li>振動を伴い、工事実施状況を直感的に認識させる。</li>
+              <li>市内の代表的な環境音として登録されている。</li>
+            </ul>
+          </div>
+
+          <div class="hibussitsu-card">
+            <span class="hibussitsu-num">指定番号 ピ特-006号</span>
+            <h3>携帯型音響機器配線自然絡合体(有線イヤホンカオス構造)</h3>
+            <p class="hibussitsu-class">分類:自然発生幾何学構造</p>
+            <h4>概要</h4>
+            <p>収納時に発生する有線イヤホンの絡まり。</p>
+            <h4>特徴</h4>
+            <ul>
+              <li>意図せず形成される不可逆的構造であり、解消に時間を要する。</li>
+              <li>日常生活における時間消費要因として認定されている。</li>
+            </ul>
+          </div>
+
+          <div class="hibussitsu-card">
+            <span class="hibussitsu-num">指定番号 ピ特-007号</span>
+            <h3>時刻告知用防災行政無線周波数歪み音(夕刻5時チャイム)</h3>
+            <p class="hibussitsu-class">分類:郷愁系時報音</p>
+            <h4>概要</h4>
+            <p>毎日17時に放送される時報音。</p>
+            <h4>特徴</h4>
+            <ul>
+              <li>音質の特性により郷愁を喚起し、帰宅行動等を促す効果を持つ。</li>
+              <li>生活リズム形成に寄与する音響資源として登録されている。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-box" style="margin-top:2em;">
+          本資料は、創始者の指示に基づきピコぬ市役所職員「ピコぬくん・P-801型」が作成したものです。<br>
+          決裁および市長による4コマ漫画に関する指導事項については、現在保留中です。
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="../facilities/fuyoufukyuhozonka.html">不要不急保存課</a></li>
+            <li><a href="../facilities/jissen-cho.html">不要不急実践帳</a></li>
+            <li><a href="fuyoufukyu-4koma.html">不要不急な4コマ漫画</a></li>
+            <li><a href="fuyoufukyu-uranai.html">今日のあなたにおすすめの不要不急な時間の過ごし方</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "../facilities/index.html"}, {label: "不要不急保存課", href: "../facilities/fuyoufukyuhozonka.html"}, {label: "非物品系特産品一覧"}]};</script>
+  <script src="../js/common.js"></script>
 </body>
+
 </html>
