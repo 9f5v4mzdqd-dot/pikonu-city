@@ -9,6 +9,11 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-08-20（3）
+---
+### 修正
+- `facilities/`配下(`neo-hyakuyobako.html`・`jissen-cho.html`・`fukushika.html`・`chiiki-shigen-saiiyou.html`・`ikimono-kyosei-teien.html`・`neo-taihi-box.html`・`niwa-zukuri-josei.html`・`nuka.html`・`pio-card.html`・`ryokka-suishin.html`・`usui-junkan-taisaku.html`・`toshikeikaku.html`)、`about/`配下(`fuyoufukyu-4koma.html`・`fuyoufukyu-uranai.html`・`hibussitsu-tokusanhin.html`):パンくずリストに親ページ(環境課・不要不急保存課・生活共生課・暮らしと循環推進課・都市計画課)側で既に反映済みだった「市役所」の階層が抜けていたため、計15ファイルに追加
+---
 
 ## 2026-08-20（2）
 ---
