@@ -43,7 +43,7 @@
     { key: "gaiyou", label: "市の概要", href: "about/gaiyou.html" },
     { key: "about", label: "市政情報", href: "about/shisei-joho.html" },
     { key: "piconu-chat", label: "ピコぬくんとチャット", href: "about/piconu-chat.html" },
-    { key: "radio", label: "FMピコぬ", href: "about/fm-piconu.html" }
+    { key: "radio", label: "FMピコぬ", href: "about/fm-piconu.html" },
     { key: "cable-tv", label: "ケーブルテレビ番組表", href: "about/cable-tv.html" }
   ];
 
