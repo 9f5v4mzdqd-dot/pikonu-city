@@ -140,6 +140,9 @@ JavaScriptで動的に生成します。各ページのHTMLには本文(`<main i
    「『市の概要』と『市政情報』の区別」を参照する。
 3. 該当ディレクトリにHTMLファイルを作成する。既存の近いページ(例: `services/juminhyo.html`)
    をコピーし、`<title>` `<meta description>` `<h1>` 本文、`window.PAGE_META` を書き換える。
+   本文の`<p>`タグ内など、ブラウザ表示にそのまま反映される長文には、改行を入れず1行で
+   記述する。`<ul>`の`<li>`や`<table>`の行など、改行が見た目に影響しない構造化された
+   タグは、従来通り改行して読みやすく書いてよいですぬ。
 4. **一覧ページに反映する**: 一覧ページ(`news/index.html`、`facilities/index.html`、
    トップページの該当セクション、`about/sitemap.html`)に必要に応じてリンクを追加する。
    お知らせ記事以外の新規ページは `data/search-index.json` にも追加する(お知らせ記事は
