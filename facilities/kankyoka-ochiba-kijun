@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>落ち葉発生時における環境課連絡基準(叩き台) | 環境課 | 施設案内 | ピコぬ市公式ホームページ</title>
+<meta name="description" content="環境課の内部運用資料(叩き台)、落ち葉発生時における環境課連絡基準についてのご案内です。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body id="top">
+
+<main id="main">
+  <div class="page-header">
+    <div class="container">
+      <h1>落ち葉発生時における環境課連絡基準(叩き台)</h1>
+      <p class="lead">担当:環境課 / 作成:ピコぬ市役所 / 区分:内部運用資料(叩き台)</p>
+    </div>
+  </div>
+
+  <div class="content-layout">
+    <div class="main-content">
+
+      <div class="info-box">
+        本資料は環境課の内部運用資料(叩き台)であり、正式な運用基準ではありません。
+      </div>
+
+      <h2>1. 目的</h2>
+      <p>
+        市内における落ち葉の発生状況を記録し、一定量を超えた場合に環境課が状況を把握できるよう、連絡基準を定める。
+      </p>
+
+      <h2>2. 通常時の記録</h2>
+      <p>
+        清掃ロボット「ピコぬくん」が市内巡回中に確認した落ち葉について、枚数および確認地点を記録する。
+      </p>
+      <p>
+        1日19枚以下の場合:
+      </p>
+      <ul>
+        <li>ピコぬくんが記録する。</li>
+        <li>環境課への連絡は不要とする。</li>
+        <li>必要に応じて通常の清掃業務の対象とする。</li>
+      </ul>
+
+      <h2>3. 環境課への連絡基準</h2>
+      <p>
+        1日20枚以上の落ち葉を確認した場合、環境課へ自動的に連絡する。
+      </p>
+      <p>
+        連絡内容:
+      </p>
+      <ul>
+        <li>確認日時</li>
+        <li>確認地点</li>
+        <li>落ち葉の枚数</li>
+        <li>ピコぬくんによる確認記録</li>
+      </ul>
+
+      <h2>4. 連絡後の対応</h2>
+      <p>
+        環境課は連絡を受けた後、必要に応じて現場の状況を確認する。
+      </p>
+      <p>
+        なお、20枚以上の落ち葉が確認されたことのみをもって、直ちに異常事態と判断するものではない。周辺の樹木、風雨、季節等の状況を踏まえて対応を判断する。
+      </p>
+
+      <h2>5. 記録例</h2>
+      <table class="info-table">
+        <tr><th>区分</th><td>落ち葉案件</td></tr>
+        <tr><th>確認地点</th><td>記録町交差点付近</td></tr>
+        <tr><th>確認枚数</th><td>7枚</td></tr>
+        <tr><th>対応</th><td>記録のみ</td></tr>
+      </table>
+      <table class="info-table">
+        <tr><th>区分</th><td>落ち葉案件・環境課連絡基準到達</td></tr>
+        <tr><th>確認地点</th><td>記録町交差点付近</td></tr>
+        <tr><th>確認枚数</th><td>23枚</td></tr>
+        <tr><th>対応</th><td>環境課へ連絡</td></tr>
+      </table>
+
+      <h2>6. Q&amp;A</h2>
+
+      <h3>Q1. ミノムシは落ち葉にカウントしますか?</h3>
+      <p>
+        A. カウントしません。ミノムシは落ち葉ではなく、虫です。ミノムシが落ち葉をまとっている場合についても、ミノムシそのものを落ち葉としてカウントすることはありません。なお、ミノムシの周囲に落ちている落ち葉については、通常どおり落ち葉として扱います。
+      </p>
+
+      <h3>Q2. ピコぬくんがミノムシを落ち葉として記録した場合は?</h3>
+      <p>
+        A. ミノムシは虫なので、落ち葉の枚数から除外してください。
+      </p>
+
+      <h3>Q3. ミノムシの、ミノを剥がしたらどうなりますか?</h3>
+      <p>
+        A. それはやめてください。
+      </p>
+
+      <h2>7. 備考</h2>
+      <p>
+        落ち葉の枚数については、ピコぬくんが画像認識その他の方法により確認する。ただし、落ち葉と類似した物体について誤認する可能性があるため、必要に応じて環境課職員による確認を行う。
+      </p>
+
+      <p>以上</p>
+
+    </div>
+
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <h2>関連情報</h2>
+        <ul>
+          <li><a href="kankyoka.html">環境課</a></li>
+          <li><a href="neo-hyakuyobako.html">「ネオ百葉箱」について</a></li>
+          <li><a href="../services/gomi.html">ごみ収集案内</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "市役所", href: "shiyakusho.html" }, { label: "環境課", href: "kankyoka.html" }, { label: "落ち葉発生時における環境課連絡基準(叩き台)" }] };</script>
+<script src="../js/common.js"></script>
+</body>
+</html>
