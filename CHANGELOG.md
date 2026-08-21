@@ -9,6 +9,30 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+
+## 2026-08-21（1）
+
+---
+
+### 追加
+
+* `facilities/koutsukyoku-shiryoshitsu.html`:ピコぬ市交通局の「交通資料室」ページを新規作成(開業記録・旧時刻表・駅に関する資料・車両・連結技術資料を掲載)
+* `facilities/koutsukyoku-opening.html`:交通局の「開業記録」ページを新規作成
+* `facilities/koutsukyoku-timetable-1963.html`:交通局開業当時の「昭和38年時刻表」ページを新規作成
+* `facilities/koutsukyoku-stations.html`:交通資料室の「駅に関する資料」ページを新規作成
+* `facilities/koutsukyoku-stations.html`:昭和47年の「駅構内ご案内」資料を掲載
+
+### 変更
+
+* `facilities/koutsukyoku-shiryoshitsu.html`:「駅に関する資料」を新設ページへのリンクに変更。「昭和38年時刻表」「開業記録」へのリンクを追加
+* `facilities/koutsukyoku.html`:関連情報に交通局関連ページへのリンクを追加
+* `facilities/koutsukyoku-route.html`:関連情報を交通局関連ページ中心に整理
+* `facilities/koutsukyoku-opening.html`:関連情報に交通局関連ページへのリンクを追加
+* `facilities/koutsukyoku-timetable-1963.html`:関連情報を交通局関連ページ中心に整理
+* `facilities/renketsu.html`:関連情報に交通局関連ページへのリンクを追加
+
+---
+
 ## 2026-08-20（6）
 ---
 ### 変更
