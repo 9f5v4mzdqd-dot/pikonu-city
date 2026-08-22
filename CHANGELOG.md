@@ -9,6 +9,19 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-08-22（4）
+---
+### 追加
+- `facilities/goods.html`:公式グッズ販売窓口の「お問い合わせ」欄を新規追加(市役所1階、電話:ぬぬ-ぬかピコ-0038(おーおみや))
+### 変更
+- `facilities/goods.html`:店内写真(`images/goods/shop-interior.jpg`)を本文冒頭に追加
+- `facilities/shiyakusho-floor.html`・`facilities/shiyakusho.html`:1階の一覧に「公式グッズ販売窓口」を追加
+- `facilities/shiyakusho.html`:「フロア案内」表に抜けていた4階(都市計画課・不要不急保存課)の行を追加(shiyakusho-floor.htmlとの不一致を解消)
+- `about/telephone.html`:「公式グッズ販売窓口」の行を追加
+- `JYUSYOROKU.md`:「公式グッズ販売窓口」の所在地を追加
+- `facilities/kominkan.html`・`facilities/koutsukyoku.html`・`facilities/keisatsu.html`:電話番号の括弧表記を全角から半角に統一(`about/telephone.html`との表記ゆれを解消)
+---
+
 ## 2026-08-22（3）
 ---
 ### 変更
