@@ -10,8 +10,6 @@
 | 施設名 | 所在地 | 出典 |
 |---|---|---|
 | 市役所 | ピコぬ市中央1丁目1番地 | `facilities/shiyakusho.html` |
-| 秘書広報課 | ピコぬ市役所3階 | `facilities/hisho-kouhou-ka.html` |
-| 観光課 | ピコぬ市役所3階 | `facilities/kanko-ka.html` |
 | 公式グッズ販売窓口 | ピコぬ市役所1階 | `facilities/goods.html` |
 | ピコぬ市警察署 | ピコぬ市中央1丁目 | `facilities/keisatsu.html` |
 | キロクぬかクリニック | ピコぬ市記録町4丁目3番地2号 | `facilities/kiroku-nuka-clinic.html` |
@@ -20,6 +18,8 @@
 | ピコぬ市中央公民館 | ピコぬ市中央1丁目2番地 | `facilities/kominkan.html` |
 | ピコぬ市商工会 | ピコぬ市記録町3丁目(商店街中央) | `facilities/shokokai.html` |
 | 上下水道局 | ピコぬ市ぬか清水町3丁目2番1号 | `facilities/suidoukyoku.html` |
+| ピコぬ市交通局 | ピコぬ市中央3丁目3番地 | `facilities/koutsukyoku.html` |
+
 
 ## 記録町商店街 加盟店(facilities/shoten.html)
 
