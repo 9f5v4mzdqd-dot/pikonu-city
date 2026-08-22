@@ -12,6 +12,7 @@
 | 市役所 | ピコぬ市中央1丁目1番地 | `facilities/shiyakusho.html` |
 | 秘書広報課 | ピコぬ市役所3階 | `facilities/hisho-kouhou-ka.html` |
 | 観光課 | ピコぬ市役所3階 | `facilities/kanko-ka.html` |
+| 公式グッズ販売窓口 | ピコぬ市役所1階 | `facilities/goods.html` |
 | ピコぬ市警察署 | ピコぬ市中央1丁目 | `facilities/keisatsu.html` |
 | キロクぬかクリニック | ピコぬ市記録町4丁目3番地2号 | `facilities/kiroku-nuka-clinic.html` |
 | ぬかピコ民芸博物館 | ピコぬ市記録町1丁目5番地 | `facilities/nukapiko-museum.html` |
