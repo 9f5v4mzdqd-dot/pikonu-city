@@ -39,6 +39,26 @@
     "url": "services/shisetsu-annai.html",
     "category": "くらしの情報"
   },
+    {
+    "title": "住所変更・各種届出",
+    "url": "services/jumin-todoke.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "住民票自動発行ジェネレーター",
+    "url": "services/juminhyo-generator.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "問診表",
+    "url": "services/kiroku-nuka-monshinhyo.html",
+    "category": "くらしの情報"
+  },
+  {
+    "title": "水道の手続き・料金・トラブルについて",
+    "url": "services/suidou.html",
+    "category": "くらしの情報"
+  },
   {
     "title": "施設案内 トップ",
     "url": "facilities/index.html",
@@ -214,6 +234,86 @@
     "url": "facilities/goods.html",
     "category": "施設案内"
   },
+    {
+    "title": "現代病データベース",
+    "url": "facilities/gendaibyo-db.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "医師紹介",
+    "url": "facilities/kiroku-nuka-clinic-director.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "研究資料",
+    "url": "facilities/kiroku-nuka-clinic-kenkyu.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "外来シリーズ 書庫",
+    "url": "facilities/kiroku-nuka-clinic-archive.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "蔵書案内",
+    "url": "facilities/toshokan-zosho.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "上下水道局",
+    "url": "facilities/suidoukyoku.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "路線案内",
+    "url": "facilities/koutsukyoku-route.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "連結技術について",
+    "url": "facilities/renketsu.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "交通資料室",
+    "url": "facilities/koutsukyoku-shiryoshitsu.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "開業記録",
+    "url": "facilities/koutsukyoku-opening.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "昭和38年時刻表",
+    "url": "facilities/koutsukyoku-timetable-1963.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "駅に関する資料",
+    "url": "facilities/koutsukyoku-stations.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "不要不急実践帳",
+    "url": "facilities/jissen-cho.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "地域資源再利用事業",
+    "url": "facilities/chiiki-shigen-saiiyou.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "「ネオ百葉箱」について",
+    "url": "facilities/neo-hyakuyobako.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "落ち葉発生時における環境課連絡基準(叩き台)",
+    "url": "facilities/kankyoka-ochiba-kijun.html",
+    "category": "施設案内"
+  },
   {
     "title": "市の概要",
     "url": "about/gaiyou.html",
@@ -379,4 +479,89 @@
     "url": "about/sitemap.html",
     "category": "市政情報"
   }
+    {
+    "title": "FMピコぬ",
+    "url": "about/fm-piconu.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "FMピコぬ「ピックアップ! ピコぬ市ラジオ」",
+    "url": "about/piconu-city-radio.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "深掘りラジオ",
+    "url": "about/fukabori-radio.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "どうでもいいラジオ",
+    "url": "about/dodemoii-radio.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ピコぬくんとチャット",
+    "url": "about/piconu-chat.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "宝くじと猫と、世界経済の終焉",
+    "url": "about/neko-game.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ピコぬ市検定(初級)",
+    "url": "about/piconu-quiz.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "行政記録 第一号「診療情報提供兼意見書」",
+    "url": "about/gyousei-kiroku-01.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "ピコぬ市年表",
+    "url": "about/nenpyo.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "市史編纂事業について",
+    "url": "about/hensan-jigyo.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "未整理資料室",
+    "url": "about/miseiri-shiryo.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "市長への手紙",
+    "url": "about/tegami.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "当ホームページの運営履歴",
+    "url": "about/unei-rireki.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "今日のラッキー現代病占い",
+    "url": "about/gendaibyo-uranai.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "不要不急な4コマ漫画",
+    "url": "about/fuyoufukyu-4koma.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "今日のあなたにおすすめの不要不急な時間の過ごし方",
+    "url": "about/fuyoufukyu-uranai.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "ピコぬ市指定・非物品系特産品および無形文化財等一覧",
+    "url": "about/hibussitsu-tokusanhin.html",
+    "category": "施設案内"
+  },
 ]
