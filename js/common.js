@@ -231,8 +231,8 @@
 "</div>" +
       '<div class="footer-bottom">' +
       "<span>&copy; Piconu City. 無断複写・転載を禁じます。</span>" +
-      '<span><a href="' + BASE + 'index.html" style="color:#cdd9e6;">個人情報保護方針</a> / ' +
-      '<a href="' + BASE + 'index.html" style="color:#cdd9e6;">サイトのご利用について</a></span>' +
+      '<span><a href="' + BASE + 'privacy.html" style="color:#cdd9e6;">個人情報保護方針</a> / ' +
+      '<a href="' + BASE + 'terms.html" style="color:#cdd9e6;">サイトのご利用について</a></span>' +
       "</div>" +
        '<div class="footer-bottom" style="border-top:none; padding-top:0;">' +
       '<span style="font-size:.78rem; color:#a9b8ca;">音楽・効果音の一部はCanvaが提供する素材を利用しています。</span>' +
