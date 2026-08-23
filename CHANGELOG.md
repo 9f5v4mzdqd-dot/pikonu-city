@@ -9,6 +9,15 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-08-23（4）
+---
+### 追加
+- `data/gairai-archive.json`:外来シリーズ書庫に英訳版22本を追加
+### 変更
+- `facilities/kiroku-nuka-clinic-archive.html`:カテゴリフィルターに「English」を追加
+- `facilities/kiroku-nuka-clinic-archive-admin.html`:投稿フォームのカテゴリ選択肢に「English」を追加
+---
+
 ## 2026-08-23（3）
 ---
 ### 変更
