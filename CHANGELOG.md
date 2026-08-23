@@ -24,6 +24,10 @@
 - `about/telephone.html`:連結技術推進課の電話番号を追加
 - `about/sitemap.html`:「連結技術推進課」「組織一覧」を都市計画課の並びに追加。「トップページ」セクションにEnglish・個人情報保護方針・サイトのご利用についての3件を追加
 - `data/search-index.json`:組織一覧・連結技術推進課・個人情報保護方針・サイトのご利用について・Englishの5件を追加
+- `facilities/renketsu-suishin-ka.html`:電車の連結部分の写真を追加
+- `facilities/kiroku-seisaku-ka.html`:市民の記録資料の写真を追加
+- `facilities/keisatsu.html`:警察署の外観の写真を追加
+- `terms.html`・`privacy.html`:ピコぬくんと書庫の写真を追加
 ---
 
 ## 2026-08-22（4）
