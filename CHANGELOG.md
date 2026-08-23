@@ -9,7 +9,25 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-08-23（1）
+---
+### 追加
+- `about/soshiki-ichiran.html`:「組織一覧」ページを新規作成。各部・各課へのリンクを設置
+- `facilities/renketsu-suishin-ka.html`:「連結技術推進課」ページを新規作成(都市整備部所属)
+- `privacy.html`:「個人情報保護方針」ページを新規作成
+- `terms.html`:「サイトのご利用について」ページを新規作成
+- `english.html`:「About Piconu City」英語サマリーページを新規作成
+### 変更
+- `js/common.js`:ヘッダー共通リンクの「組織一覧」のリンク先を`about/gaiyou.html`から`about/soshiki-ichiran.html`へ修正(内容と一致していなかったため)。フッターの「個人情報保護方針」「サイトのご利用について」のリンク先を仮リンク(トップページ)から新規ページへ変更。「English」のリンク先を`index.html`から`english.html`へ変更
+- `facilities/shiyakusho.html`:「組織一覧」セクションを新ページへのリンクに置き換え。フロア案内(4階)に連結技術推進課を追加
+- `facilities/shiyakusho-floor.html`:4階に連結技術推進課を追加
+- `about/telephone.html`:連結技術推進課の電話番号を追加
+- `about/sitemap.html`:「連結技術推進課」「組織一覧」を都市計画課の並びに追加。「トップページ」セクションにEnglish・個人情報保護方針・サイトのご利用についての3件を追加
+- `data/search-index.json`:組織一覧・連結技術推進課・個人情報保護方針・サイトのご利用について・Englishの5件を追加
+---
+
 ## 2026-08-22（4）
+
 ---
 ### 追加
 - `facilities/goods.html`:公式グッズ販売窓口の「お問い合わせ」欄を新規追加(市役所1階、電話:ぬぬ-ぬかピコ-0038(おーおみや))
@@ -20,6 +38,7 @@
 - `about/telephone.html`:「公式グッズ販売窓口」の行を追加
 - `JYUSYOROKU.md`:「公式グッズ販売窓口」の所在地を追加
 - `facilities/kominkan.html`・`facilities/koutsukyoku.html`・`facilities/keisatsu.html`:電話番号の括弧表記を全角から半角に統一(`about/telephone.html`との表記ゆれを解消)
+- `JYUSYOROKU.md`:住所録を整理(実質的な住所を持たない部署を除外、公式グッズ販売窓口・ピコぬ市交通局を追加)
 ---
 
 ## 2026-08-22（3）
