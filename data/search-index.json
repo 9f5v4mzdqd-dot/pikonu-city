@@ -109,6 +109,11 @@
     "url": "facilities/kiroku-seisaku-ka.html",
     "category": "施設案内"
   },
+    {
+    "title": "連結技術推進課",
+    "url": "facilities/renketsu-suishin-ka.html",
+    "category": "施設案内"
+  },
   {
     "title": "環境課",
     "url": "facilities/kankyoka.html",
@@ -558,5 +563,21 @@
     "title": "ピコぬ市指定・非物品系特産品および無形文化財等一覧",
     "url": "about/hibussitsu-tokusanhin.html",
     "category": "施設案内"
+  }
+    ,
+  {
+    "title": "組織一覧",
+    "url": "about/soshiki-ichiran.html",
+    "category": "市の概要"
+  },
+  {
+    "title": "個人情報保護方針",
+    "url": "privacy.html",
+    "category": "その他"
+  },
+  {
+    "title": "サイトのご利用について",
+    "url": "terms.html",
+    "category": "その他"
   }
 ]
