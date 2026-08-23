@@ -9,6 +9,14 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-08-23（3）
+---
+### 変更
+- `facilities/chiiki-shigen-saiiyou.html`・`ikimono-kyosei-teien.html`・`neo-taihi-box.html`・`niwa-zukuri-josei.html`・`nuka.html`・`pio-card.html`・`ryokka-suishin.html`・`usui-junkan-taisaku.html`・`kurashi-junkan-ka.html`:サイドバーの「この課の制度・事業」ブロックを廃止し、「関連情報」に統合。あわせて各ページ下部の「前へ/次へ」「課トップへ戻る」ナビゲーションボタンを削除
+- `facilities/kurashi-junkan-ka.html`:統合時に判明した抜け(雨水循環対策・緑化推進制度・ぬか資源係の3件)を関連情報に追加
+- `facilities/niwa-zukuri-josei.html`:あわせて、サイドバー内で壊れていた`<ul>`の入れ子構造を修正
+---
+
 ## 2026-08-23（2）
 ---
 ### 追加
