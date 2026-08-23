@@ -57,6 +57,45 @@
       color: var(--color-text-sub, #767676);
       font-size: .85em;
     }
+
+    .archive-row {
+      display: flex;
+      align-items: center;
+      gap: .8em;
+      padding: .8em 0;
+      border-bottom: 1px solid var(--color-border, #d5dbe0);
+      cursor: pointer;
+    }
+
+    .archive-row .diary-date {
+      color: var(--color-text-sub, #767676);
+      font-size: .85rem;
+      white-space: nowrap;
+    }
+
+    .archive-row .diary-title {
+      flex: 1 1 auto;
+    }
+
+    .archive-row .archive-toggle {
+      font-size: .85rem;
+      color: var(--color-primary, #2b5c8a);
+      white-space: nowrap;
+    }
+
+    .archive-body-wrap {
+      display: none;
+      padding: 0 0 1.2em;
+      border-bottom: 1px solid var(--color-border, #d5dbe0);
+    }
+
+    .archive-body-wrap.open {
+      display: block;
+    }
+
+    .archive-row.open .archive-toggle::after {
+      content: "";
+    }
   </style>
 </head>
 
@@ -196,21 +235,35 @@
           listEl.innerHTML = "<p>該当する作品がありません。</p>";
           return;
         }
-        listEl.innerHTML = entries.map(function (e) {
+        listEl.innerHTML = entries.map(function (e, i) {
           var cat = e.category || "外来シリーズ";
           var noteLink = e.note_url
             ? '<p class="diary-date"><a href="' + escapeHtml(e.note_url) + '" target="_blank" rel="noopener">note版を読む &gt;</a></p>'
             : "";
           return (
-            '<div class="diary-entry">' +
+            '<div class="archive-row" data-index="' + i + '">' +
             '<span class="archive-category-badge">' + escapeHtml(cat) + '</span>' +
             (e.date ? '<span class="diary-date">' + escapeHtml(e.date) + '</span>' : "") +
             '<div class="diary-title">' + escapeHtml(e.title) + '</div>' +
+            '<span class="archive-toggle">読む &gt;</span>' +
+            '</div>' +
+            '<div class="archive-body-wrap" data-index="' + i + '">' +
             '<div class="diary-body">' + escapeHtml(e.body) + '</div>' +
             noteLink +
             '</div>'
           );
         }).join("");
+
+        Array.prototype.forEach.call(listEl.querySelectorAll(".archive-row"), function (row) {
+          row.addEventListener("click", function () {
+            var idx = row.getAttribute("data-index");
+            var body = listEl.querySelector('.archive-body-wrap[data-index="' + idx + '"]');
+            var isOpen = body.classList.contains("open");
+            body.classList.toggle("open", !isOpen);
+            row.classList.toggle("open", !isOpen);
+            row.querySelector(".archive-toggle").textContent = isOpen ? "読む >" : "閉じる ▲";
+          });
+        });
       }
 
       fetch("../data/gairai-archive.json")
