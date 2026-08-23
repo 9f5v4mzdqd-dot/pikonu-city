@@ -109,7 +109,7 @@
       '<ul class="utility-links">' +
       '<li><a href="' + BASE + 'about/sitemap.html">サイトマップ</a></li>' +
       '<li><a href="' + BASE + 'about/faq.html">よくある質問</a></li>' +
-      '<li><a href="' + BASE + 'index.html">English</a></li>' +
+      '<li><a href="' + BASE + 'english.html">English</a></li>' +
       '<li><a href="' + BASE + 'about/soshiki-ichiran.html">組織一覧</a></li>' +
       "</ul>" +
       '<div class="a11y-tools">' +
