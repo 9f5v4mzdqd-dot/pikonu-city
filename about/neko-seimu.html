@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>本日の猫政務ジェネレーター | 市の概要 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬ市内の猫が、本日どのような政務を行ったのかを記録・生成するジェネレーターです。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .nz-box {
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      background: var(--color-bg-alt);
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .nz-btn {
+      padding: 14px 32px;
+      font-size: 1.05rem;
+    }
+
+    .nz-result {
+      display: none;
+      border: 2px solid var(--color-primary);
+      border-radius: 4px;
+      background: #fdfbf7;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .nz-result.show {
+      display: block;
+    }
+
+    .nz-result-label {
+      font-size: .85rem;
+      color: var(--color-text-sub);
+      letter-spacing: .05em;
+      margin: 0 0 10px;
+      text-align: center;
+    }
+
+    .nz-log {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: .95rem;
+      line-height: 1.9;
+    }
+
+    .nz-log li {
+      display: flex;
+      gap: 1em;
+      border-bottom: 1px dashed var(--color-border);
+      padding: .3em 0;
+    }
+
+    .nz-log li:last-child {
+      border-bottom: none;
+    }
+
+    .nz-log .nz-time {
+      color: var(--color-text-sub);
+      font-family: 'Courier New', monospace;
+      flex-shrink: 0;
+      width: 4em;
+    }
+
+    .nz-final {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-sub);
+      font-size: .9rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <h1>本日の猫政務ジェネレーター</h1>
+        <p class="lead">猫は本日も、市政に関与しています。</p>
+      </div>
+    </div>
+
+    <div class="content-layout">
+      <div class="main-content">
+        <p>
+          ピコぬ市内の猫が、本日どのような政務を行ったのかを記録します。
+        </p>
+        <p>
+          猫本人からの報告をもとにしたものではありません。また、政務の成果については確認できません。
+        </p>
+
+        <div class="nz-box">
+          <button type="button" class="btn nz-btn" id="nzDrawBtn">本日の猫政務を生成する</button>
+        </div>
+
+        <div class="nz-result" id="nzResult">
+          <p class="nz-result-label">本日の猫政務</p>
+          <ul class="nz-log" id="nzLog"></ul>
+          <p class="nz-final" id="nzFinal"></p>
+        </div>
+
+        <div class="info-box">
+          <p style="margin:0 0 4px;"><strong>本日の政務は以上です。</strong></p>
+          <p style="margin:0; font-size:.9rem;">
+            ※猫の判断によって政務内容が変更される場合があります。<br>
+            ※政務の成果については確認できません。
+          </p>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="neko-game.html">宝くじと猫と、世界経済の終焉</a></li>
+            <li><a href="mayoigo.html">何を探しに来たのかわからない方へ</a></li>
+            <li><a href="../facilities/shiyakusho.html">市役所</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>window.PAGE_META = {nav: "gaiyou", breadcrumb: [{label: "市の概要", href: "gaiyou.html"}, {label: "本日の猫政務ジェネレーター"}]};</script>
+  <script src="../js/common.js"></script>
+  <script>
+    (function () {
+      var drawBtn = document.getElementById("nzDrawBtn");
+      var resultEl = document.getElementById("nzResult");
+      var logEl = document.getElementById("nzLog");
+      var finalEl = document.getElementById("nzFinal");
+
+      var TIMES = [
+        "08:17", "09:12", "10:43", "11:03", "12:47",
+        "13:26", "14:22", "15:01", "16:38", "17:14"
+      ];
+
+      var TASKS = [
+        "市役所周辺を巡回",
+        "市役所玄関前で立ち止まる",
+        "自動ドアの動作を確認",
+        "ベンチの温度を確認",
+        "市役所玄関前で警備",
+        "窓から外を確認",
+        "市民を遠くから監視",
+        "鳥類との意見交換",
+        "市役所食堂付近を巡回",
+        "職員の椅子を占拠",
+        "職員に餌を要求",
+        "職員からのおやつを拒否",
+        "市内の植え込みを確認",
+        "路地裏を巡回",
+        "何かを見つめる",
+        "市長室前にセミを配置",
+        "特に何もせず待機",
+        "毛づくろい",
+        "昼寝",
+        "もう一度昼寝",
+        "特に理由なく走る",
+        "猫同士で集会",
+        "市政について考えているように見える",
+        "市政について考えていない可能性があります",
+        "鳥を見失う",
+        "自動車の下で休憩",
+        "帰宅"
+      ];
+
+      var FINALS = [
+        "特に何もせず終了",
+        "本日の政務を終了",
+        "明日の政務に備えて休憩",
+        "市政への貢献度は確認できませんでした",
+        "引き続き市内に滞在する予定です",
+        "帰宅したものと思われます",
+        "猫本人からのコメントはありません"
+      ];
+
+      function shuffle(arr) {
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+        }
+        return a;
+      }
+
+      function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      function draw() {
+        var count = 4 + Math.floor(Math.random() * 3); // 4〜6件
+        var times = shuffle(TIMES).slice(0, count).sort();
+        var tasks = shuffle(TASKS).slice(0, count);
+
+        logEl.innerHTML = times.map(function (t, i) {
+          return '<li><span class="nz-time">' + t + '</span><span>' + tasks[i] + '</span></li>';
+        }).join("");
+
+        finalEl.textContent = pick(FINALS);
+
+        resultEl.classList.add("show");
+        drawBtn.textContent = "もう一度生成する";
+      }
+
+      drawBtn.addEventListener("click", draw);
+    })();
+  </script>
+</body>
+
+</html>
