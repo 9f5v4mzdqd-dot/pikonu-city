@@ -9,6 +9,18 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-08-24（2）
+---
+### 追加
+- `about/gendaibyo-soudan-game.html`:「現代病相談窓口記録ファイル」ページを新規作成し、`game/001-elevator.html`・`game/002-udon.html`(シナリオゲーム2本)への導線を設置
+- `game/001-elevator.html`・`game/002-udon.html`:選択肢・決定ボタン押下時にWeb Audio APIで生成するピコッ音(SE)を追加。開始・終了画面に「現代病相談窓口記録ファイルに戻る」リンクを追加
+### 変更
+- `index.html`:「暮らしの場面から探す」と「お問い合わせ」の間に、`mayoigo.html`への案内カードを追加
+- `about/sitemap.html`:`mayoigo.html`・`gendaibyo-soudan-game.html`を追加
+- `data/search-index.json`:`gendaibyo-soudan-game.html`を追加。あわせて実在しない`about/gendaibyo-db.html`の古い参照を削除(現代病データベースは`facilities/`へ移設済みのため)
+- `about/gendaibyo-uranai.html`・`about/gendaibyo-soudan-game.html`:カテゴリ分類を「市政情報」から「市の概要」に統一(他のミニゲームと同じ分類に揃えるため)
+- `about/fuyoufukyu-uranai.html`:`mayoigo.html`のジェネレーター一覧にリンクを追加
+---
 ## 2026-08-24（1）
 ---
 ### 追加
