@@ -321,6 +321,25 @@
 </div>
 
 <script>
+        let audioCtx = null;
+        function playPikoSound(freq) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'square';
+                osc.frequency.value = freq || 880;
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.12);
+            } catch (e) { /* 音が鳴らせない環境では何もしない */ }
+        }
+
     const scenario = {
         start: [
             { speaker: "ピコぬ市役所 現代病相談窓口", text: "ここはピコぬ市役所の「現代病相談窓口」だぬ。\n今日もAIマスコットのピコぬくんがパイプ椅子でぼんやり待機しているぬ。" },
@@ -410,6 +429,7 @@
     const edScreen = document.getElementById('ed-screen');
 
     function startGame() {
+        playPikoSound(1046);
         startScreen.style.display = 'none';
         edScreen.style.display = 'none';
         loadScene('start');
@@ -485,6 +505,7 @@
             btn.className = 'choice-btn';
             btn.textContent = c.text;
             btn.onclick = () => {
+                playPikoSound(880);
                 choiceLayer.style.display = 'none';
                 loadScene(c.next);
             };
