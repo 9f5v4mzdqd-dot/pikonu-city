@@ -109,7 +109,7 @@
     "url": "facilities/kiroku-seisaku-ka.html",
     "category": "施設案内"
   },
-    {
+  {
     "title": "連結技術推進課",
     "url": "facilities/renketsu-suishin-ka.html",
     "category": "施設案内"
@@ -204,7 +204,7 @@
     "url": "facilities/toshokan.html",
     "category": "施設案内"
   },
-   {
+  {
     "title": "中央公民館",
     "url": "facilities/kominkan.html",
     "category": "施設案内"
@@ -234,7 +234,7 @@
     "url": "facilities/goods.html",
     "category": "施設案内"
   },
-    {
+  {
     "title": "現代病データベース",
     "url": "facilities/gendaibyo-db.html",
     "category": "施設案内"
@@ -558,14 +558,13 @@
     "title": "ピコぬ市指定・非物品系特産品および無形文化財等一覧",
     "url": "about/hibussitsu-tokusanhin.html",
     "category": "施設案内"
-  }
-    ,
+  },
   {
     "title": "組織一覧",
     "url": "about/soshiki-ichiran.html",
     "category": "市の概要"
   },
-    {
+  {
     "title": "English",
     "url": "english.html",
     "category": "その他"
@@ -579,5 +578,10 @@
     "title": "サイトのご利用について",
     "url": "terms.html",
     "category": "その他"
+  },
+  {
+    "title": "本日の猫政務ジェネレーター",
+    "url": "about/neko-seimu.html",
+    "category": "市の概要"
   }
 ]
