@@ -338,7 +338,7 @@
   var searchIndexPromise = null;
 
   function loadNewsIndex() {
-    return fetch(BASE + "news/index.html")
+    return fetch(BASE + "news/index.html?v=" + Date.now())
       .then(function (res) { return res.text(); })
       .then(function (html) {
         var parser = new DOMParser();
@@ -366,7 +366,7 @@
     if (searchIndexCache) return Promise.resolve(searchIndexCache);
     if (searchIndexPromise) return searchIndexPromise;
     searchIndexPromise = Promise.all([
-      fetch(BASE + "data/search-index.json")
+      fetch(BASE + "data/search-index.json?v=" + Date.now())
         .then(function (res) { return res.json(); })
         .catch(function () { return []; }),
       loadNewsIndex()
