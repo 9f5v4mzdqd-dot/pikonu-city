@@ -18,6 +18,17 @@
 - `news/index.html`:上記2本のお知らせ記事を一覧に追加
 - `about/sitemap.html`:「お知らせ」セクションに上記2本のリンクを追加
 ---
+
+## 2026-08-24（3）
+---
+### 追加
+- `facilities/syokudo.html`:「市役所食堂」ページを新規作成。メニュー・営業時間・食券・庁舎内配達についてご案内
+- `game/003-bench.html`・`game/004-hachinosu.html`・`game/005-shindoihi.html`:現代病相談窓口記録ファイルのシナリオゲームを3本追加(計5本に)
+### 変更
+- `about/gendaibyo-soudan-game.html`:症例一覧にNo.003〜005を追加。「近日公開」の枠をNo.006へ更新
+- `js/common.js`:共通フッターのバナー枠に「現代病相談窓口記録ファイル」を追加
+---
+---
 ## 2026-08-24（2）
 ---
 ### 追加
