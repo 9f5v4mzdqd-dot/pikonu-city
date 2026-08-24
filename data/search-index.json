@@ -541,7 +541,12 @@
   },
   {
     "title": "今日のラッキー現代病占い",
-    "url": "about/gendaibyo-uranai.html",
+        "url": "about/gendaibyo-uranai.html",
+    "category": "市政情報"
+  },
+  {
+    "title": "現代病相談窓口記録ファイル",
+    "url": "about/gendaibyo-soudan-game.html",
     "category": "市政情報"
   },
   {
