@@ -102,7 +102,7 @@
       font-weight: bold;
       white-space: nowrap;
       display: none;
-       z-index: 10;
+      z-index: 10;
     }
 
     #employee.show #employee-bubble {
@@ -243,6 +243,7 @@
       isGameOver = true;
       clearTimeout(employeeTimer);
       playBustSound();
+      document.getElementById('employee-bubble').style.display = 'block';
 
       let msg = "";
       if (negiCount >= 300) {
