@@ -488,3 +488,115 @@
                 desc: "日本から「円」が消えたと確信したおじさん。\nしかし150ピコピコでラーメンを探した結果、物価高の現実だけが残ったぬ。"
             }
         };
+
+        let currentScene = [];
+        let sceneIndex = 0;
+        let isTyping = false;
+        let typeTimer = null;
+
+        const speakerEl = document.getElementById('speaker-name');
+        const textEl = document.getElementById('text-body');
+        const choiceLayer = document.getElementById('choice-layer');
+        const charaPiconu = document.getElementById('chara-piconu');
+        const charaOjisan = document.getElementById('chara-ojisan');
+        const startScreen = document.getElementById('start-screen');
+        const edScreen = document.getElementById('ed-screen');
+
+        function startGame() {
+            playPikoSound(1046);
+            startScreen.style.display = 'none';
+            edScreen.style.display = 'none';
+            loadScene('start');
+        }
+
+        function loadScene(sceneKey) {
+            currentScene = scenario[sceneKey];
+            sceneIndex = 0;
+            showNextLine();
+        }
+
+        function showNextLine() {
+            if (sceneIndex >= currentScene.length) return;
+
+            const data = currentScene[sceneIndex];
+
+            if (data.type === "choice") {
+                showChoices(data.choices);
+                return;
+            }
+
+            if (data.type === "end") {
+                showEnding(data.ending);
+                return;
+            }
+
+            speakerEl.textContent = data.speaker;
+            updateChara(data.chara);
+
+            const fullText = data.text;
+            textEl.textContent = "";
+            isTyping = true;
+            let charIndex = 0;
+
+            clearInterval(typeTimer);
+            typeTimer = setInterval(() => {
+                textEl.textContent += fullText[charIndex];
+                charIndex++;
+                if (charIndex >= fullText.length) {
+                    clearInterval(typeTimer);
+                    isTyping = false;
+                }
+            }, 32);
+        }
+
+        function advanceText() {
+            if (choiceLayer.style.display === 'flex') return;
+
+            if (isTyping) {
+                clearInterval(typeTimer);
+                textEl.textContent = currentScene[sceneIndex].text;
+                isTyping = false;
+            } else {
+                sceneIndex++;
+                if (sceneIndex < currentScene.length) {
+                    showNextLine();
+                }
+            }
+        }
+
+        function updateChara(charaKey) {
+            charaPiconu.classList.remove('active');
+            charaOjisan.classList.remove('active');
+
+            if (charaKey === 'piconu') charaPiconu.classList.add('active');
+            if (charaKey === 'ojisan') charaOjisan.classList.add('active');
+        }
+
+        function showChoices(choices) {
+            choiceLayer.innerHTML = '';
+            choices.forEach(c => {
+                const btn = document.createElement('div');
+                btn.className = 'choice-btn';
+                btn.textContent = c.text;
+                btn.onclick = () => {
+                    playPikoSound(880);
+                    choiceLayer.style.display = 'none';
+                    loadScene(c.next);
+                };
+                choiceLayer.appendChild(btn);
+            });
+            choiceLayer.style.display = 'flex';
+        }
+
+        function showEnding(edKey) {
+            const ed = endings[edKey];
+            document.getElementById('ed-badge').textContent = ed.badge;
+            document.getElementById('ed-title').textContent = ed.title;
+            document.getElementById('ed-desc').textContent = ed.desc;
+            edScreen.style.display = 'flex';
+        }
+    </script>
+
+</body>
+
+</html>
