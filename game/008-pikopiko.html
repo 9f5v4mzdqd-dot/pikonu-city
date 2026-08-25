@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ピコぬ市 現代病相談窓口記録 No.008「ピコピコの話」</title>
+
+    <!-- ピコぬくん（オレンジ・帽子付き）ファビコン -->
+    <link rel="icon"
+        href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><g fill='%23ff9800'><polygon points='128,12 168,48 88,48'/><circle cx='128' cy='36' r='14' fill='%23ffffff'/><path d='M 128 40 A 96 96 0 0 0 32 136 L 32 160 A 96 96 0 0 0 224 160 L 224 136 A 96 96 0 0 0 128 40 Z'/></g><path d='M 128 58 A 78 78 0 0 0 50 136 L 50 160 A 78 78 0 0 0 206 160 L 206 136 A 78 78 0 0 0 128 58 Z' fill='%23fff8e1'/><circle cx='92' cy='120' r='16' fill='%233e2723'/><circle cx='164' cy='120' r='16' fill='%233e2723'/><path d='M 98 145 Q 128 168 158 145' stroke='%233e2723' stroke-width='9' stroke-linecap='round' fill='none'/><rect x='60' y='188' width='136' height='52' rx='14' fill='%2337474f'/><rect x='110' y='206' width='36' height='16' rx='6' fill='%2300e676'/></svg>"
+        type="image/svg+xml">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: #0f141d;
+            font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background: #2b3a4a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 市役所の相談室風背景 */
+        #bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                /* 机のライン */
+                linear-gradient(to bottom, transparent 380px, #b0bec5 380px, #90a4ae 390px, #78909c 420px, transparent 420px),
+                /* パーテーション線 */
+                linear-gradient(to right, transparent 395px, #b0bec5 395px, #b0bec5 405px, transparent 405px),
+                /* 壁と床 */
+                linear-gradient(180deg, #e0e0e0 0%, #cfd8dc 65%, #78909c 65%, #546e7a 100%);
+            z-index: 1;
+        }
+
+        /* 相談室の看板プレート */
+        #bg-plate {
+            position: absolute;
+            top: 25px;
+            left: 35px;
+            background: #ffffff;
+            border: 2px solid #00897b;
+            border-left: 10px solid #00897b;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-weight: bold;
+            color: #263238;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+        }
+
+        #chara-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding-bottom: 160px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .chara-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.4s ease;
+            opacity: 0.35;
+            transform: translateY(10px) scale(0.95);
+        }
+
+        .chara-box.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .chara-svg {
+            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.3));
+        }
+
+        #ui-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            padding: 16px 24px;
+            z-index: 3;
+            background: rgba(18, 25, 36, 0.92);
+            border-top: 3px solid #00897b;
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #speaker-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #80cbc4;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        #text-body {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #eceff1;
+            white-space: pre-wrap;
+            min-height: 4.8em;
+        }
+
+        .click-indicator {
+            align-self: flex-end;
+            font-size: 0.85rem;
+            color: #80cbc4;
+            animation: blink 1.2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        #choice-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 24, 0.8);
+            z-index: 4;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            backdrop-filter: blur(2px);
+        }
+
+        .choice-btn {
+            width: 75%;
+            max-width: 520px;
+            padding: 16px 24px;
+            background: rgba(38, 50, 56, 0.95);
+            border: 2px solid #00897b;
+            border-radius: 30px;
+            color: #eceff1;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .choice-btn:hover {
+            background: #00897b;
+            color: #ffffff;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 16px rgba(0, 137, 123, 0.4);
+        }
+
+        .overlay-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #121924;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .title-text {
+            font-size: 1.6rem;
+            color: #80cbc4;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .ed-badge {
+            display: inline-block;
+            background: #00897b;
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .ed-title {
+            font-size: 1.8rem;
+            color: #ffe082;
+            margin-bottom: 20px;
+        }
+
+        .ed-desc {
+            font-size: 1.05rem;
+            color: #eceff1;
+            line-height: 1.9;
+            max-width: 580px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-radius: 8px;
+            text-align: left;
+            white-space: pre-wrap;
+            border-left: 3px solid #80cbc4;
+        }
+
+        .start-btn {
+            padding: 14px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: #00897b;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: 0.2s;
+        }
+
+        .start-btn:hover {
+            background: #00695c;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="game-container">
+        <div id="bg-layer"></div>
+        <div id="bg-plate">ピコぬ市 現代病相談窓口記録 No.008</div>
+
+        <div id="chara-layer">
+            <!-- ピコぬくん -->
+            <div id="chara-piconu" class="chara-box">
+                <svg class="chara-svg" width="160" height="200" viewBox="0 0 256 256">
+                    <g fill="#ff9800">
+                        <polygon points="128,12 168,48 88,48" />
+                        <circle cx="128" cy="36" r="14" fill="#ffffff" />
+                        <path
+                            d="M 128 40 A 96 96 0 0 0 32 136 L 32 160 A 96 96 0 0 0 224 160 L 224 136 A 96 96 0 0 0 128 40 Z" />
+                    </g>
+                    <path
+                        d="M 128 58 A 78 78 0 0 0 50 136 L 50 160 A 78 78 0 0 0 206 160 L 206 136 A 78 78 0 0 0 128 58 Z"
+                        fill="#fff8e1" />
+                    <circle cx="92" cy="120" r="16" fill="#3e2723" />
+                    <circle cx="164" cy="120" r="16" fill="#3e2723" />
+                    <path d="M 98 145 Q 128 168 158 145" stroke="#3e2723" stroke-width="9" stroke-linecap="round"
+                        fill="none" />
+                    <rect x="60" y="188" width="136" height="52" rx="14" fill="#37474f" />
+                    <rect x="110" y="206" width="36" height="16" rx="6" fill="#00e676" />
+                </svg>
+            </div>
+
+            <!-- おじさん -->
+            <div id="chara-ojisan" class="chara-box">
+                <svg class="chara-svg" width="180" height="250" viewBox="0 0 200 280">
+                    <path d="M 40 280 L 70 160 L 130 160 L 160 280 Z" fill="#37474f" />
+                    <polygon points="90,160 110,160 105,210 100,220 95,210" fill="#78909c" />
+                    <polygon points="95,160 105,160 100,190" fill="#b0bec5" />
+                    <ellipse cx="100" cy="110" rx="45" ry="50" fill="#ffecb3" />
+                    <path d="M 55 100 C 55 50, 145 50, 145 100 C 135 70, 65 70, 55 100 Z" fill="#546e7a" />
+                    <rect x="68" y="98" width="26" height="16" rx="3" stroke="#263238" stroke-width="3" fill="none" />
+                    <rect x="106" y="98" width="26" height="16" rx="3" stroke="#263238" stroke-width="3" fill="none" />
+                    <line x1="94" y1="106" x2="106" y2="106" stroke="#263238" stroke-width="3" />
+                    <path d="M 70 90 Q 80 88 90 92" stroke="#37474f" stroke-width="3" fill="none" />
+                    <path d="M 110 92 Q 120 88 130 90" stroke="#37474f" stroke-width="3" fill="none" />
+                    <path d="M 90 135 Q 100 138 110 135" stroke="#5d4037" stroke-width="3" fill="none" />
+                </svg>
+            </div>
+        </div>
+
+        <div id="ui-layer" onclick="advanceText()">
+            <div id="speaker-name"></div>
+            <div id="text-body"></div>
+            <div class="click-indicator">▼ クリックで進むぬ</div>
+        </div>
+
+        <div id="choice-layer"></div>
+
+        <div id="start-screen" class="overlay-screen">
+            <div class="title-text">ピコぬ市 現代病相談窓口記録 No.008</div>
+            <div class="subtitle-text">「ピコピコの話」</div>
+            <div style="margin-bottom: 25px;">
+                <svg width="100" height="100" viewBox="0 0 256 256">
+                    <g fill="#ff9800">
+                        <polygon points="128,12 168,48 88,48" />
+                        <circle cx="128" cy="36" r="14" fill="#ffffff" />
+                        <path
+                            d="M 128 40 A 96 96 0 0 0 32 136 L 32 160 A 96 96 0 0 0 224 160 L 224 136 A 96 96 0 0 0 128 40 Z" />
+                    </g>
+                    <path
+                        d="M 128 58 A 78 78 0 0 0 50 136 L 50 160 A 78 78 0 0 0 206 160 L 206 136 A 78 78 0 0 0 128 58 Z"
+                        fill="#fff8e1" />
+                    <circle cx="92" cy="120" r="16" fill="#3e2723" />
+                    <circle cx="164" cy="120" r="16" fill="#3e2723" />
+                    <path d="M 98 145 Q 128 168 158 145" stroke="#3e2723" stroke-width="9" fill="none" />
+                    <rect x="60" y="188" width="136" height="52" rx="14" fill="#37474f" />
+                    <rect x="110" y="206" width="36" height="16" rx="6" fill="#00e676" />
+                </svg>
+            </div>
+            <button class="start-btn" onclick="startGame()">記録を閲覧（プレイ）するぬ！</button>
+            <div style="margin-top: 14px;">
+                <a class="start-btn" href="../about/gendaibyo-soudan-game.html"
+                    style="text-decoration:none; display:inline-block;">現代病相談窓口記録ファイルに戻る</a>
+            </div>
+        </div>
+
+        <div id="ed-screen" class="overlay-screen" style="display: none;">
+            <div class="ed-badge" id="ed-badge">ENDING A</div>
+            <div class="ed-title" id="ed-title">タイトル</div>
+            <div class="ed-desc" id="ed-desc">説明文</div>
+            <button class="start-btn" onclick="startGame()">もう一度記録を見るぬ！</button>
+            <div style="margin-top: 14px;">
+                <a class="start-btn" href="../about/gendaibyo-soudan-game.html"
+                    style="text-decoration:none; display:inline-block;">現代病相談窓口記録ファイルに戻る</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let audioCtx = null;
+        function playPikoSound(freq) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'square';
+                osc.frequency.value = freq || 880;
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.12);
+            } catch (e) { /* 音が鳴らせない環境では何もしない */}
+        }
+
+        const scenario = {
+            start: [
+                {speaker: "ピコぬ市役所 現代病相談窓口", text: "ここはピコぬ市役所の「現代病相談窓口」だぬ。\n今日もAIマスコットのピコぬくんが、パイプ椅子でぼんやり待機しているぬ。"},
+
+                {speaker: "おじさん", text: "どうも。\nあれからかかりつけの先生の勧めで、語尾に「ピコピコ」をつけて生活してみたんですよ。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "語尾にピコピコ……！？\nそれはまた、ずいぶん思い切った生活改善だぬ……！", chara: "piconu"},
+
+                {
+                    speaker: "おじさん", text:
+                        "妻と久しぶりに会った時もね、2人でご飯に行ったんです。\n「あなた何にするの？」って聞かれたので、\n「カレーでピコピコ。」\n「あなたコーヒーでもどう？」\n「もらうよ。ピコピコ。」\n「あなたバカにしてるの？」\n「そんなわけない、ピコピコ。」\nなんて返してたら、なぜか怒って妻が帰っちゃいましてね。",
+                    chara: "ojisan"
+                },
+
+                {speaker: "ピコぬくん", text: "それは……語尾だけが原因なのかぬ！？\n先生の言うとおりにしたのに、奥さんが帰っちゃったぬ……！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "仕方がないから1人でカレーを食べ終えて、お会計に行ったんです。\nレジで「850円です」って言われたんですよ。", chara: "ojisan"},
+
+                {speaker: "おじさん", text: "だから財布から千円札を出して、お釣りをくれる時に店員さんがね、\n「……150ピコピコです」って。\n当たり前みたいな顔して言うんですよ。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "150ピコピコ！？\nとうとう店員さんまで語尾にピコピコをつけ始めたぬ！？", chara: "piconu"},
+
+                {speaker: "おじさん", text: "だから私も、「ごちそうさま。ピコピコ」って言って、とりあえず店を出てきたんです。", chara: "ojisan"},
+
+                {
+                    type: "choice",
+                    choices: [
+                        {text: "「150ピコピコ」について詳しく聞いてみるぬ", next: "money"},
+                        {text: "「警察に職質された」話を聞いてみるぬ", next: "police"},
+                        {text: "「日本が乗っ取られた」話を聞いてみるぬ", next: "japan"}
+                    ]
+                }
+            ],
+
+            money: [
+                {speaker: "おじさん", text: "駅前のロータリーのベンチに座ってね、手のひらの小銭をじっと見つめてたんです。", chara: "ojisan"},
+                {speaker: "おじさん", text: "……でもねえ。\n考えてもみてください皆さん。\n150ピコピコってなんなんですか？\n日本のお金は円ですよね。ねえ、そうでしょう？", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "う、うん……日本のお金は円だぬ……！\nでも今の話、ちょっと怖くなってきたぬ……。", chara: "piconu"},
+                {speaker: "おじさん", text: "何ですかピコピコって。\n人をバカにしてる。よりによってピコピコなどと。\nナンセンスですよ！！", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "そこまで怒ることなのかぬ！？", chara: "piconu"},
+                {speaker: "おじさん", text: "まあ、怒っても仕方ないんですけどね。\n150ピコピコは、手のひらに残りました。", chara: "ojisan"},
+                {speaker: "おじさん", text: "……そういうことで、今日は帰ります。\nありがとうございました。", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "お疲れ様でしたぬ。\nこれ、食堂のうどんの食券だぬ。\nあったかいうどんが、絶品ですぬー！", chara: "piconu"},
+                {speaker: "おじさん", text: "……150ピコピコより、うどんのほうが信用できますね……ピコピコ。", chara: "ojisan"},
+                {type: "end", ending: "ED_A"}
+            ],
+
+            police: [
+                {speaker: "おじさん", text: "ベンチで1人で怒ってたら、警察に職質をされましてね。\nああ、いいんですよ。慣れてますから。", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "何に慣れてるんだぬ……！？", chara: "piconu"},
+                {speaker: "おじさん", text: "だから警察にも聞いてみましたよ。\n手のひらの小銭を見せて、「これ、いくらだと思います？」って。", chara: "ojisan"},
+                {speaker: "おじさん", text: "そしたら、その警察官まで、\n「……150ピコピコですが」って。\n真面目な顔して言ってくるもんですからね。", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "警察官までピコピコを認識してるぬー！？", chara: "piconu"},
+                {speaker: "おじさん", text: "私、何が何だかわからなくなって。\n慌てて辺りを見回したんです。", chara: "ojisan"},
+                {speaker: "おじさん", text: "……そういうことで、今日は帰ります。\nありがとうございました。", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "お疲れ様でしたぬ。\nこれ、食堂のうどんの食券だぬ。\nあったかいうどんが、絶品ですぬー！", chara: "piconu"},
+                {speaker: "おじさん", text: "……警察もピコピコなら、うどんもピコピコなんでしょうかね……。", chara: "ojisan"},
+                {type: "end", ending: "ED_B"}
+            ],
+
+            japan: [
+                {speaker: "おじさん", text: "辺りを見回したら、そこにある自販機にも「120ピコピコ」って書いてありました。", chara: "ojisan"},
+                {speaker: "おじさん", text: "さっきのカレー屋の、ポケットの中のレシートにも「850ピコピコ」って。\nしばらく立ち尽くしてね。", chara: "ojisan"},
+                {speaker: "おじさん", text: "ああ、日本が乗っ取られたんだろうなって。\nだから日本の「円」がピコピコになったんだ。\nそうか、仕方ないよなって。", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "話がものすごいところまで行ってるぬ……！", chara: "piconu"},
+                {speaker: "おじさん", text: "私も年甲斐もなく、悔しくて泣いてしまってね。", chara: "ojisan"},
+                {speaker: "おじさん", text: "でもしばらくすると、\nあれ？\nそもそも、本当に「円」なんてあったのかなって。\n思えてきましてね。", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "今度は円そのものを疑い始めたぬ……！？", chara: "piconu"},
+                {speaker: "おじさん", text: "だんだん日も暮れて、腹がまた減ってきまして。\nラーメンでも食べようかな、と思ったんですよ。", chara: "ojisan"},
+                {speaker: "おじさん", text: "150円、じゃなかった。\n150ピコピコで食べられる店って、ここら辺にあるかなって検索したんですけどね。", chara: "ojisan"},
+                {speaker: "おじさん", text: "ええ、なかったです。\n物価高なんでしょうね。\n自販機でジュースでも買います。", chara: "ojisan"},
+                {speaker: "ピコぬくん", text: "最後は現実的になったぬ……！", chara: "piconu"},
+                {speaker: "ピコぬくん", text: "お疲れ様でしたぬ。\nこれ、食堂のうどんの食券だぬ。\nあったかいうどんが、絶品ですぬー！", chara: "piconu"},
+                {speaker: "おじさん", text: "……うどん一杯くらいなら、ピコピコでもいいんですけどね……。", chara: "ojisan"},
+                {type: "end", ending: "ED_C"}
+            ]
+        };
+
+        const endings = {
+            ED_A: {
+                badge: "ENDING A",
+                title: "150ピコピコの謎",
+                desc: "最後まで「ピコピコ」が何なのか納得できなかったおじさん。\nそれでも、うどんのだしはカツオ節が決め手だな、ということだけは確信したぬ。"
+            },
+            ED_B: {
+                badge: "ENDING B",
+                title: "ピコピコ警察",
+                desc: "警察官まで「150ピコピコ」と答えたことで、いよいよ何も信じられなくなったおじさん。\nそれでも無料のうどんの食券のことだけは、信じられる気がしたぬ。"
+            },
+            ED_C: {
+                badge: "ENDING C",
+                title: "円のない世界",
+                desc: "日本から「円」が消えたと確信したおじさん。\nしかし150ピコピコでラーメンを探した結果、物価高の現実だけが残ったぬ。"
+            }
+        };
