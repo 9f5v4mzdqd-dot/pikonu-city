@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ピコぬ市役所食堂：ネギ盛りチャレンジ</title>
+<style>
+  /* 絶妙な平成Webデザイン風スタイリング */
+  body {
+    background-color: #ffffcc;
+    font-family: "MS Pゴシック", "Osaka", sans-serif;
+    text-align: center;
+    color: #333333;
+  }
+  #game-box {
+    width: 320px;
+    height: 380px;
+    border: 3px inset #cccccc;
+    background-color: #ffffff;
+    margin: 10px auto;
+    position: relative;
+    overflow: hidden;
+  }
+  #negi-tower {
+    font-size: 20px;
+    font-weight: bold;
+    color: #008000;
+    line-height: 0.8;
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    word-break: break-all;
+  }
+  #udon {
+    font-size: 40px;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+  }
+  .btn {
+    background-color: #008040;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 2px outset #ffffff;
+    cursor: pointer;
+  }
+  .btn:active {
+    border: 2px inset #ffffff;
+  }
+  #result-msg {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  /* お邪魔キャラ:カタブツ職員 */
+  #employee {
+    position: absolute;
+    top: 6px;
+    right: -90px;
+    width: 80px;
+    height: 80px;
+    transition: right 0.15s ease-out;
+    z-index: 5;
+  }
+  #employee img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  #employee.show {
+    right: 4px;
+  }
+</style>
+</head>
+<body>
+
+<h3>🌸ピコぬ市役所食堂 名物🌸<br>【ネギ盛り限界チャレンジ】</h3>
+<p>「ネギ盛る」ボタンを連打して、丼の上にネギを積み上げよう！<br>（※カタブツ職員に見つかる前に盛るんだぬ！　職員が出ている間はボタンを押すな！）</p>
+
+<div id="game-box">
+  <div id="employee"><img src="../images/game/katabutsu.png" alt="カタブツ職員"></div>
+  <div id="negi-tower"></div>
+  <div id="udon">🍜 (うどん)</div>
+</div>
+
+<button class="btn" onclick="addNegi()">ネギを盛る！</button>
+<button onclick="resetGame()">やり直す</button>
+
+<div id="score">現在のネギ：<span id="count" style="font-size: 24px; color: green;">0</span> グラム</div>
+<div id="result-msg"></div>
+
+<script>
+  let negiCount = 0;
+  let isGameOver = false;
+  let employeeVisible = false;
+  let employeeTimer = null;
+
+  // ---- ファミコン風ピコピコ音(Web Audio APIでその場生成) ----
+  let audioCtx = null;
+  function playPiko(freq, type) {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type || 'square';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.12);
+    } catch (e) { /* 音が鳴らせない環境では何もしない */ }
+  }
+
+  function playBustSound() {
+    // 下がる音を2音連続で(ガクッと崩れる感じ)
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      [440, 220].forEach((f, i) => {
+        setTimeout(() => playPiko(f, 'sawtooth'), i * 120);
+      });
+    } catch (e) { /* noop */ }
+  }
+
+  // ---- お邪魔キャラ:カタブツ職員のランダム出現 ----
+  function scheduleEmployee() {
+    if (isGameOver) return;
+    const delay = 1500 + Math.random() * 2500; // 1.5〜4秒後に出現
+    employeeTimer = setTimeout(showEmployee, delay);
+  }
+
+  function showEmployee() {
+    if (isGameOver) return;
+    employeeVisible = true;
+    document.getElementById('employee').classList.add('show');
+    playPiko(660, 'triangle'); // 出現音(警戒音)
+
+    const visibleDuration = 700 + Math.random() * 500; // 見えている時間
+    employeeTimer = setTimeout(() => {
+      employeeVisible = false;
+      document.getElementById('employee').classList.remove('show');
+      scheduleEmployee(); // 次の出現をまた予約
+    }, visibleDuration);
+  }
+
+  function addNegi() {
+    if (isGameOver) return;
+
+    // 職員が見ている間にボタンを押すと即アウト
+    if (employeeVisible) {
+      gameOver('caught');
+      return;
+    }
+
+    negiCount += 10;
+    document.getElementById('count').innerText = negiCount;
+
+    // 音程はネギの量に応じて少しずつ上がる(緊張感の演出)
+    const freq = 440 + Math.min(negiCount, 400) * 2;
+    playPiko(freq);
+
+    // 画面上に「ネギ」を積み上げていくテキスト演出
+    let tower = document.getElementById('negi-tower');
+    tower.innerHTML += "ネギ！";
+
+    // 150gまでは安全地帯。以降、緩やかにリスクが上昇(500g付近でほぼ確実に崩れる)
+    if (negiCount > 150) {
+      let risk = Math.pow((negiCount - 150) / 350, 1.3);
+      if (Math.random() < risk) {
+        gameOver('collapse');
+      }
+    }
+  }
+
+  function gameOver(reason) {
+    isGameOver = true;
+    clearTimeout(employeeTimer);
+    playBustSound();
+
+    let msg = "";
+    if (reason === 'caught') {
+      msg = "【GAME OVER】<br>「これだから言ったんですよ…！」<br>カタブツ職員に見つかり、ネギを没収されましたぬ……。";
+    } else if (negiCount >= 400) {
+      msg = "【GAME OVER】<br>まさかの大台突破！<br>しかし最後の一振りでうどんの出汁が全滅しましたぬ！";
+    } else {
+      msg = "【GAME OVER】<br>ボチャッ！！<br>ネギの重みでうどんの出汁が全滅しましたぬ！";
+    }
+
+    document.getElementById('result-msg').innerHTML = msg;
+  }
+
+  function resetGame() {
+    negiCount = 0;
+    isGameOver = false;
+    employeeVisible = false;
+    clearTimeout(employeeTimer);
+    document.getElementById('count').innerText = "0";
+    document.getElementById('negi-tower').innerHTML = "";
+    document.getElementById('result-msg').innerHTML = "";
+    document.getElementById('employee').classList.remove('show');
+    scheduleEmployee();
+  }
+
+  // 初回起動時から職員の出現スケジュールを開始
+  scheduleEmployee();
+</script>
+
+<hr style="border: 1px dashed #999999; margin-top: 300px;">
+<p style="font-size: 12px; color: #666666;">
+  ※食堂パートの〇〇さんが夜な夜なこっそり作成したプログラムですぬ。<br>
+  ※このページに関する苦情は広報課（カタブツ職員）まで。
+</p>
+
+</body>
+</html>
