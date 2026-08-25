@@ -80,6 +80,12 @@
   #employee.show {
     right: 4px;
   }
+   @media (max-width: 600px) {
+    #game-box {
+      width: 300px;
+      height: 340px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -221,7 +227,20 @@
   scheduleEmployee();
 </script>
 
-<hr style="border: 1px dashed #999999; margin-top: 300px;">
+<hr style="border: 1px dashed #999999; margin-top: 30px;">
+            <a class="start-btn" href="../about/gendaibyo-soudan-game.html" style="text-decoration:none; display:inline-block;">現代病相談窓口記録ファイルに戻る</a>
+        </div>
+    </div>
+
+    <div id="ed-screen" class="overlay-screen" style="display: none;">
+        <div class="ed-badge" id="ed-badge">ENDING A</div>
+        <div class="ed-title" id="ed-title">タイトル</div>
+        <div class="ed-desc" id="ed-desc">説明文</div>
+        <button class="start-btn" onclick="startGame()">もう一度記録を見るぬ！</button>
+        <div style="margin-top: 14px;">
+            <a class="start-btn" href="../about/gendaibyo-soudan-game.html" style="text-decoration:none; display:inline-block;">現代病相談窓口記録ファイルに戻る</a>
+        </div>
+    </div>
 <p style="font-size: 12px; color: #666666;">
   ※食堂パートの〇〇さんが夜な夜なこっそり作成したプログラムですぬ。<br>
   ※このページに関する苦情は広報課（カタブツ職員）まで。
