@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ピコぬ市 現代病相談窓口記録 No.001「エレベーターの話」</title>
+
+    <!-- ピコぬくん（オレンジ・帽子付き）ファビコン -->
+    <link rel="icon"
+        href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><g fill='%23ff9800'><polygon points='128,12 168,48 88,48'/><circle cx='128' cy='36' r='14' fill='%23ffffff'/><path d='M 128 40 A 96 96 0 0 0 32 136 L 32 160 A 96 96 0 0 0 224 160 L 224 136 A 96 96 0 0 0 128 40 Z'/></g><path d='M 128 58 A 78 78 0 0 0 50 136 L 50 160 A 78 78 0 0 0 206 160 L 206 136 A 78 78 0 0 0 128 58 Z' fill='%23fff8e1'/><circle cx='92' cy='120' r='16' fill='%233e2723'/><circle cx='164' cy='120' r='16' fill='%233e2723'/><path d='M 98 145 Q 128 168 158 145' stroke='%233e2723' stroke-width='9' stroke-linecap='round' fill='none'/><rect x='60' y='188' width='136' height='52' rx='14' fill='%2337474f'/><rect x='110' y='206' width='36' height='16' rx='6' fill='%2300e676'/></svg>"
+        type="image/svg+xml">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: #0f141d;
+            font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background: #2b3a4a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 市役所の相談室風背景 */
+        #bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                /* 机のライン */
+                linear-gradient(to bottom, transparent 380px, #b0bec5 380px, #90a4ae 390px, #78909c 420px, transparent 420px),
+                /* パーテーション線 */
+                linear-gradient(to right, transparent 395px, #b0bec5 395px, #b0bec5 405px, transparent 405px),
+                /* 壁と床 */
+                linear-gradient(180deg, #e0e0e0 0%, #cfd8dc 65%, #78909c 65%, #546e7a 100%);
+            z-index: 1;
+        }
+
+        /* 相談室の看板プレート */
+        #bg-plate {
+            position: absolute;
+            top: 25px;
+            left: 35px;
+            background: #ffffff;
+            border: 2px solid #00897b;
+            border-left: 10px solid #00897b;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-weight: bold;
+            color: #263238;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+        }
+
+        #chara-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding-bottom: 160px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .chara-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.4s ease;
+            opacity: 0.35;
+            transform: translateY(10px) scale(0.95);
+        }
+
+        .chara-box.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .chara-svg {
+            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.3));
+        }
+
+        #ui-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            padding: 16px 24px;
+            z-index: 3;
+            background: rgba(18, 25, 36, 0.92);
+            border-top: 3px solid #00897b;
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #speaker-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #80cbc4;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        #text-body {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #eceff1;
+            white-space: pre-wrap;
+            min-height: 4.8em;
+        }
+
+        .click-indicator {
+            align-self: flex-end;
+            font-size: 0.85rem;
+            color: #80cbc4;
+            animation: blink 1.2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        #choice-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 24, 0.8);
+            z-index: 4;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            backdrop-filter: blur(2px);
+        }
+
+        .choice-btn {
+            width: 75%;
+            max-width: 520px;
+            padding: 16px 24px;
+            background: rgba(38, 50, 56, 0.95);
+            border: 2px solid #00897b;
+            border-radius: 30px;
+            color: #eceff1;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .choice-btn:hover {
+            background: #00897b;
+            color: #ffffff;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 16px rgba(0, 137, 123, 0.4);
+        }
+
+        .overlay-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #121924;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .title-text {
+            font-size: 1.6rem;
+            color: #80cbc4;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .ed-badge {
+            display: inline-block;
+            background: #00897b;
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .ed-title {
+            font-size: 1.8rem;
+            color: #ffe082;
+            margin-bottom: 20px;
+        }
+
+        .ed-desc {
+            font-size: 1.05rem;
+            color: #eceff1;
+            line-height: 1.9;
+            max-width: 580px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-radius: 8px;
+            text-align: left;
+            white-space: pre-wrap;
+            border-left: 3px solid #80cbc4;
+        }
+
+        .start-btn {
+            padding: 14px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: #00897b;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: 0.2s;
+        }
+
+        .start-btn:hover {
+            background: #00695c;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="game-container">
+        <div id="bg-layer"></div>
+        <div id="bg-plate">ピコぬ市 現代病相談窓口記録 No.001</div>
+
+        <div id="chara-layer">
+            <!-- ピコぬくん -->
+            <div id="chara-piconu" class="chara-box">
+                <svg class="chara-svg" width="160" height="200" viewBox="0 0 256 256">
+                    <g fill="#ff9800">
+                        <polygon points="128,12 168,48 88,48" />
+                        <circle cx="128" cy="36" r="14" fill="#ffffff" />
+                        <path
+                            d="M 128 40 A 96 96 0 0 0 32 136 L 32 160 A 96 96 0 0 0 224 160 L 224 136 A 96 96 0 0 0 128 40 Z" />
+                    </g>
+                    <path
+                        d="M 128 58 A 78 78 0 0 0 50 136 L 50 160 A 78 78 0 0 0 206 160 L 206 136 A 78 78 0 0 0 128 58 Z"
+                        fill="#fff8e1" />
+                    <circle cx="92" cy="120" r="16" fill="#3e2723" />
+                    <circle cx="164" cy="120" r="16" fill="#3e2723" />
+                    <path d="M 98 145 Q 128 168 158 145" stroke="#3e2723" stroke-width="9" stroke-linecap="round"
+                        fill="none" />
+                    <rect x="60" y="188" width="136" height="52" rx="14" fill="#37474f" />
+                    <rect x="110" y="206" width="36" height="16" rx="6" fill="#00e676" />
+                </svg>
+            </div>
+
+            <!-- おじさん -->
+            <div id="chara-ojisan" class="chara-box">
+                <svg class="chara-svg" width="180" height="250" viewBox="0 0 200 280">
+                    <path d="M 40 280 L 70 160 L 130 160 L 160 280 Z" fill="#37474f" />
+                    <polygon points="90,160 110,160 105,210 100,220 95,210" fill="#78909c" />
+                    <polygon points="95,160 105,160 100,190" fill="#b0bec5" />
+                    <ellipse cx="100" cy="110" rx="45" ry="50" fill="#ffecb3" />
+                    <path d="M 55 100 C 55 50, 145 50, 145 100 C 135 70, 65 70, 55 100 Z" fill="#546e7a" />
+                    <rect x="68" y="98" width="26" height="16" rx="3" stroke="#263238" stroke-width="3" fill="none" />
+                    <rect x="106" y="98" width="26" height="16" rx="3" stroke="#263238" stroke-width="3" fill="none" />
+                    <line x1="94" y1="106" x2="106" y2="106" stroke="#263238" stroke-width="3" />
+                    <path d="M 70 90 Q 80 88 90 92" stroke="#37474f" stroke-width="3" fill="none" />
+                    <path d="M 110 92 Q 120 88 130 90" stroke="#37474f" stroke-width="3" fill="none" />
+                    <path d="M 90 135 Q 100 138 110 135" stroke="#5d4037" stroke-width="3" fill="none" />
+                </svg>
+            </div>
+        </div>
+
+        <div id="ui-layer" onclick="advanceText()">
+            <div id="speaker-name"></div>
+            <div id="text-body"></div>
+            <div class="click-indicator">▼ クリックで進むぬ</div>
+        </div>
+
+        <div id="choice-layer"></div>
+
+        <div id="start-screen" class="overlay-screen">
+            <div class="title-text">ピコぬ市 現代病相談窓口記録 No.001</div>
+            <div class="subtitle-text">「エレベーターの話」</div>
+            <div style="margin-bottom: 25px;">
+                <svg width="100" height="100" viewBox="0 0 256 256">
+                    <g fill="#ff9800">
+                        <polygon points="128,12 168,48 88,48" />
+                        <circle cx="128" cy="36" r="14" fill="#ffffff" />
+                        <path
+                            d="M 128 40 A 96 96 0 0 0 32 136 L 32 160 A 96 96 0 0 0 224 160 L 224 136 A 96 96 0 0 0 128 40 Z" />
+                    </g>
+                    <path
+                        d="M 128 58 A 78 78 0 0 0 50 136 L 50 160 A 78 78 0 0 0 206 160 L 206 136 A 78 78 0 0 0 128 58 Z"
+                        fill="#fff8e1" />
+                    <circle cx="92" cy="120" r="16" fill="#3e2723" />
+                    <circle cx="164" cy="120" r="16" fill="#3e2723" />
+                    <path d="M 98 145 Q 128 168 158 145" stroke="#3e2723" stroke-width="9" fill="none" />
+                    <rect x="60" y="188" width="136" height="52" rx="14" fill="#37474f" />
+                    <rect x="110" y="206" width="36" height="16" rx="6" fill="#00e676" />
+                </svg>
+            </div>
+            <button class="start-btn" onclick="startGame()">記録を閲覧（プレイ）するぬ！</button>
+            <div style="margin-top: 14px;">
+                <a class="start-btn" href="../about/gendaibyo-soudan-game.html"
+                    style="text-decoration:none; display:inline-block;">現代病相談窓口記録ファイルに戻る</a>
+            </div>
+        </div>
+
+        <div id="ed-screen" class="overlay-screen" style="display: none;">
+            <div class="ed-badge" id="ed-badge">ENDING A</div>
+            <div class="ed-title" id="ed-title">タイトル</div>
+            <div class="ed-desc" id="ed-desc">説明文</div>
+            <button class="start-btn" onclick="startGame()">もう一度記録を見るぬ！</button>
+            <div style="margin-top: 14px;">
+                <a class="start-btn" href="../about/gendaibyo-soudan-game.html"
+                    style="text-decoration:none; display:inline-block;">現代病相談窓口記録ファイルに戻る</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let audioCtx = null;
+        function playPikoSound(freq) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'square';
+                osc.frequency.value = freq || 880;
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.12);
+            } catch (e) { /* 音が鳴らせない環境では何もしない */}
+        }
+
+        const scenario = {
+            start: [
+                {speaker: "ピコぬ市役所 現代病相談窓口", text: "ここはピコぬ市役所の「現代病相談窓口」だぬ。\n今日もAIマスコットのピコぬくんが、パイプ椅子でぼんやり待機しているぬ。"},
+
+                {speaker: "おじさん", text: "どうも。\nあ、今日はコーヒーの話をしたかったんですよ。\n私ね、コーヒー好きなんです。昔から。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "コーヒー！いい香りだぬ！\nボクも大人っぽい飲み物だと思うぬ！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "コーヒーっていいですよね。\n香り、ねえ。苦味、いいですよね。\nあとは、コク。酸味もほのかにありますよね。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "コーヒーの魅力をかなり細かく語るぬ……！\nピコぬくん、ちょっと飲みたくなってきたぬ！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "最近の若い子なんかは、カフェ・ラ・テなんて飲んでる子が多いみたいですけど、\nカフェ・オ・レとは違うんですかね。\nカフェ・オ・マエなんてのはないんでしょうかね。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "カフェ・オ・マエ！？\n急に知らない飲み物が出てきたぬ！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "ギリシャの飲み物かもしれませんね。\nねえ、そうでしょう。ははは。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "たぶん違うと思うぬ……。", chara: "piconu"},
+
+                {speaker: "おじさん", text: "私なんかは若い頃、喫茶店でよくたむろしましたけどね。\n学校をサボって、インベーダーゲームとかやりながら、オレンジジュースを頼むんですよ。\nまだコーヒー飲めなかったですからね。未成年ですよ。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "昔の喫茶店って、ゲームも置いてあったんだぬ！\nでもオレンジジュースだったんだぬ……。", chara: "piconu"},
+
+                {speaker: "おじさん", text: "コーヒーはね、大人の飲み物ですよ。\n酸いも甘いも噛み分けてきてね、苦味の奥の甘味がわかってくる。\n人生みたいですよね。ねえ、そうでしょう。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "なんだか急に人生相談みたいになったぬ……！", chara: "piconu"},
+
+                {
+                    type: "choice",
+                    choices: [
+                        {text: "「コーヒーは人生」について聞いてみるぬ", next: "life"},
+                        {text: "「部下とコーヒー」について聞いてみるぬ", next: "coffee"},
+                        {text: "「犬のモカ」について聞いてみるぬ", next: "moka"}
+                    ]
+                }
+            ],
+
+            life: [
+                {speaker: "おじさん", text: "でもね、コーヒーばかり飲んでたら、胃をこわしましてね。\nそれからは、コーヒー牛乳ばかり飲んでます。ははは。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "人生みたいに語ってたのに、胃には勝てなかったぬ……！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "まあ、苦味の奥の甘味なんて言いましたけどね。\n今は牛乳の甘味のほうがありがたいんですよ。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "大人になると、人生の味覚も変わるんだぬ……。", chara: "piconu"},
+
+                {speaker: "おじさん", text: "そういうことなんでしょうね。\nあ、明日も早いんで、もう寝ます。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "お疲れ様でしたぬ。\nこれ、食堂のうどんの食券だぬ。\nあったかいうどんが、絶品ですぬー！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "コーヒー牛乳のあとに、うどんですか。\nまあ……人生、いろいろありますからね。", chara: "ojisan"},
+
+                {type: "end", ending: "ED_A"}
+            ],
+
+            coffee: [
+                {speaker: "おじさん", text: "うちの部下なんかはね、毎朝私の分のコーヒーも買いに行ってくれるんですよ。\nねえ、優しいでしょう。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "毎朝買いに行ってくれるなんて、優しい部下だぬ！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "コーヒー代？\nもちろん私のおごりですよ。\n先輩ですからね。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "……それは、おじさんがおごってるんだぬ……？", chara: "piconu"},
+
+                {speaker: "おじさん", text: "でもなぜか、次の日まで見かけないんですよ。\nたまたまなんでしょうけどね。\n毎回なんですよ。偶然でしょう。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "毎回なら、もう偶然じゃない気がするぬ……！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "スタバではよくあることですから。\n行列で6時間並ぶこと。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "そんなに並ばないぬー！！\n……たぶん。", chara: "piconu"},
+
+                {speaker: "おじさん", text: "まあ私は行ったことないんですけどね。\nでは、そろそろ帰ります。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "お疲れ様でしたぬ。\nこれ、食堂のうどんの食券だぬ。\nあったかいうどんが、絶品ですぬー！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "ありがとうございます。\n……食堂は6時間待ちじゃないといいですね。", chara: "ojisan"},
+
+                {type: "end", ending: "ED_B"}
+            ],
+
+            moka: [
+                {speaker: "おじさん", text: "私がブラジル、妻がマンダリン、息子はキリマンジャロ、犬はモカ。\nあ、本当に名前がモカなんです。\n可愛いでしょう、ねえ。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "家族全員コーヒーになってるぬ！？\n犬だけ本当にモカなのが一番ややこしいぬ！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "まあ、呼んでも私だけ無視されてるんですけどね。\n犬だけじゃなくて、家族に。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "最後の一言が重いぬ……！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "いや、まあ。\nそういう話じゃないんですけどね。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "どう考えても、そういう話だぬ……。", chara: "piconu"},
+
+                {speaker: "おじさん", text: "あ、明日も早いんで、もう寝ます。\nありがとうございました。", chara: "ojisan"},
+
+                {speaker: "ピコぬくん", text: "お疲れ様でしたぬ。\nこれ、食堂のうどんの食券だぬ。\nあったかいうどんが、絶品ですぬー！", chara: "piconu"},
+
+                {speaker: "おじさん", text: "犬には無視されますけど、うどんの食券はちゃんともらえましたね……。", chara: "ojisan"},
+
+                {type: "end", ending: "ED_C"}
+            ]
+        };
+
+        const endings = {
+            ED_A: {
+                badge: "ENDING A",
+                title: "苦味の奥の甘味",
+                desc: "コーヒーを人生にたとえ続けたおじさん。\nしかし胃をこわして、今ではコーヒー牛乳を飲んでいるぬ。"
+            },
+
+            ED_B: {
+                badge: "ENDING B",
+                title: "毎朝のコーヒー",
+                desc: "部下が毎朝コーヒーを買いに行ってくれることを「優しさ」だと思っているおじさん。\nなぜか部下は、コーヒーを買った翌日まで戻ってこないぬ。"
+            },
+
+            ED_C: {
+                badge: "ENDING C",
+                title: "犬のモカ",
+                desc: "家族をコーヒー豆にたとえ、犬の名前までモカにしているおじさん。\n家族にも犬にも無視されていることだけは、まだ深く考えないことにしたぬ。"
+            }
+        };
+
+        let currentScene = [];
+        let sceneIndex = 0;
+        let isTyping = false;
+        let typeTimer = null;
+
+        const speakerEl = document.getElementById('speaker-name');
+        const textEl = document.getElementById('text-body');
+        const choiceLayer = document.getElementById('choice-layer');
+        const charaPiconu = document.getElementById('chara-piconu');
+        const charaOjisan = document.getElementById('chara-ojisan');
+        const startScreen = document.getElementById('start-screen');
+        const edScreen = document.getElementById('ed-screen');
+
+        function startGame() {
+            playPikoSound(1046);
+            startScreen.style.display = 'none';
+            edScreen.style.display = 'none';
+            loadScene('start');
+        }
+
+        function loadScene(sceneKey) {
+            currentScene = scenario[sceneKey];
+            sceneIndex = 0;
+            showNextLine();
+        }
+
+        function showNextLine() {
+            if (sceneIndex >= currentScene.length) return;
+
+            const data = currentScene[sceneIndex];
+
+            if (data.type === "choice") {
+                showChoices(data.choices);
+                return;
+            }
+
+            if (data.type === "end") {
+                showEnding(data.ending);
+                return;
+            }
+
+            speakerEl.textContent = data.speaker;
+            updateChara(data.chara);
+
+            const fullText = data.text;
+            textEl.textContent = "";
+            isTyping = true;
+            let charIndex = 0;
+
+            clearInterval(typeTimer);
+            typeTimer = setInterval(() => {
+                textEl.textContent += fullText[charIndex];
+                charIndex++;
+                if (charIndex >= fullText.length) {
+                    clearInterval(typeTimer);
+                    isTyping = false;
+                }
+            }, 32);
+        }
+
+        function advanceText() {
+            if (choiceLayer.style.display === 'flex') return;
+
+            if (isTyping) {
+                clearInterval(typeTimer);
+                textEl.textContent = currentScene[sceneIndex].text;
+                isTyping = false;
+            } else {
+                sceneIndex++;
+                if (sceneIndex < currentScene.length) {
+                    showNextLine();
+                }
+            }
+        }
+
+        function updateChara(charaKey) {
+            charaPiconu.classList.remove('active');
+            charaOjisan.classList.remove('active');
+
+            if (charaKey === 'piconu') charaPiconu.classList.add('active');
+            if (charaKey === 'ojisan') charaOjisan.classList.add('active');
+        }
+
+        function showChoices(choices) {
+            choiceLayer.innerHTML = '';
+            choices.forEach(c => {
+                const btn = document.createElement('div');
+                btn.className = 'choice-btn';
+                btn.textContent = c.text;
+                btn.onclick = () => {
+                    playPikoSound(880);
+                    choiceLayer.style.display = 'none';
+                    loadScene(c.next);
+                };
+                choiceLayer.appendChild(btn);
+            });
+            choiceLayer.style.display = 'flex';
+        }
+
+        function showEnding(edKey) {
+            const ed = endings[edKey];
+            document.getElementById('ed-badge').textContent = ed.badge;
+            document.getElementById('ed-title').textContent = ed.title;
+            document.getElementById('ed-desc').textContent = ed.desc;
+            edScreen.style.display = 'flex';
+        }
+    </script>
+
+</body>
+
+</html>
