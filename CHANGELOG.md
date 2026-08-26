@@ -9,6 +9,19 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-08-26（2）
+---
+### 追加
+- `game/011-negi.html`:現代病相談窓口記録ファイルのシナリオゲーム「ネギの話」を追加(計11本に)
+- `facilities/pikonu-negi.html`:ピコぬ市の特産品「ピコぬネギ」の紹介ページを新規作成(観光課の子ページ)。産地・旬・特徴、市内で味わえる場所(市役所食堂・八百八)を掲載
+- `images/facilities/negi-hatake.jpg`:ネギ畑の写真を追加
+### 変更
+- `about/gendaibyo-soudan-game.html`:症例一覧にNo.011を追加。「近日公開」の枠をNo.012へ更新
+- `facilities/kanko-ka.html`:「自然を巡る」・「関連情報」に「ピコぬネギ」へのリンクを追加
+- `about/sitemap.html`:「ピコぬネギ」を観光課の項目に追加
+- `data/search-index.json`:「ピコぬネギ」を追加
+---
+
 ## 2026-08-26（1）
 ---
 ### 追加
