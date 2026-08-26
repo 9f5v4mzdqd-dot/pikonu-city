@@ -166,12 +166,17 @@
   },
   {
     "title": "観光課",
-        "url": "facilities/kanko-ka.html",
+    "url": "facilities/kanko-ka.html",
     "category": "施設案内"
   },
   {
     "title": "ピコぬネギ",
     "url": "facilities/pikonu-negi.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "農産物直売所",
+    "url": "facilities/nousanbutsu.html",
     "category": "施設案内"
   },
   {
@@ -551,7 +556,7 @@
   },
   {
     "title": "今日のラッキー現代病占い",
-        "url": "about/gendaibyo-uranai.html",
+    "url": "about/gendaibyo-uranai.html",
     "category": "市の概要"
   },
   {
