@@ -142,6 +142,7 @@
         <hr>
 
         <h2>🖼️素材一覧(全<span id="sozai-count">10</span>種)🖼️</h2>
+
         <p class="small">
             画像をクリックすると、480×480pxの元画像が表示されます。<br>
             画像を保存してご利用ください。
@@ -182,6 +183,7 @@
                 <li>画像への直リンク(このサイトの画像URLを直接読み込んでのご利用)はご遠慮ください。ダウンロードした上でご利用ください。</li>
             </ul>
         </div>
+
         <hr>
 
         <div class="back">
@@ -195,58 +197,73 @@
     </div>
 
     <script>
-        // images/freesozai/ 内の実ファイル(p-icon-001.png〜p-icon-010.png)のみを参照しています。
-        // 素材名は各アイコン内のマークに合わせて付けています。
-        var freeSozaiList = [
-            {file: "p-icon-001.png", name: "ピコぬくん「P・イエロー」アイコン"},
-            {file: "p-icon-002.png", name: "ピコぬくん「NEW!」アイコン"},
-            {file: "p-icon-003.png", name: "ピコぬくん「○」アイコン"},
-            {file: "p-icon-004.png", name: "ピコぬくん「×」アイコン"},
-            {file: "p-icon-005.png", name: "ピコぬくん「→」アイコン"},
-            {file: "p-icon-006.png", name: "ピコぬくん「←」アイコン"},
-            {file: "p-icon-007.png", name: "ピコぬくん「注意」アイコン"},
-            {file: "p-icon-008.png", name: "ピコぬくん「!」アイコン"},
-            {file: "p-icon-009.png", name: "ピコぬくん「★」アイコン"},
-            {file: "p-icon-010.png", name: "ピコぬくん「桜」アイコン"},
-            {file: "p-icon-011.png", name: "ピコぬくん「♪」アイコン"},
-            {file: "p-icon-012.png", name: "ピコぬくん「？」アイコン"},
-            {file: "p-icon-013.png", name: "ピコぬくん「郵便」アイコン"},
-            {file: "p-icon-014.png", name: "ピコぬくん「COMING SOON」アイコン"},
-            {file: "p-icon-015.png", name: "ピコぬくん「準備中」アイコン"},
-            {file: "p-icon-016.png", name: "ピコぬくん「営業中」アイコン"},
-            {file: "p-icon-017.png", name: "ピコぬくん「STOP」アイコン"},
-            {file: "p-icon-018.png", name: "ピコぬくん「ハート」アイコン"},
-            {file: "p-icon-019.png", name: "ピコぬくん「数字の1」アイコン"},
-            {file: "p-icon-020.png", name: "ピコぬくん「数字の2」アイコン"},
-            {file: "p-icon-021.png", name: "ピコぬくん「数字の3」アイコン"},
-            {file: "p-icon-022.png", name: "ピコぬくん「数字の4」アイコン"},
-            {file: "p-icon-023.png", name: "ピコぬくん「数字の5」アイコン"},
-            {file: "p-icon-024.png", name: "ピコぬくん「数字の6」アイコン"},
-            {file: "p-icon-025.png", name: "ピコぬくん「数字の7」アイコン"},
-            {file: "p-icon-026.png", name: "ピコぬくん「数字の8」アイコン"},
-            {file: "p-icon-027.png", name: "ピコぬくん「数字の9」アイコン"},
-            {file: "p-icon-028.png", name: "ピコぬくん「数字の10」アイコン"},
-            {file: "p-icon-029.png", name: "ピコぬくん「晴れ」アイコン"},
-            {file: "p-icon-030.png", name: "ピコぬくん「くもり」アイコン"},
-            {file: "p-icon-031.png", name: "ピコぬくん「雨」アイコン"},
-            {file: "p-icon-032.png", name: "ピコぬくん「♬」アイコン"},
-            {file: "p-icon-033.png", name: "ピコぬくん「Wi-Fi」アイコン"},
-            {file: "p-icon-034.png", name: "ピコぬくん「電話」アイコン"},
-            {file: "p-icon-035.png", name: "ピコぬくん「TEL」アイコン"},
-            {file: "p-icon-036.png", name: "ピコぬくん「顔文字(^_^)」アイコン"},
-            {file: "p-icon-037.png", name: "ピコぬくん「顔文字(T_T)」アイコン"},
-            {file: "p-icon-038.png", name: "ピコぬくん「顔文字∖(^o^)/」アイコン"},
-            {file: "p-icon-039.png", name: "ピコぬくん「十字」アイコン"},
-            {file: "p-icon-040.png", name: "ピコぬくん「P・ブルー」アイコン"},
-            {file: "p-icon-041.png", name: "ピコぬくん「P・ピンク」アイコン"},
-            {file: "p-icon-042.png", name: "ピコぬくん「P・グリーン」アイコン"},
-            {file: "p-icon-043.png", name: "ピコぬくん「P・グレー」アイコン"},
-            {file: "p-icon-044.png", name: "ピコぬくん「P・パープル」アイコン"},
-            {file: "p-icon-045.png", name: "ピコぬくん「お勉強」アイコン"},
-            {file: "tsu-button-001.png", name: "恒一「指あり」ボタン"},
-
-
+        // images/freesozai/ 内の実ファイルのみを参照しています(2026-08-27時点で確認済み)。
+        //
+        // 【素材を追加するとき】
+        // 下の freeSozaiRaw に1行足すだけでOKです。
+        //   ["ファイル名", "アイコン内のラベル"],
+        // → 自動で「ピコぬくん「ラベル」アイコン」という表示名になります。
+        //
+        // tsu-button-001 のように「ピコぬくん「◯◯」アイコン」の形に当てはまらない
+        // (=ピコぬくん以外の市関連デザインなど)素材は、3つ目に true を足すと
+        // 2つ目の文字列がそのまま表示名として使われます。
+        //   ["ファイル名", "そのまま使う表示名", true],
+        var freeSozaiRaw = [
+            ["p-icon-001.png", "P"],
+            ["p-icon-002.png", "NEW!"],
+            ["p-icon-003.png", "○"],
+            ["p-icon-004.png", "×"],
+            ["p-icon-005.png", "→"],
+            ["p-icon-006.png", "←"],
+            ["p-icon-007.png", "注意"],
+            ["p-icon-008.png", "!"],
+            ["p-icon-009.png", "★"],
+            ["p-icon-010.png", "桜"],
+            ["p-icon-011.png", "♪"],
+            ["p-icon-012.png", "?"],
+            ["p-icon-013.png", "郵便"],
+            ["p-icon-014.png", "COMING SOON"],
+            ["p-icon-015.png", "準備中"],
+            ["p-icon-016.png", "営業中"],
+            ["p-icon-017.png", "STOP"],
+            ["p-icon-018.png", "ハート"],
+            ["p-icon-019.png", "数字の1"],
+            ["p-icon-020.png", "数字の2"],
+            ["p-icon-021.png", "数字の3"],
+            ["p-icon-022.png", "数字の4"],
+            ["p-icon-023.png", "数字の5"],
+            ["p-icon-024.png", "数字の6"],
+            ["p-icon-025.png", "数字の7"],
+            ["p-icon-026.png", "数字の8"],
+            ["p-icon-027.png", "数字の9"],
+            ["p-icon-028.png", "数字の10"],
+            ["p-icon-029.png", "晴れ"],
+            ["p-icon-030.png", "くもり"],
+            ["p-icon-031.png", "雨"],
+            ["p-icon-032.png", "♬"],
+            ["p-icon-033.png", "Wi-Fi"],
+            ["p-icon-034.png", "電話"],
+            ["p-icon-035.png", "TEL"],
+            ["p-icon-036.png", "顔文字(^_^)"],
+            ["p-icon-037.png", "顔文字(T_T)"],
+            ["p-icon-038.png", "顔文字\\(^o^)/"],
+            ["p-icon-039.png", "十字"],
+            ["p-icon-040.png", "P・ブルー"],
+            ["p-icon-041.png", "P・ピンク"],
+            ["p-icon-042.png", "P・グリーン"],
+            ["p-icon-043.png", "P・グレー"],
+            ["p-icon-044.png", "P・パープル"],
+            ["p-icon-045.png", "お勉強"],
+            ["tsu-button-001.png", "恒一「指あり」ボタン", true]
         ];
+
+        var freeSozaiList = freeSozaiRaw.map(function (entry) {
+            var file = entry[0];
+            var label = entry[1];
+            var isFullName = entry[2] === true;
+            var name = isFullName ? label : ("ピコぬくん「" + label + "」アイコン");
+            return { file: file, name: name };
+        });
 
         document.addEventListener("DOMContentLoaded", function () {
             var tbody = document.getElementById("sozai-list");
