@@ -141,8 +141,7 @@
 
         <hr>
 
-        <h2>🖼️素材一覧(全10種)🖼️</h2>
-
+        <h2>🖼️素材一覧(全<span id="sozai-count">10</span>種)🖼️</h2>
         <p class="small">
             画像をクリックすると、480×480pxの元画像が表示されます。<br>
             画像を保存してご利用ください。
@@ -245,7 +244,7 @@
             {file: "p-icon-044.png", name: "ピコぬくん「P・パープル」アイコン"},
             {file: "p-icon-045.png", name: "ピコぬくん「お勉強」アイコン"},
             {file: "tsu-button-001.png", name: "恒一「指あり」ボタン"},
-        
+
 
         ];
 
@@ -265,6 +264,11 @@
             }
 
             tbody.innerHTML = rowsHtml;
+
+            var countEl = document.getElementById("sozai-count");
+            if (countEl) {
+                countEl.textContent = freeSozaiList.length;
+            }
         });
     </script>
 
