@@ -234,6 +234,7 @@
             ["p-icon-016.png", "営業中"],
             ["p-icon-017.png", "STOP"],
             ["p-icon-018.png", "ハート"],
+            ["p-icon-046.png", "数字の0"],
             ["p-icon-019.png", "数字の1"],
             ["p-icon-020.png", "数字の2"],
             ["p-icon-021.png", "数字の3"],
@@ -248,6 +249,7 @@
             ["p-icon-030.png", "くもり"],
             ["p-icon-031.png", "雨"],
             ["p-icon-032.png", "♬"],
+            ["p-icon-047.png", "時計"],
             ["p-icon-033.png", "Wi-Fi"],
             ["p-icon-034.png", "電話"],
             ["p-icon-035.png", "TEL"],
@@ -269,7 +271,7 @@
             var label = entry[1];
             var isFullName = entry[2] === true;
             var name = isFullName ? label : ("ピコぬくん「" + label + "」アイコン");
-            return { file: file, name: name };
+            return {file: file, name: name};
         });
 
         document.addEventListener("DOMContentLoaded", function () {
