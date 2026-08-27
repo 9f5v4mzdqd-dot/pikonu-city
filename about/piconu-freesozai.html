@@ -85,6 +85,12 @@
             vertical-align: middle;
         }
 
+        .sozai-table th:first-child,
+        .sozai-table td:first-child {
+            width: 50px;
+            text-align: center;
+        }
+
         .sozai-table th {
             background-color: #dde8ff;
             color: #003399;
@@ -157,6 +163,7 @@
         <table class="sozai-table" id="sozai-table">
             <thead>
                 <tr>
+                    <th>No.</th>
                     <th>画像</th>
                     <th>素材名</th>
                 </tr>
@@ -274,6 +281,7 @@
                 var path = "../images/freesozai/" + item.file;
 
                 rowsHtml += "<tr>";
+                rowsHtml += "<td>No." + (i + 1) + "</td>";
                 rowsHtml += "<td><a href=\"" + path + "\" target=\"_blank\" rel=\"noopener\">";
                 rowsHtml += "<img src=\"" + path + "\" alt=\"" + item.name + "\" loading=\"lazy\"></a></td>";
                 rowsHtml += "<td>" + item.name + "</td>";
