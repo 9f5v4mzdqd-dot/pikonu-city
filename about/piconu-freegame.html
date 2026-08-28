@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>ピコぬくんゲーム置き場 | ピコぬ市公式ホームページ</title>
+    <meta name="description" content="ピコぬ市のマスコット「ピコぬくん」のアイコン素材を配布しています。個人サイト・ブログ・SNSなどでご自由にお使いいただけます。">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+    <style>
+        /* facilities/nousanbutsu.html と同じ、絶妙な平成Webデザイン風。
+           配色のみ「素材屋さん」らしい淡い色味・青系リンクに変更しています。 */
+        body {
+            background-color: #f5f8ff;
+            font-family: "MS Pゴシック", "Osaka", sans-serif;
+            text-align: center;
+            color: #333333;
+            margin: 0;
+            padding: 20px 10px;
+        }
+
+        .page {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #003399;
+            font-size: 1.5rem;
+            margin: 10px 0 5px;
+        }
+
+        h2 {
+            color: #003399;
+            font-size: 1.15rem;
+            margin: 25px 0 10px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: .95rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #6699cc;
+            margin: 20px 0;
+        }
+
+        .notice {
+            background-color: #ffffff;
+            border: 2px solid #6699cc;
+            padding: 12px;
+            margin: 15px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .notice ul {
+            margin: 8px 0 0;
+            padding-left: 1.4em;
+        }
+
+        .notice li {
+            margin-bottom: 4px;
+        }
+
+        /* 素材一覧(表形式)。昔の素材屋さんによくある、飾りすぎない一覧表示 */
+        .sozai-table {
+            width: 100%;
+            max-width: 680px;
+            margin: 10px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            font-size: .9rem;
+        }
+
+        .sozai-table th,
+        .sozai-table td {
+            border: 1px solid #999999;
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        .sozai-table th:first-child,
+        .sozai-table td:first-child {
+            width: 50px;
+            text-align: center;
+        }
+
+        .sozai-table th {
+            background-color: #dde8ff;
+            color: #003399;
+        }
+
+        .sozai-table img {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #999999;
+            background-color: #ffffff;
+            vertical-align: middle;
+        }
+
+        .sozai-table a {
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .small {
+            font-size: .8rem;
+            color: #666666;
+        }
+
+        .back {
+            margin-top: 25px;
+        }
+
+        a {
+            color: #0000cc;
+        }
+
+        a:visited {
+            color: #660099;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: .75rem;
+            color: #666666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <h1>🎮ピコぬくんゲーム置き場🎮</h1>
+
+        <p>
+            ピコぬくんのゲームを公開していますぬー！<br>
+            よろしければ遊んで行ってくださいぬ。
+        </p>
+
+        <hr>
+
+        <h2>🖼️素材一覧(全<span id="sozai-count">10</span>種)🖼️</h2>
+
+        <p class="small">
+            画像をクリックすると、480×480pxの元画像が表示されます。<br>
+            画像を保存してご利用ください。
+        </p>
+
+        <!--
+            判断: 「可能な限り自動的に一覧化できる構造」とのご指定のため、
+            画像1枚ずつをHTMLに書き並べるのではなく、下記スクリプトの
+            freeSozaiList 配列からテーブルを自動生成する形にしています。
+            素材が増えた場合は配列に1行追加するだけで反映されます。
+        -->
+        <table class="sozai-table" id="sozai-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>画像</th>
+                    <th>素材名</th>
+                </tr>
+            </thead>
+            <tbody id="sozai-list">
+                <!-- ここに JavaScript で行が挿入されます -->
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>📋素材のご利用について📋</h2>
+
+        <div class="notice">
+            <p>
+                <strong>ピコぬくん素材を使っていただく際のお願いです。</strong>
+            </p>
+            <ul>
+                <li>素材は個人サイト・ブログ・SNSなどでご利用いただけます。</li>
+                <li>ご利用の際は、素材をそのまま再配布・販売しないでください。</li>
+                <li>画像の加工については、色変更やサイズ変更など、サイトでの利用に必要な範囲でご自由にどうぞ。</li>
+                <li>商用利用はご遠慮ください(個人利用の範囲でお使いいただけます)。</li>
+                <li>ご利用の際は「©ピコぬ市」などの出典表記をお願いします。</li>
+                <li>画像への直リンク(このサイトの画像URLを直接読み込んでのご利用)はご遠慮ください。ダウンロードした上でご利用ください。</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="back">
+            <a href="piconu-kun.html">← ピコぬくんとは へ戻る</a>
+        </div>
+
+        <div class="footer">
+            ピコぬくんゲーム置き場<br>
+            Copyright © ピコぬ市 All Rights Reserved.
+        </div>
+    </div>
+
+    <script>
+        // images/freesozai/ 内の実ファイルのみを参照しています(2026-08-27時点で確認済み)。
+        //
+        // 【素材を追加するとき】
+        // 下の freeSozaiRaw に1行足すだけでOKです。
+        //   ["ファイル名", "アイコン内のラベル"],
+        // → 自動で「ピコぬくん「ラベル」アイコン」という表示名になります。
+        //
+        // tsu-button-001 のように「ピコぬくん「◯◯」アイコン」の形に当てはまらない
+        // (=ピコぬくん以外の市関連デザインなど)素材は、3つ目に true を足すと
+        // 2つ目の文字列がそのまま表示名として使われます。
+        //   ["ファイル名", "そのまま使う表示名", true],
+        var freeSozaiRaw = [
+            ["p-icon-001.png", "P"],
+            ["p-icon-002.png", "NEW!"],
+            ["p-icon-003.png", "○"],
+            ["p-icon-004.png", "×"],
+            ["p-icon-005.png", "→"],
+            ["p-icon-006.png", "←"],
+            ["p-icon-007.png", "注意"],
+            ["p-icon-008.png", "!"],
+            ["p-icon-009.png", "★"],
+            ["p-icon-010.png", "桜"],
+            ["p-icon-011.png", "♪"],
+            ["p-icon-012.png", "?"],
+            ["p-icon-013.png", "郵便"],
+            ["p-icon-014.png", "COMING SOON"],
+            ["p-icon-015.png", "準備中"],
+            ["p-icon-016.png", "営業中"],
+            ["p-icon-017.png", "STOP"],
+            ["p-icon-018.png", "ハート"],
+            ["p-icon-046.png", "数字の0"],
+            ["p-icon-019.png", "数字の1"],
+            ["p-icon-020.png", "数字の2"],
+            ["p-icon-021.png", "数字の3"],
+            ["p-icon-022.png", "数字の4"],
+            ["p-icon-023.png", "数字の5"],
+            ["p-icon-024.png", "数字の6"],
+            ["p-icon-025.png", "数字の7"],
+            ["p-icon-026.png", "数字の8"],
+            ["p-icon-027.png", "数字の9"],
+            ["p-icon-028.png", "数字の10"],
+            ["p-icon-029.png", "晴れ"],
+            ["p-icon-030.png", "くもり"],
+            ["p-icon-031.png", "雨"],
+            ["p-icon-032.png", "♬"],
+            ["p-icon-047.png", "時計"],
+            ["p-icon-033.png", "Wi-Fi"],
+            ["p-icon-034.png", "電話"],
+            ["p-icon-035.png", "TEL"],
+            ["p-icon-036.png", "顔文字(^_^)"],
+            ["p-icon-037.png", "顔文字(T_T)"],
+            ["p-icon-038.png", "顔文字\(^o^)/"],
+            ["p-icon-039.png", "十字"],
+            ["p-icon-040.png", "P・ブルー"],
+            ["p-icon-041.png", "P・ピンク"],
+            ["p-icon-042.png", "P・グリーン"],
+            ["p-icon-043.png", "P・グレー"],
+            ["p-icon-044.png", "P・パープル"],
+            ["p-icon-045.png", "お勉強"],
+            ["tsu-button-001.png", "恒一「指あり」ボタン", true],
+            ["oji-icon-001.png", "おじさん「通常時」", true],
+            ["oji-icon-002.png", "カタブツ職員「通常時」", true],
+        ];
+
+        var freeSozaiList = freeSozaiRaw.map(function (entry) {
+            var file = entry[0];
+            var label = entry[1];
+            var isFullName = entry[2] === true;
+            var name = isFullName ? label : ("ピコぬくん「" + label + "」アイコン");
+            return {file: file, name: name};
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var tbody = document.getElementById("sozai-list");
+            var rowsHtml = "";
+
+            for (var i = 0; i < freeSozaiList.length; i++) {
+                var item = freeSozaiList[i];
+                var path = "../images/freesozai/" + item.file;
+
+                rowsHtml += "<tr>";
+                rowsHtml += "<td>No." + (i + 1) + "</td>";
+                rowsHtml += "<td><a href=\"" + path + "\" target=\"_blank\" rel=\"noopener\">";
+                rowsHtml += "<img src=\"" + path + "\" alt=\"" + item.name + "\" loading=\"lazy\"></a></td>";
+                rowsHtml += "<td>" + item.name + "</td>";
+                rowsHtml += "</tr>";
+            }
+
+            tbody.innerHTML = rowsHtml;
+
+            var countEl = document.getElementById("sozai-count");
+            if (countEl) {
+                countEl.textContent = freeSozaiList.length;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

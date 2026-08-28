@@ -167,7 +167,7 @@
       '<a href="' + BASE + 'about/rekishi.html"><img src="' + BASE + 'images/banners/banner-rekishi.jpg" alt="市史編纂室 ピコぬ市の歴史成立に関する記録を公開しています"></a>' +
       '<a href="https://suzuri.jp/PIKONU-CITY" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-suzuri.jpg" alt="ピコぬ市公式ショップ(SUZURI)"></a>' +
       '<a href="https://note.com/rich_whale740" target="_blank" rel="noopener"><img src="' + BASE + 'images/banners/banner-note.jpg" alt="ピコぬ市記録室(note)"></a>' +
-      '<a href="' + BASE + 'about/piconu-kun-game.html"><img src="' + BASE + 'images/banners/banner-game.jpg" alt="ピコぬくん脱出ゲーム"></a>' +
+      '<a href="' + BASE + 'about/piconu-kun-escapegame.html"><img src="' + BASE + 'images/banners/banner-game.jpg" alt="ピコぬくん脱出ゲーム"></a>' +
       '<a href="' + BASE + 'about/piconu-quiz.html"><img src="' + BASE + 'images/banners/banner-quiz.jpg" alt="ピコぬ市検定(初級)"></a>' +
       '<a href="' + BASE + 'about/piconu-diary.html"><img src="' + BASE + 'images/banners/banner-diary.jpg" alt="ピコぬくん業務日誌 ピコぬくんによる、日々の記録だぬ。"></a>' +
       '<a href="' + BASE + 'facilities/gendaibyo-db.html"><img src="' + BASE + 'images/banners/banner-gendaibyo-db.jpg" alt="現代病データベース キロクぬかクリニックにおける診断記録です。"></a>' +
