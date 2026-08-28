@@ -6,29 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ピコぬ市役所：恒一を探せ！</title>
     <style>
-        /* 🔻 body（画面全体の背景） */
+        /* 黒背景・ダークモード風のスタイリング */
         body {
             background-color: #000000;
-            /* ★背景を真っ黒にするだぬ */
             color: #ffffff;
-            /* ★外側の文字を白にするだぬ */
-            font-family: sans-serif;
+            font-family: "MS Pゴシック", sans-serif;
             text-align: center;
             padding: 20px;
         }
 
-        /* 🔻 #game-box（ゲームの枠の中） */
         #game-box {
             max-width: 400px;
             margin: 0 auto;
             background: #111111;
-            /* ★枠の中を少し暗い黒にするだぬ */
             border: 2px solid #00ff00;
-            /* ★枠線をサイバーな緑色にするだぬ */
-            color: #ffffff;
-            /* ★ゲーム内の文字を白にするだぬ */
             padding: 20px;
             border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
         }
 
         #story-text {
@@ -45,10 +39,11 @@
             margin: 8px 0;
             padding: 12px;
             background-color: #008040;
-            color: white;
-            border: none;
+            color: #ffffff;
+            border: 1px solid #00ff00;
             border-radius: 4px;
             font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
         }
 
@@ -61,14 +56,43 @@
 <body>
 
     <div id="game-box">
-        <h3>🎮 ピコぬ市役所：恒一を探せ！</h3>
+        <h3 style="color: #00ff00;">🎮 ピコぬ市役所：恒一を探せ！</h3>
         <div id="story-text"></div>
         <div id="choices-box"></div>
     </div>
 
     <script>
+        // 🔊 ファミコン風ピコピコ音を鳴らす処理
+        let audioCtx = null;
+
+        function playPikoSound() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'square'; // レトロゲーム風の矩形波
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // 高めのピコッ音
+
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch (e) {
+                /* 音が鳴らせない環境用 */
+            }
+        }
+
+        // 📖 シナリオデータ
         const storyData = {
-            // 場面1：スタート（三択）
+            // 場面1：スタート
             start: {
                 text: "あなたは夜の市役所で残業中の環境課職員だぬ。\nP-800が近寄ってきたぬ。\n\n「『さねのこうじ 恒一』名義の給与明細が出力されましたぬ。届けにいきますかぬ？」",
                 choices: [
@@ -78,7 +102,7 @@
                 ]
             },
 
-            // 場面2：恒一のデスク（三択）
+            // 場面2：恒一のデスク
             desk: {
                 text: "無人のデスクに『さねのこうじ 恒一』の名札と温かいお茶があったぬ！\nPC画面に文字が浮かび上がる…\n\n『サンプルEは落ち葉で確定でいいですか？』",
                 choices: [
@@ -88,7 +112,7 @@
                 ]
             },
 
-            // 場面3：差し入れと足音（三択）
+            // 場面3：差し入れと足音
             reply: {
                 text: "『確認ありがとうございます』と表示され、引き出しから高級お菓子が出てきたぬ！\n直後、暗闇から「コツ…コツ…」と足音が近づいてくる…！",
                 choices: [
@@ -98,7 +122,7 @@
                 ]
             },
 
-            // エンディング分岐（三択に対応）
+            // BAD END各種
             end_leave: {
                 text: "【GAME OVER】\n無視して帰宅したぬ。\n翌朝、あなたのデスクに『さねのこうじ 恒一』名義の温かいお茶が置いてあったぬ……。",
                 choices: [{text: "最初からやり直す", next: "start"}]
@@ -123,66 +147,35 @@
                 text: "【GAME OVER】\n走った拍子にお菓子をぶちまけ、廊下の清掃ロボットP-800に全部吸い込まれてしまったぬ……。",
                 choices: [{text: "最初からやり直す", next: "start"}]
             },
+
+            // 🏆 指定の文章を組み込んだGOOD END
             end_good: {
-                text: "【GOOD END】\n現れたカタブツ職員もろとも全館消灯！『本日の勤務は終了しました』と通知が出て無事に定時退勤できたぬ！",
+                text: "🏆【GOOD END】\n『優秀すぎる見えない同僚』\n\n姿は見えないけれど、システムを駆使してピンチを救い、定時退勤までさせてくれる「恒一」。\n彼は敵なのか味方なのか……真相は闇の中のままだぬ。\n\n（※お菓子は美味しくいただきましたぬ！）",
                 choices: [{text: "最初からやり直す", next: "start"}]
             }
         };
 
+        // 画面切り替え処理
         function showScene(sceneKey) {
             const scene = storyData[sceneKey];
             document.getElementById('story-text').innerText = scene.text;
             const choicesBox = document.getElementById('choices-box');
             choicesBox.innerHTML = '';
 
-            // 選択肢ボタンを作成して配置する部分
             scene.choices.forEach(choice => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
                 btn.innerText = choice.text;
-
                 btn.onclick = () => {
-                    playPikoSound(); // ★ここで「ピコッ！」と音を鳴らすぬ！
+                    playPikoSound(); // ボタンクリック時にピコッと音を再生
                     showScene(choice.next);
                 };
-
                 choicesBox.appendChild(btn);
             });
         }
 
+        // 初回実行
         showScene('start');
-        // 🔊 ファミコン風ピコピコ音を鳴らす関数
-        let audioCtx = null;
-
-        function playPikoSound() {
-            try {
-                // 初めて音を鳴らすときにAudioContextを初期化
-                if (!audioCtx) {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                }
-
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                // square（矩形波）にするとファミコンっぽいピコピコ音になるぬ！
-                osc.type = 'square';
-
-                // 音の高さ（Hz）。880Hzは高めの「ピコッ」という音だぬ
-                osc.frequency.setValueAtTime(880, audioCtx.currentTime);
-
-                // 音量と減衰の設定（一瞬で消えるようにするぬ）
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.08);
-            } catch (e) {
-                /* 音が鳴らせない環境用 */
-            }
-        }
     </script>
 
 </body>
