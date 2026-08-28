@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ピコぬ市役所：恒一を探せ！</title>
+    <style>
+        /* 🔻 body（画面全体の背景） */
+        body {
+            background-color: #000000;
+            /* ★背景を真っ黒にするだぬ */
+            color: #ffffff;
+            /* ★外側の文字を白にするだぬ */
+            font-family: sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 🔻 #game-box（ゲームの枠の中） */
+        #game-box {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #111111;
+            /* ★枠の中を少し暗い黒にするだぬ */
+            border: 2px solid #00ff00;
+            /* ★枠線をサイバーな緑色にするだぬ */
+            color: #ffffff;
+            /* ★ゲーム内の文字を白にするだぬ */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #story-text {
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px;
+            background-color: #008040;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .option-btn:hover {
+            background-color: #006030;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="game-box">
+        <h3>🎮 ピコぬ市役所：恒一を探せ！</h3>
+        <div id="story-text"></div>
+        <div id="choices-box"></div>
+    </div>
+
+    <script>
+        const storyData = {
+            // 場面1：スタート（三択）
+            start: {
+                text: "あなたは夜の市役所で残業中の環境課職員だぬ。\nP-800が近寄ってきたぬ。\n\n「『さねのこうじ 恒一』名義の給与明細が出力されましたぬ。届けにいきますかぬ？」",
+                choices: [
+                    {text: "1. 不気味だから放置して帰るぬ", next: "end_leave"},
+                    {text: "2. 総務課の書類棚に戻しに行くぬ", next: "end_somu"},
+                    {text: "3. 夜の市役所を探索して席を探すぬ", next: "desk"}
+                ]
+            },
+
+            // 場面2：恒一のデスク（三択）
+            desk: {
+                text: "無人のデスクに『さねのこうじ 恒一』の名札と温かいお茶があったぬ！\nPC画面に文字が浮かび上がる…\n\n『サンプルEは落ち葉で確定でいいですか？』",
+                choices: [
+                    {text: "1. キーボードで「お前は誰だ！」と入力する", next: "end_angry"},
+                    {text: "2. 「サンプルEは落ち葉で大丈夫です」と返信する", next: "reply"},
+                    {text: "3. P-800に「このお茶飲んでみて」と頼む", next: "end_tea"}
+                ]
+            },
+
+            // 場面3：差し入れと足音（三択）
+            reply: {
+                text: "『確認ありがとうございます』と表示され、引き出しから高級お菓子が出てきたぬ！\n直後、暗闇から「コツ…コツ…」と足音が近づいてくる…！",
+                choices: [
+                    {text: "1. 「恒一さんですか！？」と大声で叫ぶ", next: "end_shout"},
+                    {text: "2. お菓子を奪ってP-800とダッシュで逃げる", next: "end_dash"},
+                    {text: "3. 「あ、お疲れ様です〜」と自然に挨拶する", next: "end_good"}
+                ]
+            },
+
+            // エンディング分岐（三択に対応）
+            end_leave: {
+                text: "【GAME OVER】\n無視して帰宅したぬ。\n翌朝、あなたのデスクに『さねのこうじ 恒一』名義の温かいお茶が置いてあったぬ……。",
+                choices: [{text: "最初からやり直す", next: "start"}]
+            },
+            end_somu: {
+                text: "【GAME OVER】\n総務課に行くと、夜中なのに書類棚整理中のカタブツ職員に見つかり、残業理由を問い詰められたぬ……。",
+                choices: [{text: "最初からやり直す", next: "start"}]
+            },
+            end_angry: {
+                text: "【GAME OVER】\n画面が赤く点滅し、PCから大量の不審なエラー音が鳴り響いて警備員が飛んできたぬ！",
+                choices: [{text: "最初からやり直す", next: "start"}]
+            },
+            end_tea: {
+                text: "【GAME OVER】\nP-800「ボクは液体不可ですぬ」と言ってショートし、怪しい煙を吹き上げてしまったぬ……。",
+                choices: [{text: "最初からやり直す", next: "start"}]
+            },
+            end_shout: {
+                text: "【GAME OVER】\n暗闇から現れたのはカタブツ職員だったぬ！「夜中の大声は何事ですか！」と説教されたぬ……。",
+                choices: [{text: "最初からやり直す", next: "start"}]
+            },
+            end_dash: {
+                text: "【GAME OVER】\n走った拍子にお菓子をぶちまけ、廊下の清掃ロボットP-800に全部吸い込まれてしまったぬ……。",
+                choices: [{text: "最初からやり直す", next: "start"}]
+            },
+            end_good: {
+                text: "【GOOD END】\n現れたカタブツ職員もろとも全館消灯！『本日の勤務は終了しました』と通知が出て無事に定時退勤できたぬ！",
+                choices: [{text: "最初からやり直す", next: "start"}]
+            }
+        };
+
+        function showScene(sceneKey) {
+            const scene = storyData[sceneKey];
+            document.getElementById('story-text').innerText = scene.text;
+            const choicesBox = document.getElementById('choices-box');
+            choicesBox.innerHTML = '';
+
+            // 選択肢ボタンを作成して配置する部分
+            scene.choices.forEach(choice => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = choice.text;
+
+                btn.onclick = () => {
+                    playPikoSound(); // ★ここで「ピコッ！」と音を鳴らすぬ！
+                    showScene(choice.next);
+                };
+
+                choicesBox.appendChild(btn);
+            });
+        }
+
+        showScene('start');
+        // 🔊 ファミコン風ピコピコ音を鳴らす関数
+        let audioCtx = null;
+
+        function playPikoSound() {
+            try {
+                // 初めて音を鳴らすときにAudioContextを初期化
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                // square（矩形波）にするとファミコンっぽいピコピコ音になるぬ！
+                osc.type = 'square';
+
+                // 音の高さ（Hz）。880Hzは高めの「ピコッ」という音だぬ
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+
+                // 音量と減衰の設定（一瞬で消えるようにするぬ）
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch (e) {
+                /* 音が鳴らせない環境用 */
+            }
+        }
+    </script>
+
+</body>
+
+</html>
