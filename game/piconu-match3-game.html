@@ -184,6 +184,8 @@
 
 <body>
 
+    <audio id="bgm" src="../audio/Pikonukun_Locked_Out.mp3" loop preload="auto"></audio>
+
     <div id="game-container">
 
         <!-- 🏠 1. タイトル画面 -->
@@ -200,6 +202,10 @@
             </div>
 
             <button class="btn" onclick="startGame()">一緒に探す！（スタート）</button>
+
+            <a href="../about/piconu-freegame.html"
+                style="display:inline-block; margin-top:14px; font-size:0.8rem; color:#A1887F; text-decoration:none;">←
+                ゲーム置き場に戻る</a>
         </div>
 
         <!-- 🧩 2. パズル画面 -->
@@ -243,6 +249,21 @@
         let isGameCleared = false;
 
         const boardElement = document.getElementById('board');
+
+        // 🎵 BGMループ再生
+        const bgm = document.getElementById('bgm');
+        bgm.volume = 0.5;
+
+        function tryPlayBgm() {
+            bgm.play().catch(() => { });
+        }
+
+        // ページ読み込み時に一応試す(自動再生が許可されている環境向け)
+        document.addEventListener('DOMContentLoaded', tryPlayBgm);
+        // 許可されなかった場合、最初のクリック・タップ・キー操作で再生
+        ['click', 'keydown', 'touchstart'].forEach(function (evt) {
+            document.addEventListener(evt, tryPlayBgm, { once: true });
+        });
 
         // 🔊 音声生成処理（Web Audio API）
         let audioCtx = null;
