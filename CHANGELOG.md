@@ -9,6 +9,33 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-08-29（5）
+---
+### 変更
+- `about/piconu-freegame.html`:ゲーム一覧を「ピコぬくん素材置き場」と同じ表形式(左:バナー画像/右:紹介文)に変更。「ピコぬくんのマッチ3」を一覧に追加し、各ゲームの紹介文を追加
+---
+
+## 2026-08-29（4）
+---
+### 追加
+- `game/piconu-match3-game.html`:新規ミニゲーム「ピコぬくんのマッチ3」を追加
+- `images/banners/banner-piconumatch3.jpg`・`images/game/piconu-match3-gamebg.jpg`:関連画像を追加
+- `audio/Pikonukun_Locked_Out.mp3`:BGM音源を追加
+### 変更
+- `game/piconu-match3-game.html`:タイトル画面に「ゲーム置き場に戻る」リンクを追加。BGMのループ再生・サウンドON/OFFボタンを追加。スマホでの誤動作防止(viewportメタタグ・touch-action等)と、画面サイズの調整(拡大・スマホ向けレスポンシブ対応)を実施
+---
+
+## 2026-08-29（3）
+---
+### 追加
+- `news/news-20260826-01.html`:「ピコぬネギ」「ネギ盛り限界チャレンジ」「ピコぬくん素材置き場」をまとめたお知らせを追加
+- `news/news-20260828-01.html`:「ピコぬくんゲーム置き場」「恒一をさがせ！」をまとめたお知らせを追加
+### 変更
+- `news/index.html`:上記2件をお知らせ一覧に追加
+### 修正
+- `news/news-20260721-01.html`:サイドバーのリンク先を旧ファイル名(`piconu-kun-game.html`)から`piconu-kun-escapegame.html`に修正(ファイル名変更時の反映漏れ)
+---
+
 ## 2026-08-29（2）
 ---
 ### 追加
