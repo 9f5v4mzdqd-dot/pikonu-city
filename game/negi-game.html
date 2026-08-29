@@ -2,235 +2,370 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>ピコぬくんゲーム置き場 | ピコぬ市公式ホームページ</title>
-    <meta name="description" content="ピコぬ市で公開しているミニゲーム・シナリオゲームをまとめたリンク集です。">
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ピコぬ市役所食堂：ネギ盛りチャレンジ</title>
+  <style>
+    /* 絶妙な平成Webデザイン風スタイリング */
+    body {
+      background-color: #ffffcc;
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      text-align: center;
+      color: #333333;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+    }
 
-    <style>
-        /* facilities/nousanbutsu.html と同じ、絶妙な平成Webデザイン風。
-           about/piconu-freesozai.html と同系統の配色にしています。 */
-        body {
-            background-color: #f5f8ff;
-            font-family: "MS Pゴシック", "Osaka", sans-serif;
-            text-align: center;
-            color: #333333;
-            margin: 0;
-            padding: 20px 10px;
-        }
+    #game-box {
+      width: 320px;
+      max-width: 92vw;
+      height: 380px;
+      border: 3px inset #cccccc;
+      background-color: #ffffff;
+      margin: 10px auto;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .page {
-            max-width: 760px;
-            margin: 0 auto;
-        }
+    #negi-tower {
+      font-size: 20px;
+      font-weight: bold;
+      color: #008000;
+      line-height: 0.8;
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      word-break: break-all;
+    }
 
-        h1 {
-            color: #003399;
-            font-size: 1.5rem;
-            margin: 10px 0 5px;
-        }
+    #udon {
+      font-size: 60px;
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+    }
 
-        h2 {
-            color: #003399;
-            font-size: 1.15rem;
-            margin: 25px 0 10px;
-        }
+    .btn {
+      background-color: #008040;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 22px;
+      padding: 18px 36px;
+      border: 3px outset #ffffff;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
 
-        p {
-            line-height: 1.8;
-            font-size: .95rem;
-        }
+    .btn:active {
+      border: 3px inset #ffffff;
+    }
 
-        hr {
-            border: none;
-            border-top: 2px solid #6699cc;
-            margin: 20px 0;
-        }
+    #result-msg {
+      color: #ff0000;
+      font-weight: bold;
+      font-size: 14px;
+      margin-top: 10px;
+    }
 
-        .small {
-            font-size: .8rem;
-            color: #666666;
-        }
+    /* お邪魔キャラ:カタブツ職員 */
+    #employee {
+      position: absolute;
+      top: 6px;
+      right: -90px;
+      width: 80px;
+      height: 80px;
+      transition: right 0.15s ease-out;
+      z-index: 5;
+    }
 
-        /* ゲーム一覧(表形式)。素材置き場と同じ、左に画像・右に説明の形式 */
-        .game-table {
-            width: 100%;
-            max-width: 680px;
-            margin: 10px auto;
-            border-collapse: collapse;
-            background-color: #ffffff;
-            font-size: .9rem;
-        }
+    #employee img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
 
-        .game-table th,
-        .game-table td {
-            border: 1px solid #999999;
-            padding: 10px;
-            vertical-align: middle;
-        }
+    #employee.show {
+      right: 4px;
+    }
 
-        .game-table th {
-            background-color: #dde8ff;
-            color: #003399;
-        }
+    /* ゲームオーバー時だけ表示する「コラ！」 */
+    #employee-bubble {
+      position: absolute;
+      top: 5px;
+      right: 85px;
+      background: #fff;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 18px;
+      font-weight: bold;
+      white-space: nowrap;
+      display: none;
+      z-index: 10;
+    }
 
-        .game-table td.banner-cell {
-            text-align: center;
-            width: 180px;
-        }
+    @media (max-width: 600px) {
+      #game-box {
+        width: 220px;
+        height: 320px;
+      }
 
-        .game-table img {
-            width: 160px;
-            height: 64px;
-            border: 1px solid #999999;
-            display: block;
-            margin: 0 auto;
-        }
+      #udon {
+        font-size: 50px;
+      }
 
-        .game-table td.desc-cell {
-            text-align: left;
-        }
-
-        .game-table .game-name {
-            font-weight: bold;
-            color: #003399;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .back {
-            margin-top: 25px;
-        }
-
-        a {
-            color: #0000cc;
-        }
-
-        a:visited {
-            color: #660099;
-        }
-
-        .footer {
-            margin-top: 30px;
-            font-size: .75rem;
-            color: #666666;
-        }
-    </style>
+      .btn {
+        font-size: 18px;
+        padding: 12px 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="page">
+  <h3>🌸ピコぬ市役所食堂 名物🌸<br>【ネギ盛り限界チャレンジ】</h3>
 
-        <h1>🎮ピコぬくんゲーム置き場🎮</h1>
+  <p>
+    「ネギ盛る」ボタンを連打して、丼の上にネギを積み上げよう！<br>
+    （※カタブツ職員に見つかる前に盛るんだぬ！　職員が出ている間はボタンを押すな！）
+  </p>
 
-        <p>
-            ピコぬ市には、ちょっと変わったゲームがいろいろありますぬ。
-        </p>
-
-        <hr>
-
-        <h2>🎮あそべるゲーム(全<span id="game-count">5</span>種)🎮</h2>
-
-        <p>
-            <strong>気になるバナーをクリックして、好きなゲームで遊んでいってくださいぬ！</strong>
-        </p>
-
-        <!--
-            判断: freesozaiページと同じ「配列に1行足すだけで反映」される
-            構造のまま、表示形式だけ縦バナー一覧→表形式(画像+説明)に変更しています。
-            説明文は各ゲームページ内の実際の文言(タイトル画面のセリフ・meta description等)を
-            もとにしており、こちらで新しく作文した宣伝文句ではありません。
-            情報が少ないゲーム(恒一をさがせ！等)は説明が短めです。
-        -->
-        <table class="game-table" id="game-table">
-            <thead>
-                <tr>
-                    <th>バナー</th>
-                    <th>ゲーム紹介</th>
-                </tr>
-            </thead>
-            <tbody id="game-list">
-                <!-- ここに JavaScript で行が挿入されます -->
-            </tbody>
-        </table>
-        <hr>
-
-        <h2>📋ご利用について📋</h2>
-
-        <div class="notice">
-            <p>
-                <strong>ゲームで使用している画像・コンテンツについてのお願いです。</strong>
-            </p>
-            <ul>
-                <li>各ゲームへのリンク・ご紹介は自由に行っていただけます。</li>
-                <li>ゲーム画面やバナー画像を、無断で転載・再配布しないでください。</li>
-                <li>商用利用はご遠慮ください(個人利用の範囲でお使いいただけます)。</li>
-                <li>ご紹介の際は「©ピコぬ市」などの出典表記をお願いします。</li>
-                <li>バナー画像への直リンク(このサイトの画像URLを直接読み込んでのご利用)はご遠慮ください。</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <div class="back">
-            <a href="piconu-kun.html">← ピコぬくんとは へ戻る</a>
-        </div>
-
-        <div class="footer">
-            ピコぬくんゲーム置き場<br>
-            Copyright © ピコぬ市 All Rights Reserved.
-        </div>
+  <div id="game-box">
+    <div id="employee">
+      <img src="../images/game/katabutsu.png" alt="カタブツ職員">
+      <div id="employee-bubble">コラ！</div>
     </div>
 
-    <script>
-        // images/banners/ 内の実ファイルのみを参照しています(2026-08-29時点で確認済み)。
-        //
-        // 【ゲームを追加するとき】
-        // 下の gameRaw に1行足すだけでOKです。
-        //   ["バナーのファイル名", "リンク先URL(相対パス)", "ゲーム名", "簡単な説明"],
-        var gameRaw = [
-            ["banner-game.jpg", "piconu-kun-escapegame.html", "ピコぬくんの脱出ゲーム", "<strong>全3ステージの脱出ゲーム。</strong><br>ピコぬくんは無事に脱出できるのかぬ！？"],
-            ["banner-quiz.jpg", "piconu-quiz.html", "ピコぬ市検定", "<strong>ピコぬ市についての検定クイズ。</strong> キミは何問正解できるぬ？"],
-            ["banner-gendaibyo-sodan-game.jpg", "gendaibyo-soudan-game.html", "現代病相談窓口記録ファイル", "<strong>現代病相談窓口に寄せられた相談記録を、シナリオゲーム形式で公開。</strong><br>キミも相談窓口を訪れてみるぬ？"],
-            ["banner-negi-game.jpg", "../game/negi-game.html", "ネギ盛り限界チャレンジ", "<strong>市役所食堂の名物「ネギ大盛り」に挑戦するミニゲーム。</strong><br>カタブツ職員に見つからないように……キミはどこまで盛れるぬ！？"],
-            ["banner-neko-game.jpg", "neko-game.html", "宝くじと猫と、世界経済の終焉", "<strong>猫と宝くじと世界経済をめぐるテキストアドベンチャー。</strong><br>……なぜこの組み合わせなのかは、遊んでみればわかるかもしれませんぬ。"],
-            ["banner-tsunekazu-game.jpg", "../game/tsunekazu-game.html", "恒一をさがせ！", "<strong>市役所のどこかにいる恒一を探すゲーム。</strong><br>……いったい、どこにいるぬ？"],
-            ["banner-piconumatch3.jpg", "../game/piconu-match3-game.html", "ピコぬくんのマッチ3", "<strong>書類作成中に寝てしまったピコぬくん。</strong><br>なくした鍵を一緒に探すマッチ3パズルだぬ！"]
-        ];
+    <div id="negi-tower"></div>
+    <div id="udon">🍜</div>
+  </div>
 
-        document.addEventListener("DOMContentLoaded", function () {
-            var tbody = document.getElementById("game-list");
-            var rowsHtml = "";
+  <button class="btn" onclick="addNegi()">ネギを盛る！</button>
 
-            for (var i = 0; i < gameRaw.length; i++) {
-                var file = gameRaw[i][0];
-                var href = gameRaw[i][1];
-                var name = gameRaw[i][2];
-                var desc = gameRaw[i][3] || "";
-                var imgPath = "../images/banners/" + file;
+  <button onclick="resetGame()"
+    style="font-size: 18px; padding: 14px 24px; margin-top: 10px; -webkit-tap-highlight-color: transparent;">
+    やり直す
+  </button>
 
-                rowsHtml += "<tr>";
-                rowsHtml += "<td class=\"banner-cell\"><a href=\"" + href + "\">";
-                rowsHtml += "<img src=\"" + imgPath + "\" alt=\"" + name + "\" loading=\"lazy\"></a></td>";
-                rowsHtml += "<td class=\"desc-cell\">";
-                rowsHtml += "<a class=\"game-name\" href=\"" + href + "\">" + name + "</a>";
-                rowsHtml += desc;
-                rowsHtml += "</td>";
-                rowsHtml += "</tr>";
-            }
+  <br><br>
 
-            tbody.innerHTML = rowsHtml;
+  <a href="../facilities/syokudo.html" style="font-size: 13px; color: #666666;">
+    ← 市役所食堂のページに戻る
+  </a>
 
-            var countEl = document.getElementById("game-count");
-            if (countEl) {
-                countEl.textContent = gameRaw.length;
-            }
+  <div id="score">
+    現在のネギ：
+    <span id="count" style="font-size: 24px; color: green;">0</span> グラム
+  </div>
+
+  <div id="result-msg"></div>
+
+  <script>
+    let negiCount = 0;
+    let isGameOver = false;
+    let employeeVisible = false;
+    let employeeTimer = null;
+
+    // ---- ファミコン風ピコピコ音(Web Audio APIでその場生成) ----
+    let audioCtx = null;
+
+    function playPiko(freq, type) {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = type || 'square';
+        osc.frequency.value = freq;
+
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(
+          0.001,
+          audioCtx.currentTime + 0.12
+        );
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.12);
+
+      } catch (e) {
+        /* 音が鳴らせない環境では何もしない */
+      }
+    }
+
+    function playBustSound() {
+      // 下がる音を2音連続で(ガクッと崩れる感じ)
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        [440, 220].forEach((f, i) => {
+          setTimeout(() => playPiko(f, 'sawtooth'), i * 120);
         });
-    </script>
+
+      } catch (e) {
+        /* noop */
+      }
+    }
+
+    // ---- お邪魔キャラ:カタブツ職員のランダム出現 ----
+    function scheduleEmployee() {
+      if (isGameOver) return;
+
+      // 150gまでは通常ペース。
+      // 以降はネギの量が増えるほど間隔が縮まっていく
+      const baseMin = 1500;
+      const baseMax = 2500;
+
+      const over = Math.max(0, negiCount - 150);
+
+      // 150g超過分10gごとに、
+      // 間隔の上限・下限をじわじわ短縮
+      const shrink = Math.min(
+        over / 10 * 90,
+        baseMin - 400
+      );
+
+      const min = baseMin - shrink;
+      const max = Math.max(
+        baseMax - shrink * 1.5,
+        min + 400
+      );
+
+      const delay = min + Math.random() * (max - min);
+
+      employeeTimer = setTimeout(showEmployee, delay);
+    }
+
+    function showEmployee() {
+      if (isGameOver) return;
+
+      employeeVisible = true;
+
+      document.getElementById('employee').classList.add('show');
+
+      playPiko(660, 'triangle');
+
+      const visibleDuration = 700 + Math.random() * 500;
+
+      employeeTimer = setTimeout(() => {
+        employeeVisible = false;
+
+        document.getElementById('employee').classList.remove('show');
+
+        scheduleEmployee();
+
+      }, visibleDuration);
+    }
+
+    function addNegi() {
+      if (isGameOver) return;
+
+      // 職員が見ている間にボタンを押すと即アウト(ただし20g以下はおとがめなし)
+      if (employeeVisible) {
+        if (negiCount <= 20) {
+          playPiko(880, 'triangle');
+          const msgEl = document.getElementById('result-msg');
+          msgEl.innerHTML = "「今回は見逃しましょう」";
+          setTimeout(() => {
+            if (!isGameOver) msgEl.innerHTML = "";
+          }, 1200);
+          return;
+        }
+        gameOver('caught');
+        return;
+      }
+
+      negiCount += 10;
+
+      document.getElementById('count').innerText = negiCount;
+
+      // 音程はネギの量に応じて少しずつ上がる
+      const freq = 440 + Math.min(negiCount, 400) * 2;
+
+      playPiko(freq);
+
+      // 画面上に「ネギ」を積み上げていく
+      const tower = document.getElementById('negi-tower');
+
+      tower.innerHTML += "ネギ！";
+    }
+
+    function gameOver(reason) {
+      isGameOver = true;
+
+      clearTimeout(employeeTimer);
+
+      playBustSound();
+
+      // ゲームオーバーになった瞬間だけ「コラ！」を表示
+      document.getElementById('employee-bubble').style.display = 'block';
+
+      let msg = "";
+
+      if (negiCount >= 300) {
+        // 300g以上：呆れを通り越して感心・困惑
+        msg =
+          "【GAME OVER】<br>" +
+          "「…これはもはや、想像の範疇を超えています」<br>" +
+          "カタブツ職員も絶句しつつ、静かにネギを没収されましたぬ。";
+
+      } else if (negiCount >= 100) {
+        // 100g〜290g：真面目に注意
+        msg =
+          "【GAME OVER】<br>" +
+          "「はぁ…またあなたですか。ネギの過剰摂取は禁止です」<br>" +
+          "カタブツ職員にしっかりと注意され、ネギを没収されましたぬ。";
+
+      } else {
+        // 21g〜90g：すばやい摘発(少し盛ろうとしただけなのに)
+        msg =
+          "【GAME OVER】<br>" +
+          "「何事もほどほどが肝心ですよ？」<br>" +
+          "カタブツ職員の鋭い視線に見つかり、ネギを没収されましたぬ……。";
+      }
+
+      document.getElementById('result-msg').innerHTML = msg;
+    }
+
+    function resetGame() {
+      negiCount = 0;
+      isGameOver = false;
+      employeeVisible = false;
+
+      clearTimeout(employeeTimer);
+
+      document.getElementById('count').innerText = "0";
+      document.getElementById('negi-tower').innerHTML = "";
+      document.getElementById('result-msg').innerHTML = "";
+
+      document.getElementById('employee').classList.remove('show');
+
+      // 「コラ！」を消してから再スタート
+      document.getElementById('employee-bubble').style.display = 'none';
+
+      scheduleEmployee();
+    }
+
+    // 初回起動時から職員の出現スケジュールを開始
+    scheduleEmployee();
+  </script>
+
+  <hr style="border: 1px dashed #999999; margin-top: 30px;">
+
+  <p style="font-size: 12px; color: #666666;">
+    ※食堂パートの〇〇さんが夜な夜なこっそり作成したプログラムですぬ。<br>
+    ※このページに関する苦情は広報課（カタブツ職員）まで。
+  </p>
 
 </body>
 
