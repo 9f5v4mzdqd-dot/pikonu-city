@@ -33,6 +33,30 @@
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 8px 16px rgba(255, 179, 0, 0.2);
+            position: relative;
+        }
+
+        #sound-toggle {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            background: #FFF8E1;
+            border: 2px solid #FFB300;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+            z-index: 10;
+        }
+
+        #sound-toggle:active {
+            transform: scale(0.92);
         }
 
         /* 🏠 各画面共通設定 */
@@ -188,6 +212,8 @@
 
     <div id="game-container">
 
+        <button id="sound-toggle" onclick="toggleSound()" aria-label="サウンドON/OFF">🔊</button>
+
         <!-- 🏠 1. タイトル画面 -->
         <div id="title-screen" class="screen">
             <div class="title-logo">✨ ピコぬくんのマッチ3 ✨</div>
@@ -254,8 +280,12 @@
         const bgm = document.getElementById('bgm');
         bgm.volume = 0.5;
 
+        let soundEnabled = true;
+
         function tryPlayBgm() {
-            bgm.play().catch(() => { });
+            if (soundEnabled) {
+                bgm.play().catch(() => { });
+            }
         }
 
         // ページ読み込み時に一応試す(自動再生が許可されている環境向け)
@@ -264,6 +294,21 @@
         ['click', 'keydown', 'touchstart'].forEach(function (evt) {
             document.addEventListener(evt, tryPlayBgm, { once: true });
         });
+
+        // 🔊 サウンドON/OFF切り替え(BGM・効果音とも対象)
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('sound-toggle');
+
+            if (soundEnabled) {
+                btn.textContent = '🔊';
+                bgm.muted = false;
+                bgm.play().catch(() => { });
+            } else {
+                btn.textContent = '🔇';
+                bgm.muted = true;
+            }
+        }
 
         // 🔊 音声生成処理（Web Audio API）
         let audioCtx = null;
@@ -277,6 +322,7 @@
 
         // 選択音
         function playSelectSound() {
+            if (!soundEnabled) return;
             try {
                 const ctx = getAudioContext();
                 const osc = ctx.createOscillator();
@@ -294,6 +340,7 @@
 
         // 消去音
         function playMatchSound() {
+            if (!soundEnabled) return;
             try {
                 const ctx = getAudioContext();
                 const notes = [523.25, 659.25, 783.99]; // ド・ミ・ソ
@@ -316,6 +363,7 @@
 
         // クリアファンファーレ音
         function playClearSound() {
+            if (!soundEnabled) return;
             try {
                 const ctx = getAudioContext();
                 const notes = [523.25, 659.25, 783.99, 1046.50]; // ド・ミ・ソ・高ド
