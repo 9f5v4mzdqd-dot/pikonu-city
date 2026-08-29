@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ピコぬくんのマッチ3</title>
+    <style>
+        /* 🌟 ピコぬくんカラーの全体デザイン */
+        body {
+            background-image: url('../images/game/piconu-match3-gamebg.jpg');
+            /* 画像のファイル名 */
+            background-size: cover;
+            /* 画面いっぱいに広げる */
+            background-position: center;
+            /* 中央に配置 */
+            background-repeat: no-repeat;
+            /* 繰り返さない */
+            background-attachment: fixed;
+            /* スクロールしても固定 */
+
+            color: #5D4037;
+            text-align: center;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #game-container {
+            max-width: 420px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 4px solid #FFB300;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(255, 179, 0, 0.2);
+        }
+
+        /* 🏠 各画面共通設定 */
+        .screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF8F00;
+            text-shadow: 2px 2px 0px #FFE082;
+            margin-bottom: 10px;
+        }
+
+        /* ピコぬくん風アイコン */
+        .pikonu-avatar {
+            width: 90px;
+            height: 110px;
+            background: #FFF9C4;
+            border: 4px solid #FFB300;
+            border-radius: 45px 45px 35px 35px;
+            position: relative;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pikonu-avatar::before {
+            content: "▲";
+            color: #FFB300;
+            font-size: 18px;
+            position: absolute;
+            top: -20px;
+        }
+
+        .pikonu-face {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .pikonu-screen {
+            width: 45px;
+            height: 26px;
+            background: #212121;
+            border: 2px solid #FFB300;
+            border-radius: 6px;
+            color: #64FFDA;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* セリフ用のフキダシ */
+        .speech-bubble {
+            background: #FFF8E1;
+            border: 2px solid #FFE082;
+            border-radius: 12px;
+            padding: 12px 15px;
+            font-size: 13px;
+            color: #4E342E;
+            line-height: 1.6;
+            text-align: left;
+            margin: 10px 0 15px 0;
+            position: relative;
+        }
+
+        /* ボタンデザイン */
+        .btn {
+            background: #FFB300;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #FF6F00;
+            transition: all 0.1s;
+        }
+
+        .btn:hover {
+            background: #FFA000;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #FF6F00;
+        }
+
+        /* 🧩 パズル画面 */
+        #puzzle-screen,
+        #clear-screen {
+            display: none;
+        }
+
+        .score-board {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FF8F00;
+            background: #FFF8E1;
+            padding: 6px 14px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(6, 50px);
+            grid-template-rows: repeat(6, 50px);
+            gap: 6px;
+            justify-content: center;
+            margin: 10px auto;
+            background: #FFE082;
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+        .tile {
+            width: 50px;
+            height: 50px;
+            background-color: #FFFFFF;
+            border: 2px solid #FFD54F;
+            font-size: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .selected {
+            border: 3px solid #00E676;
+            background-color: #E8F5E9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="game-container">
+
+        <!-- 🏠 1. タイトル画面 -->
+        <div id="title-screen" class="screen">
+            <div class="title-logo">✨ ピコぬくんのマッチ3 ✨</div>
+
+            <div class="pikonu-avatar">
+                <div class="pikonu-face">● ‿ ●</div>
+                <div class="pikonu-screen">P</div>
+            </div>
+
+            <div class="speech-bubble">
+                「はっ！書類を作っていたら、いつの間にか寝ちゃってたぬ！外は真っ暗で、鍵も外からかかってるぬ！鍵は机の上に置いたはずなんだけど、散らかってるからボクだけでは見つけられないぬ……。キミ、良かったら一緒に探してほしいんだぬ！」
+            </div>
+
+            <button class="btn" onclick="startGame()">一緒に探す！（スタート）</button>
+        </div>
+
+        <!-- 🧩 2. パズル画面 -->
+        <div id="puzzle-screen">
+            <h2 style="margin: 0 0 5px 0; color: #FF8F00; font-size: 18px;">🧩 鍵を探そう！</h2>
+
+            <div class="score-board">スコア: <span id="score">0</span> / 1000点</div>
+
+            <div id="board"></div>
+
+            <button class="btn" style="margin-top: 10px; font-size: 13px; padding: 6px 14px;"
+                onclick="showTitle()">タイトルへ戻る</button>
+        </div>
+
+        <!-- 🎉 3. クリア画面 -->
+        <div id="clear-screen" class="screen">
+            <div class="title-logo" style="color: #00C853;">🎉 ゲームクリア！ 🎉</div>
+
+            <div class="pikonu-avatar">
+                <div class="pikonu-face">⁠≧ ‿ ≦</div>
+                <div class="pikonu-screen">🔑</div>
+            </div>
+
+            <div class="speech-bubble" style="border-color: #81C784; background: #E8F5E9;">
+                「あっ！鍵があったぬ！一緒に探してくれてありがとうだぬー！」
+            </div>
+
+            <button class="btn" onclick="showTitle()">タイトルに戻る</button>
+        </div>
+
+    </div>
+
+    <script>
+        const BOARD_SIZE = 6;
+        const TARGET_SCORE = 1000; // 🎯 クリア目標スコア
+        const ITEMS = ['🍂', '☕', '📄', '🤖', '🍵'];
+
+        let board = [];
+        let selectedTile = null;
+        let score = 0;
+        let isGameCleared = false;
+
+        const boardElement = document.getElementById('board');
+
+        // 🔊 音声生成処理（Web Audio API）
+        let audioCtx = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioCtx;
+        }
+
+        // 選択音
+        function playSelectSound() {
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(880, ctx.currentTime);
+                gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.08);
+            } catch (e) { }
+        }
+
+        // 消去音
+        function playMatchSound() {
+            try {
+                const ctx = getAudioContext();
+                const notes = [523.25, 659.25, 783.99]; // ド・ミ・ソ
+                let currentTime = ctx.currentTime;
+                notes.forEach(freq => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(freq, currentTime);
+                    gain.gain.setValueAtTime(0.08, currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, currentTime + 0.1);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(currentTime);
+                    osc.stop(currentTime + 0.1);
+                    currentTime += 0.08;
+                });
+            } catch (e) { }
+        }
+
+        // クリアファンファーレ音
+        function playClearSound() {
+            try {
+                const ctx = getAudioContext();
+                const notes = [523.25, 659.25, 783.99, 1046.50]; // ド・ミ・ソ・高ド
+                let currentTime = ctx.currentTime;
+                notes.forEach((freq, index) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(freq, currentTime);
+                    const duration = index === 3 ? 0.4 : 0.12;
+                    gain.gain.setValueAtTime(0.1, currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, currentTime + duration);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(currentTime);
+                    osc.stop(currentTime + duration);
+                    currentTime += 0.12;
+                });
+            } catch (e) { }
+        }
+
+        // 🔄 画面切替処理
+        function startGame() {
+            playSelectSound();
+            document.getElementById('title-screen').style.display = 'none';
+            document.getElementById('clear-screen').style.display = 'none';
+            document.getElementById('puzzle-screen').style.display = 'block';
+            score = 0;
+            isGameCleared = false;
+            document.getElementById('score').innerText = score;
+            initBoard();
+        }
+
+        function showTitle() {
+            playSelectSound();
+            document.getElementById('title-screen').style.display = 'flex';
+            document.getElementById('puzzle-screen').style.display = 'none';
+            document.getElementById('clear-screen').style.display = 'none';
+        }
+
+        function showClearScreen() {
+            playClearSound();
+            document.getElementById('puzzle-screen').style.display = 'none';
+            document.getElementById('clear-screen').style.display = 'flex';
+        }
+
+        // 盤面の初期化
+        function initBoard() {
+            boardElement.innerHTML = '';
+            board = [];
+
+            for (let r = 0; r < BOARD_SIZE; r++) {
+                board[r] = [];
+                for (let c = 0; c < BOARD_SIZE; c++) {
+                    const randItem = ITEMS[Math.floor(Math.random() * ITEMS.length)];
+                    board[r][c] = randItem;
+
+                    const tile = document.createElement('div');
+                    tile.className = 'tile';
+                    tile.dataset.row = r;
+                    tile.dataset.col = c;
+                    tile.innerText = randItem;
+                    tile.onclick = () => handleTileClick(r, c);
+
+                    boardElement.appendChild(tile);
+                }
+            }
+            renderBoard();
+        }
+
+        function renderBoard() {
+            const tiles = document.querySelectorAll('.tile');
+            tiles.forEach(tile => {
+                const r = tile.dataset.row;
+                const c = tile.dataset.col;
+                tile.innerText = board[r][c];
+                tile.classList.remove('selected');
+            });
+        }
+
+        function handleTileClick(r, c) {
+            if (isGameCleared) return;
+            playSelectSound();
+
+            if (!selectedTile) {
+                selectedTile = {r, c};
+                getTileElement(r, c).classList.add('selected');
+            } else {
+                const rDiff = Math.abs(selectedTile.r - r);
+                const cDiff = Math.abs(selectedTile.c - c);
+
+                if ((rDiff === 1 && cDiff === 0) || (rDiff === 0 && cDiff === 1)) {
+                    swapTiles(selectedTile.r, selectedTile.c, r, c);
+                    checkMatches();
+                }
+
+                selectedTile = null;
+                renderBoard();
+            }
+        }
+
+        function getTileElement(r, c) {
+            return document.querySelector(`.tile[data-row="${r}"][data-col="${c}"]`);
+        }
+
+        function swapTiles(r1, c1, r2, c2) {
+            const temp = board[r1][c1];
+            board[r1][c1] = board[r2][c2];
+            board[r2][c2] = temp;
+        }
+
+        function checkMatches() {
+            let matched = [];
+
+            for (let r = 0; r < BOARD_SIZE; r++) {
+                for (let c = 0; c < BOARD_SIZE - 2; c++) {
+                    const val = board[r][c];
+                    if (val && val === board[r][c + 1] && val === board[r][c + 2]) {
+                        matched.push({r, c}, {r, c: c + 1}, {r, c: c + 2});
+                    }
+                }
+            }
+
+            for (let c = 0; c < BOARD_SIZE; c++) {
+                for (let r = 0; r < BOARD_SIZE - 2; r++) {
+                    const val = board[r][c];
+                    if (val && val === board[r + 1][c] && val === board[r + 2][c]) {
+                        matched.push({r, c}, {r: r + 1, c}, {r: r + 2, c});
+                    }
+                }
+            }
+
+            if (matched.length > 0) {
+                playMatchSound();
+
+                matched.forEach(pos => {
+                    if (board[pos.r][pos.c] !== '') {
+                        board[pos.r][pos.c] = '';
+                        score += 10;
+                    }
+                });
+                document.getElementById('score').innerText = score;
+
+                // 🎯 1000点以上でクリア判定
+                if (score >= TARGET_SCORE && !isGameCleared) {
+                    isGameCleared = true;
+                    setTimeout(showClearScreen, 500);
+                    return;
+                }
+
+                setTimeout(applyGravity, 300);
+            }
+        }
+
+        function applyGravity() {
+            for (let c = 0; c < BOARD_SIZE; c++) {
+                for (let r = BOARD_SIZE - 1; r >= 0; r--) {
+                    if (board[r][c] === '') {
+                        for (let k = r - 1; k >= 0; k--) {
+                            if (board[k][c] !== '') {
+                                board[r][c] = board[k][c];
+                                board[k][c] = '';
+                                break;
+                            }
+                        }
+                        if (board[r][c] === '') {
+                            board[r][c] = ITEMS[Math.floor(Math.random() * ITEMS.length)];
+                        }
+                    }
+                }
+            }
+            renderBoard();
+            setTimeout(checkMatches, 300);
+        }
+    </script>
+
+</body>
+
+</html>
