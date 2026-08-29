@@ -9,7 +9,45 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
-## 2026-08-28
+## 2026-08-29（2）
+---
+### 追加
+- `images/freesozai/n-icon-001.png`:猫「眠る」アイコン素材を追加
+### 変更
+- `about/piconu-freesozai.html`:素材一覧に「猫「眠る」」を追加
+---
+
+## 2026-08-29（1）
+---
+### 変更
+- `about/sitemap.html`:「ネギ盛り限界チャレンジ」「恒一をさがせ！」を市の概要に追加(平成レトロ系ページの未掲載点検により判明)
+- `data/search-index.json`:同上2件を検索インデックスに追加
+---
+
+## 2026-08-28（4）
+---
+### 追加
+- `game/tsunekazu-game.html`:新規ミニゲーム「恒一をさがせ！」を追加
+- `images/banners/banner-tsunekazu-game.jpg`:バナー画像を追加
+### 変更
+- `about/piconu-freegame.html`:ゲーム一覧に「恒一をさがせ！」を追加
+- `game/tsunekazu-game.html`:タイトル下に「ピコぬくんゲーム置き場へ戻る」リンクを追加
+---
+
+## 2026-08-28（3）
+---
+### 変更
+- `about/piconu-kun-game.html` を `about/piconu-kun-escapegame.html` にファイル名変更(わかりやすさのため)。参照箇所(news/news-20260721-01.html・data/search-index.json・about/piconu-chat.html・about/piconu-diary.html・about/gaiyou.html・about/mayoigo.html・about/piconu-kun.html・about/sitemap.html)を一括更新
+- `about/piconu-kun-escapegame.html`・`about/piconu-quiz.html`:タイトル画面に「ピコぬくんゲーム置き場へ戻る」リンクを追加
+---
+
+## 2026-08-28（2）
+---
+### 追加
+- `about/piconu-freegame.html`:「ピコぬくんゲーム置き場」を新規作成。サイト内のゲームへのバナーリンク集を平成初期の個人ホームページ風デザインで公開。利用規約(商用利用不可・クレジット表記必須・直リンク禁止)も記載
+---
+
+## 2026-08-28（1）
 ---
 ### 追加
 - `game/013-spice.html`:現代病相談窓口記録ファイルのシナリオゲーム「スパイスの話」を追加(計13本に)
