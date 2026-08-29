@@ -55,27 +55,50 @@
             color: #666666;
         }
 
-        /* バナーリンク一覧。昔の「リンク集」ページによくある、
-           バナーを縦に並べただけのシンプルな形式 */
-        .banner-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            margin: 15px auto;
-        }
-
-        .banner-list a {
-            display: inline-block;
-            border: 1px solid #999999;
-            line-height: 0;
+        /* ゲーム一覧(表形式)。素材置き場と同じ、左に画像・右に説明の形式 */
+        .game-table {
+            width: 100%;
+            max-width: 680px;
+            margin: 10px auto;
+            border-collapse: collapse;
             background-color: #ffffff;
+            font-size: .9rem;
         }
 
-        .banner-list img {
-            width: 300px;
-            height: 120px;
+        .game-table th,
+        .game-table td {
+            border: 1px solid #999999;
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        .game-table th {
+            background-color: #dde8ff;
+            color: #003399;
+        }
+
+        .game-table td.banner-cell {
+            text-align: center;
+            width: 180px;
+        }
+
+        .game-table img {
+            width: 160px;
+            height: 64px;
+            border: 1px solid #999999;
             display: block;
+            margin: 0 auto;
+        }
+
+        .game-table td.desc-cell {
+            text-align: left;
+        }
+
+        .game-table .game-name {
+            font-weight: bold;
+            color: #003399;
+            display: block;
+            margin-bottom: 4px;
         }
 
         .back {
@@ -105,28 +128,35 @@
         <h1>🎮ピコぬくんゲーム置き場🎮</h1>
 
         <p>
-            ピコぬ市のゲームをまとめていますぬー！<br>
-            よろしければ遊んでいってくださいぬ。
+            ピコぬ市には、ちょっと変わったゲームがいろいろありますぬ。
         </p>
 
         <hr>
 
         <h2>🎮あそべるゲーム(全<span id="game-count">5</span>種)🎮</h2>
 
-        <p class="small">
-            バナーをクリックすると、それぞれのゲームが始まります。
+        <p>
+            <strong>気になるバナーをクリックして、好きなゲームで遊んでいってくださいぬ！</strong>
         </p>
 
         <!--
-            判断: freesozaiページと同じく「配列に1行足すだけで反映」される
-            構造にしています。バナー画像は images/banners/ 内の実ファイル
-            (banner-game.jpg / banner-gendaibyo-sodan-game.jpg /
-             banner-negi-game.jpg / banner-neko-game.jpg / banner-quiz.jpg)
-            を確認して使用しています。
+            判断: freesozaiページと同じ「配列に1行足すだけで反映」される
+            構造のまま、表示形式だけ縦バナー一覧→表形式(画像+説明)に変更しています。
+            説明文は各ゲームページ内の実際の文言(タイトル画面のセリフ・meta description等)を
+            もとにしており、こちらで新しく作文した宣伝文句ではありません。
+            情報が少ないゲーム(恒一をさがせ！等)は説明が短めです。
         -->
-        <div class="banner-list" id="game-list">
-            <!-- ここに JavaScript でバナーが挿入されます -->
-        </div>
+        <table class="game-table" id="game-table">
+            <thead>
+                <tr>
+                    <th>バナー</th>
+                    <th>ゲーム紹介</th>
+                </tr>
+            </thead>
+            <tbody id="game-list">
+                <!-- ここに JavaScript で行が挿入されます -->
+            </tbody>
+        </table>
         <hr>
 
         <h2>📋ご利用について📋</h2>
@@ -157,37 +187,43 @@
     </div>
 
     <script>
-        // images/banners/ 内の実ファイルのみを参照しています(2026-08-28時点で確認済み)。
+        // images/banners/ 内の実ファイルのみを参照しています(2026-08-29時点で確認済み)。
         //
         // 【ゲームを追加するとき】
         // 下の gameRaw に1行足すだけでOKです。
-        //   ["バナーのファイル名", "リンク先URL(相対パス)", "ゲーム名(altテキスト用)"],
+        //   ["バナーのファイル名", "リンク先URL(相対パス)", "ゲーム名", "簡単な説明"],
         var gameRaw = [
-            ["banner-game.jpg", "piconu-kun-escapegame.html", "ピコぬくんの脱出ゲーム"],
-            ["banner-quiz.jpg", "piconu-quiz.html", "ピコぬ市検定"],
-            ["banner-gendaibyo-sodan-game.jpg", "gendaibyo-soudan-game.html", "現代病相談窓口記録ファイル"],
-            ["banner-negi-game.jpg", "../game/negi-game.html", "ネギ盛り限界チャレンジ"],
-            ["banner-neko-game.jpg", "neko-game.html", "宝くじと猫と、世界経済の終焉"],
-            ["banner-tsunekazu-game.jpg", "../game/tsunekazu-game.html", "恒一をさがせ！"],
-            ["banner-piconumatch3.jpg", "../game/piconu-match3-game.html", "ピコぬくんのマッチ3"]
+            ["banner-game.jpg", "piconu-kun-escapegame.html", "ピコぬくんの脱出ゲーム", "<strong>全3ステージの脱出ゲーム。</strong><br>ピコぬくんは無事に脱出できるのかぬ！？"],
+            ["banner-quiz.jpg", "piconu-quiz.html", "ピコぬ市検定", "<strong>ピコぬ市についての検定クイズ。</strong> あなたは何問正解できるぬ？"],
+            ["banner-gendaibyo-sodan-game.jpg", "gendaibyo-soudan-game.html", "現代病相談窓口記録ファイル", "<strong>現代病相談窓口に寄せられた相談記録を、シナリオゲーム形式で公開。</strong><br>あなたも相談窓口を訪れてみるぬ？"],
+            ["banner-negi-game.jpg", "../game/negi-game.html", "ネギ盛り限界チャレンジ", "<strong>市役所食堂の名物「ネギ大盛り」に挑戦するミニゲーム。</strong><br>カタブツ職員に見つからないように……キミはどこまで盛れるぬ！？"],
+            ["banner-neko-game.jpg", "neko-game.html", "宝くじと猫と、世界経済の終焉", "<strong>猫と宝くじと世界経済をめぐるテキストアドベンチャー。</strong><br>……なぜこの組み合わせなのかは、遊んでみればわかるかもしれませんぬ。"],
+            ["banner-tsunekazu-game.jpg", "../game/tsunekazu-game.html", "恒一をさがせ！", "<strong>市役所のどこかにいる恒一を探すゲーム。</strong><br>……いったい、どこにいるぬ？"],
+            ["banner-piconumatch3.jpg", "../game/piconu-match3-game.html", "ピコぬくんのマッチ3", "<strong>書類作成中に寝てしまったピコぬくん。</strong><br>なくした鍵を一緒に探すマッチ3パズルだぬ！"]
         ];
 
         document.addEventListener("DOMContentLoaded", function () {
-            var container = document.getElementById("game-list");
-            var html = "";
+            var tbody = document.getElementById("game-list");
+            var rowsHtml = "";
 
             for (var i = 0; i < gameRaw.length; i++) {
                 var file = gameRaw[i][0];
                 var href = gameRaw[i][1];
                 var name = gameRaw[i][2];
+                var desc = gameRaw[i][3] || "";
                 var imgPath = "../images/banners/" + file;
 
-                html += "<a href=\"" + href + "\">";
-                html += "<img src=\"" + imgPath + "\" alt=\"" + name + "\" loading=\"lazy\">";
-                html += "</a>";
+                rowsHtml += "<tr>";
+                rowsHtml += "<td class=\"banner-cell\"><a href=\"" + href + "\">";
+                rowsHtml += "<img src=\"" + imgPath + "\" alt=\"" + name + "\" loading=\"lazy\"></a></td>";
+                rowsHtml += "<td class=\"desc-cell\">";
+                rowsHtml += "<a class=\"game-name\" href=\"" + href + "\">" + name + "</a>";
+                rowsHtml += desc;
+                rowsHtml += "</td>";
+                rowsHtml += "</tr>";
             }
 
-            container.innerHTML = html;
+            tbody.innerHTML = rowsHtml;
 
             var countEl = document.getElementById("game-count");
             if (countEl) {
