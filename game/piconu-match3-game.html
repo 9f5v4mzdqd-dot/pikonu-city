@@ -345,9 +345,37 @@
         <div id="clear-screen" class="screen">
             <div class="title-logo" style="color: #00C853;">🎉 ゲームクリア！ 🎉</div>
 
-            <div class="pikonu-avatar">
-                <div class="pikonu-face">⁠≧ ‿ ≦</div>
-                <div class="pikonu-screen">🔑</div>
+            <div class="pikonu-avatar-svg">
+                <svg viewBox="0 0 140 180" aria-label="ピコぬくん">
+                    <rect x="20" y="40" width="100" height="130" rx="45" fill="#fff8e1" stroke="#ffe082"
+                        stroke-width="5" />
+
+                    <!-- アンテナ -->
+                    <polygon points="70,5 50,25 90,25" fill="#ffb300" />
+                    <circle cx="70" cy="30" r="10" fill="#ffffff" stroke="#ffb300" stroke-width="2" />
+
+                    <!-- クリア時の目 -->
+                    <path d="M 44 73 L 52 78 L 44 83" stroke="#3e2723" stroke-width="3" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" />
+
+                    <path d="M 58 91 Q 70 99 82 91" stroke="#3e2723" stroke-width="3" fill="none"
+                        stroke-linecap="round" />
+
+                    <path d="M 96 73 L 88 78 L 96 83" stroke="#3e2723" stroke-width="3" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" />
+
+                    <!-- ほっぺ -->
+                    <circle cx="42" cy="85" r="6" fill="#ffab91" opacity="0.7" />
+                    <circle cx="98" cy="85" r="6" fill="#ffab91" opacity="0.7" />
+
+                    <!-- ディスプレイ -->
+                    <rect x="35" y="110" width="70" height="45" rx="5" fill="#37474f" stroke="#ffb300"
+                        stroke-width="2" />
+                    <rect x="40" y="115" width="60" height="35" fill="#000000" />
+
+                    <text x="70" y="138" font-size="20" fill="#00e676" font-family="sans-serif"
+                        text-anchor="middle">🔑</text>
+                </svg>
             </div>
 
             <div class="speech-bubble" style="border-color: #81C784; background: #E8F5E9;">
@@ -387,7 +415,7 @@
         document.addEventListener('DOMContentLoaded', tryPlayBgm);
         // 許可されなかった場合、最初のクリック・タップ・キー操作で再生
         ['click', 'keydown', 'touchstart'].forEach(function (evt) {
-            document.addEventListener(evt, tryPlayBgm, { once: true });
+            document.addEventListener(evt, tryPlayBgm, {once: true});
         });
 
         // 🔊 サウンドON/OFF切り替え(BGM・効果音とも対象)
