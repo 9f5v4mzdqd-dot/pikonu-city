@@ -36,7 +36,7 @@
         #game-container {
             max-width: 605px;
             margin: 0 auto;
-            background: #FFFFFF;
+            background: #FFF5F8;
             border: 4px solid #FFB6C1;
             border-radius: 20px;
             padding: 20px;
@@ -139,7 +139,7 @@
         }
 
         #puzzle-screen {
-            background: #111122;
+            background: #8888D8;
             border-radius: 15px;
             padding: 15px 10px;
         }
@@ -157,10 +157,11 @@
 
         #board {
             display: grid;
-            grid-template-columns: repeat(6, 72px);
-            grid-template-rows: repeat(6, 72px);
+            grid-template-columns: repeat(6, 1fr);
             gap: 8px;
-            justify-content: center;
+            width: 100%;
+            max-width: 460px;
+            box-sizing: border-box;
             margin: 14px auto;
             background: #00CED1;
             padding: 14px;
@@ -168,11 +169,11 @@
         }
 
         .tile {
-            width: 72px;
-            height: 72px;
-            background-color: #FFFFFF;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #FFF0F5;
             border: 2px solid #32CD32;
-            font-size: 37px;
+            font-size: clamp(16px, 7vw, 37px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -181,6 +182,7 @@
             touch-action: manipulation;
             border-radius: 14px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            box-sizing: border-box;
         }
 
         .selected {
@@ -240,19 +242,10 @@
             }
 
             #board {
-                grid-template-columns: repeat(6, 44px);
-                grid-template-rows: repeat(6, 44px);
                 gap: 5px;
                 margin: 8px auto;
                 padding: 8px;
                 border-radius: 12px;
-            }
-
-            .tile {
-                width: 44px;
-                height: 44px;
-                font-size: 22px;
-                border-radius: 8px;
             }
         }
     </style>
