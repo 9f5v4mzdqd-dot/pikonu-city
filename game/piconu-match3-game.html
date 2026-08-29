@@ -37,10 +37,10 @@
             max-width: 605px;
             margin: 0 auto;
             background: #FFFFFF;
-            border: 4px solid #FFB300;
+            border: 4px solid #FFB6C1;
             border-radius: 20px;
             padding: 20px;
-            box-shadow: 0 8px 16px rgba(255, 179, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(255, 182, 193, 0.35);
             position: relative;
         }
 
@@ -50,8 +50,8 @@
             right: 12px;
             width: 50px;
             height: 50px;
-            background: #FFF8E1;
-            border: 2px solid #FFB300;
+            background: #FFFFFF;
+            border: 2px solid #00CED1;
             border-radius: 50%;
             font-size: 23px;
             cursor: pointer;
@@ -78,27 +78,12 @@
         .title-logo {
             font-size: 35px;
             font-weight: bold;
-            color: #FF8F00;
-            text-shadow: 2px 2px 0px #FFE082;
+            color: #FFA500;
+            text-shadow: 2px 2px 0px #CCCCFF;
             margin-bottom: 10px;
         }
 
-        /* ピコぬくん風アイコン */
-        .pikonu-avatar {
-            width: 130px;
-            height: 158px;
-            background: #FFF9C4;
-            border: 4px solid #FFB300;
-            border-radius: 45px 45px 35px 35px;
-            position: relative;
-            margin: 10px auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* 🤖 タイトル画面用SVGアバター */
+        /* 🤖 タイトル・クリア画面共通のSVGアバター */
         .pikonu-avatar-svg {
             width: 130px;
             margin: 10px auto;
@@ -110,37 +95,10 @@
             height: auto;
         }
 
-        .pikonu-avatar::before {
-            content: "▲";
-            color: #FFB300;
-            font-size: 26px;
-            position: absolute;
-            top: -29px;
-        }
-
-        .pikonu-face {
-            font-size: 23px;
-            margin-bottom: 6px;
-        }
-
-        .pikonu-screen {
-            width: 65px;
-            height: 37px;
-            background: #212121;
-            border: 2px solid #FFB300;
-            border-radius: 8px;
-            color: #64FFDA;
-            font-weight: bold;
-            font-size: 23px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         /* セリフ用のフキダシ */
         .speech-bubble {
-            background: #FFF8E1;
-            border: 2px solid #FFE082;
+            background: #F0F0FF;
+            border: 2px solid #CCCCFF;
             border-radius: 17px;
             padding: 17px 22px;
             font-size: 19px;
@@ -153,7 +111,7 @@
 
         /* ボタンデザイン */
         .btn {
-            background: #FFB300;
+            background: #32CD32;
             color: #FFFFFF;
             border: none;
             padding: 17px 41px;
@@ -161,17 +119,17 @@
             font-weight: bold;
             border-radius: 36px;
             cursor: pointer;
-            box-shadow: 0 4px 0 #FF6F00;
+            box-shadow: 0 4px 0 #228B22;
             transition: all 0.1s;
         }
 
         .btn:hover {
-            background: #FFA000;
+            background: #3ADD3A;
         }
 
         .btn:active {
             transform: translateY(3px);
-            box-shadow: 0 1px 0 #FF6F00;
+            box-shadow: 0 1px 0 #228B22;
         }
 
         /* 🧩 パズル画面 */
@@ -181,7 +139,7 @@
         }
 
         #puzzle-screen {
-            background: #263238;
+            background: #111122;
             border-radius: 15px;
             padding: 15px 10px;
         }
@@ -189,8 +147,8 @@
         .score-board {
             font-size: 26px;
             font-weight: bold;
-            color: #FF8F00;
-            background: #FFF8E1;
+            color: #FFA500;
+            background: #F0F0FF;
             padding: 8px 20px;
             border-radius: 17px;
             display: inline-block;
@@ -204,7 +162,7 @@
             gap: 8px;
             justify-content: center;
             margin: 14px auto;
-            background: #FFE082;
+            background: #00CED1;
             padding: 14px;
             border-radius: 17px;
         }
@@ -213,7 +171,7 @@
             width: 72px;
             height: 72px;
             background-color: #FFFFFF;
-            border: 2px solid #FFD54F;
+            border: 2px solid #32CD32;
             font-size: 37px;
             display: flex;
             align-items: center;
@@ -222,12 +180,12 @@
             user-select: none;
             touch-action: manipulation;
             border-radius: 14px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
         }
 
         .selected {
-            border: 3px solid #00E676;
-            background-color: #E8F5E9;
+            border: 3px solid #FFA500;
+            background-color: #FFF3E0;
             transform: scale(1.05);
         }
 
@@ -256,33 +214,9 @@
                 margin-bottom: 6px;
             }
 
-            .pikonu-avatar {
-                width: 80px;
-                height: 96px;
-                margin: 6px auto;
-                border-radius: 30px 30px 22px 22px;
-            }
-
             .pikonu-avatar-svg {
                 width: 80px;
                 margin: 6px auto;
-            }
-
-            .pikonu-avatar::before {
-                font-size: 16px;
-                top: -18px;
-            }
-
-            .pikonu-face {
-                font-size: 14px;
-                margin-bottom: 3px;
-            }
-
-            .pikonu-screen {
-                width: 40px;
-                height: 24px;
-                font-size: 14px;
-                border-radius: 6px;
             }
 
             .speech-bubble {
@@ -373,13 +307,13 @@
             <button class="btn" onclick="startGame()">一緒に探す！（スタート）</button>
 
             <a href="../about/piconu-freegame.html"
-                style="display:inline-block; margin-top:14px; font-size:0.8rem; color:#A1887F; text-decoration:none;">←
+                style="display:inline-block; margin-top:14px; font-size:0.8rem; color:#9999CC; text-decoration:none;">←
                 ゲーム置き場に戻る</a>
         </div>
 
         <!-- 🧩 2. パズル画面 -->
         <div id="puzzle-screen">
-            <h2 style="margin: 0 0 5px 0; color: #FF8F00; font-size: 18px;">🧩 鍵を探そう！</h2>
+            <h2 style="margin: 0 0 5px 0; color: #FFA500; font-size: 18px;">🧩 鍵を探そう！</h2>
 
             <div class="score-board">スコア: <span id="score">0</span> / 1000点</div>
 
@@ -391,7 +325,7 @@
 
         <!-- 🎉 3. クリア画面 -->
         <div id="clear-screen" class="screen">
-            <div class="title-logo" style="color: #00C853;">🎉 ゲームクリア！ 🎉</div>
+            <div class="title-logo" style="color: #32CD32;">🎉 ゲームクリア！ 🎉</div>
 
             <div class="pikonu-avatar-svg">
                 <svg viewBox="0 0 140 180" aria-label="ピコぬくん">
@@ -426,7 +360,7 @@
                 </svg>
             </div>
 
-            <div class="speech-bubble" style="border-color: #81C784; background: #E8F5E9;">
+            <div class="speech-bubble" style="border-color: #32CD32; background: #EEFCEE;">
                 あっ！鍵があったぬ！一緒に探してくれてありがとうだぬー！
             </div>
 
