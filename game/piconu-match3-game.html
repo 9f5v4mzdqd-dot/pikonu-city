@@ -212,6 +212,92 @@
             background-color: #E8F5E9;
             transform: scale(1.05);
         }
+
+        /* 📱 スマホ(幅600px以下)ではコンパクトなサイズに切り替え */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            #game-container {
+                padding: 12px;
+                border-width: 3px;
+                border-radius: 16px;
+            }
+
+            #sound-toggle {
+                top: 8px;
+                right: 8px;
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+
+            .title-logo {
+                font-size: 22px;
+                margin-bottom: 6px;
+            }
+
+            .pikonu-avatar {
+                width: 80px;
+                height: 96px;
+                margin: 6px auto;
+                border-radius: 30px 30px 22px 22px;
+            }
+
+            .pikonu-avatar::before {
+                font-size: 16px;
+                top: -18px;
+            }
+
+            .pikonu-face {
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+
+            .pikonu-screen {
+                width: 40px;
+                height: 24px;
+                font-size: 14px;
+                border-radius: 6px;
+            }
+
+            .speech-bubble {
+                font-size: 14px;
+                padding: 10px 14px;
+                margin: 6px 0 10px 0;
+                border-radius: 12px;
+            }
+
+            .btn {
+                padding: 10px 24px;
+                font-size: 15px;
+                border-radius: 22px;
+            }
+
+            .score-board {
+                font-size: 16px;
+                padding: 5px 12px;
+                margin-bottom: 6px;
+                border-radius: 10px;
+            }
+
+            #board {
+                grid-template-columns: repeat(6, 44px);
+                grid-template-rows: repeat(6, 44px);
+                gap: 5px;
+                margin: 8px auto;
+                padding: 8px;
+                border-radius: 12px;
+            }
+
+            .tile {
+                width: 44px;
+                height: 44px;
+                font-size: 22px;
+                border-radius: 8px;
+            }
+        }
     </style>
 </head>
 
@@ -265,7 +351,7 @@
             </div>
 
             <div class="speech-bubble" style="border-color: #81C784; background: #E8F5E9;">
-                あっ！鍵があったぬ！一緒に探してくれてありがとうだぬー！
+                「あっ！鍵があったぬ！一緒に探してくれてありがとうだぬー！」
             </div>
 
             <button class="btn" onclick="showTitle()">タイトルに戻る</button>
