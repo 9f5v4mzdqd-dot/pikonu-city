@@ -633,5 +633,10 @@
     "title": "本日の猫政務ジェネレーター",
     "url": "about/neko-seimu.html",
     "category": "市の概要"
-  }
+  },
+  {
+  "title": "青いページ",
+  "url": "Blue-Page.html",
+  "category": "その他"
+}
 ]
