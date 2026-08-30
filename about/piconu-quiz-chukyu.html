@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ピコぬ市検定（初級）</title>
+    <title>ピコぬ市検定（中級）</title>
 
     <!-- ファビコン（確定版だぬ！） -->
     <link rel="icon"
@@ -198,7 +198,7 @@
 
         <!-- ① タイトル画面 -->
         <div id="screen-title" class="screen active">
-            <h1>ピコぬ市検定（初級）</h1>
+            <h1>ピコぬ市検定（中級）</h1>
             <div class="subtitle">全10問</div>
 
             <div style="margin: 20px 0;">
@@ -240,15 +240,16 @@
                 </svg>
             </div>
 
-            <p style="color:#546e7a;">あなたはピコぬ市についてどれくらい知ってるぬ？<br>全問正解を目指して挑戦するぬ！</p>
+            <p style="color:#546e7a;">初級はもうクリアしたぬ？<br>ここからは、ちょっと細かいところまで聞いていくぬ！</p>
             <button class="btn" onclick="startQuiz()">検定スタートだぬ！</button>
+
             <br>
-            <a href="piconu-quiz-chukyu.html"
-                style="display:inline-block; margin-top:6px; font-size:0.85rem; color:#78909c; text-decoration:none;">→
-                ピコぬ市検定（中級）に挑戦する</a>
+            <a href="piconu-quiz.html"
+                style="display:inline-block; margin-top:10px; font-size:0.85rem; color:#78909c; text-decoration:none;">←
+                ピコぬ市検定（初級）はこちら</a>
             <br>
             <a href="piconu-freegame.html"
-                style="display:inline-block; margin-top:10px; font-size:0.85rem; color:#78909c; text-decoration:none;">←
+                style="display:inline-block; margin-top:6px; font-size:0.85rem; color:#78909c; text-decoration:none;">←
                 ピコぬくんゲーム置き場へ戻る</a>
         </div>
 
@@ -303,57 +304,57 @@
             beep(196, 0.18, 'square');
         }
 
-        // クイズデータ（全10問）
+        // クイズデータ（全10問・中級）
         const quizData = [
             {
-                q: "ピコぬ市はどことどこの間にある架空都市？",
-                options: ["A. 東京と神奈川", "B. 東京と埼玉", "C. 埼玉と群馬"],
-                answer: 1 // B
-            },
-            {
-                q: "ピコぬ市で特に有名な技術は？",
-                options: ["A. 宇宙開発", "B. 鉄道連結技術", "C. 飛行船製造"],
-                answer: 1 // B
-            },
-            {
-                q: "ピコぬ市のマスコットの名前は？",
-                options: ["A. ピコぬくん", "B. ピコ丸", "C. ぬか太郎"],
+                q: "ぬかピコケーブルテレビの番組「がんばれ！ピコぬくん」。次回予告のコント「胃腸を整えろ！〇〇大作戦の巻」の〇〇に入るのは？",
+                options: ["A. ピコタ株", "B. ネギ盛り", "C. しおあじ"],
                 answer: 0 // A
             },
             {
-                q: "キロクぬかクリニックが専門としているものは？",
-                options: ["A. 骨折", "B. 現代病", "C. 歯科"],
+                q: "キロクぬかクリニック関連ページだけで使われている、特別な明朝体フォントは？",
+                options: ["A. 游明朝", "B. Zen Old Mincho", "C. Noto Serif JP"],
                 answer: 1 // B
             },
             {
-                q: "ぬかピコ民芸博物館で大切にしているものは？",
-                options: ["A. 新品の美しさ", "B. 高価な宝石", "C. 日用品に残された使われ方の痕跡"],
+                q: "ケーブルテレビやラジオなど、市の広報を担当している課は？",
+                options: ["A. 生活共生課", "B. 暮らしと循環推進課", "C. 秘書広報課"],
                 answer: 2 // C
             },
             {
-                q: "ピコぬ市の公式広報紙の名前は？",
-                options: ["A. 市報ピコぬ", "B. 広報ぬかピコ", "C. ピコぬ新聞"],
+                q: "ピコぬくんの脱出ゲームは全何ステージ？",
+                options: ["A. 2ステージ", "B. 3ステージ", "C. 5ステージ"],
                 answer: 1 // B
             },
             {
-                q: "記録町を流れる川の名前は？",
-                options: ["A. ピコ川", "B. ぬかピコ川", "C. キロク川"],
-                answer: 1 // B
-            },
-            {
-                q: "ピコぬ市役所には待ち時間を減らすため、各階に何がいる？",
-                options: ["A. 市長", "B. AI搭載ピコぬくん", "C. ネコ型ロボット"],
-                answer: 1 // B
-            },
-            {
-                q: "ぬかピコ民芸博物館からの脱出ゲームの最後の合言葉は？",
-                options: ["A. れきし", "B. こんせき", "C. きろく"],
-                answer: 1 // B
-            },
-            {
-                q: "ピコぬ市のキャッチコピーは？",
-                options: ["A. 未来へ走る街", "B. 誰もが主役の街", "C. 目立たない場所こそ、全体を支えている。"],
+                q: "ミニゲーム「ピコぬくんのマッチ3」で、ピコぬくんが必死に探しているものは？",
+                options: ["A. 印鑑", "B. 財布", "C. 鍵"],
                 answer: 2 // C
+            },
+            {
+                q: "記録町商店街に新しく加盟したカレー屋さんの名前は？",
+                options: ["A. ピコぬカリー本舗", "B. 記録町カリー食堂", "C. キロクカリー亭"],
+                answer: 1 // B
+            },
+            {
+                q: "市役所食堂の「ネギ盛り限界チャレンジ」で、見つかると気まずいことになる相手は？",
+                options: ["A. 市長", "B. カタブツ職員", "C. 恒一"],
+                answer: 1 // B
+            },
+            {
+                q: "ミニゲーム「恒一をさがせ！」で、恒一が隠れているのはどこ？",
+                options: ["A. 記録町商店街", "B. 図書館", "C. 市役所のどこか"],
+                answer: 2 // C
+            },
+            {
+                q: "特産品「ピコぬネギ」を紹介するページは、何課の管轄？",
+                options: ["A. 観光課", "B. 生活共生課", "C. 秘書広報課"],
+                answer: 0 // A
+            },
+            {
+                q: "広報ぬかピコのバックナンバーがまとめて読めるページの名前は？",
+                options: ["A. ぬかピコ図書室", "B. 広報ぬかピコ デジタルアーカイブ", "C. 記録町新聞館"],
+                answer: 1 // B
             }
         ];
 
@@ -445,17 +446,17 @@
                 // 🎉 全問正解
                 header.textContent = "🎖️ 全問正解だぬ！！";
                 header.style.color = "#00897b";
-                msgEl.innerHTML = "<b>🎉 ピコぬ市検定 全問正解！おめでとうだぬ！</b><br><br>あなたは立派なピコぬ市民だぬ！<br>市役所で住民登録……は特にしなくて大丈夫だぬ。<br><br>でもまた遊びに来てくれるとうれしいぬ！";
+                msgEl.innerHTML = "<b>🎉 ピコぬ市検定（中級） 全問正解！おめでとうだぬ！</b><br><br>細かいところまでよく知ってるぬ……！<br>上級編があったら、次はそっちに挑戦してほしいぬ。<br><br>また遊びに来てくれるとうれしいぬ！";
             } else if (score >= 7) {
                 // おしい！
                 header.textContent = "✨ 惜しいぬ！もう少し！";
                 header.style.color = "#f57c00";
-                msgEl.innerHTML = "すごくピコぬ市に詳しいぬ！<br>あと少しでパーフェクト達成だぬ！もう一度チャレンジしてみるぬ？";
+                msgEl.innerHTML = "中級はさすがに手ごわかったはずだぬ！<br>あと少しでパーフェクト達成だぬ！もう一度チャレンジしてみるぬ？";
             } else {
                 // もう一度！
                 header.textContent = "🌱 挑戦ありがとうだぬ！";
                 header.style.color = "#546e7a";
-                msgEl.innerHTML = "ピコぬ市にはまだまだ面白くて目立たない魅力がたくさんあるぬ！<br>街のガイドやサイトをチェックして、またチャレンジしてみてねぬ！";
+                msgEl.innerHTML = "中級はちょっと難しかったかもだぬ……！<br>初級に戻って復習してから、また挑戦してみてねぬ！";
             }
         }
     </script>
