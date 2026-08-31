@@ -11,6 +11,25 @@
 
 ------
 
+## 2026-08-31（2）
+---
+### 変更
+- `Blue-Page.html`:NOTEアカウント「PatchworkSoul」への外部リンクを追加
+- `js/common.js`:共通バナーとして表示していたNOTEリンクを削除(当面は`Blue-Page.html`のみに掲載)
+---
+
+## 2026-08-31（1）
+---
+### 追加
+- `images/freesozai/bg-001.jpg`:「ピコぬくんゲーム置き場」の背景パターン画像を追加
+- `images/freesozai/bg-002.jpg`:「ピコぬくん素材置き場」の背景パターン画像を追加
+- `images/freesozai/bg-003.jpg`:「ネギ盛り限界チャレンジ」の背景パターン画像を追加
+### 変更
+- `about/piconu-freegame.html`:背景に`bg-001.jpg`を敷き詰め表示で設定
+- `about/piconu-freesozai.html`:背景に`bg-002.jpg`を敷き詰め表示で設定
+- `game/negi-game.html`:背景に`bg-003.jpg`を敷き詰め表示で設定
+---
+
 ## 2026-08-30（5）
 ---
 ### 追加
