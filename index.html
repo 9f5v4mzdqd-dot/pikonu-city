@@ -1,413 +1,589 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>ピコぬ市公式ホームページ</title>
-<meta name="description" content="ピコぬ市の公式ホームページです。お知らせ、行政サービス、施設案内など、市に関する情報を掲載しています。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css">
-<style>
-  .pr-video-flex { display: flex; gap: 16px; flex-wrap: wrap; align-items: stretch; }
-  .pr-video-flex .pr-video-box { flex: 1 1 320px; min-height: 180px; }
-  .pr-video-side { flex: 1 1 280px; display: flex; flex-direction: column; gap: 10px; }
-  .pr-video-side .pickup-item { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-  @media (max-width: 720px) {
-    .pr-video-flex { flex-direction: column; }
-    .pr-video-box { background-position: 75% 70%; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬ市の公式ホームページです。お知らせ、行政サービス、施設案内など、市に関する情報を掲載しています。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .pr-video-flex {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+
+    .pr-video-flex .pr-video-box {
+      flex: 1 1 320px;
+      min-height: 180px;
+    }
+
+    .pr-video-side {
+      flex: 1 1 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pr-video-side .pickup-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 720px) {
+      .pr-video-flex {
+        flex-direction: column;
+      }
+
+      .pr-video-box {
+        background-position: 75% 70%;
+      }
+    }
+  </style>
 </head>
+
 <body id="top">
 
-<main id="main">
+  <main id="main">
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow">PICONU CITY</span>
-        <h1>目立たない場所こそ、<br>全体を支えている。</h1>
-        <p>ピコぬ市は、鉄道連結技術・記録文化・現代病医療を軸とする自治体です。</p>
-        <p>目立たない営みを積み重ね、街の記録を未来へつないでいます。</p>
-        <p style="margin-top:1.2em; display:flex; flex-wrap:wrap; gap:.6em;">
-          <a href="about/faq.html" style="display:inline-block; background:#fff; color:var(--color-primary-dark); font-weight:700; padding:.55em 1.3em; border-radius:3px; text-decoration:none; font-size:.92rem;">よくある質問を見る &gt;</a>
-          <a href="about/tegami.html" style="display:inline-block; background:#fff; color:var(--color-primary-dark); font-weight:700; padding:.55em 1.3em; border-radius:3px; text-decoration:none; font-size:.92rem;">市長への手紙 &gt;</a>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">PICONU CITY</span>
+          <h1>目立たない場所こそ、<br>全体を支えている。</h1>
+          <p>ピコぬ市は、鉄道連結技術・記録文化・現代病医療を軸とする自治体です。</p>
+          <p>目立たない営みを積み重ね、街の記録を未来へつないでいます。</p>
+          <p style="margin-top:1.2em; display:flex; flex-wrap:wrap; gap:.6em;">
+            <a href="about/faq.html"
+              style="display:inline-block; background:#fff; color:var(--color-primary-dark); font-weight:700; padding:.55em 1.3em; border-radius:3px; text-decoration:none; font-size:.92rem;">よくある質問を見る
+              &gt;</a>
+            <a href="about/tegami.html"
+              style="display:inline-block; background:#fff; color:var(--color-primary-dark); font-weight:700; padding:.55em 1.3em; border-radius:3px; text-decoration:none; font-size:.92rem;">市長への手紙
+              &gt;</a>
+          </p>
+        </div>
+        <img class="hero-graphic" src="images/sections/hero-tsunagu.jpg"
+          alt="鉄道連結技術・記録文化・現代病医療をつなぐイメージ「つなぐことで、支えあうまちへ。」">
+      </div>
+    </section>
+
+
+    ```html
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>リアルタイム・ピコぬ市のようす（体感値）</h2>
+        </div>
+
+        <p style="font-size:.85rem; color:var(--color-text-sub); margin:-8px 0 14px;">
+          職員の体感によるおおよその目安です。正確な待ち時間を保証するものではありません。
         </p>
-      </div>
-      <img class="hero-graphic" src="images/sections/hero-tsunagu.jpg" alt="鉄道連結技術・記録文化・現代病医療をつなぐイメージ「つなぐことで、支えあうまちへ。」">
-    </div>
-  </section>
 
-  
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-heading">
-        <h2>リアルタイム・ピコぬ市 混雑状況(体感値)</h2>
+        <ul id="congestion-list"
+          style="list-style:none; margin:0; padding:0; border-top:1px solid var(--color-border);">
+        </ul>
       </div>
-      <p style="font-size:.85rem; color:var(--color-text-sub); margin:-8px 0 14px;">
-        職員の体感によるおおよその目安です。正確な待ち時間を保証するものではありません。
-      </p>
-      <ul id="congestion-list" style="list-style:none; margin:0; padding:0; border-top:1px solid var(--color-border);">
-      </ul>
-    </div>
-  </section>
+    </section>
+
+    <script>
+      (function () {
+
+        var ICON_SIZE = 44;
+
+        var ICONS = {
+
+          building:
+            '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">' +
+            '<line x1="3" y1="21" x2="21" y2="21"/>' +
+            '<polygon points="12,3 21,9 3,9"/>' +
+            '<line x1="5" y1="9" x2="5" y2="21"/>' +
+            '<line x1="9" y1="9" x2="9" y2="21"/>' +
+            '<line x1="15" y1="9" x2="15" y2="21"/>' +
+            '<line x1="19" y1="9" x2="19" y2="21"/>' +
+            '</svg>',
+
+          book:
+            '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">' +
+            '<path d="M4 5c3-1.3 6-1.3 8 0v14c-2-1.3-5-1.3-8 0z"/>' +
+            '<path d="M20 5c-3-1.3-6-1.3-8 0v14c2-1.3 5-1.3 8 0z"/>' +
+            '</svg>',
+
+          door:
+            '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">' +
+            '<rect x="6" y="3" width="5" height="18"/>' +
+            '<rect x="13" y="3" width="5" height="18"/>' +
+            '<line x1="4" y1="21" x2="20" y2="21"/>' +
+            '</svg>',
+
+          restaurant:
+            '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">' +
+            '<path d="M6 3v7a2 2 0 0 0 4 0V3"/>' +
+            '<line x1="8" y1="10" x2="8" y2="21"/>' +
+            '<path d="M17 3c-1.5 0-3 1.5-3 4s1.5 4 3 4v10"/>' +
+            '</svg>',
+
+          hospital:
+            '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">' +
+            '<rect x="4" y="4" width="16" height="16" rx="1"/>' +
+            '<line x1="12" y1="9" x2="12" y2="15"/>' +
+            '<line x1="9" y1="12" x2="15" y2="12"/>' +
+            '</svg>',
+
+          piconu:
+            '<img src="../images/icons/icon-piconu.png" alt="" width="' +
+            ICON_SIZE +
+            '" height="' +
+            ICON_SIZE +
+            '" style="object-fit:contain;">'
+
+        };
+
+
+        var spots = [
+
+          {icon: ICONS.building, label: "市役所市民課"},
+
+          {icon: ICONS.book, label: "市立図書館"},
+
+          {icon: ICONS.door, label: "自動ドア前"},
+
+          {icon: ICONS.restaurant, label: "市役所食堂"},
+
+          {icon: ICONS.hospital, label: "キロクぬか"},
+
+          {icon: ICONS.piconu, label: "ピコぬくん"}
+
+        ];
+
+
+        var levels = [
+          "平和",
+          "やや猫多め",
+          "少しざわつき",
+          "静か",
+          "まあまあ賑やか",
+          "そこそこ落ち着き",
+          "猫がやや多め",
+          "小康状態",
+          "微妙にそわそわ"
+        ];
+
+
+        var piconuLevels = [
+          "書類を作成中",
+          "食堂で食事中",
+          "コーヒーブレイク中",
+          "ラジオ収録中",
+          "屋上で充電中",
+          "やきいもを焼成中",
+          "ベンチで昼寝中",
+          "微妙にそわそわ",
+          "ややざわつき",
+          "レーザーアイの火力調整中",
+          "今日は見かけません",
+          "やや多め"
+        ];
+
+
+        var listEl = document.getElementById("congestion-list");
+
+        if (!listEl) return;
+
+
+        spots.forEach(function (spot) {
+
+          var level;
+
+          if (spot.label === "ピコぬくん") {
+
+            level =
+              piconuLevels[
+              Math.floor(Math.random() * piconuLevels.length)
+              ];
+
+          } else {
+
+            level =
+              levels[
+              Math.floor(Math.random() * levels.length)
+              ];
+
+          }
+
+
+          var li = document.createElement("li");
+
+          li.style.cssText =
+            "border-bottom:1px solid var(--color-border);" +
+            "padding:14px 4px;" +
+            "display:flex;" +
+            "gap:16px;" +
+            "align-items:center;" +
+            "flex-wrap:wrap;";
+
+
+          li.innerHTML =
+            '<span style="' +
+            'color:var(--color-primary);' +
+            'flex-shrink:0;' +
+            'width:11em;' +
+            'box-sizing:border-box;' +
+            'display:inline-flex;' +
+            'align-items:center;' +
+            'gap:8px;">' +
+
+            spot.icon +
+
+            '<span style="font-size:.85rem;">' +
+            spot.label +
+            '</span>' +
+
+            '</span>' +
+
+            '<span style="color:var(--color-text);">' +
+            level +
+            '</span>';
+
+
+          listEl.appendChild(li);
+
+        });
+
+      })();
+    </script>
+    ```
+
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>PR動画</h2>
+        </div>
+        <div class="pr-video-flex">
+          <div class="pr-video-box" id="pr-video-box">
+            <button type="button" class="btn pr-video-btn" id="pr-video-btn">▶ PR動画を見る</button>
+            <video id="pr-video" controls style="display:none;">
+              <source src="audio/piconu-city-pr.mp4" type="video/mp4">
+              お使いのブラウザは動画の再生に対応していません。
+            </video>
+          </div>
+          <div class="pr-video-side">
+            <a class="pickup-item" href="facilities/gendaibyo-db.html">
+              <span class="cat">医療記録</span>
+              <h3>現代病データベース</h3>
+              <p>これまでに診断された現代病の一覧をまとめています。</p>
+            </a>
+            <a class="pickup-item" href="facilities/kiroku-nuka-clinic-archive.html">
+              <span class="cat">記録文化</span>
+              <h3>外来シリーズ 書庫</h3>
+              <p>オンライン診察を舞台にした短編作品の記録です。</p>
+            </a>
+            <a class="pickup-item" href="about/piconu-diary.html">
+              <span class="cat">広報</span>
+              <h3>ピコぬくん業務日誌</h3>
+              <p>ピコぬくんの日々の業務記録をつづっています。</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>お知らせ</h2>
+          <a class="more" href="news/index.html">お知らせ一覧を見る &gt;</a>
+        </div>
+        <ul class="notice-list">
+          <li>
+            <time datetime="2026-08-13">2026.08.13</time>
+            <span class="notice-tag">文化</span>
+            <a href="news/news-20260813-01.html">「不要不急な4コマ漫画」を公開しました</a>
+          </li>
+          <li>
+            <time datetime="2026-08-12">2026.08.12</time>
+            <span class="notice-tag">広報</span>
+            <a href="news/news-20260812-01.html">「当ホームページの運営履歴」を公開しました</a>
+          </li>
+          <li>
+            <time datetime="2026-08-10">2026.08.10</time>
+            <span class="notice-tag">くらし</span>
+            <a href="news/news-20260810-01.html">「リアルタイム・ピコぬ市 混雑状況」「不要不急実践帳」を公開しました</a>
+          </li>
+          <li>
+            <time datetime="2026-08-06">2026.08.06</time>
+            <span class="notice-tag">文化</span>
+            <a href="news/news-20260806-02.html">FMピコぬが開局し、「ピックアップ! ピコぬ市ラジオ」の配信を開始しました</a>
+          </li>
+          <li>
+            <time datetime="2026-08-06">2026.08.06</time>
+            <span class="notice-tag">くらし</span>
+            <a href="news/news-20260806-01.html">住民票自動発行ジェネレーターを公開しました</a>
+          </li>
+          <li>
+            <time datetime="2026-08-01">2026.08.01</time>
+            <span class="notice-tag">広報</span>
+            <a href="news/news-20260801-01.html">広報ぬかピコ最新号を掲載しました</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>よく利用されるサービス</h2>
+        </div>
+        <div class="service-grid">
+          <a class="service-card" href="services/juminhyo.html">
+            <span class="icon"><img src="images/icons/icon-juminhyo.png" alt=""></span>
+            <span class="label">住民票</span>
+          </a>
+          <a class="service-card" href="services/koseki.html">
+            <span class="icon"><img src="images/icons/icon-koseki.png" alt=""></span>
+            <span class="label">戸籍</span>
+          </a>
+          <a class="service-card" href="services/gomi.html">
+            <span class="icon"><img src="images/icons/icon-gomi.png" alt=""></span>
+            <span class="label">ごみ収集</span>
+          </a>
+          <a class="service-card" href="services/gendaibyo-sodan.html">
+            <span class="icon"><img src="images/icons/icon-gendaibyo.png" alt=""></span>
+            <span class="label">現代病相談</span>
+          </a>
+          <a class="service-card" href="services/shinsei.html">
+            <span class="icon"><img src="images/icons/icon-shinsei.png" alt=""></span>
+            <span class="label">各種申請</span>
+          </a>
+          <a class="service-card" href="facilities/index.html">
+            <span class="icon"><img src="images/icons/icon-shisetsu.png" alt=""></span>
+            <span class="label">施設案内</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>暮らしの場面から探す</h2>
+        </div>
+        <div class="service-grid">
+          <a class="service-card" href="services/jumin-todoke.html">
+            <span class="icon"><img src="images/icons/icon-hikkoshi.png" alt=""></span>
+            <span class="label">引っ越しをする</span>
+          </a>
+          <a class="service-card" href="facilities/fuyoufukyuhozonka.html">
+            <span class="icon"><img src="images/icons/icon-fuyofukyu.png" alt=""></span>
+            <span class="label">何もしたくない時</span>
+          </a>
+          <a class="service-card" href="facilities/jikan-koritsu-shien-ka.html">
+            <span class="icon"><img src="images/icons/icon-jikan.png" alt=""></span>
+            <span class="label">時間に追われている時</span>
+          </a>
+          <a class="service-card" href="facilities/fukushika.html">
+            <span class="icon"><img src="images/icons/icon-kosodate.png" alt=""></span>
+            <span class="label">子育ての相談</span>
+          </a>
+          <a class="service-card" href="facilities/kiroku-seisaku-ka.html">
+            <span class="icon"><img src="images/icons/icon-kiroku.png" alt=""></span>
+            <span class="label">記録を残したい時</span>
+          </a>
+          <a class="service-card" href="services/gendaibyo-sodan.html">
+            <span class="icon"><img src="images/icons/icon-chosa.png" alt=""></span>
+            <span class="label">心や体の調子が気になる時</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="service-grid">
+          <a class="service-card" href="about/mayoigo.html">
+            <span class="icon">❕</span>
+            <span class="label">何を探しに来たのかわからない方へ</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>お問い合わせ</h2>
+        </div>
+        <div class="service-grid">
+          <a class="service-card" href="about/telephone.html">
+            <span class="icon"><img src="images/icons/icon-denwa.png" alt=""></span>
+            <span class="label">部署別電話番号</span>
+          </a>
+          <a class="service-card" href="about/faq.html">
+            <span class="icon"><img src="images/icons/icon-faq.png" alt=""></span>
+            <span class="label">よくある質問</span>
+          </a>
+          <a class="service-card" href="about/tegami.html">
+            <span class="icon"><img src="images/icons/icon-tegami.png" alt=""></span>
+            <span class="label">市長への手紙</span>
+          </a>
+        </div>
+        <p style="text-align:center; margin-top:1.5em;">代表電話:ぬぬ-ぬかピコ-1000</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>市の施設</h2>
+          <a class="more" href="facilities/index.html">施設一覧を見る &gt;</a>
+        </div>
+        <div class="facility-grid">
+          <div class="facility-card">
+            <div class="thumb"><img src="images/facilities/shiyakusho.jpg" alt="市役所 庁舎外観" loading="lazy"></div>
+            <div class="body">
+              <h3>市役所</h3>
+              <p>各種窓口業務のほか、市政に関するお問い合わせ全般に対応しています。</p>
+              <a href="facilities/shiyakusho.html">詳しく見る &gt;</a>
+              <span style="margin:0 .4em; color:var(--color-border);">|</span>
+              <a href="facilities/shiyakusho-floor.html">フロア案内はこちら &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="images/facilities/kiroku-nuka-clinic.jpg" alt="キロクぬかクリニック 外観" loading="lazy">
+            </div>
+            <div class="body">
+              <h3>キロクぬかクリニック</h3>
+              <p>現代病専門医療センター。原因の分類しにくい不調に、記録という切り口から向き合います。</p>
+              <a href="facilities/kiroku-nuka-clinic.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="images/facilities/nukapiko-museum.jpg" alt="ぬかピコ民芸博物館 外観" loading="lazy"></div>
+            <div class="body">
+              <h3>ぬかピコ民芸博物館</h3>
+              <p>ピコぬ市の記録文化の中心。日用品と記録の間にあるものを収蔵・展示しています。</p>
+              <a href="facilities/nukapiko-museum.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="images/facilities/jikan-koritsu-shien-ka.jpg" alt="時間効率支援課 窓口" loading="lazy">
+            </div>
+            <div class="body">
+              <h3>時間効率支援課</h3>
+              <p>市民の可処分時間にまつわる相談窓口。効率化と、その手前にあるものを扱います。</p>
+              <a href="facilities/jikan-koritsu-shien-ka.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="images/facilities/toshokan.jpg" alt="市立図書館 外観(旧市立小学校校舎)" loading="lazy"></div>
+            <div class="body">
+              <h3>市立図書館</h3>
+              <p>記録と静けさを大切にする図書館。非効率文庫など独自コーナーがあります。</p>
+              <a href="facilities/toshokan.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="images/facilities/shokokai.jpg" alt="ピコぬ市商工会 記録町商工会館 外観" loading="lazy"></div>
+            <div class="body">
+              <h3>ピコぬ市商工会</h3>
+              <p>記録町の商店街を中心に、市内事業者の活動を支援しています。</p>
+              <a href="facilities/shokokai.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>ピックアップ</h2>
+        </div>
+        <div class="pickup-list">
+          <a class="pickup-item" href="services/gendaibyo-sodan.html">
+            <span class="cat">医療</span>
+            <h3>現代病相談のご案内</h3>
+            <p>何科に行けばいいか分からない、説明しにくい不調について相談できる市の窓口です。</p>
+          </a>
+          <a class="pickup-item" href="news/news-20260615-01.html">
+            <span class="cat">助成金</span>
+            <h3>目的のない事業助成金 募集開始</h3>
+            <p>成果指標を定めない事業を対象とした、市独自の助成制度です。</p>
+          </a>
+          <a class="pickup-item" href="facilities/nukapiko-museum.html">
+            <span class="cat">文化</span>
+            <h3>ぬかピコ民芸博物館 常設展</h3>
+            <p>記録文化のなりたちを、実物資料とともにご紹介します。</p>
+          </a>
+          <a class="pickup-item" href="facilities/jikan-koritsu-shien-ka.html">
+            <span class="cat">くらし</span>
+            <h3>時間効率支援課 相談受付中</h3>
+            <p>効率化にまつわるお悩みを、専門の相談員がお伺いします。</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>市の花・市の鳥</h2>
+          <a class="more" href="about/gaiyou.html">市の概要を見る &gt;</a>
+        </div>
+        <div class="symbol-grid">
+          <div class="symbol-card">
+            <img src="images/sections/nukabana.jpg" alt="市の花 ぬかばな">
+            <div class="caption">
+              <span class="kind">市の花</span>
+              <h3>ぬかばな</h3>
+              <p>市内の記録町一帯に自生する、控えめな色合いの花です。</p>
+              <p><a href="about/nukabana.html">くわしく見る &gt;</a></p>
+            </div>
+          </div>
+          <div class="symbol-card">
+            <img src="images/sections/piconu-dori.jpg" alt="市の鳥 ピコぬどり">
+            <div class="caption">
+              <span class="kind">市の鳥</span>
+              <h3>ピコぬどり</h3>
+              <p>市内の線路沿いでよく見られる、小柄で人懐こい鳥です。</p>
+              <p><a href="about/piconu-dori.html">くわしく見る &gt;</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="kiriban-section" id="kiriban-counter">
+      <div class="kiriban-inner">
+        <span class="kiriban-label">アクセス記録</span>
+        <span class="kiriban-digits" aria-live="off"></span>
+        <span class="kiriban-caption">人目のご来庁です。記録上意味のある番号については<a href="about/kiriban.html">こちら</a>。</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script>window.PAGE_META = {nav: "home"};</script>
+  <script src="js/common.js"></script>
   <script>
-  (function () {
-    var ICON_SIZE = 44;
-    var ICONS = {
-      building: '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="3" y1="21" x2="21" y2="21"/><polygon points="12,3 21,9 3,9"/><line x1="5" y1="9" x2="5" y2="21"/><line x1="9" y1="9" x2="9" y2="21"/><line x1="15" y1="9" x2="15" y2="21"/><line x1="19" y1="9" x2="19" y2="21"/></svg>',
-      book: '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5c3-1.3 6-1.3 8 0v14c-2-1.3-5-1.3-8 0z"/><path d="M20 5c-3-1.3-6-1.3-8 0v14c2-1.3 5-1.3 8 0z"/></svg>',
-      door: '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="3" width="5" height="18"/><rect x="13" y="3" width="5" height="18"/><line x1="4" y1="21" x2="20" y2="21"/></svg>',
-      restaurant: '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3v7a2 2 0 0 0 4 0V3"/><line x1="8" y1="10" x2="8" y2="21"/><path d="M17 3c-1.5 0-3 1.5-3 4s1.5 4 3 4v10"/></svg>',
-      hospital: '<svg width="' + ICON_SIZE + '" height="' + ICON_SIZE + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="1"/><line x1="12" y1="9" x2="12" y2="15"/><line x1="9" y1="12" x2="15" y2="12"/></svg>'
-    };
-    var spots = [
-      { icon: ICONS.building, label: "市役所市民課" },
-      { icon: ICONS.book, label: "市立図書館" },
-      { icon: ICONS.door, label: "自動ドア前" },
-      { icon: ICONS.restaurant, label: "市役所食堂" },
-      { icon: ICONS.hospital, label: "キロクぬか" }
-    ];
-    var levels = [
-      "平和", "やや猫多め", "少しざわつき", "静か", "まあまあ賑やか",
-      "そこそこ落ち着き", "猫がやや多め", "小康状態", "微妙にそわそわ"
-    ];
-    var listEl = document.getElementById("congestion-list");
-    if (!listEl) return;
-    spots.forEach(function (spot) {
-      var level = levels[Math.floor(Math.random() * levels.length)];
-      var li = document.createElement("li");
-      li.style.cssText = "border-bottom:1px solid var(--color-border); padding:14px 4px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;";
-      li.innerHTML =
-        '<span style="color:var(--color-primary); flex-shrink:0; width:11em; box-sizing:border-box; display:inline-flex; align-items:center; gap:8px;">' + spot.icon + '<span style="font-size:.85rem;">' + spot.label + '</span></span>' +
-        '<span style="color:var(--color-text);">' + level + '</span>';
-      listEl.appendChild(li);
-    });
-  })();
+    (function () {
+      var btn = document.getElementById("pr-video-btn");
+      var video = document.getElementById("pr-video");
+      if (!btn || !video) return;
+      btn.addEventListener("click", function () {
+        btn.style.display = "none";
+        video.style.display = "block";
+        video.play();
+      });
+    })();
   </script>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>PR動画</h2>
-      </div>
-      <div class="pr-video-flex">
-        <div class="pr-video-box" id="pr-video-box">
-          <button type="button" class="btn pr-video-btn" id="pr-video-btn">▶ PR動画を見る</button>
-          <video id="pr-video" controls style="display:none;">
-            <source src="audio/piconu-city-pr.mp4" type="video/mp4">
-            お使いのブラウザは動画の再生に対応していません。
-          </video>
-        </div>
-        <div class="pr-video-side">
-          <a class="pickup-item" href="facilities/gendaibyo-db.html">
-            <span class="cat">医療記録</span>
-            <h3>現代病データベース</h3>
-            <p>これまでに診断された現代病の一覧をまとめています。</p>
-          </a>
-          <a class="pickup-item" href="facilities/kiroku-nuka-clinic-archive.html">
-            <span class="cat">記録文化</span>
-            <h3>外来シリーズ 書庫</h3>
-            <p>オンライン診察を舞台にした短編作品の記録です。</p>
-          </a>
-          <a class="pickup-item" href="about/piconu-diary.html">
-            <span class="cat">広報</span>
-            <h3>ピコぬくん業務日誌</h3>
-            <p>ピコぬくんの日々の業務記録をつづっています。</p>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>お知らせ</h2>
-        <a class="more" href="news/index.html">お知らせ一覧を見る &gt;</a>
-      </div>
-      <ul class="notice-list">
-  <li>
-    <time datetime="2026-08-13">2026.08.13</time>
-    <span class="notice-tag">文化</span>
-    <a href="news/news-20260813-01.html">「不要不急な4コマ漫画」を公開しました</a>
-  </li>
-  <li>
-    <time datetime="2026-08-12">2026.08.12</time>
-    <span class="notice-tag">広報</span>
-    <a href="news/news-20260812-01.html">「当ホームページの運営履歴」を公開しました</a>
-  </li>
-  <li>
-    <time datetime="2026-08-10">2026.08.10</time>
-    <span class="notice-tag">くらし</span>
-    <a href="news/news-20260810-01.html">「リアルタイム・ピコぬ市 混雑状況」「不要不急実践帳」を公開しました</a>
-  </li>
-  <li>
-    <time datetime="2026-08-06">2026.08.06</time>
-    <span class="notice-tag">文化</span>
-    <a href="news/news-20260806-02.html">FMピコぬが開局し、「ピックアップ! ピコぬ市ラジオ」の配信を開始しました</a>
-  </li>
-  <li>
-    <time datetime="2026-08-06">2026.08.06</time>
-    <span class="notice-tag">くらし</span>
-    <a href="news/news-20260806-01.html">住民票自動発行ジェネレーターを公開しました</a>
-  </li>
-  <li>
-    <time datetime="2026-08-01">2026.08.01</time>
-    <span class="notice-tag">広報</span>
-    <a href="news/news-20260801-01.html">広報ぬかピコ最新号を掲載しました</a>
-  </li>
-</ul>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-heading">
-        <h2>よく利用されるサービス</h2>
-      </div>
-      <div class="service-grid">
-        <a class="service-card" href="services/juminhyo.html">
-          <span class="icon"><img src="images/icons/icon-juminhyo.png" alt=""></span>
-          <span class="label">住民票</span>
-        </a>
-        <a class="service-card" href="services/koseki.html">
-          <span class="icon"><img src="images/icons/icon-koseki.png" alt=""></span>
-          <span class="label">戸籍</span>
-        </a>
-        <a class="service-card" href="services/gomi.html">
-          <span class="icon"><img src="images/icons/icon-gomi.png" alt=""></span>
-          <span class="label">ごみ収集</span>
-        </a>
-        <a class="service-card" href="services/gendaibyo-sodan.html">
-          <span class="icon"><img src="images/icons/icon-gendaibyo.png" alt=""></span>
-          <span class="label">現代病相談</span>
-        </a>
-        <a class="service-card" href="services/shinsei.html">
-          <span class="icon"><img src="images/icons/icon-shinsei.png" alt=""></span>
-          <span class="label">各種申請</span>
-        </a>
-        <a class="service-card" href="facilities/index.html">
-          <span class="icon"><img src="images/icons/icon-shisetsu.png" alt=""></span>
-          <span class="label">施設案内</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>暮らしの場面から探す</h2>
-      </div>
-      <div class="service-grid">
-        <a class="service-card" href="services/jumin-todoke.html">
-          <span class="icon"><img src="images/icons/icon-hikkoshi.png" alt=""></span>
-          <span class="label">引っ越しをする</span>
-        </a>
-        <a class="service-card" href="facilities/fuyoufukyuhozonka.html">
-          <span class="icon"><img src="images/icons/icon-fuyofukyu.png" alt=""></span>
-          <span class="label">何もしたくない時</span>
-        </a>
-        <a class="service-card" href="facilities/jikan-koritsu-shien-ka.html">
-          <span class="icon"><img src="images/icons/icon-jikan.png" alt=""></span>
-          <span class="label">時間に追われている時</span>
-        </a>
-        <a class="service-card" href="facilities/fukushika.html">
-          <span class="icon"><img src="images/icons/icon-kosodate.png" alt=""></span>
-          <span class="label">子育ての相談</span>
-        </a>
-        <a class="service-card" href="facilities/kiroku-seisaku-ka.html">
-          <span class="icon"><img src="images/icons/icon-kiroku.png" alt=""></span>
-          <span class="label">記録を残したい時</span>
-        </a>
-        <a class="service-card" href="services/gendaibyo-sodan.html">
-          <span class="icon"><img src="images/icons/icon-chosa.png" alt=""></span>
-          <span class="label">心や体の調子が気になる時</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="service-grid">
-        <a class="service-card" href="about/mayoigo.html">
-          <span class="icon">❕</span>
-          <span class="label">何を探しに来たのかわからない方へ</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-heading">
-        <h2>お問い合わせ</h2>
-      </div>
-      <div class="service-grid">
-        <a class="service-card" href="about/telephone.html">
-          <span class="icon"><img src="images/icons/icon-denwa.png" alt=""></span>
-          <span class="label">部署別電話番号</span>
-        </a>
-        <a class="service-card" href="about/faq.html">
-          <span class="icon"><img src="images/icons/icon-faq.png" alt=""></span>
-          <span class="label">よくある質問</span>
-        </a>
-        <a class="service-card" href="about/tegami.html">
-          <span class="icon"><img src="images/icons/icon-tegami.png" alt=""></span>
-          <span class="label">市長への手紙</span>
-        </a>
-      </div>
-      <p style="text-align:center; margin-top:1.5em;">代表電話:ぬぬ-ぬかピコ-1000</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>市の施設</h2>
-        <a class="more" href="facilities/index.html">施設一覧を見る &gt;</a>
-      </div>
-      <div class="facility-grid">
-        <div class="facility-card">
-          <div class="thumb"><img src="images/facilities/shiyakusho.jpg" alt="市役所 庁舎外観" loading="lazy"></div>
-          <div class="body">
-            <h3>市役所</h3>
-            <p>各種窓口業務のほか、市政に関するお問い合わせ全般に対応しています。</p>
-            <a href="facilities/shiyakusho.html">詳しく見る &gt;</a>
-            <span style="margin:0 .4em; color:var(--color-border);">|</span>
-            <a href="facilities/shiyakusho-floor.html">フロア案内はこちら &gt;</a>
-          </div>
-        </div>
-        <div class="facility-card">
-          <div class="thumb"><img src="images/facilities/kiroku-nuka-clinic.jpg" alt="キロクぬかクリニック 外観" loading="lazy"></div>
-          <div class="body">
-            <h3>キロクぬかクリニック</h3>
-            <p>現代病専門医療センター。原因の分類しにくい不調に、記録という切り口から向き合います。</p>
-            <a href="facilities/kiroku-nuka-clinic.html">詳しく見る &gt;</a>
-          </div>
-        </div>
-        <div class="facility-card">
-          <div class="thumb"><img src="images/facilities/nukapiko-museum.jpg" alt="ぬかピコ民芸博物館 外観" loading="lazy"></div>
-          <div class="body">
-            <h3>ぬかピコ民芸博物館</h3>
-            <p>ピコぬ市の記録文化の中心。日用品と記録の間にあるものを収蔵・展示しています。</p>
-            <a href="facilities/nukapiko-museum.html">詳しく見る &gt;</a>
-          </div>
-        </div>
-        <div class="facility-card">
-          <div class="thumb"><img src="images/facilities/jikan-koritsu-shien-ka.jpg" alt="時間効率支援課 窓口" loading="lazy"></div>
-          <div class="body">
-            <h3>時間効率支援課</h3>
-            <p>市民の可処分時間にまつわる相談窓口。効率化と、その手前にあるものを扱います。</p>
-            <a href="facilities/jikan-koritsu-shien-ka.html">詳しく見る &gt;</a>
-          </div>
-        </div>
-        <div class="facility-card">
-          <div class="thumb"><img src="images/facilities/toshokan.jpg" alt="市立図書館 外観(旧市立小学校校舎)" loading="lazy"></div>
-          <div class="body">
-            <h3>市立図書館</h3>
-            <p>記録と静けさを大切にする図書館。非効率文庫など独自コーナーがあります。</p>
-            <a href="facilities/toshokan.html">詳しく見る &gt;</a>
-          </div>
-        </div>
-        <div class="facility-card">
-          <div class="thumb"><img src="images/facilities/shokokai.jpg" alt="ピコぬ市商工会 記録町商工会館 外観" loading="lazy"></div>
-          <div class="body">
-            <h3>ピコぬ市商工会</h3>
-            <p>記録町の商店街を中心に、市内事業者の活動を支援しています。</p>
-            <a href="facilities/shokokai.html">詳しく見る &gt;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-heading">
-        <h2>ピックアップ</h2>
-      </div>
-      <div class="pickup-list">
-        <a class="pickup-item" href="services/gendaibyo-sodan.html">
-          <span class="cat">医療</span>
-          <h3>現代病相談のご案内</h3>
-          <p>何科に行けばいいか分からない、説明しにくい不調について相談できる市の窓口です。</p>
-        </a>
-        <a class="pickup-item" href="news/news-20260615-01.html">
-          <span class="cat">助成金</span>
-          <h3>目的のない事業助成金 募集開始</h3>
-          <p>成果指標を定めない事業を対象とした、市独自の助成制度です。</p>
-        </a>
-        <a class="pickup-item" href="facilities/nukapiko-museum.html">
-          <span class="cat">文化</span>
-          <h3>ぬかピコ民芸博物館 常設展</h3>
-          <p>記録文化のなりたちを、実物資料とともにご紹介します。</p>
-        </a>
-        <a class="pickup-item" href="facilities/jikan-koritsu-shien-ka.html">
-          <span class="cat">くらし</span>
-          <h3>時間効率支援課 相談受付中</h3>
-          <p>効率化にまつわるお悩みを、専門の相談員がお伺いします。</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>市の花・市の鳥</h2>
-        <a class="more" href="about/gaiyou.html">市の概要を見る &gt;</a>
-      </div>
-      <div class="symbol-grid">
-        <div class="symbol-card">
-          <img src="images/sections/nukabana.jpg" alt="市の花 ぬかばな">
-          <div class="caption">
-            <span class="kind">市の花</span>
-            <h3>ぬかばな</h3>
-            <p>市内の記録町一帯に自生する、控えめな色合いの花です。</p>
-            <p><a href="about/nukabana.html">くわしく見る &gt;</a></p>
-          </div>
-        </div>
-        <div class="symbol-card">
-          <img src="images/sections/piconu-dori.jpg" alt="市の鳥 ピコぬどり">
-          <div class="caption">
-            <span class="kind">市の鳥</span>
-            <h3>ピコぬどり</h3>
-            <p>市内の線路沿いでよく見られる、小柄で人懐こい鳥です。</p>
-            <p><a href="about/piconu-dori.html">くわしく見る &gt;</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="kiriban-section" id="kiriban-counter">
-    <div class="kiriban-inner">
-      <span class="kiriban-label">アクセス記録</span>
-      <span class="kiriban-digits" aria-live="off"></span>
-      <span class="kiriban-caption">人目のご来庁です。記録上意味のある番号については<a href="about/kiriban.html">こちら</a>。</span>
-    </div>
-  </section>
-
-</main>
-
-<script>window.PAGE_META = { nav: "home" };</script>
-<script src="js/common.js"></script>
-<script>
-  (function () {
-    var btn = document.getElementById("pr-video-btn");
-    var video = document.getElementById("pr-video");
-    if (!btn || !video) return;
-    btn.addEventListener("click", function () {
-      btn.style.display = "none";
-      video.style.display = "block";
-      video.play();
-    });
-  })();
-</script>
 </body>
+
 </html>
