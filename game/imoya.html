@@ -62,15 +62,26 @@
   }
 
   /* ピコぬくんの単体オーバーレイ画像。背景(販売車のみ)の手前、
-     カウンター横に立って店番しているように配置しています。 */
+     カウンター横に立って店番しているように配置しています。
+     ※スマホ表示では下の操作パネルが画面幅いっぱいに出るため、
+       パネルに隠れないよう bottom を高めに取っています。 */
   .piconu-overlay{
     position: absolute;
     left: 54%;
-    bottom: 6%;
-    height: clamp(160px, 34vw, 300px);
+    bottom: 38%;
+    height: clamp(140px, 30vw, 260px);
     filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3));
     pointer-events: none;
     z-index: 4;
+  }
+
+  @media (min-width: 760px){
+    /* PC表示では操作パネルが左下に小さく収まるだけなので、
+       もう少しカウンターに近い高さまで下げられる */
+    .piconu-overlay{
+      bottom: 10%;
+      height: clamp(160px, 22vw, 300px);
+    }
   }
 
   /* ---------- 上部:所持金の看板 ---------- */
