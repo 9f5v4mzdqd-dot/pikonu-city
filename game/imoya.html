@@ -1,1115 +1,1201 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ピコぬくんの石焼き芋屋さん</title>
-<style>
-  /* =========================================================
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ピコぬくんの石焼き芋屋さん</title>
+  <style>
+    /* =========================================================
      🍠 ピコぬくんの石焼き芋屋さん
      平成レトロ × かわいい × 秋 × 焼き芋 のゆるい放置型ゲーム
      ========================================================= */
 
-  :root{
-    --cream:      #FBF0DC;   /* 看板・パネルの紙色 */
-    --cream-deep: #F3E2BE;
-    --brown:      #5B3A22;   /* メインの文字色(焼き芋の皮っぽい濃茶) */
-    --brown-soft: #8A6647;
-    --persimmon:  #E2793C;   /* トラックのオレンジ */
-    --persimmon-deep:#C4602A;
-    --teal:       #2E948C;   /* のぼりの水色っぽいアクセント */
-    --plum:       #7C4C86;   /* 芋の中身っぽい紫 */
-    --gold:       #E7B95C;   /* 夕焼けのハイライト */
-    --paper-shadow: rgba(91,58,34,0.25);
-  }
+    :root {
+      --cream: #FBF0DC;
+      /* 看板・パネルの紙色 */
+      --cream-deep: #F3E2BE;
+      --brown: #5B3A22;
+      /* メインの文字色(焼き芋の皮っぽい濃茶) */
+      --brown-soft: #8A6647;
+      --persimmon: #E2793C;
+      /* トラックのオレンジ */
+      --persimmon-deep: #C4602A;
+      --teal: #2E948C;
+      /* のぼりの水色っぽいアクセント */
+      --plum: #7C4C86;
+      /* 芋の中身っぽい紫 */
+      --gold: #E7B95C;
+      /* 夕焼けのハイライト */
+      --paper-shadow: rgba(91, 58, 34, 0.25);
+    }
 
-  *{ box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-  html, body{
-    margin:0; padding:0;
-    height:100%;
-    font-family: "Hiragino Maru Gothic ProN","BIZ UDPGothic","Yu Gothic","Noto Sans JP",
-                 -apple-system, sans-serif;
-    color: var(--brown);
-    background: #1c130c;
-  }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic", "Noto Sans JP",
+        -apple-system, sans-serif;
+      color: var(--brown);
+      background: #1c130c;
+    }
 
-  /* ---------- 舞台全体 ---------- */
-  .stage{
-    position: relative;
-    width: 100%;
-    min-height: 100dvh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
+    /* ---------- 舞台全体 ---------- */
+    .stage {
+      position: relative;
+      width: 100%;
+      min-height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
 
-  .bg{
-    position: absolute;
-    inset: 0;
-    background-image: var(--bg-image);
-    background-size: cover;
-    background-position: center 40%;
-    background-repeat: no-repeat;
-    filter: saturate(1.02);
-  }
+    .bg {
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+      filter: saturate(1.02);
+    }
 
-  /* 背景がまだ読み込めない時の簡易フォールバック(グラデーションの夕暮れ) */
-  .bg.bg-fallback{
-    background-image:
-      linear-gradient(180deg, #FCE1A8 0%, #F6B57C 35%, #E4875C 60%, #B96B4E 100%);
-  }
+    /* 背景がまだ読み込めない時の簡易フォールバック(グラデーションの夕暮れ) */
+    .bg.bg-fallback {
+      background-image:
+        linear-gradient(180deg, #FCE1A8 0%, #F6B57C 35%, #E4875C 60%, #B96B4E 100%);
+    }
 
-  /* ピコぬくんの単体オーバーレイ画像。背景(販売車のみ)の手前、
+    /* ピコぬくんの単体オーバーレイ画像。背景(販売車のみ)の手前、
      カウンター横に立って店番しているように配置しています。
      ※スマホ表示では下の操作パネルが画面幅いっぱいに出るため、
        パネルに隠れないよう bottom を高めに取っています。 */
-  .piconu-overlay{
-    position: absolute;
-    left: 54%;
-    bottom: 38%;
-    height: clamp(140px, 30vw, 260px);
-    filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3));
-    pointer-events: none;
-    z-index: 4;
-  }
-
-  @media (min-width: 760px){
-    /* PC表示では操作パネルが左下に小さく収まるだけなので、
-       もう少しカウンターに近い高さまで下げられる */
-    .piconu-overlay{
-      bottom: 10%;
-      height: clamp(160px, 22vw, 300px);
-    }
-  }
-
-  /* ---------- 上部:所持金の看板 ---------- */
-  .shop-header{
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 5;
-  }
-
-  .money-board{
-    background: var(--cream);
-    border: 2px solid var(--brown);
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-weight: 700;
-    font-size: clamp(15px, 2.6vw, 19px);
-    box-shadow: 2px 3px 0 var(--paper-shadow);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-  .money-board .yen{
-    color: var(--persimmon-deep);
-  }
-
-  .shop-title-tag{
-    position:absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 5;
-    background: var(--teal);
-    color: #fff;
-    font-size: clamp(11px, 2vw, 13px);
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 999px;
-    box-shadow: 2px 3px 0 rgba(0,0,0,0.18);
-    opacity: 0.92;
-  }
-
-  /* ---------- BGMのオン/オフボタン ---------- */
-  .sound-toggle{
-    position: absolute;
-    top: 54px;
-    right: 14px;
-    z-index: 5;
-    width: 34px;
-    height: 34px;
-    border: 2px solid var(--brown);
-    border-radius: 50%;
-    background: var(--cream);
-    font-size: 15px;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: 2px 3px 0 var(--paper-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-  .sound-toggle[hidden]{ display:none; }
-
-  /* ---------- ピコぬくんの吹き出し ---------- */
-  .speech-wrap{
-    position: absolute;
-    top: 18%;
-    right: 4%;
-    max-width: min(78vw, 300px);
-    z-index: 5;
-  }
-  .speech-bubble{
-    background: rgba(255,255,255,0.92);
-    border: 2px solid var(--brown);
-    border-radius: 16px;
-    padding: 10px 14px;
-    font-size: clamp(13px, 2.4vw, 15px);
-    line-height: 1.5;
-    box-shadow: 2px 3px 0 var(--paper-shadow);
-    position: relative;
-    transition: opacity 0.4s ease;
-  }
-  .speech-bubble::after{
-    content:"";
-    position:absolute;
-    right: 22px;
-    bottom: -10px;
-    border-width: 10px 8px 0 8px;
-    border-style: solid;
-    border-color: var(--brown) transparent transparent transparent;
-  }
-  .speech-bubble::before{
-    content:"";
-    position:absolute;
-    right: 24px;
-    bottom: -7px;
-    border-width: 8px 6px 0 6px;
-    border-style: solid;
-    border-color: rgba(255,255,255,0.92) transparent transparent transparent;
-    z-index: 1;
-  }
-
-  /* ---------- 売れた!のふわっと演出 ---------- */
-  .float-pop{
-    position:absolute;
-    z-index: 6;
-    font-weight: 700;
-    color: var(--persimmon-deep);
-    font-size: 15px;
-    pointer-events: none;
-    animation: floatUp 1.6s ease-out forwards;
-    text-shadow: 0 1px 0 #fff;
-  }
-  @keyframes floatUp{
-    0%   { opacity: 0; transform: translateY(0); }
-    15%  { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-46px); }
-  }
-
-  /* ---------- アクシデント通知 ---------- */
-  .accident-overlay{
-    position: fixed;
-    inset: 0;
-    background: rgba(30,18,10,0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 20;
-    padding: 20px;
-  }
-  .accident-overlay[hidden]{ display:none; }
-
-  .accident-card{
-    background: var(--cream);
-    border: 3px solid var(--brown);
-    border-radius: 14px;
-    max-width: 380px;
-    width: 100%;
-    padding: 20px 20px 16px;
-    box-shadow: 4px 5px 0 rgba(0,0,0,0.3);
-    text-align: center;
-  }
-  .accident-card h3{
-    margin: 0 0 10px;
-    font-size: 18px;
-    color: var(--persimmon-deep);
-  }
-  .accident-card p{
-    margin: 6px 0;
-    font-size: 14px;
-    line-height: 1.6;
-    white-space: pre-line;
-  }
-  .accident-result{
-    font-weight: 700;
-    color: var(--brown-soft);
-  }
-  .accident-close{
-    margin-top: 12px;
-    border: none;
-    background: var(--brown);
-    color: #fff;
-    padding: 8px 22px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .accident-close:hover{ background: var(--persimmon-deep); }
-
-  /* ---------- 下部の操作パネル ---------- */
-  .control-panel{
-    position: relative;
-    z-index: 5;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 460px;
-    background: rgba(251,240,220,0.94);
-    border-top: 3px solid var(--brown);
-    border-left: 3px solid var(--brown);
-    border-right: 3px solid var(--brown);
-    border-radius: 18px 18px 0 0;
-    padding: 14px 18px 18px;
-    box-shadow: 0 -4px 14px rgba(0,0,0,0.2);
-    backdrop-filter: blur(2px);
-  }
-
-  @media (min-width: 760px){
-    .control-panel{
+    .piconu-overlay {
       position: absolute;
-      left: 24px;
-      bottom: 20px;
-      margin: 0;
-      border-radius: 16px;
-      border: 3px solid var(--brown);
+      right: 9%;
+      top: 40%;
+      height: clamp(140px, 30vw, 240px);
+      filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3));
+      pointer-events: none;
+      z-index: 4;
     }
+    .piconu-shadow{
+  position: absolute;
+  right: 8%;
+  top: calc(40% + clamp(140px, 30vw, 240px) - 14px);
+  width: clamp(70px, 15vw, 120px);
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(30,18,10,0.35) 0%, rgba(30,18,10,0) 72%);
+  z-index: 3;
+  pointer-events: none;
+}
+@media (min-width: 760px){
+  .piconu-overlay{
+    right: 8%;
+    top: 34%;
+    height: clamp(160px, 20vw, 280px);
   }
+  .piconu-shadow{
+    right: 7%;
+    top: calc(34% + clamp(160px, 20vw, 280px) - 16px);
+    width: clamp(90px, 12vw, 140px);
+  }
+}
 
-  .imo-status{
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-  .imo-status .icon{
-    font-size: 26px;
-    line-height: 1;
-  }
-  .imo-status .text{
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--brown-soft);
-  }
+    /* ---------- 上部:所持金の看板 ---------- */
+    .shop-header {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 5;
+    }
 
-  .progress-track{
-    margin-top: 6px;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--cream-deep);
-    border: 1px solid var(--brown-soft);
-    overflow: hidden;
-  }
-  .progress-track[hidden]{ display:none; }
-  .progress-fill{
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--persimmon), var(--gold));
-    transition: width 0.3s linear;
-  }
+    .money-board {
+      background: var(--cream);
+      border: 2px solid var(--brown);
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-weight: 700;
+      font-size: clamp(15px, 2.6vw, 19px);
+      box-shadow: 2px 3px 0 var(--paper-shadow);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
 
-  .main-btn{
-    display:block;
-    width: 100%;
-    border: none;
-    border-radius: 14px;
-    background: var(--persimmon);
-    color: #fff;
-    font-size: clamp(16px, 4vw, 18px);
-    font-weight: 700;
-    padding: 14px 10px;
-    cursor: pointer;
-    box-shadow: 0 4px 0 var(--persimmon-deep);
-    transition: transform 0.08s ease, box-shadow 0.08s ease;
-  }
-  .main-btn:active{
-    transform: translateY(3px);
-    box-shadow: 0 1px 0 var(--persimmon-deep);
-  }
-  .main-btn:disabled{
-    background: #C9BBA1;
-    box-shadow: 0 4px 0 #a8987a;
-    cursor: default;
-  }
+    .money-board .yen {
+      color: var(--persimmon-deep);
+    }
 
-  .stock-line{
-    text-align:center;
-    font-size: 13px;
-    color: var(--brown-soft);
-    margin-top: 10px;
-  }
+    .shop-title-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 5;
+      background: var(--teal);
+      color: #fff;
+      font-size: clamp(11px, 2vw, 13px);
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.18);
+      opacity: 0.92;
+    }
 
-  .sub-btn{
-    display:block;
-    width: 100%;
-    margin-top: 12px;
-    border: 2px solid var(--brown);
-    border-radius: 12px;
-    background: #fff;
-    color: var(--brown);
-    font-size: 14px;
-    font-weight: 700;
-    padding: 9px 10px;
-    cursor: pointer;
-  }
-  .sub-btn:hover{ background: var(--cream-deep); }
+    /* ---------- BGMのオン/オフボタン ---------- */
+    .sound-toggle {
+      position: absolute;
+      top: 54px;
+      right: 14px;
+      z-index: 5;
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--brown);
+      border-radius: 50%;
+      background: var(--cream);
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 2px 3px 0 var(--paper-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
 
-  .upgrade-shop{
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .upgrade-shop[hidden]{ display:none; }
+    .sound-toggle[hidden] {
+      display: none;
+    }
 
-  .upgrade-card{
-    border: 2px dashed var(--brown-soft);
-    border-radius: 12px;
-    padding: 10px 12px;
-    background: #fffaf0;
-  }
-  .upgrade-card .u-top{
-    display:flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 8px;
-  }
-  .upgrade-card .u-name{
-    font-weight: 700;
-    font-size: 14px;
-  }
-  .upgrade-card .u-level{
-    font-size: 12px;
-    color: var(--teal);
-    font-weight: 700;
-  }
-  .upgrade-card .u-desc{
-    font-size: 12px;
-    color: var(--brown-soft);
-    margin: 4px 0 8px;
-  }
-  .upgrade-card button{
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    background: var(--teal);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 8px;
-    cursor: pointer;
-  }
-  .upgrade-card button:disabled{
-    background: #C9BBA1;
-    cursor: default;
-  }
+    /* ---------- ピコぬくんの吹き出し ---------- */
+    .speech-wrap {
+      position: absolute;
+      top: 18%;
+      right: 4%;
+      max-width: min(78vw, 300px);
+      z-index: 5;
+    }
 
-  .sold-note{
-    text-align: center;
-    font-size: 11px;
-    color: var(--brown-soft);
-    margin-top: 10px;
-    opacity: 0.85;
-  }
+    .speech-bubble {
+      background: rgba(255, 255, 255, 0.92);
+      border: 2px solid var(--brown);
+      border-radius: 16px;
+      padding: 10px 14px;
+      font-size: clamp(13px, 2.4vw, 15px);
+      line-height: 1.5;
+      box-shadow: 2px 3px 0 var(--paper-shadow);
+      position: relative;
+      transition: opacity 0.4s ease;
+    }
 
-  @media (max-width: 420px){
-    .speech-wrap{ top: 12%; right: 3%; max-width: 70vw; }
-  }
-</style>
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      right: 22px;
+      bottom: -10px;
+      border-width: 10px 8px 0 8px;
+      border-style: solid;
+      border-color: var(--brown) transparent transparent transparent;
+    }
+
+    .speech-bubble::before {
+      content: "";
+      position: absolute;
+      right: 24px;
+      bottom: -7px;
+      border-width: 8px 6px 0 6px;
+      border-style: solid;
+      border-color: rgba(255, 255, 255, 0.92) transparent transparent transparent;
+      z-index: 1;
+    }
+
+    /* ---------- 売れた!のふわっと演出 ---------- */
+    .float-pop {
+      position: absolute;
+      z-index: 6;
+      font-weight: 700;
+      color: var(--persimmon-deep);
+      font-size: 15px;
+      pointer-events: none;
+      animation: floatUp 1.6s ease-out forwards;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(0);
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-46px);
+      }
+    }
+
+    /* ---------- アクシデント通知 ---------- */
+    .accident-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 18, 10, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      padding: 20px;
+    }
+
+    .accident-overlay[hidden] {
+      display: none;
+    }
+
+    .accident-card {
+      background: var(--cream);
+      border: 3px solid var(--brown);
+      border-radius: 14px;
+      max-width: 380px;
+      width: 100%;
+      padding: 20px 20px 16px;
+      box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .accident-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--persimmon-deep);
+    }
+
+    .accident-card p {
+      margin: 6px 0;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .accident-result {
+      font-weight: 700;
+      color: var(--brown-soft);
+    }
+
+    .accident-close {
+      margin-top: 12px;
+      border: none;
+      background: var(--brown);
+      color: #fff;
+      padding: 8px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .accident-close:hover {
+      background: var(--persimmon-deep);
+    }
+
+    /* ---------- 下部の操作パネル ---------- */
+    .control-panel {
+      position: relative;
+      z-index: 5;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 460px;
+      background: rgba(251, 240, 220, 0.94);
+      border-top: 3px solid var(--brown);
+      border-left: 3px solid var(--brown);
+      border-right: 3px solid var(--brown);
+      border-radius: 18px 18px 0 0;
+      padding: 14px 18px 18px;
+      box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(2px);
+    }
+
+    @media (min-width: 760px) {
+      .control-panel {
+        position: absolute;
+        left: 24px;
+        bottom: 20px;
+        margin: 0;
+        border-radius: 16px;
+        border: 3px solid var(--brown);
+      }
+    }
+
+    .imo-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .imo-status .icon {
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .imo-status .text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brown-soft);
+    }
+
+    .progress-track {
+      margin-top: 6px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--cream-deep);
+      border: 1px solid var(--brown-soft);
+      overflow: hidden;
+    }
+
+    .progress-track[hidden] {
+      display: none;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--persimmon), var(--gold));
+      transition: width 0.3s linear;
+    }
+
+    .main-btn {
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      background: var(--persimmon);
+      color: #fff;
+      font-size: clamp(16px, 4vw, 18px);
+      font-weight: 700;
+      padding: 14px 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 0 var(--persimmon-deep);
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+
+    .main-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--persimmon-deep);
+    }
+
+    .main-btn:disabled {
+      background: #C9BBA1;
+      box-shadow: 0 4px 0 #a8987a;
+      cursor: default;
+    }
+
+    .stock-line {
+      text-align: center;
+      font-size: 13px;
+      color: var(--brown-soft);
+      margin-top: 10px;
+    }
+
+    .sub-btn {
+      display: block;
+      width: 100%;
+      margin-top: 12px;
+      border: 2px solid var(--brown);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--brown);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 9px 10px;
+      cursor: pointer;
+    }
+
+    .sub-btn:hover {
+      background: var(--cream-deep);
+    }
+
+    .upgrade-shop {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .upgrade-shop[hidden] {
+      display: none;
+    }
+
+    .upgrade-card {
+      border: 2px dashed var(--brown-soft);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fffaf0;
+    }
+
+    .upgrade-card .u-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .upgrade-card .u-name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .upgrade-card .u-level {
+      font-size: 12px;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .upgrade-card .u-desc {
+      font-size: 12px;
+      color: var(--brown-soft);
+      margin: 4px 0 8px;
+    }
+
+    .upgrade-card button {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .upgrade-card button:disabled {
+      background: #C9BBA1;
+      cursor: default;
+    }
+
+    .sold-note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--brown-soft);
+      margin-top: 10px;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 420px) {
+      .speech-wrap {
+        top: 12%;
+        right: 3%;
+        max-width: 70vw;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="stage" id="stage">
-  <div class="bg" id="bgLayer"></div>
-  <img id="piconuOverlay" class="piconu-overlay" alt="ピコぬくん" hidden>
+  <div class="stage" id="stage">
+    <div class="bg" id="bgLayer"></div>
+    <img id="piconuOverlay" class="piconu-overlay" alt="ピコぬくん" hidden>
+    <div id="piconuShadow" class="piconu-shadow" hidden></div>
 
-  <div class="shop-header">
-    <div class="money-board">所持金　<span class="yen">¥<span id="moneyValue">0</span></span></div>
-  </div>
-  <div class="shop-title-tag" id="shopTitleTag">ぴこぬ石やきいも</div>
-  <button class="sound-toggle" id="soundToggleBtn" title="BGMのオン/オフ">🔊</button>
-  <audio id="bgmAudio" loop preload="auto"></audio>
-
-  <div class="speech-wrap">
-    <div class="speech-bubble">
-      <p id="speechText">今日も焼きますぬ🍠</p>
+    <div class="shop-header">
+      <div class="money-board">所持金　<span class="yen">¥<span id="moneyValue">0</span></span></div>
     </div>
-  </div>
+    <div class="shop-title-tag" id="shopTitleTag">ぴこぬ石やきいも</div>
+    <button class="sound-toggle" id="soundToggleBtn" title="BGMのオン/オフ">🔊</button>
+    <audio id="bgmAudio" loop preload="auto"></audio>
 
-  <div class="control-panel">
-    <div class="imo-status">
-      <span class="icon" id="imoIcon">🍠</span>
-      <div style="flex:1;">
-        <div class="text" id="imoStatusText">待機中ですぬ</div>
-        <div class="progress-track" id="progressTrack" hidden>
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
+    <div class="speech-wrap">
+      <div class="speech-bubble">
+        <p id="speechText">今日も焼きますぬ🍠</p>
       </div>
     </div>
 
-    <button class="main-btn" id="bakeBtn">🍠 焼き芋を焼く</button>
-
-    <div class="stock-line">
-      焼けた在庫：<span id="stockValue">0</span>本　／　販売数：<span id="soldValue">0</span>本
-    </div>
-
-    <button class="sub-btn" id="shopToggleBtn">🏮 お店を改良する</button>
-
-    <div class="upgrade-shop" id="upgradeShop" hidden>
-      <div class="upgrade-card" data-id="oven">
-        <div class="u-top">
-          <span class="u-name">🔥 窯を改良</span>
-          <span class="u-level" id="ovenLevelText">Lv.0</span>
+    <div class="control-panel">
+      <div class="imo-status">
+        <span class="icon" id="imoIcon">🍠</span>
+        <div style="flex:1;">
+          <div class="text" id="imoStatusText">待機中ですぬ</div>
+          <div class="progress-track" id="progressTrack" hidden>
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
         </div>
-        <div class="u-desc">焼き芋が少し早く焼けるようになりますぬ。</div>
-        <button id="ovenBtn">改良する(¥<span id="ovenCostText">500</span>)</button>
       </div>
-      <div class="upgrade-card" data-id="capacity">
-        <div class="u-top">
-          <span class="u-name">🍠 焼ける数を増やす</span>
-          <span class="u-level" id="capLevelText">Lv.0</span>
+
+      <button class="main-btn" id="bakeBtn">🍠 焼き芋を焼く</button>
+
+      <div class="stock-line">
+        焼けた在庫：<span id="stockValue">0</span>本　／　販売数：<span id="soldValue">0</span>本
+      </div>
+
+      <button class="sub-btn" id="shopToggleBtn">🏮 お店を改良する</button>
+
+      <div class="upgrade-shop" id="upgradeShop" hidden>
+        <div class="upgrade-card" data-id="oven">
+          <div class="u-top">
+            <span class="u-name">🔥 窯を改良</span>
+            <span class="u-level" id="ovenLevelText">Lv.0</span>
+          </div>
+          <div class="u-desc">焼き芋が少し早く焼けるようになりますぬ。</div>
+          <button id="ovenBtn">改良する(¥<span id="ovenCostText">500</span>)</button>
         </div>
-        <div class="u-desc">一度に焼ける焼き芋の数が少し増えますぬ。</div>
-        <button id="capBtn">改良する(¥<span id="capCostText">1000</span>)</button>
+        <div class="upgrade-card" data-id="capacity">
+          <div class="u-top">
+            <span class="u-name">🍠 焼ける数を増やす</span>
+            <span class="u-level" id="capLevelText">Lv.0</span>
+          </div>
+          <div class="u-desc">一度に焼ける焼き芋の数が少し増えますぬ。</div>
+          <button id="capBtn">改良する(¥<span id="capCostText">1000</span>)</button>
+        </div>
       </div>
+
+      <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
     </div>
-
-    <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
   </div>
-</div>
 
-<div class="accident-overlay" id="accidentOverlay" hidden>
-  <div class="accident-card">
-    <h3 id="accidentTitle">💧 アクシデント！</h3>
-    <p id="accidentBody"></p>
-    <p class="accident-result" id="accidentResult"></p>
-    <button class="accident-close" id="accidentCloseBtn">とじる</button>
+  <div class="accident-overlay" id="accidentOverlay" hidden>
+    <div class="accident-card">
+      <h3 id="accidentTitle">💧 アクシデント！</h3>
+      <p id="accidentBody"></p>
+      <p class="accident-result" id="accidentResult"></p>
+      <button class="accident-close" id="accidentCloseBtn">とじる</button>
+    </div>
   </div>
-</div>
 
-<script>
-(function(){
-  "use strict";
+  <script>
+    (function () {
+      "use strict";
 
-  /* =========================================================
-     ゲーム設定(この中の数値を変えるだけで調整できます)
-     ========================================================= */
-  const CONFIG = {
+      /* =========================================================
+         ゲーム設定(この中の数値を変えるだけで調整できます)
+         ========================================================= */
+      const CONFIG = {
 
-    images: {
-      // レベル別の背景画像パス。今回はレベル1のみ実装。
-      // 将来、店が成長したら backgroundLevel2〜4 にパスを追加し、
-      // getBackgroundImage() の中で切り替えてください。
-      backgroundLevel1: "../images/game/imo-bg.jpg",
-      backgroundLevel2: null,
-      backgroundLevel3: null,
-      backgroundLevel4: null,
+        images: {
+          // レベル別の背景画像パス。今回はレベル1のみ実装。
+          // 将来、店が成長したら backgroundLevel2〜4 にパスを追加し、
+          // getBackgroundImage() の中で切り替えてください。
+          backgroundLevel1: "../images/game/imo-bg.jpg",
+          backgroundLevel2: null,
+          backgroundLevel3: null,
+          backgroundLevel4: null,
 
-      // ピコぬくん単体の透過画像。背景(販売車のみ)の手前に立たせて表示します。
-      piconu: "../images/game/piconu-imo.png",
-    },
+          // ピコぬくん単体の透過画像。背景(販売車のみ)の手前に立たせて表示します。
+          piconu: "../images/game/piconu-imo.png",
+        },
 
-    // 背景画像には販売車のみが描かれているため、ここでピコぬくんを
-    // カウンター横に重ねて表示します。
-    showCharacterOverlay: true,
+        // 背景画像には販売車のみが描かれているため、ここでピコぬくんを
+        // カウンター横に重ねて表示します。
+        showCharacterOverlay: true,
 
-    audio: {
-      bgmPath: "../audio/bgm.mp3", // 30秒程度のBGM。ここを差し替えれば曲を変更できます
-      volume: 0.45,             // BGMの音量(0〜1)
-      defaultMuted: false,      // 初回訪問時にBGMを鳴らすかどうか
-    },
+        audio: {
+          bgmPath: "../audio/bgm.mp3", // 30秒程度のBGM。ここを差し替えれば曲を変更できます
+          volume: 0.45,             // BGMの音量(0〜1)
+          defaultMuted: false,      // 初回訪問時にBGMを鳴らすかどうか
+        },
 
-    shopName: "ぴこぬ石やきいも",
-    itemName: "石焼き芋",
-    price: 100,          // 1本あたりの販売価格(円)
-    startMoney: 1280,     // 初期所持金
+        shopName: "ぴこぬ石やきいも",
+        itemName: "石焼き芋",
+        price: 100,          // 1本あたりの販売価格(円)
+        startMoney: 1280,     // 初期所持金
 
-    bakeTimeMs: 12000,        // 基本の焼き時間(ミリ秒)
-    sellIntervalMs: 9000,     // 在庫が1本自動で売れる間隔(ミリ秒)
-    ovenCapacityBase: 1,      // 一度に焼ける本数(初期値)
+        bakeTimeMs: 12000,        // 基本の焼き時間(ミリ秒)
+        sellIntervalMs: 9000,     // 在庫が1本自動で売れる間隔(ミリ秒)
+        ovenCapacityBase: 1,      // 一度に焼ける本数(初期値)
 
-    messageIntervalMs: 12000, // ピコぬくんのメッセージが自動で切り替わる間隔
+        messageIntervalMs: 12000, // ピコぬくんのメッセージが自動で切り替わる間隔
 
-    accidentCheckIntervalMs: 30000, // アクシデントを抽選する間隔
-    accidentChance: 0.12,           // 抽選が来たときにアクシデントが起きる確率
+        accidentCheckIntervalMs: 30000, // アクシデントを抽選する間隔
+        accidentChance: 0.12,           // 抽選が来たときにアクシデントが起きる確率
 
-    // アップグレード設定
-    upgrades: {
-      oven: {
-        name: "窯を改良",
-        baseCost: 500,
-        costGrowth: 1.8,       // レベルが上がるごとにコストが増える倍率
-        maxLevel: 3,
-        bakeTimeMultiplierPerLevel: 0.85, // 1レベルごとに焼き時間がこの倍率に短縮
-      },
-      capacity: {
-        name: "焼ける数を増やす",
-        baseCost: 1000,
-        costGrowth: 2.0,
-        maxLevel: 3,
-        capacityBonusPerLevel: 1, // 1レベルごとに同時に焼ける本数+1
-      },
-    },
+        // アップグレード設定
+        upgrades: {
+          oven: {
+            name: "窯を改良",
+            baseCost: 500,
+            costGrowth: 1.8,       // レベルが上がるごとにコストが増える倍率
+            maxLevel: 3,
+            bakeTimeMultiplierPerLevel: 0.85, // 1レベルごとに焼き時間がこの倍率に短縮
+          },
+          capacity: {
+            name: "焼ける数を増やす",
+            baseCost: 1000,
+            costGrowth: 2.0,
+            maxLevel: 3,
+            capacityBonusPerLevel: 1, // 1レベルごとに同時に焼ける本数+1
+          },
+        },
 
-    saveKey: "piconu_imoya_save_v1",
-    offlineCatchupCapSales: 12, // ページを開き直した時にまとめて売れる本数の上限(インフレ防止)
+        saveKey: "piconu_imoya_save_v1",
+        offlineCatchupCapSales: 12, // ページを開き直した時にまとめて売れる本数の上限(インフレ防止)
+      };
+
+      /* ---------- ピコぬくんのメッセージ ---------- */
+      const MESSAGES = {
+        idle: ["今日も焼きますぬ🍠", "のんびりやってますぬ", "風が気持ちいいですぬ", "お客さんを待ってますぬ"],
+        baking: ["じっくり焼いていますぬ……", "いい匂いですぬ", "もう少しですぬ……", "じっと待つのも仕事ですぬ"],
+        done: ["🍠　焼けましたぬ！", "ほかほかですぬ🍠"],
+        sold: ["売れましたぬ", "ありがとうございますぬ", "今日はよく売れますぬ"],
+        rest: ["ちょっと休憩しますぬ(´ω｀)", "お茶でも飲みますぬ", "一息つきますぬ"],
+      };
+
+      /* ---------- アクシデント一覧(weight が大きいほど起きやすい) ---------- */
+      const ACCIDENTS = [
+        {
+          id: "stone",
+          weight: 2, // 他よりかなり低い重み = レア
+          run() {
+            const penalty = 5000;
+            state.money -= penalty;
+            showAccident(
+              "💧 アクシデント！",
+              "焼き芋と間違えて、焼いた石を渡してしまいましたぬ……\nお客さんの歯が折れてしまったため、お詫びとして5,000円支払いましたぬ。",
+              `所持金 −${penalty.toLocaleString()}円`
+            );
+          }
+        },
+        {
+          id: "burnt",
+          weight: 6,
+          run() {
+            showAccident("🔥 ちょっとしたハプニング", "焼きすぎて、少し焦げてしまいましたぬ……", "それでも無事に売れましたぬ。");
+          }
+        },
+        {
+          id: "flag",
+          weight: 6,
+          run() {
+            showAccident("🌬️ 小さな出来事", "風でのぼりが倒れてしまいましたぬ。", "すぐに立て直しましたぬ。");
+          }
+        },
+        {
+          id: "cat",
+          weight: 5,
+          run() {
+            let result = "見なかったことにしますぬ。";
+            if (state.stock > 0) {
+              state.stock -= 1;
+            } else {
+              result = "在庫がなくて残念そうでしたぬ。";
+            }
+            showAccident("🐈 まさかの来客", "猫が焼き芋を一本、持っていってしまいましたぬ……", result);
+          }
+        },
+        {
+          id: "bigimo",
+          weight: 5,
+          run() {
+            const bonus = 300;
+            state.money += bonus;
+            showAccident("🍠 うれしい発見", "とても大きな焼き芋が焼けましたぬ！", `おまけで高く売れて、${bonus}円もうかりましたぬ。`);
+          }
+        },
+      ];
+
+      /* =========================================================
+         ゲーム状態
+         ========================================================= */
+      let state = {
+        money: CONFIG.startMoney,
+        totalSold: 0,
+        stock: 0,
+        isBaking: false,
+        bakeReadyAt: null,
+        bakeStartedAt: null,
+        nextSellAt: null,
+        ovenLevel: 0,
+        capacityLevel: 0,
+        backgroundLevel: 1,
+        lastSavedAt: null,
+        muted: CONFIG.audio.defaultMuted,
+      };
+
+      /* ---------- 要素参照 ---------- */
+      const el = {
+        bgLayer: document.getElementById("bgLayer"),
+        piconuOverlay: document.getElementById("piconuOverlay"),
+piconuShadow: document.getElementById("piconuShadow"),
+        moneyValue: document.getElementById("moneyValue"),
+        shopTitleTag: document.getElementById("shopTitleTag"),
+        speechText: document.getElementById("speechText"),
+        imoIcon: document.getElementById("imoIcon"),
+        imoStatusText: document.getElementById("imoStatusText"),
+        progressTrack: document.getElementById("progressTrack"),
+        progressFill: document.getElementById("progressFill"),
+        bakeBtn: document.getElementById("bakeBtn"),
+        stockValue: document.getElementById("stockValue"),
+        soldValue: document.getElementById("soldValue"),
+        shopToggleBtn: document.getElementById("shopToggleBtn"),
+        upgradeShop: document.getElementById("upgradeShop"),
+        ovenLevelText: document.getElementById("ovenLevelText"),
+        ovenCostText: document.getElementById("ovenCostText"),
+        ovenBtn: document.getElementById("ovenBtn"),
+        capLevelText: document.getElementById("capLevelText"),
+        capCostText: document.getElementById("capCostText"),
+        capBtn: document.getElementById("capBtn"),
+        stage: document.getElementById("stage"),
+        accidentOverlay: document.getElementById("accidentOverlay"),
+        accidentTitle: document.getElementById("accidentTitle"),
+        accidentBody: document.getElementById("accidentBody"),
+        accidentResult: document.getElementById("accidentResult"),
+        accidentCloseBtn: document.getElementById("accidentCloseBtn"),
+        bgmAudio: document.getElementById("bgmAudio"),
+        soundToggleBtn: document.getElementById("soundToggleBtn"),
+      };
+
+      /* =========================================================
+         セーブ / ロード
+         ========================================================= */
+      function saveGame() {
+        try {
+          const data = Object.assign({}, state, {lastSavedAt: Date.now()});
+          localStorage.setItem(CONFIG.saveKey, JSON.stringify(data));
+        } catch (e) {
+          // localStorageが使えない環境でもゲーム自体は動くようにする
+          console.warn("セーブに失敗しましたぬ", e);
+        }
+      }
+
+      function loadGame() {
+        try {
+          const raw = localStorage.getItem(CONFIG.saveKey);
+          if (!raw) return;
+          const data = JSON.parse(raw);
+          state = Object.assign(state, data);
+          handleOfflineProgress();
+        } catch (e) {
+          console.warn("セーブデータの読み込みに失敗しましたぬ", e);
+        }
+      }
+
+      // ページを開き直した時、閉じていた間の進行を控えめに反映する
+      function handleOfflineProgress() {
+        const now = Date.now();
+
+        // 焼いている途中だった場合、焼き上がり時刻を過ぎていれば完成させる
+        if (state.isBaking && state.bakeReadyAt && now >= state.bakeReadyAt) {
+          state.stock += currentOvenCapacity();
+          state.isBaking = false;
+          state.bakeReadyAt = null;
+          state.bakeStartedAt = null;
+        }
+
+        // 自動販売の巻き戻し分(上限つき、インフレ防止)
+        if (state.nextSellAt && state.stock > 0) {
+          const elapsed = now - (state.lastSavedAt || now);
+          if (elapsed > 0) {
+            const possibleSales = Math.floor(elapsed / CONFIG.sellIntervalMs);
+            const sales = Math.min(
+              possibleSales,
+              state.stock,
+              CONFIG.offlineCatchupCapSales
+            );
+            if (sales > 0) {
+              state.stock -= sales;
+              state.money += sales * CONFIG.price;
+              state.totalSold += sales;
+            }
+          }
+        }
+        state.nextSellAt = now + CONFIG.sellIntervalMs;
+      }
+
+      /* =========================================================
+         背景 / キャラクター表示
+         ========================================================= */
+      function getBackgroundImage() {
+        // 将来レベル2〜4を実装する際は、ここで state.backgroundLevel を見て
+        // CONFIG.images.backgroundLevelX を返すように切り替えてください。
+        switch (state.backgroundLevel) {
+          case 2: return CONFIG.images.backgroundLevel2 || CONFIG.images.backgroundLevel1;
+          case 3: return CONFIG.images.backgroundLevel3 || CONFIG.images.backgroundLevel1;
+          case 4: return CONFIG.images.backgroundLevel4 || CONFIG.images.backgroundLevel1;
+          default: return CONFIG.images.backgroundLevel1;
+        }
+      }
+
+      function setupBackground() {
+        const path = getBackgroundImage();
+        if (!path) {
+          el.bgLayer.classList.add("bg-fallback");
+          return;
+        }
+        const test = new Image();
+        test.onload = function () {
+          el.bgLayer.style.setProperty("--bg-image", `url("${path}")`);
+        };
+        test.onerror = function () {
+          // 画像が見つからない場合は夕暮れグラデーションで代替
+          el.bgLayer.classList.add("bg-fallback");
+        };
+        test.src = path;
+      }
+
+      function setupCharacterOverlay(){
+  if (!CONFIG.showCharacterOverlay) return;
+  const img = el.piconuOverlay;
+  img.onload = function(){
+    img.hidden = false;
+    el.piconuShadow.hidden = false;
   };
-
-  /* ---------- ピコぬくんのメッセージ ---------- */
-  const MESSAGES = {
-    idle: ["今日も焼きますぬ🍠", "のんびりやってますぬ", "風が気持ちいいですぬ", "お客さんを待ってますぬ"],
-    baking: ["じっくり焼いていますぬ……", "いい匂いですぬ", "もう少しですぬ……", "じっと待つのも仕事ですぬ"],
-    done: ["🍠　焼けましたぬ！", "ほかほかですぬ🍠"],
-    sold: ["売れましたぬ", "ありがとうございますぬ", "今日はよく売れますぬ"],
-    rest: ["ちょっと休憩しますぬ(´ω｀)", "お茶でも飲みますぬ", "一息つきますぬ"],
+  img.onerror = function(){
+    img.hidden = true;
+    el.piconuShadow.hidden = true;
   };
+  img.src = CONFIG.images.piconu;
+}
 
-  /* ---------- アクシデント一覧(weight が大きいほど起きやすい) ---------- */
-  const ACCIDENTS = [
-    {
-      id: "stone",
-      weight: 2, // 他よりかなり低い重み = レア
-      run(){
-        const penalty = 5000;
-        state.money -= penalty;
-        showAccident(
-          "💧 アクシデント！",
-          "焼き芋と間違えて、焼いた石を渡してしまいましたぬ……\nお客さんの歯が折れてしまったため、お詫びとして5,000円支払いましたぬ。",
-          `所持金 −${penalty.toLocaleString()}円`
-        );
+      /* =========================================================
+         BGM(30秒程度のループ音源を想定)
+         ========================================================= */
+      let audioReady = false;
+      let audioUnlocked = false;
+
+      function updateSoundToggleUI() {
+        el.soundToggleBtn.textContent = state.muted ? "🔇" : "🔊";
       }
-    },
-    {
-      id: "burnt",
-      weight: 6,
-      run(){
-        showAccident("🔥 ちょっとしたハプニング", "焼きすぎて、少し焦げてしまいましたぬ……", "それでも無事に売れましたぬ。");
+
+      function setupAudio() {
+        const audio = el.bgmAudio;
+        audio.src = CONFIG.audio.bgmPath;
+        audio.loop = true;
+        audio.volume = CONFIG.audio.volume;
+        audio.muted = state.muted;
+
+        audio.addEventListener("canplaythrough", () => {audioReady = true;}, {once: true});
+        audio.addEventListener("error", () => {
+          // 音声ファイルが見つからない/再生できない場合はボタンごと隠して静かに諦める
+          el.soundToggleBtn.hidden = true;
+        });
+
+        updateSoundToggleUI();
+        attemptAutoplay();
+
+        // ブラウザの自動再生制限対策:最初のユーザー操作でBGMを開始する
+        const unlock = () => {
+          if (audioUnlocked) return;
+          audioUnlocked = true;
+          if (!state.muted) {
+            audio.play().catch(() => { /* それでも再生できなければ諦める */});
+          }
+          window.removeEventListener("pointerdown", unlock);
+          window.removeEventListener("keydown", unlock);
+        };
+        window.addEventListener("pointerdown", unlock, {once: true});
+        window.addEventListener("keydown", unlock, {once: true});
       }
-    },
-    {
-      id: "flag",
-      weight: 6,
-      run(){
-        showAccident("🌬️ 小さな出来事", "風でのぼりが倒れてしまいましたぬ。", "すぐに立て直しましたぬ。");
+
+      function attemptAutoplay() {
+        if (state.muted) return;
+        const audio = el.bgmAudio;
+        const p = audio.play();
+        if (p && typeof p.catch === "function") {
+          p.then(() => {audioUnlocked = true;}).catch(() => {
+            // 自動再生がブロックされた場合は、最初の操作を待つ(unlockが処理する)
+          });
+        }
       }
-    },
-    {
-      id: "cat",
-      weight: 5,
-      run(){
-        let result = "見なかったことにしますぬ。";
-        if (state.stock > 0){
-          state.stock -= 1;
+
+      function toggleSound() {
+        state.muted = !state.muted;
+        el.bgmAudio.muted = state.muted;
+        updateSoundToggleUI();
+        if (!state.muted && el.bgmAudio.paused) {
+          el.bgmAudio.play().catch(() => { });
+        }
+        saveGame();
+      }
+
+      /* =========================================================
+         アップグレード計算
+         ========================================================= */
+      function ovenCost() {
+        const cfg = CONFIG.upgrades.oven;
+        return Math.round(cfg.baseCost * Math.pow(cfg.costGrowth, state.ovenLevel));
+      }
+      function capCost() {
+        const cfg = CONFIG.upgrades.capacity;
+        return Math.round(cfg.baseCost * Math.pow(cfg.costGrowth, state.capacityLevel));
+      }
+      function currentBakeTime() {
+        const cfg = CONFIG.upgrades.oven;
+        return Math.round(CONFIG.bakeTimeMs * Math.pow(cfg.bakeTimeMultiplierPerLevel, state.ovenLevel));
+      }
+      function currentOvenCapacity() {
+        const cfg = CONFIG.upgrades.capacity;
+        return CONFIG.ovenCapacityBase + state.capacityLevel * cfg.capacityBonusPerLevel;
+      }
+
+      /* =========================================================
+         UI更新
+         ========================================================= */
+      function formatMoney(n) {
+        return Math.max(0, Math.round(n)).toLocaleString("ja-JP");
+      }
+
+      function updateMoneyUI() {
+        el.moneyValue.textContent = formatMoney(state.money);
+      }
+
+      function updateStockUI() {
+        el.stockValue.textContent = state.stock;
+        el.soldValue.textContent = state.totalSold;
+      }
+
+      function updateBakeUI() {
+        if (state.isBaking) {
+          el.bakeBtn.disabled = true;
+          el.bakeBtn.textContent = "🍠 焼いていますぬ……";
+          el.imoIcon.textContent = "🍠";
+          el.imoStatusText.textContent = "焼いていますぬ……";
+          el.progressTrack.hidden = false;
+
+          const total = state.bakeReadyAt - state.bakeStartedAt;
+          const elapsed = Date.now() - state.bakeStartedAt;
+          const ratio = Math.min(1, Math.max(0, elapsed / total));
+          el.progressFill.style.width = (ratio * 100).toFixed(1) + "%";
         } else {
-          result = "在庫がなくて残念そうでしたぬ。";
-        }
-        showAccident("🐈 まさかの来客", "猫が焼き芋を一本、持っていってしまいましたぬ……", result);
-      }
-    },
-    {
-      id: "bigimo",
-      weight: 5,
-      run(){
-        const bonus = 300;
-        state.money += bonus;
-        showAccident("🍠 うれしい発見", "とても大きな焼き芋が焼けましたぬ！", `おまけで高く売れて、${bonus}円もうかりましたぬ。`);
-      }
-    },
-  ];
-
-  /* =========================================================
-     ゲーム状態
-     ========================================================= */
-  let state = {
-    money: CONFIG.startMoney,
-    totalSold: 0,
-    stock: 0,
-    isBaking: false,
-    bakeReadyAt: null,
-    bakeStartedAt: null,
-    nextSellAt: null,
-    ovenLevel: 0,
-    capacityLevel: 0,
-    backgroundLevel: 1,
-    lastSavedAt: null,
-    muted: CONFIG.audio.defaultMuted,
-  };
-
-  /* ---------- 要素参照 ---------- */
-  const el = {
-    bgLayer: document.getElementById("bgLayer"),
-    piconuOverlay: document.getElementById("piconuOverlay"),
-    moneyValue: document.getElementById("moneyValue"),
-    shopTitleTag: document.getElementById("shopTitleTag"),
-    speechText: document.getElementById("speechText"),
-    imoIcon: document.getElementById("imoIcon"),
-    imoStatusText: document.getElementById("imoStatusText"),
-    progressTrack: document.getElementById("progressTrack"),
-    progressFill: document.getElementById("progressFill"),
-    bakeBtn: document.getElementById("bakeBtn"),
-    stockValue: document.getElementById("stockValue"),
-    soldValue: document.getElementById("soldValue"),
-    shopToggleBtn: document.getElementById("shopToggleBtn"),
-    upgradeShop: document.getElementById("upgradeShop"),
-    ovenLevelText: document.getElementById("ovenLevelText"),
-    ovenCostText: document.getElementById("ovenCostText"),
-    ovenBtn: document.getElementById("ovenBtn"),
-    capLevelText: document.getElementById("capLevelText"),
-    capCostText: document.getElementById("capCostText"),
-    capBtn: document.getElementById("capBtn"),
-    stage: document.getElementById("stage"),
-    accidentOverlay: document.getElementById("accidentOverlay"),
-    accidentTitle: document.getElementById("accidentTitle"),
-    accidentBody: document.getElementById("accidentBody"),
-    accidentResult: document.getElementById("accidentResult"),
-    accidentCloseBtn: document.getElementById("accidentCloseBtn"),
-    bgmAudio: document.getElementById("bgmAudio"),
-    soundToggleBtn: document.getElementById("soundToggleBtn"),
-  };
-
-  /* =========================================================
-     セーブ / ロード
-     ========================================================= */
-  function saveGame(){
-    try{
-      const data = Object.assign({}, state, { lastSavedAt: Date.now() });
-      localStorage.setItem(CONFIG.saveKey, JSON.stringify(data));
-    }catch(e){
-      // localStorageが使えない環境でもゲーム自体は動くようにする
-      console.warn("セーブに失敗しましたぬ", e);
-    }
-  }
-
-  function loadGame(){
-    try{
-      const raw = localStorage.getItem(CONFIG.saveKey);
-      if (!raw) return;
-      const data = JSON.parse(raw);
-      state = Object.assign(state, data);
-      handleOfflineProgress();
-    }catch(e){
-      console.warn("セーブデータの読み込みに失敗しましたぬ", e);
-    }
-  }
-
-  // ページを開き直した時、閉じていた間の進行を控えめに反映する
-  function handleOfflineProgress(){
-    const now = Date.now();
-
-    // 焼いている途中だった場合、焼き上がり時刻を過ぎていれば完成させる
-    if (state.isBaking && state.bakeReadyAt && now >= state.bakeReadyAt){
-      state.stock += currentOvenCapacity();
-      state.isBaking = false;
-      state.bakeReadyAt = null;
-      state.bakeStartedAt = null;
-    }
-
-    // 自動販売の巻き戻し分(上限つき、インフレ防止)
-    if (state.nextSellAt && state.stock > 0){
-      const elapsed = now - (state.lastSavedAt || now);
-      if (elapsed > 0){
-        const possibleSales = Math.floor(elapsed / CONFIG.sellIntervalMs);
-        const sales = Math.min(
-          possibleSales,
-          state.stock,
-          CONFIG.offlineCatchupCapSales
-        );
-        if (sales > 0){
-          state.stock -= sales;
-          state.money += sales * CONFIG.price;
-          state.totalSold += sales;
+          el.bakeBtn.disabled = false;
+          el.bakeBtn.textContent = "🍠 焼き芋を焼く";
+          el.progressTrack.hidden = true;
+          el.imoStatusText.textContent = state.stock > 0
+            ? `焼けた芋が${state.stock}本ありますぬ`
+            : "待機中ですぬ";
         }
       }
-    }
-    state.nextSellAt = now + CONFIG.sellIntervalMs;
-  }
 
-  /* =========================================================
-     背景 / キャラクター表示
-     ========================================================= */
-  function getBackgroundImage(){
-    // 将来レベル2〜4を実装する際は、ここで state.backgroundLevel を見て
-    // CONFIG.images.backgroundLevelX を返すように切り替えてください。
-    switch(state.backgroundLevel){
-      case 2: return CONFIG.images.backgroundLevel2 || CONFIG.images.backgroundLevel1;
-      case 3: return CONFIG.images.backgroundLevel3 || CONFIG.images.backgroundLevel1;
-      case 4: return CONFIG.images.backgroundLevel4 || CONFIG.images.backgroundLevel1;
-      default: return CONFIG.images.backgroundLevel1;
-    }
-  }
+      function updateUpgradeUI() {
+        const ocfg = CONFIG.upgrades.oven;
+        const ccfg = CONFIG.upgrades.capacity;
 
-  function setupBackground(){
-    const path = getBackgroundImage();
-    if (!path){
-      el.bgLayer.classList.add("bg-fallback");
-      return;
-    }
-    const test = new Image();
-    test.onload = function(){
-      el.bgLayer.style.setProperty("--bg-image", `url("${path}")`);
-    };
-    test.onerror = function(){
-      // 画像が見つからない場合は夕暮れグラデーションで代替
-      el.bgLayer.classList.add("bg-fallback");
-    };
-    test.src = path;
-  }
+        el.ovenLevelText.textContent = `Lv.${state.ovenLevel}`;
+        el.capLevelText.textContent = `Lv.${state.capacityLevel}`;
 
-  function setupCharacterOverlay(){
-    if (!CONFIG.showCharacterOverlay) return;
-    const img = el.piconuOverlay;
-    img.onload = function(){ img.hidden = false; };
-    img.onerror = function(){ img.hidden = true; };
-    img.src = CONFIG.images.piconu;
-  }
+        if (state.ovenLevel >= ocfg.maxLevel) {
+          el.ovenBtn.textContent = "改良済みですぬ";
+          el.ovenBtn.disabled = true;
+        } else {
+          const cost = ovenCost();
+          el.ovenCostText.textContent = formatMoney(cost);
+          el.ovenBtn.textContent = `改良する(¥${formatMoney(cost)})`;
+          el.ovenBtn.disabled = state.money < cost;
+        }
 
-  /* =========================================================
-     BGM(30秒程度のループ音源を想定)
-     ========================================================= */
-  let audioReady = false;
-  let audioUnlocked = false;
-
-  function updateSoundToggleUI(){
-    el.soundToggleBtn.textContent = state.muted ? "🔇" : "🔊";
-  }
-
-  function setupAudio(){
-    const audio = el.bgmAudio;
-    audio.src = CONFIG.audio.bgmPath;
-    audio.loop = true;
-    audio.volume = CONFIG.audio.volume;
-    audio.muted = state.muted;
-
-    audio.addEventListener("canplaythrough", () => { audioReady = true; }, { once: true });
-    audio.addEventListener("error", () => {
-      // 音声ファイルが見つからない/再生できない場合はボタンごと隠して静かに諦める
-      el.soundToggleBtn.hidden = true;
-    });
-
-    updateSoundToggleUI();
-    attemptAutoplay();
-
-    // ブラウザの自動再生制限対策:最初のユーザー操作でBGMを開始する
-    const unlock = () => {
-      if (audioUnlocked) return;
-      audioUnlocked = true;
-      if (!state.muted){
-        audio.play().catch(() => { /* それでも再生できなければ諦める */ });
+        if (state.capacityLevel >= ccfg.maxLevel) {
+          el.capBtn.textContent = "改良済みですぬ";
+          el.capBtn.disabled = true;
+        } else {
+          const cost = capCost();
+          el.capCostText.textContent = formatMoney(cost);
+          el.capBtn.textContent = `改良する(¥${formatMoney(cost)})`;
+          el.capBtn.disabled = state.money < cost;
+        }
       }
-      window.removeEventListener("pointerdown", unlock);
-      window.removeEventListener("keydown", unlock);
-    };
-    window.addEventListener("pointerdown", unlock, { once: true });
-    window.addEventListener("keydown", unlock, { once: true });
-  }
 
-  function attemptAutoplay(){
-    if (state.muted) return;
-    const audio = el.bgmAudio;
-    const p = audio.play();
-    if (p && typeof p.catch === "function"){
-      p.then(() => { audioUnlocked = true; }).catch(() => {
-        // 自動再生がブロックされた場合は、最初の操作を待つ(unlockが処理する)
+      function refreshUI() {
+        updateMoneyUI();
+        updateStockUI();
+        updateBakeUI();
+        updateUpgradeUI();
+      }
+
+      /* =========================================================
+         メッセージ表示
+         ========================================================= */
+      let messageTimer = null;
+
+      function pickMessage(category) {
+        const list = MESSAGES[category] || MESSAGES.idle;
+        return list[Math.floor(Math.random() * list.length)];
+      }
+
+      function showMessage(category) {
+        el.speechText.textContent = pickMessage(category);
+        resetMessageTimer();
+      }
+
+      function resetMessageTimer() {
+        if (messageTimer) clearTimeout(messageTimer);
+        messageTimer = setTimeout(() => {
+          // 現在の状況に応じて自然に切り替える
+          if (state.isBaking) {
+            showMessage("baking");
+          } else if (state.stock > 0) {
+            showMessage("idle");
+          } else {
+            // たまに休憩メッセージも混ぜる
+            showMessage(Math.random() < 0.3 ? "rest" : "idle");
+          }
+        }, CONFIG.messageIntervalMs);
+      }
+
+      /* =========================================================
+         売上のふわっと演出
+         ========================================================= */
+      function popFloatingText(text) {
+        const pop = document.createElement("div");
+        pop.className = "float-pop";
+        pop.textContent = text;
+        const x = 20 + Math.random() * 50;
+        pop.style.left = x + "%";
+        pop.style.bottom = "34%";
+        el.stage.appendChild(pop);
+        setTimeout(() => pop.remove(), 1700);
+      }
+
+      /* =========================================================
+         アクシデント表示
+         ========================================================= */
+      function showAccident(title, body, result) {
+        el.accidentTitle.textContent = title;
+        el.accidentBody.textContent = body;
+        el.accidentResult.textContent = result;
+        el.accidentOverlay.hidden = false;
+        refreshUI();
+      }
+
+      el.accidentCloseBtn.addEventListener("click", () => {
+        el.accidentOverlay.hidden = true;
       });
-    }
-  }
 
-  function toggleSound(){
-    state.muted = !state.muted;
-    el.bgmAudio.muted = state.muted;
-    updateSoundToggleUI();
-    if (!state.muted && el.bgmAudio.paused){
-      el.bgmAudio.play().catch(() => {});
-    }
-    saveGame();
-  }
-
-  /* =========================================================
-     アップグレード計算
-     ========================================================= */
-  function ovenCost(){
-    const cfg = CONFIG.upgrades.oven;
-    return Math.round(cfg.baseCost * Math.pow(cfg.costGrowth, state.ovenLevel));
-  }
-  function capCost(){
-    const cfg = CONFIG.upgrades.capacity;
-    return Math.round(cfg.baseCost * Math.pow(cfg.costGrowth, state.capacityLevel));
-  }
-  function currentBakeTime(){
-    const cfg = CONFIG.upgrades.oven;
-    return Math.round(CONFIG.bakeTimeMs * Math.pow(cfg.bakeTimeMultiplierPerLevel, state.ovenLevel));
-  }
-  function currentOvenCapacity(){
-    const cfg = CONFIG.upgrades.capacity;
-    return CONFIG.ovenCapacityBase + state.capacityLevel * cfg.capacityBonusPerLevel;
-  }
-
-  /* =========================================================
-     UI更新
-     ========================================================= */
-  function formatMoney(n){
-    return Math.max(0, Math.round(n)).toLocaleString("ja-JP");
-  }
-
-  function updateMoneyUI(){
-    el.moneyValue.textContent = formatMoney(state.money);
-  }
-
-  function updateStockUI(){
-    el.stockValue.textContent = state.stock;
-    el.soldValue.textContent = state.totalSold;
-  }
-
-  function updateBakeUI(){
-    if (state.isBaking){
-      el.bakeBtn.disabled = true;
-      el.bakeBtn.textContent = "🍠 焼いていますぬ……";
-      el.imoIcon.textContent = "🍠";
-      el.imoStatusText.textContent = "焼いていますぬ……";
-      el.progressTrack.hidden = false;
-
-      const total = state.bakeReadyAt - state.bakeStartedAt;
-      const elapsed = Date.now() - state.bakeStartedAt;
-      const ratio = Math.min(1, Math.max(0, elapsed / total));
-      el.progressFill.style.width = (ratio * 100).toFixed(1) + "%";
-    } else {
-      el.bakeBtn.disabled = false;
-      el.bakeBtn.textContent = "🍠 焼き芋を焼く";
-      el.progressTrack.hidden = true;
-      el.imoStatusText.textContent = state.stock > 0
-        ? `焼けた芋が${state.stock}本ありますぬ`
-        : "待機中ですぬ";
-    }
-  }
-
-  function updateUpgradeUI(){
-    const ocfg = CONFIG.upgrades.oven;
-    const ccfg = CONFIG.upgrades.capacity;
-
-    el.ovenLevelText.textContent = `Lv.${state.ovenLevel}`;
-    el.capLevelText.textContent = `Lv.${state.capacityLevel}`;
-
-    if (state.ovenLevel >= ocfg.maxLevel){
-      el.ovenBtn.textContent = "改良済みですぬ";
-      el.ovenBtn.disabled = true;
-    } else {
-      const cost = ovenCost();
-      el.ovenCostText.textContent = formatMoney(cost);
-      el.ovenBtn.textContent = `改良する(¥${formatMoney(cost)})`;
-      el.ovenBtn.disabled = state.money < cost;
-    }
-
-    if (state.capacityLevel >= ccfg.maxLevel){
-      el.capBtn.textContent = "改良済みですぬ";
-      el.capBtn.disabled = true;
-    } else {
-      const cost = capCost();
-      el.capCostText.textContent = formatMoney(cost);
-      el.capBtn.textContent = `改良する(¥${formatMoney(cost)})`;
-      el.capBtn.disabled = state.money < cost;
-    }
-  }
-
-  function refreshUI(){
-    updateMoneyUI();
-    updateStockUI();
-    updateBakeUI();
-    updateUpgradeUI();
-  }
-
-  /* =========================================================
-     メッセージ表示
-     ========================================================= */
-  let messageTimer = null;
-
-  function pickMessage(category){
-    const list = MESSAGES[category] || MESSAGES.idle;
-    return list[Math.floor(Math.random() * list.length)];
-  }
-
-  function showMessage(category){
-    el.speechText.textContent = pickMessage(category);
-    resetMessageTimer();
-  }
-
-  function resetMessageTimer(){
-    if (messageTimer) clearTimeout(messageTimer);
-    messageTimer = setTimeout(() => {
-      // 現在の状況に応じて自然に切り替える
-      if (state.isBaking){
-        showMessage("baking");
-      } else if (state.stock > 0){
-        showMessage("idle");
-      } else {
-        // たまに休憩メッセージも混ぜる
-        showMessage(Math.random() < 0.3 ? "rest" : "idle");
+      function weightedPickAccident() {
+        const total = ACCIDENTS.reduce((sum, a) => sum + a.weight, 0);
+        let r = Math.random() * total;
+        for (const a of ACCIDENTS) {
+          if (r < a.weight) return a;
+          r -= a.weight;
+        }
+        return ACCIDENTS[0];
       }
-    }, CONFIG.messageIntervalMs);
-  }
 
-  /* =========================================================
-     売上のふわっと演出
-     ========================================================= */
-  function popFloatingText(text){
-    const pop = document.createElement("div");
-    pop.className = "float-pop";
-    pop.textContent = text;
-    const x = 20 + Math.random() * 50;
-    pop.style.left = x + "%";
-    pop.style.bottom = "34%";
-    el.stage.appendChild(pop);
-    setTimeout(() => pop.remove(), 1700);
-  }
+      function maybeTriggerAccident() {
+        if (Math.random() < CONFIG.accidentChance) {
+          const accident = weightedPickAccident();
+          accident.run();
+          saveGame();
+        }
+      }
 
-  /* =========================================================
-     アクシデント表示
-     ========================================================= */
-  function showAccident(title, body, result){
-    el.accidentTitle.textContent = title;
-    el.accidentBody.textContent = body;
-    el.accidentResult.textContent = result;
-    el.accidentOverlay.hidden = false;
-    refreshUI();
-  }
+      /* =========================================================
+         ゲーム操作
+         ========================================================= */
+      function startBaking() {
+        if (state.isBaking) return;
+        state.isBaking = true;
+        state.bakeStartedAt = Date.now();
+        state.bakeReadyAt = state.bakeStartedAt + currentBakeTime();
+        showMessage("baking");
+        refreshUI();
+        saveGame();
+      }
 
-  el.accidentCloseBtn.addEventListener("click", () => {
-    el.accidentOverlay.hidden = true;
-  });
+      function finishBaking() {
+        state.stock += currentOvenCapacity();
+        state.isBaking = false;
+        state.bakeStartedAt = null;
+        state.bakeReadyAt = null;
+        showMessage("done");
+        refreshUI();
+        saveGame();
+      }
 
-  function weightedPickAccident(){
-    const total = ACCIDENTS.reduce((sum, a) => sum + a.weight, 0);
-    let r = Math.random() * total;
-    for (const a of ACCIDENTS){
-      if (r < a.weight) return a;
-      r -= a.weight;
-    }
-    return ACCIDENTS[0];
-  }
+      function sellOne() {
+        state.stock -= 1;
+        state.money += CONFIG.price;
+        state.totalSold += 1;
+        popFloatingText("+" + CONFIG.price + "円");
+        if (Math.random() < 0.4) {
+          showMessage("sold");
+        }
+        refreshUI();
+      }
 
-  function maybeTriggerAccident(){
-    if (Math.random() < CONFIG.accidentChance){
-      const accident = weightedPickAccident();
-      accident.run();
-      saveGame();
-    }
-  }
+      function buyOvenUpgrade() {
+        const cfg = CONFIG.upgrades.oven;
+        if (state.ovenLevel >= cfg.maxLevel) return;
+        const cost = ovenCost();
+        if (state.money < cost) return;
+        state.money -= cost;
+        state.ovenLevel += 1;
+        refreshUI();
+        saveGame();
+      }
 
-  /* =========================================================
-     ゲーム操作
-     ========================================================= */
-  function startBaking(){
-    if (state.isBaking) return;
-    state.isBaking = true;
-    state.bakeStartedAt = Date.now();
-    state.bakeReadyAt = state.bakeStartedAt + currentBakeTime();
-    showMessage("baking");
-    refreshUI();
-    saveGame();
-  }
+      function buyCapacityUpgrade() {
+        const cfg = CONFIG.upgrades.capacity;
+        if (state.capacityLevel >= cfg.maxLevel) return;
+        const cost = capCost();
+        if (state.money < cost) return;
+        state.money -= cost;
+        state.capacityLevel += 1;
+        refreshUI();
+        saveGame();
+      }
 
-  function finishBaking(){
-    state.stock += currentOvenCapacity();
-    state.isBaking = false;
-    state.bakeStartedAt = null;
-    state.bakeReadyAt = null;
-    showMessage("done");
-    refreshUI();
-    saveGame();
-  }
+      /* =========================================================
+         メインループ(1秒ごとに状態をチェック。忙しい操作は不要)
+         ========================================================= */
+      function tick() {
+        const now = Date.now();
 
-  function sellOne(){
-    state.stock -= 1;
-    state.money += CONFIG.price;
-    state.totalSold += 1;
-    popFloatingText("+" + CONFIG.price + "円");
-    if (Math.random() < 0.4){
-      showMessage("sold");
-    }
-    refreshUI();
-  }
+        if (state.isBaking && state.bakeReadyAt && now >= state.bakeReadyAt) {
+          finishBaking();
+        } else if (state.isBaking) {
+          updateBakeUI(); // 進捗バーだけ更新
+        }
 
-  function buyOvenUpgrade(){
-    const cfg = CONFIG.upgrades.oven;
-    if (state.ovenLevel >= cfg.maxLevel) return;
-    const cost = ovenCost();
-    if (state.money < cost) return;
-    state.money -= cost;
-    state.ovenLevel += 1;
-    refreshUI();
-    saveGame();
-  }
+        if (!state.nextSellAt) {
+          state.nextSellAt = now + CONFIG.sellIntervalMs;
+        }
+        if (state.stock > 0 && now >= state.nextSellAt) {
+          sellOne();
+          state.nextSellAt = now + CONFIG.sellIntervalMs;
+        }
+      }
 
-  function buyCapacityUpgrade(){
-    const cfg = CONFIG.upgrades.capacity;
-    if (state.capacityLevel >= cfg.maxLevel) return;
-    const cost = capCost();
-    if (state.money < cost) return;
-    state.money -= cost;
-    state.capacityLevel += 1;
-    refreshUI();
-    saveGame();
-  }
+      /* =========================================================
+         イベント登録
+         ========================================================= */
+      el.bakeBtn.addEventListener("click", startBaking);
+      el.ovenBtn.addEventListener("click", buyOvenUpgrade);
+      el.capBtn.addEventListener("click", buyCapacityUpgrade);
 
-  /* =========================================================
-     メインループ(1秒ごとに状態をチェック。忙しい操作は不要)
-     ========================================================= */
-  function tick(){
-    const now = Date.now();
+      el.soundToggleBtn.addEventListener("click", toggleSound);
 
-    if (state.isBaking && state.bakeReadyAt && now >= state.bakeReadyAt){
-      finishBaking();
-    } else if (state.isBaking){
-      updateBakeUI(); // 進捗バーだけ更新
-    }
+      el.shopToggleBtn.addEventListener("click", () => {
+        const isHidden = el.upgradeShop.hidden;
+        el.upgradeShop.hidden = !isHidden;
+        el.shopToggleBtn.textContent = isHidden ? "🏮 改良メニューをとじる" : "🏮 お店を改良する";
+      });
 
-    if (!state.nextSellAt){
-      state.nextSellAt = now + CONFIG.sellIntervalMs;
-    }
-    if (state.stock > 0 && now >= state.nextSellAt){
-      sellOne();
-      state.nextSellAt = now + CONFIG.sellIntervalMs;
-    }
-  }
+      /* =========================================================
+         初期化
+         ========================================================= */
+      function init() {
+        loadGame();
+        setupBackground();
+        setupCharacterOverlay();
+        setupAudio();
+        el.shopTitleTag.textContent = CONFIG.shopName;
+        refreshUI();
+        showMessage("idle");
 
-  /* =========================================================
-     イベント登録
-     ========================================================= */
-  el.bakeBtn.addEventListener("click", startBaking);
-  el.ovenBtn.addEventListener("click", buyOvenUpgrade);
-  el.capBtn.addEventListener("click", buyCapacityUpgrade);
+        setInterval(tick, 1000);
+        setInterval(maybeTriggerAccident, CONFIG.accidentCheckIntervalMs);
+        setInterval(saveGame, 8000);
 
-  el.soundToggleBtn.addEventListener("click", toggleSound);
+        window.addEventListener("beforeunload", saveGame);
+      }
 
-  el.shopToggleBtn.addEventListener("click", () => {
-    const isHidden = el.upgradeShop.hidden;
-    el.upgradeShop.hidden = !isHidden;
-    el.shopToggleBtn.textContent = isHidden ? "🏮 改良メニューをとじる" : "🏮 お店を改良する";
-  });
-
-  /* =========================================================
-     初期化
-     ========================================================= */
-  function init(){
-    loadGame();
-    setupBackground();
-    setupCharacterOverlay();
-    setupAudio();
-    el.shopTitleTag.textContent = CONFIG.shopName;
-    refreshUI();
-    showMessage("idle");
-
-    setInterval(tick, 1000);
-    setInterval(maybeTriggerAccident, CONFIG.accidentCheckIntervalMs);
-    setInterval(saveGame, 8000);
-
-    window.addEventListener("beforeunload", saveGame);
-  }
-
-  init();
-})();
-</script>
+      init();
+    })();
+  </script>
 </body>
+
 </html>
