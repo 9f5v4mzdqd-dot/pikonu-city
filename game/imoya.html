@@ -208,10 +208,10 @@
   .title-buttons .link-btn:hover{ background: var(--cream-deep); }
 
   /* ---------- ピコぬくんの吹き出し ---------- */
-  /* 右上のバッジ類を撤去したので、ピコぬくんの頭上(右上)に配置する */
+  /* 所持金表示のすぐ下、ピコぬくんの頭よりは上の余白に配置する */
   .speech-wrap{
     position: absolute;
-    top: 14px;
+    top: 64px;
     right: 4%;
     max-width: min(78vw, 300px);
     z-index: 5;
@@ -506,7 +506,7 @@
   }
 
   @media (max-width: 420px){
-    .speech-wrap{ top: 14px; right: 3%; max-width: 70vw; }
+    .speech-wrap{ top: 64px; right: 3%; max-width: 62vw; }
   }
 </style>
 </head>
