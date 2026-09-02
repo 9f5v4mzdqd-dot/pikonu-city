@@ -160,6 +160,84 @@
   }
   .sound-toggle[hidden]{ display:none; }
 
+  /* ---------- 「ゲーム置き場に戻る」ボタン(ゲーム中/右上に常設) ---------- */
+  .hub-link-ingame{
+    position: absolute;
+    top: 94px;
+    right: 14px;
+    z-index: 5;
+    background: var(--cream);
+    border: 2px solid var(--brown);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--brown);
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 2px 3px 0 var(--paper-shadow);
+  }
+  .hub-link-ingame:hover{ background: var(--cream-deep); }
+
+  /* ---------- タイトル画面 ---------- */
+  .title-screen{
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(28,19,12,0.45);
+  }
+  .title-screen[hidden]{ display: none; }
+
+  .title-card{
+    background: rgba(251,240,220,0.97);
+    border: 3px solid var(--brown);
+    border-radius: 20px;
+    padding: 30px 26px 26px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 4px 6px 0 rgba(0,0,0,0.32);
+  }
+  .title-card .title-emoji{
+    font-size: clamp(38px, 10vw, 54px);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .title-card h1{
+    margin: 0 0 8px;
+    font-size: clamp(19px, 5.5vw, 25px);
+    line-height: 1.4;
+    color: var(--brown);
+  }
+  .title-card .title-tagline{
+    margin: 0 0 22px;
+    font-size: 13px;
+    color: var(--brown-soft);
+    line-height: 1.6;
+  }
+  .title-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .title-buttons .link-btn{
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid var(--brown);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--brown);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px;
+  }
+  .title-buttons .link-btn:hover{ background: var(--cream-deep); }
+
   /* ---------- ピコぬくんの吹き出し ---------- */
   .speech-wrap{
     position: absolute;
@@ -439,6 +517,18 @@
 <body>
 
 <div class="stage" id="stage">
+  <div class="title-screen" id="titleScreen">
+    <div class="title-card">
+      <div class="title-emoji">🍠</div>
+      <h1>ピコぬくんの<br>石焼き芋屋さん</h1>
+      <p class="title-tagline">のんびり眺めているだけで、<br>少しずつお店が育つゲームですぬ。</p>
+      <div class="title-buttons">
+        <button class="main-btn" id="startBtn">🔥 はじめる</button>
+        <a class="link-btn" id="hubLinkTitle" href="#">🏮 ゲーム置き場に戻る</a>
+      </div>
+    </div>
+  </div>
+
   <div class="bg" id="bgLayer"></div>
   <img id="piconuOverlay" class="piconu-overlay" alt="ピコぬくん" hidden>
   <div id="piconuShadow" class="piconu-shadow" hidden></div>
@@ -448,6 +538,7 @@
   </div>
   <div class="shop-title-tag" id="shopTitleTag">ぴこぬ石やきいも</div>
   <button class="sound-toggle" id="soundToggleBtn" title="BGMのオン/オフ">🔊</button>
+  <a class="hub-link-ingame" id="hubLinkGame" href="#">🏮 ゲーム置き場</a>
   <audio id="bgmAudio" loop preload="auto"></audio>
 
   <div class="speech-wrap">
@@ -574,6 +665,8 @@
 
     saveKey: "piconu_imoya_save_v1",
     offlineCatchupCapSales: 12, // ページを開き直した時にまとめて売れる本数の上限(インフレ防止)
+
+    gameHubUrl: "../about/piconu-freegame.html", // 「ゲーム置き場」ページのURL
   };
 
   /* ---------- ピコぬくんのメッセージ ---------- */
@@ -687,6 +780,10 @@
     accidentCloseBtn: document.getElementById("accidentCloseBtn"),
     bgmAudio: document.getElementById("bgmAudio"),
     soundToggleBtn: document.getElementById("soundToggleBtn"),
+    titleScreen: document.getElementById("titleScreen"),
+    startBtn: document.getElementById("startBtn"),
+    hubLinkTitle: document.getElementById("hubLinkTitle"),
+    hubLinkGame: document.getElementById("hubLinkGame"),
   };
 
   /* =========================================================
@@ -818,18 +915,19 @@
     attemptAutoplay();
 
     // ブラウザの自動再生制限対策:最初のユーザー操作でBGMを開始する
-    const unlock = () => {
-      if (audioUnlocked) return;
-      audioUnlocked = true;
-      if (!state.muted){
-        audio.play().catch(() => { /* それでも再生できなければ諦める */ });
-      }
-      getSfxContext(); // 効果音用のAudioContextもここで起動しておく
-      window.removeEventListener("pointerdown", unlock);
-      window.removeEventListener("keydown", unlock);
-    };
-    window.addEventListener("pointerdown", unlock, { once: true });
-    window.addEventListener("keydown", unlock, { once: true });
+    window.addEventListener("pointerdown", unlockAudio, { once: true });
+    window.addEventListener("keydown", unlockAudio, { once: true });
+  }
+
+  function unlockAudio(){
+    if (audioUnlocked) return;
+    audioUnlocked = true;
+    if (!state.muted){
+      el.bgmAudio.play().catch(() => { /* それでも再生できなければ諦める */ });
+    }
+    getSfxContext(); // 効果音用のAudioContextもここで起動しておく
+    window.removeEventListener("pointerdown", unlockAudio);
+    window.removeEventListener("keydown", unlockAudio);
   }
 
   function attemptAutoplay(){
@@ -1152,6 +1250,12 @@
 
   el.soundToggleBtn.addEventListener("click", toggleSound);
 
+  el.startBtn.addEventListener("click", () => {
+    el.titleScreen.hidden = true;
+    unlockAudio();
+    saveGame();
+  });
+
   el.shopToggleBtn.addEventListener("click", () => {
     const isHidden = el.upgradeShop.hidden;
     el.upgradeShop.hidden = !isHidden;
@@ -1167,6 +1271,8 @@
     setupCharacterOverlay();
     setupAudio();
     el.shopTitleTag.textContent = CONFIG.shopName;
+    el.hubLinkTitle.href = CONFIG.gameHubUrl;
+    el.hubLinkGame.href = CONFIG.gameHubUrl;
     refreshUI();
     showMessage("idle");
 
