@@ -216,6 +216,15 @@
     max-width: min(78vw, 300px);
     z-index: 5;
   }
+  @media (min-width: 760px){
+    /* 横長のPC画面ではピコぬくんが画面の中央寄りに表示されるため、
+       右端ぴったりではなく、もう少し内側・頭に近い位置に寄せる */
+    .speech-wrap{
+      top: 90px;
+      right: 27%;
+      max-width: 260px;
+    }
+  }
   .speech-bubble{
     background: rgba(255,255,255,0.92);
     border: 2px solid var(--brown);
