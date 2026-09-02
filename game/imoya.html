@@ -148,6 +148,23 @@
   .footer-btn:hover{ background: var(--cream-deep); }
   .footer-btn[hidden]{ display: none; }
 
+  .footer-btn-icon{
+    flex: 0 0 44px;
+    padding: 8px 4px;
+    font-size: 16px;
+  }
+  .footer-select{
+    flex: 1;
+    border: 2px solid var(--brown);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 6px;
+    cursor: pointer;
+  }
+
   /* ---------- タイトル画面 ---------- */
   .title-screen{
     position: fixed;
@@ -630,7 +647,10 @@
       <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
 
       <div class="panel-footer-row">
-        <button class="footer-btn" id="soundToggleBtn" title="BGMのオン/オフ">🔊 BGM</button>
+        <button class="footer-btn footer-btn-icon" id="soundToggleBtn" title="BGMのオン/オフ">🔊</button>
+        <select class="footer-select" id="bgmSelect" title="BGMを選ぶ"></select>
+      </div>
+      <div class="panel-footer-row">
         <a class="footer-btn" id="hubLinkGame" href="#">🏮 ゲーム置き場</a>
       </div>
     </div>
@@ -671,13 +691,22 @@
     showCharacterOverlay: false,
 
     audio: {
-      // ステージごとのBGM。ステージが切り替わると自動的に変わります。
+      // ステージごとのBGM。「自動」選択時はステージが切り替わると自動的に変わります。
       bgmLevel1: "../audio/bgm.mp3",
       bgmLevel2: "../audio/bgm-stage2.mp3",
       bgmLevel3: "../audio/bgm-stage3.mp3",
       volume: 0.45,             // BGMの音量(0〜1)
       defaultMuted: false,      // 初回訪問時にBGMを鳴らすかどうか
       sfxVolume: 0.05,          // 「売れた時」の効果音の大きさ(控えめに)
+
+      // メニューのBGM選択肢。"auto"は特殊値で、ステージに合わせて自動的に切り替わります。
+      // 曲を追加したい場合は、ここに { id, name, path } を1つ足すだけでOKです。
+      tracks: [
+        { id: "auto",   name: "🔀 自動(ステージに合わせる)" },
+        { id: "stage1", name: "🍠 ステージ1のBGM", path: "../audio/bgm.mp3" },
+        { id: "stage2", name: "☕ ステージ2のBGM", path: "../audio/bgm-stage2.mp3" },
+        { id: "stage3", name: "✨ ステージ3のBGM", path: "../audio/bgm-stage3.mp3" },
+      ],
     },
 
     shopName: "ぴこぬ石やきいも",
@@ -833,6 +862,7 @@
     backgroundLevel: 1,
     lastSavedAt: null,
     muted: CONFIG.audio.defaultMuted,
+    bgmChoice: "auto",
     coffeeUnlocked: false,
     totalCoffeeSold: 0,
     nextCoffeeSellAt: null,
@@ -892,6 +922,7 @@
     accidentCloseBtn: document.getElementById("accidentCloseBtn"),
     bgmAudio: document.getElementById("bgmAudio"),
     soundToggleBtn: document.getElementById("soundToggleBtn"),
+    bgmSelect: document.getElementById("bgmSelect"),
     titleScreen: document.getElementById("titleScreen"),
     startBtn: document.getElementById("startBtn"),
     hubLinkTitle: document.getElementById("hubLinkTitle"),
@@ -1009,7 +1040,7 @@
   let audioUnlocked = false;
 
   function updateSoundToggleUI(){
-    el.soundToggleBtn.textContent = (state.muted ? "🔇" : "🔊") + " BGM";
+    el.soundToggleBtn.textContent = state.muted ? "🔇" : "🔊";
   }
 
   /* ---------- 操作パネルの折りたたみ ---------- */
@@ -1025,6 +1056,12 @@
   }
 
   function getBgmPath(){
+    // 手動でBGMが選ばれていればそれを優先する
+    if (state.bgmChoice && state.bgmChoice !== "auto"){
+      const track = CONFIG.audio.tracks.find(t => t.id === state.bgmChoice);
+      if (track && track.path) return track.path;
+    }
+    // 「自動」はステージに合わせて選ぶ
     if (state.backgroundLevel >= 3 && CONFIG.audio.bgmLevel3){
       return CONFIG.audio.bgmLevel3;
     }
@@ -1032,6 +1069,17 @@
       return CONFIG.audio.bgmLevel2;
     }
     return CONFIG.audio.bgmLevel1;
+  }
+
+  function populateBgmSelect(){
+    el.bgmSelect.innerHTML = "";
+    CONFIG.audio.tracks.forEach((track) => {
+      const opt = document.createElement("option");
+      opt.value = track.id;
+      opt.textContent = track.name;
+      el.bgmSelect.appendChild(opt);
+    });
+    el.bgmSelect.value = state.bgmChoice;
   }
 
   function setupAudio(){
@@ -1047,6 +1095,7 @@
       el.soundToggleBtn.hidden = true;
     });
 
+    populateBgmSelect();
     updateSoundToggleUI();
     attemptAutoplay();
 
@@ -1055,10 +1104,11 @@
     window.addEventListener("keydown", unlockAudio, { once: true });
   }
 
-  // ステージが切り替わったタイミングでBGMも差し替える
-  function switchBgmForStage(){
+  // BGMの選択が変わった/ステージが切り替わったタイミングで曲を差し替える
+  function updateBgmTrack(){
     const audio = el.bgmAudio;
     const newSrc = getBgmPath();
+    if (audio.src.endsWith(newSrc.replace("../", ""))) return; // 同じ曲なら何もしない
     const wasPlaying = !audio.paused;
     audio.src = newSrc;
     audio.loop = true;
@@ -1545,7 +1595,7 @@
     if (evaluateStageRequirement(req).done){
       state.backgroundLevel = nextStage;
       setupBackground();
-      switchBgmForStage();
+      updateBgmTrack();
       showAccident(
         `🎉 ステージ${nextStage}に到達！`,
         stageAnnounceBody(req),
@@ -1599,6 +1649,11 @@
   el.panelCollapseBtn.addEventListener("click", togglePanel);
 
   el.soundToggleBtn.addEventListener("click", toggleSound);
+  el.bgmSelect.addEventListener("change", () => {
+    state.bgmChoice = el.bgmSelect.value;
+    updateBgmTrack();
+    saveGame();
+  });
 
   el.startBtn.addEventListener("click", () => {
     el.titleScreen.hidden = true;
