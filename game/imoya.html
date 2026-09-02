@@ -35,14 +35,39 @@
   }
 
   /* ---------- 舞台全体 ---------- */
+  /* 画面比率が背景画像と合わない場合、手前(下側)が見切れてしまうのを防ぐため、
+     .stage は常に背景画像と同じアスペクト比を保ったまま、
+     画面内に収まる最大サイズで中央表示されるようにしています(レターボックス方式)。
+     はみ出した余白は body の背景色(夕暮れの焼き芋トラック感のある焦げ茶)で埋まります。 */
+  html, body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .stage{
     position: relative;
-    width: 100%;
-    min-height: 100dvh;
+    width: auto;
+    height: 100dvh;
+    max-height: 100dvh;
+    aspect-ratio: var(--bg-aspect, 16 / 9);
+    max-width: 100vw;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    container-type: inline-size;
+    container-name: stage;
+  }
+
+  /* 縦長の画面(スマホ縦持ちなど)では高さいっぱいだと横幅が余りすぎるため、
+     横幅を基準にする(=はみ出した上下を余白にする)よう切り替える */
+  @media (max-aspect-ratio: 16/9){
+    .stage{
+      width: 100vw;
+      height: auto;
+      max-height: none;
+    }
   }
 
   .bg{
@@ -50,7 +75,7 @@
     inset: 0;
     background-image: var(--bg-image);
     background-size: cover;
-    background-position: center 40%;
+    background-position: center center;
     background-repeat: no-repeat;
     filter: saturate(1.02);
   }
@@ -68,6 +93,7 @@
     right: 9%;
     top: 40%;
     height: clamp(140px, 30vw, 240px);
+    height: clamp(140px, 30cqw, 240px);
     filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3));
     pointer-events: none;
     z-index: 4;
@@ -78,7 +104,9 @@
     position: absolute;
     right: 8%;
     top: calc(40% + clamp(140px, 30vw, 240px) - 14px);
+    top: calc(40% + clamp(140px, 30cqw, 240px) - 14px);
     width: clamp(70px, 15vw, 120px);
+    width: clamp(70px, 15cqw, 120px);
     height: 18px;
     background: radial-gradient(ellipse at center, rgba(30,18,10,0.35) 0%, rgba(30,18,10,0) 72%);
     z-index: 3;
@@ -92,11 +120,14 @@
       right: 8%;
       top: 34%;
       height: clamp(160px, 20vw, 280px);
+      height: clamp(160px, 20cqw, 280px);
     }
     .piconu-shadow{
       right: 7%;
       top: calc(34% + clamp(160px, 20vw, 280px) - 16px);
+      top: calc(34% + clamp(160px, 20cqw, 280px) - 16px);
       width: clamp(90px, 12vw, 140px);
+      width: clamp(90px, 12cqw, 140px);
     }
   }
 
@@ -115,6 +146,7 @@
     padding: 8px 16px;
     font-weight: 700;
     font-size: clamp(15px, 2.6vw, 19px);
+    font-size: clamp(15px, 2.6cqw, 19px);
     box-shadow: 2px 3px 0 var(--paper-shadow);
     letter-spacing: 0.02em;
     white-space: nowrap;
@@ -231,6 +263,7 @@
     top: 64px;
     right: 4%;
     max-width: min(78vw, 300px);
+    max-width: min(78cqw, 300px);
     z-index: 5;
   }
   @media (min-width: 760px){
@@ -539,7 +572,7 @@
   }
 
   @media (max-width: 420px){
-    .speech-wrap{ top: 64px; right: 3%; max-width: 62vw; }
+    .speech-wrap{ top: 64px; right: 3%; max-width: 62vw; max-width: 62cqw; }
   }
 </style>
 </head>
@@ -1010,7 +1043,13 @@
     }
     const test = new Image();
     test.onload = function(){
+      el.bgLayer.classList.remove("bg-fallback");
       el.bgLayer.style.setProperty("--bg-image", `url("${path}")`);
+      // 画像ごとの実際の縦横比を.stageに反映し、
+      // どのステージの背景でも手前が見切れないようにする
+      if (test.naturalWidth && test.naturalHeight){
+        el.stage.style.setProperty("--bg-aspect", `${test.naturalWidth} / ${test.naturalHeight}`);
+      }
     };
     test.onerror = function(){
       // 画像が見つからない場合は夕暮れグラデーションで代替
