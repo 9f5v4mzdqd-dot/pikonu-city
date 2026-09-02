@@ -441,6 +441,13 @@
     margin-top: 10px;
   }
 
+  .tier-line{
+    text-align:center;
+    font-size: 12px;
+    color: var(--brown-soft);
+    margin-top: 4px;
+  }
+
   .sub-btn{
     display:block;
     width: 100%;
@@ -567,6 +574,10 @@
       <div class="stock-line">
         焼けた在庫：<span id="stockValue">0</span>本　／　販売数：<span id="soldValue">0</span>本
       </div>
+      <div class="tier-line">
+        今の芋：<span id="imoTierNameText">普通の焼き芋</span>(¥<span id="imoTierPriceText">100</span>)
+        <span id="coffeeTierLine" hidden>　／　今の豆：<span id="coffeeTierNameText">普通のコーヒー</span>(¥<span id="coffeeTierPriceText">150</span>)</span>
+      </div>
 
       <button class="sub-btn" id="shopToggleBtn">🏮 お店を改良する</button>
 
@@ -587,6 +598,14 @@
           <div class="u-desc">一度に焼ける焼き芋の数が少し増えますぬ。</div>
           <button id="capBtn">改良する(¥<span id="capCostText">1000</span>)</button>
         </div>
+        <div class="upgrade-card" id="imoTierCard" data-id="imoTier">
+          <div class="u-top">
+            <span class="u-name">🍠 芋のグレードアップ</span>
+            <span class="u-level" id="imoTierLevelText">Lv.0</span>
+          </div>
+          <div class="u-desc" id="imoTierDesc">次は「安納芋の焼き芋」(¥300)になりますぬ。</div>
+          <button id="imoTierBtn">グレードアップ(¥<span id="imoTierCostText">2000</span>)</button>
+        </div>
         <div class="upgrade-card" id="coffeeCard" data-id="coffee" hidden>
           <div class="u-top">
             <span class="u-name">☕ コーヒーを売る</span>
@@ -594,6 +613,14 @@
           </div>
           <div class="u-desc">導入すると、コーヒーも少しずつ自動で売れるようになりますぬ。</div>
           <button id="coffeeBtn">導入する(¥<span id="coffeeCostText">3000</span>)</button>
+        </div>
+        <div class="upgrade-card" id="coffeeTierCard" data-id="coffeeTier" hidden>
+          <div class="u-top">
+            <span class="u-name">☕ 豆のグレードアップ</span>
+            <span class="u-level" id="coffeeTierLevelText">Lv.0</span>
+          </div>
+          <div class="u-desc" id="coffeeTierDesc">次は「モカブレンドのコーヒー」(¥300)になりますぬ。</div>
+          <button id="coffeeTierBtn">グレードアップ(¥<span id="coffeeTierCostText">4000</span>)</button>
         </div>
       </div>
 
@@ -651,8 +678,6 @@
     },
 
     shopName: "ぴこぬ石やきいも",
-    itemName: "石焼き芋",
-    price: 100,          // 1本あたりの販売価格(円)
     startMoney: 1280,     // 初期所持金
 
     bakeTimeMs: 12000,        // 基本の焼き時間(ミリ秒)
@@ -667,6 +692,22 @@
     // ステージ進行の設定
     stageProgress: {
       imoSoldToStage2: 200, // 石焼き芋をこの本数売るとステージ2へ
+    },
+
+    // 商品のグレード(芋・コーヒーそれぞれ4段階)。レベルが上がるほど単価が上がります。
+    productTiers: {
+      imo: [
+        { name: "普通の焼き芋",           price: 100 },
+        { name: "安納芋の焼き芋",         price: 300 },
+        { name: "シルクスイートの焼き芋", price: 500 },
+        { name: "幻の焼き芋",             price: 800 },
+      ],
+      coffee: [
+        { name: "普通のコーヒー",             price: 150 },
+        { name: "モカブレンドのコーヒー",     price: 300 },
+        { name: "ブルーマウンテンのコーヒー", price: 600 },
+        { name: "幻のコーヒー",               price: 800 },
+      ],
     },
 
     // アップグレード設定
@@ -687,9 +728,18 @@
       },
       coffee: {
         name: "コーヒーを売る",
-        cost: 3000,          // 導入コスト(1回きり)
-        price: 150,           // コーヒー1杯の価格
+        cost: 3000,            // 導入コスト(1回きり)
         sellIntervalMs: 10000, // コーヒーが自動で1杯売れる間隔
+      },
+      // 芋のグレードアップ。costs[n] は tier n → n+1 に上げるための金額
+      imoTier: {
+        name: "芋のグレードアップ",
+        costs: [2000, 5000, 12000],
+      },
+      // コーヒーのグレードアップ(コーヒー導入後のみ購入可)
+      coffeeTier: {
+        name: "豆のグレードアップ",
+        costs: [4000, 9000, 18000],
       },
     },
 
@@ -781,6 +831,8 @@
     totalCoffeeSold: 0,
     nextCoffeeSellAt: null,
     panelCollapsed: false,
+    imoTierLevel: 0,
+    coffeeTierLevel: 0,
   };
 
   /* ---------- 要素参照 ---------- */
@@ -809,6 +861,21 @@
     coffeeStatusText: document.getElementById("coffeeStatusText"),
     coffeeCostText: document.getElementById("coffeeCostText"),
     coffeeBtn: document.getElementById("coffeeBtn"),
+    imoTierNameText: document.getElementById("imoTierNameText"),
+    imoTierPriceText: document.getElementById("imoTierPriceText"),
+    coffeeTierLine: document.getElementById("coffeeTierLine"),
+    coffeeTierNameText: document.getElementById("coffeeTierNameText"),
+    coffeeTierPriceText: document.getElementById("coffeeTierPriceText"),
+    imoTierCard: document.getElementById("imoTierCard"),
+    imoTierLevelText: document.getElementById("imoTierLevelText"),
+    imoTierDesc: document.getElementById("imoTierDesc"),
+    imoTierCostText: document.getElementById("imoTierCostText"),
+    imoTierBtn: document.getElementById("imoTierBtn"),
+    coffeeTierCard: document.getElementById("coffeeTierCard"),
+    coffeeTierLevelText: document.getElementById("coffeeTierLevelText"),
+    coffeeTierDesc: document.getElementById("coffeeTierDesc"),
+    coffeeTierCostText: document.getElementById("coffeeTierCostText"),
+    coffeeTierBtn: document.getElementById("coffeeTierBtn"),
     stage: document.getElementById("stage"),
     accidentOverlay: document.getElementById("accidentOverlay"),
     accidentTitle: document.getElementById("accidentTitle"),
@@ -875,7 +942,7 @@
         );
         if (sales > 0){
           state.stock -= sales;
-          state.money += sales * CONFIG.price;
+          state.money += sales * imoPrice();
           state.totalSold += sales;
         }
       }
@@ -1083,6 +1150,29 @@
     return CONFIG.ovenCapacityBase + state.capacityLevel * cfg.capacityBonusPerLevel;
   }
 
+  // 現在の芋/コーヒーのグレード(名前・単価)
+  function currentImoTier(){
+    return CONFIG.productTiers.imo[state.imoTierLevel];
+  }
+  function currentCoffeeTier(){
+    return CONFIG.productTiers.coffee[state.coffeeTierLevel];
+  }
+  function imoPrice(){
+    return currentImoTier().price;
+  }
+  function coffeePrice(){
+    return currentCoffeeTier().price;
+  }
+  // グレードアップのコスト(次のレベルがなければnull)
+  function imoTierUpgradeCost(){
+    const costs = CONFIG.upgrades.imoTier.costs;
+    return state.imoTierLevel < costs.length ? costs[state.imoTierLevel] : null;
+  }
+  function coffeeTierUpgradeCost(){
+    const costs = CONFIG.upgrades.coffeeTier.costs;
+    return state.coffeeTierLevel < costs.length ? costs[state.coffeeTierLevel] : null;
+  }
+
   /* =========================================================
      UI更新
      ========================================================= */
@@ -1163,6 +1253,52 @@
       }
     } else {
       el.coffeeCard.hidden = true;
+    }
+
+    // 現在の芋のグレード表示
+    const imoTier = currentImoTier();
+    el.imoTierNameText.textContent = imoTier.name;
+    el.imoTierPriceText.textContent = formatMoney(imoTier.price);
+
+    // 芋のグレードアップカード
+    const imoNextCost = imoTierUpgradeCost();
+    el.imoTierLevelText.textContent = `Lv.${state.imoTierLevel}`;
+    if (imoNextCost === null){
+      el.imoTierDesc.textContent = "もう最高グレードですぬ。";
+      el.imoTierBtn.textContent = "グレードアップ済みですぬ";
+      el.imoTierBtn.disabled = true;
+    } else {
+      const nextTier = CONFIG.productTiers.imo[state.imoTierLevel + 1];
+      el.imoTierDesc.textContent = `次は「${nextTier.name}」(¥${formatMoney(nextTier.price)})になりますぬ。`;
+      el.imoTierCostText.textContent = formatMoney(imoNextCost);
+      el.imoTierBtn.textContent = `グレードアップ(¥${formatMoney(imoNextCost)})`;
+      el.imoTierBtn.disabled = state.money < imoNextCost;
+    }
+
+    // コーヒーのグレード表示・グレードアップカード(コーヒー導入後のみ)
+    if (state.coffeeUnlocked){
+      const coffeeTier = currentCoffeeTier();
+      el.coffeeTierLine.hidden = false;
+      el.coffeeTierNameText.textContent = coffeeTier.name;
+      el.coffeeTierPriceText.textContent = formatMoney(coffeeTier.price);
+
+      el.coffeeTierCard.hidden = false;
+      const coffeeNextCost = coffeeTierUpgradeCost();
+      el.coffeeTierLevelText.textContent = `Lv.${state.coffeeTierLevel}`;
+      if (coffeeNextCost === null){
+        el.coffeeTierDesc.textContent = "もう最高グレードですぬ。";
+        el.coffeeTierBtn.textContent = "グレードアップ済みですぬ";
+        el.coffeeTierBtn.disabled = true;
+      } else {
+        const nextCoffeeTier = CONFIG.productTiers.coffee[state.coffeeTierLevel + 1];
+        el.coffeeTierDesc.textContent = `次は「${nextCoffeeTier.name}」(¥${formatMoney(nextCoffeeTier.price)})になりますぬ。`;
+        el.coffeeTierCostText.textContent = formatMoney(coffeeNextCost);
+        el.coffeeTierBtn.textContent = `グレードアップ(¥${formatMoney(coffeeNextCost)})`;
+        el.coffeeTierBtn.disabled = state.money < coffeeNextCost;
+      }
+    } else {
+      el.coffeeTierLine.hidden = true;
+      el.coffeeTierCard.hidden = true;
     }
   }
 
@@ -1275,10 +1411,11 @@
 
   function sellOne(){
     state.stock -= 1;
-    state.money += CONFIG.price;
+    const price = imoPrice();
+    state.money += price;
     state.totalSold += 1;
     playCoinSound();
-    popFloatingText("+" + CONFIG.price + "円");
+    popFloatingText("+" + price + "円");
     if (Math.random() < 0.4){
       showMessage("sold");
     }
@@ -1287,11 +1424,11 @@
   }
 
   function sellCoffee(){
-    const cfg = CONFIG.upgrades.coffee;
-    state.money += cfg.price;
+    const price = coffeePrice();
+    state.money += price;
     state.totalCoffeeSold += 1;
     playCoinSound();
-    popFloatingText("+" + cfg.price + "円☕");
+    popFloatingText("+" + price + "円☕");
     refreshUI();
   }
 
@@ -1324,6 +1461,27 @@
     state.money -= cfg.cost;
     state.coffeeUnlocked = true;
     state.nextCoffeeSellAt = Date.now() + cfg.sellIntervalMs;
+    showMessage("idle");
+    refreshUI();
+    saveGame();
+  }
+
+  function buyImoTierUpgrade(){
+    const cost = imoTierUpgradeCost();
+    if (cost === null || state.money < cost) return;
+    state.money -= cost;
+    state.imoTierLevel += 1;
+    showMessage("idle");
+    refreshUI();
+    saveGame();
+  }
+
+  function buyCoffeeTierUpgrade(){
+    if (!state.coffeeUnlocked) return;
+    const cost = coffeeTierUpgradeCost();
+    if (cost === null || state.money < cost) return;
+    state.money -= cost;
+    state.coffeeTierLevel += 1;
     showMessage("idle");
     refreshUI();
     saveGame();
@@ -1386,6 +1544,8 @@
   el.ovenBtn.addEventListener("click", buyOvenUpgrade);
   el.capBtn.addEventListener("click", buyCapacityUpgrade);
   el.coffeeBtn.addEventListener("click", buyCoffeeUpgrade);
+  el.imoTierBtn.addEventListener("click", buyImoTierUpgrade);
+  el.coffeeTierBtn.addEventListener("click", buyCoffeeTierUpgrade);
   el.panelCollapseBtn.addEventListener("click", togglePanel);
 
   el.soundToggleBtn.addEventListener("click", toggleSound);
