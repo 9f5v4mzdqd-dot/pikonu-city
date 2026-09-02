@@ -241,7 +241,7 @@
   /* ---------- ピコぬくんの吹き出し ---------- */
   .speech-wrap{
     position: absolute;
-    top: 18%;
+    top: 138px; /* 右上に並ぶ丸/ボタン類(音量・ゲーム置き場など)の下に来るよう固定値で確保 */
     right: 4%;
     max-width: min(78vw, 300px);
     z-index: 5;
@@ -536,7 +536,7 @@
   }
 
   @media (max-width: 420px){
-    .speech-wrap{ top: 12%; right: 3%; max-width: 70vw; }
+    .speech-wrap{ top: 138px; right: 3%; max-width: 70vw; }
   }
 </style>
 </head>
