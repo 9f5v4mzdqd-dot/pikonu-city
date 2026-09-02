@@ -123,61 +123,30 @@
     color: var(--persimmon-deep);
   }
 
-  .shop-title-tag{
-    position:absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 5;
-    background: var(--teal);
-    color: #fff;
-    font-size: clamp(11px, 2vw, 13px);
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 999px;
-    box-shadow: 2px 3px 0 rgba(0,0,0,0.18);
-    opacity: 0.92;
+  /* ---------- パネル内の設定ボタン列(BGM切替・ゲーム置き場に戻る) ---------- */
+  .panel-footer-row{
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
   }
-
-  /* ---------- BGMのオン/オフボタン ---------- */
-  .sound-toggle{
-    position: absolute;
-    top: 54px;
-    right: 14px;
-    z-index: 5;
-    width: 34px;
-    height: 34px;
-    border: 2px solid var(--brown);
-    border-radius: 50%;
-    background: var(--cream);
-    font-size: 15px;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: 2px 3px 0 var(--paper-shadow);
+  .footer-btn{
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
-  }
-  .sound-toggle[hidden]{ display:none; }
-
-  /* ---------- 「ゲーム置き場に戻る」ボタン(ゲーム中/右上に常設) ---------- */
-  .hub-link-ingame{
-    position: absolute;
-    top: 94px;
-    right: 14px;
-    z-index: 5;
-    background: var(--cream);
+    gap: 4px;
     border: 2px solid var(--brown);
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-size: 12px;
-    font-weight: 700;
+    border-radius: 12px;
+    background: #fff;
     color: var(--brown);
     text-decoration: none;
-    white-space: nowrap;
-    box-shadow: 2px 3px 0 var(--paper-shadow);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 6px;
+    cursor: pointer;
   }
-  .hub-link-ingame:hover{ background: var(--cream-deep); }
+  .footer-btn:hover{ background: var(--cream-deep); }
+  .footer-btn[hidden]{ display: none; }
 
   /* ---------- タイトル画面 ---------- */
   .title-screen{
@@ -239,12 +208,11 @@
   .title-buttons .link-btn:hover{ background: var(--cream-deep); }
 
   /* ---------- ピコぬくんの吹き出し ---------- */
-  /* ピコぬくんは背景の右側に立っているため、吹き出しは反対の左側に置いて
-     顔にかぶらないようにする(しっぽは右向きのまま=ピコぬくん側を指す) */
+  /* 右上のバッジ類を撤去したので、ピコぬくんの頭上(右上)に配置する */
   .speech-wrap{
     position: absolute;
-    top: 138px;
-    left: 4%;
+    top: 14px;
+    right: 4%;
     max-width: min(78vw, 300px);
     z-index: 5;
   }
@@ -538,7 +506,7 @@
   }
 
   @media (max-width: 420px){
-    .speech-wrap{ top: 138px; left: 3%; max-width: 70vw; }
+    .speech-wrap{ top: 14px; right: 3%; max-width: 70vw; }
   }
 </style>
 </head>
@@ -564,9 +532,6 @@
   <div class="shop-header">
     <div class="money-board">所持金　<span class="yen">¥<span id="moneyValue">0</span></span></div>
   </div>
-  <div class="shop-title-tag" id="shopTitleTag">ぴこぬ石やきいも</div>
-  <button class="sound-toggle" id="soundToggleBtn" title="BGMのオン/オフ">🔊</button>
-  <a class="hub-link-ingame" id="hubLinkGame" href="#">🏮 ゲーム置き場</a>
   <audio id="bgmAudio" loop preload="auto"></audio>
 
   <div class="speech-wrap">
@@ -624,6 +589,11 @@
       </div>
 
       <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
+
+      <div class="panel-footer-row">
+        <button class="footer-btn" id="soundToggleBtn" title="BGMのオン/オフ">🔊 BGM</button>
+        <a class="footer-btn" id="hubLinkGame" href="#">🏮 ゲーム置き場</a>
+      </div>
     </div>
   </div>
 </div>
@@ -810,7 +780,6 @@
     piconuOverlay: document.getElementById("piconuOverlay"),
     piconuShadow: document.getElementById("piconuShadow"),
     moneyValue: document.getElementById("moneyValue"),
-    shopTitleTag: document.getElementById("shopTitleTag"),
     speechText: document.getElementById("speechText"),
     imoIcon: document.getElementById("imoIcon"),
     imoStatusText: document.getElementById("imoStatusText"),
@@ -956,7 +925,7 @@
   let audioUnlocked = false;
 
   function updateSoundToggleUI(){
-    el.soundToggleBtn.textContent = state.muted ? "🔇" : "🔊";
+    el.soundToggleBtn.textContent = (state.muted ? "🔇" : "🔊") + " BGM";
   }
 
   /* ---------- 操作パネルの折りたたみ ---------- */
@@ -1432,7 +1401,6 @@
     setupBackground();
     setupCharacterOverlay();
     setupAudio();
-    el.shopTitleTag.textContent = CONFIG.shopName;
     el.hubLinkTitle.href = CONFIG.gameHubUrl;
     el.hubLinkGame.href = CONFIG.gameHubUrl;
     applyPanelState();
