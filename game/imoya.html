@@ -583,6 +583,14 @@
         <div class="u-desc">一度に焼ける焼き芋の数が少し増えますぬ。</div>
         <button id="capBtn">改良する(¥<span id="capCostText">1000</span>)</button>
       </div>
+      <div class="upgrade-card" id="coffeeCard" data-id="coffee" hidden>
+        <div class="u-top">
+          <span class="u-name">☕ コーヒーを売る</span>
+          <span class="u-level" id="coffeeStatusText">未導入</span>
+        </div>
+        <div class="u-desc">導入すると、コーヒーも少しずつ自動で売れるようになりますぬ。</div>
+        <button id="coffeeBtn">導入する(¥<span id="coffeeCostText">3000</span>)</button>
+      </div>
     </div>
 
     <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
@@ -608,11 +616,10 @@
   const CONFIG = {
 
     images: {
-      // レベル別の背景画像パス。今回はレベル1のみ実装。
-      // 将来、店が成長したら backgroundLevel2〜4 にパスを追加し、
-      // getBackgroundImage() の中で切り替えてください。
+      // レベル別の背景画像パス。
+      // 200本売るとステージ2の画像に切り替わります。
       backgroundLevel1: "../images/game/imo-bg.jpg",
-      backgroundLevel2: null,
+      backgroundLevel2: "../images/game/imo-bg-stage2.jpg",
       backgroundLevel3: null,
       backgroundLevel4: null,
 
@@ -625,7 +632,9 @@
     showCharacterOverlay: false,
 
     audio: {
-      bgmPath: "../audio/bgm.mp3", // 30秒程度のBGM。ここを差し替えれば曲を変更できます
+      // ステージごとのBGM。ステージ2に進むと自動的に切り替わります。
+      bgmLevel1: "../audio/bgm.mp3",
+      bgmLevel2: "../audio/bgm-stage2.mp3",
       volume: 0.45,             // BGMの音量(0〜1)
       defaultMuted: false,      // 初回訪問時にBGMを鳴らすかどうか
       sfxVolume: 0.05,          // 「売れた時」の効果音の大きさ(控えめに)
@@ -645,21 +654,32 @@
     accidentCheckIntervalMs: 30000, // アクシデントを抽選する間隔
     accidentChance: 0.12,           // 抽選が来たときにアクシデントが起きる確率
 
+    // ステージ進行の設定
+    stageProgress: {
+      imoSoldToStage2: 200, // 石焼き芋をこの本数売るとステージ2へ
+    },
+
     // アップグレード設定
     upgrades: {
       oven: {
         name: "窯を改良",
         baseCost: 500,
         costGrowth: 1.8,       // レベルが上がるごとにコストが増える倍率
-        maxLevel: 3,
+        maxLevel: 6,
         bakeTimeMultiplierPerLevel: 0.85, // 1レベルごとに焼き時間がこの倍率に短縮
       },
       capacity: {
         name: "焼ける数を増やす",
         baseCost: 1000,
         costGrowth: 2.0,
-        maxLevel: 3,
+        maxLevel: 6,
         capacityBonusPerLevel: 1, // 1レベルごとに同時に焼ける本数+1
+      },
+      coffee: {
+        name: "コーヒーを売る",
+        cost: 3000,          // 導入コスト(1回きり)
+        price: 150,           // コーヒー1杯の価格
+        sellIntervalMs: 10000, // コーヒーが自動で1杯売れる間隔
       },
     },
 
@@ -747,6 +767,9 @@
     backgroundLevel: 1,
     lastSavedAt: null,
     muted: CONFIG.audio.defaultMuted,
+    coffeeUnlocked: false,
+    totalCoffeeSold: 0,
+    nextCoffeeSellAt: null,
   };
 
   /* ---------- 要素参照 ---------- */
@@ -772,6 +795,10 @@
     capLevelText: document.getElementById("capLevelText"),
     capCostText: document.getElementById("capCostText"),
     capBtn: document.getElementById("capBtn"),
+    coffeeCard: document.getElementById("coffeeCard"),
+    coffeeStatusText: document.getElementById("coffeeStatusText"),
+    coffeeCostText: document.getElementById("coffeeCostText"),
+    coffeeBtn: document.getElementById("coffeeBtn"),
     stage: document.getElementById("stage"),
     accidentOverlay: document.getElementById("accidentOverlay"),
     accidentTitle: document.getElementById("accidentTitle"),
@@ -847,8 +874,7 @@
      背景 / キャラクター表示
      ========================================================= */
   function getBackgroundImage(){
-    // 将来レベル2〜4を実装する際は、ここで state.backgroundLevel を見て
-    // CONFIG.images.backgroundLevelX を返すように切り替えてください。
+    // ステージが進むと、ここで参照する画像も自動的に切り替わります。
     switch(state.backgroundLevel){
       case 2: return CONFIG.images.backgroundLevel2 || CONFIG.images.backgroundLevel1;
       case 3: return CONFIG.images.backgroundLevel3 || CONFIG.images.backgroundLevel1;
@@ -898,9 +924,16 @@
     el.soundToggleBtn.textContent = state.muted ? "🔇" : "🔊";
   }
 
+  function getBgmPath(){
+    if (state.backgroundLevel >= 2 && CONFIG.audio.bgmLevel2){
+      return CONFIG.audio.bgmLevel2;
+    }
+    return CONFIG.audio.bgmLevel1;
+  }
+
   function setupAudio(){
     const audio = el.bgmAudio;
-    audio.src = CONFIG.audio.bgmPath;
+    audio.src = getBgmPath();
     audio.loop = true;
     audio.volume = CONFIG.audio.volume;
     audio.muted = state.muted;
@@ -917,6 +950,18 @@
     // ブラウザの自動再生制限対策:最初のユーザー操作でBGMを開始する
     window.addEventListener("pointerdown", unlockAudio, { once: true });
     window.addEventListener("keydown", unlockAudio, { once: true });
+  }
+
+  // ステージが切り替わったタイミングでBGMも差し替える
+  function switchBgmForStage(){
+    const audio = el.bgmAudio;
+    const newSrc = getBgmPath();
+    const wasPlaying = !audio.paused;
+    audio.src = newSrc;
+    audio.loop = true;
+    if (wasPlaying || audioUnlocked){
+      audio.play().catch(() => {});
+    }
   }
 
   function unlockAudio(){
@@ -1077,6 +1122,23 @@
       el.capBtn.textContent = `改良する(¥${formatMoney(cost)})`;
       el.capBtn.disabled = state.money < cost;
     }
+
+    // コーヒーはステージ2に到達してから表示する
+    if (state.backgroundLevel >= 2){
+      el.coffeeCard.hidden = false;
+      const coffeeCfg = CONFIG.upgrades.coffee;
+      if (state.coffeeUnlocked){
+        el.coffeeStatusText.textContent = `販売中(${state.totalCoffeeSold}杯)`;
+        el.coffeeBtn.textContent = "導入済みですぬ";
+        el.coffeeBtn.disabled = true;
+      } else {
+        el.coffeeCostText.textContent = formatMoney(coffeeCfg.cost);
+        el.coffeeBtn.textContent = `導入する(¥${formatMoney(coffeeCfg.cost)})`;
+        el.coffeeBtn.disabled = state.money < coffeeCfg.cost;
+      }
+    } else {
+      el.coffeeCard.hidden = true;
+    }
   }
 
   function refreshUI(){
@@ -1195,6 +1257,16 @@
     if (Math.random() < 0.4){
       showMessage("sold");
     }
+    checkStageProgress();
+    refreshUI();
+  }
+
+  function sellCoffee(){
+    const cfg = CONFIG.upgrades.coffee;
+    state.money += cfg.price;
+    state.totalCoffeeSold += 1;
+    playCoinSound();
+    popFloatingText("+" + cfg.price + "円☕");
     refreshUI();
   }
 
@@ -1220,6 +1292,36 @@
     saveGame();
   }
 
+  function buyCoffeeUpgrade(){
+    if (state.coffeeUnlocked) return;
+    const cfg = CONFIG.upgrades.coffee;
+    if (state.money < cfg.cost) return;
+    state.money -= cfg.cost;
+    state.coffeeUnlocked = true;
+    state.nextCoffeeSellAt = Date.now() + cfg.sellIntervalMs;
+    showMessage("idle");
+    refreshUI();
+    saveGame();
+  }
+
+  /* =========================================================
+     ステージ進行(石焼き芋を一定数売るとステージ2へ)
+     ========================================================= */
+  function checkStageProgress(){
+    const threshold = CONFIG.stageProgress.imoSoldToStage2;
+    if (state.backgroundLevel < 2 && state.totalSold >= threshold){
+      state.backgroundLevel = 2;
+      setupBackground();
+      switchBgmForStage();
+      showAccident(
+        "🎉 ステージ2に到達！",
+        `石焼き芋を${threshold}本売って、お店が一歩成長しましたぬ！`,
+        "「☕ コーヒーを売る」がお店の改良メニューに追加されましたぬ。"
+      );
+      saveGame();
+    }
+  }
+
   /* =========================================================
      メインループ(1秒ごとに状態をチェック。忙しい操作は不要)
      ========================================================= */
@@ -1239,6 +1341,17 @@
       sellOne();
       state.nextSellAt = now + CONFIG.sellIntervalMs;
     }
+
+    if (state.coffeeUnlocked){
+      const cfg = CONFIG.upgrades.coffee;
+      if (!state.nextCoffeeSellAt){
+        state.nextCoffeeSellAt = now + cfg.sellIntervalMs;
+      }
+      if (now >= state.nextCoffeeSellAt){
+        sellCoffee();
+        state.nextCoffeeSellAt = now + cfg.sellIntervalMs;
+      }
+    }
   }
 
   /* =========================================================
@@ -1247,6 +1360,7 @@
   el.bakeBtn.addEventListener("click", startBaking);
   el.ovenBtn.addEventListener("click", buyOvenUpgrade);
   el.capBtn.addEventListener("click", buyCapacityUpgrade);
+  el.coffeeBtn.addEventListener("click", buyCoffeeUpgrade);
 
   el.soundToggleBtn.addEventListener("click", toggleSound);
 
