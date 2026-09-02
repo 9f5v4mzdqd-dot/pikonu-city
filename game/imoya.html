@@ -239,10 +239,12 @@
   .title-buttons .link-btn:hover{ background: var(--cream-deep); }
 
   /* ---------- ピコぬくんの吹き出し ---------- */
+  /* ピコぬくんは背景の右側に立っているため、吹き出しは反対の左側に置いて
+     顔にかぶらないようにする(しっぽは右向きのまま=ピコぬくん側を指す) */
   .speech-wrap{
     position: absolute;
-    top: 138px; /* 右上に並ぶ丸/ボタン類(音量・ゲーム置き場など)の下に来るよう固定値で確保 */
-    right: 4%;
+    top: 138px;
+    left: 4%;
     max-width: min(78vw, 300px);
     z-index: 5;
   }
@@ -536,7 +538,7 @@
   }
 
   @media (max-width: 420px){
-    .speech-wrap{ top: 138px; right: 3%; max-width: 70vw; }
+    .speech-wrap{ top: 138px; left: 3%; max-width: 70vw; }
   }
 </style>
 </head>
