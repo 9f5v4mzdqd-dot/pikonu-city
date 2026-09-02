@@ -373,6 +373,32 @@
     }
   }
 
+  /* ---------- パネルの折りたたみ(主にスマホ表示で使用) ---------- */
+  .panel-collapse-btn{
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    color: var(--brown-soft);
+    font-size: 13px;
+    line-height: 1;
+    padding: 0 0 8px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .panel-collapse-btn::before{
+    content: "▼ たたむ";
+  }
+  .control-panel.collapsed .panel-collapse-btn::before{
+    content: "▲ ひらく";
+  }
+  .control-panel.collapsed .panel-body{
+    display: none;
+  }
+  .control-panel.collapsed{
+    padding-bottom: 10px;
+  }
+
   .imo-status{
     display:flex;
     align-items:center;
@@ -547,53 +573,56 @@
     </div>
   </div>
 
-  <div class="control-panel">
-    <div class="imo-status">
-      <span class="icon" id="imoIcon">🍠</span>
-      <div style="flex:1;">
-        <div class="text" id="imoStatusText">待機中ですぬ</div>
-        <div class="progress-track" id="progressTrack" hidden>
-          <div class="progress-fill" id="progressFill"></div>
+  <div class="control-panel" id="controlPanel">
+    <button class="panel-collapse-btn" id="panelCollapseBtn" title="メニューをたたむ"></button>
+    <div class="panel-body" id="panelBody">
+      <div class="imo-status">
+        <span class="icon" id="imoIcon">🍠</span>
+        <div style="flex:1;">
+          <div class="text" id="imoStatusText">待機中ですぬ</div>
+          <div class="progress-track" id="progressTrack" hidden>
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
         </div>
       </div>
+
+      <button class="main-btn" id="bakeBtn">🍠 焼き芋を焼く</button>
+
+      <div class="stock-line">
+        焼けた在庫：<span id="stockValue">0</span>本　／　販売数：<span id="soldValue">0</span>本
+      </div>
+
+      <button class="sub-btn" id="shopToggleBtn">🏮 お店を改良する</button>
+
+      <div class="upgrade-shop" id="upgradeShop" hidden>
+        <div class="upgrade-card" data-id="oven">
+          <div class="u-top">
+            <span class="u-name">🔥 窯を改良</span>
+            <span class="u-level" id="ovenLevelText">Lv.0</span>
+          </div>
+          <div class="u-desc">焼き芋が少し早く焼けるようになりますぬ。</div>
+          <button id="ovenBtn">改良する(¥<span id="ovenCostText">500</span>)</button>
+        </div>
+        <div class="upgrade-card" data-id="capacity">
+          <div class="u-top">
+            <span class="u-name">🍠 焼ける数を増やす</span>
+            <span class="u-level" id="capLevelText">Lv.0</span>
+          </div>
+          <div class="u-desc">一度に焼ける焼き芋の数が少し増えますぬ。</div>
+          <button id="capBtn">改良する(¥<span id="capCostText">1000</span>)</button>
+        </div>
+        <div class="upgrade-card" id="coffeeCard" data-id="coffee" hidden>
+          <div class="u-top">
+            <span class="u-name">☕ コーヒーを売る</span>
+            <span class="u-level" id="coffeeStatusText">未導入</span>
+          </div>
+          <div class="u-desc">導入すると、コーヒーも少しずつ自動で売れるようになりますぬ。</div>
+          <button id="coffeeBtn">導入する(¥<span id="coffeeCostText">3000</span>)</button>
+        </div>
+      </div>
+
+      <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
     </div>
-
-    <button class="main-btn" id="bakeBtn">🍠 焼き芋を焼く</button>
-
-    <div class="stock-line">
-      焼けた在庫：<span id="stockValue">0</span>本　／　販売数：<span id="soldValue">0</span>本
-    </div>
-
-    <button class="sub-btn" id="shopToggleBtn">🏮 お店を改良する</button>
-
-    <div class="upgrade-shop" id="upgradeShop" hidden>
-      <div class="upgrade-card" data-id="oven">
-        <div class="u-top">
-          <span class="u-name">🔥 窯を改良</span>
-          <span class="u-level" id="ovenLevelText">Lv.0</span>
-        </div>
-        <div class="u-desc">焼き芋が少し早く焼けるようになりますぬ。</div>
-        <button id="ovenBtn">改良する(¥<span id="ovenCostText">500</span>)</button>
-      </div>
-      <div class="upgrade-card" data-id="capacity">
-        <div class="u-top">
-          <span class="u-name">🍠 焼ける数を増やす</span>
-          <span class="u-level" id="capLevelText">Lv.0</span>
-        </div>
-        <div class="u-desc">一度に焼ける焼き芋の数が少し増えますぬ。</div>
-        <button id="capBtn">改良する(¥<span id="capCostText">1000</span>)</button>
-      </div>
-      <div class="upgrade-card" id="coffeeCard" data-id="coffee" hidden>
-        <div class="u-top">
-          <span class="u-name">☕ コーヒーを売る</span>
-          <span class="u-level" id="coffeeStatusText">未導入</span>
-        </div>
-        <div class="u-desc">導入すると、コーヒーも少しずつ自動で売れるようになりますぬ。</div>
-        <button id="coffeeBtn">導入する(¥<span id="coffeeCostText">3000</span>)</button>
-      </div>
-    </div>
-
-    <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
   </div>
 </div>
 
@@ -770,6 +799,7 @@
     coffeeUnlocked: false,
     totalCoffeeSold: 0,
     nextCoffeeSellAt: null,
+    panelCollapsed: false,
   };
 
   /* ---------- 要素参照 ---------- */
@@ -811,6 +841,9 @@
     startBtn: document.getElementById("startBtn"),
     hubLinkTitle: document.getElementById("hubLinkTitle"),
     hubLinkGame: document.getElementById("hubLinkGame"),
+    controlPanel: document.getElementById("controlPanel"),
+    panelBody: document.getElementById("panelBody"),
+    panelCollapseBtn: document.getElementById("panelCollapseBtn"),
   };
 
   /* =========================================================
@@ -922,6 +955,18 @@
 
   function updateSoundToggleUI(){
     el.soundToggleBtn.textContent = state.muted ? "🔇" : "🔊";
+  }
+
+  /* ---------- 操作パネルの折りたたみ ---------- */
+  function applyPanelState(){
+    el.controlPanel.classList.toggle("collapsed", state.panelCollapsed);
+    el.panelCollapseBtn.title = state.panelCollapsed ? "メニューをひらく" : "メニューをたたむ";
+  }
+
+  function togglePanel(){
+    state.panelCollapsed = !state.panelCollapsed;
+    applyPanelState();
+    saveGame();
   }
 
   function getBgmPath(){
@@ -1361,6 +1406,7 @@
   el.ovenBtn.addEventListener("click", buyOvenUpgrade);
   el.capBtn.addEventListener("click", buyCapacityUpgrade);
   el.coffeeBtn.addEventListener("click", buyCoffeeUpgrade);
+  el.panelCollapseBtn.addEventListener("click", togglePanel);
 
   el.soundToggleBtn.addEventListener("click", toggleSound);
 
@@ -1387,6 +1433,7 @@
     el.shopTitleTag.textContent = CONFIG.shopName;
     el.hubLinkTitle.href = CONFIG.gameHubUrl;
     el.hubLinkGame.href = CONFIG.gameHubUrl;
+    applyPanelState();
     refreshUI();
     showMessage("idle");
 
