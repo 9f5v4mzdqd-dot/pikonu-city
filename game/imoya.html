@@ -578,6 +578,9 @@
         今の芋：<span id="imoTierNameText">普通の焼き芋</span>(¥<span id="imoTierPriceText">100</span>)
         <span id="coffeeTierLine" hidden>　／　今の豆：<span id="coffeeTierNameText">普通のコーヒー</span>(¥<span id="coffeeTierPriceText">150</span>)</span>
       </div>
+      <div class="tier-line" id="stageProgressLine">
+        次のステージまであと：<span id="stageProgressText">🍠200個</span>
+      </div>
 
       <button class="sub-btn" id="shopToggleBtn">🏮 お店を改良する</button>
 
@@ -653,11 +656,10 @@
   const CONFIG = {
 
     images: {
-      // レベル別の背景画像パス。
-      // 200本売るとステージ2の画像に切り替わります。
+      // レベル別の背景画像パス。stageProgressの条件を満たすと自動的に切り替わります。
       backgroundLevel1: "../images/game/imo-bg.jpg",
       backgroundLevel2: "../images/game/imo-bg-stage2.jpg",
-      backgroundLevel3: null,
+      backgroundLevel3: "../images/game/imo-bg-stage3.jpg",
       backgroundLevel4: null,
 
       // ピコぬくん単体の透過画像。背景(販売車のみ)の手前に立たせて表示します。
@@ -669,9 +671,10 @@
     showCharacterOverlay: false,
 
     audio: {
-      // ステージごとのBGM。ステージ2に進むと自動的に切り替わります。
+      // ステージごとのBGM。ステージが切り替わると自動的に変わります。
       bgmLevel1: "../audio/bgm.mp3",
       bgmLevel2: "../audio/bgm-stage2.mp3",
+      bgmLevel3: "../audio/bgm-stage3.mp3",
       volume: 0.45,             // BGMの音量(0〜1)
       defaultMuted: false,      // 初回訪問時にBGMを鳴らすかどうか
       sfxVolume: 0.05,          // 「売れた時」の効果音の大きさ(控えめに)
@@ -689,9 +692,12 @@
     accidentCheckIntervalMs: 30000, // アクシデントを抽選する間隔
     accidentChance: 0.12,           // 抽選が来たときにアクシデントが起きる確率
 
-    // ステージ進行の設定
+    // ステージ進行の設定。キーは「到達するステージ番号」、値はその条件。
+    // imoSold / coffeeSold のどちらかだけでもOK(両方指定すればAND条件になる)。
+    // 次のステージが未定義ならそこで打ち止め(進行度表示も自動的に隠れます)。
     stageProgress: {
-      imoSoldToStage2: 200, // 石焼き芋をこの本数売るとステージ2へ
+      2: { imoSold: 200 },
+      3: { imoSold: 500, coffeeSold: 100 },
     },
 
     // 商品のグレード(芋・コーヒーそれぞれ4段階)。レベルが上がるほど単価が上がります。
@@ -876,6 +882,8 @@
     coffeeTierDesc: document.getElementById("coffeeTierDesc"),
     coffeeTierCostText: document.getElementById("coffeeTierCostText"),
     coffeeTierBtn: document.getElementById("coffeeTierBtn"),
+    stageProgressLine: document.getElementById("stageProgressLine"),
+    stageProgressText: document.getElementById("stageProgressText"),
     stage: document.getElementById("stage"),
     accidentOverlay: document.getElementById("accidentOverlay"),
     accidentTitle: document.getElementById("accidentTitle"),
@@ -1017,6 +1025,9 @@
   }
 
   function getBgmPath(){
+    if (state.backgroundLevel >= 3 && CONFIG.audio.bgmLevel3){
+      return CONFIG.audio.bgmLevel3;
+    }
     if (state.backgroundLevel >= 2 && CONFIG.audio.bgmLevel2){
       return CONFIG.audio.bgmLevel2;
     }
@@ -1302,11 +1313,27 @@
     }
   }
 
+  function updateStageProgressUI(){
+    const nextStage = state.backgroundLevel + 1;
+    const req = getStageRequirement(nextStage);
+    if (!req){
+      el.stageProgressLine.hidden = true;
+      return;
+    }
+    const result = evaluateStageRequirement(req);
+    const parts = [];
+    if (result.remainImo !== null) parts.push(`🍠${result.remainImo}個`);
+    if (result.remainCoffee !== null) parts.push(`☕${result.remainCoffee}杯`);
+    el.stageProgressLine.hidden = false;
+    el.stageProgressText.textContent = parts.join("・");
+  }
+
   function refreshUI(){
     updateMoneyUI();
     updateStockUI();
     updateBakeUI();
     updateUpgradeUI();
+    updateStageProgressUI();
   }
 
   /* =========================================================
@@ -1429,6 +1456,7 @@
     state.totalCoffeeSold += 1;
     playCoinSound();
     popFloatingText("+" + price + "円☕");
+    checkStageProgress();
     refreshUI();
   }
 
@@ -1488,18 +1516,40 @@
   }
 
   /* =========================================================
-     ステージ進行(石焼き芋を一定数売るとステージ2へ)
+     ステージ進行(石焼き芋・コーヒーの販売数に応じて次のステージへ)
      ========================================================= */
+  function getStageRequirement(stage){
+    return CONFIG.stageProgress[stage] || null;
+  }
+
+  // reqの条件をどれだけ満たしているか。{done: bool, remainImo, remainCoffee} を返す
+  function evaluateStageRequirement(req){
+    const remainImo = req.imoSold != null ? Math.max(0, req.imoSold - state.totalSold) : null;
+    const remainCoffee = req.coffeeSold != null ? Math.max(0, req.coffeeSold - state.totalCoffeeSold) : null;
+    const done = (remainImo === null || remainImo === 0) && (remainCoffee === null || remainCoffee === 0);
+    return { done, remainImo, remainCoffee };
+  }
+
+  function stageAnnounceBody(req){
+    const parts = [];
+    if (req.imoSold != null) parts.push(`石焼き芋${req.imoSold}本`);
+    if (req.coffeeSold != null) parts.push(`コーヒー${req.coffeeSold}杯`);
+    return `${parts.join("と")}を達成して、お店が一歩成長しましたぬ！`;
+  }
+
   function checkStageProgress(){
-    const threshold = CONFIG.stageProgress.imoSoldToStage2;
-    if (state.backgroundLevel < 2 && state.totalSold >= threshold){
-      state.backgroundLevel = 2;
+    const nextStage = state.backgroundLevel + 1;
+    const req = getStageRequirement(nextStage);
+    if (!req) return; // 次のステージが未定義ならここまで
+
+    if (evaluateStageRequirement(req).done){
+      state.backgroundLevel = nextStage;
       setupBackground();
       switchBgmForStage();
       showAccident(
-        "🎉 ステージ2に到達！",
-        `石焼き芋を${threshold}本売って、お店が一歩成長しましたぬ！`,
-        "「☕ コーヒーを売る」がお店の改良メニューに追加されましたぬ。"
+        `🎉 ステージ${nextStage}に到達！`,
+        stageAnnounceBody(req),
+        "お店の様子が、また少し変わりましたぬ。"
       );
       saveGame();
     }
