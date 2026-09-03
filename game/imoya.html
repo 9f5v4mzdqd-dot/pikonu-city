@@ -526,6 +526,56 @@
     opacity: 0.85;
   }
 
+  /* ---------- ピコぬノート(功績の記録) ---------- */
+  /* 「ふい字」等の手書き風フォントを自前で用意できたら、下のコメントを外して
+     woff2ファイルへのパスに差し替えてください(なくても代替フォントで動きます)。 */
+  /*
+  @font-face{
+    font-family: "FoiFont";
+    src: url("../fonts/foi-font.woff2") format("woff2");
+    font-display: swap;
+  }
+  */
+  :root{
+    --handwriting-font: "FoiFont", "Yuji Boku", "HGP行書体", "HG行書体", cursive,
+                         "Hiragino Maru Gothic ProN", sans-serif;
+  }
+
+  .piconu-note{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  .piconu-note[hidden]{ display: none; }
+
+  .note-empty{
+    text-align: center;
+    font-size: 12px;
+    color: var(--brown-soft);
+    padding: 10px 0;
+  }
+
+  .note-entry{
+    border: 2px dashed var(--brown-soft);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #fffaf0;
+  }
+  .note-entry-title{
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .note-entry-text{
+    font-family: var(--handwriting-font);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--brown);
+  }
+
   @media (max-width: 420px){
     .speech-wrap{ top: 64px; right: 3%; max-width: 62vw; max-width: 62cqw; }
   }
@@ -629,6 +679,15 @@
           <div class="u-desc" id="coffeeTierDesc">次は「モカブレンドのコーヒー」(¥300)になりますぬ。</div>
           <button id="coffeeTierBtn">グレードアップ(¥<span id="coffeeTierCostText">4000</span>)</button>
         </div>
+      </div>
+
+      <button class="sub-btn" id="projectsToggleBtn">🏛️ 事業をおこなう</button>
+      <div class="upgrade-shop" id="projectsShop" hidden></div>
+
+      <button class="sub-btn" id="noteToggleBtn">📔 ピコぬノート</button>
+      <div class="piconu-note" id="piconuNote" hidden>
+        <div class="note-empty" id="noteEmpty">まだ記録がありませんぬ。</div>
+        <div id="noteEntries"></div>
       </div>
 
       <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
@@ -769,6 +828,82 @@
       },
     },
 
+    // 功績(地域のための事業)。実行すると費用を払い、ピコぬノートに記録が1件増える。
+    // 一度実行した事業は再購入不可。順番はここに書いた並びで表示されます。
+    achievements: [
+      {
+        id: "toy",
+        icon: "🧸",
+        name: "地域の保育園に新しいおもちゃを購入",
+        cost: 50000,
+        note: "保育園の子供たちから「ありがとう」と書かれたピコぬくんの絵がたくさん送られてきましたぬ。",
+      },
+      {
+        id: "flowerbed",
+        icon: "🌷",
+        name: "市役所の周りに花壇を作る",
+        cost: 30000,
+        note: "市民の目を楽しませているようですぬ。",
+      },
+      {
+        id: "water",
+        icon: "💧",
+        name: "市内に給水スポットを設置",
+        cost: 80000,
+        note: "市民が気軽に水分補給できるようになりましたぬ。",
+      },
+      {
+        id: "cafeteria",
+        icon: "🍠",
+        name: "市役所食堂にスイーツとして焼き芋を提供",
+        cost: 100000,
+        note: "お昼以外にもお客さんが訪れるようになりましたぬ。",
+      },
+      {
+        id: "compost",
+        icon: "♻️",
+        name: "ネオ堆肥ボックスを購入",
+        cost: 150000,
+        note: "これで売れ残った芋を堆肥に生まれ変わらせることができますぬ。",
+      },
+      {
+        id: "catshelter",
+        icon: "🐈",
+        name: "保護猫施設を作る",
+        cost: 300000,
+        note: "地域の猫から感謝のしるしとして煮干しが送られてきましたぬ。",
+      },
+      {
+        id: "busstop",
+        icon: "🚌",
+        name: "市内のバス停に屋根とベンチを設置",
+        cost: 500000,
+        note: "お年寄りや子供たちが安全にバスを待てるようになりましたぬ。",
+      },
+      {
+        id: "trees",
+        icon: "🌳",
+        name: "市内の道路に街路樹を植える",
+        cost: 800000,
+        note: "市内の夏の気温が平均2度下がったようですぬ。",
+      },
+      {
+        id: "vacpack",
+        icon: "🍠",
+        name: "焼き立ての焼き芋を真空パックに詰めて市役所内の売店に置く",
+        cost: 500000,
+        bonus: 50000, // 実行後にもらえるボーナス
+        note: "大好評で特別ボーナス5万円",
+      },
+      {
+        id: "franchise",
+        icon: "🏪",
+        name: "フランチャイズ化",
+        cost: 2000000,
+        note: "市の収入が増えて市民向けサービスが充実しましたぬ。",
+      },
+    ],
+
     saveKey: "piconu_imoya_save_v1",
     offlineCatchupCapSales: 12, // ページを開き直した時にまとめて売れる本数の上限(インフレ防止)
 
@@ -860,6 +995,7 @@
     panelCollapsed: false,
     imoTierLevel: 0,
     coffeeTierLevel: 0,
+    achievementsDone: [], // 実行済みの功績id(実行した順に並ぶ=ピコぬノートの表示順)
   };
 
   /* ---------- 要素参照 ---------- */
@@ -878,6 +1014,12 @@
     coffeeSoldValue: document.getElementById("coffeeSoldValue"),
     shopToggleBtn: document.getElementById("shopToggleBtn"),
     upgradeShop: document.getElementById("upgradeShop"),
+    projectsToggleBtn: document.getElementById("projectsToggleBtn"),
+    projectsShop: document.getElementById("projectsShop"),
+    noteToggleBtn: document.getElementById("noteToggleBtn"),
+    piconuNote: document.getElementById("piconuNote"),
+    noteEmpty: document.getElementById("noteEmpty"),
+    noteEntries: document.getElementById("noteEntries"),
     ovenLevelText: document.getElementById("ovenLevelText"),
     ovenCostText: document.getElementById("ovenCostText"),
     ovenBtn: document.getElementById("ovenBtn"),
@@ -1361,12 +1503,90 @@
     el.stageProgressText.textContent = parts.join("・");
   }
 
+  /* =========================================================
+     功績(ピコぬ市への事業)とピコぬノート
+     ========================================================= */
+  function renderProjectsShop(){
+    el.projectsShop.innerHTML = "";
+    CONFIG.achievements.forEach((a) => {
+      const done = state.achievementsDone.includes(a.id);
+
+      const card = document.createElement("div");
+      card.className = "upgrade-card";
+
+      const top = document.createElement("div");
+      top.className = "u-top";
+      const name = document.createElement("span");
+      name.className = "u-name";
+      name.textContent = `${a.icon} ${a.name}`;
+      const level = document.createElement("span");
+      level.className = "u-level";
+      level.textContent = done ? "実行済み" : "未実行";
+      top.appendChild(name);
+      top.appendChild(level);
+
+      const desc = document.createElement("div");
+      desc.className = "u-desc";
+      desc.textContent = a.bonus
+        ? `費用：¥${formatMoney(a.cost)}(実行後+¥${formatMoney(a.bonus)}のボーナスあり)`
+        : `費用：¥${formatMoney(a.cost)}`;
+
+      const btn = document.createElement("button");
+      btn.textContent = done ? "実行済みですぬ" : `実行する(¥${formatMoney(a.cost)})`;
+      btn.disabled = done || state.money < a.cost;
+      btn.addEventListener("click", () => buyAchievement(a.id));
+
+      card.appendChild(top);
+      card.appendChild(desc);
+      card.appendChild(btn);
+      el.projectsShop.appendChild(card);
+    });
+  }
+
+  function renderNote(){
+    const entries = state.achievementsDone
+      .map((id) => CONFIG.achievements.find((a) => a.id === id))
+      .filter(Boolean);
+
+    el.noteEmpty.hidden = entries.length > 0;
+    el.noteEntries.innerHTML = "";
+    entries.forEach((a) => {
+      const item = document.createElement("div");
+      item.className = "note-entry";
+      const title = document.createElement("div");
+      title.className = "note-entry-title";
+      title.textContent = `${a.icon} ${a.name}`;
+      const text = document.createElement("div");
+      text.className = "note-entry-text";
+      text.textContent = a.note;
+      item.appendChild(title);
+      item.appendChild(text);
+      el.noteEntries.appendChild(item);
+    });
+  }
+
+  function buyAchievement(id){
+    if (state.achievementsDone.includes(id)) return;
+    const a = CONFIG.achievements.find((x) => x.id === id);
+    if (!a || state.money < a.cost) return;
+
+    state.money -= a.cost;
+    if (a.bonus) state.money += a.bonus;
+    state.achievementsDone.push(id);
+
+    showMessage("idle");
+    renderNote();
+    refreshUI();
+    saveGame();
+  }
+
   function refreshUI(){
     updateMoneyUI();
     updateStockUI();
     updateBakeUI();
     updateUpgradeUI();
     updateStageProgressUI();
+    renderProjectsShop();
   }
 
   /* =========================================================
@@ -1662,6 +1882,18 @@
     el.shopToggleBtn.textContent = isHidden ? "🏮 改良メニューをとじる" : "🏮 お店を改良する";
   });
 
+  el.projectsToggleBtn.addEventListener("click", () => {
+    const isHidden = el.projectsShop.hidden;
+    el.projectsShop.hidden = !isHidden;
+    el.projectsToggleBtn.textContent = isHidden ? "🏛️ 事業メニューをとじる" : "🏛️ 事業をおこなう";
+  });
+
+  el.noteToggleBtn.addEventListener("click", () => {
+    const isHidden = el.piconuNote.hidden;
+    el.piconuNote.hidden = !isHidden;
+    el.noteToggleBtn.textContent = isHidden ? "📔 ノートをとじる" : "📔 ピコぬノート";
+  });
+
   /* =========================================================
      初期化
      ========================================================= */
@@ -1672,6 +1904,7 @@
     el.hubLinkTitle.href = CONFIG.gameHubUrl;
     el.hubLinkGame.href = CONFIG.gameHubUrl;
     applyPanelState();
+    renderNote();
     refreshUI();
     showMessage("idle");
 
