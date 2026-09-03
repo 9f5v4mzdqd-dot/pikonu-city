@@ -70,6 +70,23 @@
     }
   }
 
+  /* スマホ(幅759px以下)は画面がかなり縦長になり、レターボックスだと
+     シーンが小さくなりすぎて余白ばかりになってしまうため、
+     ここだけは「多少切れてもいいから画面いっぱいに表示する」方式に戻す。
+     その代わり、手前(下側=お店やピコぬくん)が切れないよう、
+     位置を下寄りに調整する。 */
+  @media (max-width: 759px){
+    .stage{
+      width: 100vw;
+      height: 100dvh;
+      max-height: none;
+      aspect-ratio: auto;
+    }
+    .bg{
+      background-position: center 80%;
+    }
+  }
+
   .bg{
     position: absolute;
     inset: 0;
