@@ -442,6 +442,15 @@
     padding-bottom: 10px;
   }
 
+  /* パネルの中身が事業一覧などで縦に伸びすぎても、たたむボタンが常に押せるように
+     本体側だけをスクロールさせる */
+  .panel-body{
+    max-height: min(62vh, 520px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
   .imo-status{
     display:flex;
     align-items:center;
