@@ -151,6 +151,11 @@
     padding: 8px 6px;
     cursor: pointer;
   }
+  .footer-range{
+    flex: 1;
+    accent-color: var(--persimmon);
+    height: 34px;
+  }
 
   /* ---------- タイトル画面 ---------- */
   .title-screen{
@@ -752,6 +757,9 @@
 
       <div class="panel-footer-row">
         <button class="footer-btn footer-btn-icon" id="soundToggleBtn" title="BGMのオン/オフ">🔊</button>
+        <input type="range" class="footer-range" id="volumeSlider" min="0" max="100" value="45" title="音量">
+      </div>
+      <div class="panel-footer-row">
         <select class="footer-select" id="bgmSelect" title="BGMを選ぶ"></select>
       </div>
       <div class="panel-footer-row">
@@ -1059,6 +1067,7 @@
     lastSavedAt: null,
     muted: CONFIG.audio.defaultMuted,
     bgmChoice: "auto",
+    volumeLevel: Math.round(CONFIG.audio.volume * 100), // 0〜100
     coffeeUnlocked: false,
     totalCoffeeSold: 0,
     nextCoffeeSellAt: null,
@@ -1127,6 +1136,7 @@
     bgmAudio: document.getElementById("bgmAudio"),
     soundToggleBtn: document.getElementById("soundToggleBtn"),
     bgmSelect: document.getElementById("bgmSelect"),
+    volumeSlider: document.getElementById("volumeSlider"),
     titleScreen: document.getElementById("titleScreen"),
     startBtn: document.getElementById("startBtn"),
     hubLinkTitle: document.getElementById("hubLinkTitle"),
@@ -1280,8 +1290,9 @@
     const audio = el.bgmAudio;
     audio.src = getBgmPath();
     audio.loop = true;
-    audio.volume = CONFIG.audio.volume;
+    audio.volume = state.volumeLevel / 100;
     audio.muted = state.muted;
+    el.volumeSlider.value = state.volumeLevel;
 
     audio.addEventListener("canplaythrough", () => { audioReady = true; }, { once: true });
     audio.addEventListener("error", () => {
@@ -1929,6 +1940,24 @@
   el.panelCollapseBtn.addEventListener("click", togglePanel);
 
   el.soundToggleBtn.addEventListener("click", toggleSound);
+  el.volumeSlider.addEventListener("input", () => {
+    state.volumeLevel = Number(el.volumeSlider.value);
+    el.bgmAudio.volume = state.volumeLevel / 100;
+    // 0まで下げたら分かりやすくミュート扱いにする(逆に0から上げたらミュート解除)
+    if (state.volumeLevel === 0 && !state.muted){
+      state.muted = true;
+      el.bgmAudio.muted = true;
+      updateSoundToggleUI();
+    } else if (state.volumeLevel > 0 && state.muted){
+      state.muted = false;
+      el.bgmAudio.muted = false;
+      updateSoundToggleUI();
+      if (el.bgmAudio.paused && audioUnlocked){
+        el.bgmAudio.play().catch(() => {});
+      }
+    }
+  });
+  el.volumeSlider.addEventListener("change", saveGame);
   el.bgmSelect.addEventListener("change", () => {
     state.bgmChoice = el.bgmSelect.value;
     updateBgmTrack();
