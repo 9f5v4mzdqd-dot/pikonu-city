@@ -86,51 +86,6 @@
       linear-gradient(180deg, #FCE1A8 0%, #F6B57C 35%, #E4875C 60%, #B96B4E 100%);
   }
 
-  /* ピコぬくんの単体オーバーレイ画像。販売車の右横、のぼり旗のあたりに
-     立って店番しているように配置しています。 */
-  .piconu-overlay{
-    position: absolute;
-    right: 9%;
-    top: 40%;
-    height: clamp(140px, 30vw, 240px);
-    height: clamp(140px, 30cqw, 240px);
-    filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3));
-    pointer-events: none;
-    z-index: 4;
-  }
-
-  /* 足元にうっすら影を落として、地面に立っている感じを出す */
-  .piconu-shadow{
-    position: absolute;
-    right: 8%;
-    top: calc(40% + clamp(140px, 30vw, 240px) - 14px);
-    top: calc(40% + clamp(140px, 30cqw, 240px) - 14px);
-    width: clamp(70px, 15vw, 120px);
-    width: clamp(70px, 15cqw, 120px);
-    height: 18px;
-    background: radial-gradient(ellipse at center, rgba(30,18,10,0.35) 0%, rgba(30,18,10,0) 72%);
-    z-index: 3;
-    pointer-events: none;
-  }
-
-  @media (min-width: 760px){
-    /* PC表示では操作パネルが左下に小さく収まるだけなので、
-       もう少し余裕を持たせつつ同じ右横の位置関係を保つ */
-    .piconu-overlay{
-      right: 8%;
-      top: 34%;
-      height: clamp(160px, 20vw, 280px);
-      height: clamp(160px, 20cqw, 280px);
-    }
-    .piconu-shadow{
-      right: 7%;
-      top: calc(34% + clamp(160px, 20vw, 280px) - 16px);
-      top: calc(34% + clamp(160px, 20cqw, 280px) - 16px);
-      width: clamp(90px, 12vw, 140px);
-      width: clamp(90px, 12cqw, 140px);
-    }
-  }
-
   /* ---------- 上部:所持金の看板 ---------- */
   .shop-header{
     position: absolute;
@@ -592,8 +547,6 @@
   </div>
 
   <div class="bg" id="bgLayer"></div>
-  <img id="piconuOverlay" class="piconu-overlay" alt="ピコぬくん" hidden>
-  <div id="piconuShadow" class="piconu-shadow" hidden></div>
 
   <div class="shop-header">
     <div class="money-board">所持金　<span class="yen">¥<span id="moneyValue">0</span></span></div>
@@ -623,6 +576,7 @@
 
       <div class="stock-line">
         焼けた在庫：<span id="stockValue">0</span>本　／　販売数：<span id="soldValue">0</span>本
+        <span id="coffeeSoldLine" hidden>　／　☕販売数：<span id="coffeeSoldValue">0</span>杯</span>
       </div>
       <div class="tier-line">
         今の芋：<span id="imoTierNameText">普通の焼き芋</span>(¥<span id="imoTierPriceText">100</span>)
@@ -710,24 +664,25 @@
 
     images: {
       // レベル別の背景画像パス。stageProgressの条件を満たすと自動的に切り替わります。
-      backgroundLevel1: "../images/game/imo-bg.jpg",
-      backgroundLevel2: "../images/game/imo-bg-stage2.jpg",
-      backgroundLevel3: "../images/game/imo-bg-stage3.jpg",
-      backgroundLevel4: null,
-
-      // ピコぬくん単体の透過画像。背景(販売車のみ)の手前に立たせて表示します。
-      piconu: "../images/game/piconu-imo.png",
+      // ステージ5以降を追加したいときは、ここに backgroundLevels[5] = "..." を足すだけでOK
+      // (画像がまだない番号は書かなくてOK。その場合ひとつ手前の画像がそのまま使われます)。
+      // ピコぬくんは各背景画像に直接描き込まれているため、キャラクターの別画像パスは不要です。
+      backgroundLevels: {
+        1: "../images/game/imo-bg.jpg",
+        2: "../images/game/imo-bg-stage2.jpg",
+        3: "../images/game/imo-bg-stage3.jpg",
+        4: "../images/game/imo-bg-stage4.jpg",
+      },
     },
 
-    // 背景画像にすでにピコぬくんが描き込まれているため、
-    // 重ね表示はオフにしています(将来オーバーレイに戻す場合はtrueへ)。
-    showCharacterOverlay: false,
-
     audio: {
-      // ステージごとのBGM。「自動」選択時はステージが切り替わると自動的に変わります。
-      bgmLevel1: "../audio/bgm.mp3",
-      bgmLevel2: "../audio/bgm-stage2.mp3",
-      bgmLevel3: "../audio/bgm-stage3.mp3",
+      // ステージごとのBGM(「自動」選択時)。同じく足すだけで増やせます。
+      bgmLevels: {
+        1: "../audio/bgm.mp3",
+        2: "../audio/bgm-stage2.mp3",
+        3: "../audio/bgm-stage3.mp3",
+        4: "../audio/bgm-stage4.mp3",
+      },
       volume: 0.45,             // BGMの音量(0〜1)
       defaultMuted: false,      // 初回訪問時にBGMを鳴らすかどうか
       sfxVolume: 0.05,          // 「売れた時」の効果音の大きさ(控えめに)
@@ -739,6 +694,7 @@
         { id: "stage1", name: "🍠 ステージ1のBGM", path: "../audio/bgm.mp3" },
         { id: "stage2", name: "☕ ステージ2のBGM", path: "../audio/bgm-stage2.mp3" },
         { id: "stage3", name: "✨ ステージ3のBGM", path: "../audio/bgm-stage3.mp3" },
+        { id: "stage4", name: "🌟 ステージ4のBGM", path: "../audio/bgm-stage4.mp3" },
       ],
     },
 
@@ -754,12 +710,14 @@
     accidentCheckIntervalMs: 30000, // アクシデントを抽選する間隔
     accidentChance: 0.12,           // 抽選が来たときにアクシデントが起きる確率
 
-    // ステージ進行の設定。キーは「到達するステージ番号」、値はその条件。
-    // imoSold / coffeeSold のどちらかだけでもOK(両方指定すればAND条件になる)。
-    // 次のステージが未定義ならそこで打ち止め(進行度表示も自動的に隠れます)。
+    // ステージ進行の設定。ステージ2は🍠のみ、ステージ3以降は🍠と☕の両方が必要で、
+    // ステージが1つ進むごとに必要数が2倍になっていく(∞に続く仕組み)。
+    // 数式は getStageRequirement() 側にあるので、ここは基準値だけ調整すればOKです。
     stageProgress: {
-      2: { imoSold: 200 },
-      3: { imoSold: 500, coffeeSold: 100 },
+      imoStage2: 200,        // ステージ2に必要な🍠の本数
+      imoStage3Base: 400,    // ステージ3で必要な🍠の本数(基準値)
+      coffeeStage3Base: 200, // ステージ3で必要な☕の杯数(基準値)
+      growthPerStage: 2,     // ステージ3以降、1段ごとにこの倍率で増える
     },
 
     // 商品のグレード(芋・コーヒーそれぞれ4段階)。レベルが上がるほど単価が上がります。
@@ -907,8 +865,6 @@
   /* ---------- 要素参照 ---------- */
   const el = {
     bgLayer: document.getElementById("bgLayer"),
-    piconuOverlay: document.getElementById("piconuOverlay"),
-    piconuShadow: document.getElementById("piconuShadow"),
     moneyValue: document.getElementById("moneyValue"),
     speechText: document.getElementById("speechText"),
     imoIcon: document.getElementById("imoIcon"),
@@ -918,6 +874,8 @@
     bakeBtn: document.getElementById("bakeBtn"),
     stockValue: document.getElementById("stockValue"),
     soldValue: document.getElementById("soldValue"),
+    coffeeSoldLine: document.getElementById("coffeeSoldLine"),
+    coffeeSoldValue: document.getElementById("coffeeSoldValue"),
     shopToggleBtn: document.getElementById("shopToggleBtn"),
     upgradeShop: document.getElementById("upgradeShop"),
     ovenLevelText: document.getElementById("ovenLevelText"),
@@ -1026,13 +984,13 @@
      背景 / キャラクター表示
      ========================================================= */
   function getBackgroundImage(){
-    // ステージが進むと、ここで参照する画像も自動的に切り替わります。
-    switch(state.backgroundLevel){
-      case 2: return CONFIG.images.backgroundLevel2 || CONFIG.images.backgroundLevel1;
-      case 3: return CONFIG.images.backgroundLevel3 || CONFIG.images.backgroundLevel1;
-      case 4: return CONFIG.images.backgroundLevel4 || CONFIG.images.backgroundLevel1;
-      default: return CONFIG.images.backgroundLevel1;
+    // 現在のステージから遡って、画像が設定されている一番近いレベルを使う
+    // (まだ次の画像を用意していない番号でも、自動的に手前の画像で表示されます)
+    for (let lvl = state.backgroundLevel; lvl >= 1; lvl--){
+      const path = CONFIG.images.backgroundLevels[lvl];
+      if (path) return path;
     }
+    return CONFIG.images.backgroundLevels[1] || null;
   }
 
   function setupBackground(){
@@ -1056,20 +1014,6 @@
       el.bgLayer.classList.add("bg-fallback");
     };
     test.src = path;
-  }
-
-  function setupCharacterOverlay(){
-    if (!CONFIG.showCharacterOverlay) return;
-    const img = el.piconuOverlay;
-    img.onload = function(){
-      img.hidden = false;
-      el.piconuShadow.hidden = false;
-    };
-    img.onerror = function(){
-      img.hidden = true;
-      el.piconuShadow.hidden = true;
-    };
-    img.src = CONFIG.images.piconu;
   }
 
   /* =========================================================
@@ -1100,14 +1044,12 @@
       const track = CONFIG.audio.tracks.find(t => t.id === state.bgmChoice);
       if (track && track.path) return track.path;
     }
-    // 「自動」はステージに合わせて選ぶ
-    if (state.backgroundLevel >= 3 && CONFIG.audio.bgmLevel3){
-      return CONFIG.audio.bgmLevel3;
+    // 「自動」は現在のステージから遡って、曲が設定されている一番近いレベルを使う
+    for (let lvl = state.backgroundLevel; lvl >= 1; lvl--){
+      const path = CONFIG.audio.bgmLevels[lvl];
+      if (path) return path;
     }
-    if (state.backgroundLevel >= 2 && CONFIG.audio.bgmLevel2){
-      return CONFIG.audio.bgmLevel2;
-    }
-    return CONFIG.audio.bgmLevel1;
+    return CONFIG.audio.bgmLevels[1] || null;
   }
 
   function populateBgmSelect(){
@@ -1287,6 +1229,8 @@
   function updateStockUI(){
     el.stockValue.textContent = state.stock;
     el.soldValue.textContent = state.totalSold;
+    el.coffeeSoldLine.hidden = !state.coffeeUnlocked;
+    el.coffeeSoldValue.textContent = state.totalCoffeeSold;
   }
 
   function updateBakeUI(){
@@ -1607,8 +1551,20 @@
   /* =========================================================
      ステージ進行(石焼き芋・コーヒーの販売数に応じて次のステージへ)
      ========================================================= */
+  // ステージnに必要な条件を計算して返す(2以上なら常に何かしら返る=∞に続く)
   function getStageRequirement(stage){
-    return CONFIG.stageProgress[stage] || null;
+    const cfg = CONFIG.stageProgress;
+    if (stage < 2) return null;
+    if (stage === 2){
+      return { imoSold: cfg.imoStage2 };
+    }
+    // ステージ3を基準に、1段ごとに growthPerStage 倍
+    const exp = stage - 3;
+    const multiplier = Math.pow(cfg.growthPerStage, exp);
+    return {
+      imoSold: Math.round(cfg.imoStage3Base * multiplier),
+      coffeeSold: Math.round(cfg.coffeeStage3Base * multiplier),
+    };
   }
 
   // reqの条件をどれだけ満たしているか。{done: bool, remainImo, remainCoffee} を返す
@@ -1712,7 +1668,6 @@
   function init(){
     loadGame();
     setupBackground();
-    setupCharacterOverlay();
     setupAudio();
     el.hubLinkTitle.href = CONFIG.gameHubUrl;
     el.hubLinkGame.href = CONFIG.gameHubUrl;
