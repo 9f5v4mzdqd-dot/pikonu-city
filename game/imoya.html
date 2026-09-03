@@ -422,6 +422,19 @@
     gap: 10px;
   }
 
+  .note-modal-body p{
+    margin: 0;
+    line-height: 1.8;
+    font-size: 14px;
+    white-space: pre-line;
+  }
+
+  .howto-footer{
+    padding: 12px 16px 16px;
+    flex: 0 0 auto;
+    border-top: 2px solid var(--brown-soft);
+  }
+
   /* ---------- 下部の操作パネル ---------- */
   .control-panel{
     position: relative;
@@ -695,15 +708,16 @@
     </div>
   </div>
 
-  <!-- あそびかたモーダル(文章は後日差し替え予定) -->
+  <!-- あそびかたモーダル(1ページ目:導入ストーリー / 2ページ目:あそびかた) -->
   <div class="note-overlay" id="howtoOverlay" hidden>
     <div class="note-modal">
       <div class="note-modal-header">
-        <h3>📝 あそびかた</h3>
+        <h3 id="howtoTitle">🍠 ピコぬくんの焼き芋屋さん</h3>
         <button class="note-modal-close" id="howtoCloseBtn">✕</button>
       </div>
-      <div class="note-modal-body" id="howtoBody">
-        <p style="color:var(--brown-soft);">(準備中ですぬ。あそびかたの説明は近日追加予定だぬ)</p>
+      <div class="note-modal-body" id="howtoBody"></div>
+      <div class="howto-footer">
+        <button class="main-btn" id="howtoNextBtn">次のページへ▶</button>
       </div>
     </div>
   </div>
@@ -877,11 +891,11 @@
       // 曲を追加したい場合は、ここに { id, name, path } を1つ足すだけでOKです。
       tracks: [
         { id: "auto",   name: "🔀 自動(ステージに合わせる)" },
-        { id: "stage1", name: "🍠 ステージ1のBGM「柿色の帰り道」", path: "../audio/bgm.mp3" },
-        { id: "stage2", name: "☕ ステージ2のBGM「ブラインドのすきま」", path: "../audio/bgm-stage2.mp3" },
-        { id: "stage3", name: "✨ ステージ3のBGM「こもれびガーデンのぽこぽこロード」", path: "../audio/bgm-stage3.mp3" },
-        { id: "stage4", name: "🌟 ステージ4のBGM「ミルクシェイクの失敗」", path: "../audio/bgm-stage4.mp3" },
-        { id: "stage5", name: "🌟 ステージ5のBGM「自転車で海まで」", path: "../audio/bgm-stage5.mp3" },
+        { id: "stage1", name: "🍠 ステージ1のBGM", path: "../audio/bgm.mp3" },
+        { id: "stage2", name: "☕ ステージ2のBGM", path: "../audio/bgm-stage2.mp3" },
+        { id: "stage3", name: "✨ ステージ3のBGM", path: "../audio/bgm-stage3.mp3" },
+        { id: "stage4", name: "🌟 ステージ4のBGM", path: "../audio/bgm-stage4.mp3" },
+        { id: "stage5", name: "🌟 ステージ5のBGM", path: "../audio/bgm-stage5.mp3" },
       ],
     },
 
@@ -1195,6 +1209,9 @@
     continueBtn: document.getElementById("continueBtn"),
     howtoBtn: document.getElementById("howtoBtn"),
     howtoOverlay: document.getElementById("howtoOverlay"),
+    howtoTitle: document.getElementById("howtoTitle"),
+    howtoBody: document.getElementById("howtoBody"),
+    howtoNextBtn: document.getElementById("howtoNextBtn"),
     howtoCloseBtn: document.getElementById("howtoCloseBtn"),
     titleSoundToggleBtn: document.getElementById("titleSoundToggleBtn"),
     hubLinkTitle: document.getElementById("hubLinkTitle"),
@@ -2053,8 +2070,84 @@
     saveGame();
   });
 
-  el.howtoBtn.addEventListener("click", () => {
+  /* =========================================================
+     あそびかたモーダル(ストーリー→あそびかた説明の2ページ構成)
+     ========================================================= */
+  const HOWTO_PAGES = [
+    {
+      title: "🍠 ピコぬくんの焼き芋屋さん",
+      body:
+        "はっ！　公園で絵本を読んでたら……\n" +
+        "いつの間にか寝ちゃったぬ！\n\n" +
+        "……？\n\n" +
+        "いつの間にか、手紙が置いてあるぬ……。\n\n" +
+        "「ピコぬくんへ　辞令\n\n" +
+        "今月付でピコぬくんを焼き芋屋さんの役職に任命する。\n" +
+        "市民の生活が豊かになるように、\n" +
+        "頑張っておいしい焼き芋を作るように。\n\n" +
+        "塩梅市長より」\n\n" +
+        "ボクが焼き芋屋さん……？\n" +
+        "……急な話だけど、\n" +
+        "市長の辞令だから、頑張るぬ～！",
+      nextLabel: "次のページへ▶"
+    },
+    {
+      title: "🍠 あそびかた",
+      body:
+        "「焼く」ボタンを押すと、焼き芋を焼き始めますぬ。\n" +
+        "お芋が焼けるまで、少し時間がかかりますぬ。\n\n" +
+        "焼けたお芋は、そのまま置いておいても少しずつ売れていきますぬ。\n" +
+        "ぼーっと眺めているだけでも、大丈夫ですぬ！\n\n" +
+        "お金がたまったら、「お店を改良する」からお店を大きくしていきますぬ。\n" +
+        "窯をグレードアップしたり、一度に焼けるお芋の量を増やしたりできますぬ。\n\n" +
+        "「事業をおこなう」からは、コーヒーの販売も始められますぬ。\n" +
+        "焼き芋やコーヒーのグレードをアップさせることもできますぬ。\n\n" +
+        "たくさんお芋が売れると、お店の景色が少しずつ変わっていきますぬ。\n" +
+        "次は…どんなお店になるのか、楽しみですぬ！\n\n" +
+        "たまに、ちょっとしたハプニングが起きることもありますぬ……。\n" +
+        "何が起きるかは、そのときのお楽しみですぬ。\n" +
+        "あんまり大変なことにならないといいですぬ。\n\n" +
+        "📝「ピコぬノート」では、達成した実績を見られますぬ。\n" +
+        "たまに見返してみるのもいいですぬ。\n\n" +
+        "画面を閉じても大丈夫ですぬ。\n" +
+        "ちゃんとセーブされていますぬので、いつでも「つづきからあそぶ」で再開できますぬ！\n\n" +
+        "あせらず、のんびり、\n" +
+        "おいしい焼き芋屋さんを育ててくださいぬ🍠\n\n" +
+        "ピコぬくんより🤖",
+      nextLabel: "とじる"
+    }
+  ];
+
+  let howtoPageIndex = 0;
+
+  function renderHowtoPage(){
+    const page = HOWTO_PAGES[howtoPageIndex];
+    el.howtoTitle.textContent = page.title;
+    el.howtoBody.innerHTML = "";
+    page.body.split("\n\n").forEach(paragraph => {
+      const p = document.createElement("p");
+      p.textContent = paragraph;
+      el.howtoBody.appendChild(p);
+    });
+    el.howtoNextBtn.textContent = page.nextLabel;
+    el.howtoBody.scrollTop = 0;
+  }
+
+  function openHowto(){
+    howtoPageIndex = 0;
+    renderHowtoPage();
     el.howtoOverlay.hidden = false;
+  }
+
+  el.howtoBtn.addEventListener("click", openHowto);
+
+  el.howtoNextBtn.addEventListener("click", () => {
+    if (howtoPageIndex < HOWTO_PAGES.length - 1){
+      howtoPageIndex += 1;
+      renderHowtoPage();
+    } else {
+      el.howtoOverlay.hidden = true;
+    }
   });
   el.howtoCloseBtn.addEventListener("click", () => {
     el.howtoOverlay.hidden = true;
