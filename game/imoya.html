@@ -605,8 +605,9 @@
   }
   */
   :root{
-    --handwriting-font: "FoiFont", "Yuji Boku", "HGP行書体", "HG行書体", cursive,
-                         "Hiragino Maru Gothic ProN", sans-serif;
+    /* かわいらしく、ほんわかした雰囲気の手書き風フォント優先順(端末により見え方が変わります) */
+    --handwriting-font: "FoiFont", "HGP創英角ポップ体", "HG丸ゴシックM-PRO",
+                         "Hiragino Maru Gothic ProN", "BIZ UDPGothic", sans-serif;
   }
 
   .note-empty{
@@ -622,6 +623,8 @@
     padding: 10px 12px;
     background: #fffaf0;
   }
+  .note-entry:nth-child(odd){ transform: rotate(-0.6deg); }
+  .note-entry:nth-child(even){ transform: rotate(0.6deg); }
   .note-entry-title{
     font-weight: 700;
     font-size: 13px;
@@ -629,9 +632,10 @@
   }
   .note-entry-text{
     font-family: var(--handwriting-font);
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--brown);
+    font-size: 17px;
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+    color: var(--persimmon-deep);
   }
 
   @media (max-width: 420px){
