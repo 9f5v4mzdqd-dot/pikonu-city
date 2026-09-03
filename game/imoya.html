@@ -329,6 +329,65 @@
   }
   .accident-close:hover{ background: var(--persimmon-deep); }
 
+  /* ---------- ピコぬノート(大きいモーダルで開く) ---------- */
+  .note-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(30,18,10,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 21;
+    padding: 20px;
+  }
+  .note-overlay[hidden]{ display: none; }
+
+  .note-modal{
+    background: var(--cream);
+    border: 3px solid var(--brown);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 520px;
+    max-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 5px 0 rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  .note-modal-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--brown-soft);
+    flex: 0 0 auto;
+  }
+  .note-modal-header h3{
+    margin: 0;
+    font-size: 17px;
+    color: var(--brown);
+  }
+  .note-modal-close{
+    border: 2px solid var(--brown);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    color: var(--brown);
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .note-modal-close:hover{ background: var(--cream-deep); }
+
+  .note-modal-body{
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   /* ---------- 下部の操作パネル ---------- */
   .control-panel{
     position: relative;
@@ -541,16 +600,6 @@
                          "Hiragino Maru Gothic ProN", sans-serif;
   }
 
-  .piconu-note{
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 320px;
-    overflow-y: auto;
-  }
-  .piconu-note[hidden]{ display: none; }
-
   .note-empty{
     text-align: center;
     font-size: 12px;
@@ -685,10 +734,6 @@
       <div class="upgrade-shop" id="projectsShop" hidden></div>
 
       <button class="sub-btn" id="noteToggleBtn">📔 ピコぬノート</button>
-      <div class="piconu-note" id="piconuNote" hidden>
-        <div class="note-empty" id="noteEmpty">まだ記録がありませんぬ。</div>
-        <div id="noteEntries"></div>
-      </div>
 
       <div class="sold-note">じっと眺めているだけでも、少しずつ売れていきますぬ。</div>
 
@@ -709,6 +754,19 @@
     <p id="accidentBody"></p>
     <p class="accident-result" id="accidentResult"></p>
     <button class="accident-close" id="accidentCloseBtn">とじる</button>
+  </div>
+</div>
+
+<div class="note-overlay" id="noteOverlay" hidden>
+  <div class="note-modal">
+    <div class="note-modal-header">
+      <h3>📔 ピコぬノート</h3>
+      <button class="note-modal-close" id="noteCloseBtn">✕</button>
+    </div>
+    <div class="note-modal-body" id="noteModalBody">
+      <div class="note-empty" id="noteEmpty">まだ記録がありませんぬ。</div>
+      <div id="noteEntries"></div>
+    </div>
   </div>
 </div>
 
@@ -1017,7 +1075,8 @@
     projectsToggleBtn: document.getElementById("projectsToggleBtn"),
     projectsShop: document.getElementById("projectsShop"),
     noteToggleBtn: document.getElementById("noteToggleBtn"),
-    piconuNote: document.getElementById("piconuNote"),
+    noteOverlay: document.getElementById("noteOverlay"),
+    noteCloseBtn: document.getElementById("noteCloseBtn"),
     noteEmpty: document.getElementById("noteEmpty"),
     noteEntries: document.getElementById("noteEntries"),
     ovenLevelText: document.getElementById("ovenLevelText"),
@@ -1888,10 +1947,19 @@
     el.projectsToggleBtn.textContent = isHidden ? "🏛️ 事業メニューをとじる" : "🏛️ 事業をおこなう";
   });
 
-  el.noteToggleBtn.addEventListener("click", () => {
-    const isHidden = el.piconuNote.hidden;
-    el.piconuNote.hidden = !isHidden;
-    el.noteToggleBtn.textContent = isHidden ? "📔 ノートをとじる" : "📔 ピコぬノート";
+  function openNote(){
+    renderNote(); // 開くたびに最新の内容にしておく
+    el.noteOverlay.hidden = false;
+  }
+  function closeNote(){
+    el.noteOverlay.hidden = true;
+  }
+
+  el.noteToggleBtn.addEventListener("click", openNote);
+  el.noteCloseBtn.addEventListener("click", closeNote);
+  // モーダルの外側(背景の暗い部分)をクリックしても閉じる
+  el.noteOverlay.addEventListener("click", (e) => {
+    if (e.target === el.noteOverlay) closeNote();
   });
 
   /* =========================================================
