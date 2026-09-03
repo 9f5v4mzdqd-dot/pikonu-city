@@ -808,6 +808,7 @@
         <select class="footer-select" id="bgmSelect" title="BGMを選ぶ"></select>
       </div>
       <div class="panel-footer-row">
+        <button class="footer-btn" id="backToTitleBtn">🍠 タイトルにもどる</button>
         <a class="footer-btn" id="hubLinkGame" href="#">🏮 ゲーム置き場</a>
       </div>
     </div>
@@ -1198,6 +1199,7 @@
     titleSoundToggleBtn: document.getElementById("titleSoundToggleBtn"),
     hubLinkTitle: document.getElementById("hubLinkTitle"),
     hubLinkGame: document.getElementById("hubLinkGame"),
+    backToTitleBtn: document.getElementById("backToTitleBtn"),
     controlPanel: document.getElementById("controlPanel"),
     panelBody: document.getElementById("panelBody"),
     panelCollapseBtn: document.getElementById("panelCollapseBtn"),
@@ -2062,6 +2064,14 @@
   });
 
   el.titleSoundToggleBtn.addEventListener("click", toggleSound);
+
+  el.backToTitleBtn.addEventListener("click", () => {
+    saveGame();
+    // 戻った時点でセーブは必ず存在するので「つづきから」を有効にしておく
+    el.continueBtn.disabled = false;
+    el.continueBtn.textContent = "📖 つづきからあそぶ";
+    el.titleScreen.hidden = false;
+  });
 
   el.shopToggleBtn.addEventListener("click", () => {
     const isHidden = el.upgradeShop.hidden;
