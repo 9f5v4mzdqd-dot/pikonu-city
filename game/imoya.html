@@ -871,15 +871,14 @@
       oven: {
         name: "窯を改良",
         baseCost: 500,
-        costGrowth: 1.8,       // レベルが上がるごとにコストが増える倍率
-        maxLevel: 6,
+        costGrowth: 1.8,       // レベルが上がるごとにコストが増える倍率(∞に上げ続けられます)
         bakeTimeMultiplierPerLevel: 0.85, // 1レベルごとに焼き時間がこの倍率に短縮
+        minBakeTimeMs: 1500,   // 焼き時間の下限(これ以上は短くならない)
       },
       capacity: {
         name: "焼ける数を増やす",
         baseCost: 1000,
-        costGrowth: 2.0,
-        maxLevel: 6,
+        costGrowth: 2.0,        // ∞に上げ続けられます
         capacityBonusPerLevel: 1, // 1レベルごとに同時に焼ける本数+1
       },
       coffee: {
@@ -1399,7 +1398,8 @@
   }
   function currentBakeTime(){
     const cfg = CONFIG.upgrades.oven;
-    return Math.round(CONFIG.bakeTimeMs * Math.pow(cfg.bakeTimeMultiplierPerLevel, state.ovenLevel));
+    const t = Math.round(CONFIG.bakeTimeMs * Math.pow(cfg.bakeTimeMultiplierPerLevel, state.ovenLevel));
+    return Math.max(cfg.minBakeTimeMs, t);
   }
   function currentOvenCapacity(){
     const cfg = CONFIG.upgrades.capacity;
@@ -1470,26 +1470,17 @@
   }
 
   function updateUpgradeUI(){
-    const ocfg = CONFIG.upgrades.oven;
-    const ccfg = CONFIG.upgrades.capacity;
-
     el.ovenLevelText.textContent = `Lv.${state.ovenLevel}`;
     el.capLevelText.textContent = `Lv.${state.capacityLevel}`;
 
-    if (state.ovenLevel >= ocfg.maxLevel){
-      el.ovenBtn.textContent = "改良済みですぬ";
-      el.ovenBtn.disabled = true;
-    } else {
+    {
       const cost = ovenCost();
       el.ovenCostText.textContent = formatMoney(cost);
       el.ovenBtn.textContent = `改良する(¥${formatMoney(cost)})`;
       el.ovenBtn.disabled = state.money < cost;
     }
 
-    if (state.capacityLevel >= ccfg.maxLevel){
-      el.capBtn.textContent = "改良済みですぬ";
-      el.capBtn.disabled = true;
-    } else {
+    {
       const cost = capCost();
       el.capCostText.textContent = formatMoney(cost);
       el.capBtn.textContent = `改良する(¥${formatMoney(cost)})`;
@@ -1792,8 +1783,6 @@
   }
 
   function buyOvenUpgrade(){
-    const cfg = CONFIG.upgrades.oven;
-    if (state.ovenLevel >= cfg.maxLevel) return;
     const cost = ovenCost();
     if (state.money < cost) return;
     state.money -= cost;
@@ -1803,8 +1792,6 @@
   }
 
   function buyCapacityUpgrade(){
-    const cfg = CONFIG.upgrades.capacity;
-    if (state.capacityLevel >= cfg.maxLevel) return;
     const cost = capCost();
     if (state.money < cost) return;
     state.money -= cost;
