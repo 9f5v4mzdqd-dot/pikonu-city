@@ -180,36 +180,40 @@
     inset: 0;
     z-index: 30;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     padding: 24px;
-    background: rgba(28,19,12,0.45);
+    background-image:
+      linear-gradient(180deg, rgba(28,19,12,0.15) 0%, rgba(28,19,12,0.15) 40%, rgba(28,19,12,0.72) 100%),
+      var(--title-bg-image, none);
+    background-size: cover;
+    background-position: center 80%;
   }
   .title-screen[hidden]{ display: none; }
 
   .title-card{
-    background: rgba(251,240,220,0.97);
+    background: rgba(251,240,220,0.95);
     border: 3px solid var(--brown);
     border-radius: 20px;
-    padding: 30px 26px 26px;
+    padding: 22px 26px 26px;
     max-width: 360px;
     width: 100%;
     text-align: center;
     box-shadow: 4px 6px 0 rgba(0,0,0,0.32);
   }
   .title-card .title-emoji{
-    font-size: clamp(38px, 10vw, 54px);
+    font-size: clamp(34px, 9vw, 46px);
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .title-card h1{
-    margin: 0 0 8px;
-    font-size: clamp(19px, 5.5vw, 25px);
+    margin: 0 0 6px;
+    font-size: clamp(18px, 5vw, 23px);
     line-height: 1.4;
     color: var(--brown);
   }
   .title-card .title-tagline{
-    margin: 0 0 22px;
+    margin: 0 0 16px;
     font-size: 13px;
     color: var(--brown-soft);
     line-height: 1.6;
@@ -219,8 +223,14 @@
     flex-direction: column;
     gap: 10px;
   }
+  .main-btn-sub{
+    background: var(--teal);
+    box-shadow: 0 4px 0 #216d66;
+    font-size: clamp(14px, 3.6vw, 16px);
+  }
   .title-buttons .link-btn{
     display: block;
+    width: 100%;
     text-decoration: none;
     text-align: center;
     border: 2px solid var(--brown);
@@ -229,7 +239,9 @@
     color: var(--brown);
     font-size: 14px;
     font-weight: 700;
+    font-family: inherit;
     padding: 10px;
+    cursor: pointer;
   }
   .title-buttons .link-btn:hover{ background: var(--cream-deep); }
 
@@ -674,8 +686,24 @@
       <h1>ピコぬくんの<br>石焼き芋屋さん</h1>
       <p class="title-tagline">のんびり眺めているだけで、<br>少しずつお店が育つゲームですぬ。</p>
       <div class="title-buttons">
-        <button class="main-btn" id="startBtn">🔥 はじめる</button>
-        <a class="link-btn" id="hubLinkTitle" href="#">🏮 ゲーム置き場に戻る</a>
+        <button class="main-btn" id="newGameBtn">🔥 はじめからあそぶ</button>
+        <button class="main-btn main-btn-sub" id="continueBtn">📖 つづきからあそぶ</button>
+        <button class="link-btn" id="howtoBtn">📝 あそびかた</button>
+        <a class="link-btn" id="hubLinkTitle" href="#">🏮 ゲームおきばへ</a>
+        <button class="link-btn" id="titleSoundToggleBtn">🔊 BGMのオン/オフ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- あそびかたモーダル(文章は後日差し替え予定) -->
+  <div class="note-overlay" id="howtoOverlay" hidden>
+    <div class="note-modal">
+      <div class="note-modal-header">
+        <h3>📝 あそびかた</h3>
+        <button class="note-modal-close" id="howtoCloseBtn">✕</button>
+      </div>
+      <div class="note-modal-body" id="howtoBody">
+        <p style="color:var(--brown-soft);">(準備中ですぬ。あそびかたの説明は近日追加予定だぬ)</p>
       </div>
     </div>
   </div>
@@ -1073,29 +1101,33 @@
   /* =========================================================
      ゲーム状態
      ========================================================= */
-  let state = {
-    money: CONFIG.startMoney,
-    totalSold: 0,
-    stock: 0,
-    isBaking: false,
-    bakeReadyAt: null,
-    bakeStartedAt: null,
-    nextSellAt: null,
-    ovenLevel: 0,
-    capacityLevel: 0,
-    backgroundLevel: 1,
-    lastSavedAt: null,
-    muted: CONFIG.audio.defaultMuted,
-    bgmChoice: "auto",
-    volumeLevel: Math.round(CONFIG.audio.volume * 100), // 0〜100
-    coffeeUnlocked: false,
-    totalCoffeeSold: 0,
-    nextCoffeeSellAt: null,
-    panelCollapsed: false,
-    imoTierLevel: 0,
-    coffeeTierLevel: 0,
-    achievementsDone: [], // 実行済みの功績id(実行した順に並ぶ=ピコぬノートの表示順)
-  };
+  function getDefaultState(){
+    return {
+      money: CONFIG.startMoney,
+      totalSold: 0,
+      stock: 0,
+      isBaking: false,
+      bakeReadyAt: null,
+      bakeStartedAt: null,
+      nextSellAt: null,
+      ovenLevel: 0,
+      capacityLevel: 0,
+      backgroundLevel: 1,
+      lastSavedAt: null,
+      muted: CONFIG.audio.defaultMuted,
+      bgmChoice: "auto",
+      volumeLevel: Math.round(CONFIG.audio.volume * 100), // 0〜100
+      coffeeUnlocked: false,
+      totalCoffeeSold: 0,
+      nextCoffeeSellAt: null,
+      panelCollapsed: false,
+      imoTierLevel: 0,
+      coffeeTierLevel: 0,
+      achievementsDone: [], // 実行済みの功績id(実行した順に並ぶ=ピコぬノートの表示順)
+    };
+  }
+
+  let state = getDefaultState();
 
   /* ---------- 要素参照 ---------- */
   const el = {
@@ -1158,7 +1190,12 @@
     bgmSelect: document.getElementById("bgmSelect"),
     volumeSlider: document.getElementById("volumeSlider"),
     titleScreen: document.getElementById("titleScreen"),
-    startBtn: document.getElementById("startBtn"),
+    newGameBtn: document.getElementById("newGameBtn"),
+    continueBtn: document.getElementById("continueBtn"),
+    howtoBtn: document.getElementById("howtoBtn"),
+    howtoOverlay: document.getElementById("howtoOverlay"),
+    howtoCloseBtn: document.getElementById("howtoCloseBtn"),
+    titleSoundToggleBtn: document.getElementById("titleSoundToggleBtn"),
     hubLinkTitle: document.getElementById("hubLinkTitle"),
     hubLinkGame: document.getElementById("hubLinkGame"),
     controlPanel: document.getElementById("controlPanel"),
@@ -1182,12 +1219,22 @@
   function loadGame(){
     try{
       const raw = localStorage.getItem(CONFIG.saveKey);
-      if (!raw) return;
+      if (!raw) return false;
       const data = JSON.parse(raw);
       state = Object.assign(state, data);
       handleOfflineProgress();
+      return true;
     }catch(e){
       console.warn("セーブデータの読み込みに失敗しましたぬ", e);
+      return false;
+    }
+  }
+
+  function hasSaveData(){
+    try{
+      return !!localStorage.getItem(CONFIG.saveKey);
+    }catch(e){
+      return false;
     }
   }
 
@@ -1267,6 +1314,9 @@
 
   function updateSoundToggleUI(){
     el.soundToggleBtn.textContent = state.muted ? "🔇" : "🔊";
+    if (el.titleSoundToggleBtn){
+      el.titleSoundToggleBtn.textContent = state.muted ? "🔇 BGMのオン/オフ" : "🔊 BGMのオン/オフ";
+    }
   }
 
   /* ---------- 操作パネルの折りたたみ ---------- */
@@ -1984,11 +2034,34 @@
     saveGame();
   });
 
-  el.startBtn.addEventListener("click", () => {
+  el.newGameBtn.addEventListener("click", () => {
+    try{ localStorage.removeItem(CONFIG.saveKey); }catch(e){}
+    state = getDefaultState();
+    el.titleScreen.hidden = true;
+    unlockAudio();
+    setupBackground();
+    updateSoundToggleUI();
+    refreshUI();
+    saveGame();
+  });
+
+  el.continueBtn.addEventListener("click", () => {
     el.titleScreen.hidden = true;
     unlockAudio();
     saveGame();
   });
+
+  el.howtoBtn.addEventListener("click", () => {
+    el.howtoOverlay.hidden = false;
+  });
+  el.howtoCloseBtn.addEventListener("click", () => {
+    el.howtoOverlay.hidden = true;
+  });
+  el.howtoOverlay.addEventListener("click", (e) => {
+    if (e.target === el.howtoOverlay) el.howtoOverlay.hidden = true;
+  });
+
+  el.titleSoundToggleBtn.addEventListener("click", toggleSound);
 
   el.shopToggleBtn.addEventListener("click", () => {
     const isHidden = el.upgradeShop.hidden;
@@ -2021,7 +2094,7 @@
      初期化
      ========================================================= */
   function init(){
-    loadGame();
+    const saveExisted = loadGame();
     setupBackground();
     setupAudio();
     el.hubLinkTitle.href = CONFIG.gameHubUrl;
@@ -2029,7 +2102,20 @@
     applyPanelState();
     renderNote();
     refreshUI();
+    updateSoundToggleUI();
     showMessage("idle");
+
+    // タイトル画面の背景は常にステージ1の画像を使う(進行状況に関わらず固定)
+    el.titleScreen.style.setProperty(
+      "--title-bg-image",
+      `url("${CONFIG.images.backgroundLevels[1]}")`
+    );
+
+    // セーブデータが無ければ「つづきからあそぶ」を選べないようにする
+    if (!saveExisted){
+      el.continueBtn.disabled = true;
+      el.continueBtn.textContent = "📖 つづきのデータがありません";
+    }
 
     setInterval(tick, 1000);
     setInterval(maybeTriggerAccident, CONFIG.accidentCheckIntervalMs);
