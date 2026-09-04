@@ -1269,9 +1269,12 @@
     }
   }
 
+  let offlineEarnings = 0; // 「おかえりですぬ」ポップアップ用。継続プレイを選んだ時だけ表示する
+
   // ページを開き直した時、閉じていた間の進行を控えめに反映する
   function handleOfflineProgress(){
     const now = Date.now();
+    offlineEarnings = 0;
 
     // 焼いている途中だった場合、焼き上がり時刻を過ぎていれば完成させる
     if (state.isBaking && state.bakeReadyAt && now >= state.bakeReadyAt){
@@ -1281,24 +1284,40 @@
       state.bakeStartedAt = null;
     }
 
-    // 自動販売の巻き戻し分(上限つき、インフレ防止)
-    if (state.nextSellAt && state.stock > 0){
-      const elapsed = now - (state.lastSavedAt || now);
-      if (elapsed > 0){
-        const possibleSales = Math.floor(elapsed / CONFIG.sellIntervalMs);
-        const sales = Math.min(
-          possibleSales,
-          state.stock,
-          CONFIG.offlineCatchupCapSales
-        );
-        if (sales > 0){
-          state.stock -= sales;
-          state.money += sales * imoPrice();
-          state.totalSold += sales;
-        }
+    const elapsed = now - (state.lastSavedAt || now);
+
+    // 芋の自動販売の巻き戻し分(上限つき、インフレ防止)
+    if (state.nextSellAt && state.stock > 0 && elapsed > 0){
+      const possibleSales = Math.floor(elapsed / CONFIG.sellIntervalMs);
+      const sales = Math.min(
+        possibleSales,
+        state.stock,
+        CONFIG.offlineCatchupCapSales
+      );
+      if (sales > 0){
+        const earned = sales * imoPrice();
+        state.stock -= sales;
+        state.money += earned;
+        state.totalSold += sales;
+        offlineEarnings += earned;
       }
     }
+
+    // コーヒーの自動販売の巻き戻し分(芋と同じ考え方。在庫の概念はないので導入済みなら対象)
+    if (state.coffeeUnlocked && elapsed > 0){
+      const coffeeCfg = CONFIG.upgrades.coffee;
+      const possibleCoffeeSales = Math.floor(elapsed / coffeeCfg.sellIntervalMs);
+      const coffeeSales = Math.min(possibleCoffeeSales, CONFIG.offlineCatchupCapSales);
+      if (coffeeSales > 0){
+        const earned = coffeeSales * coffeePrice();
+        state.money += earned;
+        state.totalCoffeeSold += coffeeSales;
+        offlineEarnings += earned;
+      }
+    }
+
     state.nextSellAt = now + CONFIG.sellIntervalMs;
+    state.nextCoffeeSellAt = now + CONFIG.upgrades.coffee.sellIntervalMs;
   }
 
   /* =========================================================
@@ -2084,6 +2103,15 @@
     el.titleScreen.hidden = true;
     unlockAudio();
     saveGame();
+
+    if (offlineEarnings > 0){
+      showAccident(
+        "🍠 おかえりですぬ",
+        `おかえりなさいですぬ。離れていた間、¥${formatMoney(offlineEarnings)}の売り上げがありましたぬ。`,
+        ""
+      );
+      offlineEarnings = 0; // 表示したら消費(次に押した時にまた出ないように)
+    }
   });
 
   /* =========================================================
