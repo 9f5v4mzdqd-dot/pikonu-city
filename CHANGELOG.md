@@ -12,6 +12,56 @@
 
 ------
 
+## 2026-09-04
+---
+### 変更
+- `game/imoya.html`:売上発生時の表示を見やすく修正
+- `game/imoya.html`:ゲーム再開時、離れていた間の焼き芋・コーヒーの売上を「おかえりなさいですぬ」として表示する機能を追加
+- `game/imoya.html`:ステージ1〜5のBGMに曲名を表示
+---
+
+## 2026-09-03
+---
+### 追加
+- `game/imoya.html`:「ピコぬノート」を追加
+- `game/imoya.html`:ピコぬノートへのポップアップ表示を追加
+- `game/imoya.html`:事業をスクロール表示する機能を追加
+- `game/imoya.html`:窯などのレベルアップ要素を追加
+- `game/imoya.html`:ステージ3〜5を追加
+- `game/imoya.html`:ステージごとの背景・BGMを追加
+- `game/imoya.html`:音量スライダーを追加
+- `game/imoya.html`:タイトル画面を追加
+- `game/imoya.html`:タイトル画面から戻るボタンを追加
+- `game/imoya.html`:遊び方を追加
+### 変更
+- `game/imoya.html`:スマートフォン向けのサイズ・レイアウトを調整
+- `game/imoya.html`:BGMを選択できるよう変更
+- `game/imoya.html`:BGMの曲名を追加
+- `game/imoya.html`:遊び方をタイトル画面より前面に表示するよう変更
+### 修正
+- `game/imoya.html`:画像・レイアウト・サイズを調整
+- `game/imoya.html`:説明文の重なりやセリフを修正
+- `game/imoya.html`:不要な改行を修正
+- `game/imoya.html`:パソコンでのプレイを推奨する案内を追加
+---
+
+## 2026-09-02
+---
+### 追加
+- `game/imoya.html`:ステージ2を追加
+- `game/imoya.html`:ステージ3を追加
+- `game/imoya.html`:グレードアップ要素を追加
+- `game/imoya.html`:コーヒー販売に関する表示・ステージ条件を追加
+### 変更
+- `game/imoya.html`:タイトル画面・戻るボタンを追加
+- `game/imoya.html`:メニューをたたむボタンを追加
+- `game/imoya.html`:画像・レイアウト・サイズを調整
+- `game/imoya.html`:BGM選択機能を追加
+### 修正
+- `game/imoya.html`:各種表示・レイアウトを修正
+- `game/imoya.html`:パスを修正
+---
+
 ## 2026-09-01（2）
 ---
 ### 追加
