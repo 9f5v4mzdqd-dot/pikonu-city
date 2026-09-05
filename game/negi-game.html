@@ -125,13 +125,15 @@
     }
 
     /* ---------- タイトル画面・あそびかた画面(既存のレトロ調に合わせる) ---------- */
-    #screen-title, #screen-howto {
+    #screen-title,
+    #screen-howto {
       width: 320px;
       max-width: 92vw;
       margin: 10px auto;
     }
 
-    #title-box, #howto-box {
+    #title-box,
+    #howto-box {
       border: 3px inset #cccccc;
       background-color: #ffffff;
       padding: 14px 16px;
@@ -154,12 +156,20 @@
     .blink {
       animation: blink-anim 1.1s steps(1) infinite;
     }
+
     @keyframes blink-anim {
-      50% { opacity: 0; }
+      50% {
+        opacity: 0;
+      }
     }
 
-    #screen-game { display: none; }
-    #screen-howto { display: none; }
+    #screen-game {
+      display: none;
+    }
+
+    #screen-howto {
+      display: none;
+    }
 
     @media (max-width: 600px) {
       #game-box {
@@ -205,9 +215,11 @@
 
   <!-- ========== 遊び方画面 ========== -->
   <div id="screen-howto">
-    <h3>🌸遊び方🌸</h3>
+    <h3 style="font-size: 24px;">🥢遊び方🥢</h3>
     <div id="howto-box">
-      諸君！ネギを堂々と盛りたまえ！<br>
+      <p style="font-size: 24px; font-weight: bold;">
+        諸君！ネギを堂々と盛りたまえ！
+      </p>
       諸君、我々は今、ネギを盛っている。<br>
       ただひたすらに、ネギを盛っている。<br>
       「そんなに盛ってどうするんだ」と言う者もいるだろう。<br>
