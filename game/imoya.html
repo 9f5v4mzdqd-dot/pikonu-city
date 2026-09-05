@@ -1058,7 +1058,7 @@
     ],
 
     saveKey: "piconu_imoya_save_v1",
-    offlineCatchupCapSales: 12, // ページを開き直した時にまとめて売れる本数の上限(インフレ防止)
+    offlineCatchupCapMs: 3 * 60 * 60 * 1000, // 離れていた時間としてカウントする上限(3時間分まで。インフレ防止)
 
     gameHubUrl: "../about/piconu-freegame.html", // 「ゲーム置き場」ページのURL
   };
@@ -1285,15 +1285,13 @@
     }
 
     const elapsed = now - (state.lastSavedAt || now);
+    // 離れていた時間は最大3時間分までとして計算する(インフレ防止)
+    const cappedElapsed = Math.min(elapsed, CONFIG.offlineCatchupCapMs);
 
-    // 芋の自動販売の巻き戻し分(上限つき、インフレ防止)
-    if (state.nextSellAt && state.stock > 0 && elapsed > 0){
-      const possibleSales = Math.floor(elapsed / CONFIG.sellIntervalMs);
-      const sales = Math.min(
-        possibleSales,
-        state.stock,
-        CONFIG.offlineCatchupCapSales
-      );
+    // 芋の自動販売の巻き戻し分(在庫がある分だけ)
+    if (state.nextSellAt && state.stock > 0 && cappedElapsed > 0){
+      const possibleSales = Math.floor(cappedElapsed / CONFIG.sellIntervalMs);
+      const sales = Math.min(possibleSales, state.stock);
       if (sales > 0){
         const earned = sales * imoPrice();
         state.stock -= sales;
@@ -1304,10 +1302,9 @@
     }
 
     // コーヒーの自動販売の巻き戻し分(芋と同じ考え方。在庫の概念はないので導入済みなら対象)
-    if (state.coffeeUnlocked && elapsed > 0){
+    if (state.coffeeUnlocked && cappedElapsed > 0){
       const coffeeCfg = CONFIG.upgrades.coffee;
-      const possibleCoffeeSales = Math.floor(elapsed / coffeeCfg.sellIntervalMs);
-      const coffeeSales = Math.min(possibleCoffeeSales, CONFIG.offlineCatchupCapSales);
+      const coffeeSales = Math.floor(cappedElapsed / coffeeCfg.sellIntervalMs);
       if (coffeeSales > 0){
         const earned = coffeeSales * coffeePrice();
         state.money += earned;
