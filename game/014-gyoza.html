@@ -25,27 +25,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 100dvh;
             color: #333;
+            margin: 0;
+            padding: 16px;
+            box-sizing: border-box;
         }
 
         #game-container {
             position: relative;
-            width: 800px;
-            height: 600px;
+            width: min(800px, 96vw);
+            height: min(600px, 90dvh);
             background: #2b3a4a;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
             display: flex;
             flex-direction: column;
-        }
-
-        @media (max-width: 800px) {
-            body {
-                align-items: flex-start;
-                padding: 20px 0;
-            }
         }
 
         /* 市役所の相談室風背景 */
