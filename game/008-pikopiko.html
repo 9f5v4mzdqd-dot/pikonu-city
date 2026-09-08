@@ -58,7 +58,7 @@
             z-index: 1;
         }
 
-        /* 相談室の看板プレート */
+         /* 相談室の看板プレート */
         #bg-plate {
             position: absolute;
             top: 25px;
@@ -75,24 +75,18 @@
             z-index: 1;
         }
 
-         #ui-layer {
+        #chara-layer {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            min-height: 130px;
-            max-height: 46%;
-            padding: 16px 24px;
-            z-index: 3;
-            background: rgba(18, 25, 36, 0.92);
-            border-top: 3px solid #00897b;
-            backdrop-filter: blur(4px);
-            cursor: pointer;
+            height: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-sizing: border-box;
-            overflow-y: auto;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding-bottom: 160px;
+            z-index: 2;
+            pointer-events: none;
         }
 
         .chara-box {
@@ -103,6 +97,7 @@
             opacity: 0.35;
             transform: translateY(10px) scale(0.95);
         }
+
 
         .chara-box.active {
             opacity: 1;
