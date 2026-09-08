@@ -10,14 +10,54 @@
 - ファイルパス: 内容
 
 
-------
+## 2026-09-08（3）
+---
+### 修正
+- `about/fm-piconu.html`:見出し階層がH1→H3と1段飛んでいたのを、H2「配信中の番組」を追加して修正
+- `facilities/index.html`:同じくH1→H3と飛んでいたのを、視覚的に隠したH2「施設一覧」を追加して修正
+- `Blue-Page.html`:`<html lang="ja">`および`<head><title>`が無かったため追加(表示・内容に変更なし)
+- `about/fuyoufukyu-4koma.html`:マンガのページめくり用タップ領域がキーボード操作できなかったため、`role="button" tabindex="0"`とEnter/Spaceキー対応、フォーカス時の枠線を追加
+---
 
-## 2026-09-04
+## 2026-09-08（2）
+---
+### 変更
+- `facilities/nousanbutsu.html`:パンくずリストを追加(このページのみ独自デザインのため手動設置)
+- `services/jumin-todoke.html`・`services/suidou.html`:引っ越し手続きと水道手続きの間に案内文とリンクを追加(相互リンク化)
+---
+
+## 2026-09-08（1）
+---
+### 変更
+- `about/sitemap.html`:抜けていた4ページ(`about/soshiki-ichiran.html`・`facilities/kankyoka-ochiba-kijun.html`・`facilities/toshokan-zosho.html`・`services/kiroku-nuka-monshinhyo.html`)を追加
+- `data/search-index.json`:抜けていた`about/mayoigo.html`を追加
+- `about/sitemap.html`:抜けていた`services/suidou.html`を「くらしの情報」に追加
+---
+
+## 2026-09-04（3）
+---
+### 修正
+- `game/imoya.html`:背景画像の縦横比を固定してレターボックス表示にすることで、画面比率によって手前が見切れる不具合を修正(PC/タブレット向け)
+- `game/imoya.html`:スマホ(幅759px以下)ではレターボックスだと余白が大きくなりすぎるため、画面いっぱいに表示しつつ手前を優先する位置指定に変更
+---
+
+## 2026-09-04（2）
+---
+### 追加
+- `game/imoya.html`:タイトル画面を新設。背景にステージ1の画像を表示し、「はじめからあそぶ」「つづきからあそぶ」「あそびかた」「ゲームおきばへ」「BGMのオン/オフ」の5ボタンを配置
+- `game/imoya.html`:「あそびかた」モーダルを追加(1ページ目に導入ストーリー、2ページ目に遊び方説明のページ送り形式)
+- `game/imoya.html`:操作パネルに「タイトルにもどる」ボタンを追加
+### 修正
+- `game/imoya.html`:あそびかたモーダルがタイトル画面の背後に隠れてしまう不具合(z-index)を修正
+---
+
+## 2026-09-04（1）
 ---
 ### 変更
 - `game/imoya.html`:売上発生時の表示を見やすく修正
 - `game/imoya.html`:ゲーム再開時、離れていた間の焼き芋・コーヒーの売上を「おかえりなさいですぬ」として表示する機能を追加
 - `game/imoya.html`:ステージ1〜5のBGMに曲名を表示
+
 ---
 
 ## 2026-09-03
