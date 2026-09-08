@@ -72,6 +72,11 @@
       cursor: pointer;
     }
 
+    .comic-tap-zone:focus-visible {
+      outline: 3px solid #4a90e2;
+      outline-offset: -3px;
+    }
+
     .comic-tap-zone.left {
       left: 0;
     }
@@ -146,8 +151,8 @@
             <div class="comic-loading" id="comicLoading">読み込み中…</div>
             <img class="comic-page-base" id="comicBase" alt="">
             <img class="comic-page-flap" id="comicFlap" alt="">
-            <div class="comic-tap-zone left" id="tapPrev" aria-label="前のページ"></div>
-            <div class="comic-tap-zone right" id="tapNext" aria-label="次のページ"></div>
+            <div class="comic-tap-zone left" id="tapPrev" role="button" tabindex="0" aria-label="前のページ"></div>
+            <div class="comic-tap-zone right" id="tapNext" role="button" tabindex="0" aria-label="次のページ"></div>
           </div>
           <div class="comic-controls">
             <button id="btnPrev" type="button">&lt; 前へ</button>
@@ -264,6 +269,20 @@
       btnPrev.addEventListener("click", goPrev);
       tapNext.addEventListener("click", goNext);
       tapPrev.addEventListener("click", goPrev);
+
+      // role="button"にしたタップ領域は、Enter/Spaceキーでも
+      // 押せるようにしないとキーボード操作の期待に反するため個別対応
+      function handleZoneKeydown(action) {
+        return function (e) {
+          if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+            e.preventDefault();
+            action();
+          }
+        };
+      }
+      tapNext.addEventListener("keydown", handleZoneKeydown(goNext));
+      tapPrev.addEventListener("keydown", handleZoneKeydown(goPrev));
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "ArrowRight") goNext();
         if (e.key === "ArrowLeft") goPrev();
