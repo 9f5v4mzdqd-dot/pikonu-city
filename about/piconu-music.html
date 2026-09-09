@@ -436,7 +436,7 @@
                 </div>
             </div>
 
-            <div class="album" data-soon="30円のブルース">
+            <div class="album" id="albumJohnnyNuka">
                 <img src="../images/music/J_NUKA001.jpg"
                     alt="JOHNNY NUKA">
                 <div class="album-title">
@@ -508,32 +508,43 @@
     <script>
         // audio/piconu-music/ 内の実ファイルを参照しています。
         //
-        // 【曲を追加・変更するとき】
-        // 下の trackRaw に1行足すだけでOKです。
+        // 【アルバムの曲を追加・変更するとき】
+        // 各アルバムの tracks に1行足すだけでOKです。
         //   ["ファイル名", "曲名(邦題)"],
-        var trackRaw = [
-            ["1.Sunday_in_the_Ballroom.mp3", "日曜日の音合わせ"],
-            ["2.Half_Past_Four_on_Main.mp3", "4時半、メーンストリートで"],
-            ["3.Milkshake_Mishap.mp3", "ミルクセーキの災難"],
-            ["4.Bicycle_by_the_Pier.mp3", "桟橋と自転車"],
-            ["5.Slick_Shoes_on_the_Floor.mp3", "つるっところんじゃった！"],
-            ["6.Midnight_at_the_Counter.mp3", "ウェイトレスのひと騒ぎ"],
-            ["7.Sunday_in_the_Square.mp3", "日曜日の広場のテーマ"],
-            ["8.Two_Left_Feet_in_.mp3", "踊れないふたり"],
-            ["9.Low_Beams_On_A_Tuesday_Night.mp3", "火曜の夜は、ロービームで"],
-            ["10.Midnight_in_the_Passenger_Seat.mp3", "助手席にて"],
-            ["11.The_Jukebox_Stumble.mp3", "ジュークボックスの手拍子"],
-            ["12.A_Waltz_for_the_Wallflower.mp3", "壁の花のためのワルツ"],
-            ["13.The_Stumbling_Upright.mp3", "まだまだ俺は酔ってない"],
-            ["14.Late_Night_Missteps.mp3", "深夜のしくじり"],
-            ["15.Last_Call_for_the_Upright.mp3", "なんとかなるさ"],
-            ["16.Shadows_by_the_River.mp3", "泣かないで"],
-            ["17.Seeds_We_Never_Sowed.mp3", "君のいない川辺"],
-            ["18.Before_the_Change.mp3", "思い出が運んできたもの"],
-            ["19.That_Old_Key.mp3", "古い鍵"],
-            ["20.Before_They_Pulled_It_Down.mp3", "アンコール"],
-            ["21.A_Song_for_Empty_Booths.mp3", "からっぽの席"]
-        ];
+        var albums = {
+            oldies: {
+                title: "1957，Piconu City",
+                tracks: [
+                    ["1.Sunday_in_the_Ballroom.mp3", "日曜日の音合わせ"],
+                    ["2.Half_Past_Four_on_Main.mp3", "4時半、メーンストリートで"],
+                    ["3.Milkshake_Mishap.mp3", "ミルクセーキの災難"],
+                    ["4.Bicycle_by_the_Pier.mp3", "桟橋と自転車"],
+                    ["5.Slick_Shoes_on_the_Floor.mp3", "つるっところんじゃった！"],
+                    ["6.Midnight_at_the_Counter.mp3", "ウェイトレスのひと騒ぎ"],
+                    ["7.Sunday_in_the_Square.mp3", "日曜日の広場のテーマ"],
+                    ["8.Two_Left_Feet_in_.mp3", "踊れないふたり"],
+                    ["9.Low_Beams_On_A_Tuesday_Night.mp3", "火曜の夜は、ロービームで"],
+                    ["10.Midnight_in_the_Passenger_Seat.mp3", "助手席にて"],
+                    ["11.The_Jukebox_Stumble.mp3", "ジュークボックスの手拍子"],
+                    ["12.A_Waltz_for_the_Wallflower.mp3", "壁の花のためのワルツ"],
+                    ["13.The_Stumbling_Upright.mp3", "まだまだ俺は酔ってない"],
+                    ["14.Late_Night_Missteps.mp3", "深夜のしくじり"],
+                    ["15.Last_Call_for_the_Upright.mp3", "なんとかなるさ"],
+                    ["16.Shadows_by_the_River.mp3", "泣かないで"],
+                    ["17.Seeds_We_Never_Sowed.mp3", "君のいない川辺"],
+                    ["18.Before_the_Change.mp3", "思い出が運んできたもの"],
+                    ["19.That_Old_Key.mp3", "古い鍵"],
+                    ["20.Before_They_Pulled_It_Down.mp3", "アンコール"],
+                    ["21.A_Song_for_Empty_Booths.mp3", "からっぽの席"]
+                ]
+            },
+            johnnyNuka: {
+                title: "30円のブルース",
+                tracks: [
+                    ["30yen_blues.mp3", "30円のブルース"]
+                ]
+            }
+        };
 
         document.addEventListener("DOMContentLoaded", function () {
             var playlist = document.getElementById("playlist");
@@ -541,24 +552,24 @@
             var audioEl = document.getElementById("playerAudio");
             var nowPlayingTitle = document.getElementById("nowPlayingTitle");
             var albumTitleEl = document.getElementById("playerAlbumTitle");
+            var currentTracks = [];
 
-            // トラック一覧を組み立て
-            var html = "";
-            for (var i = 0; i < trackRaw.length; i++) {
-                var title = trackRaw[i][1];
-                var trackNo = i + 1;
-                html += "<div class=\"track\" data-index=\"" + i + "\">";
-                html += "<span class=\"track-no\">" + trackNo + "</span>";
-                html += "<span class=\"track-title\">" + title + "</span>";
-                html += "<span class=\"track-play-icon\">▶</span>";
-                html += "</div>";
+            function renderTracks(tracks) {
+                var html = "";
+                for (var i = 0; i < tracks.length; i++) {
+                    html += "<div class=\"track\" data-index=\"" + i + "\">";
+                    html += "<span class=\"track-no\">" + (i + 1) + "</span>";
+                    html += "<span class=\"track-title\">" + tracks[i][1] + "</span>";
+                    html += "<span class=\"track-play-icon\">▶</span>";
+                    html += "</div>";
+                }
+                playlist.innerHTML = html;
             }
-            playlist.innerHTML = html;
 
             function playTrack(index) {
-                var file = trackRaw[index][0];
-                var title = trackRaw[index][1];
-                var isRootAudio = trackRaw[index][2] === true;
+                var file = currentTracks[index][0];
+                var title = currentTracks[index][1];
+                var isRootAudio = currentTracks[index][2] === true;
                 var path = isRootAudio ? "../audio/" + file : "../audio/piconu-music/" + file;
 
                 audioEl.src = path;
@@ -582,11 +593,17 @@
                 var current = playlist.querySelector(".track.playing");
                 if (!current) return;
                 var next = parseInt(current.getAttribute("data-index"), 10) + 1;
-                if (next < trackRaw.length) playTrack(next);
+                if (next < currentTracks.length) playTrack(next);
             });
 
-            function openPlayer(albumName) {
-                albumTitleEl.textContent = albumName;
+            function openPlayer(albumKey) {
+                var album = albums[albumKey];
+                currentTracks = album.tracks;
+                albumTitleEl.textContent = album.title;
+                renderTracks(currentTracks);
+                nowPlayingTitle.textContent = "-";
+                audioEl.pause();
+                audioEl.removeAttribute("src");
                 overlay.classList.add("open");
             }
             function closePlayer() {
@@ -595,7 +612,10 @@
             }
 
             document.getElementById("albumOldies").addEventListener("click", function () {
-                openPlayer("1957，Piconu City");
+                openPlayer("oldies");
+            });
+            document.getElementById("albumJohnnyNuka").addEventListener("click", function () {
+                openPlayer("johnnyNuka");
             });
 
             // まだ曲データが無いアルバム(クリックで準備中メッセージ)
