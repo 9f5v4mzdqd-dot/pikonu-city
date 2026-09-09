@@ -152,6 +152,50 @@
             font-size: .72rem;
         }
 
+        .playlist {
+            max-width: 650px;
+            margin: 15px auto;
+            border: 1px solid #555A82;
+            background-color: #20233F;
+        }
+
+        .track {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-bottom: 1px solid #30345C;
+            flex-wrap: wrap;
+        }
+
+        .track:last-child {
+            border-bottom: none;
+        }
+
+        .track-no {
+            font-family: monospace;
+            color: #00E676;
+            font-size: .85rem;
+            width: 2em;
+            flex: 0 0 auto;
+            text-align: right;
+        }
+
+        .track-title {
+            color: #DDE7E3;
+            font-size: .92rem;
+            flex: 1 1 160px;
+            min-width: 120px;
+        }
+
+        .track audio {
+            flex: 1 1 240px;
+            min-width: 200px;
+            max-width: 320px;
+            height: 32px;
+            margin: 0;
+        }
+
         .album-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -211,8 +255,18 @@
         /* スマホ */
         @media (max-width: 600px) {
 
-            .album-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .track {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .track-no {
+                text-align: left;
+            }
+
+            .track audio {
+                max-width: 100%;
+                width: 100%;
             }
 
             h1 {
@@ -258,7 +312,7 @@
                 alt="ゲームBGM ジャケット">
 
             <div class="music-title">
-                ゲーム「猫と宝くじと世界経済の終焉」エンディングテーマ「The Enpty Chair」
+                ゲーム「猫と宝くじと世界経済の終焉」エンディングテーマ「The Empty Chair」
             </div>
 
             <div class="music-info">
@@ -278,6 +332,20 @@
             </p>
 
         </div>
+
+        <hr>
+
+        <h2>💿 ALBUM PLAYLIST</h2>
+
+        <p class="small" style="text-align:center;">全21曲、順番に聴けますぬ。</p>
+
+        <div class="playlist" id="playlist">
+            <!-- ここに JavaScript でトラックが挿入されます -->
+        </div>
+
+        <p class="small">
+            ※掲載されている音源には権利上の都合により、試聴・公開できないものがあります。
+        </p>
 
         <hr>
 
@@ -320,10 +388,6 @@
 
         </div>
 
-        <p class="small">
-            ※掲載されている音源には権利上の都合により、試聴・公開できないものがあります。
-        </p>
-
         <hr>
 
         <h2>📻 FMピコぬ</h2>
@@ -336,7 +400,7 @@
             </p>
 
             <p>
-                <a href="../about/fm-pikonu.html">
+                <a href="../about/fm-piconu.html">
                     → FMピコぬを聴く
                 </a>
             </p>
@@ -356,6 +420,58 @@
         </div>
 
     </div>
+
+    <script>
+        // audio/piconu-music/ 内の実ファイルを参照しています。
+        //
+        // 【曲を追加・変更するとき】
+        // 下の trackRaw に1行足すだけでOKです。
+        //   ["ファイル名", "曲名(邦題)"],
+        var trackRaw = [
+            ["1_Sunday_in_the_Ballroom.mp3", "日曜日の音合わせ"],
+            ["2_Half_Past_Four_on_Main.mp3", "4時半、メーンストリートで"],
+            ["3_Milkshake_Mishap.mp3", "ミルクセーキの災難"],
+            ["4_Bicycle_by_the_Pier.mp3", "桟橋と自転車"],
+            ["5_Slick_Shoes_on_the_Floor.mp3", "つるっところんじゃった！"],
+            ["6_Midnight_at_the_Counter.mp3", "ウェイトレスのひと騒ぎ"],
+            ["7_Sunday_in_the_Square.mp3", "日曜日の広場のテーマ"],
+            ["8_Two_Left_Feet_in_.mp3", "踊れないふたり"],
+            ["9_Low_Beams_On_A_Tuesday_Night.mp3", "火曜の夜は、ロービームで"],
+            ["10_Midnight_in_the_Passenger_Seat.mp3", "助手席にて"],
+            ["11_The_Jukebox_Stumble.mp3", "ジュークボックスの手拍子"],
+            ["12_A_Waltz_for_the_Wallflower.mp3", "壁の花のためのワルツ"],
+            ["13_The_Stumbling_Upright.mp3", "まだまだ俺は酔ってない"],
+            ["14_Late_Night_Missteps.mp3", "深夜のしくじり"],
+            ["15_Last_Call_for_the_Upright.mp3", "なんとかなるさ"],
+            ["16_Shadows_by_the_River.mp3", "泣かないで"],
+            ["17_Seeds_We_Never_Sowed.mp3", "君のいない川辺"],
+            ["18_Before_the_Change.mp3", "思い出が運んできたもの"],
+            ["19_That_Old_Key.mp3", "古い鍵"],
+            ["20_Before_They_Pulled_It_Down.mp3", "アンコール"],
+            ["21_A_Song_for_Empty_Booths.mp3", "からっぽの席"]
+        ];
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var playlist = document.getElementById("playlist");
+            var html = "";
+
+            for (var i = 0; i < trackRaw.length; i++) {
+                var file = trackRaw[i][0];
+                var title = trackRaw[i][1];
+                var isRootAudio = trackRaw[i][2] === true;
+                var path = isRootAudio ? "../audio/" + file : "../audio/piconu-music/" + file;
+                var trackNo = i + 1;
+
+                html += "<div class=\"track\">";
+                html += "<span class=\"track-no\">" + trackNo + "</span>";
+                html += "<span class=\"track-title\">" + title + "</span>";
+                html += "<audio controls preload=\"none\"><source src=\"" + path + "\" type=\"audio/mpeg\"></audio>";
+                html += "</div>";
+            }
+
+            playlist.innerHTML = html;
+        });
+    </script>
 
 </body>
 
