@@ -153,23 +153,33 @@
         }
 
         .playlist {
-            max-width: 650px;
-            margin: 15px auto;
+            max-height: 50vh;
+            overflow-y: auto;
             border: 1px solid #555A82;
             background-color: #20233F;
+            text-align: left;
+            margin-top: 10px;
         }
 
         .track {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 14px;
+            padding: 8px 14px;
             border-bottom: 1px solid #30345C;
-            flex-wrap: wrap;
+            cursor: pointer;
         }
 
         .track:last-child {
             border-bottom: none;
+        }
+
+        .track:hover {
+            background-color: #30345C;
+        }
+
+        .track.playing {
+            background-color: #1E3A2E;
         }
 
         .track-no {
@@ -181,19 +191,87 @@
             text-align: right;
         }
 
+        .track.playing .track-no {
+            color: #FFB52E;
+        }
+
         .track-title {
             color: #DDE7E3;
             font-size: .92rem;
-            flex: 1 1 160px;
-            min-width: 120px;
+            flex: 1 1 auto;
         }
 
-        .track audio {
-            flex: 1 1 240px;
-            min-width: 200px;
-            max-width: 320px;
-            height: 32px;
+        .track-play-icon {
+            font-size: .8rem;
+            color: #8F94B5;
+            flex: 0 0 auto;
+        }
+
+        /* アルバムクリックで開くプレイヤーモーダル */
+        .player-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 12, 26, 0.85);
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .player-overlay.open {
+            display: flex;
+        }
+
+        .player-modal {
+            background-color: #20233F;
+            border: 1px solid #555A82;
+            max-width: 500px;
+            width: 100%;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .player-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid #555A82;
+        }
+
+        .player-modal-header h3 {
             margin: 0;
+        }
+
+        .player-modal-close {
+            background: none;
+            border: 1px solid #777CA5;
+            color: #DDE7E3;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-size: .9rem;
+        }
+
+        .now-playing {
+            padding: 12px 16px 0;
+            font-size: .85rem;
+            color: #BFC5D8;
+            text-align: left;
+        }
+
+        .now-playing .now-playing-title {
+            color: #FFB52E;
+            font-weight: bold;
+        }
+
+        .player-modal audio {
+            width: 100%;
+            max-width: none;
+            margin: 8px auto 4px;
+            padding: 0 16px;
         }
 
         .album-grid {
@@ -208,6 +286,11 @@
             background-color: #30345C;
             border: 1px solid #555A82;
             padding: 10px;
+            cursor: pointer;
+        }
+
+        .album:hover {
+            border-color: #00E676;
         }
 
         .album img {
@@ -255,18 +338,8 @@
         /* スマホ */
         @media (max-width: 600px) {
 
-            .track {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .track-no {
-                text-align: left;
-            }
-
-            .track audio {
-                max-width: 100%;
-                width: 100%;
+            .player-modal {
+                max-height: 92vh;
             }
 
             h1 {
@@ -293,7 +366,7 @@
         <h1>🎧 PICONU MUSIC 🎧</h1>
 
         <p>
-            🤖ピコぬ市の音楽コンテンツ置き場ですぬ。🤖<br>
+            ピコぬ市の音楽コンテンツ置き場ですぬ。<br>
             ゲーム音楽やオリジナル音源などを公開しています。
         </p>
 
@@ -308,7 +381,8 @@
 
         <div class="music-card">
 
-            <img src="../images/music/game-bgm01.jpg" alt="ゲームBGM ジャケット">
+            <img src="../images/music/game-bgm01.jpg"
+                alt="ゲームBGM ジャケット">
 
             <div class="music-title">
                 ゲーム「猫と宝くじと世界経済の終焉」エンディングテーマ「The Empty Chair」
@@ -334,26 +408,15 @@
 
         <hr>
 
-        <h2>💿 ALBUM PLAYLIST</h2>
-
-        <p class="small" style="text-align:center;">全21曲、順番に聴けますぬ。</p>
-
-        <div class="playlist" id="playlist">
-            <!-- ここに JavaScript でトラックが挿入されます -->
-        </div>
-
-        <p class="small">
-            ※掲載されている音源には権利上の都合により、試聴・公開できないものがあります。
-        </p>
-
-        <hr>
-
         <h2>💿 MUSIC ARCHIVE</h2>
+
+        <p class="small" style="text-align:center;">ジャケットを押すと、そのアルバムの曲が聴けますぬ。</p>
 
         <div class="album-grid">
 
-            <div class="album">
-                <img src="../images/music/1957,Piconu-City.jpg" alt="50年代オールディーズ">
+            <div class="album" id="albumOldies">
+                <img src="../images/music/1957,Piconu-City.jpg"
+                    alt="1957，Piconu City">
                 <div class="album-title">
                     「1957，Piconu City」
                 </div>
@@ -362,8 +425,9 @@
                 </div>
             </div>
 
-            <div class="album">
-                <img src="../images/music/game-bgm02.jpg" alt="ゲーム音楽">
+            <div class="album" data-soon="『猫と宝くじと経済の終焉』EDテーマ曲">
+                <img src="../images/music/game-bgm02.jpg"
+                    alt="ゲーム音楽">
                 <div class="album-title">
                     「『猫と宝くじと経済の終焉』EDテーマ曲」
                 </div>
@@ -372,8 +436,9 @@
                 </div>
             </div>
 
-            <div class="album">
-                <img src="../images/music/J_NUKA001.jpg" alt="JOHNNY NUKA">
+            <div class="album" data-soon="30円のブルース">
+                <img src="../images/music/J_NUKA001.jpg"
+                    alt="JOHNNY NUKA">
                 <div class="album-title">
                     「30円のブルース」
                 </div>
@@ -383,6 +448,10 @@
             </div>
 
         </div>
+
+        <p class="small">
+            ※掲載されている音源には権利上の都合により、試聴・公開できないものがあります。
+        </p>
 
         <hr>
 
@@ -417,6 +486,25 @@
 
     </div>
 
+    <!-- アルバム再生用モーダル -->
+    <div class="player-overlay" id="playerOverlay">
+        <div class="player-modal">
+            <div class="player-modal-header">
+                <h3 id="playerAlbumTitle">1957，Piconu City</h3>
+                <button class="player-modal-close" id="playerCloseBtn">✕</button>
+            </div>
+
+            <div class="now-playing">
+                ただいま再生中：<span class="now-playing-title" id="nowPlayingTitle">-</span>
+            </div>
+            <audio id="playerAudio" controls preload="none"></audio>
+
+            <div class="playlist" id="playlist">
+                <!-- ここに JavaScript でトラックが挿入されます -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // audio/piconu-music/ 内の実ファイルを参照しています。
         //
@@ -444,28 +532,83 @@
             ["18.Before_the_Change.mp3", "思い出が運んできたもの"],
             ["19.That_Old_Key.mp3", "古い鍵"],
             ["20.Before_They_Pulled_It_Down.mp3", "アンコール"],
-            ["21.A_Song_for_Empty_Booths.mp3", "からっぽの席"]    
+            ["21.A_Song_for_Empty_Booths.mp3", "からっぽの席"]
         ];
 
         document.addEventListener("DOMContentLoaded", function () {
             var playlist = document.getElementById("playlist");
+            var overlay = document.getElementById("playerOverlay");
+            var audioEl = document.getElementById("playerAudio");
+            var nowPlayingTitle = document.getElementById("nowPlayingTitle");
+            var albumTitleEl = document.getElementById("playerAlbumTitle");
+
+            // トラック一覧を組み立て
             var html = "";
-
             for (var i = 0; i < trackRaw.length; i++) {
-                var file = trackRaw[i][0];
                 var title = trackRaw[i][1];
-                var isRootAudio = trackRaw[i][2] === true;
-                var path = isRootAudio ? "../audio/" + file : "../audio/piconu-music/" + file;
                 var trackNo = i + 1;
-
-                html += "<div class=\"track\">";
+                html += "<div class=\"track\" data-index=\"" + i + "\">";
                 html += "<span class=\"track-no\">" + trackNo + "</span>";
                 html += "<span class=\"track-title\">" + title + "</span>";
-                html += "<audio controls preload=\"none\"><source src=\"" + path + "\" type=\"audio/mpeg\"></audio>";
+                html += "<span class=\"track-play-icon\">▶</span>";
                 html += "</div>";
             }
-
             playlist.innerHTML = html;
+
+            function playTrack(index) {
+                var file = trackRaw[index][0];
+                var title = trackRaw[index][1];
+                var isRootAudio = trackRaw[index][2] === true;
+                var path = isRootAudio ? "../audio/" + file : "../audio/piconu-music/" + file;
+
+                audioEl.src = path;
+                audioEl.play().catch(function () { });
+                nowPlayingTitle.textContent = title;
+
+                var rows = playlist.querySelectorAll(".track");
+                rows.forEach(function (row) {
+                    row.classList.toggle("playing", row.getAttribute("data-index") === String(index));
+                });
+            }
+
+            playlist.addEventListener("click", function (e) {
+                var row = e.target.closest(".track");
+                if (!row) return;
+                playTrack(parseInt(row.getAttribute("data-index"), 10));
+            });
+
+            // 曲が終わったら次の曲を自動再生
+            audioEl.addEventListener("ended", function () {
+                var current = playlist.querySelector(".track.playing");
+                if (!current) return;
+                var next = parseInt(current.getAttribute("data-index"), 10) + 1;
+                if (next < trackRaw.length) playTrack(next);
+            });
+
+            function openPlayer(albumName) {
+                albumTitleEl.textContent = albumName;
+                overlay.classList.add("open");
+            }
+            function closePlayer() {
+                overlay.classList.remove("open");
+                audioEl.pause();
+            }
+
+            document.getElementById("albumOldies").addEventListener("click", function () {
+                openPlayer("1957，Piconu City");
+            });
+
+            // まだ曲データが無いアルバム(クリックで準備中メッセージ)
+            document.querySelectorAll(".album[data-soon]").forEach(function (albumEl) {
+                albumEl.addEventListener("click", function () {
+                    alert("「" + albumEl.getAttribute("data-soon") + "」は近日公開予定ですぬ！");
+                });
+            });
+
+            document.getElementById("playerCloseBtn").addEventListener("click", closePlayer);
+            overlay.addEventListener("click", function (e) {
+                if (e.target === overlay) closePlayer();
+            });
         });
     </script>
 
