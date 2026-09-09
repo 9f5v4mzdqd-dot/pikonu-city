@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>PICONU MUSIC | ピコぬ市公式ホームページ</title>
+    <meta name="description" content="ピコぬ市で制作された音楽やゲームBGMなどを紹介しています。">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+    <style>
+        /* ピコぬ市・ちょっとサイバーな音楽ページ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #171A33;
+            font-family: "MS Pゴシック", "Osaka", sans-serif;
+            text-align: center;
+            color: #DDE7E3;
+            margin: 0;
+            padding: 20px 10px;
+        }
+
+        .page {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #DDE7E3;
+            font-size: 1.6rem;
+            margin: 10px 0 5px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #FFB52E;
+            font-size: 1.15rem;
+            margin: 28px 0 12px;
+        }
+
+        h3 {
+            color: #00E676;
+            font-size: 1rem;
+            margin: 18px 0 8px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: .95rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #555A82;
+            margin: 24px 0;
+        }
+
+        a {
+            color: #FFB52E;
+        }
+
+        a:hover {
+            color: #00E676;
+        }
+
+        .breadcrumb {
+            font-size: .78rem;
+            color: #8F94B5;
+            text-align: left;
+            margin: 0 0 14px;
+        }
+
+        .breadcrumb a {
+            color: #8F94B5;
+        }
+
+        .breadcrumb .sep {
+            margin: 0 4px;
+            color: #555A82;
+        }
+
+        .intro {
+            background-color: #30345C;
+            border: 1px solid #555A82;
+            padding: 14px;
+            margin: 18px auto;
+            max-width: 650px;
+        }
+
+        .status {
+            font-family: monospace;
+            font-size: .75rem;
+            color: #00E676;
+            text-align: left;
+            max-width: 650px;
+            margin: 10px auto;
+        }
+
+        .music-card {
+            background-color: #30345C;
+            border: 1px solid #555A82;
+            max-width: 650px;
+            margin: 18px auto;
+            padding: 18px;
+            text-align: left;
+        }
+
+        .music-card img {
+            display: block;
+            width: 220px;
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto 15px;
+            border: 1px solid #777CA5;
+        }
+
+        .music-title {
+            color: #DDE7E3;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 8px 0 14px;
+        }
+
+        .music-info {
+            font-size: .85rem;
+            color: #BFC5D8;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        audio {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 16px auto 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #171A33;
+            border: 1px solid #00E676;
+            color: #00E676;
+            padding: 3px 7px;
+            margin: 3px;
+            font-size: .72rem;
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 650px;
+            margin: 15px auto;
+        }
+
+        .album {
+            background-color: #30345C;
+            border: 1px solid #555A82;
+            padding: 10px;
+        }
+
+        .album img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 8px;
+            border: 1px solid #777CA5;
+        }
+
+        .album-title {
+            font-size: .82rem;
+            color: #DDE7E3;
+        }
+
+        .album-info {
+            font-size: .7rem;
+            color: #999FBE;
+            margin-top: 4px;
+        }
+
+        .fm-box {
+            background-color: #30345C;
+            border: 1px dashed #00E676;
+            padding: 15px;
+            max-width: 650px;
+            margin: 15px auto;
+        }
+
+        .small {
+            font-size: .78rem;
+            color: #999FBE;
+        }
+
+        .back {
+            margin-top: 28px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: .75rem;
+            color: #777D9C;
+        }
+
+        /* スマホ */
+        @media (max-width: 600px) {
+
+            .album-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 1.35rem;
+            }
+
+            .music-card {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <p class="breadcrumb">
+            <a href="../index.html">ホーム</a>
+            <span class="sep">›</span>
+            音楽コンテンツ
+        </p>
+
+        <h1>🎧 PICONU MUSIC 🎧</h1>
+
+        <p>
+            ピコぬ市の音楽コンテンツ置き場ですぬ。<br>
+            ゲーム音楽やオリジナル音源などを公開しています。
+        </p>
+
+        <div class="status">
+            AUDIO DATABASE : ONLINE<br>
+            MUSIC SERVER : PICONU CITY
+        </div>
+
+        <hr>
+
+        <h2>🎵 NEW RELEASE</h2>
+
+        <div class="music-card">
+
+            <img src="../images/music/game-bgm01.jpg"
+                alt="ゲームBGM ジャケット">
+
+            <div class="music-title">
+                ゲーム「猫と宝くじと世界経済の終焉」エンディングテーマ「The Enpty Chair」
+            </div>
+
+            <div class="music-info">
+                作曲：私とGemini<br>
+                収録時間：3:00<br>
+                <span class="tag">GAME MUSIC</span>
+                <span class="tag">ORIGINAL</span>
+            </div>
+
+            <audio controls>
+                <source src="../audio/The_Empty_Chair.mp3" type="audio/mpeg">
+                お使いのブラウザでは音楽を再生できません。
+            </audio>
+
+            <p class="small" style="text-align:center;">
+                ピコぬ市のゲームで使用されている「猫と宝くじと世界経済の終焉」エンディングテーマ曲です。
+            </p>
+
+        </div>
+
+        <hr>
+
+        <h2>💿 MUSIC ARCHIVE</h2>
+
+        <div class="album-grid">
+
+            <div class="album">
+                <img src="../images/music/album-oldies.jpg"
+                    alt="50年代オールディーズ">
+                <div class="album-title">
+                    50's OLDIES
+                </div>
+                <div class="album-info">
+                    OLDIES / ROCK'N'ROLL
+                </div>
+            </div>
+
+            <div class="album">
+                <img src="../images/music/album-game.jpg"
+                    alt="ゲーム音楽">
+                <div class="album-title">
+                    GAME MUSIC
+                </div>
+                <div class="album-info">
+                    PICONU GAME
+                </div>
+            </div>
+
+            <div class="album">
+                <img src="../images/music/album-original.jpg"
+                    alt="ピコぬ市オリジナル">
+                <div class="album-title">
+                    PICONU ORIGINAL
+                </div>
+                <div class="album-info">
+                    ORIGINAL MUSIC
+                </div>
+            </div>
+
+        </div>
+
+        <p class="small">
+            ※掲載されている音源には権利上の都合により、試聴・公開できないものがあります。
+        </p>
+
+        <hr>
+
+        <h2>📻 FMピコぬ</h2>
+
+        <div class="fm-box">
+
+            <p>
+                ピコぬ市内で放送されている<br>
+                謎のインターネットラジオですぬ。
+            </p>
+
+            <p>
+                <a href="../about/fm-pikonu.html">
+                    → FMピコぬを聴く
+                </a>
+            </p>
+
+        </div>
+
+        <hr>
+
+        <div class="back">
+            <a href="../index.html">← ピコぬ市ホームページへ戻る</a>
+        </div>
+
+        <div class="footer">
+            PICONU MUSIC<br>
+            ピコぬ市公式音楽コンテンツ<br>
+            Copyright © ピコぬ市 All Rights Reserved.
+        </div>
+
+    </div>
+
+</body>
+
+</html>
