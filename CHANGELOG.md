@@ -11,6 +11,34 @@
 
 ------------
 
+## 2026-09-10（2）
+---
+### 変更
+- `about/fm-piconu.html`:本文に「PICONU MUSIC」への紹介カードを追加(画像付きのプロモーションカードデザイン)
+---
+
+## 2026-09-10（1）
+---
+### 追加
+- `about/piconu-music.html`:「PICONU MUSIC」ページを新設。アルバムジャケットをクリックすると、専用プレイヤーモーダルでそのアルバムの曲が聴ける仕組みを実装
+- `audio/piconu-music/`:アルバム「1957，Piconu City」(全21曲)、「30円のブルース」(1曲)の音源を追加
+### 変更
+- `about/piconu-music.html`:MUSIC ARCHIVEの3アルバムを実名(「1957，Piconu City」「『猫と宝くじと経済の終焉』EDテーマ曲」「30円のブルース」)に更新し、ジャケット画像も差し替え
+- `about/piconu-music.html`:複数アルバムに対応できる構造(`albums`オブジェクト)に整理
+- `about/piconu-music.html`:パンくず(ホーム›FMピコぬ›音楽コンテンツ)を追加
+- `about/sitemap.html`・`data/search-index.json`:「音楽コンテンツ」を追加
+### 修正
+- `about/piconu-music.html`:「The Enpty Chair」の誤字を「The Empty Chair」に修正
+- `about/piconu-music.html`:FMピコぬへのリンク切れ(`fm-pikonu.html`→`fm-piconu.html`)を修正
+---
+
+## 2026-09-08（6）
+---
+### 修正
+- `game/001-elevator.html`〜`game/013-spice.html`(13ファイル):画面サイズ固定・セリフ欄固定高さ・エンディング画面の見切れ不具合を、014・015と同様の方法でまとめて修正
+- `game/001-elevator.html`・`game/008-pikopiko.html`:セリフ欄のCSSが新旧2重に定義されていた不具合を解消
+---
+
 ## 2026-09-08（5）
 ---
 ### 修正
