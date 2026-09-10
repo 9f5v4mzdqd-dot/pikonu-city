@@ -93,6 +93,58 @@
       position: relative;
       z-index: 1;
     }
+
+    .music-promo {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      text-decoration: none;
+      border-radius: 6px;
+      padding: 18px;
+      margin: 1.6em 0;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(0, 230, 118, .18), transparent 45%),
+        linear-gradient(135deg, #16182E 0%, #20233F 55%, #2B2F55 100%);
+      box-shadow: 0 3px 10px rgba(10, 12, 26, .4);
+      color: #f4f6fb;
+    }
+
+    .music-promo img {
+      width: 84px;
+      height: 84px;
+      flex: 0 0 auto;
+      border-radius: 4px;
+      border: 2px solid #00E676;
+      object-fit: cover;
+    }
+
+    .music-promo .music-promo-body h3 {
+      margin: 0 0 4px;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .music-promo .music-promo-body p {
+      margin: 0;
+      font-size: .85rem;
+      color: #C7CCE6;
+      line-height: 1.6;
+    }
+
+    .music-promo .music-promo-cta {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: .82rem;
+      color: #00E676;
+      font-weight: bold;
+    }
+
+    @media (max-width: 480px) {
+      .music-promo {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
@@ -155,6 +207,15 @@
         <div class="info-box">
           番組は今後も増えていく予定です。配信され次第、このページに追加していきます。
         </div>
+
+        <a class="music-promo" href="piconu-music.html">
+          <img src="../images/music/1957,Piconu-City.jpg" alt="PICONU MUSIC">
+          <div class="music-promo-body">
+            <h3>🎧 PICONU MUSIC</h3>
+            <p>番組で使用している楽曲などをまとめた音楽コンテンツを公開中。アルバムごとに聴けます。</p>
+            <span class="music-promo-cta">音楽コンテンツを見る &gt;</span>
+          </div>
+        </a>
       </div>
 
       <aside class="sidebar">
