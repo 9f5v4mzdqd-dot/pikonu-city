@@ -274,6 +274,34 @@
             padding: 0 16px;
         }
 
+        .player-toggles {
+            display: flex;
+            gap: 8px;
+            padding: 4px 16px 12px;
+        }
+
+        .toggle-btn {
+            flex: 1 1 auto;
+            background: #16182E;
+            border: 1px solid #555A82;
+            color: #BFC5D8;
+            font-size: .78rem;
+            padding: 7px 6px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .toggle-btn:hover {
+            border-color: #00E676;
+        }
+
+        .toggle-btn.active {
+            background: #1E3A2E;
+            border-color: #00E676;
+            color: #00E676;
+            font-weight: bold;
+        }
+
         .album-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -496,6 +524,11 @@
             </div>
             <audio id="playerAudio" controls preload="none"></audio>
 
+            <div class="player-toggles">
+                <button class="toggle-btn" id="shuffleBtn" title="シャッフル">🔀 シャッフル</button>
+                <button class="toggle-btn" id="repeatBtn" title="リピート">➡️ リピートなし</button>
+            </div>
+
             <div class="playlist" id="playlist">
                 <!-- ここに JavaScript でトラックが挿入されます -->
             </div>
@@ -552,7 +585,12 @@
             var audioEl = document.getElementById("playerAudio");
             var nowPlayingTitle = document.getElementById("nowPlayingTitle");
             var albumTitleEl = document.getElementById("playerAlbumTitle");
+            var shuffleBtn = document.getElementById("shuffleBtn");
+            var repeatBtn = document.getElementById("repeatBtn");
             var currentTracks = [];
+            var shuffleOn = false;
+            // repeatMode: "off"(リピートなし) → "all"(全曲リピート) → "one"(1曲リピート) の3段階
+            var repeatMode = "off";
 
             function renderTracks(tracks) {
                 var html = "";
@@ -588,12 +626,59 @@
                 playTrack(parseInt(row.getAttribute("data-index"), 10));
             });
 
-            // 曲が終わったら次の曲を自動再生
+            function pickRandomIndex(excludeIndex) {
+                if (currentTracks.length <= 1) return excludeIndex;
+                var next;
+                do {
+                    next = Math.floor(Math.random() * currentTracks.length);
+                } while (next === excludeIndex);
+                return next;
+            }
+
+            // 曲が終わった時の挙動(シャッフル・リピート設定に応じて分岐)
             audioEl.addEventListener("ended", function () {
                 var current = playlist.querySelector(".track.playing");
                 if (!current) return;
-                var next = parseInt(current.getAttribute("data-index"), 10) + 1;
-                if (next < currentTracks.length) playTrack(next);
+                var currentIndex = parseInt(current.getAttribute("data-index"), 10);
+
+                if (repeatMode === "one") {
+                    playTrack(currentIndex);
+                    return;
+                }
+
+                if (shuffleOn) {
+                    playTrack(pickRandomIndex(currentIndex));
+                    return;
+                }
+
+                var next = currentIndex + 1;
+                if (next < currentTracks.length) {
+                    playTrack(next);
+                } else if (repeatMode === "all") {
+                    playTrack(0);
+                }
+                // repeatMode === "off" かつ最後の曲の場合は、そのまま停止
+            });
+
+            shuffleBtn.addEventListener("click", function () {
+                shuffleOn = !shuffleOn;
+                shuffleBtn.classList.toggle("active", shuffleOn);
+            });
+
+            repeatBtn.addEventListener("click", function () {
+                if (repeatMode === "off") {
+                    repeatMode = "all";
+                    repeatBtn.textContent = "🔁 全曲リピート";
+                    repeatBtn.classList.add("active");
+                } else if (repeatMode === "all") {
+                    repeatMode = "one";
+                    repeatBtn.textContent = "🔂 1曲リピート";
+                    repeatBtn.classList.add("active");
+                } else {
+                    repeatMode = "off";
+                    repeatBtn.textContent = "➡️ リピートなし";
+                    repeatBtn.classList.remove("active");
+                }
             });
 
             function openPlayer(albumKey) {
