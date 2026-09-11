@@ -340,6 +340,42 @@
             margin-top: 4px;
         }
 
+        .artist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 650px;
+            margin: 15px auto;
+        }
+
+        .artist-card {
+            display: block;
+            background-color: #30345C;
+            border: 1px solid #555A82;
+            padding: 18px 10px;
+            text-decoration: none;
+        }
+
+        .artist-card:hover {
+            border-color: #00E676;
+        }
+
+        .artist-card .artist-name {
+            font-size: .88rem;
+            color: #DDE7E3;
+            line-height: 1.5;
+        }
+
+        .artist-card .artist-cta {
+            margin-top: 10px;
+            font-size: .72rem;
+            color: #FFB52E;
+        }
+
+        .artist-card:hover .artist-cta {
+            color: #00E676;
+        }
+
         .fm-box {
             background-color: #30345C;
             border: 1px dashed #00E676;
@@ -368,6 +404,10 @@
 
             .player-modal {
                 max-height: 92vh;
+            }
+
+            .artist-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             h1 {
@@ -477,6 +517,31 @@
         <p class="small">
             ※掲載されている音源には権利上の都合により、試聴・公開できないものがあります。
         </p>
+
+        <hr>
+
+        <h2>ＡＢＯＵＴ　ＡＲＴＩＳＴ</h2>
+
+        <p class="small" style="text-align:center;">各アーティストのプロフィールはこちら。</p>
+
+        <div class="artist-grid">
+
+            <a class="artist-card" href="artist-piconu-city-boys.html">
+                <div class="artist-name">The PICONU CITY BOY'S</div>
+                <div class="artist-cta">プロフィールを見る &gt;</div>
+            </a>
+
+            <a class="artist-card" href="artist-piconu-games.html">
+                <div class="artist-name">PICONU GAMES</div>
+                <div class="artist-cta">プロフィールを見る &gt;</div>
+            </a>
+
+            <a class="artist-card" href="artist-johnny-nuka.html">
+                <div class="artist-name">JOHNNY NUKA</div>
+                <div class="artist-cta">プロフィールを見る &gt;</div>
+            </a>
+
+        </div>
 
         <hr>
 
