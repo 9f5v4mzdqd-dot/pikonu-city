@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
     <title>ピコぬくんゲーム置き場 | お楽しみエリア | ピコぬ市公式ホームページ</title>
+
     <meta name="description" content="ピコぬ市で公開しているミニゲーム・シナリオゲームをまとめたリンク集です。">
+
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="icon" href="../favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+    <!-- ピコぬ市共通CSS -->
+    <link rel="stylesheet" href="../css/style.css">
 
     <style>
         /* =========================================
@@ -17,54 +23,43 @@
            ========================================= */
 
         :root {
-            --bg-dark: #0b1220;
-            --bg-card: #111c30;
-            --bg-card-hover: #172944;
-            --primary: #3b82f6;
-            --accent: #2563eb;
-            --accent-cyan: #22d3ee;
-            --text-main: #e5eefc;
-            --text-muted: #91a4bf;
-            --border: #263b5c;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background:
-                radial-gradient(circle at 12% 8%, rgba(99, 102, 241, .13), transparent 34%),
-                radial-gradient(circle at 88% 18%, rgba(236, 72, 153, .09), transparent 32%),
-                var(--bg-dark);
-            color: var(--text-main);
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                "Hiragino Kaku Gothic ProN",
-                "Hiragino Sans",
-                "Yu Gothic",
-                Meiryo,
-                sans-serif;
-            line-height: 1.7;
-        }
-
-        a {
-            color: inherit;
+            --game-bg-dark: #0b1220;
+            --game-bg-card: #111c30;
+            --game-bg-card-hover: #172944;
+            --game-primary: #3b82f6;
+            --game-accent: #2563eb;
+            --game-accent-cyan: #22d3ee;
+            --game-text-main: #e5eefc;
+            --game-text-muted: #91a4bf;
+            --game-border: #263b5c;
         }
 
         /* =========================================
-           ページ全体
+           ゲーム置き場全体
            ========================================= */
 
-        .page {
+        .game-zone-page {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at 12% 8%,
+                    rgba(59, 130, 246, .13),
+                    transparent 34%
+                ),
+                radial-gradient(
+                    circle at 88% 18%,
+                    rgba(34, 211, 238, .08),
+                    transparent 32%
+                ),
+                var(--game-bg-dark);
+            color: var(--game-text-main);
+        }
+
+        .game-zone-page a {
+            color: inherit;
+        }
+
+        .game-zone-inner {
             width: min(1120px, calc(100% - 40px));
             margin: 0 auto;
             padding: 0 0 70px;
@@ -74,74 +69,110 @@
            ヒーロー
            ========================================= */
 
-        .hero {
+        .game-zone-hero {
             position: relative;
             overflow: hidden;
-            margin: 0 calc((1120px - 100vw) / 2) 0;
+            margin: 0 calc((1120px - 100vw) / 2);
             padding: 72px max(20px, calc((100vw - 1120px) / 2)) 58px;
-            border-bottom: 1px solid var(--border);
+
+            border-bottom: 1px solid var(--game-border);
+
             background:
-                radial-gradient(circle at 78% 22%, rgba(59, 130, 246, .18), transparent 32%),
-                radial-gradient(circle at 18% 80%, rgba(34, 211, 238, .12), transparent 35%),
-                linear-gradient(135deg, #0c1424 0%, #101c31 55%, #0b1220 100%);
+                radial-gradient(
+                    circle at 78% 22%,
+                    rgba(59, 130, 246, .18),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 18% 80%,
+                    rgba(34, 211, 238, .12),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0c1424 0%,
+                    #101c31 55%,
+                    #0b1220 100%
+                );
         }
 
-        .hero::before {
+        .game-zone-hero::before {
             content: "GAME";
             position: absolute;
             right: 5%;
             bottom: -25px;
+
             color: rgba(255, 255, 255, .025);
+
             font-size: clamp(7rem, 18vw, 15rem);
             font-weight: 900;
             line-height: 1;
             letter-spacing: -.08em;
+
             pointer-events: none;
         }
 
-        .hero-inner {
+        .game-zone-hero-inner {
             position: relative;
             z-index: 1;
         }
 
-        .hero-kicker {
+        .game-zone-kicker {
             display: inline-block;
+
             margin: 0 0 14px;
             padding: 5px 11px;
+
             border: 1px solid rgba(34, 211, 238, .45);
             border-radius: 999px;
+
             background: rgba(34, 211, 238, .08);
+
             color: #67e8f9;
+
             font-size: .72rem;
             font-weight: 800;
             letter-spacing: .1em;
         }
 
-        h1 {
+        .game-zone-title {
             margin: 0;
-            color: var(--text-main);
+
+            color: var(--game-text-main);
+
             font-size: clamp(2rem, 5vw, 3.5rem);
             line-height: 1.15;
             letter-spacing: -.04em;
         }
 
-        h1::after {
+        .game-zone-title::after {
             content: "";
+
             display: block;
+
             width: 78px;
             height: 4px;
+
             margin-top: 18px;
+
             border-radius: 999px;
-            background: linear-gradient(90deg,
+
+            background:
+                linear-gradient(
+                    90deg,
                     #22d3ee,
                     #3b82f6,
-                    #60a5fa);
+                    #60a5fa
+                );
         }
 
-        .hero-lead {
+        .game-zone-lead {
             max-width: 680px;
+
             margin: 20px 0 0;
-            color: var(--text-muted);
+
+            color: var(--game-text-muted);
+
             font-size: .98rem;
             line-height: 1.85;
         }
@@ -150,29 +181,35 @@
            セクション見出し
            ========================================= */
 
-        .section-heading {
+        .game-section-heading {
             margin: 48px 0 24px;
         }
 
-        .section-label {
+        .game-section-label {
             margin: 0 0 5px;
+
             color: #38bdf8;
+
             font-size: .68rem;
             font-weight: 800;
             letter-spacing: .16em;
         }
 
-        h2 {
+        .game-section-title {
             margin: 0;
-            color: var(--text-main);
+
+            color: var(--game-text-main);
+
             font-size: 1.5rem;
             line-height: 1.35;
             letter-spacing: -.025em;
         }
 
-        .section-description {
+        .game-section-description {
             margin: 9px 0 0;
-            color: var(--text-muted);
+
+            color: var(--game-text-muted);
+
             font-size: .88rem;
         }
 
@@ -182,7 +219,9 @@
 
         .game-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 20px;
             margin: 0;
         }
@@ -190,13 +229,20 @@
         .game-card {
             display: flex;
             flex-direction: column;
+
             overflow: hidden;
             min-width: 0;
-            border: 1px solid var(--border);
+
+            border: 1px solid var(--game-border);
             border-radius: 14px;
-            background: var(--bg-card);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, .2);
+
+            background: var(--game-bg-card);
+
+            box-shadow:
+                0 10px 28px rgba(0, 0, 0, .2);
+
             text-decoration: none;
+
             transition:
                 transform .2s ease,
                 background .2s ease,
@@ -206,35 +252,51 @@
 
         .game-card:hover {
             transform: translateY(-5px);
-            background: var(--bg-card-hover);
+
+            background: var(--game-bg-card-hover);
+
             border-color: rgba(59, 130, 246, .7);
-            box-shadow: 0 14px 34px rgba(0, 0, 0, .28);
+
+            box-shadow:
+                0 14px 34px rgba(0, 0, 0, .28);
         }
 
         .game-banner {
             position: relative;
+
             overflow: hidden;
+
             aspect-ratio: 160 / 64;
-            background: #101321;
+
+            background: #101827;
         }
 
         .game-banner::after {
             content: "";
+
             position: absolute;
             inset: 0;
+
             background:
-                linear-gradient(180deg,
+                linear-gradient(
+                    180deg,
                     rgba(15, 17, 26, 0) 45%,
-                    rgba(15, 17, 26, .28) 100%);
+                    rgba(15, 17, 26, .28) 100%
+                );
+
             pointer-events: none;
         }
 
         .game-banner img {
             display: block;
+
             width: 100%;
             height: 100%;
+
             object-fit: cover;
-            transition: transform .25s ease;
+
+            transition:
+                transform .25s ease;
         }
 
         .game-card:hover .game-banner img {
@@ -244,14 +306,19 @@
         .game-body {
             display: flex;
             flex-direction: column;
+
             flex: 1;
+
             padding: 18px 18px 17px;
         }
 
         .game-number {
             display: inline-block;
+
             margin-bottom: 8px;
+
             color: #60a5fa;
+
             font-size: .68rem;
             font-weight: 800;
             letter-spacing: .12em;
@@ -259,16 +326,21 @@
 
         .game-name {
             display: block;
+
             margin-bottom: 8px;
-            color: var(--text-main);
+
+            color: var(--game-text-main);
+
             font-size: 1.02rem;
             font-weight: 750;
             line-height: 1.45;
+
             text-decoration: none;
         }
 
         .game-description {
-            color: var(--text-muted);
+            color: var(--game-text-muted);
+
             font-size: .84rem;
             line-height: 1.7;
         }
@@ -279,9 +351,12 @@
 
         .game-play {
             display: inline-block;
+
             margin-top: auto;
             padding-top: 14px;
+
             color: #93c5fd;
+
             font-size: .78rem;
             font-weight: 750;
         }
@@ -294,34 +369,36 @@
            利用について
            ========================================= */
 
-        .usage-section {
+        .game-usage-section {
             margin-top: 58px;
         }
 
-        .notice {
+        .game-notice {
             padding: 22px 24px;
-            border: 1px solid var(--border);
+
+            border: 1px solid var(--game-border);
             border-radius: 14px;
+
             background:
-                radial-gradient(circle at 95% 5%, rgba(59, 130, 246, .12), transparent 35%),
-                var(--bg-card);
+                radial-gradient(
+                    circle at 95% 5%,
+                    rgba(59, 130, 246, .12),
+                    transparent 35%
+                ),
+                var(--game-bg-card);
         }
 
-        .notice-title {
-            margin: 0 0 12px;
-            color: var(--text-main);
-            font-size: .94rem;
-        }
-
-        .notice ul {
+        .game-notice ul {
             margin: 0;
             padding-left: 1.4em;
-            color: var(--text-muted);
+
+            color: var(--game-text-muted);
+
             font-size: .84rem;
             line-height: 1.8;
         }
 
-        .notice li {
+        .game-notice li {
             margin-bottom: 5px;
         }
 
@@ -329,28 +406,37 @@
            戻るリンク
            ========================================= */
 
-        .back {
+        .game-back {
             margin-top: 34px;
+
             text-align: center;
         }
 
-        .back a {
+        .game-back a {
             display: inline-block;
+
             padding: 9px 15px;
-            border: 1px solid var(--border);
+
+            border: 1px solid var(--game-border);
             border-radius: 999px;
-            color: #a5b4fc;
+
+            color: #a5c7ff;
+
             font-size: .82rem;
+
             text-decoration: none;
+
             transition:
                 background .2s ease,
                 border-color .2s ease,
                 color .2s ease;
         }
 
-        .back a:hover {
-            background: var(--bg-card);
+        .game-back a:hover {
+            background: var(--game-bg-card);
+
             border-color: rgba(59, 130, 246, .6);
+
             color: #67e8f9;
         }
 
@@ -358,13 +444,17 @@
            フッター
            ========================================= */
 
-        .footer {
+        .game-zone-footer {
             margin-top: 42px;
             padding-top: 24px;
-            border-top: 1px solid var(--border);
+
+            border-top: 1px solid var(--game-border);
+
             color: #64748b;
+
             font-size: .72rem;
             line-height: 1.8;
+
             text-align: center;
         }
 
@@ -373,209 +463,421 @@
            ========================================= */
 
         @media (max-width: 900px) {
+
             .game-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
         }
 
         @media (max-width: 600px) {
-            .page {
+
+            .game-zone-inner {
                 width: min(100% - 28px, 1120px);
             }
 
-            .hero {
+            .game-zone-hero {
                 margin-left: -14px;
                 margin-right: -14px;
+
                 padding: 48px 14px 42px;
             }
 
-            .hero::before {
+            .game-zone-hero::before {
                 right: -8%;
                 bottom: -10px;
+
                 font-size: 7rem;
             }
 
             .game-grid {
                 grid-template-columns: 1fr;
+
                 gap: 16px;
             }
 
-            .section-heading {
+            .game-section-heading {
                 margin-top: 38px;
             }
 
-            .notice {
+            .game-notice {
                 padding: 18px;
             }
+
         }
     </style>
 </head>
 
+
 <body>
 
-    <div class="page">
+    <div class="game-zone-page">
 
-        <header class="hero">
-            <div class="hero-inner">
-                <p class="hero-kicker">PICONU CITY / GAME ZONE</p>
-
-                <h1>ピコぬくんゲーム置き場</h1>
-
-                <p class="hero-lead">
-                    ピコぬ市には、ちょっと変わったゲームがいろいろありますぬ。<br>
-                    暇なときに、気になるゲームで遊んでいってください。
-                </p>
-            </div>
-        </header>
+        <div class="game-zone-inner">
 
 
-        <main>
+            <!-- =====================================
+                 ヒーロー
+                 ===================================== -->
 
-            <section aria-labelledby="game-heading">
+            <header class="game-zone-hero">
 
-                <div class="section-heading">
-                    <p class="section-label">PLAYABLE CONTENT</p>
+                <div class="game-zone-hero-inner">
 
-                    <h2 id="game-heading">
-                        あそべるゲーム
-                        <span id="game-count">9</span>種
-                    </h2>
-
-                    <p class="section-description">
-                        気になるゲームを選んで、ピコぬ市の遊び場へどうぞ。
+                    <p class="game-zone-kicker">
+                        PICONU CITY / GAME ZONE
                     </p>
-                </div>
 
+                    <h1 class="game-zone-title">
+                        ピコぬくんゲーム置き場
+                    </h1>
 
-                <div class="game-grid" id="game-list">
-                    <!-- JavaScriptでゲームカードを生成します -->
-                </div>
-
-            </section>
-
-
-            <section class="usage-section" aria-labelledby="usage-heading">
-
-                <div class="section-heading">
-                    <p class="section-label">GUIDELINES</p>
-
-                    <h2 id="usage-heading">ご利用について</h2>
-
-                    <p class="section-description">
-                        ゲームで使用している画像・コンテンツについてのお願いです。
+                    <p class="game-zone-lead">
+                        ピコぬ市には、ちょっと変わったゲームがいろいろありますぬ。<br>
+                        暇なときに、気になるゲームで遊んでいってくださいぬ。
                     </p>
-                </div>
-
-
-                <div class="notice">
-
-                    <ul>
-                        <li>各ゲームへのリンク・ご紹介は自由に行っていただけます。</li>
-                        <li>ゲーム画面やバナー画像を、無断で転載・再配布しないでください。</li>
-                        <li>商用利用はご遠慮ください（個人利用の範囲でお使いいただけます）。</li>
-                        <li>ご紹介の際は「©ピコぬ市」などの出典表記をお願いします。</li>
-                        <li>バナー画像への直リンク（このサイトの画像URLを直接読み込んでのご利用）はご遠慮ください。</li>
-                    </ul>
 
                 </div>
 
-            </section>
+            </header>
 
 
-            <div class="back">
-                <a href="piconu-kun.html">← ピコぬくんとは へ戻る</a>
-            </div>
-
-        </main>
+            <main>
 
 
-        <footer class="footer">
-            ピコぬくんゲーム置き場<br>
-            Copyright © ピコぬ市 All Rights Reserved.
-        </footer>
+                <!-- =====================================
+                     ゲーム一覧
+                     ===================================== -->
+
+                <section aria-labelledby="game-heading">
+
+                    <div class="game-section-heading">
+
+                        <p class="game-section-label">
+                            PLAYABLE CONTENT
+                        </p>
+
+                        <h2
+                            id="game-heading"
+                            class="game-section-title"
+                        >
+                            あそべるゲーム
+                            <span id="game-count">9</span>種
+                        </h2>
+
+                        <p class="game-section-description">
+                           気になるゲームを選んで、好きなものから遊んでみてくださいぬ。
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="game-grid"
+                        id="game-list"
+                    >
+                        <!-- JavaScriptでゲームカードを生成します -->
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================
+                     利用について
+                     ===================================== -->
+
+                <section
+                    class="game-usage-section"
+                    aria-labelledby="usage-heading"
+                >
+
+                    <div class="game-section-heading">
+
+                        <p class="game-section-label">
+                            GUIDELINES
+                        </p>
+
+                        <h2
+                            id="usage-heading"
+                            class="game-section-title"
+                        >
+                            ご利用について
+                        </h2>
+
+                        <p class="game-section-description">
+                            ゲームで使用している画像・コンテンツについてのお願いです。
+                        </p>
+
+                    </div>
+
+
+                    <div class="game-notice">
+
+                        <ul>
+
+                            <li>
+                                各ゲームへのリンク・ご紹介は自由に行っていただけます。
+                            </li>
+
+                            <li>
+                                ゲーム画面やバナー画像を、無断で転載・再配布しないでください。
+                            </li>
+
+                            <li>
+                                商用利用はご遠慮ください（個人利用の範囲でお使いいただけます）。
+                            </li>
+
+                            <li>
+                                ご紹介の際は「©ピコぬ市」などの出典表記をお願いします。
+                            </li>
+
+                            <li>
+                                バナー画像への直リンク（このサイトの画像URLを直接読み込んでのご利用）はご遠慮ください。
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================
+                     戻る
+                     ===================================== -->
+
+                <div class="game-back">
+
+                    <a href="piconu-kun.html">
+                        ← ピコぬくんとは へ戻る
+                    </a>
+
+                </div>
+
+
+            </main>
+
+
+            <footer class="game-zone-footer">
+
+                ピコぬくんゲーム置き場<br>
+
+                Copyright © ピコぬ市 All Rights Reserved.
+
+            </footer>
+
+
+        </div>
 
     </div>
 
 
+    <!-- =========================================
+         ゲームデータ
+         ========================================= -->
+
     <script>
+
         // images/banners/ 内の実ファイルのみを参照しています。
         //
         // 【ゲームを追加するとき】
         // 下の gameRaw に1行足すだけでOKです。
         //
-        //   ["バナーのファイル名", "リンク先URL(相対パス)", "ゲーム名", "簡単な説明"],
+        // ["バナーのファイル名", "リンク先URL(相対パス)", "ゲーム名", "簡単な説明"],
 
         var gameRaw = [
-            ["banner-game.jpg", "piconu-kun-escapegame.html", "ピコぬくんの脱出ゲーム", "<strong>全3ステージの脱出ゲーム。</strong><br>ピコぬくんは無事に脱出できるのかぬ！？"],
 
-            ["banner-quiz.jpg", "piconu-quiz.html", "ピコぬ市検定（初級）", "<strong>ピコぬ市についての検定クイズ。</strong> あなたは何問正解できるぬ？"],
+            [
+                "banner-game.jpg",
+                "piconu-kun-escapegame.html",
+                "ピコぬくんの脱出ゲーム",
+                "<strong>全3ステージの脱出ゲーム。</strong><br>ピコぬくんは無事に脱出できるのかぬ！？"
+            ],
 
-            ["banner-quiz2.jpg", "piconu-quiz-chukyu.html", "ピコぬ市検定（中級）", "<strong>ピコぬ市についての検定クイズ「中級編」だぬ。</strong> あなたは何問正解できるぬ？"],
+            [
+                "banner-quiz.jpg",
+                "piconu-quiz.html",
+                "ピコぬ市検定（初級）",
+                "<strong>ピコぬ市についての検定クイズ。</strong> あなたは何問正解できるぬ？"
+            ],
 
-            ["banner-gendaibyo-sodan-game.jpg", "gendaibyo-soudan-game.html", "現代病相談窓口記録ファイル", "<strong>現代病相談窓口に寄せられた相談記録を、シナリオゲーム形式で公開。</strong><br>あなたも相談窓口を訪れてみるぬ？"],
+            [
+                "banner-quiz2.jpg",
+                "piconu-quiz-chukyu.html",
+                "ピコぬ市検定（中級）",
+                "<strong>ピコぬ市についての検定クイズ「中級編」だぬ。</strong> あなたは何問正解できるぬ？"
+            ],
 
-            ["banner-negi-game.jpg", "../game/negi-game.html", "ネギ盛り限界チャレンジ", "<strong>市役所食堂の名物「ネギ大盛り」に挑戦するミニゲーム。</strong><br>カタブツ職員に見つからないように……キミはどこまで盛れるぬ！？"],
+            [
+                "banner-gendaibyo-sodan-game.jpg",
+                "gendaibyo-soudan-game.html",
+                "現代病相談窓口記録ファイル",
+                "<strong>現代病相談窓口に寄せられた相談記録を、シナリオゲーム形式で公開。</strong><br>あなたも相談窓口を訪れてみるぬ？"
+            ],
 
-            ["banner-neko-game.jpg", "neko-game.html", "宝くじと猫と、世界経済の終焉", "<strong>猫と宝くじと世界経済をめぐるテキストアドベンチャー。</strong><br>……なぜこの組み合わせなのかは、遊んでみればわかるかもしれませんぬ。"],
+            [
+                "banner-negi-game.jpg",
+                "../game/negi-game.html",
+                "ネギ盛り限界チャレンジ",
+                "<strong>市役所食堂の名物「ネギ大盛り」に挑戦するミニゲーム。</strong><br>カタブツ職員に見つからないように……キミはどこまで盛れるぬ！？"
+            ],
 
-            ["banner-tsunekazu-game.jpg", "../game/tsunekazu-game.html", "恒一をさがせ！", "<strong>市役所のどこかにいる恒一を探すゲーム。</strong><br>……いったい、どこにいるぬ？"],
+            [
+                "banner-neko-game.jpg",
+                "neko-game.html",
+                "宝くじと猫と、世界経済の終焉",
+                "<strong>猫と宝くじと世界経済をめぐるテキストアドベンチャー。</strong><br>……なぜこの組み合わせなのかは、遊んでみればわかるかもしれませんぬ。"
+            ],
 
-            ["banner-piconumatch3.jpg", "../game/piconu-match3-game.html", "ピコぬくんのマッチ3", "<strong>書類作成中に寝てしまったピコぬくん。</strong><br>なくした鍵を一緒に探すマッチ3パズルだぬ！"],
+            [
+                "banner-tsunekazu-game.jpg",
+                "../game/tsunekazu-game.html",
+                "恒一をさがせ！",
+                "<strong>市役所のどこかにいる恒一を探すゲーム。</strong><br>……いったい、どこにいるぬ？"
+            ],
 
-            ["banner-imo.jpg", "../game/imoya.html", "ピコぬくんの焼き芋屋さん", "<strong>焼き芋屋さんシミュレーションゲーム。</strong><br>ボクといっしょに、おいしい焼き芋屋さんはじめてみないかぬ？<br>※本ゲームは、パソコンでのプレイを推奨していますぬ。"]
+            [
+                "banner-piconumatch3.jpg",
+                "../game/piconu-match3-game.html",
+                "ピコぬくんのマッチ3",
+                "<strong>書類作成中に寝てしまったピコぬくん。</strong><br>なくした鍵を一緒に探すマッチ3パズルだぬ！"
+            ],
+
+            [
+                "banner-imo.jpg",
+                "../game/imoya.html",
+                "ピコぬくんの焼き芋屋さん",
+                "<strong>焼き芋屋さんシミュレーションゲーム。</strong><br>ボクといっしょに、おいしい焼き芋屋さんはじめてみないかぬ？<br>※本ゲームは、パソコンでのプレイを推奨していますぬ。"
+            ]
+
         ];
 
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
-            var gameList = document.getElementById("game-list");
-            var cardsHtml = "";
+                var gameList =
+                    document.getElementById("game-list");
 
-            for (var i = 0; i < gameRaw.length; i++) {
+                var cardsHtml = "";
 
-                var file = gameRaw[i][0];
-                var href = gameRaw[i][1];
-                var name = gameRaw[i][2];
-                var desc = gameRaw[i][3] || "";
-                var imgPath = "../images/banners/" + file;
 
-                var number = String(i + 1).padStart(2, "0");
+                for (
+                    var i = 0;
+                    i < gameRaw.length;
+                    i++
+                ) {
 
-                cardsHtml += '<a class="game-card" href="' + href + '">';
+                    var file =
+                        gameRaw[i][0];
 
-                cardsHtml += '<div class="game-banner">';
-                cardsHtml += '<img src="' + imgPath + '" alt="' + name + '" loading="lazy">';
-                cardsHtml += '</div>';
+                    var href =
+                        gameRaw[i][1];
 
-                cardsHtml += '<div class="game-body">';
+                    var name =
+                        gameRaw[i][2];
 
-                cardsHtml += '<span class="game-number">GAME ' + number + '</span>';
+                    var desc =
+                        gameRaw[i][3] || "";
 
-                cardsHtml += '<span class="game-name">' + name + '</span>';
+                    var imgPath =
+                        "../images/banners/" + file;
 
-                cardsHtml += '<div class="game-description">';
-                cardsHtml += desc;
-                cardsHtml += '</div>';
+                    var number =
+                        String(i + 1).padStart(2, "0");
 
-                cardsHtml += '<span class="game-play">ゲームで遊ぶ &gt;</span>';
 
-                cardsHtml += '</div>';
+                    cardsHtml +=
+                        '<a class="game-card" href="' +
+                        href +
+                        '">';
 
-                cardsHtml += '</a>';
+
+                    cardsHtml +=
+                        '<div class="game-banner">';
+
+
+                    cardsHtml +=
+                        '<img src="' +
+                        imgPath +
+                        '" alt="' +
+                        name +
+                        '" loading="lazy">';
+
+
+                    cardsHtml +=
+                        '</div>';
+
+
+                    cardsHtml +=
+                        '<div class="game-body">';
+
+
+                    cardsHtml +=
+                        '<span class="game-number">' +
+                        'GAME ' +
+                        number +
+                        '</span>';
+
+
+                    cardsHtml +=
+                        '<span class="game-name">' +
+                        name +
+                        '</span>';
+
+
+                    cardsHtml +=
+                        '<div class="game-description">';
+
+                    cardsHtml += desc;
+
+                    cardsHtml +=
+                        '</div>';
+
+
+                    cardsHtml +=
+                        '<span class="game-play">' +
+                        'ゲームで遊ぶ &gt;' +
+                        '</span>';
+
+
+                    cardsHtml +=
+                        '</div>';
+
+
+                    cardsHtml +=
+                        '</a>';
+
+                }
+
+
+                gameList.innerHTML =
+                    cardsHtml;
+
+
+                var countEl =
+                    document.getElementById(
+                        "game-count"
+                    );
+
+
+                if (countEl) {
+
+                    countEl.textContent =
+                        gameRaw.length;
+
+                }
+
             }
+        );
 
-            gameList.innerHTML = cardsHtml;
-
-
-            var countEl = document.getElementById("game-count");
-
-            if (countEl) {
-                countEl.textContent = gameRaw.length;
-            }
-
-        });
     </script>
 
+
+    <!-- =========================================
+         ページ情報
+         ========================================= -->
 
     <script>
         window.PAGE_META = {
@@ -591,7 +893,10 @@
             ]
         };
     </script>
+
+    <!-- ピコぬ市共通JS -->
     <script src="../js/common.js"></script>
+
 
 </body>
 
