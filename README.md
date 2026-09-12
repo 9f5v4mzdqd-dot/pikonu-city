@@ -126,6 +126,34 @@ JavaScriptで動的に生成します。各ページのHTMLには本文(`<main i
 `js/common.js` は自身の `<script src>` からサイトルートまでの相対パスを自動計算するため、
 ディレクトリの深さに関わらずページ側で相対パスを調整する必要はありません。
 
+### パンくずの決め方
+
+**サイトマップの階層 ＝ パンくずの階層** で統一する。`about/sitemap.html`で
+そのページが何段インデントされているか(＝どの親ページの子・孫として
+掲載されているか)を確認し、そのままの順番・階層数を`breadcrumb`配列に
+反映する。省略したり、途中の階層を飛ばしたりしない。
+
+例:サイトマップで
+
+```html
+<li><a href="fm-piconu.html">FMピコぬ</a></li>
+<li><a href="piconu-music.html">　音楽コンテンツ</a></li>
+<li><a href="artist-piconu-city-boys.html">　　The PICONU CITY BOY'S プロフィール</a></li>
+```
+
+となっている場合、`artist-piconu-city-boys.html`のパンくずは
+
+```js
+breadcrumb: [
+  { label: "FMピコぬ", href: "fm-piconu.html" },
+  { label: "音楽コンテンツ", href: "piconu-music.html" },
+  { label: "The PICONU CITY BOY'S プロフィール" }
+]
+```
+
+のように、サイトマップと同じ2階層ぶんをすべて含める(「音楽コンテンツ」を
+省略しない)。
+
 新規ページの `<head>` には、ファビコン3点(`favicon.svg` `favicon.ico` `apple-touch-icon.png`)
 へのリンクも忘れずに含めます(既存ページの `<head>` をコピーするのが確実です)。
 
