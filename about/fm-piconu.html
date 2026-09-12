@@ -1,239 +1,441 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 
 <head>
   <meta charset="UTF-8">
-  <title>FMピコぬ | 市政情報 | ピコぬ市公式ホームページ</title>
-  <meta name="description" content="ピコぬ市の放送局「FMピコぬ」の番組一覧です。ピックアップ! ピコぬ市ラジオ、深掘りラジオをお届けしています。">
+  <title>FMピコぬ | お楽しみエリア | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬ市の放送局「FMピコぬ」の番組一覧です。ピックアップ! ピコぬ市ラジオ、深掘りラジオ、どうでもいいラジオをお届けしています。">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../css/style.css">
+
   <style>
+    /* =========================================
+       FMピコぬ / ENTERTAINMENT AREA
+       ========================================= */
+
+    :root {
+      --fm-bg: #0f111a;
+      --fm-card: #181c2b;
+      --fm-card-hover: #22273d;
+      --fm-primary: #6366f1;
+      --fm-accent: #ec4899;
+      --fm-cyan: #06b6d4;
+      --fm-text: #f8fafc;
+      --fm-muted: #94a3b8;
+      --fm-border: #2e354f;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 10%, rgba(99, 102, 241, .12), transparent 35%),
+        radial-gradient(circle at 85% 20%, rgba(6, 182, 212, .08), transparent 32%),
+        var(--fm-bg);
+    }
+
+    /* ページヘッダー */
+
+    .page-header {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(236, 72, 153, .18), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, .16), transparent 40%),
+        linear-gradient(135deg, #111426 0%, #15182a 55%, #11131f 100%);
+      border-bottom: 1px solid var(--fm-border);
+      padding: 56px 0 52px;
+    }
+
+    .page-header .container {
+      position: relative;
+    }
+
     .radio-station {
       display: inline-block;
-      font-size: .8rem;
-      font-weight: bold;
-      color: #fff;
-      background: var(--color-primary);
-      padding: 3px 10px;
-      border-radius: 3px;
-      margin-bottom: 10px;
+      margin: 0 0 14px;
+      padding: 5px 11px;
+      border: 1px solid rgba(6, 182, 212, .45);
+      border-radius: 999px;
+      background: rgba(6, 182, 212, .08);
+      color: #67e8f9;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
+
+    .page-header h1 {
+      margin: 0;
+      color: var(--fm-text);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -.03em;
+    }
+
+    .page-header h1::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 4px;
+      margin-top: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--fm-cyan), var(--fm-accent), var(--fm-primary));
+    }
+
+    .page-header .lead {
+      max-width: 680px;
+      margin-top: 18px;
+      color: var(--fm-muted);
+      line-height: 1.8;
+    }
+
+    /* メインコンテンツ */
+
+    .content-layout {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px 20px 70px;
+    }
+
+    .main-content {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .main-content > p:first-child {
+      max-width: 760px;
+      color: #cbd5e1;
+      line-height: 1.9;
+    }
+
+    .main-content h2 {
+      margin: 46px 0 20px;
+      color: var(--fm-text);
+      font-size: 1.45rem;
+      letter-spacing: -.02em;
+    }
+
+    .main-content h2::before {
+      content: "RADIO";
+      display: block;
+      margin-bottom: 7px;
+      color: var(--fm-cyan);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+    /* 番組カード */
 
     .show-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
-      margin: 24px 0;
+      margin: 24px 0 32px;
     }
 
     .show-card {
       display: block;
-      text-decoration: none;
       position: relative;
       overflow: hidden;
-      border-radius: 6px;
-      padding: 20px;
-      background:
-        radial-gradient(circle at 88% 12%, rgba(196, 154, 60, .18), transparent 45%),
-        linear-gradient(135deg, #0f2743 0%, #1a4b8c 60%, #123a6b 100%);
-      box-shadow: 0 3px 10px rgba(15, 39, 67, .35);
-      color: #f4f6fb;
+      padding: 0;
+      border: 1px solid var(--fm-border);
+      border-radius: 14px;
+      background: var(--fm-card);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .22);
+      color: var(--fm-text);
+      text-decoration: none;
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+    }
+
+    .show-card:hover {
+      transform: translateY(-4px);
+      background: var(--fm-card-hover);
+      border-color: rgba(99, 102, 241, .65);
     }
 
     .show-card::before {
       content: "";
       position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 160px;
-      height: 160px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23c49a3c' stroke-width='3' opacity='0.35'%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3Ccircle cx='100' cy='100' r='55'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--fm-cyan),
+        var(--fm-primary),
+        var(--fm-accent)
+      );
+      z-index: 2;
     }
 
     .show-card img {
       display: block;
       width: 100%;
-      max-width: 220px;
-      margin: 0 auto 14px;
-      border-radius: 4px;
-      border: 2px solid #c49a3c;
+      max-width: none;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
       position: relative;
       z-index: 1;
     }
 
     .show-card h3 {
-      margin: 0 0 6px;
-      color: #fff;
-      font-size: 1.1rem;
-      position: relative;
-      z-index: 1;
+      margin: 18px 18px 7px;
+      color: var(--fm-text);
+      font-size: 1.08rem;
+      line-height: 1.45;
     }
 
     .show-card p {
-      margin: 0;
+      margin: 0 18px;
+      color: var(--fm-muted);
       font-size: .88rem;
-      color: #d9e2f2;
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
+      line-height: 1.75;
     }
 
     .show-card .show-cta {
       display: inline-block;
-      margin-top: 12px;
-      font-size: .82rem;
-      color: #f4d792;
-      font-weight: bold;
-      position: relative;
-      z-index: 1;
+      margin: 15px 18px 19px;
+      color: #a5b4fc;
+      font-size: .8rem;
+      font-weight: 700;
     }
+
+    .show-card:hover .show-cta {
+      color: #67e8f9;
+    }
+
+    /* 番組追加のお知らせ */
+
+    .info-box {
+      margin: 30px 0 38px;
+      padding: 18px 20px;
+      border: 1px solid var(--fm-border);
+      border-radius: 12px;
+      background: rgba(24, 28, 43, .72);
+      color: var(--fm-muted);
+      font-size: .88rem;
+      line-height: 1.7;
+    }
+
+    /* PICONU MUSIC 導線 */
 
     .music-promo {
       display: flex;
       align-items: center;
-      gap: 18px;
-      text-decoration: none;
-      border-radius: 6px;
-      padding: 18px;
-      margin: 1.6em 0;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      margin: 0;
+      border: 1px solid var(--fm-border);
+      border-radius: 14px;
       background:
-        radial-gradient(circle at 90% 10%, rgba(0, 230, 118, .18), transparent 45%),
-        linear-gradient(135deg, #16182E 0%, #20233F 55%, #2B2F55 100%);
-      box-shadow: 0 3px 10px rgba(10, 12, 26, .4);
-      color: #f4f6fb;
+        radial-gradient(circle at 90% 10%, rgba(236, 72, 153, .14), transparent 42%),
+        radial-gradient(circle at 10% 90%, rgba(6, 182, 212, .10), transparent 42%),
+        #181c2b;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .2);
+      color: var(--fm-text);
+      text-decoration: none;
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+    }
+
+    .music-promo:hover {
+      transform: translateY(-3px);
+      border-color: rgba(236, 72, 153, .6);
+    }
+
+    .music-promo::after {
+      content: "MUSIC";
+      position: absolute;
+      right: 18px;
+      top: 12px;
+      color: rgba(255, 255, 255, .035);
+      font-size: 3.8rem;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      pointer-events: none;
     }
 
     .music-promo img {
-      width: 84px;
-      height: 84px;
+      width: 86px;
+      height: 86px;
       flex: 0 0 auto;
-      border-radius: 4px;
-      border: 2px solid #00E676;
+      border: 1px solid rgba(236, 72, 153, .65);
+      border-radius: 10px;
       object-fit: cover;
     }
 
+    .music-promo .music-promo-body {
+      position: relative;
+      z-index: 1;
+    }
+
     .music-promo .music-promo-body h3 {
-      margin: 0 0 4px;
-      color: #fff;
-      font-size: 1.05rem;
+      margin: 0 0 5px;
+      color: var(--fm-text);
+      font-size: 1.08rem;
     }
 
     .music-promo .music-promo-body p {
       margin: 0;
+      color: var(--fm-muted);
       font-size: .85rem;
-      color: #C7CCE6;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .music-promo .music-promo-cta {
       display: inline-block;
-      margin-top: 8px;
-      font-size: .82rem;
-      color: #00E676;
-      font-weight: bold;
+      margin-top: 9px;
+      color: #f9a8d4;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    /* サイドバーはお楽しみエリアでは使用しない */
+
+    .sidebar {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .page-header {
+        padding: 42px 0 40px;
+      }
+
+      .content-layout {
+        padding-top: 30px;
+      }
+
+      .show-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
       .music-promo {
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
+      }
+
+      .music-promo img {
+        width: 76px;
+        height: 76px;
       }
     }
   </style>
+
 </head>
 
 <body id="top">
 
   <main id="main">
-    <div class="page-header">
-      <div class="container">
-        <p class="radio-station">FMピコぬ</p>
-        <h1>FMピコぬ</h1>
-        <p class="lead">ピコぬ市発、市政広報ラジオ局です。番組ごとにお楽しみください。</p>
-      </div>
-    </div>
 
-    <div class="content-layout">
-      <div class="main-content">
+```
+<div class="page-header">
+  <div class="container">
+    <p class="radio-station">PICONU CITY / RADIO</p>
+    <h1>FMピコぬ</h1>
+    <p class="lead">
+      ピコぬ市からお届けする架空の放送局。<br>
+      市内のできごと、資料、どうでもいい話などをラジオ形式でお楽しみください。
+    </p>
+  </div>
+</div>
+
+<div class="content-layout">
+
+  <div class="main-content">
+
+    <p>
+      「FMピコぬ」は、ピコぬ市の市政情報や日々のできごとをお届けするラジオ局です。
+      現在、下記の番組を配信しています。
+    </p>
+
+    <h2>配信中の番組</h2>
+
+    <div class="show-grid">
+
+      <a class="show-card" href="piconu-city-radio.html">
+        <img src="../images/cable-tv/piconu-city-radio-ep01.jpg" alt="ピックアップ! ピコぬ市ラジオ">
+        <h3>ピックアップ! ピコぬ市ラジオ</h3>
         <p>
-          「FMピコぬ」は、ピコぬ市の市政情報や日々のできごとをお届けするラジオ局です。
-          現在、下記の番組を配信しています。
+          清掃・広報支援ロボット・P-800型ピコぬくんがお届けする、市内のできごとや
+          案内を中心にした市政広報番組です。
         </p>
+        <span class="show-cta">番組を見る &gt;</span>
+      </a>
 
-        <h2>配信中の番組</h2>
+      <a class="show-card" href="fukabori-radio.html">
+        <img src="../images/cable-tv/fukabori-radio-ep01.jpg" alt="深掘りラジオ">
+        <h3>深掘りラジオ</h3>
+        <p>
+          ピコぬ市の資料や作品をもとに、2人が対話形式で深掘りしていくポッドキャスト番組。
+          「答えを決めつけず『かもしれない』を楽しむ。」をテーマに、
+          何が見つかるか分からないまま、ピコぬ市の奥を一緒に探っていきます。
+        </p>
+        <span class="show-cta">番組を見る &gt;</span>
+      </a>
 
-        <div class="show-grid">
-          <a class="show-card" href="piconu-city-radio.html">
-            <img src="../images/cable-tv/piconu-city-radio-ep01.jpg" alt="ピックアップ! ピコぬ市ラジオ">
-            <h3>ピックアップ! ピコぬ市ラジオ</h3>
-            <p>
-              清掃・広報支援ロボット・P-800型ピコぬくんがお届けする、市内のできごとや
-              案内を中心にした市政広報番組です。
-            </p>
-            <span class="show-cta">番組を見る &gt;</span>
-          </a>
+      <a class="show-card" href="dodemoii-radio.html">
+        <img src="../images/cable-tv/dodemoii-radio-ep01.jpg" alt="どうでもいいラジオ">
+        <h3>どうでもいいラジオ</h3>
+        <p>
+          日々の暮らしの中で見つけた、どうでもいいこと。市内で起きた、どうでもいい出来事。
+          誰かに報告するほどではないけれど、なぜか少しだけ気になること。そんな話を、P-800が
+          淡々とお届けしている番組ですぬ。
+        </p>
+        <span class="show-cta">番組を見る &gt;</span>
+      </a>
 
-          <a class="show-card" href="fukabori-radio.html">
-            <img src="../images/cable-tv/fukabori-radio-ep01.jpg" alt="深掘りラジオ">
-            <h3>深掘りラジオ</h3>
-            <p>
-              ピコぬ市の資料や作品をもとに、2人が対話形式で深掘りしていくポッドキャスト番組。
-              「答えを決めつけず『かもしれない』を楽しむ。」をテーマに、
-              何が見つかるか分からないまま、ピコぬ市の奥を一緒に探っていきます。
-
-            </p>
-            <span class="show-cta">番組を見る &gt;</span>
-          </a>
-
-          <a class="show-card" href="dodemoii-radio.html">
-            <img src="../images/cable-tv/dodemoii-radio-ep01.jpg" alt="どうでもいいラジオ">
-            <h3>どうでもいいラジオ</h3>
-            <p>
-              日々の暮らしの中で見つけた、どうでもいいこと。市内で起きた、どうでもいい出来事。
-              誰かに報告するほどではないけれど、なぜか少しだけ気になること。そんな話を、P-800が
-              淡々とお届けしている番組ですぬ。
-
-            </p>
-            <span class="show-cta">番組を見る &gt;</span>
-          </a>
-        </div>
-
-        <div class="info-box">
-          番組は今後も増えていく予定です。配信され次第、このページに追加していきます。
-        </div>
-
-        <a class="music-promo" href="piconu-music.html">
-          <img src="../images/music/1957,Piconu-City.jpg" alt="PICONU MUSIC">
-          <div class="music-promo-body">
-            <h3>🎧 PICONU MUSIC</h3>
-            <p>番組で使用している楽曲などをまとめた音楽コンテンツを公開中。アルバムごとに聴けます。</p>
-            <span class="music-promo-cta">音楽コンテンツを見る &gt;</span>
-          </div>
-        </a>
-      </div>
-
-      <aside class="sidebar">
-        <div class="sidebar-block">
-          <h2>関連情報</h2>
-          <ul>
-            <li><a href="piconu-music.html">音楽コンテンツ</a></li>
-            <li><a href="cable-tv.html">ケーブルテレビ番組表</a></li>
-            <li><a href="piconu-kun.html">ピコぬくんとは</a></li>
-            <li><a href="../facilities/hisho-kouhou-ka.html">秘書広報課</a></li>
-          </ul>
-        </div>
-      </aside>
     </div>
+
+    <div class="info-box">
+      番組は今後も増えていく予定です。配信され次第、このページに追加していきます。
+    </div>
+
+    <a class="music-promo" href="piconu-music.html">
+      <img src="../images/music/1957,Piconu-City.jpg" alt="PICONU MUSIC">
+      <div class="music-promo-body">
+        <h3>🎧 PICONU MUSIC</h3>
+        <p>
+          番組で使用している楽曲などをまとめた音楽コンテンツを公開中。
+          アルバムごとに聴けます。
+        </p>
+        <span class="music-promo-cta">音楽コンテンツを見る &gt;</span>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+```
+
   </main>
 
-  <script>window.PAGE_META = {nav: "", breadcrumb: [{label: "お楽しみエリア", href: "entertainment.html"}, {label: "FMピコぬ"}]};</script>
+  <script>
+    window.PAGE_META = {
+      nav: "",
+      breadcrumb: [
+        { label: "お楽しみエリア", href: "entertainment.html" },
+        { label: "FMピコぬ" }
+      ]
+    };
+  </script>
+
   <script src="../js/common.js"></script>
+
 </body>
 
 </html>
