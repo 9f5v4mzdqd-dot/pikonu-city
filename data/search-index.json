@@ -364,6 +364,12 @@
     "url": "about/cable-tv.html",
     "category": "市の概要"
   },
+  
+  {
+    "title": "お楽しみコンテンツ",
+    "url": "about/entertainment.html",
+    "category": "お楽しみコンテンツ"
+  },
   {
     "title": "キリ番について",
     "url": "about/kiriban.html",
