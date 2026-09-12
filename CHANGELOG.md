@@ -11,6 +11,60 @@
 
 ------------
 
+## 2026-09-12
+---
+### 追加
+- `about/entertainment.html`:「お楽しみエリア」ページを新設
+- `data/search-index.json`:お楽しみコンテンツおよび関連ページを検索インデックスに追加
+
+### 変更
+- `about/entertainment.html`:お楽しみコンテンツの掲載順、番号、セクション構成、カードレイアウトを整理
+- `about/sitemap.html`:お楽しみコンテンツの掲載順と分類を整理
+- `about/fm-piconu.html`:お楽しみエリア・音楽コンテンツへの導線と掲載レイアウトを調整
+- `about/piconu-freegame.html`:ゲーム置き場のレイアウト、掲載内容、パンくず表示を調整
+- `about/piconu-music.html`:ページ構成、音楽コンテンツの表示、パンくずを調整
+- `about/artist-piconu-city-boys.html`・`about/artist-piconu-games.html`・`about/artist-johnny-nuka.html`:プロフィールページの分類・パンくず階層を整理
+- `about/piconu-city-radio.html`・`about/fukabori-radio.html`・`about/dodemoii-radio.html`:FMピコぬ番組ページのパンくずを「トップ ➡ お楽しみエリア ➡ FMピコぬ ➡ 各番組」に統一
+- `js/common.js`:グローバルナビゲーションおよび関連ページのナビゲーション設定を調整
+- `images/banners/banner-pickup.jpg`・`images/banners/banner-dodemoii.jpg`:バナー画像のサイズを修正
+- `README.md`・`NEXT_TASKS.md`:お楽しみコンテンツの分類・運用ルールを追記
+
+### 修正
+- `about/piconu-music.html`:パンくずの階層およびFMピコぬへのリンク先を修正
+- `about/fm-piconu.html`:お楽しみエリア・音楽コンテンツへの導線を修正
+- `data/search-index.json`:お楽しみコンテンツのカテゴリ・登録内容を修正
+- `icon_generator.html`:不要になったファイルを削除
+---
+
+## 2026-09-11
+---
+### 追加
+- `about/artist-piconu-city-boys.html`:The PICONU CITY BOY'Sのプロフィールページを追加
+- `about/artist-piconu-games.html`:PICONU GAMESのプロフィールページを追加
+- `about/artist-johnny-nuka.html`:JOHNNY NUKAのプロフィールページを追加
+- `images/music/PICONU_GAMES.jpg`:PICONU GAMESのプロフィール用画像を追加
+
+### 変更
+- `about/piconu-music.html`:ABOUT ARTISTセクションを追加し、3つのプロフィールページへのリンクを掲載
+- `about/piconu-music.html`:ゲーム「猫と宝くじと世界経済の終焉」のアルバム情報とED曲の表記を整理
+- `about/piconu-music.html`:アルバム情報に「猫と宝くじと世界経済の終焉」のED曲を追加
+- `about/piconu-music.html`:音楽プレイヤーにシャッフル・リピート機能を追加
+- `about/artist-piconu-city-boys.html`・`about/artist-piconu-games.html`・`about/artist-johnny-nuka.html`:プロフィールページのレイアウト、表記、文章を調整
+- `about/artist-piconu-games.html`:ピコぬくんゲーム置き場へのリンクを追加
+- `data/search-index.json`:プロフィール3ページを検索インデックスに追加
+---
+
+## 2026-09-10（3）
+---
+### 変更
+
+* `about/piconu-music.html`:J_NUKAの画像を差し替え
+
+* `CHANGELOG.md`:8月分および9/8・9/10の変更履歴を整理・追記
+
+---
+
+
 ## 2026-09-10（2）
 ---
 ### 変更
