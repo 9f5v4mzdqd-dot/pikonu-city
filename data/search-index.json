@@ -367,7 +367,7 @@
   {
     "title": "キリ番について",
     "url": "about/kiriban.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "ピコぬくんとは",
@@ -377,7 +377,7 @@
   {
     "title": "ピコぬくんの脱出ゲーム",
     "url": "about/piconu-kun-escapegame.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "ピコぬくん業務日誌",
@@ -387,32 +387,32 @@
   {
     "title": "ピコぬくん素材置き場",
     "url": "about/piconu-freesozai.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "ピコぬくんゲーム置き場",
     "url": "about/piconu-freegame.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "ネギ盛り限界チャレンジ",
     "url": "game/negi-game.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "恒一をさがせ！",
     "url": "game/tsunekazu-game.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
-   {
+  {
     "title": "ピコぬくんのマッチ3",
     "url": "game/piconu-match3-game.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
-   {
+  {
     "title": "ピコぬくんの焼き芋屋さん",
     "url": "game/imoya.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "広報ぬかピコ デジタルアーカイブ",
@@ -527,27 +527,27 @@
   {
     "title": "FMピコぬ",
     "url": "about/fm-piconu.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
-   {
+  {
     "title": "音楽コンテンツ",
     "url": "about/piconu-music.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "FMピコぬ「ピックアップ! ピコぬ市ラジオ」",
     "url": "about/piconu-city-radio.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "深掘りラジオ",
     "url": "about/fukabori-radio.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "どうでもいいラジオ",
     "url": "about/dodemoii-radio.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "ピコぬくんとチャット",
@@ -557,17 +557,17 @@
   {
     "title": "宝くじと猫と、世界経済の終焉",
     "url": "about/neko-game.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "ピコぬ市検定(初級)",
     "url": "about/piconu-quiz.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "ピコぬ市検定(中級)",
     "url": "about/piconu-quiz-chukyu.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "行政記録 第一号「診療情報提供兼意見書」",
@@ -602,12 +602,12 @@
   {
     "title": "今日のラッキー現代病占い",
     "url": "about/gendaibyo-uranai.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "現代病相談窓口記録ファイル",
     "url": "about/gendaibyo-soudan-game.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
     "title": "不要不急な4コマ漫画",
@@ -647,26 +647,26 @@
   {
     "title": "本日の猫政務ジェネレーター",
     "url": "about/neko-seimu.html",
-    "category": "市の概要"
+    "category": "お楽しみコンテンツ"
   },
   {
-  "title": "青いページ",
-  "url": "Blue-Page.html",
-  "category": "その他"
-},
-{
-  "title": "The PICONU CITY BOY'S プロフィール",
-  "url": "about/artist-piconu-city-boys.html",
-  "category": "市の概要"
-},
-{
-  "title": "PICONU GAMES プロフィール",
-  "url": "about/artist-piconu-games.html",
-  "category": "市の概要"
-},
-{
-  "title": "JOHNNY NUKA プロフィール",
-  "url": "about/artist-johnny-nuka.html",
-  "category": "市の概要"
-}
+    "title": "青いページ",
+    "url": "Blue-Page.html",
+    "category": "その他"
+  },
+  {
+    "title": "The PICONU CITY BOY'S プロフィール",
+    "url": "about/artist-piconu-city-boys.html",
+    "category": "お楽しみコンテンツ"
+  },
+  {
+    "title": "PICONU GAMES プロフィール",
+    "url": "about/artist-piconu-games.html",
+    "category": "お楽しみコンテンツ"
+  },
+  {
+    "title": "JOHNNY NUKA プロフィール",
+    "url": "about/artist-johnny-nuka.html",
+    "category": "お楽しみコンテンツ"
+  }
 ]
