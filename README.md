@@ -265,6 +265,22 @@ Google Fontsから `Zen Old Mincho` `Noto Sans JP` `M PLUS 1 Code` を読み込�
 - **健康・医療**: ワクチン接種案内・診療報酬点数表など、健康・医療に関する制度・案内
 - **助成金**: 各種助成金・補助金制度の案内
 
+## カテゴリページ
+**方式A：静的に複製**
+カテゴリごとに静的HTMLページを作成し、`news/index.html` の該当する`<li>`をコピーして掲載する。
+お知らせ追加時は、
+1. `news/index.html`
+2. 該当カテゴリページ
+- `news/category-koho.html `
+- `news/category-culture.html `
+- `news/category-life.html `
+- `news/category-council.html `
+- `news/category-health.html `
+- `news/category-subsidy.html `
+の両方を手動更新する。
+**`js/common.js` のサイト検索は変更しない。**  
+JSON化・動的生成などの仕組み変更も行わない。
+
 ## 実装済みの主なコンテンツ
 
 - **お知らせ**(`news/`、18記事): ワクチン案内・助成金・広報誌・市議会・点数表・
