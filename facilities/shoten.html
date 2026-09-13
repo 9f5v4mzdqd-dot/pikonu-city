@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,14 +33,12 @@
       padding: 24px 12px 40px;
       color: var(--text);
       background:
-        linear-gradient(rgba(255,255,255,.18), rgba(255,255,255,.18)),
-        repeating-linear-gradient(
-          0deg,
+        linear-gradient(rgba(255, 255, 255, .18), rgba(255, 255, 255, .18)),
+        repeating-linear-gradient(0deg,
           #d9e0d8 0,
           #d9e0d8 2px,
           #d2dbd3 2px,
-          #d2dbd3 4px
-        );
+          #d2dbd3 4px);
       font-family: "MS Pゴシック", "Osaka", sans-serif;
       font-size: 14px;
       line-height: 1.8;
@@ -65,8 +64,7 @@
     .top-strip {
       height: 9px;
       background:
-        repeating-linear-gradient(
-          90deg,
+        repeating-linear-gradient(90deg,
           var(--red) 0,
           var(--red) 38px,
           var(--cream) 38px,
@@ -74,15 +72,14 @@
           var(--blue) 76px,
           var(--blue) 114px,
           var(--cream) 114px,
-          var(--cream) 152px
-        );
+          var(--cream) 152px);
       border-bottom: 1px solid #756d5e;
     }
 
     header {
       padding: 24px 28px 18px;
       background:
-        linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),
+        linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)),
         var(--cream);
       border-bottom: 1px solid var(--line);
     }
@@ -178,6 +175,16 @@
       top: 1px;
       left: 1px;
       box-shadow: none;
+    }
+
+    .notice-photo {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 20px 28px 0;
+      border: 1px solid #aaa18f;
+      box-shadow: 2px 2px 0 #d6cfbe;
     }
 
     .notice {
@@ -472,6 +479,8 @@
       <a href="#contact">お問い合わせ</a>
       <a href="#related">関連情報</a>
     </nav>
+
+    <img class="notice-photo" src="../images/facilities/shoten.jpg" alt="記録町商店街 加盟店紹介の写真">
 
     <div class="notice">
       <strong>お知らせ：</strong>
@@ -863,4 +872,5 @@
     </footer>
   </div>
 </body>
+
 </html>
