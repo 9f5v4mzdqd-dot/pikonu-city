@@ -10,6 +10,18 @@
 - ファイルパス: 内容
 
 ------------
+## 2026-09-13（2）
+---
+### 追加
+- `facilities/kikakuten.html`:ぬかピコ民芸博物館の企画展「食べる前を、のこす。」ページを新設(展示品紹介・体験コーナー・ピコぬくんの体験レポートを掲載)
+
+### 変更
+- `facilities/nukapiko-museum.html`:「企画展」セクションの本文を簡潔な案内文に差し替え、`kikakuten.html`へのリンクを追加
+- `about/sitemap.html`:「ぬかピコ民芸博物館」の子ページとして`kikakuten.html`を追加
+- `data/search-index.json`:`kikakuten.html`を追加
+- `facilities/nukapiko-museum.html`:サイドバー「関連情報」に`kikakuten.html`へのリンクを追加
+---
+
 ## 2026-09-13（1）
 ---
 ### 追加

@@ -75,6 +75,11 @@
     "category": "施設案内"
   },
   {
+    "title": "企画展「食べる前を、のこす。」",
+    "url": "facilities/kikakuten.html",
+    "category": "施設案内"
+  },
+  {
     "title": "博物館デジタルアーカイブ",
     "url": "facilities/museum-archive.html",
     "category": "施設案内"
@@ -364,7 +369,6 @@
     "url": "about/cable-tv.html",
     "category": "市の概要"
   },
-  
   {
     "title": "お楽しみコンテンツ",
     "url": "about/entertainment.html",
