@@ -10,6 +10,23 @@
 - ファイルパス: 内容
 
 ------------
+## 2026-09-13（1）
+---
+### 追加
+- `news/news-20260901-01.html`:お知らせ記事「広報ぬかピコ最新号を掲載しました」を追加
+- `news/news-20260908-01.html`:お知らせ記事「現代病相談窓口記録ファイルに新しい記録を追加しました」を追加
+- `news/news-20260910-01.html`:お知らせ記事「「PICONU MUSIC」ページを公開しました」を追加
+- `news/news-20260911-01.html`:お知らせ記事「PICONU MUSICアーティストのプロフィールページを公開しました」を追加
+- `news/news-20260912-01.html`:お知らせ記事「「お楽しみコンテンツ」ページを公開しました」を追加
+- `news/category-koho.html`・`news/category-kenko-iryo.html`・`news/category-joseikin.html`・`news/category-shigikai.html`・`news/category-kurashi.html`・`news/category-bunka.html`:お知らせのカテゴリ別一覧ページ(静的複製方式)を新設
+- `README.md`:「お知らせのカテゴリ分類ルール」を追記(文化・広報・くらし・市議会・健康医療・助成金の6カテゴリの分類基準)
+
+### 変更
+- `news/index.html`:上記お知らせ5件を一覧に追加。サイドバー「カテゴリから探す」のリンク先を、その場フィルタからカテゴリ別一覧ページへの遷移に変更
+- `news/index.html`・`news/category-koho.html`・`news/category-bunka.html`:2026-07-21・08-23・08-24・08-26・08-28・08-29・08-30・09-08・09-10・09-11・09-12分の計11件のカテゴリを「広報」から「文化」に修正
+- `news/news-20260908-01.html`・`news/news-20260910-01.html`・`news/news-20260911-01.html`・`news/news-20260912-01.html`:記事本文内のカテゴリ表記を「広報」から「文化」に修正
+
+---
 
 ## 2026-09-12
 ---
