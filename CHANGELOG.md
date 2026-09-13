@@ -21,6 +21,8 @@
 - `about/sitemap.html`:「ぬかピコ民芸博物館」の子ページとして`kikakuten.html`を追加
 - `data/search-index.json`:`kikakuten.html`を追加
 - `facilities/nukapiko-museum.html`:サイドバー「関連情報」に`kikakuten.html`へのリンクを追加
+- `facilities/kikakuten.html`:外観画像`images/facilities/kikakuten.jpg`を追加
+- `facilities/kikakuten.html`:お問い合わせ電話番号を追加
 ---
 
 ## 2026-09-13（1）
