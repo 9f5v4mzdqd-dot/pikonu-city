@@ -10,9 +10,32 @@
 - ファイルパス: 内容
 
 ------------
+---
 
+## 2026-09-15（1）
+---
+### 変更
+- `facilities/shoten.html`:加盟店マップ画像(`shotengai-map.jpg`)に、白背景+グリーン枠+ドロップシャドウのスタイルを追加
 
-## 2026-09-14
+## 2026-09-14（2）
+---
+### 追加
+- `images/banners/banner-shotengai.jpg`:「記録町商店街 加盟店紹介」へのバナーボタン画像を追加
+
+### 変更
+- `facilities/shokokai.html`:配色(carrot/tangerine/off white/pear green/brown)・見出し・表・お知らせ枠・サイドバー構成を試作コードに基づき刷新
+- `facilities/shokokai.html`:フォントを「MS Pゴシック」「Osaka」に統一
+- `facilities/shokokai.html`:「加盟店紹介(8店舗)はこちら」のテキストリンクを、バナー画像ボタン(`banner-shotengai.jpg`)に差し替え、店舗数表記を8→10に修正
+- `facilities/shokokai.html`:`js/common.js`への依存をなくし、グローバルヘッダー/パンくず/フッターを自前実装の独立型ページに変更(配色はpear-green系を維持)
+- `facilities/shokokai.html`:「お問い合わせ」セクションを追加
+- `facilities/shokokai.html`:お問い合わせ文言の先頭に「※」を追加
+- `facilities/shokokai.html`:「商店街だより」セクション内にあった加盟店紹介バナーを分離し、新セクション「記録町商店街 加盟店紹介」として独立
+- `facilities/shokokai.html`:パンくずの下にページ内ジャンプボタン(商工会について・商店街だより・加盟店紹介・お問い合わせ)を追加
+- `facilities/shokokai.html`:ジャンプボタンの配色を調整(背景`#A9BE8B`、ホバー時`#739F3D`、文字`#FCFDFE`、枠線`#EE693F`)
+
+---
+
+## 2026-09-14（1）
 ---
 ### 追加
 - `facilities/shoten.html`:平成レトロ風デザインへ全面刷新(既存10店舗のデータは維持したまま新デザインに移行)
