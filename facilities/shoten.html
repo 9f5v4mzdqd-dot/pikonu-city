@@ -313,10 +313,10 @@ p {
 }
 
 .street-photo {
-  float: right;
-  width: 140px;
-  height: 100px;
-  margin: 0 0 8px 14px;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 14px;
   padding: 4px;
   background: #fff;
   border: 1px solid var(--green);
@@ -468,8 +468,7 @@ footer {
     width: 100%;
   }
 
-  .shop-photo,
-  .street-photo {
+  .shop-photo {
     width: 94px;
     height: 70px;
   }
@@ -534,8 +533,9 @@ footer {
       <section class="section">
         <h2>■ 記録町商店街について</h2>
 
+        <img class="street-photo" src="../images/kanko/shotengai.jpg" alt="記録町商店街通り">
+
         <div class="intro-box">
-          <img class="street-photo" src="../images/kanko/shotengai.jpg" alt="記録町商店街通り">
           <p class="lead">
             記録町商店街は、ピコぬ市の市民生活を支える小さな商店街です。
           </p>
