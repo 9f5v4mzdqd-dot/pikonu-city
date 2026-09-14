@@ -11,6 +11,26 @@
 
 ------------
 
+## 2026-09-14
+---
+### 追加
+- `facilities/shoten.html`:平成レトロ風デザインへ全面刷新(既存10店舗のデータは維持したまま新デザインに移行)
+- `images/facilities/shoten.jpg`:お知らせ欄上部に掲載する写真を追加
+- `images/facilities/shotengai-logo.jpg`:記録町商店街のロゴをヘッダーに追加
+- `images/facilities/kissa-yamato-illust.jpg`・`yaohachi-illust.jpg`・`kodomonokuni-illust.jpg`・`hyakunendo-illust.jpg`・`hiyori-illust.jpg`・`piconu-bakery-illust.jpg`・`piconu-post-illust.jpg`・`happy-toys-illust.jpg`・`kirokucho-curry-illust.jpg`・`tomarigi-illust.jpg`:各店舗紹介欄のイラスト画像を追加
+
+### 変更
+- `facilities/shoten.html`:フォントを素材置き場と同じ「MS Pゴシック」「Osaka」に統一
+- `facilities/shoten.html`:全体配色をオレンジ・グリーン系に変更
+- `facilities/shoten.html`:右上の丸いスタンプ(「商工会」の印)を削除
+- `facilities/shoten.html`:各店舗の情報表の幅を縮小し、隣にイラスト画像用スペース(縦横比3:2)を新設
+- `facilities/shoten.html`:「お知らせ」を単一メッセージから日付付き箇条書き3件に変更し、他セクションと同じ見出し形式に統一
+- `facilities/shoten.html`:「記録町商店街について」内の小さい写真を、枠上部の幅いっぱいの画像に変更
+- `facilities/shoten.html`:ヘッダー右側に商店街ロゴを追加(のちに2割拡大)
+- `facilities/shoten.html`:ひより雑貨店の所在地表記を変更
+- `facilities/shoten.html`:音楽酒場とまり木の紹介文を変更
+---
+
 ## 2026-09-13（2）
 ---
 ### 追加
