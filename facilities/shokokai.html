@@ -9,7 +9,6 @@
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
 
   <style>
     /*
@@ -32,6 +31,10 @@
       --pale-green: #E8EFD9;
       --light-orange: #FFF0E7;
       --line-green: #A9C77E;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -77,6 +80,10 @@
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .page-header h1 {
@@ -91,6 +98,49 @@
       margin: 8px 0 0;
       color: var(--off-white);
       font-size: 15px;
+      font-weight: bold;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 100px;
+      height: auto;
+      border: 3px solid var(--off-white);
+      background: var(--off-white);
+    }
+
+    /*
+      パンくず
+    */
+
+    .breadcrumb {
+      background: var(--off-white);
+      border-bottom: 1px solid var(--line-green);
+      font-size: 13px;
+    }
+
+    .breadcrumb ol {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: "➡";
+      margin-left: 6px;
+      color: var(--pear-green);
+    }
+
+    .breadcrumb a {
+      color: var(--brown);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--brown);
       font-weight: bold;
     }
 
@@ -128,23 +178,6 @@
       margin: 0 auto 22px;
       border: 4px solid var(--pear-green);
       box-sizing: border-box;
-    }
-
-    .banner-link {
-      display: block;
-      margin: 0 0 18px;
-    }
-
-    .banner-link img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border: 3px solid var(--brown);
-      box-shadow: 3px 3px 0 rgba(74, 53, 42, 0.15);
-    }
-
-    .banner-link:hover img {
-      opacity: 0.85;
     }
 
     /*
@@ -195,6 +228,27 @@
 
     .info-table td {
       background: var(--off-white);
+    }
+
+    /*
+      バナーボタン
+    */
+
+    .banner-link {
+      display: block;
+      margin: 0 0 18px;
+    }
+
+    .banner-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 3px solid var(--brown);
+      box-shadow: 3px 3px 0 rgba(74, 53, 42, 0.15);
+    }
+
+    .banner-link:hover img {
+      opacity: 0.85;
     }
 
     /*
@@ -264,6 +318,22 @@
     }
 
     /*
+      フッター
+    */
+
+    footer {
+      background: var(--brown);
+      color: var(--off-white);
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 20px;
+    }
+
+    footer a {
+      color: var(--tangerine);
+    }
+
+    /*
       スマートフォン表示
     */
 
@@ -272,8 +342,16 @@
         padding: 20px 0 16px;
       }
 
+      .page-header .container {
+        gap: 12px;
+      }
+
       .page-header h1 {
         font-size: 25px;
+      }
+
+      .header-logo {
+        width: 64px;
       }
 
       .content-layout {
@@ -314,10 +392,21 @@
   <main id="main">
     <div class="page-header">
       <div class="container">
-        <h1>ピコぬ市商工会</h1>
-        <p class="lead">記録町の商店街を中心に、市内事業者の活動を支援しています。</p>
+        <div>
+          <h1>ピコぬ市商工会</h1>
+          <p class="lead">記録町の商店街を中心に、市内事業者の活動を支援しています。</p>
+        </div>
+        <img class="header-logo" src="../images/facilities/shotengai-logo.jpg" alt="記録町商店街 ロゴ">
       </div>
     </div>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+      <ol>
+        <li><a href="../index.html">トップ</a></li>
+        <li><a href="index.html">施設案内</a></li>
+        <li>ピコぬ市商工会</li>
+      </ol>
+    </nav>
 
     <div class="content-layout">
       <div class="main-content">
@@ -350,6 +439,7 @@
         <p>
           <a href="../pdfs/shotengai-dayori/shotengai-dayori-vol1.pdf">商店街だより vol.1(PDF)をダウンロード &gt;</a>
         </p>
+
         <a class="banner-link" href="shoten.html">
           <img src="../images/banners/banner-shotengai.jpg" alt="加盟店紹介(10店舗)はこちら">
         </a>
@@ -365,7 +455,7 @@
           電話:ぬぬ-ぬかピコ-4105(よいとこ)
         </p>
         <p>
-          商店街に関するお問い合わせ、加盟店募集についてなど、お気軽にご連絡ください。
+          ※商店街に関するお問い合わせ、加盟店募集についてなど、お気軽にご連絡ください。
         </p>
       </div>
 
@@ -392,8 +482,10 @@
     </div>
   </main>
 
-  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "index.html"}, {label: "ピコぬ市商工会"}]};</script>
-  <script src="../js/common.js"></script>
+  <footer>
+    ピコぬ市商工会 公式ページ　Copyright © ピコぬ市商工会 All Rights Reserved.
+  </footer>
+
 </body>
 
 </html>
