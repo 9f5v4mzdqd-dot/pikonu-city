@@ -340,6 +340,39 @@
       white-space: nowrap;
     }
 
+    .info-row {
+      display: flex;
+      align-items: stretch;
+      gap: 14px;
+    }
+
+    .info-table {
+      flex: 1 1 auto;
+      width: auto;
+    }
+
+    .shop-illustration {
+      flex: 0 0 40%;
+      width: 40%;
+      aspect-ratio: 3 / 2;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px dashed var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .shop-illustration img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .notice {
       margin-top: 14px;
       padding: 9px 12px;
@@ -411,6 +444,16 @@
 
       .info-table th {
         width: 90px;
+      }
+
+      .info-row {
+        flex-direction: column;
+      }
+
+      .info-table,
+      .shop-illustration {
+        flex: 1 1 auto;
+        width: 100%;
       }
 
       footer {
@@ -544,32 +587,33 @@
       <section class="section" id="info">
         <h2>■ 店舗情報</h2>
 
-        <table class="info-table">
-          <tr>
-            <th>店名</th>
-            <td>八百八(やおはち)</td>
-          </tr>
-          <tr>
-            <th>所在地</th>
-            <td>ピコぬ市記録町3丁目(商店街の入り口近く)</td>
-          </tr>
-          <tr>
-            <th>電話</th>
-            <td>ぬぬ-ぬかピコ-8088</td>
-          </tr>
-          <tr>
-            <th>営業時間</th>
-            <td>8:00〜19:00</td>
-          </tr>
-          <tr>
-            <th>定休日</th>
-            <td>日曜日・祝日</td>
-          </tr>
-        </table>
-        <div class="shop-illustration">
-          <img src="../images/facilities/yaohachi-illust.jpg" alt="八百八のイラスト">
+        <div class="info-row">
+          <table class="info-table">
+            <tr>
+              <th>店名</th>
+              <td>八百八(やおはち)</td>
+            </tr>
+            <tr>
+              <th>所在地</th>
+              <td>ピコぬ市記録町3丁目(商店街の入り口近く)</td>
+            </tr>
+            <tr>
+              <th>電話</th>
+              <td>ぬぬ-ぬかピコ-8088</td>
+            </tr>
+            <tr>
+              <th>営業時間</th>
+              <td>8:00〜19:00</td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td>日曜日・祝日</td>
+            </tr>
+          </table>
+          <div class="shop-illustration">
+            <img src="../images/facilities/yaohachi-illust.jpg" alt="八百八のイラスト">
+          </div>
         </div>
-
 
         <div class="notice">
           営業時間・定休日は変更となる場合があります。最新情報はお店へ直接お問い合わせください。
