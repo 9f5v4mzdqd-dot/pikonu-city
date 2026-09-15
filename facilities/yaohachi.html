@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>八百八｜記録町商店街 加盟店紹介｜ピコぬ市商工会</title>
+  <meta name="description" content="ピコぬ市記録町商店街の八百屋「八百八」のご紹介。新鮮な野菜や果物、本日のお買い得情報、配達についてご案内します。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #F7F0E3;
+      --orange: #FF9800;
+      --green: #00897B;
+      --red: #D32F2F;
+      --dark: #49351F;
+      --line: #CDBB9F;
+      --muted: #806C53;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 12px 40px;
+      color: var(--dark);
+      background:
+        linear-gradient(rgba(255, 255, 255, .15), rgba(255, 255, 255, .15)),
+        repeating-linear-gradient(45deg,
+          #F7F0E3 0,
+          #F7F0E3 12px,
+          #EEE3D1 12px,
+          #EEE3D1 24px);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: var(--red);
+    }
+
+    .site {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(73, 53, 31, .18);
+    }
+
+    .top-strip {
+      height: 9px;
+      background:
+        repeating-linear-gradient(90deg,
+          var(--green) 0,
+          var(--green) 38px,
+          var(--cream) 38px,
+          var(--cream) 76px,
+          var(--orange) 76px,
+          var(--orange) 114px,
+          var(--cream) 114px,
+          var(--cream) 152px);
+      border-bottom: 1px solid var(--dark);
+    }
+
+    header {
+      padding: 24px 28px 18px;
+      background: var(--paper);
+      border-bottom: 3px solid var(--green);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .shop-mark {
+      flex: 0 0 auto;
+      width: 110px;
+      padding: 12px 8px;
+      color: var(--paper);
+      background: var(--green);
+      border: 4px double var(--paper);
+      outline: 1px solid var(--green);
+      text-align: center;
+      font-weight: bold;
+      line-height: 1.3;
+    }
+
+    .shop-mark .big {
+      display: block;
+      font-size: 26px;
+      letter-spacing: .08em;
+    }
+
+    .shop-mark .small {
+      display: block;
+      margin-top: 5px;
+      font-size: 11px;
+    }
+
+    .site-kicker {
+      margin: 0 0 4px;
+      color: var(--green);
+      font-size: 13px;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--red);
+      font-size: clamp(25px, 4vw, 38px);
+      font-weight: bold;
+      letter-spacing: .04em;
+      line-height: 1.3;
+      text-shadow: 1px 1px 0 #fff;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .breadcrumb {
+      padding: 8px 28px;
+      color: var(--muted);
+      background: #FBF7EF;
+      border-bottom: 1px dotted var(--orange);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--red);
+    }
+
+    .breadcrumb span {
+      margin: 0 5px;
+    }
+
+    nav.site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 14px;
+      background: var(--orange);
+      border-bottom: 2px solid var(--dark);
+    }
+
+    nav.site-nav a {
+      display: inline-block;
+      padding: 5px 16px;
+      color: #fff;
+      background: var(--green);
+      border: 2px outset #65bdb3;
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav.site-nav a:hover {
+      color: #fff;
+      background: var(--red);
+      border-color: #e58b8b;
+    }
+
+    nav.site-nav a:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      border-style: inset;
+    }
+
+    main {
+      padding: 22px 28px 30px;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      padding: 7px 12px;
+      color: var(--paper);
+      background: var(--green);
+      border-left: 8px solid var(--orange);
+      font-size: 19px;
+      line-height: 1.5;
+      letter-spacing: .03em;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .lead {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .intro-box {
+      padding: 15px 17px;
+      background: #FFF8EA;
+      border: 1px solid var(--line);
+    }
+
+    .dish-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 14px 0 0;
+      padding: 4px;
+      background: #fff;
+      border: 1px solid var(--green);
+      box-shadow: 2px 2px 0 #d8e2cf;
+      object-fit: cover;
+    }
+
+    .sale-box {
+      padding: 16px;
+      background: #FFF3D9;
+      border: 3px solid var(--red);
+      box-shadow: 3px 3px 0 #e0d5c1;
+    }
+
+    .sale-heading {
+      margin: 0 0 10px;
+      color: var(--red);
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: .06em;
+    }
+
+    .sale-date {
+      margin-bottom: 12px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .sale-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .sale-item {
+      padding: 10px 12px;
+      background: #fff;
+      border: 1px solid var(--orange);
+    }
+
+    .sale-item .name {
+      display: block;
+      font-weight: bold;
+    }
+
+    .sale-item .price {
+      display: block;
+      color: var(--red);
+      font-size: 20px;
+      font-weight: bold;
+      text-align: right;
+      line-height: 1.3;
+    }
+
+    .delivery-box {
+      padding: 15px 17px;
+      background: #EEF7F4;
+      border: 2px solid var(--green);
+    }
+
+    .delivery-box strong {
+      color: var(--green);
+      font-size: 16px;
+    }
+
+    .shop-comment {
+      padding: 13px 15px;
+      background: #FFF8EA;
+      border: 1px dashed var(--orange);
+    }
+
+    .shop-comment::before {
+      content: "八百八のおじさんより：";
+      display: block;
+      margin-bottom: 5px;
+      color: var(--red);
+      font-weight: bold;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: var(--paper);
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 112px;
+      color: var(--dark);
+      background: #F3EAD8;
+      white-space: nowrap;
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: #FBF7EF;
+      border: 1px solid var(--orange);
+      font-size: 14px;
+    }
+
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    footer {
+      padding: 16px 28px 20px;
+      color: var(--muted);
+      background: #F3EAD8;
+      border-top: 3px solid var(--green);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 8px 5px 24px;
+        font-size: 13px;
+      }
+
+      header,
+      main {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .header-inner {
+        gap: 12px;
+      }
+
+      .shop-mark {
+        width: 80px;
+        padding: 8px 5px;
+      }
+
+      .shop-mark .big {
+        font-size: 20px;
+      }
+
+      .shop-mark .small {
+        font-size: 10px;
+      }
+
+      .breadcrumb {
+        padding-left: 16px;
+        padding-right: 16px;
+        line-height: 1.7;
+      }
+
+      nav.site-nav {
+        padding: 8px 10px;
+      }
+
+      .sale-list {
+        grid-template-columns: 1fr;
+      }
+
+      .info-table th {
+        width: 90px;
+      }
+
+      footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+    <div class="top-strip"></div>
+
+    <header>
+      <div class="header-inner">
+        <div>
+          <p class="site-kicker">記録町商店街・加盟店紹介</p>
+
+          <h1>八百八</h1>
+
+          <p class="subtitle">
+            新鮮野菜と果物。記録町商店街の入口近くの八百屋です。
+          </p>
+        </div>
+
+        <div class="shop-mark" aria-label="八百八の看板">
+          <span class="big">八百八</span>
+          <span class="small">やおはち</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="../index.html">トップ</a>
+      <span aria-hidden="true">➡</span>
+      <a href="index.html">施設案内</a>
+      <span aria-hidden="true">➡</span>
+      <a href="shokokai.html">ピコぬ市商工会</a>
+      <span aria-hidden="true">➡</span>
+      <a href="shoten.html">記録町商店街 加盟店紹介</a>
+      <span aria-hidden="true">➡</span>
+      <span aria-current="page">八百八</span>
+    </nav>
+
+    <nav class="site-nav" aria-label="ページ内メニュー">
+      <a href="#about">八百八について</a>
+      <a href="#sale">本日のおすすめ</a>
+      <a href="#delivery">配達について</a>
+      <a href="#info">店舗情報</a>
+    </nav>
+
+    <main>
+      <section class="section" id="about">
+        <h2>■ 八百八について</h2>
+
+        <div class="intro-box">
+          <p class="lead">
+            記録町商店街の入口近くにある、昔からの八百屋です。
+          </p>
+
+          <p>
+            野菜や果物を中心に、毎日の食卓に必要なものを取りそろえています。
+            朝は近所のお客さんで少しにぎやかになります。
+          </p>
+
+          <p>
+            お買い得品は店頭のかごに並べていますので、商店街へお越しの際はぜひお立ち寄りください。
+          </p>
+        </div>
+
+        <img class="dish-photo" src="../images/facilities/shop/yaohachi.jpg" alt="八百八の店頭">
+      </section>
+
+      <section class="section" id="sale">
+        <h2>■ 本日のおすすめ・お買い得品</h2>
+
+        <div class="sale-box">
+          <p class="sale-heading">本日のお買い得品</p>
+
+          <p class="sale-date">
+            9月15日のお知らせ
+          </p>
+
+          <div class="sale-list">
+            <div class="sale-item">
+              <span class="name">なす　1袋</span>
+              <span class="price">100円</span>
+            </div>
+
+            <div class="sale-item">
+              <span class="name">トマト　1パック</span>
+              <span class="price">198円</span>
+            </div>
+
+            <div class="sale-item">
+              <span class="name">ピコぬネギ　1束</span>
+              <span class="price">128円</span>
+            </div>
+
+            <div class="sale-item">
+              <span class="name">さつまいも　1袋</span>
+              <span class="price">150円</span>
+            </div>
+          </div>
+
+          <div class="notice">
+            ※品物はなくなり次第終了します。<br>
+            ※価格は店頭にてご確認ください。
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="delivery">
+        <h2>■ 配達について</h2>
+
+        <div class="delivery-box">
+          <p><strong>市内のみ配達承っております。</strong></p>
+
+          <p>
+            お買い上げ金額など、配達についての詳しいことは
+            店頭またはお電話でお問い合わせください。
+          </p>
+
+          <p class="small">
+            ※配達区域・受付時間などは変更となる場合があります。
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="info">
+        <h2>■ 店舗情報</h2>
+
+        <table class="info-table">
+          <tr>
+            <th>店名</th>
+            <td>八百八(やおはち)</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>ピコぬ市記録町3丁目(商店街の入り口近く)</td>
+          </tr>
+          <tr>
+            <th>電話</th>
+            <td>ぬぬ-ぬかピコ-8088</td>
+          </tr>
+          <tr>
+            <th>営業時間</th>
+            <td>8:00〜19:00</td>
+          </tr>
+          <tr>
+            <th>定休日</th>
+            <td>日曜日・祝日</td>
+          </tr>
+        </table>
+        <div class="shop-illustration">
+          <img src="../images/facilities/yaohachi-illust.jpg" alt="八百八のイラスト">
+        </div>
+
+
+        <div class="notice">
+          営業時間・定休日は変更となる場合があります。最新情報はお店へ直接お問い合わせください。
+        </div>
+      </section>
+
+      <section class="section" id="comment">
+        <h2>■ 八百八からひとこと</h2>
+
+        <div class="shop-comment">
+          今年はなすがようできとるよ。
+        </div>
+      </section>
+
+      <section class="section" id="related">
+        <h2>■ 関連情報</h2>
+
+        <ul class="related-links">
+          <li>
+            <a href="shoten.html">記録町商店街 加盟店紹介</a>
+          </li>
+          <li>
+            <a href="shokokai.html">ピコぬ市商工会</a>
+          </li>
+          <li>
+            <a href="pikonu-negi.html">特産品「ピコぬネギ」</a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div>八百八</div>
+      <div>記録町商店街 加盟店紹介ページ</div>
+    </footer>
+  </div>
+</body>
+
+</html>
