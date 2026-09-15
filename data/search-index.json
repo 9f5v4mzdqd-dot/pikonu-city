@@ -234,6 +234,21 @@
     "url": "facilities/shoten.html",
     "category": "施設案内"
   },
+    {
+    "title": "記録町カリー食堂",
+    "url": "facilities/kirokumachi-curry.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "八百八",
+    "url": "facilities/yaohachi.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "喫茶大和",
+    "url": "facilities/kissa-yamato.html",
+    "category": "施設案内"
+  },
   {
     "title": "ピコぬ市交通局",
     "url": "facilities/koutsukyoku.html",
