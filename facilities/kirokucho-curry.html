@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>記録町カリー食堂｜記録町商店街 加盟店紹介｜ピコぬ市商工会</title>
+  <meta name="description" content="ピコぬ市記録町商店街の加盟店「記録町カリー食堂」のご紹介ページです。名物の牛すじネギカレーをはじめ、メニューや営業時間、アクセスをご案内します。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #F7F3E9;
+      --onion: #D68A45;
+      --tomato: #C0392B;
+      --dark: #4A2E1B;
+      --line: #E4C79E;
+      --muted: #8C7256;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 12px 40px;
+      color: var(--dark);
+      background:
+        linear-gradient(rgba(255, 255, 255, .15), rgba(255, 255, 255, .15)),
+        repeating-linear-gradient(45deg,
+          #F7F3E9 0,
+          #F7F3E9 12px,
+          #F1E7D3 12px,
+          #F1E7D3 24px);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--dark);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: var(--tomato);
+    }
+
+    .site {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(74, 46, 27, .16);
+    }
+
+    .top-strip {
+      height: 9px;
+      background:
+        repeating-linear-gradient(90deg,
+          var(--tomato) 0,
+          var(--tomato) 38px,
+          var(--cream) 38px,
+          var(--cream) 76px,
+          var(--onion) 76px,
+          var(--onion) 114px,
+          var(--cream) 114px,
+          var(--cream) 152px);
+      border-bottom: 1px solid var(--dark);
+    }
+
+    header {
+      padding: 24px 28px 18px;
+      background: var(--paper);
+      border-bottom: 3px solid var(--onion);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 110px;
+      height: auto;
+      border: 3px solid #fff;
+      outline: 1px solid var(--onion);
+    }
+
+    .site-kicker {
+      margin: 0 0 4px;
+      color: var(--onion);
+      font-size: 13px;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--tomato);
+      font-size: clamp(25px, 4vw, 38px);
+      font-weight: bold;
+      letter-spacing: .04em;
+      line-height: 1.3;
+      text-shadow: 1px 1px 0 #fff;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .breadcrumb {
+      padding: 8px 28px;
+      color: var(--muted);
+      background: #FBF6EC;
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--tomato);
+    }
+
+    .breadcrumb span {
+      margin: 0 5px;
+    }
+
+    nav.site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 14px;
+      background: var(--onion);
+      border-bottom: 2px solid var(--dark);
+    }
+
+    nav.site-nav a {
+      display: inline-block;
+      padding: 5px 16px;
+      color: #fff;
+      background: var(--tomato);
+      border: 2px outset #e08b74;
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav.site-nav a:hover {
+      color: #fff;
+      background: var(--dark);
+      border-color: #7a5a3d;
+    }
+
+    nav.site-nav a:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      border-style: inset;
+    }
+
+    main {
+      padding: 22px 28px 30px;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      padding: 7px 12px;
+      color: var(--paper);
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      font-size: 19px;
+      line-height: 1.5;
+      letter-spacing: .03em;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .lead {
+      font-size: 15px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .intro-box {
+      padding: 15px 17px;
+      background: #FBF6EC;
+      border: 1px solid var(--line);
+    }
+
+    .dish-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 14px 0 0;
+      padding: 4px;
+      background: #fff;
+      border: 1px solid var(--onion);
+      box-shadow: 2px 2px 0 #e4d3ba;
+      object-fit: cover;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: var(--paper);
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 112px;
+      color: var(--dark);
+      background: #F3E4CB;
+      white-space: nowrap;
+    }
+
+    .menu-table th {
+      color: var(--dark);
+      background: #F3E4CB;
+    }
+
+    .menu-table .price-col {
+      text-align: right;
+      white-space: nowrap;
+      width: 6em;
+    }
+
+    .shop-tag {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      color: #fff;
+      background: var(--tomato);
+      font-size: 10px;
+      font-weight: normal;
+      vertical-align: 2px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: stretch;
+      gap: 14px;
+    }
+
+    .info-table {
+      flex: 1 1 auto;
+      width: auto;
+    }
+
+    .shop-illustration {
+      flex: 0 0 40%;
+      width: 40%;
+      aspect-ratio: 3 / 2;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px dashed var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .shop-illustration img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: #FBF6EC;
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    footer {
+      padding: 16px 28px 20px;
+      color: var(--muted);
+      background: #F3E4CB;
+      border-top: 3px solid var(--onion);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 8px 5px 24px;
+        font-size: 13px;
+      }
+
+      header,
+      main {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .header-inner {
+        gap: 12px;
+      }
+
+      .header-logo {
+        width: 77px;
+      }
+
+      .breadcrumb {
+        padding-left: 16px;
+        padding-right: 16px;
+        line-height: 1.7;
+      }
+
+      nav.site-nav {
+        padding: 8px 10px;
+      }
+
+      .info-row {
+        flex-direction: column;
+      }
+
+      .info-table,
+      .shop-illustration {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+
+      footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+    <div class="top-strip"></div>
+
+    <header>
+      <div class="header-inner">
+        <div>
+          <p class="site-kicker">記録町商店街・加盟店紹介</p>
+
+          <h1>記録町カリー食堂</h1>
+
+          <p class="subtitle">
+            牛すじとピコぬネギの欧風カレー専門店です。
+          </p>
+        </div>
+
+        <!-- ロゴ画像は未作成のため、仮で店舗イラストを使用しています -->
+        <img class="header-logo" src="../images/facilities/kirokucho-curry-illust.jpg" alt="記録町カリー食堂 イラスト">
+      </div>
+    </header>
+
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="../index.html">トップ</a>
+      <span aria-hidden="true">➡</span>
+      <a href="index.html">施設案内</a>
+      <span aria-hidden="true">➡</span>
+      <a href="shokokai.html">ピコぬ市商工会</a>
+      <span aria-hidden="true">➡</span>
+      <a href="shoten.html">記録町商店街 加盟店紹介</a>
+      <span aria-hidden="true">➡</span>
+      <span aria-current="page">記録町カリー食堂</span>
+    </nav>
+
+    <nav class="site-nav" aria-label="ページ内メニュー">
+      <a href="#about">お店について</a>
+      <a href="#menu">メニュー</a>
+      <a href="#info">店舗情報</a>
+      <a href="#related">関連情報</a>
+    </nav>
+
+    <!-- 店頭写真は未撮影のため、撮影後に notice-photo として追加予定 -->
+
+    <main>
+      <section class="section" id="about">
+        <h2>■ お店について</h2>
+
+        <div class="intro-box">
+          <p class="lead">
+            いつもスパイスの良い香りが漂う、記録町商店街の欧風カレー専門店です。
+          </p>
+
+          <p>
+            長年継ぎ足しながら煮込まれたルーは、深煎りのスパイスと野菜の甘みがじっくり溶け込んだ味わい。
+            仕事帰りに立ち寄る常連さんも多く、カウンター越しに聞こえる「いらっしゃい」の声が
+            記録町の日常のひとコマになっています。
+          </p>
+
+          <p>
+            看板メニューの「牛すじネギカレー」は、とろけるまで煮込んだ牛すじと、
+            ピコぬ市特産「ピコぬネギ」をたっぷりのせた一皿。ネギの香りと甘みがルーのコクを引き立てます。
+          </p>
+        </div>
+
+        <img class="dish-photo" src="../images/facilities/shop/curry-001.jpg" alt="記録町カリー食堂の牛すじネギカレー">
+      </section>
+
+      <section class="section" id="menu">
+        <h2>■ メニュー</h2>
+
+        <table class="menu-table">
+          <tr>
+            <th>メニュー</th>
+            <th>内容</th>
+            <th class="price-col">価格</th>
+          </tr>
+          <tr>
+            <td>牛すじネギカレー<span class="shop-tag">看板</span></td>
+            <td>とろとろ牛すじとピコぬネギをたっぷりと</td>
+            <td class="price-col">980円</td>
+          </tr>
+          <tr>
+            <td>欧風ビーフカレー</td>
+            <td>じっくり煮込んだ牛肉の欧風ルー</td>
+            <td class="price-col">920円</td>
+          </tr>
+          <tr>
+            <td>チキンと野菜のカレー</td>
+            <td>彩り野菜とやわらかチキン(あっさりめ)</td>
+            <td class="price-col">850円</td>
+          </tr>
+          <tr>
+            <td>季節野菜のスパイスカレー</td>
+            <td>その時期の記録町産野菜を使用</td>
+            <td class="price-col">870円</td>
+          </tr>
+          <tr>
+            <td>ミニサラダセット(各カレーに追加)</td>
+            <td>小鉢のサラダを追加</td>
+            <td class="price-col">+150円</td>
+          </tr>
+          <tr>
+            <td>特製ラッシー</td>
+            <td>食後の一杯にどうぞ</td>
+            <td class="price-col">380円</td>
+          </tr>
+        </table>
+
+        <p class="small">
+          辛さは甘口〜辛口の4段階からお選びいただけます(同一価格)。ライスの量も少なめ〜大盛りまで対応しています。
+        </p>
+      </section>
+
+      <section class="section" id="info">
+        <h2>■ 店舗情報</h2>
+
+        <div class="info-row">
+          <table class="info-table">
+            <tr>
+              <th>所在地</th>
+              <td>ピコぬ市記録町3丁目(郵便局の並び)</td>
+            </tr>
+            <tr>
+              <th>電話</th>
+              <td>ぬぬ-ぬかピコ-2258(ふーふーごはん)</td>
+            </tr>
+            <tr>
+              <th>営業時間</th>
+              <td>10:00〜14:00(土日祝日は18:00まで)</td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td>木曜日</td>
+            </tr>
+          </table>
+          <div class="shop-illustration">
+            <img src="../images/facilities/kirokucho-curry-illust.jpg" alt="記録町カリー食堂のイラスト">
+          </div>
+        </div>
+
+        <div class="notice">
+          営業時間・定休日は変更となる場合があります。最新情報はお店へ直接お問い合わせください。
+        </div>
+      </section>
+
+      <section class="section" id="related">
+        <h2>■ 関連情報</h2>
+
+        <ul class="related-links">
+          <li>
+            <a href="shoten.html">記録町商店街 加盟店紹介</a>
+          </li>
+          <li>
+            <a href="shokokai.html">ピコぬ市商工会</a>
+          </li>
+          <li>
+            <a href="pikonu-negi.html">特産品「ピコぬネギ」</a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div>記録町カリー食堂</div>
+      <div>記録町商店街 加盟店紹介ページ</div>
+    </footer>
+  </div>
+</body>
+
+</html>
