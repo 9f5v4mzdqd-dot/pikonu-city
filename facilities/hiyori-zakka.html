@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>🧶ひより雑貨店｜記録町商店街 加盟店紹介｜ピコぬ市商工会</title>
+  <meta name="description"
+    content="ピコぬ市記録町商店街の加盟店「🧶ひより雑貨店」のご紹介ページです。店主が全国から集めた、こだわりのハンドメイド雑貨や小物が並ぶお店です。 自分だけのお気に入りを見つける楽しみがあります。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #faf6ee;
+      --onion: #5c8c94;
+      --tomato: #f3a9ad;
+      --dark: #29125e;
+      --line: #D4E5B3;
+      --muted: #612d95;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 12px 40px;
+      color: var(--dark);
+      background:
+        linear-gradient(rgba(255, 255, 255, .15), rgba(255, 255, 255, .15)),
+        repeating-linear-gradient(45deg,
+          var(--cream) 0,
+          var(--cream) 12px,
+          var(--line) 12px,
+          var(--line) 24px);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--dark);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: var(--tomato);
+    }
+
+    .site {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, .16);
+    }
+
+    .top-strip {
+      height: 9px;
+      background:
+        repeating-linear-gradient(90deg,
+          var(--tomato) 0,
+          var(--tomato) 38px,
+          var(--cream) 38px,
+          var(--cream) 76px,
+          var(--onion) 76px,
+          var(--onion) 114px,
+          var(--cream) 114px,
+          var(--cream) 152px);
+      border-bottom: 1px solid var(--dark);
+    }
+
+    header {
+      padding: 24px 28px 18px;
+      background: var(--paper);
+      border-bottom: 3px solid var(--onion);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 110px;
+      height: auto;
+      border: 3px solid #fff;
+      outline: 1px solid var(--onion);
+    }
+
+    .site-kicker {
+      margin: 0 0 4px;
+      color: var(--onion);
+      font-size: 13px;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--tomato);
+      font-size: clamp(25px, 4vw, 38px);
+      font-weight: bold;
+      letter-spacing: .04em;
+      line-height: 1.3;
+      text-shadow: 1px 1px 0 #fff;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .breadcrumb {
+      padding: 8px 28px;
+      color: var(--muted);
+      background: #FBF6EC;
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--tomato);
+    }
+
+    .breadcrumb span {
+      margin: 0 5px;
+    }
+
+    nav.site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 14px;
+      background: var(--onion);
+      border-bottom: 2px solid var(--dark);
+    }
+
+    nav.site-nav a {
+      display: inline-block;
+      padding: 5px 16px;
+      color: #fff;
+      background: var(--tomato);
+      border: 2px outset var(--onion);
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav.site-nav a:hover {
+      color: #fff;
+      background: var(--dark);
+      border-color: var(--dark);
+    }
+
+    nav.site-nav a:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      border-style: inset;
+    }
+
+    main {
+      padding: 22px 28px 30px;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      padding: 7px 12px;
+      color: var(--paper);
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      font-size: 19px;
+      line-height: 1.5;
+      letter-spacing: .03em;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .lead {
+      font-size: 15px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .intro-box {
+      padding: 15px 17px;
+      background: #FBF6EC;
+      border: 1px solid var(--line);
+    }
+
+    .dish-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 14px 0 0;
+      padding: 4px;
+      background: #fff;
+      border: 1px solid var(--onion);
+      box-shadow: 2px 2px 0 var(--line);
+      object-fit: cover;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: var(--paper);
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 112px;
+      color: var(--dark);
+      background: #F3E4CB;
+      white-space: nowrap;
+    }
+
+    .menu-table th {
+      color: var(--dark);
+      background: #F3E4CB;
+    }
+
+    .menu-table .price-col {
+      text-align: right;
+      white-space: nowrap;
+      width: 6em;
+    }
+
+    .shop-tag {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      color: #fff;
+      background: var(--tomato);
+      font-size: 10px;
+      font-weight: normal;
+      vertical-align: 2px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: stretch;
+      gap: 14px;
+    }
+
+    .info-table {
+      flex: 1 1 auto;
+      width: auto;
+    }
+
+    .shop-illustration {
+      flex: 0 0 40%;
+      width: 40%;
+      aspect-ratio: 3 / 2;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px dashed var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .shop-illustration img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: #FBF6EC;
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    footer {
+      padding: 16px 28px 20px;
+      color: var(--muted);
+      background: #F3E4CB;
+      border-top: 3px solid var(--onion);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 8px 5px 24px;
+        font-size: 13px;
+      }
+
+      header,
+      main {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .header-inner {
+        gap: 12px;
+      }
+
+      .header-logo {
+        width: 77px;
+      }
+
+      .breadcrumb {
+        padding-left: 16px;
+        padding-right: 16px;
+        line-height: 1.7;
+      }
+
+      nav.site-nav {
+        padding: 8px 10px;
+      }
+
+      .info-row {
+        flex-direction: column;
+      }
+
+      .info-table,
+      .shop-illustration {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+
+      footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+    <div class="top-strip"></div>
+
+    <header>
+      <div class="header-inner">
+        <div>
+          <p class="site-kicker">記録町商店街・加盟店紹介</p>
+
+          <h1>🧶ひより雑貨店</h1>
+
+          <p class="subtitle">
+            店主が全国から集めた、こだわりのハンドメイド雑貨や小物が並ぶお店です。 自分だけのお気に入りを見つける楽しみがあります。
+          </p>
+        </div>
+
+        <img class="header-logo" src="../images/facilities/hiyori-illust.jpg" alt="ひより雑貨店のイラスト">
+      </div>
+    </header>
+
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="../index.html">トップ</a>
+      <span aria-hidden="true">➡</span>
+      <a href="index.html">施設案内</a>
+      <span aria-hidden="true">➡</span>
+      <a href="shokokai.html">ピコぬ市商工会</a>
+      <span aria-hidden="true">➡</span>
+      <a href="shoten.html">記録町商店街 加盟店紹介</a>
+      <span aria-hidden="true">➡</span>
+      <span aria-current="page">🧶ひより雑貨店</span>
+    </nav>
+
+    <nav class="site-nav" aria-label="ページ内メニュー">
+      <a href="#about">お店について</a>
+      <a href="#menu">メニュー</a>
+      <a href="#info">店舗情報</a>
+      <a href="#related">関連情報</a>
+    </nav>
+
+    <main>
+      <section class="section" id="about">
+        <h2>■ お店について</h2>
+
+        <div class="intro-box">
+          <p>
+            🌸🌷🌺🌻 <strong>ひより雑貨店へようこそ</strong> 🌻🌺🌷🌸
+          </p>
+
+          <p>
+            毎日の暮らしに、ちょっとした彩りを。<br>🌸 かわいいもの、なつかしいもの、 見ているだけで楽しくなる雑貨をいろいろ取りそろえています。🌷🌷🌷
+          </p>
+
+          <p>
+            季節の小物や、暮らしに役立つもの、 ちょっとした贈り物にもぴったりの商品など、 店主が「これ、いいな」と思ったものを並べています。🌺🌺🌺
+          </p>
+
+          <p>
+            お近くへお越しの際は、ぜひお立ち寄りください。<br>🌻 店内をゆっくり眺めながら、 お気に入りのひと品を見つけてみてくださいね。🌸🌷🌺🌻
+          </p>
+
+          <p>
+            <strong>ひより雑貨店</strong> 🧸🌸🌷🌺 暮らしのそばに、小さな楽しみを ♪ 🌺🌷🌸🧸
+          </p>
+        </div>
+
+        <img class="dish-photo" src="../images/facilities/shop/hiyori-zakka-001.jpg" alt="ひより雑貨店の店主が作ったキルトカバー">
+      </section>
+
+      <section class="section" id="menu">
+        <h2>■ 商品紹介</h2>
+
+        <div class="shop-intro">
+          <p>
+            🌸🌷🌺🌻 ひより雑貨店では、暮らしの中でちょっとうれしくなるような
+            雑貨をいろいろ取りそろえています♪ 🌻🌺🌷🌸
+          </p>
+
+          <p>
+            花柄の小物や、かわいい布雑貨、手芸に使えるボタンなど、
+            店主が「これ、いいな♪」と思ったものを少しずつ集めています🌷
+          </p>
+
+          <p>
+            季節によって商品も入れ替わりますので、
+            お近くへお越しの際は、ぜひのぞいてみてくださいね🌺🌻
+          </p>
+
+
+        </div>
+
+        <h3>🌸 花柄のミニポーチ 🌸</h3>
+        <p>
+          小さめサイズで、バッグの中の小物入れにもぴったりです♪
+          お化粧道具やお薬を入れたり、使い方はいろいろ。
+          ちょっとしたプレゼントにもおすすめですよ🌷
+        </p>
+
+        <h3>🌷 レース付きハンカチ 🌷</h3>
+        <p>
+          ふちにレースをあしらった、かわいらしいハンカチです。
+          毎日使うものだからこそ、お気に入りの一枚をどうぞ🌸
+        </p>
+
+        <h3>🌺 小さな花柄の巾着袋 🌺</h3>
+        <p>
+          お菓子を入れたり、小物を入れたり、いろいろ使える巾着です♪
+          柄はいろいろありますので、お気に入りを見つけてくださいね🌻
+        </p>
+
+        <h3>🌻 かわいいボタンいろいろ 🌻</h3>
+        <p>
+          お洋服やバッグ、手芸作品のアクセントにいかがでしょうか？
+          お花の形や、ちょっとレトロな色のボタンなど、いろいろあります🌸
+          見ているだけでも楽しいですよ♪
+        </p>
+
+        <p class="shop-message">
+          🧸🌸🌷🌺🌻 お気に入りのひと品が見つかりますように♪ 🌻🌺🌷🌸🧸
+        </p>
+      </section>
+      <section class="section" id="lesson">
+        <h2>■ パッチワーク教室のご案内</h2>
+
+        <div class="shop-intro">
+          <p>
+            🌸🌷🌺🌻 ひより雑貨店では、パッチワーク教室も開催しています♪ 🌻🌺🌷🌸
+          </p>
+          <p>
+            パッチワークが初めての方も大歓迎です🌷<br>
+            小さな作品から、ゆっくり楽しく作っていきましょう♪
+          </p>
+
+          <p>
+            🧸「ちょっとやってみたいな」という方も、どうぞお気軽にご参加ください🌺
+          </p>
+
+          <p>
+            おしゃべりをしながら針を動かす時間も楽しいですよ🌻
+          </p>
+
+        </div>
+
+        <h3>🌷 教室について 🌷</h3>
+
+        <p>
+          毎週、火曜日と土曜日に開催しています。<br>
+          日時や持ち物など、詳しくは店頭にてご案内しています。<br>
+          ご興味のある方は、お気軽にお声をかけてくださいね♪
+        </p>
+
+        <p class="shop-message">
+          🧸🌸🌷🌺🌻 みんなで楽しく、チクチクしましょう♪ 🌻🌺🌷🌸🧸
+        </p>
+      </section>
+
+      <section class="section" id="knitting">
+        <h2>■ 編み物教室のご案内</h2>
+
+        <div class="shop-intro">
+          <p>
+            🌸🌷🌺🌻 ひより雑貨店では、編み物教室も開催しています♪ 🌻🌺🌷🌸
+          </p>
+
+          <p>
+            毛糸を選んで、好きな色で、ひと目ずつあみあみ。<br>
+            マフラーや小物など、季節に合わせた作品を作っています🧶
+          </p>
+
+          <p>
+            🧸「編み物は久しぶり・・」という方も大歓迎です。<br>
+            編みかたを一緒に思い出しながら、ゆっくり楽しみましょう♪
+          </p>
+
+          <p>
+            編み目を数えたり、ときどき間違えたり。。<br>
+            そんな時間も含めて、編み物は楽しいものですよ🌷🧸💕
+          </p>
+        </div>
+
+        <h3>🌷 教室について 🌷</h3>
+
+        <p>
+          毎週、水曜日と日曜日に開催しています。<br>
+          日時や持ち物など、詳しくは店頭にてご案内しています。<br>
+          ご興味のある方は、お気軽にお声をかけてくださいね♪
+        </p>
+
+        <p class="shop-message">
+          🧸🌸🌷🌺🌻 みんなで楽しく、あみあみしましょう♪ 🌻🌺🌷🌸🧸
+        </p>
+      </section>
+
+
+      <section class="section" id="info">
+        <h2>■ 店舗情報</h2>
+
+        <div class="info-row">
+          <table class="info-table">
+            <tr>
+              <th>所在地</th>
+              <td>ピコぬ市記録町3丁目(ピコぬベーカリー隣)</td>
+            </tr>
+            <tr>
+              <th>電話</th>
+              <td>ぬぬ-ぬかピコ-4620</td>
+            </tr>
+            <tr>
+              <th>営業時間</th>
+              <td>10：30〜18:30</td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td>月曜日</td>
+            </tr>
+          </table>
+          <div class="shop-illustration">
+            <img src="../images/facilities/hiyori-illust.jpg" alt="ひより雑貨店のイラスト">
+          </div>
+        </div>
+
+        <div class="notice">
+          営業時間・定休日は変更となる場合があります。最新情報はお店へ直接お問い合わせください。
+        </div>
+      </section>
+
+      <section class="section" id="related">
+        <h2>■ 関連情報</h2>
+
+        <ul class="related-links">
+          <li>
+            <a href="shoten.html">記録町商店街 加盟店紹介</a>
+          </li>
+          <li>
+            <a href="shokokai.html">ピコぬ市商工会</a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div>🧶ひより雑貨店</div>
+      <div>記録町商店街 加盟店紹介ページ</div>
+    </footer>
+  </div>
+</body>
+
+</html>
