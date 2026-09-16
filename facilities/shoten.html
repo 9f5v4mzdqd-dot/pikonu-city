@@ -5,21 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>🍞 ピコぬベーカリー｜記録町商店街 加盟店紹介｜ピコぬ市商工会</title>
-  <meta name="description" content="ピコぬ市記録町商店街の加盟店「🍞 ピコぬベーカリー」のご紹介ページです。焼きたてパンの香ばしい匂いが商店街の通りまで漂ってきます。名物の 「ピコぬクリームパン」は、しっとりした生地にカスタードクリームがたっぷりです。">
+  <title>記録町商店街 加盟店紹介｜ピコぬ市商工会</title>
+  <meta name="description" content="記録町商店街の加盟店をご紹介します。">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
   <style>
     :root {
-      --paper: #FFFFFF;
-      --cream: #e3d2bd;
-      --onion: #a42e1b;
-      --tomato: #212f4d;
-      --dark: #4a2e1b;
-      --line: #4a2e1b;
-      --muted: #6b5d4e;
+      --paper: #FCFDFE;
+      --cream: #F69454;
+      --orange: #EE693F;
+      --green: #739F3D;
+      --brown: #4A352A;
+      --line: #A9BE8B;
+      --text: #40362F;
+      --muted: #706861;
     }
 
     * {
@@ -29,49 +30,55 @@
     body {
       margin: 0;
       padding: 24px 12px 40px;
-      color: var(--dark);
-      background: var(--cream);
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255, 255, 255, .18), rgba(255, 255, 255, .18)),
+        repeating-linear-gradient(0deg,
+          #eef2ec 0,
+          #eef2ec 2px,
+          #e7ece5 2px,
+          #e7ece5 4px);
       font-family: "MS Pゴシック", "Osaka", sans-serif;
       font-size: 15px;
       line-height: 1.8;
     }
 
     a {
-      color: var(--dark);
+      color: var(--brown);
       text-decoration: underline;
     }
 
     a:hover {
-      color: var(--tomato);
+      color: var(--orange);
     }
 
     .site {
       max-width: 980px;
       margin: 0 auto;
       background: var(--paper);
-      border: 1px solid var(--dark);
-      box-shadow: 4px 4px 0 rgba(0, 0, 0, .16);
+      border: 1px solid var(--brown);
+      box-shadow: 4px 4px 0 rgba(74, 53, 42, .16);
     }
 
     .top-strip {
       height: 9px;
       background:
         repeating-linear-gradient(90deg,
-          var(--tomato) 0,
-          var(--tomato) 38px,
+          var(--orange) 0,
+          var(--orange) 38px,
           var(--cream) 38px,
           var(--cream) 76px,
-          var(--onion) 76px,
-          var(--onion) 114px,
+          var(--green) 76px,
+          var(--green) 114px,
           var(--cream) 114px,
           var(--cream) 152px);
-      border-bottom: 1px solid var(--dark);
+      border-bottom: 1px solid var(--brown);
     }
 
     header {
       padding: 24px 28px 18px;
       background: var(--paper);
-      border-bottom: 3px solid var(--onion);
+      border-bottom: 3px solid var(--cream);
     }
 
     .header-inner {
@@ -85,20 +92,18 @@
       flex: 0 0 auto;
       width: 110px;
       height: auto;
-      border: 3px solid #fff;
-      outline: 1px solid var(--onion);
     }
 
     .site-kicker {
       margin: 0 0 4px;
-      color: var(--onion);
+      color: var(--green);
       font-size: 13px;
       letter-spacing: .08em;
     }
 
     h1 {
       margin: 0;
-      color: var(--tomato);
+      color: var(--brown);
       font-size: clamp(25px, 4vw, 38px);
       font-weight: bold;
       letter-spacing: .04em;
@@ -108,24 +113,20 @@
 
     .subtitle {
       margin: 8px 0 0;
-      color: var(--muted);
+      color: #655b54;
       font-size: 14px;
     }
 
     .breadcrumb {
       padding: 8px 28px;
       color: var(--muted);
-      background: #FBF6EC;
-      border-bottom: 1px dotted var(--onion);
+      background: #f7faf7;
+      border-bottom: 1px dotted var(--green);
       font-size: 13px;
     }
 
     .breadcrumb a {
-      color: var(--dark);
-    }
-
-    .breadcrumb a:hover {
-      color: var(--tomato);
+      color: var(--brown);
     }
 
     .breadcrumb span {
@@ -137,16 +138,16 @@
       flex-wrap: wrap;
       gap: 6px;
       padding: 10px 14px;
-      background: var(--onion);
-      border-bottom: 2px solid var(--dark);
+      background: #F69454;
+      border-bottom: 2px solid var(--brown);
     }
 
     nav.site-nav a {
       display: inline-block;
       padding: 5px 16px;
       color: #fff;
-      background: var(--tomato);
-      border: 2px outset var(--onion);
+      background: var(--orange);
+      border: 2px outset #f6aa92;
       font-size: 13px;
       font-weight: bold;
       text-decoration: none;
@@ -154,8 +155,8 @@
 
     nav.site-nav a:hover {
       color: #fff;
-      background: var(--dark);
-      border-color: var(--dark);
+      background: var(--green);
+      border-color: #a9c77e;
     }
 
     nav.site-nav a:active {
@@ -163,6 +164,46 @@
       top: 1px;
       left: 1px;
       border-style: inset;
+    }
+
+    .notice-photo {
+      display: block;
+      width: calc(100% - 56px);
+      max-width: 100%;
+      height: auto;
+      margin: 20px 28px 0;
+      border: 1px solid var(--green);
+      box-shadow: 2px 2px 0 #d8e2cf;
+    }
+
+    .notice {
+      margin: 20px 28px 0;
+      padding: 9px 12px;
+      color: var(--brown);
+      background: #fff4ee;
+      border: 1px solid var(--cream);
+      font-size: 14px;
+    }
+
+    .notice strong {
+      color: var(--orange);
+    }
+
+    .notice-list {
+      margin: 6px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .notice-list li {
+      padding: 3px 0;
+    }
+
+    .notice-list .notice-date {
+      display: inline-block;
+      min-width: 90px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     main {
@@ -173,19 +214,27 @@
       margin-top: 28px;
     }
 
-    .section:first-of-type {
+    .section:first-child {
       margin-top: 0;
     }
 
     h2 {
       margin: 0 0 12px;
       padding: 7px 12px;
-      color: var(--paper);
-      background: var(--dark);
-      border-left: 8px solid var(--tomato);
+      color: #FCFDFE;
+      background: var(--brown);
+      border-left: 8px solid var(--orange);
       font-size: 19px;
       line-height: 1.5;
       letter-spacing: .03em;
+    }
+
+    h3 {
+      margin: 18px 0 7px;
+      padding-bottom: 4px;
+      color: var(--brown);
+      border-bottom: 1px dotted var(--green);
+      font-size: 17px;
     }
 
     p {
@@ -201,68 +250,6 @@
       font-size: 13px;
     }
 
-    .intro-box {
-      padding: 15px 17px;
-      background: #FBF6EC;
-      border: 1px solid var(--line);
-    }
-
-    .dish-photo {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 14px 0 0;
-      padding: 4px;
-      background: #fff;
-      border: 1px solid var(--onion);
-      box-shadow: 2px 2px 0 var(--line);
-      object-fit: cover;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      background: var(--paper);
-      font-size: 14px;
-    }
-
-    th,
-    td {
-      padding: 6px 8px;
-      border: 1px solid var(--line);
-      vertical-align: top;
-      text-align: left;
-    }
-
-    .info-table th {
-      width: 112px;
-      color: var(--dark);
-      background: #F3E4CB;
-      white-space: nowrap;
-    }
-
-    .menu-table th {
-      color: var(--dark);
-      background: #F3E4CB;
-    }
-
-    .menu-table .price-col {
-      text-align: right;
-      white-space: nowrap;
-      width: 6em;
-    }
-
-    .shop-tag {
-      display: inline-block;
-      margin-left: 6px;
-      padding: 1px 6px;
-      color: #fff;
-      background: var(--tomato);
-      font-size: 10px;
-      font-weight: normal;
-      vertical-align: 2px;
-    }
-
     .info-row {
       display: flex;
       align-items: stretch;
@@ -272,6 +259,9 @@
     .info-table {
       flex: 1 1 auto;
       width: auto;
+      border-collapse: collapse;
+      background: #FCFDFE;
+      font-size: 14px;
     }
 
     .shop-illustration {
@@ -296,13 +286,121 @@
       object-fit: cover;
     }
 
-    .notice {
-      margin-top: 14px;
-      padding: 9px 12px;
-      color: var(--dark);
-      background: #FBF6EC;
-      border: 1px solid var(--onion);
-      font-size: 14px;
+    .info-table th,
+    .info-table td {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 112px;
+      color: var(--brown);
+      background: #f2f7ee;
+      white-space: nowrap;
+    }
+
+    .intro-box {
+      padding: 15px 17px;
+      background: #f8fbf6;
+      border: 1px solid var(--line);
+    }
+
+    .intro-box::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .street-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 0 14px;
+      padding: 4px;
+      background: #fff;
+      border: 1px solid var(--green);
+      box-shadow: 2px 2px 0 #d8e2cf;
+      object-fit: cover;
+    }
+
+    .shop-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .shop-card {
+      padding: 14px 16px;
+      background: #FCFDFE;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--green);
+    }
+
+    .shop-card:nth-child(even) {
+      border-left-color: var(--orange);
+    }
+
+    .shop-card h3 {
+      margin: 0 0 5px;
+      padding: 0;
+      border: 0;
+      font-size: 17px;
+    }
+
+    .shop-card h3 a {
+      color: var(--brown);
+    }
+
+    .shop-meta {
+      margin: 5px 0;
+      color: #70665f;
+      font-size: 13px;
+    }
+
+    .shop-tag {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      color: #fff;
+      background: var(--orange);
+      font-size: 10px;
+      font-weight: normal;
+      vertical-align: 2px;
+    }
+
+    .shop-photo {
+      float: right;
+      width: 112px;
+      height: 82px;
+      margin: 0 0 8px 14px;
+      padding: 4px;
+      background: #fff;
+      border: 1px solid var(--green);
+      box-shadow: 2px 2px 0 #d8e2cf;
+      object-fit: cover;
+    }
+
+    .shop-card::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .shop-link {
+      margin-left: 8px;
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    .contact-box {
+      padding: 16px;
+      background: #fff4ee;
+      border: 1px solid var(--cream);
+    }
+
+    .contact-box strong {
+      color: var(--orange);
     }
 
     .related-links {
@@ -313,13 +411,35 @@
       padding-left: 20px;
     }
 
+    .map-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 0 14px;
+      padding: 4px;
+      background: #fff;
+      border: 1px solid var(--green);
+      box-shadow: 2px 2px 0 #d8e2cf;
+      box-sizing: border-box;
+    }
+
     footer {
       padding: 16px 28px 20px;
-      color: var(--muted);
-      background: #F3E4CB;
-      border-top: 3px solid var(--onion);
+      color: #6f655e;
+      background: #f2f5f1;
+      border-top: 3px solid var(--green);
       font-size: 11px;
       text-align: center;
+    }
+
+    .counter {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 1px 7px;
+      color: #fff;
+      background: var(--brown);
+      font-family: "Courier New", monospace;
+      letter-spacing: .08em;
     }
 
     @media (max-width: 700px) {
@@ -348,8 +468,13 @@
         line-height: 1.7;
       }
 
-      nav.site-nav {
-        padding: 8px 10px;
+      .notice {
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+
+      .info-table th {
+        width: 90px;
       }
 
       .info-row {
@@ -360,6 +485,11 @@
       .shop-illustration {
         flex: 1 1 auto;
         width: 100%;
+      }
+
+      .shop-photo {
+        width: 94px;
+        height: 70px;
       }
 
       footer {
@@ -377,12 +507,12 @@
     <header>
       <div class="header-inner">
         <div>
-          <p class="site-kicker">記録町商店街・加盟店紹介</p>
+          <p class="site-kicker">ピコぬ市商工会・商店街情報</p>
 
-          <h1>🍞 ピコぬベーカリー</h1>
+          <h1>記録町商店街 加盟店紹介</h1>
 
           <p class="subtitle">
-            焼きたてパンの香ばしい匂いが商店街の通りまで漂ってきます。名物の 「ピコぬクリームパン」は、しっとりした生地にカスタードクリームがたっぷりです。
+            ピコぬ市商工会に加盟しているお店をご紹介します。
           </p>
         </div>
 
@@ -397,125 +527,466 @@
       <span aria-hidden="true">➡</span>
       <a href="shokokai.html">ピコぬ市商工会</a>
       <span aria-hidden="true">➡</span>
-      <a href="shoten.html">記録町商店街 加盟店紹介</a>
-      <span aria-hidden="true">➡</span>
-      <span aria-current="page">🍞 ピコぬベーカリー</span>
+      <span aria-current="page">記録町商店街 加盟店紹介</span>
     </nav>
 
     <nav class="site-nav" aria-label="ページ内メニュー">
-      <a href="#about">お店について</a>
-      <a href="#menu">メニュー</a>
-      <a href="#custom-1">今月のパン</a>
-      <a href="#info">店舗情報</a>
+      <a href="#shops">加盟店紹介</a>
+      <a href="#contact">お問い合わせ</a>
       <a href="#related">関連情報</a>
     </nav>
 
+    <img class="notice-photo" src="../images/facilities/shoten.jpg" alt="記録町商店街 加盟店紹介の写真">
+
     <main>
-      <section class="section" id="about">
-        <h2>■ お店について</h2>
+      <section class="section">
+        <h2>■ お知らせ</h2>
+
+        <ul class="notice-list">
+          <li><span class="notice-date">2026.9.14</span>「記録町商店街 加盟店紹介」のページをリニューアルしました。</li>
+          <li><span class="notice-date">2026.9.1</span>「記録町カリー食堂」「音楽酒場とまり木」を加盟店紹介に追加しました。</li>
+          <li><span class="notice-date">2026.8.1</span>「商店街だより vol.1(PDF)」を公開しました。</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>■ 記録町商店街について</h2>
+
+        <img class="street-photo" src="../images/kanko/shotengai.jpg" alt="記録町商店街通り">
 
         <div class="intro-box">
-          <p>
-            ピコぬベーカリーは、毎日の食卓に並ぶパンを焼いている小さな町のパン屋です。 店主はイギリスでパン作りを学び、帰国後、この町で店を始めました。
+          <p class="lead">
+            記録町商店街は、ピコぬ市の市民生活を支える小さな商店街です。
           </p>
 
           <p>
-            なかでも名物は、イギリスで学んだ製法をもとに焼き上げる「イギリスパン」。🍞 毎朝のトーストにしても、そのまま食べてもおいしい、飽きのこないパンを目指しています。
+            喫茶店、八百屋、文房具店、和菓子店など、日々の暮らしに関わるお店が並んでいます。
+            大きな観光地ではありませんが、歩いてみると、それぞれのお店にそれぞれの記録があります。
           </p>
 
-          <p>
-            「今日はどれにしようかな」と気軽に立ち寄ってもらえる店でありたい。 そんな気持ちで、毎日パンを焼いています。
-          </p>
-        </div>
-
-        <img class="dish-photo" src="../images/facilities/shop/piconu-bakery001.jpg" alt="ピコぬベーカリーの店舗画像">
-      </section>
-
-      <section class="section" id="menu">
-        <h2>■ メニュー</h2>
-
-        <table class="menu-table">
-          <tr>
-            <th>メニュー</th>
-            <th>内容</th>
-            <th class="price-col">価格</th>
-          </tr>
-          <tr>
-            <td>名物イギリスパン<span class="shop-tag">看板</span></td>
-            <td>こんがり焼くと香ばしく、ふんわりした食感が楽しめる当店自慢の食パン。</td>
-            <td class="price-col">380円</td>
-          </tr>
-          <tr>
-            <td>あんバターロール</td>
-            <td>つぶあんとバターを包んだ、甘じょっぱい定番パン。</td>
-            <td class="price-col">220円</td>
-          </tr>
-          <tr>
-            <td>ベーコンエピ</td>
-            <td>ベーコンの旨みと香ばしい生地を楽しむ、食事にも合うパン。</td>
-            <td class="price-col">280円</td>
-          </tr>
-          <tr>
-            <td>ピコぬクリームパン<span class="shop-tag">看板</span></td>
-            <td>なめらかなカスタードクリームをたっぷり包みました。</td>
-            <td class="price-col">200円</td>
-          </tr>
-          <tr>
-            <td>りんごデニッシュ</td>
-            <td>甘く煮たりんごとサクサクのデニッシュ生地を合わせました。</td>
-            <td class="price-col">260円</td>
-          </tr>
-        </table>
-
-      </section>
-
-      <section class="section" id="custom-1">
-        <h2>■ 今月のパン</h2>
-
-        <div class="intro-box">
-          <p>
-            🌰栗あんぱん　240円 ・・・栗の風味を加えたあんを包んだ、秋限定のあんぱん。
-          </p>
-
-          <p>
-            🍎りんごとシナモンのロール　280円 ・・・甘く煮たりんごとシナモンを巻き込んだ、香り豊かな秋のパン。
-          </p>
-
-          <p>
-            🍄きのこのチーズブレッド　300円 ・・・きのことチーズを合わせた、食事にもよく合う焼き込みパン。
+          <p class="small">
+            ➡詳しくは<a href="../pdfs/shotengai-dayori/shotengai-dayori-vol1.pdf">商店街だより vol.1(PDF)</a>もあわせてご覧ください。
           </p>
         </div>
       </section>
 
-      <section class="section" id="info">
-        <h2>■ 店舗情報</h2>
+      <section class="section" id="shops">
+        <h2>■ 加盟店紹介</h2>
 
-        <div class="info-row">
-          <table class="info-table">
-            <tr>
-              <th>所在地</th>
-              <td>ピコぬ市記録町3丁目(ひより雑貨店隣)</td>
-            </tr>
-            <tr>
-              <th>電話</th>
-              <td>ぬぬ-ぬかピコ--8810</td>
-            </tr>
-            <tr>
-              <th>営業時間</th>
-              <td>8:00〜18：00</td>
-            </tr>
-            <tr>
-              <th>定休日</th>
-              <td>月・火曜日</td>
-            </tr>
-          </table>
-          <div class="shop-illustration">
-            <img src="../images/facilities/piconu-bakery-illust.jpg" alt="ピコぬベーカリーのイラスト">
-          </div>
+        <p>
+          記録町商店街の加盟店をご紹介します。
+          営業時間や定休日は変更される場合がありますので、
+          ご利用の際は各店舗へご確認ください。
+        </p>
+
+        <img class="map-image" src="../images/facilities/shotengai-map.jpg" alt="記録町商店街加盟店マップ">
+
+        <div class="shop-list">
+          <article class="shop-card">
+            <!--
+  <img class="shop-photo" src="../images/facilities/yaohachi.jpg" alt="八百八の店先">
+  -->
+            <h3>🥬 ①八百八(やおはち)<a class="shop-link" href="yaohachi.html">お店のホームページを見る➡</a></h3>
+            <p class="shop-meta">青果店 ／ 記録町商店街(入り口付近)</p>
+            <p>
+              いつも元気な声が響く八百屋さんです。ピコぬ市で採れた新鮮な野菜や果物が
+              店先に並びます。夕方はお買い得なセールがあることもあります。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(商店街の入り口近く)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-8088</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>8:00〜19:00</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>日曜日・祝日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/yaohachi-illust.jpg" alt="八百八のイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card tag-new">
+            <!--
+  <img class="shop-photo" src="../images/facilities/kirokucho-curry.jpg" alt="記録町カリー食堂の外観">
+  -->
+            <h3>🍛 ②記録町カリー食堂<span class="shop-tag">新着</span> <a class="shop-link"
+                href="kirokumachi-curry.html">お店のホームページを見る➡</a></h3>
+            <p class="shop-meta">カレー・食堂 ／ 記録町商店街(郵便局の並び)</p>
+            <p>
+              いつもスパイスの良い香りが漂うカレー専門店です。じっくり煮込んだ牛すじと、
+              シャキシャキのピコぬネギを使った「牛すじネギカレー」が自慢のお店です。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(郵便局の並び)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-2258(ふーふーごはん)</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>10:00〜14:00(土日祝日は18:00まで)</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>木曜日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/kirokumachi-curry-illust.jpg" alt="記録町カリー食堂のイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card">
+            <!--
+  <img class="shop-photo" src="../images/facilities/piconu-post.jpg" alt="ピコぬ郵便局の外観">
+  -->
+            <h3>📮 ③記録町郵便局</h3>
+            <p class="shop-meta">郵便局 ／ 記録町商店街(文房具店向かい側)</p>
+            <p>
+              木造のレトロな建物と、入り口の赤い丸ポストが商店街の目印です。局長ほか職員が
+              手紙や荷物を毎日預かっています。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(文房具店向かい側)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-1111</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>9:00〜17:30</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>土曜日・日曜日・祝日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/piconu-post-illust.jpg" alt="ピコぬ郵便局のイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card">
+            <!--
+  <img class="shop-photo" src="../images/facilities/kodomonokuni.jpg" alt="子どもの国 文房具店の店頭">
+  -->
+            <h3>✏️ ④子どもの国 文房具店</h3>
+            <p class="shop-meta">文具店 ／ 記録町商店街(郵便局の向かい側)</p>
+            <p>
+              学校帰りの子どもたちでいつもにぎわう文房具店です。店限定のシールやノートも
+              取り扱っています。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(郵便局の向かい側)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-2345</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>10:00〜18:00</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>木曜日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/kodomonokuni-illust.jpg" alt="子どもの国 文房具店のイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card">
+            <!--
+  <img class="shop-photo" src="../images/facilities/kissa-yamato.jpg" alt="喫茶大和の店頭">
+  -->
+            <h3>☕ ⑤喫茶大和(きっさ やまと)<a class="shop-link" href="kissa-yamato.html">お店のホームページを見る➡</a></h3>
+            <p class="shop-meta">喫茶店 ／ 記録町商店街(中央)</p>
+            <p>
+              コーヒーのいい香りとレトロな音楽が迎えてくれるお店です。マスターが一杯ずつ淹れる
+              サイフォンコーヒーと、手作りケーキが人気です。日替わりケーキがおすすめです。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(商店街の中央)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-8010</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>9:00〜18:00</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>木曜日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/kissa-yamato-illust.jpg" alt="喫茶大和のイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card">
+            <!--
+            <img class="shop-photo" src="../images/facilities/shokokai-jimukyoku.jpg" alt="商工会事務局の外観">
+            -->
+            <h3>🏢⑥商工会事務局</h3>
+            <p class="shop-meta">商工会事務局 ／ 記録町商店街(中央)</p>
+            <p>
+              <!-- 紹介文は後日追加予定 -->
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(記録町商店街中央)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-4105(よいとこ)</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td><!-- 後日追加予定 --></td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td><!-- 後日追加予定 --></td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <!-- <img src="../images/facilities/shokokai-jimukyoku-illust.jpg" alt="商工会事務局のイラスト"> -->
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card">
+            <!--
+  <img class="shop-photo" src="../images/facilities/happy-toys.jpg" alt="おもちゃのハッピーの店頭">
+  -->
+            <h3>🧸 ⑦おもちゃのハッピー</h3>
+            <p class="shop-meta">玩具店 ／ 記録町商店街(郵便局の並び)</p>
+            <p>
+              ガラス窓の奥に、懐かしいブリキのロボットや可愛いお人形が並ぶお店です。
+              昔ながらのロボットが今も置いてあります。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(郵便局の並び)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-0588</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>10:00〜18:30</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>木曜日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/happy-toys-illust.jpg" alt="おもちゃのハッピーのイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card">
+            <!--
+  <img class="shop-photo" src="../images/facilities/shop/piconu-bakery001.jpg" alt="ピコぬベーカリーの店頭">
+  -->
+            <h3>🍞 ⑧ピコぬベーカリー</h3>
+            <p class="shop-meta">パン店 ／ 記録町商店街</p>
+            <p>
+              焼きたてパンの香ばしい匂いが商店街の通りまで漂ってきます。名物の
+              「ピコぬクリームパン」は、しっとりした生地にカスタードクリームがたっぷりです。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(ひより雑貨店隣)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-8810</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>8:00〜18:00</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>月曜日・火曜日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/piconu-bakery-illust.jpg" alt="ピコぬベーカリーのイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card">
+            <!--
+  <img class="shop-photo" src="../images/facilities/hiyori.jpg" alt="ひより雑貨店の店内">
+  -->
+            <h3>🧶 ⑨ひより雑貨店<a class="shop-link" href="hiyori-zakka.html">お店のホームページを見る➡</a></h3>
+            <p class="shop-meta">雑貨店 ／ 記録町3丁目1-10</p>
+            <p>
+              店主が全国から集めた、こだわりのハンドメイド雑貨や小物が並ぶお店です。
+              自分だけのお気に入りを見つける楽しみがあります。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目1-10（ピコぬベーカリー隣）</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-4620</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>10:30〜18:30</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>月曜日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/hiyori-illust.jpg" alt="ひより雑貨店のイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card">
+            <!--
+  <img class="shop-photo" src="../images/facilities/hyakunendo.jpg" alt="和菓子処 百年堂の店構え">
+  -->
+            <h3>🍡 ⑩和菓子処 百年堂(ひゃくねんどう)</h3>
+            <p class="shop-meta">和菓子店 ／ 記録町商店街(神社の参道前)</p>
+            <p>
+              創業100年以上続く老舗です。名物は、ふっくらした生地にあんこがたっぷり詰まった
+              「焼きたてどら焼き」。売り切れることがあるため、午前中の来店がおすすめです。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(神社の参道前)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-1000</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>9:00〜17:30</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>火曜日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/hyakunendo-illust.jpg" alt="和菓子処 百年堂のイラスト">
+              </div>
+            </div>
+          </article>
+
+          <article class="shop-card tag-new">
+            <!--
+  <img class="shop-photo" src="../images/facilities/tomarigi.jpg" alt="音楽酒場とまり木の店内">
+  -->
+            <h3>🎸 ⑪音楽酒場とまり木<span class="shop-tag">新着</span><a class="shop-link" href="tomarigi.html">お店のホームページを見る➡</a>
+            </h3>
+            <p class="shop-meta">音楽酒場 ／ 記録町3丁目・裏通り</p>
+            <p>
+              仕事帰りの市民が集う小さな音楽酒場です。店内には古いレコードやギターが並び、夜には誰かの弾き語りが響きます。
+              J.NUKAが歌った噂も残る店内で、静かにお酒を楽しみたい方も歓迎です。
+            </p>
+            <div class="info-row">
+              <table class="info-table">
+                <tr>
+                  <th>所在地</th>
+                  <td>ピコぬ市記録町3丁目(裏通り)</td>
+                </tr>
+                <tr>
+                  <th>電話</th>
+                  <td>ぬぬ-ぬかピコ-3030(さんじゅうえん)</td>
+                </tr>
+                <tr>
+                  <th>営業時間</th>
+                  <td>17:00〜23:00</td>
+                </tr>
+                <tr>
+                  <th>定休日</th>
+                  <td>日曜日</td>
+                </tr>
+              </table>
+              <div class="shop-illustration">
+                <img src="../images/facilities/tomarigi-illust.jpg" alt="音楽酒場とまり木のイラスト">
+              </div>
+            </div>
+          </article>
         </div>
 
-        <div class="notice">
-          営業時間・定休日は変更となる場合があります。最新情報はお店へ直接お問い合わせください。
+        <div class="notice" style="margin-left:0; margin-right:0;">
+          営業時間・定休日は変更となる場合があります。最新情報は各店舗にお問い合わせください。
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <h2>■ お問い合わせ</h2>
+
+        <div class="contact-box">
+          <p>
+            <strong>ピコぬ市商工会事務局</strong><br>
+            ピコぬ市記録町3丁目(記録町商店街中央)<br>
+            電話：ぬぬ-ぬかピコ-<strong>4105</strong>(よいとこ)
+          </p>
+
+          <p class="small">
+            ※商店街に関するお問い合わせ、加盟店募集についてなど、お気軽にご連絡ください。
+          </p>
         </div>
       </section>
 
@@ -524,18 +995,28 @@
 
         <ul class="related-links">
           <li>
-            <a href="shoten.html">記録町商店街 加盟店紹介</a>
+            <a href="shokokai.html">ピコぬ市商工会</a>
           </li>
           <li>
-            <a href="shokokai.html">ピコぬ市商工会</a>
+            <a href="../about/kanko.html">観光案内</a>
+          </li>
+          <li>
+            <a href="nukapiko-museum.html">ぬかピコ民芸博物館</a>
+          </li>
+          <li>
+            <a href="../about/piconu-music.html">ピコぬ市の音楽</a>
           </li>
         </ul>
       </section>
     </main>
 
     <footer>
-      <div>🍞 ピコぬベーカリー</div>
-      <div>記録町商店街 加盟店紹介ページ</div>
+      <div>ピコぬ市商工会 公式ホームページ</div>
+      <div>Copyright © ピコぬ市商工会 All Rights Reserved.</div>
+      <div>推奨環境：Internet Explorer 6.0以上（たぶん）</div>
+      <div class="counter">
+        あなたは 0004105 人目のお客様です（たぶん）
+      </div>
     </footer>
   </div>
 </body>
