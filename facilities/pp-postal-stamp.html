@@ -1,0 +1,712 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ピコぬ市限定切手 | PPピコぬ郵政グループ | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬ市限定切手のご案内です。ピコぬ市の風景や施設などを題材にしたオリジナル切手をご紹介しています。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    /*
+      PPピコぬ郵政グループ 配色
+      トップページと同じ配色を使用
+    */
+
+    :root {
+      --paper: #FFFFFF;
+      --cream: #f5f7f2;
+      --onion: #d94a38;
+      --tomato: #2f6385;
+      --dark: #243746;
+      --line: #d9b9a8;
+      --muted: #687982;
+      --table-head: #F3E4CB;
+      --box-bg: #FBF6EC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--onion);
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #a83a2b;
+    }
+
+    a:hover {
+      color: var(--paper);
+      background: var(--tomato);
+      text-decoration: none;
+    }
+
+    #main {
+      min-height: 100vh;
+    }
+
+    /* ページ上部 */
+
+    .page-header {
+      background: var(--onion);
+      border-bottom: 4px solid var(--dark);
+      color: var(--paper);
+      padding: 24px 0 20px;
+    }
+
+    .page-header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .page-header .lead {
+      margin: 8px 0 0;
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 90px;
+      height: auto;
+      border: 3px solid var(--paper);
+      background: var(--paper);
+    }
+
+    /* パンくず */
+
+    .breadcrumb {
+      background: var(--paper);
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb ol {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: "➡";
+      margin-left: 6px;
+      color: var(--tomato);
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    /* ページ内ジャンプナビ */
+
+    .page-nav {
+      padding: 12px;
+      background: var(--paper);
+      border: 2px solid var(--onion);
+    }
+
+    .page-nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+      padding: 6px 16px;
+      color: var(--paper);
+      background: var(--tomato);
+      border: 2px solid var(--dark);
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .page-nav a:visited {
+      color: var(--paper);
+    }
+
+    .page-nav a:hover {
+      color: var(--paper);
+      background: var(--dark);
+      border-color: var(--dark);
+      text-decoration: none;
+    }
+
+    /* 本文とサイドバー */
+
+    .content-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .main-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      padding: 24px 26px 30px;
+      box-shadow: 5px 5px 0 rgba(36, 55, 70, 0.15);
+    }
+
+    .main-content p {
+      margin: 0 0 12px;
+    }
+
+    /* 見出し */
+
+    .main-content h2 {
+      margin: 28px 0 14px;
+      padding: 7px 12px;
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      color: var(--paper);
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+
+    .main-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    /* 商品一覧 */
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    .product-card {
+      background: var(--paper);
+      border: 2px solid var(--line);
+      padding: 14px;
+      box-shadow: 3px 3px 0 rgba(36, 55, 70, 0.08);
+    }
+
+    .stamp-image {
+      width: 100%;
+      aspect-ratio: 1.6 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .product-card h3 {
+      margin: 0 0 8px;
+      color: var(--tomato);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .product-card p {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 3px 10px;
+      font-weight: bold;
+      font-size: 13px;
+      color: var(--paper);
+    }
+
+    .soldout {
+      background: var(--onion);
+    }
+
+    .preparing {
+      background: var(--tomato);
+    }
+
+    .product-price {
+      margin-top: 8px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    /* ボックス */
+
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--box-bg);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: var(--box-bg);
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .important {
+      background: #fff4f1;
+      border: 2px solid var(--onion);
+      padding: 14px 16px;
+      margin: 18px 0;
+    }
+
+    .important strong {
+      color: var(--onion);
+    }
+
+    /* サイドバー */
+
+    .sidebar {
+      flex: 0 0 245px;
+      min-width: 0;
+    }
+
+    .sidebar-block {
+      margin-bottom: 20px;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+    }
+
+    .sidebar-block h2 {
+      margin: 0;
+      padding: 9px 12px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--onion);
+      color: var(--paper);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 14px 12px;
+    }
+
+    .sidebar-block li {
+      margin: 0;
+      padding: 7px 0;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .sidebar-block li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-block li::before {
+      content: "▶ ";
+      color: var(--onion);
+      font-size: 12px;
+    }
+
+    /* フッター */
+
+    footer {
+      background: var(--table-head);
+      border-top: 3px solid var(--onion);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 20px;
+    }
+
+    footer div {
+      margin: 2px 0;
+    }
+
+    footer a {
+      color: var(--onion);
+    }
+
+    /* スマートフォン表示 */
+
+    @media (max-width: 760px) {
+      .page-header {
+        padding: 20px 0 16px;
+      }
+
+      .page-header .container {
+        gap: 12px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .header-logo {
+        width: 60px;
+      }
+
+      .content-layout {
+        display: block;
+        margin: 16px auto;
+        padding: 0 12px;
+      }
+
+      .main-content {
+        padding: 18px 16px 24px;
+        box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+      }
+
+      .sidebar {
+        margin-top: 20px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <main id="main">
+
+    <!-- トップページと同じヘッダー -->
+    <div class="page-header">
+      <div class="container">
+        <div>
+          <h1>PPピコぬ郵政グループ</h1>
+          <p class="lead">ピコぬ市内の郵便局に関する共通のご案内を発信しています。</p>
+        </div>
+        <img class="header-logo"
+          src="../images/facilities/shop/pp-logo001.jpg"
+          alt="PPピコぬ郵政グループ ロゴ">
+      </div>
+    </div>
+
+    <!-- パンくず -->
+    <nav class="breadcrumb" aria-label="現在位置">
+      <ol>
+        <li><a href="../index.html">トップ</a></li>
+        <li><a href="index.html">施設案内</a></li>
+        <li><a href="pp-postal-group.html">PPピコぬ郵政グループ</a></li>
+        <li>ピコぬ市限定切手</li>
+      </ol>
+    </nav>
+
+    <!-- ページ内メニュー -->
+    <nav class="page-nav" aria-label="ページ内メニュー">
+      <ul>
+        <li><a href="#about">限定切手について</a></li>
+        <li><a href="#products">商品一覧</a></li>
+        <li><a href="#soldout">売り切れ商品</a></li>
+        <li><a href="#preparing">準備中の商品</a></li>
+        <li><a href="#notice">ご注意</a></li>
+      </ul>
+    </nav>
+
+    <div class="content-layout">
+
+      <div class="main-content">
+
+        <h2 id="about">ピコぬ市限定切手について</h2>
+
+        <p>
+          ピコぬ市では、市内の風景や施設、日々の暮らしなどを題材にした
+          オリジナル切手を企画しています。
+        </p>
+
+        <p>
+          郵便物を送るための切手としてだけではなく、
+          ピコぬ市の「記録」として残るものを目指して、
+          さまざまなテーマの切手を発行しています。
+        </p>
+
+        <div class="important">
+          <strong>現在の販売状況について</strong><br>
+          掲載商品のうち、現在販売中の商品はありません。
+          売り切れの商品は再入荷する場合があります。
+        </div>
+
+
+        <h2 id="products">限定切手 商品一覧</h2>
+
+        <div class="product-grid">
+
+          <article class="product-card">
+            <div class="stamp-image">
+              ピコぬ市 鉄道連結器記念<br>
+              切手シート画像
+            </div>
+
+            <h3>ピコぬ市 鉄道連結器記念</h3>
+
+            <p>
+              ピコぬ市の交通を支える鉄道と、
+              車両をつなぐ連結器を題材にした記念切手です。
+            </p>
+
+            <span class="status soldout">売り切れ</span>
+            <div class="product-price">1シート 840円</div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="stamp-image">
+              ぬかばな記念<br>
+              切手シート画像
+            </div>
+
+            <h3>ぬかばな記念</h3>
+
+            <p>
+              ピコぬ市の市花「ぬかばな」を描いた
+              季節限定の切手です。
+            </p>
+
+            <span class="status soldout">売り切れ</span>
+            <div class="product-price">1シート 630円</div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="stamp-image">
+              ピコぬどり記念<br>
+              切手シート画像
+            </div>
+
+            <h3>ピコぬどり誕生記念</h3>
+
+            <p>
+              ピコぬ市の市鳥「ピコぬどり」を
+              デザインした記念切手です。
+            </p>
+
+            <span class="status preparing">準備中</span>
+            <div class="product-price">価格未定</div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="stamp-image">
+              記録町商店街<br>
+              切手シート画像
+            </div>
+
+            <h3>記録町商店街</h3>
+
+            <p>
+              八百八、カリー食堂、喫茶大和など、
+              記録町商店街の風景を題材にした切手です。
+            </p>
+
+            <span class="status soldout">売り切れ</span>
+            <div class="product-price">1シート 780円</div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="stamp-image">
+              FMピコぬ 開局記念<br>
+              切手シート画像
+            </div>
+
+            <h3>FMピコぬ 開局記念</h3>
+
+            <p>
+              ピコぬ市のコミュニティ放送局、
+              FMピコぬの開局を記念した切手です。
+            </p>
+
+            <span class="status preparing">準備中</span>
+            <div class="product-price">価格未定</div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="stamp-image">
+              キロクぬかクリニック<br>
+              切手シート画像
+            </div>
+
+            <h3>キロクぬかクリニック</h3>
+
+            <p>
+              ピコぬ市の医療施設を題材にした
+              記念シリーズです。
+            </p>
+
+            <span class="status soldout">売り切れ</span>
+            <div class="product-price">1シート 720円</div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="stamp-image">
+              ピコぬ市の風景<br>
+              切手シート画像
+            </div>
+
+            <h3>ピコぬ市の風景</h3>
+
+            <p>
+              市内の日常の風景を記録した
+              定番シリーズです。
+            </p>
+
+            <span class="status soldout">売り切れ</span>
+            <div class="product-price">1シート 700円</div>
+          </article>
+
+
+          <article class="product-card">
+            <div class="stamp-image">
+              ピコぬ市 市制記念<br>
+              切手シート画像
+            </div>
+
+            <h3>ピコぬ市 市制記念</h3>
+
+            <p>
+              ピコぬ市の市制を記念して企画された
+              特別シリーズです。
+            </p>
+
+            <span class="status preparing">準備中</span>
+            <div class="product-price">価格未定</div>
+          </article>
+
+        </div>
+
+
+        <h2 id="soldout">売り切れの商品</h2>
+
+        <div class="info-box">
+          <p>
+            売り切れの商品については、現在お求めいただくことができません。
+          </p>
+          <p>
+            再発行・再入荷の予定が決まりましたら、こちらのページでお知らせします。
+          </p>
+        </div>
+
+
+        <h2 id="preparing">準備中の商品</h2>
+
+        <div class="info-box">
+          <p>
+            現在、デザインや発行時期などを準備している商品です。
+          </p>
+          <p>
+            発売時期は決まり次第お知らせします。
+          </p>
+        </div>
+
+
+        <h2 id="notice">ご注意</h2>
+
+        <div class="notice">
+          <p>
+            ※掲載されている切手・価格・販売状況は、
+            ピコぬ市の架空設定によるものです。
+          </p>
+
+          <p>
+            ※実際の切手販売、通信販売、予約受付等は行っておりません。
+          </p>
+
+          <p>
+            ※実在する郵便事業者・商品・料金等とは関係ありません。
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- トップページと同じ構造のサイドバー -->
+      <aside class="sidebar">
+
+        <div class="sidebar-block">
+          <h2>切手のご案内</h2>
+          <ul>
+            <li><a href="#about">限定切手について</a></li>
+            <li><a href="#products">商品一覧</a></li>
+            <li><a href="#soldout">売り切れの商品</a></li>
+            <li><a href="#preparing">準備中の商品</a></li>
+            <li><a href="#notice">ご注意</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="pp-postal-group.html">PPピコぬ郵政グループ</a></li>
+            <li><a href="kirokumachi-post.html">記録町郵便局</a></li>
+            <li><a href="index.html">ピコぬ市 施設案内</a></li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+
+  <footer>
+    <div>PPピコぬ郵政グループ 公式ホームページ</div>
+    <div>Copyright © PPピコぬ郵政グループ All Rights Reserved.</div>
+  </footer>
+
+</body>
+
+</html>
+```
