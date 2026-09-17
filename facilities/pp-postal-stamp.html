@@ -279,6 +279,50 @@
       color: var(--dark);
     }
 
+    /* 切手画像の拡大表示(ライトボックス) */
+
+    .stamp-image img {
+      cursor: zoom-in;
+    }
+
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(36, 55, 70, 0.85);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .lightbox-overlay.is-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border: 4px solid var(--paper);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+      color: var(--paper);
+      background: var(--onion);
+      border: 2px solid var(--paper);
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 32px;
+      cursor: pointer;
+    }
+
     /* ボックス */
 
     .info-box {
@@ -500,7 +544,8 @@
           <article class="product-card">
             <div class="stamp-image">
               <img src="../images/facilities/shop/pp-stamp-nukabana.jpg" alt="ぬかばな記念 切手シート"
-                style="width:100%; height:100%; object-fit:contain;">
+                style="width:100%; height:100%; object-fit:contain;"
+                onclick="openLightbox(this.src, this.alt)">
             </div>
 
             <h3>ぬかばな記念</h3>
@@ -518,7 +563,8 @@
           <article class="product-card">
             <div class="stamp-image">
               <img src="../images/facilities/shop/pp-stamp-piconudori.jpg" alt="ピコぬどり記念 切手シート"
-                style="width:100%; height:100%; object-fit:contain;">
+                style="width:100%; height:100%; object-fit:contain;"
+                onclick="openLightbox(this.src, this.alt)">
             </div>
 
             <h3>ピコぬどり誕生記念</h3>
@@ -536,7 +582,8 @@
           <article class="product-card">
             <div class="stamp-image">
               <img src="../images/facilities/shop/pp-stamp-shotengai.jpg" alt="記録町商店街特別 切手シート"
-                style="width:100%; height:100%; object-fit:contain;">
+                style="width:100%; height:100%; object-fit:contain;"
+                onclick="openLightbox(this.src, this.alt)">
             </div>
 
             <h3>記録町商店街</h3>
@@ -695,6 +742,13 @@
       </aside>
 
     </div>
+
+    <!-- 画像拡大表示用ライトボックス -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+      <button type="button" class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightbox-img" src="" alt="">
+    </div>
+
   </main>
 
 
@@ -702,6 +756,22 @@
     <div>PPピコぬ郵政グループ 公式ホームページ</div>
     <div>Copyright © PPピコぬ郵政グループ All Rights Reserved.</div>
   </footer>
+
+  <script>
+    function openLightbox(src, alt) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-img').alt = alt;
+      document.getElementById('lightbox').classList.add('is-open');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('is-open');
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 
 </body>
 
