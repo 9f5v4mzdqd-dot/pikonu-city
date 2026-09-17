@@ -11,6 +11,63 @@
 
 ------------
 ---
+## 2026-09-17（1）
+---
+### 追加
+- `facilities/kodomonokuni.html`:「子どもの国 文房具店」の個別ページを新設、加盟店紹介にリンク付きで追加
+
+### 変更
+- `data/search-index.json`:八百八・記録町カリー食堂・記録町郵便局・子どもの国 文房具店・喫茶大和・おもちゃのハッピー・ピコぬベーカリー・ひより雑貨店・和菓子処 百年堂・音楽酒場とまり木を検索インデックスに追加
+- `facilities/shoten.html`:「⑩和菓子処 百年堂」の見出しに「お店のホームページを見る➡」リンクを追加
+- `facilities/hiyori-zakka.html`・`facilities/hyakunendo.html`・`facilities/piconu-bakery.html`・`facilities/kirokumachi-post.html`・`facilities/shoten.html`:八百八・子どもの国・喫茶大和・ピコぬベーカリー・ひより雑貨店・百年堂・記録町郵便局の電話番号を語呂合わせ入りの表記に変更
+- `facilities/omocha-happy.html`・`facilities/shoten.html`:おもちゃのハッピーの電話番号を「ぬぬ-ぬかピコ-0106(レトロ)」に変更
+---
+
+## 2026-09-16
+---
+### 追加
+- `facilities/tomarigi.html`:「音楽酒場とまり木」の個別ページを新設、加盟店紹介に追加
+- `facilities/hyakunendo.html`:「和菓子処 百年堂」の個別ページを新設、加盟店紹介に追加
+- `facilities/piconu-bakery.html`:「ピコぬベーカリー」の個別ページを新設、加盟店紹介に追加
+- `facilities/kirokumachi-post.html`:「記録町郵便局」(旧名称:ピコぬ郵便局)の個別ページを新設、加盟店紹介にリンクを追加
+- `facilities/omocha-happy.html`:「おもちゃのハッピー」の個別ページを新設、加盟店紹介に追加
+- `images/facilities/shokokai-illust.jpg`:商工会事務局のイラスト画像を追加
+- `images/facilities/shop/omocha-happy001.jpg`・`omocha-happy002.jpg`:おもちゃのハッピーの店舗画像を追加
+
+### 変更
+- `facilities/shoten.html`:「⑪音楽酒場とまり木」の「新着」タグとリンクの表示順を入れ替え
+- `facilities/tomarigi.html`:背景をストライプから無地に変更
+- `facilities/tomarigi.html`:関連情報にJONNY NUKAのプロフィールページへのリンクを追加
+- `facilities/hiyori-zakka.html`:背景デザインを変更
+- `facilities/shoten.html`:全体の背景をストライプから無地に変更
+- `facilities/shoten.html`:「⑥商工会事務局」に紹介文・営業時間・定休日・イラスト画像・ホームページリンクを追加
+- `facilities/shoten.html`:「⑥商工会事務局」の店頭写真をコメントアウトに変更(イラストのみ表示に)
+- `facilities/shoten.html`:「⑨ピコぬベーカリー」にリンクを追加
+- `facilities/shoten.html`:郵便局の名称を「ピコぬ郵便局」から「記録町郵便局」に変更
+
+### 修正
+- `facilities/shoten.html`:①〜⑪のカードの`<article>`入れ子崩れを修正(⑦おもちゃのハッピーが枠からはみ出ていた不具合)
+- `facilities/hyakunendo.html`:店舗画像のパスを`images/facilities/shop/`配下に修正
+- `facilities/tomarigi.html`:店舗画像のパスを修正
+- `images/facilities/shop/omocha-happy002.jpg`:ファイル名のスペルミス(omotya→omocya→omocha)を段階的に修正
+- `facilities/shoten.html`:百年堂の電話番号表記を修正
+---
+
+## 2026-09-15（3）
+---
+### 追加
+- `facilities/hiyori-zakka.html`:「ひより雑貨店」の個別ページを新設、加盟店紹介にリンクを追加
+- `data/search-index.json`:記録町カリー食堂・八百八・喫茶大和を検索インデックスに追加
+
+### 変更
+- `facilities/kissa-yamato.html`:メニュー表記を一部変更(「看板」→「一番人気」、「コロンビア」→「ブラジル」)
+- `facilities/kissa-yamato.html`:見出し・パンくず・フッターから店舗番号(⑤)の表記を削除
+
+### 修正
+- `facilities/kirokumachi-curry.html`:イラスト画像のパス(`kirokucho-curry-illust.jpg`→`kirokumachi-curry-illust.jpg`)を修正
+- `facilities/shoten.html`:「⑨ひより雑貨店」のリンクが空になっていた不具合を修正
+- `images/facilities/shop/hiyori-zakka-001.jpg`:店舗画像を2回差し替え
+---
 
 ## 2026-09-15（2）
 ---
