@@ -3,27 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>PPピコぬ郵政グループ | 施設案内 | ピコぬ市公式ホームページ</title>
-  <meta name="description" content="PPピコぬ郵政グループのご案内です。ピコぬ市内の郵便局に関する共通のご案内や、手紙にまつわる読みものを掲載しています。">
+  <title>よくあるご質問（FAQ） | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="郵便に関するよくある質問をまとめたページです。">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
   <style>
-    /*
-      PPピコぬ郵政グループ 配色
-      (記録町郵便局ページの配色をそのまま使用)
-
-      paper  #FFFFFF
-      cream  #f5f7f2
-      onion  #d94a38
-      tomato #2f6385
-      dark   #243746
-      line   #d9b9a8
-      muted  #687982
-    */
-
     :root {
       --paper: #FFFFFF;
       --cream: #f5f7f2;
@@ -68,10 +55,6 @@
       min-height: 100vh;
     }
 
-    /*
-      ページ上部
-    */
-
     .page-header {
       background: var(--onion);
       border-bottom: 4px solid var(--dark);
@@ -111,10 +94,6 @@
       background: var(--paper);
     }
 
-    /*
-      パンくず
-    */
-
     .breadcrumb {
       background: var(--paper);
       border-bottom: 1px dotted var(--onion);
@@ -145,10 +124,6 @@
       color: var(--dark);
       font-weight: bold;
     }
-
-    /*
-      ページ内ジャンプナビ
-    */
 
     .page-nav {
       padding: 12px;
@@ -188,10 +163,6 @@
       text-decoration: none;
     }
 
-    /*
-      本文とサイドバー
-    */
-
     .content-layout {
       display: flex;
       align-items: flex-start;
@@ -227,10 +198,6 @@
       box-sizing: border-box;
     }
 
-    /*
-      見出し
-    */
-
     .main-content h2 {
       margin: 28px 0 14px;
       padding: 7px 12px;
@@ -251,10 +218,6 @@
       font-weight: bold;
       color: var(--tomato);
     }
-
-    /*
-      基本情報テーブル
-    */
 
     .info-table {
       width: 100%;
@@ -283,10 +246,6 @@
       background: var(--paper);
     }
 
-    /*
-      お知らせ・補足ボックス
-    */
-
     .info-box {
       margin-top: 14px;
       padding: 14px 16px;
@@ -303,10 +262,6 @@
       border: 1px solid var(--onion);
       font-size: 14px;
     }
-
-    /*
-      サイドバー
-    */
 
     .sidebar {
       flex: 0 0 245px;
@@ -352,10 +307,6 @@
       font-size: 12px;
     }
 
-    /*
-      フッター
-    */
-
     footer {
       background: var(--table-head);
       border-top: 3px solid var(--onion);
@@ -372,10 +323,6 @@
     footer a {
       color: var(--onion);
     }
-
-    /*
-      スマートフォン表示
-    */
 
     @media (max-width: 760px) {
       .page-header {
@@ -433,10 +380,10 @@
     <div class="page-header">
       <div class="container">
         <div>
-          <h1>PPピコぬ郵政グループ</h1>
-          <p class="lead">ピコぬ市内の郵便局に関する共通のご案内を発信しています。</p>
+          <h1>よくあるご質問（FAQ）</h1>
+          <p class="lead">郵便に関するよくある質問をまとめたページです。</p>
         </div>
-        <img class="header-logo" src="../images/facilities/shop/pp-logo001.jpg" alt="PPピコぬ郵政グループ ロゴ">
+          <img class="header-logo" src="../images/facilities/shop/pp-logo001.jpg" alt="PPピコぬ郵政グループ ロゴ">
       </div>
     </div>
 
@@ -444,218 +391,101 @@
       <ol>
         <li><a href="../index.html">トップ</a></li>
         <li><a href="index.html">施設案内</a></li>
-        <li>PPピコぬ郵政グループ</li>
+        <li><a href="pp-postal-group.html">PPピコぬ郵政グループ</a></li>
+        <li>よくあるご質問（FAQ）</li>
       </ol>
     </nav>
 
     <nav class="page-nav" aria-label="ページ内メニュー">
       <ul>
-        <li><a href="#about">PPピコぬ郵政グループについて</a></li>
-        <li><a href="#notice">お知らせ</a></li>
-        <li><a href="#tegami-hagaki">手紙・はがき</a></li>
-        <li><a href="#nimotsu">荷物</a></li>
-        <li><a href="#kitte">切手</a></li>
-        <li><a href="#riyou">ご利用案内</a></li>
-        <li><a href="#letter">手紙を書きましょう。</a></li>
-        <li><a href="#visit">訪問サービス</a></li>
-        <li><a href="#info">店舗情報</a></li>
+        <li><a href="#section-1">発送・お届けについて</a></li>
+        <li><a href="#section-2">切手・はがきについて</a></li>
+        <li><a href="#section-3">窓口・その他</a></li>
+        <li><a href="#soudan">お客様相談室</a></li>
       </ul>
     </nav>
 
     <div class="content-layout">
       <div class="main-content">
 
-        <img class="facility-photo" id="about" src="../images/facilities/shop/pp-postal-main.jpg"
-          alt="PPピコぬ郵政グループ イメージ">
+        <img class="facility-photo" src="../images/facilities/shop/pp-postal-faq" alt="PPピコぬ郵政グループ FAQページのイメージ">
 
-        <h2>PPピコぬ郵政グループについて</h2>
-        <p>
-          PPピコぬ郵政グループは、ピコぬ市内の郵便局たちが「みんなでまとまった方が案内しやすいのでは」という思いから発足した共同運営組織です。<br>
-          手紙や荷物の窓口業務を、情報発信の面からやんわりと繋いでいます。
-        </p>
-        <p>
-          「PP」は市内での通称として定着している呼び名で、正式な由来については資料によって諸説あり、局内でも統一された説明は特にありません。
-        </p>
-        <p>
-          当ホームページでは、各局共通のサービスご案内のほか、時々に気合いの入った記念切手情報などを掲載しています。<br>
-          個別の郵便局の詳しい情報は、各局のページをお気軽にお訪ねくださいぬ。
-        </p>
-
-        <h2 id="notice">お知らせ</h2>
+        <h2 id="section-1">■ 発送・お届けについて</h2>
         <div class="info-box">
           <p>
-            - 2026年9月16日 記録町郵便局のホームページを開設しました。
+            Q. 手紙を出してから相手に届くまで、どれくらいかかりますか？
           </p>
           <p>
-            - 2026年9月16日 手紙・はがき・荷物の発送についてのご相談を承っています。
+            A. 差出地や宛先、その日の道路状況等により異なりますが、可能な限り急いでお届けします。気長にお待ちいただけると幸いですぬ。
           </p>
           <p>
-            - 2026年9月16日 郵便局へお越しいただくことが難しい方に向けた訪問サービスを準備しています。
+            Q. 一度ポストに投函した手紙を取り消すことはできますか？
+          </p>
+          <p>
+            A. 投函後の取り消しは「かなりの難関手続き」となります。投函される直前に、宛名とご自身の覚悟をもう一度ご確認ください。
           </p>
         </div>
 
-        <h2 id="tegami-hagaki">手紙・はがき</h2>
+        <h2 id="section-2">■ 切手・はがきについて</h2>
         <div class="info-box">
-          <p class="sub-label"> 郵便・はがき </p>
           <p>
-            ・手紙・封書の発送
+            Q. 書き損じたはがきは交換してもらえますか？
           </p>
           <p>
-            ・はがきの発送
+            A. 所定の手数料（と、ちょっとの切なさ）を頂戴することで、新しいはがきや切手とお引き換えいたします。
           </p>
           <p>
-            ・切手・はがきの販売
+            Q. 記念切手はもったいなくて使えません。どうすればいいですか？
           </p>
           <p>
-            ・郵便物についてのご相談
-          </p>
-          <p>
-            <a href="pp-postal-yubin-hagaki.html">▶ 詳しくはこちら</a>
-          </p>
-
-        </div>
-
-        <h2 id="nimotsu">荷物</h2>
-        <div class="info-box">
-          <p class="sub-label"> お荷物 </p>
-          <p>
-            ・荷物の発送
-          </p>
-          <p>
-            ・荷物の受け取りに関するご相談
-          </p>
-          <p>
-            ・集荷についてのご相談
+            A. 大事に保管していただくか、鑑賞用・保存用・実用用として複数シートのご購入をおすすめしておりますぬ。
           </p>
         </div>
 
-        <h2 id="kitte">切手</h2>
+        <h2 id="section-3">■ 窓口・その他</h2>
         <div class="info-box">
           <p>
-            切手やはがきは、各郵便局の窓口でお求めいただけます。
+            Q. 「PP」って何の略ですか？
           </p>
           <p>
-            取り扱う種類は時期や局によって異なる場合がありますので、記念切手やオリジナルデザインのはがきをお探しの場合は、あらかじめ最寄りの郵便局へお問い合わせください。
+            A. 諸説ございますが、局内でも「特に決めなくても業務に支障はない」という結論に達しております。あまり深く追及されないことを推奨いたします。
           </p>
           <p>
-            <a href="pp-postal-stamp.html">▶ ピコぬ市限定切手はこちら</a>
+            Q. ピコぬくんに窓口で会うことはできますか？
+          </p>
+          <p>
+            A. ピコぬくんは市内を忙しく見回り（またはお散歩）しているため、会えた日は一日ラッキーだと思ってくださいぬ！
           </p>
         </div>
 
-        <h2 id="riyou">その他ご利用に関するご相談・ご案内</h2>
-        <div class="info-box">
-          <p>
-            ・郵便局の各種サービスのご案内
-          </p>
-          <p>
-            ・郵便物・荷物の発送方法についてのご相談
-          </p>
-          <p>
-            ・郵便局へ行くことが難しい方からのご相談
-          </p>
-          <p>
-            送り方がわからない場合や、どのサービスを利用すればよいか迷われた場合も、窓口でおたずねください。
-          </p>
-           <p>
-            <a href="pp-postal-faq.html">▶ よくあるご質問はこちら</a>
-          </p>
-        </div>
-
-        <h2 id="letter">手紙を書きましょう。</h2>
-        <div class="info-box">
-          <p>
-            便箋を選び、言葉を紡ぎ、手で書く。
-          </p>
-          <p>
-            手紙とは、相手を想う「時間」そのものを届けるツールです。
-          </p>
-          <br>
-          <p>
-            「『お元気ですか』の一言でかまいません。上手な文章でなくても、あなたの文字だから伝わる思いがありますぬ。」
-          </p>
-          <p>―― ピコぬくん（ピコぬ市郵政グループ・一日署長）</p>
-          <br>
-          <p>
-            久しぶりの家族や友人に、手紙を書いてみませんか。
-          </p>
-          <p>
-            ピコぬ市郵政グループが、責任を持ってお送りするぬ！🕊🕊🕊
-          </p>
-        </div>
-
-        <h2 id="visit">訪問サービス</h2>
-        <div class="info-box">
-          <p>
-            記録町郵便局では、郵便局までお越しいただくことが難しい方からのご相談を承っています。
-          </p>
-          <p>
-            たとえば、次のような方が対象です。
-          </p>
-          <p>
-            ・足腰が弱く、外出が難しい方
-          </p>
-          <p>
-            ・病気やけがなどで外出を控えている方
-          </p>
-          <p>
-            ・障害などにより、一人での外出が難しい方
-          </p>
-          <p>
-            ・小さなお子さんがいて、郵便局まで出かけることが難しい方
-          </p>
-          <p>
-            郵便についてのご相談や、切手・はがきのお届け、荷物の発送など、まずはお気軽にお問い合わせください。
-          </p>
-          <p>
-            ご相談の内容をお伺いしたうえで、訪問の日時などをご案内いたします。
-          </p>
-          <p>
-            ※詳しい対応内容や受付時間については、各郵便局までお問い合わせください。
-          </p>
-        </div>
-
-        <h2 id="info">店舗情報</h2>
+        <h2 id="soudan">■お客様相談室</h2>
         <table class="info-table">
-          <tr>
-            <th>お問い合わせ</th>
-            <td>PPピコぬ市郵政グループ代表</td>
-          </tr>
-          <tr>
-            <th>所在地</th>
-            <td>ピコぬ市中央2丁目1番地1</td>
-          </tr>
           <tr>
             <th>受付時間</th>
             <td>9:00〜17:00（土・日、祝日は16：00まで）</td>
           </tr>
           <tr>
             <th>電話</th>
-            <td>ぬぬ-ぬかピコ-0840（おはよう）</td>
+            <td>ぬぬ-ぬかピコ-3939（サンキューサンキュー）</td>
           </tr>
         </table>
-        <div class="notice">
-          各局の所在地・電話番号・受付時間などの詳しい情報は、それぞれの郵便局のページをご確認ください。営業時間・定休日は各局や時期により異なる場合があります。
-        </div>
-
       </div>
 
       <aside class="sidebar">
         <div class="sidebar-block">
-          <h2>郵便局のサービス</h2>
+          <h2>このページの内容</h2>
           <ul>
-            <li><a href="#tegami-hagaki">手紙・はがき</a></li>
-            <li><a href="#nimotsu">荷物</a></li>
-            <li><a href="#kitte">切手</a></li>
-            <li><a href="#riyou">ご利用案内</a></li>
-            <li><a href="#letter">手紙を書きましょう。</a></li>
-            <li><a href="#visit">訪問サービス</a></li>
+            <li><a href="#section-1">発送・お届けについて</a></li>
+            <li><a href="#section-2">切手・はがきについて</a></li>
+            <li><a href="#section-3">窓口・その他</a></li>
+            <li><a href="#soudan">お客様相談室</a></li>
           </ul>
         </div>
 
         <div class="sidebar-block">
           <h2>関連情報</h2>
           <ul>
-            <li><a href="kirokumachi-post.html">記録町郵便局</a></li>
+            <li><a href="pp-postal-group.html">PPピコぬ郵政グループ</a></li>
             <li><a href="index.html">ピコぬ市 施設案内</a></li>
           </ul>
         </div>
@@ -664,8 +494,8 @@
   </main>
 
   <footer>
-    <div>PPピコぬ郵政グループ 公式ホームページ</div>
-    <div>Copyright © PPピコぬ郵政グループ All Rights Reserved.</div>
+    <div>よくあるご質問（FAQ）</div>
+    <div>Copyright © よくあるご質問（FAQ） All Rights Reserved.</div>
   </footer>
 
 </body>
