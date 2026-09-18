@@ -2,171 +2,576 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <title>ピコぬ市交通局 | 施設案内 | ピコぬ市公式ホームページ</title>
-    <meta name="description" content="ピコぬ市交通局のご案内です。市内を結ぶ鉄道路線の運行、駅のご案内をしています。">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <title>ピコぬ市交通局 | 施設案内 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="市内を結ぶ鉄道路線の運行および各駅のご案内をしています。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #fff8e0;
+      --onion: #3daebd;
+      --tomato: #245b8a;
+      --dark: #92a40a;
+      --line: #dceaf3;
+      --muted: #687982;
+      --table-head: #F3E4CB;
+      --box-bg: #FBF6EC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--onion);
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #a83a2b;
+    }
+
+    a:hover {
+      color: var(--paper);
+      background: var(--tomato);
+      text-decoration: none;
+    }
+
+    #main {
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: var(--onion);
+      border-bottom: 4px solid var(--dark);
+      color: var(--paper);
+      padding: 24px 0 20px;
+    }
+
+    .page-header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .page-header .lead {
+      margin: 8px 0 0;
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 90px;
+      height: auto;
+      border: 3px solid var(--paper);
+      background: var(--paper);
+    }
+
+    .breadcrumb {
+      background: var(--paper);
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb ol {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: "➡";
+      margin-left: 6px;
+      color: var(--tomato);
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .page-nav {
+      padding: 12px;
+      background: var(--paper);
+      border: 2px solid var(--onion);
+    }
+
+    .page-nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+      padding: 6px 16px;
+      color: var(--paper);
+      background: var(--tomato);
+      border: 2px solid var(--dark);
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .page-nav a:visited {
+      color: var(--paper);
+    }
+
+    .page-nav a:hover {
+      color: var(--paper);
+      background: var(--dark);
+      border-color: var(--dark);
+      text-decoration: none;
+    }
+
+    .content-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .main-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      padding: 24px 26px 30px;
+      box-shadow: 5px 5px 0 rgba(36, 55, 70, 0.15);
+    }
+
+    .main-content p {
+      margin: 0 0 12px;
+    }
+
+    .facility-photo {
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      margin: 0 auto 22px;
+      padding: 4px;
+      background: var(--paper);
+      border: 1px solid var(--onion);
+      box-shadow: 3px 3px 0 var(--line);
+      box-sizing: border-box;
+    }
+
+    .main-content h2 {
+      margin: 28px 0 14px;
+      padding: 7px 12px;
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      color: var(--paper);
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+
+    .main-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .sub-label {
+      margin: 18px 0 6px;
+      font-weight: bold;
+      color: var(--tomato);
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      background: var(--paper);
+    }
+
+    .info-table th,
+    .info-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 28%;
+      background: var(--table-head);
+      color: var(--dark);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      background: var(--paper);
+    }
+
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--box-bg);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: var(--box-bg);
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .sidebar {
+      flex: 0 0 245px;
+      min-width: 0;
+    }
+
+    .sidebar-block {
+      margin-bottom: 20px;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+    }
+
+    .sidebar-block h2 {
+      margin: 0;
+      padding: 9px 12px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--onion);
+      color: var(--paper);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 14px 12px;
+    }
+
+    .sidebar-block li {
+      margin: 0;
+      padding: 7px 0;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .sidebar-block li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-block li::before {
+      content: "▶ ";
+      color: var(--onion);
+      font-size: 12px;
+    }
+
+    footer {
+      background: var(--table-head);
+      border-top: 3px solid var(--onion);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 20px;
+    }
+
+    footer div {
+      margin: 2px 0;
+    }
+
+    footer a {
+      color: var(--onion);
+    }
+
+    @media (max-width: 760px) {
+      .page-header {
+        padding: 20px 0 16px;
+      }
+
+      .page-header .container {
+        gap: 12px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .header-logo {
+        width: 60px;
+      }
+
+      .content-layout {
+        display: block;
+        margin: 16px auto;
+        padding: 0 12px;
+      }
+
+      .main-content {
+        padding: 18px 16px 24px;
+        box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+      }
+
+      .sidebar {
+        margin-top: 20px;
+      }
+
+      .info-table th,
+      .info-table td {
+        display: block;
+        width: auto;
+      }
+
+      .info-table th {
+        border-bottom: none;
+        white-space: normal;
+      }
+
+      .info-table td {
+        border-top: none;
+      }
+    }
+  </style>
 </head>
 
 <body id="top">
 
-    <main id="main">
-        <div class="page-header">
-            <div class="container">
-                <h1>ピコぬ市交通局</h1>
-                <p class="lead">市内を結ぶ鉄道路線の運行および各駅のご案内をしています。</p>
-            </div>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <div>
+          <h1>ピコぬ市交通局</h1>
+          <p class="lead">市内を結ぶ鉄道路線の運行および各駅のご案内をしています。</p>
+        </div>
+          <img class="header-logo" src="../images/facilities/shop/ptb-logo001.jpg" alt="ピコヌ市交通局 ロゴ">
+      </div>
+    </div>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+      <ol>
+        <li><a href="../index.html">トップ</a></li>
+        <li><a href="index.html">施設案内</a></li>
+        <li>ピコぬ市交通局</li>
+      </ol>
+    </nav>
+
+    <nav class="page-nav" aria-label="ページ内メニュー">
+      <ul>
+        <li><a href="#kotsu-about">歩いて巡る街と、鉄道</a></li>
+        <li><a href="#koutsu-annai">沿線のご案内</a></li>
+        <li><a href="#koutsu-renketsu">車両の連結について</a></li>
+        <li><a href="#koutsu-unko">運行情報</a></li>
+        <li><a href="#koutsu-jikoku">時刻表</a></li>
+        <li><a href="#koutsu-information">お問い合わせ</a></li>
+      </ul>
+    </nav>
+
+    <div class="content-layout">
+      <div class="main-content">
+
+        <img class="facility-photo" src="../images/facilities/koutsukyoku.jpg" alt="記録町駅に停車する車両">
+
+        <h2 id="kotsu-about">■ 歩いて巡る街と、鉄道</h2>
+        <div class="info-box">
+          <p>
+          ピコぬ市交通局は、市内を結ぶ鉄道路線を運行する公営企業です。ピコぬ中央駅を起点に、連結橋駅、記録町駅の3駅を結んでいます。市内は徒歩でも巡ることができる規模であるため、駅数を増やしすぎず、歩いて巡る街の雰囲気を大切にした運行を行っています。
+          </p>
+          
+          <table class="info-table">
+          <tr>
+          <th>運営形態</th>
+          <td>公営企業(ピコぬ市交通局)</td>
+          </tr>
+          <tr>
+          <th>開業</th>
+          <td>昭和38年</td>
+          </tr>
+          <tr>
+          <th>路線数</th>
+          <td>1路線</td>
+          </tr>
+          <tr>
+          <th>駅数</th>
+          <td>3駅(ピコぬ中央駅・連結橋駅・記録町駅)</td>
+          </tr>
+          <tr>
+          <th>所管</th>
+          <td>車両整備課、運輸課</td>
+          </tr>
+          </table>
         </div>
 
-        <div class="content-layout">
-            <div class="main-content">
-                <img class="facility-photo" src="../images/facilities/koutsukyoku.jpg" alt="記録町駅に停車する車両">
-
-                <p>
-                    ピコぬ市交通局は、市内を結ぶ鉄道路線を運行する公営企業です。ピコぬ中央駅を起点に、連結橋駅、記録町駅の3駅を結んでいます。市内は徒歩でも巡ることができる規模であるため、駅数を増やしすぎず、歩いて巡る街の雰囲気を大切にした運行を行っています。
-                </p>
-
-                <table class="info-table">
-                    <tr>
-                        <th>運営形態</th>
-                        <td>公営企業(ピコぬ市交通局)</td>
-                    </tr>
-                    <tr>
-                        <th>開業</th>
-                        <td>昭和38年</td>
-                    </tr>
-                    <tr>
-                        <th>路線数</th>
-                        <td>1路線</td>
-                    </tr>
-                    <tr>
-                        <th>駅数</th>
-                        <td>3駅(ピコぬ中央駅・連結橋駅・記録町駅)</td>
-                    </tr>
-                    <tr>
-                        <th>所管</th>
-                        <td>車両整備課、運輸課</td>
-                    </tr>
-                </table>
-
-                <h2>沿線のご案内</h2>
-                <p>
-                    各駅の詳しいご案内・路線図は<a href="koutsukyoku-route.html">路線案内</a>のページにまとめています。
-                </p>
-
-                <table class="info-table">
-                    <tr>
-                        <th>ピコぬ中央駅</th>
-                        <td>市の玄関口。ぬかピコ民芸博物館・市役所方面</td>
-                    </tr>
-                    <tr>
-                        <th>連結橋駅</th>
-                        <td>ぬかピコ川、連結橋、遊歩道方面。観光の中心駅</td>
-                    </tr>
-                    <tr>
-                        <th>記録町駅</th>
-                        <td>記録町商店街、市立図書館、キロクぬかクリニック方面</td>
-                    </tr>
-                </table>
-                <p>
-                    各駅からは、主要な施設まで徒歩5〜10分程度でお越しいただけます。
-                </p>
-
-                <h2>車両の連結について</h2>
-                <p>
-                    当局の車両は、2両を連結して運行しています。連結部は目立たない構造ですが、車両全体を支える大切な役割を担っています。詳しくは
-                    <a href="renketsu.html">連結技術について</a>のページをご覧ください。
-                </p>
-
-                <h2>運行情報</h2>
-                <p>
-                    現在、各路線は概ね通常どおり運行しています。多少の遅れが発生する場合がありますが、皆さまが安心してご利用いただける運行に努めています。
-                </p>
-
-                <h2>時刻表</h2>
-                <table class="info-table">
-                    <tr>
-                        <th>駅名</th>
-                        <th>始発</th>
-                        <th>最終</th>
-                        <th>運行間隔</th>
-                    </tr>
-                    <tr>
-                        <td>ピコぬ中央駅</td>
-                        <td>5:42</td>
-                        <td>23:18</td>
-                        <td>おおむね15分間隔</td>
-                    </tr>
-                    <tr>
-                        <td>連結橋駅</td>
-                        <td>5:46</td>
-                        <td>23:22</td>
-                        <td>おおむね15分間隔</td>
-                    </tr>
-                    <tr>
-                        <td>記録町駅</td>
-                        <td>5:51</td>
-                        <td>23:27</td>
-                        <td>おおむね15分間隔</td>
-                    </tr>
-                </table>
-                <p style="color:var(--color-text-sub); font-size:.86rem;">
-                    ※天候や設備点検等により、時刻が変更となる場合があります。<br>
-                    ※ピコぬ市交通局では、安全を優先した運行を行っています。<br>
-                    ※列車をお待ちの間は、駅掲示板や周辺の案内をご覧ください。
-                </p>
-
-                <div class="info-box">
-                    列車をお待ちいただく間は、掲示板や旧時刻表をご覧いただけます。どうぞごゆっくりお過ごしください。
-                </div>
-
-                <h2>お問い合わせ先</h2>
-                <table class="info-table">
-                    <tr>
-                        <th>窓口</th>
-                        <td>ピコぬ市交通局代表</td>
-                    </tr>
-                    <tr>
-                        <th>所在地</th>
-                        <td>ピコぬ市中央3丁目3番地</td>
-                    </tr>
-                    <tr>
-                        <th>受付時間</th>
-                        <td>平日 9:00〜16:00</td>
-                    </tr>
-                    <tr>
-                        <th>電話</th>
-                        <td>ぬぬ-ぬかピコ-2794(つなぐよ)</td>
-                    </tr>
-                </table>
-            </div>
-
-            <aside class="sidebar">
-                <div class="sidebar-block">
-                    <h2>関連情報</h2>
-                    <ul>
-                        <li><a href="koutsukyoku-route.html">路線案内</a></li>
-                        <li><a href="koutsukyoku-shiryoshitsu.html">交通資料室</a></li>
-                        <li><a href="koutsukyoku-opening.html">開業記録</a></li>
-                        <li><a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a></li>
-                        <li><a href="renketsu.html">連結技術について</a></li>
-                        <li><a href="koutsukyoku-stations.html">駅に関する資料</a></li>
-                        <li><a href="shiyakusho.html">市役所</a></li>
-                        <li><a href="kanko-ka.html">観光課</a></li>
-                        <li><a href="nukapiko-museum.html">ぬかピコ民芸博物館</a></li>
-                        <li><a href="toshokan.html">市立図書館</a></li>
-                    </ul>
-                </div>
-            </aside>
+        <h2 id="koutsu-annai">■ 沿線のご案内</h2>
+        <div class="info-box">
+          <p>
+          各駅の詳しいご案内・路線図は<a href="koutsukyoku-route.html">路線案内</a>のページにまとめています。
+          </p>
+          
+          <table class="info-table">
+          <tr>
+          <th>ピコぬ中央駅</th>
+          <td>市の玄関口。ぬかピコ民芸博物館・市役所方面</td>
+          </tr>
+          <tr>
+          <th>連結橋駅</th>
+          <td>ぬかピコ川、連結橋、遊歩道方面。観光の中心駅</td>
+          </tr>
+          <tr>
+          <th>記録町駅</th>
+          <td>記録町商店街、市立図書館、キロクぬかクリニック方面</td>
+          </tr>
+          </table>
+          <p>
+          各駅からは、主要な施設まで徒歩5〜10分程度でお越しいただけます。
+          </p>
         </div>
-    </main>
 
-    <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "index.html"}, {label: "ピコぬ市交通局"}]};</script>
-    <script src="../js/common.js"></script>
+        <h2 id="koutsu-renketsu">■ 車両の連結について</h2>
+        <div class="info-box">
+          <p>
+          当局の車両は、2両を連結して運行しています。連結部は目立たない構造ですが、車両全体を支える大切な役割を担っています。詳しくは
+          <a href="renketsu.html">連結技術について</a>のページをご覧ください。
+          </p>
+        </div>
+
+        <h2 id="koutsu-unko">■ 運行情報</h2>
+        <div class="info-box">
+          <p>
+            現在、各路線は概ね通常どおり運行しています。多少の遅れが発生する場合がありますが、皆さまが安心してご利用いただける運行に努めています。
+          </p>
+        </div>
+
+        <h2 id="koutsu-jikoku">■ 時刻表</h2>
+        <div class="info-box">
+          <h3>ピコぬ中央駅</h3>
+          <p>
+          始発：5:42<br>
+          終電：23:18<br>
+          運行間隔：おおむね15分間隔
+          </p>
+          
+          <h3>連結橋駅</h3>
+          <p>
+          始発：5:46<br>
+          終電：23:22<br>
+          運行間隔：おおむね15分間隔
+          </p>
+          
+          <h3>記録町駅</h3>
+          <p>
+          始発：5:51<br>
+          終電：23:27<br>
+          運行間隔：おおむね15分間隔
+          </p><br>
+          <p style="color:var(--color-text-sub); font-size:.86rem;">
+          ※天候や設備点検等により、時刻が変更となる場合があります。<br>
+          ※ピコぬ市交通局では、安全を優先した運行を行っています。<br>
+          ※列車をお待ちの間は、駅掲示板や周辺の案内をご覧ください。
+          </p>
+          
+          <div class="info-box">
+          列車をお待ちいただく間は、掲示板や旧時刻表をご覧いただけます。どうぞごゆっくりお過ごしください。
+          </div>
+        </div>
+
+        <h2 id="koutsu-information">■ お問い合わせ</h2>
+        <div class="info-box">
+          <table class="info-table">
+          <tr>
+          <th>窓口</th>
+          <td>ピコぬ市交通局代表</td>
+          </tr>
+          <tr>
+          <th>所在地</th>
+          <td>ピコぬ市中央3丁目3番地</td>
+          </tr>
+          <tr>
+          <th>受付時間</th>
+          <td>平日 9:00〜16:00</td>
+          </tr>
+          <tr>
+          <th>電話</th>
+          <td>ぬぬ-ぬかピコ-2794(つなぐよ)</td>
+          </tr>
+          </table>
+        </div>
+
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>交通局メニュー</h2>
+          <ul>
+            <li><a href="#kotsu-about">歩いて巡る街と、鉄道</a></li>
+            <li><a href="#koutsu-annai">沿線のご案内</a></li>
+            <li><a href="#koutsu-renketsu">車両の連結について</a></li>
+            <li><a href="#koutsu-unko">運行情報</a></li>
+            <li><a href="#koutsu-jikoku">時刻表</a></li>
+            <li><a href="#koutsu-information">お問い合わせ</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="koutsukyoku-route.html">路線案内</a></li>
+            <li><a href="koutsukyoku-shiryoshitsu.html">交通資料室</a></li>
+            <li><a href="koutsukyoku-opening.html">開業記録</a></li>
+            <li><a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a></li>
+            <li><a href="renketsu.html">連結技術について</a></li>
+            <li><a href="koutsukyoku-stations.html">駅に関する資料</a></li>
+            <li><a href="shiyakusho.html">ピコぬ市役所</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div>ピコぬ市交通局</div>
+    <div>Copyright © ピコぬ市交通局 All Rights Reserved.</div>
+  </footer>
+
 </body>
 
 </html>
