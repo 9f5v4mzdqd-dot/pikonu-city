@@ -10,6 +10,34 @@
 - ファイルパス: 内容
 
 ------------
+## 2026-09-18
+---
+### 追加
+- `facilities/pp-postal-yubin-hagaki.html`:「郵便・はがき・荷物」ページを新設(PPピコぬ郵政グループの子ページ)。お手紙・はがき・荷物の発送/切手・はがきの販売/郵便物についてのご相談の3セクションを掲載
+- `facilities/pp-postal-faq.html`:「よくあるご質問(FAQ)」ページを新設(PPピコぬ郵政グループの子ページ)。発送・お届け/切手・はがき/窓口・その他のQ&Aと、共通の「■お客様相談室」を掲載
+- `images/facilities/shop/pp-postal-yubin-hagaki001.jpg`・`pp-postal-faq.jpg`:上記2ページのメイン画像を追加
+
+### 変更
+- `facilities/pp-postal-stamp.html`:ページ名・見出し・サイドバーの文言を「切手、はがきの通信販売」に統一
+
+### 修正
+- `facilities/pp-postal-stamp.html`:トップ画像に横幅の指定(max-width)を追加。原寸表示で本文の幅いっぱいに広がっていた不具合を修正
+---
+
+## 2026-09-17（2）
+---
+### 追加
+- `facilities/pp-postal-group.html`:「PPピコぬ郵政グループ」ページを新設。市内郵便局共通の案内ハブとして、について/お知らせ/手紙・はがき・荷物/切手・はがきの販売/ご利用案内/手紙を書きましょう/訪問サービス/店舗情報の8セクションを掲載
+- `facilities/pp-postal-stamp.html`:「切手、はがきの通信販売」ページを新設。PP郵政グループ限定切手シート(全11種)の商品一覧、画像タップでの拡大表示(ライトボックス)機能を実装
+- `images/facilities/shop/`:PPロゴ(`pp-logo001.jpg`)・メイン画像(`pp-postal-main.jpg`)・切手商品画像各種(`pp-stamp-*.jpg`、11種)を追加
+- `pdfs/shotengai-dayori/shotengai-dayori-vol1.2.pdf`:商店街だより vol.1.2を追加
+
+### 変更
+- `facilities/shokokai.html`・`facilities/shoten.html`:「商店街だより」のリンク・お知らせ欄をvol.1.2版に更新
+- `facilities/index.html`・`about/sitemap.html`・`data/search-index.json`:「PPピコぬ郵政グループ」ページへのリンク・掲載を追加。あわせて`about/sitemap.html`に掲載漏れだった加盟店10店舗分のリンクもまとめて追加
+- `facilities/kirokumachi-post.html`:関連リンクに「PPピコぬ郵政グループ」を追加
+- `facilities/kirokumachi-curry.html`・`facilities/kissa-yamato.html`・`facilities/yaohachi.html`:ヘッダーロゴを記録町商店街共通ロゴ(`shotengai-logo.jpg`)に統一(八百八はテキストの看板表示から画像ロゴ表示に変更)
+---
 ---
 ## 2026-09-17（1）
 ---
