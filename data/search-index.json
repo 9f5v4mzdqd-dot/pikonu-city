@@ -299,6 +299,21 @@
     "url": "facilities/pp-postal-group.html",
     "category": "施設案内"
   },
+    {
+    "title": "郵便・はがき・荷物",
+    "url": "facilities/pp-postal-yubin-hagaki.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "切手、はがきの通信販売",
+    "url": "facilities/pp-postal-stamp.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "よくあるご質問（FAQ）",
+    "url": "facilities/pp-postal-faq.html",
+    "category": "施設案内"
+  },
   {
     "title": "公式グッズ",
     "url": "facilities/goods.html",
