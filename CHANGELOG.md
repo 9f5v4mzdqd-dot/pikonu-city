@@ -10,7 +10,27 @@
 - ファイルパス: 内容
 
 ------------
-## 2026-09-18
+## 2026-09-19（1）
+---
+### 変更
+- `facilities/koutsukyoku.html`・`facilities/koutsukyoku-route.html`・`facilities/koutsukyoku-shiryoshitsu.html`・`facilities/koutsukyoku-timetable-1963.html`・`facilities/koutsukyoku-opening.html`・`facilities/koutsukyoku-stations.html`:ピコぬ市交通局とその関連ページ一式を、PP郵政グループと同じ■セクション形式のデザインにリニューアル。`koutsukyoku.html`に新規セクション「歩いて巡る街と、鉄道」、`koutsukyoku-route.html`に路線図画像を追加
+- `facilities/toshokan.html`・`facilities/toshokan-zosho.html`:市立図書館本体・蔵書案内ページを同じく■セクション形式にリニューアル。`toshokan.html`に新規セクション「図書館の建物について」を追加、`toshokan-zosho.html`にはトップ画像と紹介文を追加
+- `facilities/kominkan.html`:ピコぬ市中央公民館ページを■セクション形式にリニューアル。新規セクション「ピコぬ市中央公民館とは」を追加、ヘッダーロゴをピコぬ市章ロゴ(`piconu-city-logo001.jpg`)に変更
+- `facilities/renketsu.html`:「連結技術について」ページを■セクション形式にリニューアル。冒頭に市のテーマを表すセクション「目立たない場所こそ、全体を支えている。」を追加
+- `images/facilities/shop/ptb-logo001.jpg`・`images/facilities/koutsukyoku-route-rosenzu.jpg`・`images/facilities/shop/koutsukyoku-route001.jpg`・`images/facilities/logo/piconu-city-logo001.jpg`:上記リニューアルに伴う各種画像を追加
+
+### 修正
+- `facilities/koutsukyoku.html`・`facilities/koutsukyoku-route.html`・`facilities/koutsukyoku-shiryoshitsu.html`・`facilities/koutsukyoku-timetable-1963.html`・`facilities/renketsu.html`:リニューアルに伴う表記ゆれ・パンくず・ロゴ抜け・info-box内画像サイズなどを随時修正
+---
+
+## 2026-09-18（2）
+---
+### 変更
+- `about/sitemap.html`・`data/search-index.json`:「PPピコぬ郵政グループ」子ページ3件(郵便・はがき・荷物/切手、はがきの通信販売/よくあるご質問)へのリンク・掲載を追加
+- `about/telephone.html`:部署別電話番号一覧に「ピコぬ市商工会」「ピコぬ市郵政グループ(PP)代表」を追加
+---
+
+## 2026-09-18（1）
 ---
 ### 追加
 - `facilities/pp-postal-yubin-hagaki.html`:「郵便・はがき・荷物」ページを新設(PPピコぬ郵政グループの子ページ)。お手紙・はがき・荷物の発送/切手・はがきの販売/郵便物についてのご相談の3セクションを掲載
