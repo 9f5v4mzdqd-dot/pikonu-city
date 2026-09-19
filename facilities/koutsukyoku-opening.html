@@ -2,196 +2,572 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <title>開業記録 | ピコぬ市交通局 | 交通資料室 | ピコぬ市公式ホームページ</title>
-    <meta name="description" content="昭和38年に開業したピコぬ市交通局の開業当時の記録をご案内します。">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <title>開業記録 | ピコぬ市交通局 | 交通資料室 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="昭和38年に開業したピコぬ市交通局の開業当時の記録をご案内します。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #fff8e0;
+      --onion: #3daebd;
+      --tomato: #245b8a;
+      --dark: #92a40a;
+      --line: #dceaf3;
+      --muted: #687982;
+      --table-head: #F3E4CB;
+      --box-bg: #FBF6EC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--onion);
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #a83a2b;
+    }
+
+    a:hover {
+      color: var(--paper);
+      background: var(--tomato);
+      text-decoration: none;
+    }
+
+    #main {
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: var(--onion);
+      border-bottom: 4px solid var(--dark);
+      color: var(--paper);
+      padding: 24px 0 20px;
+    }
+
+    .page-header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .page-header .lead {
+      margin: 8px 0 0;
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 90px;
+      height: auto;
+      border: 3px solid var(--paper);
+      background: var(--paper);
+    }
+
+    .breadcrumb {
+      background: var(--paper);
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb ol {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: "➡";
+      margin-left: 6px;
+      color: var(--tomato);
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .page-nav {
+      padding: 12px;
+      background: var(--paper);
+      border: 2px solid var(--onion);
+    }
+
+    .page-nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+      padding: 6px 16px;
+      color: var(--paper);
+      background: var(--tomato);
+      border: 2px solid var(--dark);
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .page-nav a:visited {
+      color: var(--paper);
+    }
+
+    .page-nav a:hover {
+      color: var(--paper);
+      background: var(--dark);
+      border-color: var(--dark);
+      text-decoration: none;
+    }
+
+    .content-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .main-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      padding: 24px 26px 30px;
+      box-shadow: 5px 5px 0 rgba(36, 55, 70, 0.15);
+    }
+
+    .main-content p {
+      margin: 0 0 12px;
+    }
+
+    .facility-photo {
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      margin: 0 auto 22px;
+      padding: 4px;
+      background: var(--paper);
+      border: 1px solid var(--onion);
+      box-shadow: 3px 3px 0 var(--line);
+      box-sizing: border-box;
+    }
+
+    .main-content h2 {
+      margin: 28px 0 14px;
+      padding: 7px 12px;
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      color: var(--paper);
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+
+    .main-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .sub-label {
+      margin: 18px 0 6px;
+      font-weight: bold;
+      color: var(--tomato);
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      background: var(--paper);
+    }
+
+    .info-table th,
+    .info-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 28%;
+      background: var(--table-head);
+      color: var(--dark);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      background: var(--paper);
+    }
+
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--box-bg);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: var(--box-bg);
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .sidebar {
+      flex: 0 0 245px;
+      min-width: 0;
+    }
+
+    .sidebar-block {
+      margin-bottom: 20px;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+    }
+
+    .sidebar-block h2 {
+      margin: 0;
+      padding: 9px 12px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--onion);
+      color: var(--paper);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 14px 12px;
+    }
+
+    .sidebar-block li {
+      margin: 0;
+      padding: 7px 0;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .sidebar-block li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-block li::before {
+      content: "▶ ";
+      color: var(--onion);
+      font-size: 12px;
+    }
+
+    footer {
+      background: var(--table-head);
+      border-top: 3px solid var(--onion);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 20px;
+    }
+
+    footer div {
+      margin: 2px 0;
+    }
+
+    footer a {
+      color: var(--onion);
+    }
+
+    @media (max-width: 760px) {
+      .page-header {
+        padding: 20px 0 16px;
+      }
+
+      .page-header .container {
+        gap: 12px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .header-logo {
+        width: 60px;
+      }
+
+      .content-layout {
+        display: block;
+        margin: 16px auto;
+        padding: 0 12px;
+      }
+
+      .main-content {
+        padding: 18px 16px 24px;
+        box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+      }
+
+      .sidebar {
+        margin-top: 20px;
+      }
+
+      .info-table th,
+      .info-table td {
+        display: block;
+        width: auto;
+      }
+
+      .info-table th {
+        border-bottom: none;
+        white-space: normal;
+      }
+
+      .info-table td {
+        border-top: none;
+      }
+    }
+  </style>
 </head>
 
 <body id="top">
 
-    <main id="main">
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <div>
+          <h1>ピコぬ市交通局 開業記録</h1>
+          <p class="lead">昭和38年に開業したピコぬ市交通局の開業当時の記録をまとめています。</p>
+        </div>
+          <img class="header-logo" src="../images/facilities/shop/ptb-logo001.jpg" alt="ピコヌ市交通局 ロゴ">
+      </div>
+    </div>
 
-        <div class="page-header">
-            <div class="container">
-                <h1>ピコぬ市交通局 開業記録</h1>
-                <p class="lead">昭和38年に開業したピコぬ市交通局の開業当時の記録をまとめています。</p>
-            </div>
+    <nav class="breadcrumb" aria-label="現在位置">
+      <ol>
+        <li><a href="../index.html">トップ</a></li>
+        <li><a href="index.html">施設案内</a></li>
+        <li><a href="koutsukyoku.html">ピコヌ市交通局</a></li>
+        <li>ピコぬ市交通局 開業記録</li>
+      </ol>
+    </nav>
+
+    <nav class="page-nav" aria-label="ページ内メニュー">
+      <ul>
+        <li><a href="#section-1">開業概要</a></li>
+        <li><a href="#section-2">開業当時の路線</a></li>
+        <li><a href="#section-3">開業記念式典</a></li>
+        <li><a href="#section-4">開業当時の車両</a></li>
+        <li><a href="#section-5">開業当時の利用案内</a></li>
+        <li><a href="#section-6">開業から現在まで</a></li>
+        <li><a href="#section-7">関連資料</a></li>
+      </ul>
+    </nav>
+
+    <div class="content-layout">
+      <div class="main-content">
+
+        <h2 id="section-1">■ 開業概要</h2>
+        <div class="info-box">
+          <p>
+          ピコぬ市交通局は、昭和38年（1963年）に開業しました。
+          </p>
+          <p>
+          市内の主要な地域を結ぶ交通手段として、ピコぬ中央駅、連結橋駅、記録町駅の3駅を結ぶ1路線の運行を開始しました。
+          </p>
+          <p>
+          開業当時から、市内の移動を支える交通機関として運行されており、現在も基本的な路線構成を維持しています。
+          </p>
+          <p>
+          当時の市内は徒歩による移動も多く、鉄道は徒歩だけでは少し遠い場所を結ぶ交通手段として整備されました。
+          </p>
         </div>
 
-        <div class="content-layout">
-
-            <div class="main-content">
-
-                <h2>開業概要</h2>
-
-                <p>
-                    ピコぬ市交通局は、昭和38年（1963年）に開業しました。
-                </p>
-
-                <p>
-                    市内の主要な地域を結ぶ交通手段として、ピコぬ中央駅、連結橋駅、記録町駅の3駅を結ぶ1路線の運行を開始しました。
-                </p>
-
-                <p>
-                    開業当時から、市内の移動を支える交通機関として運行されており、現在も基本的な路線構成を維持しています。
-                </p>
-
-                <p>
-                    当時の市内は徒歩による移動も多く、鉄道は徒歩だけでは少し遠い場所を結ぶ交通手段として整備されました。
-                </p>
-
-                <h2>開業当時の路線</h2>
-
-                <p>
-                    開業時の路線は、現在と同じく3駅を結ぶ1路線でした。
-                </p>
-
-                <table class="info-table">
-                    <tr>
-                        <th>駅名</th>
-                        <th>開業時の位置づけ</th>
-                    </tr>
-                    <tr>
-                        <td>ピコぬ中央駅</td>
-                        <td>市の玄関口</td>
-                    </tr>
-                    <tr>
-                        <td>連結橋駅</td>
-                        <td>連結橋・ぬかピコ川方面</td>
-                    </tr>
-                    <tr>
-                        <td>記録町駅</td>
-                        <td>記録町方面</td>
-                    </tr>
-                </table>
-
-                <p>
-                    駅数を必要以上に増やさず、市内を歩いて巡ることができる規模を維持するという考え方は、現在の交通局にも引き継がれています。
-                </p>
-
-                <h2>開業記念式典</h2>
-
-                <p>
-                    昭和38年の開業にあたり、ピコぬ中央駅において開業記念式典が行われました。
-                </p>
-
-                <p>
-                    式典には、市関係者、交通局職員、駅員、関係者などが出席し、開業を祝いました。
-                </p>
-
-                <figure>
-                    <img src="../images/facilities/koutsukyoku-opening.jpg" alt="昭和38年のピコぬ市交通局開業記念式典の様子"
-                        style="width:100%; max-width:800px; height:auto;">
-                    <figcaption>
-                        開業記念式典の様子（昭和38年）<br>
-                        ピコぬ中央駅にて。交通局関係者らが出席し、開業を記念して行われた式典の記録です。
-                    </figcaption>
-                </figure>
-
-                <h2>開業当時の車両</h2>
-
-                <p>
-                    開業時には2両編成の車両が導入されました。
-                </p>
-
-                <p>
-                    車両は現在よりも簡素な構造でしたが、市内交通を担う車両として運行されました。
-                </p>
-
-                <p>
-                    開業当時の車両については、交通資料室に保存されている記録写真から確認することができます。
-                </p>
-
-                <p>
-                    また、現在も2両編成での運行が基本となっており、開業当時から続く特徴のひとつとなっています。
-                </p>
-
-                <h2>開業当時の利用案内</h2>
-
-                <p>
-                    開業当時の利用案内では、駅の利用方法や運行時刻などについて案内されていました。
-                </p>
-
-                <p>
-                    当時の時刻表には、現在とは異なる時刻や表記が見られます。
-                </p>
-
-                <p>
-                    現在保存されている
-                    <a href="koutsukyoku-timetable-1963.html">「昭和38年時刻表」</a>
-                    は、開業当時の運行状況を知ることができる資料です。
-                </p>
-
-                <h2>開業から現在まで</h2>
-
-                <p>
-                    ピコぬ市交通局は、昭和38年の開業以来、1路線3駅を基本とする運行を続けています。
-                </p>
-
-                <p>
-                    市内の規模や徒歩による移動とのバランスを考慮し、路線や駅をいたずらに増やすことなく、現在の形が維持されています。
-                </p>
-
-                <p>
-                    長い年月の中で車両や設備、運行方法には変化がありましたが、市内を結ぶ交通機関としての役割は現在も変わっていません。
-                </p>
-
-                <div class="info-box">
-                    <strong>交通資料室メモ</strong>
-                    <p>
-                        開業当時の資料には、「必要以上に増やさない」という現在の交通局にも通じる考え方が見られます。
-                        なお、当時どの程度までを「必要以上」としていたのかについては、現在の資料からは確認できません。
-                    </p>
-                </div>
-
-                <h2>関連資料</h2>
-
-                <ul>
-                    <li><a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a></li>
-                    <li><a href="koutsukyoku-shiryoshitsu.html">交通資料室</a></li>
-                    <li><a href="koutsukyoku-route.html">路線案内</a></li>
-                    <li><a href="renketsu.html">連結技術について</a></li>
-                </ul>
-
-            </div>
-
-            <aside class="sidebar">
-
-                <div class="sidebar-block">
-                    <h2>関連情報</h2>
-                    <ul>
-                        <li><a href="koutsukyoku.html">ピコぬ市交通局</a></li>
-                        <li><a href="koutsukyoku-route.html">路線案内</a></li>
-                        <li><a href="koutsukyoku-shiryoshitsu.html">交通資料室</a></li>
-                        <li><a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a></li>
-                        <li><a href="koutsukyoku-stations.html">駅に関する資料</a></li>
-                        <li><a href="renketsu.html">連結技術について</a></li>
-                    </ul>
-                </div>
-
-            </aside>
-
+        <h2 id="section-2">■ 開業当時の路線</h2>
+        <div class="info-box">
+          <p>
+          開業時の路線は、現在と同じく3駅を結ぶ1路線でした。
+          </p>
+          <table class="info-table">
+          <tbody><tr>
+          <th>駅名</th>
+          <th>開業時の位置づけ</th>
+          </tr>
+          <tr>
+          <td>ピコぬ中央駅</td>
+          <td>市の玄関口</td>
+          </tr>
+          <tr>
+          <td>連結橋駅</td>
+          <td>連結橋・ぬかピコ川方面</td>
+          </tr>
+          <tr>
+          <td>記録町駅</td>
+          <td>記録町方面</td>
+          </tr>
+          </tbody></table>
+          <p>
+          駅数を必要以上に増やさず、市内を歩いて巡ることができる規模を維持するという考え方は、現在の交通局にも引き継がれています。
+          </p>
         </div>
-    </main>
 
-    <script>
-        window.PAGE_META = {
-            nav: "facilities",
-            breadcrumb: [
-                {label: "施設案内", href: "index.html"},
-                {label: "ピコぬ市交通局", href: "koutsukyoku.html"},
-                {label: "交通資料室", href: "koutsukyoku-shiryoshitsu.html"},
-                {label: "開業記録"}
-            ]
-        };
-    </script>
+        <h2 id="section-3">■ 開業記念式典</h2>
+        <div class="info-box">
+          <p>
+          昭和38年の開業にあたり、ピコぬ中央駅において開業記念式典が行われました。
+          </p>
+          <p>
+          式典には、市関係者、交通局職員、駅員、関係者などが出席し、開業を祝いました。
+          </p>
+          <figure>
+          <img src="../images/facilities/koutsukyoku-opening.jpg" alt="昭和38年のピコぬ市交通局開業記念式典の様子" style="width:100%; max-width:800px; height:auto;">
+          <figcaption>
+          開業記念式典の様子（昭和38年）<br>
+          ピコぬ中央駅にて。交通局関係者らが出席し、開業を記念して行われた式典の記録です。
+          </figcaption>
+          </figure>
+        </div>
 
-    <script src="../js/common.js"></script>
+        <h2 id="section-4">■ 開業当時の車両</h2>
+        <div class="info-box">
+          <p>
+          開業時には2両編成の車両が導入されました。
+          </p>
+          <p>
+          車両は現在よりも簡素な構造でしたが、市内交通を担う車両として運行されました。
+          </p>
+          <p>
+          開業当時の車両については、交通資料室に保存されている記録写真から確認することができます。
+          </p>
+          <p>
+          また、現在も2両編成での運行が基本となっており、開業当時から続く特徴のひとつとなっています。
+          </p>
+        </div>
+
+        <h2 id="section-5">■ 開業当時の利用案内</h2>
+        <div class="info-box">
+          <p>
+          開業当時の利用案内では、駅の利用方法や運行時刻などについて案内されていました。
+          </p>
+          <p>
+          当時の時刻表には、現在とは異なる時刻や表記が見られます。
+          </p>
+          <p>
+          現在保存されている
+          <a href="koutsukyoku-timetable-1963.html">「昭和38年時刻表」</a>
+          は、開業当時の運行状況を知ることができる資料です。
+          </p>
+        </div>
+
+        <h2 id="section-6">■ 開業から現在まで</h2>
+        <div class="info-box">
+          <p>
+          ピコぬ市交通局は、昭和38年の開業以来、1路線3駅を基本とする運行を続けています。
+          </p>
+          <p>
+          市内の規模や徒歩による移動とのバランスを考慮し、路線や駅をいたずらに増やすことなく、現在の形が維持されています。
+          </p>
+          <p>
+          長い年月の中で車両や設備、運行方法には変化がありましたが、市内を結ぶ交通機関としての役割は現在も変わっていません。
+          </p>
+          <div class="info-box">
+          <strong>交通資料室メモ</strong>
+          <p>
+          開業当時の資料には、「必要以上に増やさない」という現在の交通局にも通じる考え方が見られます。
+          なお、当時どの程度までを「必要以上」としていたのかについては、現在の資料からは確認できません。
+          </p>
+          </div>
+        </div>
+
+        <h2 id="section-7">■ 関連資料</h2>
+        <div class="info-box">
+          <ul>
+          <li><a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a></li>
+          <li><a href="koutsukyoku-shiryoshitsu.html">交通資料室</a></li>
+          <li><a href="koutsukyoku-route.html">路線案内</a></li>
+          <li><a href="renketsu.html">連結技術について</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>このページの内容</h2>
+          <ul>
+            <li><a href="#section-1">開業概要</a></li>
+            <li><a href="#section-2">開業当時の路線</a></li>
+            <li><a href="#section-3">開業記念式典</a></li>
+            <li><a href="#section-4">開業当時の車両</a></li>
+            <li><a href="#section-5">開業当時の利用案内</a></li>
+            <li><a href="#section-6">開業から現在まで</a></li>
+            <li><a href="#section-7">関連資料</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="koutsukyoku.html">ピコぬ市交通局</a></li>
+            <li><a href="koutsukyoku-route.html">路線案内</a></li>
+            <li><a href="koutsukyoku-shiryoshitsu.html">交通資料室</a></li>
+            <li><a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a></li>
+            <li><a href="koutsukyoku-stations.html">駅に関する資料</a></li>
+            <li><a href="renketsu.html">連結技術について</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div>ピコぬ市交通局 開業記録</div>
+    <div>Copyright © ピコぬ市交通局 開業記録 All Rights Reserved.</div>
+  </footer>
 
 </body>
 
