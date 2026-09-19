@@ -2,117 +2,488 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <title>交通資料室 | ピコぬ市交通局 | 施設案内 | ピコぬ市公式ホームページ</title>
-    <meta name="description" content="ピコぬ市交通局が保管・整理している交通に関する記録・資料をご案内します。">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <title>交通資料室 | ピコぬ市交通局 | 施設案内 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬ市交通局が保管・整理している交通に関する記録・資料をご案内します。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #fff8e0;
+      --onion: #3daebd;
+      --tomato: #245b8a;
+      --dark: #92a40a;
+      --line: #dceaf3;
+      --muted: #687982;
+      --table-head: #F3E4CB;
+      --box-bg: #FBF6EC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--onion);
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #a83a2b;
+    }
+
+    a:hover {
+      color: var(--paper);
+      background: var(--tomato);
+      text-decoration: none;
+    }
+
+    #main {
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: var(--onion);
+      border-bottom: 4px solid var(--dark);
+      color: var(--paper);
+      padding: 24px 0 20px;
+    }
+
+    .page-header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .page-header .lead {
+      margin: 8px 0 0;
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 90px;
+      height: auto;
+      border: 3px solid var(--paper);
+      background: var(--paper);
+    }
+
+    .breadcrumb {
+      background: var(--paper);
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb ol {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: "➡";
+      margin-left: 6px;
+      color: var(--tomato);
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .page-nav {
+      padding: 12px;
+      background: var(--paper);
+      border: 2px solid var(--onion);
+    }
+
+    .page-nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+      padding: 6px 16px;
+      color: var(--paper);
+      background: var(--tomato);
+      border: 2px solid var(--dark);
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .page-nav a:visited {
+      color: var(--paper);
+    }
+
+    .page-nav a:hover {
+      color: var(--paper);
+      background: var(--dark);
+      border-color: var(--dark);
+      text-decoration: none;
+    }
+
+    .content-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .main-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      padding: 24px 26px 30px;
+      box-shadow: 5px 5px 0 rgba(36, 55, 70, 0.15);
+    }
+
+    .main-content p {
+      margin: 0 0 12px;
+    }
+
+    .facility-photo {
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      margin: 0 auto 22px;
+      padding: 4px;
+      background: var(--paper);
+      border: 1px solid var(--onion);
+      box-shadow: 3px 3px 0 var(--line);
+      box-sizing: border-box;
+    }
+
+    .main-content h2 {
+      margin: 28px 0 14px;
+      padding: 7px 12px;
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      color: var(--paper);
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+
+    .main-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .sub-label {
+      margin: 18px 0 6px;
+      font-weight: bold;
+      color: var(--tomato);
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      background: var(--paper);
+    }
+
+    .info-table th,
+    .info-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 28%;
+      background: var(--table-head);
+      color: var(--dark);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      background: var(--paper);
+    }
+
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--box-bg);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: var(--box-bg);
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .sidebar {
+      flex: 0 0 245px;
+      min-width: 0;
+    }
+
+    .sidebar-block {
+      margin-bottom: 20px;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+    }
+
+    .sidebar-block h2 {
+      margin: 0;
+      padding: 9px 12px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--onion);
+      color: var(--paper);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 14px 12px;
+    }
+
+    .sidebar-block li {
+      margin: 0;
+      padding: 7px 0;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .sidebar-block li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-block li::before {
+      content: "▶ ";
+      color: var(--onion);
+      font-size: 12px;
+    }
+
+    footer {
+      background: var(--table-head);
+      border-top: 3px solid var(--onion);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 20px;
+    }
+
+    footer div {
+      margin: 2px 0;
+    }
+
+    footer a {
+      color: var(--onion);
+    }
+
+    @media (max-width: 760px) {
+      .page-header {
+        padding: 20px 0 16px;
+      }
+
+      .page-header .container {
+        gap: 12px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .header-logo {
+        width: 60px;
+      }
+
+      .content-layout {
+        display: block;
+        margin: 16px auto;
+        padding: 0 12px;
+      }
+
+      .main-content {
+        padding: 18px 16px 24px;
+        box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+      }
+
+      .sidebar {
+        margin-top: 20px;
+      }
+
+      .info-table th,
+      .info-table td {
+        display: block;
+        width: auto;
+      }
+
+      .info-table th {
+        border-bottom: none;
+        white-space: normal;
+      }
+
+      .info-table td {
+        border-top: none;
+      }
+    }
+  </style>
 </head>
 
 <body id="top">
 
-    <main id="main">
-        <div class="page-header">
-            <div class="container">
-                <h1>ピコぬ市交通局 交通資料室</h1>
-                <p class="lead">市内交通に関する記録・資料を収集、整理、保存しています。</p>
-            </div>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <div>
+          <h1>ピコぬ市交通局 交通資料室</h1>
+          <p class="lead">市内交通に関する記録・資料を収集、整理、保存しています。</p>
+        </div>
+          <img class="header-logo" src="../images/facilities/shop/ptb-logo001.jpg" alt="ピコぬ市交通局ロゴ">
+      </div>
+    </div>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+      <ol>
+        <li><a href="../index.html">トップ</a></li>
+        <li><a href="index.html">施設案内</a></li>
+        <li><a href="koutsukyoku.html">ピコヌ市交通局</a></li>
+        <li>ピコぬ市交通局 交通資料室</li>
+      </ol>
+    </nav>
+
+    <nav class="page-nav" aria-label="ページ内メニュー">
+      <ul>
+        <li><a href="#section-1">資料一覧</a></li>
+        <li><a href="#section-2">資料の閲覧について</a></li>
+      </ul>
+    </nav>
+
+    <div class="content-layout">
+      <div class="main-content">
+
+        <h2 id="section-1">■ 資料一覧</h2>
+        <div class="info-box">
+          <div class="info-box">
+          <h3>開業記録</h3>
+          <p>
+          ピコぬ市交通局の開業に関する記録を整理しています。
+          交通局は昭和38年に開業しました。詳しくは<a href="koutsukyoku-opening.html">開業記録</a>をご覧ください。
+          </p>
+          <p></p>
+          </div>
+          <div class="info-box">
+          <h3>旧時刻表</h3>
+          <p>
+          過去に使用された時刻表を保存しています。
+          現在の運行には使用されませんが、当時の運行状況を知るための資料として保管しています。
+          こちらから<a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a>をご覧いただけます。
+          </p>
+          </div>
+          <div class="info-box">
+          <h3>駅に関する資料</h3>
+          <p>
+          ピコぬ中央駅、連結橋駅、記録町駅に関する資料を整理しています。
+          駅の案内や周辺施設に関する記録などを保存しています。詳しくは<a href="koutsukyoku-stations.html">駅に関する資料</a>をご覧ください。
+          </p>
+          </div>
+          <div class="info-box">
+          <h3>車両・連結技術資料</h3>
+          <p>
+          2両編成で運行する車両および連結部に関する資料を整理しています。連結部の構造については、<a href="renketsu.html">連結技術について</a>をご覧ください。
+          </p>
+          </div>
         </div>
 
-        <div class="content-layout">
-            <div class="main-content">
-
-                <p>
-                    ピコぬ市交通局では、鉄道の運行に関する記録や資料を収集・整理し、
-                    保存しています。
-                </p>
-
-                <p>
-                    現在の運行に直接使用されていない資料についても、交通局の歩みを記録する資料として保存しています。
-                </p>
-
-                <h2>資料一覧</h2>
-
-                <div class="info-box">
-                    <h3>開業記録</h3>
-                    <p>
-                        ピコぬ市交通局の開業に関する記録を整理しています。
-                        交通局は昭和38年に開業しました。詳しくは<a href="koutsukyoku-opening.html">開業記録</a>をご覧ください。
-                    </p>
-                    </p>
-                </div>
-
-                <div class="info-box">
-                    <h3>旧時刻表</h3>
-                    <p>
-                        過去に使用された時刻表を保存しています。
-                        現在の運行には使用されませんが、当時の運行状況を知るための資料として保管しています。
-                        こちらから<a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a>をご覧いただけます。
-                    </p>
-                </div>
-
-                <div class="info-box">
-                    <h3>駅に関する資料</h3>
-                    <p>
-                        ピコぬ中央駅、連結橋駅、記録町駅に関する資料を整理しています。
-                        駅の案内や周辺施設に関する記録などを保存しています。詳しくは<a href="koutsukyoku-stations.html">駅に関する資料</a>をご覧ください。
-                    </p>
-                </div>
-
-                <div class="info-box">
-                    <h3>車両・連結技術資料</h3>
-                    <p>
-                        2両編成で運行する車両および連結部に関する資料を整理しています。連結部の構造については、<a href="renketsu.html">連結技術について</a>をご覧ください。
-                    </p>
-                </div>
-
-                <h2>資料の閲覧について</h2>
-
-                <p>
-                    公開可能な資料については、順次ホームページ上でご案内します。なお、資料の保存状況や整理状況により、すべての資料を公開できるものではありません。
-                </p>
-
-                <div class="info-box">
-                    <strong>資料室からのお知らせ</strong>
-                    <p>
-                        古い資料には、現在の運行状況と異なる内容が記載されている場合があります。ご利用の際は、現行の案内をご確認ください。
-                    </p>
-                </div>
-
-            </div>
-
-            <aside class="sidebar">
-                <div class="sidebar-block">
-                    <h2>関連情報</h2>
-                    <ul>
-                        <li><a href="koutsukyoku.html">ピコぬ市交通局</a></li>
-                        <li><a href="koutsukyoku-route.html">路線案内</a></li>
-                        <li><a href="koutsukyoku-opening.html">開業記録</a></li>
-                        <li><a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a></li>
-                        <li><a href="koutsukyoku-stations.html">駅に関する資料</a></li>
-                        <li><a href="renketsu.html">連結技術について</a></li>
-                        <li><a href="kanko-ka.html">観光課</a></li>
-                        <li><a href="toshokan.html">市立図書館</a></li>
-                    </ul>
-                </div>
-            </aside>
+        <h2 id="section-2">■ 資料の閲覧について</h2>
+        <div class="info-box">
+          <p>
+          公開可能な資料については、順次ホームページ上でご案内します。なお、資料の保存状況や整理状況により、すべての資料を公開できるものではありません。
+          </p>
+          <div class="info-box">
+          <strong>資料室からのお知らせ</strong>
+          <p>
+          古い資料には、現在の運行状況と異なる内容が記載されている場合があります。ご利用の際は、現行の案内をご確認ください。
+          </p>
+          </div>
         </div>
-    </main>
 
-    <script>
-        window.PAGE_META = {
-            nav: "facilities",
-            breadcrumb: [
-                {label: "施設案内", href: "index.html"},
-                {label: "ピコぬ市交通局", href: "koutsukyoku.html"},
-                {label: "交通資料室"}
-            ]
-        };
-    </script>
-    <script src="../js/common.js"></script>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>このページの内容</h2>
+          <ul>
+            <li><a href="#section-1">資料一覧</a></li>
+            <li><a href="#section-2">資料の閲覧について</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="koutsukyoku.html">ピコぬ市交通局</a></li>
+            <li><a href="koutsukyoku-route.html">路線案内</a></li>
+            <li><a href="koutsukyoku-opening.html">開業記録</a></li>
+            <li><a href="koutsukyoku-timetable-1963.html">昭和38年時刻表</a></li>
+            <li><a href="renketsu.html">連結技術について</a></li>
+            <li><a href="kanko-ka.html">観光課</a></li>
+            <li><a href="toshokan.html">市立図書館</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div>ピコぬ市交通局 交通資料室</div>
+    <div>Copyright © ピコぬ市交通局 交通資料室 All Rights Reserved.</div>
+  </footer>
+
 </body>
 
 </html>
