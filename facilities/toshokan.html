@@ -9,7 +9,369 @@
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #f5f7f2;
+      --onion: #a85f2e;
+      --tomato: #2e8458;
+      --dark: #254724;
+      --line: #dabbaa;
+      --muted: #687982;
+      --table-head: #F3E4CB;
+      --box-bg: #FBF6EC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--onion);
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #a83a2b;
+    }
+
+    a:hover {
+      color: var(--paper);
+      background: var(--tomato);
+      text-decoration: none;
+    }
+
+    #main {
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: var(--onion);
+      border-bottom: 4px solid var(--dark);
+      color: var(--paper);
+      padding: 24px 0 20px;
+    }
+
+    .page-header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .page-header .lead {
+      margin: 8px 0 0;
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 90px;
+      height: auto;
+      border: 3px solid var(--paper);
+      background: var(--paper);
+    }
+
+    .breadcrumb {
+      background: var(--paper);
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb ol {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: "➡";
+      margin-left: 6px;
+      color: var(--tomato);
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .page-nav {
+      padding: 12px;
+      background: var(--paper);
+      border: 2px solid var(--onion);
+    }
+
+    .page-nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+      padding: 6px 16px;
+      color: var(--paper);
+      background: var(--tomato);
+      border: 2px solid var(--dark);
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .page-nav a:visited {
+      color: var(--paper);
+    }
+
+    .page-nav a:hover {
+      color: var(--paper);
+      background: var(--dark);
+      border-color: var(--dark);
+      text-decoration: none;
+    }
+
+    .content-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .main-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      padding: 24px 26px 30px;
+      box-shadow: 5px 5px 0 rgba(36, 55, 70, 0.15);
+    }
+
+    .main-content p {
+      margin: 0 0 12px;
+    }
+
+    .facility-photo {
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      margin: 0 auto 22px;
+      padding: 4px;
+      background: var(--paper);
+      border: 1px solid var(--onion);
+      box-shadow: 3px 3px 0 var(--line);
+      box-sizing: border-box;
+    }
+
+    .main-content h2 {
+      margin: 28px 0 14px;
+      padding: 7px 12px;
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      color: var(--paper);
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+
+    .main-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .sub-label {
+      margin: 18px 0 6px;
+      font-weight: bold;
+      color: var(--tomato);
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      background: var(--paper);
+    }
+
+    .info-table th,
+    .info-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 28%;
+      background: var(--table-head);
+      color: var(--dark);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      background: var(--paper);
+    }
+
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--box-bg);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: var(--box-bg);
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .sidebar {
+      flex: 0 0 245px;
+      min-width: 0;
+    }
+
+    .sidebar-block {
+      margin-bottom: 20px;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+    }
+
+    .sidebar-block h2 {
+      margin: 0;
+      padding: 9px 12px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--onion);
+      color: var(--paper);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 14px 12px;
+    }
+
+    .sidebar-block li {
+      margin: 0;
+      padding: 7px 0;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .sidebar-block li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-block li::before {
+      content: "▶ ";
+      color: var(--onion);
+      font-size: 12px;
+    }
+
+    footer {
+      background: var(--table-head);
+      border-top: 3px solid var(--onion);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 20px;
+    }
+
+    footer div {
+      margin: 2px 0;
+    }
+
+    footer a {
+      color: var(--onion);
+    }
+
+    @media (max-width: 760px) {
+      .page-header {
+        padding: 20px 0 16px;
+      }
+
+      .page-header .container {
+        gap: 12px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .header-logo {
+        width: 60px;
+      }
+
+      .content-layout {
+        display: block;
+        margin: 16px auto;
+        padding: 0 12px;
+      }
+
+      .main-content {
+        padding: 18px 16px 24px;
+        box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+      }
+
+      .sidebar {
+        margin-top: 20px;
+      }
+
+      .info-table th,
+      .info-table td {
+        display: block;
+        width: auto;
+      }
+
+      .info-table th {
+        border-bottom: none;
+        white-space: normal;
+      }
+
+      .info-table td {
+        border-top: none;
+      }
+    }
+  </style>
 </head>
 
 <body id="top">
@@ -17,158 +379,204 @@
   <main id="main">
     <div class="page-header">
       <div class="container">
-        <h1>市立図書館</h1>
-        <p class="lead">記録と静けさを大切にする、市民のための図書館</p>
+        <div>
+          <h1>市立図書館</h1>
+          <p class="lead">記録と静けさを大切にする、市民のための図書館です。</p>
+        </div>
+          <img class="header-logo" src="../images/facilities/logo/piconu-city-logo001.jpg" alt="ピコぬ市章ロゴ">
       </div>
     </div>
 
+    <nav class="breadcrumb" aria-label="現在位置">
+      <ol>
+        <li><a href="../index.html">トップ</a></li>
+        <li><a href="index.html">施設案内</a></li>
+        <li>市立図書館</li>
+      </ol>
+    </nav>
+
+    <nav class="page-nav" aria-label="ページ内メニュー">
+      <ul>
+        <li><a href="#section-1">図書館からのお知らせ</a></li>
+        <li><a href="#section-2">蔵書構成</a></li>
+        <li><a href="#section-3">蔵書案内</a></li>
+        <li><a href="#section-4">貸出について</a></li>
+        <li><a href="#section-5">図書館だより</a></li>
+        <li><a href="#section-6">図書館の建物について</a></li>
+        <li><a href="#section-7">開館時間・アクセス</a></li>
+      </ul>
+    </nav>
+
     <div class="content-layout">
       <div class="main-content">
+
         <img class="facility-photo" src="../images/facilities/toshokan.jpg" alt="ピコぬ市立図書館 外観(旧市立小学校校舎)">
-        <p>
+
+        <h2 id="section-1">■ 図書館からのお知らせ</h2>
+        <div class="info-box">
+          <div class="info-box">
+          <strong>新刊図書を追加しました</strong>
+          <p>
+          8月の新刊図書を追加しました。一般図書、児童書、実用書などを取り揃えています。
+          </p>
+          </div>
+          <div class="info-box">
+          <strong>郷土資料の展示について</strong>
+          <p>
+          ピコぬ市の歴史や地域に関する資料を集めた展示を行っています。当館所蔵の資料を通して、地域の記録をご覧いただけます。
+          </p>
+          </div>
+        </div>
+
+        <h2 id="section-2">■ 蔵書構成</h2>
+        <div class="info-box">
+          <table class="info-table">
+          <tbody><tr>
+          <th>一般図書</th>
+          <td>文学・実用書・児童書等、約12万冊</td>
+          </tr>
+          <tr>
+          <th>郷土の資料</th>
+          <td>校舎が小学校であった当時の記録、地域史に関する資料</td>
+          </tr>
+          <tr>
+          <th>読み聞かせコーナー</th>
+          <td>旧教室を活用した児童向けスペース。定期的に読み聞かせ会を開催</td>
+          </tr>
+          <tr>
+          <th>現代病関連図書コーナー</th>
+          <td>キロクぬかクリニック監修による選書。専門書から一般向けの読み物まで</td>
+          </tr>
+          <tr>
+          <th>記録文化コーナー</th>
+          <td>手帳術、日誌の書き方、記録映像に関する資料など</td>
+          </tr>
+          <tr>
+          <th>非効率文庫</th>
+          <td>時間効率支援課との共同企画コーナー。読み終える必要のない本を集めています</td>
+          </tr>
+          </tbody></table>
+        </div>
+
+        <h2 id="section-3">■ 蔵書案内</h2>
+        <div class="info-box">
+          <p>
+          当館の蔵書の一部をご紹介しています。
+          郷土資料や地域の記録など、ピコぬ市に関する資料もご覧いただけます。
+          </p>
+          <p>
+          <a href="toshokan-zosho.html">蔵書案内を見る &gt;</a>
+          </p>
+          <div class="info-box">
+          <strong>非効率文庫について</strong><br>
+          「最後まで読み切らなくてよい」ことを前提にした選書コーナーです。貸出期間の延長申請も
+          随時受け付けており、返却を急かされることはありません。
+          </div>
+          <div class="info-box">
+          <strong>校舎の保存について</strong><br>
+          旧校舎は、閉校後に取り壊しが検討されていましたが、時計塔を含む外観の保存を望む
+          声を受け、図書館として転用されました。時計塔の時計は今も現役で稼働しています。
+          </div>
+        </div>
+
+        <h2 id="section-4">■ 貸出について</h2>
+        <div class="info-box">
+          <table class="info-table">
+          <tbody><tr>
+          <th>貸出冊数</th>
+          <td>一人10冊まで</td>
+          </tr>
+          <tr>
+          <th>貸出期間</th>
+          <td>2週間(非効率文庫の資料に限り、延長申請により最長6か月まで延長可)</td>
+          </tr>
+          <tr>
+          <th>貸出カード</th>
+          <td>市内在住・在勤・在学の方は無料で作成可能</td>
+          </tr>
+          </tbody></table>
+        </div>
+
+        <h2 id="section-5">■ 図書館だより</h2>
+        <div class="info-box">
+          <p>
+          毎月1回発行している「図書館だより」を掲載しています。貸出ランキングや新刊案内、
+          特設コーナーのご紹介などを掲載しています。
+          </p>
+          <p>
+          <a href="../pdfs/toshokan-dayori/toshokan-dayori-202608.pdf">図書館だより 2026年8月号(PDF)はこちら &gt;</a><br>
+          <a href="../pdfs/toshokan-dayori/toshokan-dayori-202607.pdf">図書館だより 2026年7月号(PDF)はこちら &gt;</a>
+          </p>
+          <p>
+          広報ぬかピコの紙版は、本庁舎・各出張所のほか、当館でも配布・閲覧いただけます。
+          </p>
+        </div>
+
+        <h2 id="section-6">■ 図書館の建物について</h2>
+        <div class="info-box">
+          <p>
           ピコぬ市立図書館は、閉校となった旧市立小学校の木造校舎を活用して運営しています。
           校舎の時計塔をはじめ、当時の建具や窓ガラスの多くをそのまま残しており、一般的な
           図書館機能に加え、市の記録文化を反映した独自の蔵書構成とコーナーを設けています。
           読書そのものだけでなく、本と向き合う時間のあり方にも配慮した館内設計となっています。
-        </p>
-
-        <img class="facility-photo" src="../images/facilities/toshokan-interior.jpg" alt="図書館内部。旧教室を利用した書架と閲覧席">
-        <p>
+          </p>
+          
+          <img class="facility-photo" src="../images/facilities/toshokan-interior.jpg" alt="図書館内部。旧教室を利用した書架と閲覧席">
+          <p>
           館内は、旧教室の木の床と天井をそのまま活かしています。「郷土の資料」コーナーには
           校舎が小学校であった当時の資料も一部収蔵しており、「読み聞かせコーナー」では
           定期的に読み聞かせ会を開催しています。
-        </p>
-
-        <h2>図書館からのお知らせ</h2>
-
-        <div class="info-box">
-          <strong>新刊図書を追加しました</strong>
-          <p>
-            8月の新刊図書を追加しました。一般図書、児童書、実用書などを取り揃えています。
           </p>
         </div>
 
+        <h2 id="section-7">■ 開館時間・アクセス</h2>
         <div class="info-box">
-          <strong>郷土資料の展示について</strong>
-          <p>
-            ピコぬ市の歴史や地域に関する資料を集めた展示を行っています。当館所蔵の資料を通して、地域の記録をご覧いただけます。
-          </p>
+          <table class="info-table">
+          <tbody><tr>
+          <th>開館時間</th>
+          <td>9:00〜19:00(土日祝は17:00まで)</td>
+          </tr>
+          <tr>
+          <th>休館日</th>
+          <td>月曜日(祝日の場合は翌平日)、月末整理日、年末年始</td>
+          </tr>
+          <tr>
+          <th>所在地</th>
+          <td>ピコぬ市記録町2丁目8番地(旧市立第一小学校跡地)</td>
+          </tr>
+          <tr>
+          <th>電話番号</th>
+          <td>ぬぬ-ぬかピコ-4946(よく読む)</td>
+          </tr>
+          <tr>
+          <th>アクセス</th>
+          <td>ピコぬ中央駅より連結バス「記録町線」で9分、ぬかピコ民芸博物館の隣</td>
+          </tr>
+          
+          </tbody></table>
         </div>
 
-        <h2>蔵書構成</h2>
-        <table class="info-table">
-          <tr>
-            <th>一般図書</th>
-            <td>文学・実用書・児童書等、約12万冊</td>
-          </tr>
-          <tr>
-            <th>郷土の資料</th>
-            <td>校舎が小学校であった当時の記録、地域史に関する資料</td>
-          </tr>
-          <tr>
-            <th>読み聞かせコーナー</th>
-            <td>旧教室を活用した児童向けスペース。定期的に読み聞かせ会を開催</td>
-          </tr>
-          <tr>
-            <th>現代病関連図書コーナー</th>
-            <td>キロクぬかクリニック監修による選書。専門書から一般向けの読み物まで</td>
-          </tr>
-          <tr>
-            <th>記録文化コーナー</th>
-            <td>手帳術、日誌の書き方、記録映像に関する資料など</td>
-          </tr>
-          <tr>
-            <th>非効率文庫</th>
-            <td>時間効率支援課との共同企画コーナー。読み終える必要のない本を集めています</td>
-          </tr>
-        </table>
-
-        <h2>蔵書案内</h2>
-        <p>
-          当館の蔵書の一部をご紹介しています。
-          郷土資料や地域の記録など、ピコぬ市に関する資料もご覧いただけます。
-        </p>
-
-        <p>
-          <a href="toshokan-zosho.html">蔵書案内を見る &gt;</a>
-        </p>
-
-        <div class="info-box">
-          <strong>非効率文庫について</strong><br>
-          「最後まで読み切らなくてよい」ことを前提にした選書コーナーです。貸出期間の延長申請も
-          随時受け付けており、返却を急かされることはありません。
-        </div>
-
-        <div class="info-box">
-          <strong>校舎の保存について</strong><br>
-          旧校舎は、閉校後に取り壊しが検討されていましたが、時計塔を含む外観の保存を望む
-          声を受け、図書館として転用されました。時計塔の時計は今も現役で稼働しています。
-        </div>
-
-        <h2>貸出について</h2>
-        <table class="info-table">
-          <tr>
-            <th>貸出冊数</th>
-            <td>一人10冊まで</td>
-          </tr>
-          <tr>
-            <th>貸出期間</th>
-            <td>2週間(非効率文庫の資料に限り、延長申請により最長6か月まで延長可)</td>
-          </tr>
-          <tr>
-            <th>貸出カード</th>
-            <td>市内在住・在勤・在学の方は無料で作成可能</td>
-          </tr>
-        </table>
-
-        <h2>開館時間・アクセス</h2>
-        <table class="info-table">
-          <tr>
-            <th>開館時間</th>
-            <td>9:00〜19:00(土日祝は17:00まで)</td>
-          </tr>
-          <tr>
-            <th>休館日</th>
-            <td>月曜日(祝日の場合は翌平日)、月末整理日、年末年始</td>
-          </tr>
-          <tr>
-            <th>所在地</th>
-            <td>ピコぬ市記録町2丁目8番地(旧市立第一小学校跡地)</td>
-          </tr>
-          <tr>
-            <th>電話番号</th>
-            <td>ぬぬ-ぬかピコ-4946(よく読む)</td>
-          </tr>
-          <tr>
-            <th>アクセス</th>
-            <td>ピコぬ中央駅より連結バス「記録町線」で9分、ぬかピコ民芸博物館の隣</td>
-          </tr>
-
-        </table>
-
-        <h2>図書館だより</h2>
-        <p>
-          毎月1回発行している「図書館だより」を掲載しています。貸出ランキングや新刊案内、
-          特設コーナーのご紹介などを掲載しています。
-        </p>
-
-        <p>
-          <a href="../pdfs/toshokan-dayori/toshokan-dayori-202608.pdf">図書館だより 2026年8月号(PDF)はこちら &gt;</a><br>
-          <a href="../pdfs/toshokan-dayori/toshokan-dayori-202607.pdf">図書館だより 2026年7月号(PDF)はこちら &gt;</a>
-        </p>
-
-        <p>
-          広報ぬかピコの紙版は、本庁舎・各出張所のほか、当館でも配布・閲覧いただけます。
-        </p>
       </div>
 
       <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>このページの内容</h2>
+          <ul>
+            <li><a href="#section-1">図書館からのお知らせ</a></li>
+            <li><a href="#section-2">蔵書構成</a></li>
+            <li><a href="#section-3">蔵書案内</a></li>
+            <li><a href="#section-4">貸出について</a></li>
+            <li><a href="#section-5">図書館だより</a></li>
+            <li><a href="#section-6">図書館の建物について</a></li>
+            <li><a href="#section-7">開館時間・アクセス</a></li>
+          </ul>
+        </div>
+
         <div class="sidebar-block">
           <h2>関連情報</h2>
           <ul>
             <li><a href="toshokan-zosho.html">蔵書案内</a></li>
             <li><a href="nukapiko-museum.html">ぬかピコ民芸博物館</a></li>
-            <li><a href="jikan-koritsu-shien-ka.html">時間効率支援課</a></li>
             <li><a href="shiyakusho.html">市役所</a></li>
           </ul>
         </div>
@@ -176,8 +584,11 @@
     </div>
   </main>
 
-  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "index.html"}, {label: "市立図書館"}]};</script>
-  <script src="../js/common.js"></script>
+  <footer>
+    <div>市立図書館</div>
+    <div>Copyright © 市立図書館 All Rights Reserved.</div>
+  </footer>
+
 </body>
 
 </html>
