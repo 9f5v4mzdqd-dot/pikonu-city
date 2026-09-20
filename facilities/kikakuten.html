@@ -9,7 +9,372 @@
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #ffffff;
+      --onion: #222222;
+      --tomato: #555555;
+      --dark: #111111;
+      --line: #d8d8d8;
+      --muted: #707070;
+      --table-head: #F3E4CB;
+      --box-bg: #FBF6EC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle, var(--line) 3px, transparent 3.5px) 0 0 / 24px 24px,
+        radial-gradient(circle, var(--line) 3px, transparent 3.5px) 12px 12px / 24px 24px,
+        var(--cream);
+      color: var(--dark);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--onion);
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #a83a2b;
+    }
+
+    a:hover {
+      color: var(--paper);
+      background: var(--tomato);
+      text-decoration: none;
+    }
+
+    #main {
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: var(--onion);
+      border-bottom: 4px solid var(--dark);
+      color: var(--paper);
+      padding: 24px 0 20px;
+    }
+
+    .page-header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .page-header .lead {
+      margin: 8px 0 0;
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 90px;
+      height: auto;
+      border: 3px solid var(--paper);
+      background: var(--paper);
+    }
+
+    .breadcrumb {
+      background: var(--paper);
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb ol {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: "➡";
+      margin-left: 6px;
+      color: var(--tomato);
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .page-nav {
+      padding: 12px;
+      background: var(--paper);
+      border: 2px solid var(--onion);
+    }
+
+    .page-nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+      padding: 6px 16px;
+      color: var(--paper);
+      background: var(--tomato);
+      border: 2px solid var(--dark);
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .page-nav a:visited {
+      color: var(--paper);
+    }
+
+    .page-nav a:hover {
+      color: var(--paper);
+      background: var(--dark);
+      border-color: var(--dark);
+      text-decoration: none;
+    }
+
+    .content-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .main-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      padding: 24px 26px 30px;
+      box-shadow: 5px 5px 0 rgba(36, 55, 70, 0.15);
+    }
+
+    .main-content p {
+      margin: 0 0 12px;
+    }
+
+    .facility-photo {
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      margin: 0 auto 22px;
+      padding: 4px;
+      background: var(--paper);
+      border: 1px solid var(--onion);
+      box-shadow: 3px 3px 0 var(--line);
+      box-sizing: border-box;
+    }
+
+    .main-content h2 {
+      margin: 28px 0 14px;
+      padding: 7px 12px;
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      color: var(--paper);
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+
+    .main-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .sub-label {
+      margin: 18px 0 6px;
+      font-weight: bold;
+      color: var(--tomato);
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      background: var(--paper);
+    }
+
+    .info-table th,
+    .info-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 28%;
+      background: var(--table-head);
+      color: var(--dark);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      background: var(--paper);
+    }
+
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--box-bg);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: var(--box-bg);
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .sidebar {
+      flex: 0 0 245px;
+      min-width: 0;
+    }
+
+    .sidebar-block {
+      margin-bottom: 20px;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+    }
+
+    .sidebar-block h2 {
+      margin: 0;
+      padding: 9px 12px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--onion);
+      color: var(--paper);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 14px 12px;
+    }
+
+    .sidebar-block li {
+      margin: 0;
+      padding: 7px 0;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .sidebar-block li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-block li::before {
+      content: "▶ ";
+      color: var(--onion);
+      font-size: 12px;
+    }
+
+    footer {
+      background: var(--table-head);
+      border-top: 3px solid var(--onion);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 20px;
+    }
+
+    footer div {
+      margin: 2px 0;
+    }
+
+    footer a {
+      color: var(--onion);
+    }
+
+    @media (max-width: 760px) {
+      .page-header {
+        padding: 20px 0 16px;
+      }
+
+      .page-header .container {
+        gap: 12px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .header-logo {
+        width: 60px;
+      }
+
+      .content-layout {
+        display: block;
+        margin: 16px auto;
+        padding: 0 12px;
+      }
+
+      .main-content {
+        padding: 18px 16px 24px;
+        box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+      }
+
+      .sidebar {
+        margin-top: 20px;
+      }
+
+      .info-table th,
+      .info-table td {
+        display: block;
+        width: auto;
+      }
+
+      .info-table th {
+        border-bottom: none;
+        white-space: normal;
+      }
+
+      .info-table td {
+        border-top: none;
+      }
+    }
+  </style>
 </head>
 
 <body id="top">
@@ -17,20 +382,41 @@
   <main id="main">
     <div class="page-header">
       <div class="container">
-        <h1>企画展「食べる前を、のこす。」</h1>
-        <p class="lead">お菓子の「食べる前の状態」を記録・保存する企画展</p>
+        <div>
+          <h1>企画展「食べる前を、のこす。」</h1>
+          <p class="lead">お菓子の「食べる前の状態」を記録・保存する企画展</p>
+        </div>
+        <img class="header-logo" src="../images/facilities/logo/piconu-city-logo001.jpg" alt="ピコぬ市章ロゴ">
       </div>
     </div>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+      <ol>
+        <li><a href="../index.html">トップ</a></li>
+        <li><a href="index.html">施設案内</a></li>
+        <li><a href="nukapiko-museum.html">ぬかピコ民芸博物館</a></li>
+        <li>企画展「食べる前を、のこす。」</li>
+      </ol>
+    </nav>
+
+    <nav class="page-nav" aria-label="ページ内メニュー">
+      <ul>
+        <li><a href="#section-1">展示品紹介</a></li>
+        <li><a href="#section-2">体験コーナー</a></li>
+        <li><a href="#section-3">ピコぬくんの体験レポート</a></li>
+        <li><a href="#section-4">開館時間・料金</a></li>
+      </ul>
+    </nav>
 
     <div class="content-layout">
       <div class="main-content">
 
         <img class="facility-photo" src="../images/facilities/kikakuten.jpg" alt="企画展「食べる前を、のこす。」ポスター">
+      
+          <p>お菓子は、封を開ける前がいちばん記録に値する状態である――という発想のもと、「食べる前の状態」そのものを収集・保存する企画展です。</p>
+          <p>当館の常設展示「記録具の間」が扱ってきた"使われ方の痕跡"を、今回はお菓子という題材で捉え直しています。 </p>
 
-        <p>
-          お菓子は、封を開ける前がいちばん記録に値する状態である――という発想のもと、「食べる前の状態」そのものを収集・保存する企画展です。当館の常設展示「記録具の間」が扱ってきた"使われ方の痕跡"を、今回はお菓子という題材で捉え直しています。
-        </p>
-
+    
         <table class="info-table">
           <tr>
             <th>会期</th>
@@ -51,129 +437,187 @@
 
         </table>
 
-        <h2>展示品紹介</h2>
-        <table class="info-table">
-          <tr>
-            <th>ポッキーの持ち手</th>
-            <td>五年もの。持ち手部分のみを集め、瓶詰めにして保存。本数は文化財のため未計測</td>
-          </tr>
-          <tr>
-            <th>クリームを剥いだオレオ</th>
-            <td>三年もの。クリームの剥離は専属職人による手作業。全員経験20年以上のベテラン</td>
-          </tr>
-          <tr>
-            <th>カントリーマアムの割れた端</th>
-            <td>七年もの。市内の収集家より寄贈された欠片のみのコレクション</td>
-          </tr>
-          <tr>
-            <th>熟成中のカール</th>
-            <td>封を開け、食感の変化を観察するため昨日より熟成を開始</td>
-          </tr>
-          <tr>
-            <th>未開封のパチパチパニック</th>
-            <td>十五年もの。当館の目玉展示。温調金庫にて未開封のまま保管中</td>
-          </tr>
-        </table>
-
-        <h2>体験コーナー</h2>
-        <p>「アポロのイチゴ部分とチョコ部分を綺麗に分離するワークショップ」を開催しています。専属講師「アポリスト」が、分離のコツを実演を交えてご案内します。参加無料、当日受付にてお申し込みください。</p>
-
-        <h2>ピコぬくんの体験レポート</h2>
-        <img class="facility-photo" src="../images/facilities/piconu-taiken.jpg"
-          alt="ピコぬくんの体験レポート：ぬかピコ民芸博物館 企画展『食べる前を、のこす。』のバナー画像">
+        <h2 id="section-1">■ 展示品紹介</h2>
         <div class="info-box">
-          <p>ピコぬくん「今日は、ぬかピコ民芸博物館の企画展に来てますぬ。入ってみますぬ」<br>
-            学芸員「こんにちは。いらっしゃいませ」<br>
-            ピコぬくん「ここ、前から気になっていたんですぬ。今回の企画展、お菓子の展示ってとっても珍しいですぬ？」<br>
-            学芸員「はい」<br>
-            ピコぬくん「どんなものが展示されているんですかぬ？　昔のお菓子とか、外国のお菓子とかですかぬ？」<br>
-            学芸員「食べものの、食べる前の状態を保存しております」<br>
-            ピコぬくん「……食べる前の状態ですぬ？」<br>
-            学芸員「はい」<br>
-            ピコぬくん「お菓子って、食べる前が一番きれいですからね。袋を開ける前には、夢があります」<br>
-            学芸員「……」<br>
-            ピコぬくん「こちらは何ですかぬ？」<br>
-            学芸員「ポッキーの持ち手でございます」<br>
-            ピコぬくん「持ち手だけですぬ？」<br>
-            学芸員「五年ものです」<br>
-            ピコぬくん「五年もの……？」<br>
-            学芸員「はい。持ち手の部分だけを集め、瓶に入れて保存しております」<br>
-            ピコぬくん「ポッキーって、持つところにはチョコが付いてないんだぬ！あの部分、ボク大好きですぬ！」<br>
-            学芸員「はい」<br>
-            ピコぬくん「ボクちょうど最近、ポッキーを食べるときは、持ち手の部分を、最後にまとめて食べるようになったんですぬ！」<br>
-            学芸員「そうですか」<br>
-            ピコぬくん「この瓶には、全部で何本くらい入っているんですかぬ？」<br>
-            学芸員「数えておりません。文化財ですので」<br>
-            ピコぬくん「……そうですかぬ。触っちゃいけないんだぬ」<br>
-            学芸員「はい」</p>
-
-          <p>ピコぬくん「あの横の瓶はなんですかぬ？」<br>
-            学芸員「こちらは、クリームを剥いだオレオ、三年ものでございます」<br>
-            ピコぬくん「ああ、黒いクッキーだけのやつですぬ？」<br>
-            学芸員「いえ、オレオです」<br>
-            ピコぬくん「……」<br>
-            学芸員「こちらはクリームを剥がす技術と、保存状態が大変重要になります」<br>
-            ピコぬくん「熟練の技術が必要なんですぬね」<br>
-            学芸員「専属の職人がすべて手作業で行っております」<br>
-            ピコぬくん「えっ。職人さんがいるんですかぬ？」<br>
-            学芸員「はい。すべて経験20年以上のベテランでございます」<br>
-            ピコぬくん「……じゃあ、あの奥にある瓶はなんですかぬ？」<br>
-            学芸員「カントリーマアムの割れた端、七年ものです」<br>
-            ピコぬくん「割れた端だけですかぬ？」<br>
-            学芸員「はい」<br>
-            ピコぬくん「すごいぬ……よく集めましたぬ？」<br>
-            学芸員「収集家の方から寄贈されたものです」<br>
-            ピコぬくん「なるほどですぬ。いろいろな人がいるんですぬ」<br>
-            学芸員「はい」</p>
-
-          <p>ピコぬくん「……あの、あちらのコーナーは何ですかぬ？」<br>
-            学芸員「封を開けて、食感の変化を楽しむために、昨日から寝かせてあるカールでございます」<br>
-            ピコぬくん「カールを熟成させているんだぬ……！」<br>
-            学芸員「ワインのようなものです」<br>
-            ピコぬくん「ワインみたいなものですぬ？」<br>
-            学芸員「いえ、カールです」<br>
-            ピコぬくん「……」<br>
-            ピコぬくん「ところで、ポッキーの持ち手って、五年も置いておくとどうなるんですかぬ？」<br>
-            学芸員「少し艶が出ます」<br>
-            ピコぬくん「艶が……？」<br>
-            学芸員「はい」<br>
-            ピコぬくん「それは……すごいですぬ」</p>
-
-          <p>学芸員「ちなみに、奥の温調金庫にあるのが当館の目玉でございます」<br>
-            ピコぬくん「あの厳重な金庫には、何が入っているんですかぬ？」<br>
-            学芸員「未開封のパチパチパニック、十五年ものです」<br>
-            ピコぬくん「十五年ものですぬ……！中のキャンディは、まだパチパチ弾けるんですかぬ？」<br>
-            学芸員「開けてみないと分かりません」<br>
-            ピコぬくん「開けないんですかぬ？」<br>
-            学芸員「開けたら、ただのお菓子になってしまいますので」<br>
-            ピコぬくん「……まあ、展示品だからですぬ」<br>
-            学芸員「何か体験コーナーなど、やっていかれますか？」<br>
-            ピコぬくん「体験もあるんですかぬ？」<br>
-            学芸員「はい。『アポロのイチゴ部分とチョコ部分を綺麗に分離するワークショップ』を開催しております」<br>
-            ピコぬくん「ああ、手でパキッと分けるやつですぬ！少し難しそうだけど……ボクやってみたいぬ！」<br>
-            学芸員「当館のワークショップには、専属講師のアポリストがおります。あちらの作業台へどうぞ」</p>
-
-          <p><strong>ピコぬくんの感想</strong><br>
-            ピコぬくん「お菓子って、食べるだけじゃなくて、いろんな楽しみ方があるんですぬね。<br>
-            ボクもポッキーの持ち手を、もっと大事に食べようと思いましたぬ！」</p>
+          <table class="info-table">
+            <tbody>
+              <tr>
+                <th>ポッキーの持ち手</th>
+                <td>五年もの。持ち手部分のみを集め、瓶詰めにして保存。本数は文化財のため未計測</td>
+              </tr>
+              <tr>
+                <th>クリームを剥いだオレオ</th>
+                <td>三年もの。クリームの剥離は専属職人による手作業。全員経験20年以上のベテラン</td>
+              </tr>
+              <tr>
+                <th>カントリーマアムの割れた端</th>
+                <td>七年もの。市内の収集家より寄贈された欠片のみのコレクション</td>
+              </tr>
+              <tr>
+                <th>熟成中のカール</th>
+                <td>封を開け、食感の変化を観察するため昨日より熟成を開始</td>
+              </tr>
+              <tr>
+                <th>未開封のパチパチパニック</th>
+                <td>十五年もの。当館の目玉展示。温調金庫にて未開封のまま保管中</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
+        <h2 id="section-2">■ 体験コーナー</h2>
+        <div class="info-box">
+          <p>
+            「アポロのイチゴ部分とチョコ部分を綺麗に分離するワークショップ」を開催しています。
+          </p>
+          <p>
+            専属講師「アポリスト」が、分離のコツを実演を交えてご案内します。参加無料、当日受付にてお申し込みください。
+          </p>
+        </div>
+
+        <h2 id="section-3">■ ピコぬくんの体験レポート</h2>
+        <div class="info-box">
+          <div class="info-box">
+            <p>ピコぬくん「今日は、ぬかピコ民芸博物館の企画展に来てますぬ。入ってみますぬ」<br>
+              学芸員「こんにちは。いらっしゃいませ」<br>
+              ピコぬくん「ここ、前から気になっていたんですぬ。今回の企画展、お菓子の展示ってとっても珍しいですぬ？」<br>
+              学芸員「はい」<br>
+              ピコぬくん「どんなものが展示されているんですかぬ？　昔のお菓子とか、外国のお菓子とかですかぬ？」<br>
+              学芸員「食べものの、食べる前の状態を保存しております」<br>
+              ピコぬくん「……食べる前の状態ですぬ？」<br>
+              学芸員「はい」<br>
+              ピコぬくん「お菓子って、食べる前が一番きれいですからね。袋を開ける前には、夢があります」<br>
+              学芸員「……」<br>
+              ピコぬくん「こちらは何ですかぬ？」<br>
+              学芸員「ポッキーの持ち手でございます」<br>
+              ピコぬくん「持ち手だけですぬ？」<br>
+              学芸員「五年ものです」<br>
+              ピコぬくん「五年もの……？」<br>
+              学芸員「はい。持ち手の部分だけを集め、瓶に入れて保存しております」<br>
+              ピコぬくん「ポッキーって、持つところにはチョコが付いてないんだぬ！あの部分、ボク大好きですぬ！」<br>
+              学芸員「はい」<br>
+              ピコぬくん「ボクちょうど最近、ポッキーを食べるときは、持ち手の部分を、最後にまとめて食べるようになったんですぬ！」<br>
+              学芸員「そうですか」<br>
+              ピコぬくん「この瓶には、全部で何本くらい入っているんですかぬ？」<br>
+              学芸員「数えておりません。文化財ですので」<br>
+              ピコぬくん「……そうですかぬ。触っちゃいけないんだぬ」<br>
+              学芸員「はい」</p>
+
+            <p>ピコぬくん「あの横の瓶はなんですかぬ？」<br>
+              学芸員「こちらは、クリームを剥いだオレオ、三年ものでございます」<br>
+              ピコぬくん「ああ、黒いクッキーだけのやつですぬ？」<br>
+              学芸員「いえ、オレオです」<br>
+              ピコぬくん「……」<br>
+              学芸員「こちらはクリームを剥がす技術と、保存状態が大変重要になります」<br>
+              ピコぬくん「熟練の技術が必要なんですぬね」<br>
+              学芸員「専属の職人がすべて手作業で行っております」<br>
+              ピコぬくん「えっ。職人さんがいるんですかぬ？」<br>
+              学芸員「はい。すべて経験20年以上のベテランでございます」<br>
+              ピコぬくん「……じゃあ、あの奥にある瓶はなんですかぬ？」<br>
+              学芸員「カントリーマアムの割れた端、七年ものです」<br>
+              ピコぬくん「割れた端だけですかぬ？」<br>
+              学芸員「はい」<br>
+              ピコぬくん「すごいぬ……よく集めましたぬ？」<br>
+              学芸員「収集家の方から寄贈されたものです」<br>
+              ピコぬくん「なるほどですぬ。いろいろな人がいるんですぬ」<br>
+              学芸員「はい」</p>
+
+            <p>ピコぬくん「……あの、あちらのコーナーは何ですかぬ？」<br>
+              学芸員「封を開けて、食感の変化を楽しむために、昨日から寝かせてあるカールでございます」<br>
+              ピコぬくん「カールを熟成させているんだぬ……！」<br>
+              学芸員「ワインのようなものです」<br>
+              ピコぬくん「ワインみたいなものですぬ？」<br>
+              学芸員「いえ、カールです」<br>
+              ピコぬくん「……」<br>
+              ピコぬくん「ところで、ポッキーの持ち手って、五年も置いておくとどうなるんですかぬ？」<br>
+              学芸員「少し艶が出ます」<br>
+              ピコぬくん「艶が……？」<br>
+              学芸員「はい」<br>
+              ピコぬくん「それは……すごいですぬ」</p>
+
+            <p>学芸員「ちなみに、奥の温調金庫にあるのが当館の目玉でございます」<br>
+              ピコぬくん「あの厳重な金庫には、何が入っているんですかぬ？」<br>
+              学芸員「未開封のパチパチパニック、十五年ものです」<br>
+              ピコぬくん「十五年ものですぬ……！中のキャンディは、まだパチパチ弾けるんですかぬ？」<br>
+              学芸員「開けてみないと分かりません」<br>
+              ピコぬくん「開けないんですかぬ？」<br>
+              学芸員「開けたら、ただのお菓子になってしまいますので」<br>
+              ピコぬくん「……まあ、展示品だからですぬ」<br>
+              学芸員「何か体験コーナーなど、やっていかれますか？」<br>
+              ピコぬくん「体験もあるんですかぬ？」<br>
+              学芸員「はい。『アポロのイチゴ部分とチョコ部分を綺麗に分離するワークショップ』を開催しております」<br>
+              ピコぬくん「ああ、手でパキッと分けるやつですぬ！少し難しそうだけど……ボクやってみたいぬ！」<br>
+              学芸員「当館のワークショップには、専属講師のアポリストがおります。あちらの作業台へどうぞ」</p>
+
+            <p><strong>ピコぬくんの感想</strong><br>
+              ピコぬくん「お菓子って、食べるだけじゃなくて、いろんな楽しみ方があるんですぬ。<br>
+              ボクもポッキーの持ち手を、もっと大事に食べようと思いましたぬ！」</p>
+          </div>
+        </div>
+
+        <h2 id="section-4">■ 開館時間・料金</h2>
+        <div class="info-box">
+          <table class="info-table">
+            <tbody>
+              <tr>
+                <th>開館時間</th>
+                <td>9:00〜17:00(入館は16:30まで)</td>
+              </tr>
+              <tr>
+                <th>休館日</th>
+                <td>月曜日(祝日の場合は翌平日)、年末年始</td>
+              </tr>
+              <tr>
+                <th>入館料</th>
+                <td>一般300円、高校生以下無料</td>
+              </tr>
+              <tr>
+                <th>所在地</th>
+                <td>ピコぬ市記録町1丁目5番地</td>
+              </tr>
+              <tr>
+                <th>電話番号</th>
+                <td>ぬぬ-ぬかピコ-7930(なくさない)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            ※館内の一部展示は、来館者ご自身の「記録」を持ち込んで参照しながら鑑賞できる形式に
+            なっています。ご希望の方は受付までお声がけください。
+          </p>
+        </div>
+
       </div>
 
       <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>このページの内容</h2>
+          <ul>
+            <li><a href="#section-1">展示品紹介</a></li>
+            <li><a href="#section-2">体験コーナー</a></li>
+            <li><a href="#section-3">ピコぬくんの体験レポート</a></li>
+            <li><a href="#section-4">開館時間・料金</a></li>
+          </ul>
+        </div>
+
         <div class="sidebar-block">
           <h2>関連情報</h2>
           <ul>
             <li><a href="nukapiko-museum.html">ぬかピコ民芸博物館</a></li>
             <li><a href="museum-archive.html">博物館デジタルアーカイブ</a></li>
             <li><a href="museum-shop.html">ミュージアムショップ</a></li>
+            <li><a href="../index.html">ピコぬ市役所</a></li>
           </ul>
         </div>
       </aside>
     </div>
   </main>
 
-  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "index.html"}, {label: "ぬかピコ民芸博物館", href: "nukapiko-museum.html"}, {label: "企画展「食べる前を、のこす。」"}]};</script>
-  <script src="../js/common.js"></script>
+  <footer>
+    <div>企画展「食べる前を、のこす。」</div>
+    <div>Copyright © 企画展「食べる前を、のこす。」 All Rights Reserved.</div>
+  </footer>
+
 </body>
 
 </html>
