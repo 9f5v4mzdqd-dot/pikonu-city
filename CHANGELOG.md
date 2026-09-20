@@ -9,6 +9,26 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+## 2026-09-20
+---
+### 変更
+- `facilities/goods.html`:公式グッズページに、SUZURI利用規約についての注記、グッズ紹介のグリッド表示(`.goods-grid`)を追加。関連情報に市役所へのリンクを追加、不要なコードを整理
+- `facilities/kikakuten.html`・`facilities/museum-archive.html`・`facilities/museum-shop.html`・`facilities/nukapiko-museum.html`:ぬかピコ民芸博物館ファミリー4ページの配色を統一。`kikakuten.html`に「開館時間・料金」、`museum-archive.html`に「お問い合わせ」セクションを追加
+- `images/facilities/kikakuten.jpg`・`images/facilities/museum-archive.jpg`・`images/banners/banner-suzuri.jpg`:各ページの画像を差し替え
+
+### 修正
+- `facilities/kikakuten.html`・`facilities/museum-archive.html`・`facilities/nukapiko-museum.html`:背景のドット柄を無地に変更
+- `facilities/museum-archive.html`:リンク切れ・軽微な誤りを修正
+---
+
+## 2026-09-19（2）
+---
+### 変更
+- `facilities/nukapiko-museum.html`:■セクション形式のデザインにリニューアル
+- `facilities/koutsukyoku.html`・`facilities/koutsukyoku-route.html`・`facilities/koutsukyoku-shiryoshitsu.html`・`facilities/koutsukyoku-stations.html`・`facilities/koutsukyoku-timetable-1963.html`・`facilities/koutsukyoku-opening.html`・`facilities/renketsu.html`:トップ画像下に導入文を追加
+- `facilities/pp-postal-stamp.html`・`facilities/pp-postal-yubin-hagaki.html`:共通の「■お客様相談室」セクションを追加
+- `images/facilities/nukapiko-museum.jpg`:博物館トップ画像を差し替え
+---
 ------------
 ## 2026-09-19（1）
 ---
