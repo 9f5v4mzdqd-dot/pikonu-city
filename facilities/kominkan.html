@@ -198,6 +198,58 @@
       box-sizing: border-box;
     }
 
+    .flyer-photo {
+      display: block;
+      width: 50%;
+      min-width: 220px;
+      height: auto;
+      margin: 0 auto 22px;
+      padding: 4px;
+      background: var(--paper);
+      border: 1px solid var(--onion);
+      box-shadow: 3px 3px 0 var(--line);
+      box-sizing: border-box;
+      cursor: zoom-in;
+    }
+
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .lightbox-overlay.is-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border: 4px solid var(--paper);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+      color: var(--paper);
+      background: var(--onion);
+      border: 2px solid var(--paper);
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 32px;
+      cursor: pointer;
+    }
+
     .main-content h2 {
       margin: 28px 0 14px;
       padding: 7px 12px;
@@ -378,6 +430,10 @@
       .info-table td {
         border-top: none;
       }
+
+      .flyer-photo {
+        width: 80%;
+      }
     }
   </style>
 </head>
@@ -466,8 +522,9 @@
 
         <h2 id="kominkan-boshu">■ 令和8年度 市民講座・サークル活動 参加者募集</h2>
         <div class="info-box">
-          <img class="facility-photo" src="../images/facilities/kominkan-bosyu.jpg"
-            alt="令和8年度 ピコぬ市中央公民館 市民講座・サークル活動 参加者募集チラシ">
+          <img class="flyer-photo" src="../images/facilities/kominkan-bosyu.jpg"
+            alt="令和8年度 ピコぬ市中央公民館 市民講座・サークル活動 参加者募集チラシ"
+            onclick="openLightbox(this.src, this.alt)">
           <p>
             学ぶ楽しさ、つながる喜び。公民館では、市民講座・サークル活動の参加者を随時募集しています。
           </p>
@@ -567,12 +624,33 @@
         </div>
       </aside>
     </div>
+
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+      <button type="button" class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightbox-img" src="" alt="">
+    </div>
   </main>
 
   <footer>
     <div>ピコぬ市中央公民館</div>
     <div>Copyright © ピコぬ市中央公民館 All Rights Reserved.</div>
   </footer>
+
+  <script>
+    function openLightbox(src, alt) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-img').alt = alt;
+      document.getElementById('lightbox').classList.add('is-open');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('is-open');
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 
 </body>
 
