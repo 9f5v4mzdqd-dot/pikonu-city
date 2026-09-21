@@ -246,6 +246,36 @@
       background: var(--paper);
     }
 
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 10px;
+      background: var(--paper);
+    }
+
+    .price-table th,
+    .price-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .price-table thead th,
+    .price-table tr:first-child th {
+      background: var(--table-head);
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .price-table .price {
+      width: 110px;
+      text-align: right;
+      white-space: nowrap;
+      font-weight: bold;
+      color: var(--onion);
+    }
+
     .info-box {
       margin-top: 14px;
       padding: 14px 16px;
@@ -369,6 +399,16 @@
 
       .info-table td {
         border-top: none;
+      }
+
+      .price-table th,
+      .price-table td {
+        display: block;
+        width: auto;
+      }
+
+      .price-table .price {
+        text-align: left;
       }
     }
   </style>
@@ -607,7 +647,7 @@
             「SNSに疲れていたのもあって、偶然の出会いがあればいいなと思って川に流してみました。」<br>
             （20代・アルバイト）
           </p>
-    
+
         </div>
 
         <h2 id="soudan">■お客様相談室</h2>
