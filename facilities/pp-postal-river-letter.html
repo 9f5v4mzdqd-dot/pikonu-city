@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>リバーレター | 郵政グループ | ピコぬ市</title>
+  <meta name="description" content="宛先を指定せず、手紙を川へ流す郵便サービス「リバーレター」のご案内です。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --cream: #f5f7f2;
+      --onion: #d94a38;
+      --tomato: #2f6385;
+      --dark: #243746;
+      --line: #d9b9a8;
+      --muted: #687982;
+      --table-head: #F3E4CB;
+      --box-bg: #FBF6EC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "MS Pゴシック", "Osaka", sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--onion);
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #a83a2b;
+    }
+
+    a:hover {
+      color: var(--paper);
+      background: var(--tomato);
+      text-decoration: none;
+    }
+
+    #main {
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: var(--onion);
+      border-bottom: 4px solid var(--dark);
+      color: var(--paper);
+      padding: 24px 0 20px;
+    }
+
+    .page-header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .page-header .lead {
+      margin: 8px 0 0;
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 90px;
+      height: auto;
+      border: 3px solid var(--paper);
+      background: var(--paper);
+    }
+
+    .breadcrumb {
+      background: var(--paper);
+      border-bottom: 1px dotted var(--onion);
+      font-size: 13px;
+    }
+
+    .breadcrumb ol {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: "➡";
+      margin-left: 6px;
+      color: var(--tomato);
+    }
+
+    .breadcrumb a {
+      color: var(--dark);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .page-nav {
+      padding: 12px;
+      background: var(--paper);
+      border: 2px solid var(--onion);
+    }
+
+    .page-nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+      padding: 6px 16px;
+      color: var(--paper);
+      background: var(--tomato);
+      border: 2px solid var(--dark);
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .page-nav a:visited {
+      color: var(--paper);
+    }
+
+    .page-nav a:hover {
+      color: var(--paper);
+      background: var(--dark);
+      border-color: var(--dark);
+      text-decoration: none;
+    }
+
+    .content-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .main-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      padding: 24px 26px 30px;
+      box-shadow: 5px 5px 0 rgba(36, 55, 70, 0.15);
+    }
+
+    .main-content p {
+      margin: 0 0 12px;
+    }
+
+    .facility-photo {
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      margin: 0 auto 22px;
+      padding: 4px;
+      background: var(--paper);
+      border: 1px solid var(--onion);
+      box-shadow: 3px 3px 0 var(--line);
+      box-sizing: border-box;
+    }
+
+    .main-content h2 {
+      margin: 28px 0 14px;
+      padding: 7px 12px;
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      color: var(--paper);
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+
+    .main-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .sub-label {
+      margin: 18px 0 6px;
+      font-weight: bold;
+      color: var(--tomato);
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      background: var(--paper);
+    }
+
+    .info-table th,
+    .info-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 28%;
+      background: var(--table-head);
+      color: var(--dark);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      background: var(--paper);
+    }
+
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--box-bg);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 9px 12px;
+      color: var(--dark);
+      background: var(--box-bg);
+      border: 1px solid var(--onion);
+      font-size: 14px;
+    }
+
+    .sidebar {
+      flex: 0 0 245px;
+      min-width: 0;
+    }
+
+    .sidebar-block {
+      margin-bottom: 20px;
+      background: var(--paper);
+      border: 2px solid var(--dark);
+      box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+    }
+
+    .sidebar-block h2 {
+      margin: 0;
+      padding: 9px 12px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--onion);
+      color: var(--paper);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 14px 12px;
+    }
+
+    .sidebar-block li {
+      margin: 0;
+      padding: 7px 0;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .sidebar-block li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-block li::before {
+      content: "▶ ";
+      color: var(--onion);
+      font-size: 12px;
+    }
+
+    footer {
+      background: var(--table-head);
+      border-top: 3px solid var(--onion);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 20px;
+    }
+
+    footer div {
+      margin: 2px 0;
+    }
+
+    footer a {
+      color: var(--onion);
+    }
+
+    @media (max-width: 760px) {
+      .page-header {
+        padding: 20px 0 16px;
+      }
+
+      .page-header .container {
+        gap: 12px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .header-logo {
+        width: 60px;
+      }
+
+      .content-layout {
+        display: block;
+        margin: 16px auto;
+        padding: 0 12px;
+      }
+
+      .main-content {
+        padding: 18px 16px 24px;
+        box-shadow: 4px 4px 0 rgba(36, 55, 70, 0.12);
+      }
+
+      .sidebar {
+        margin-top: 20px;
+      }
+
+      .info-table th,
+      .info-table td {
+        display: block;
+        width: auto;
+      }
+
+      .info-table th {
+        border-bottom: none;
+        white-space: normal;
+      }
+
+      .info-table td {
+        border-top: none;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <div>
+          <h1>リバーレター</h1>
+          <p class="lead">宛先を指定せず、手紙を川へ流す郵便サービスです。</p>
+        </div>
+          <img class="header-logo" src="../images/facilities/shop/pp-logo001.jpg" alt="ピコぬ郵政グループ">
+      </div>
+    </div>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+      <ol>
+        <li><a href="../index.html">トップ</a></li>
+        <li><a href="index.html">施設案内</a></li>
+        <li><a href="yusei.html">郵政グループ</a></li>
+        <li>リバーレター</li>
+      </ol>
+    </nav>
+
+    <nav class="page-nav" aria-label="ページ内メニュー">
+      <ul>
+        <li><a href="#about">リバーレターとは</a></li>
+        <li><a href="#price">ご利用料金</a></li>
+        <li><a href="#howto">ご利用方法</a></li>
+        <li><a href="#options">速達・特急について</a></li>
+        <li><a href="#notice">ご利用上の注意</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+        <li><a href="#related">関連情報</a></li>
+        <li><a href="#soudan">お客様相談室</a></li>
+      </ul>
+    </nav>
+
+    <div class="content-layout">
+      <div class="main-content">
+
+        <img class="facility-photo" src="../images/facilities/shop/pp-postal-river-letter001" alt="郵政グループリバーレターイメージ">
+
+        <p>
+          ピコぬ市郵政グループ独自のサービス「リバーレター」についてのご案内です。
+        </p>
+
+        <h2 id="about">■ リバーレターとは</h2>
+        <div class="info-box">
+          <div class="info-box">
+          <p>
+          リバーレターは、宛先を指定せず、手紙を川へ流す郵便サービスです。
+          </p>
+          
+          <p>
+          「誰かに手紙を書きたい。でも、誰に届けたいのかは決まっていない」
+          という場合にご利用いただけます。
+          </p>
+          
+          <p>
+          専用の封筒に手紙を入れ、指定された投函場所から川へ流します。
+          下流の回収地点で回収された郵便物は、受け取った方へ届けられます。
+          </p>
+          </div>
+          <div class="notice">
+          <strong>宛先について</strong><br>
+          リバーレターでは、特定の人物・住所を宛先として指定することはできません。
+          どなたが受け取るかは、指定できません。
+          </div>
+        </div>
+
+        <h2 id="price">■ ご利用料金</h2>
+        <div class="info-box">
+          <table class="price-table">
+          <tbody><tr>
+          <th>サービス</th>
+          <th class="price">料金</th>
+          </tr>
+          
+          <tr>
+          <td>
+          <strong>リバーレター</strong><br>
+          宛先を指定せず、手紙を川へ流します。
+          </td>
+          <td class="price">50円</td>
+          </tr>
+          
+          <tr>
+          <td>
+          <strong>速達リバーレター便</strong><br>
+          リバーレターに速達を追加できます。
+          </td>
+          <td class="price">＋50円</td>
+          </tr>
+          
+          <tr>
+          <td>
+          <strong>特急リバーレター便</strong><br>
+          より速い流れを利用して投函します。
+          </td>
+          <td class="price">＋100円</td>
+          </tr>
+          </tbody></table>
+          <p>
+          基本料金50円に、各オプション料金が加算されます。
+          </p>
+        </div>
+
+        <h2 id="howto">■ ご利用方法</h2>
+        <div class="info-box">
+          <div class="info-box">
+          
+          <ol class="step-list">
+          <li>専用の封筒に手紙を入れます。</li>
+          <li>郵政グループの窓口でリバーレターをお申し込みください。</li>
+          <li>速達・特急をご利用の場合は、あわせてお申し込みください。</li>
+          <li>指定された投函場所から、手紙を川へ流します。</li>
+          <li>あとは川の流れにお任せください。</li>
+          </ol>
+          
+          </div>
+          
+          <p>※ 投函後の郵便物については、郵政グループでは個別の所在確認を行っておりません。</p>
+          </div>
+        </div>
+
+        <h2 id="options">■ 速達・特急について</h2>
+        <div class="info-box">
+          <p>
+            通常のリバーレターより流れの速い場所から投函します。
+          </p>
+          <p>
+            料金は基本料金に＋50円です。
+          </p>
+          <p>
+            さらに流れの速い場所から投函します。
+          </p>
+          <p>
+            料金は基本料金に＋100円です。
+          </p>
+          <p>
+            なお、河川の流況は日によって異なります。
+          </p>
+        </div>
+
+        <h2 id="notice">■ ご利用上の注意</h2>
+        <div class="info-box">
+          <div class="warning">
+          
+          <p>
+          <strong>※このサービスは追跡できません。</strong>
+          </p>
+          
+          <p>
+          ※どなたにも届かない場合があります。
+          </p>
+          
+          <p>
+          ※郵便物が回収されない場合があります。
+          </p>
+          
+          <p>
+          ※河川の流況により、流れ方や到達までの時間が変わります。
+          </p>
+          
+          <p>
+          ※郵便物が途中で回収された場合、宛先を確認できないため返送できません。
+          </p>
+          
+          <p>
+          ※海へ流出した場合、配達完了とはみなしませんが、個別の確認は行っておりません。
+          </p>
+          
+          </div>
+        </div>
+
+        <h2 id="faq">■ よくある質問</h2>
+        <div class="info-box">
+          <div class="info-box">
+          
+          <p>
+          <strong>Q. 宛先は誰にすればいいですか？</strong><br>
+          A. 宛先を指定する必要はありません。
+          </p>
+          
+          <p>
+          <strong>Q. 誰に届くのですか？</strong><br>
+          A. 分かりません。
+          </p>
+          
+          <p>
+          <strong>Q. 届かなかった場合、返送されますか？</strong><br>
+          A. 返送されません。
+          </p>
+          
+          <p>
+          <strong>Q. 速達にすると必ず早く届きますか？</strong><br>
+          A. 河川の流況によります。
+          </p>
+          
+          <p>
+          <strong>Q. 特急にするとどのくらい早くなりますか？</strong><br>
+          A. 河川の流況によります。
+          </p>
+          
+          <p>
+          <strong>Q. 追跡サービスはありますか？</strong><br>
+          A. ありません。
+          </p>
+          
+          <p>
+          <strong>Q. 誰にも届かなかった場合はどうなりますか？</strong><br>
+          A. 特にご連絡はいたしません。
+          </p>
+          
+          </div>
+        </div>
+
+        <h2 id="related">■ 関連情報</h2>
+        <div class="info-box">
+          <ul class="related-links">
+          <li>
+          <a href="yusei.html">ピコぬ市郵政グループ</a>
+          </li>
+          <li>
+          <a href="kitte.html">切手・はがき</a>
+          </li>
+          <li>
+          <a href="letter.html">手紙を書きましょう</a>
+          </li>
+          </ul>
+          <div class="back-top">
+          <a href="#top">▲ ページの先頭へ戻る</a>
+          </div>
+        </div>
+
+        <h2 id="soudan">■お客様相談室</h2>
+        <table class="info-table">
+          <tr>
+            <th>受付時間</th>
+            <td>9:00〜17:00（土・日、祝日は16：00まで）</td>
+          </tr>
+          <tr>
+            <th>電話</th>
+            <td>ぬぬ-ぬかピコ-3939（サンキューサンキュー）</td>
+          </tr>
+        </table>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <h2>このページの内容</h2>
+          <ul>
+            <li><a href="#about">リバーレターとは</a></li>
+            <li><a href="#price">ご利用料金</a></li>
+            <li><a href="#howto">ご利用方法</a></li>
+            <li><a href="#options">速達・特急について</a></li>
+            <li><a href="#notice">ご利用上の注意</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+            <li><a href="#related">関連情報</a></li>
+            <li><a href="#soudan">お客様相談室</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>関連情報</h2>
+          <ul>
+            <li><a href="pp-postal-group.html">PPピコぬ郵政グループ</a></li>
+            <li><a href="index.html">ピコぬ市 施設案内</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div>リバーレター</div>
+    <div>Copyright © リバーレター All Rights Reserved.</div>
+  </footer>
+
+</body>
+
+</html>
