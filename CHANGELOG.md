@@ -11,6 +11,16 @@
 
 -----------
 
+## 2026-09-22（3）
+---
+### 変更
+- `facilities/kiroku-nuka-clinic-archive.html`:`gairai-archive.json`の読み込みにキャッシュ回避用のタイムスタンプ付与(`?t=Date.now()`)を追加。関連情報リンクの重複(「診療科目一覧」が2件あったもの)を削除
+
+### 修正
+- `data/gendaibyo-db.json`:NOTE記事へのリンク誤りを15件修正
+- `about/gendaibyo-uranai.html`:`gendaibyo-db.json`の読み込みにキャッシュ回避用のタイムスタンプ付与(`?t=Date.now()`)を追加
+---
+
 ## 2026-09-22（2）
 ---
 ### 追加
