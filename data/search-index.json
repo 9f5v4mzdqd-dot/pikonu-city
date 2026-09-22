@@ -424,6 +424,10 @@
   "url": "facilities/seikatsu-kenkyu-report.html",
    "category": "施設案内"
    },
+   { "title": "生活研究所 よくある質問（FAQ）", 
+   "url": "facilities/seikatsu-kenkyu-faq.html",
+    "category": "施設案内" 
+  },
   {
     "title": "市の概要",
     "url": "about/gaiyou.html",
