@@ -11,6 +11,21 @@
 
 -----------
 
+## 2026-09-22（2）
+---
+### 追加
+- `facilities/seikatsu-kenkyu-report.html`:ピコぬ市生活研究所「2026年度研究報告」ページを新設。折りたたみ形式(`<details>`)で、追加していける構成に。「台風の日のやり過ごし方」「焼きそばをおいしく作るには」「靴下はなぜ片方だけなくなるのか」の3件を掲載
+- `facilities/seikatsu-kenkyu-faq.html`:ピコぬ市生活研究所「よくある質問（FAQ）」ページを新設(11問)。ページ末尾にお問い合わせ先を掲載
+
+### 変更
+- `facilities/seikatsu-kenkyu.html`:「2026年度研究報告」「よくある質問（FAQ）」への案内リンクを本文・関連情報に追加
+- `facilities/seikatsu-kenkyu-report.html`:「焼きそばをおいしく作るには」の報告に、キロクぬかクリニック外来シリーズ書庫・おじさん漫談との関連についての一文を追加
+- `about/sitemap.html`・`data/search-index.json`:「2026年度研究報告」「よくある質問（FAQ）」の2ページを追加
+
+### 修正
+- `facilities/pp-postal-stamp.html`:サイドバー(このページの内容・関連情報)周辺のdivタグの数が合っておらずレイアウトが崩れていた不具合を修正
+---
+
 ## 2026-09-22（1）
 ---
 ### 追加
