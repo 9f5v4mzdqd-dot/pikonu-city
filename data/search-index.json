@@ -224,9 +224,14 @@
     "url": "facilities/kominkan.html",
     "category": "施設案内"
   },
-   {
+  {
     "title": "市民講座・サークル活動 参加者募集",
     "url": "facilities/kominkan-boshu.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "おじさん漫談",
+    "url": "facilities/kominkan-mandan.html",
     "category": "施設案内"
   },
   {
@@ -244,7 +249,7 @@
     "url": "facilities/yaohachi.html",
     "category": "施設案内"
   },
-    {
+  {
     "title": "記録町カリー食堂",
     "url": "facilities/kirokumachi-curry.html",
     "category": "施設案内"
@@ -259,7 +264,7 @@
     "url": "facilities/kodomonokuni.html",
     "category": "施設案内"
   },
- {
+  {
     "title": "喫茶大和",
     "url": "facilities/kissa-yamato.html",
     "category": "施設案内"
@@ -269,17 +274,17 @@
     "url": "facilities/omocha-happy.html",
     "category": "施設案内"
   },
-   {
+  {
     "title": "ピコぬベーカリー",
     "url": "facilities/piconu-bakery.html",
     "category": "施設案内"
   },
-   {
+  {
     "title": "ひより雑貨店",
     "url": "facilities/hiyori-zakka.html",
     "category": "施設案内"
   },
-   {
+  {
     "title": "和菓子処 百年堂",
     "url": "facilities/hyakunendo.html",
     "category": "施設案内"
@@ -299,12 +304,12 @@
     "url": "facilities/keisatsu.html",
     "category": "施設案内"
   },
-   {
+  {
     "title": "ピコぬ市郵政グループ",
     "url": "facilities/pp-postal-group.html",
     "category": "施設案内"
   },
-    {
+  {
     "title": "郵便・はがき・荷物",
     "url": "facilities/pp-postal-yubin-hagaki.html",
     "category": "施設案内"
