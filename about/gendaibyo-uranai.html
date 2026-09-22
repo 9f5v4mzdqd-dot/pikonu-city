@@ -159,7 +159,7 @@
 
       var entries = [];
 
-      fetch("../data/gendaibyo-db.json")
+      fetch("../data/gendaibyo-db.json?t=" + Date.now())
         .then(function (res) {return res.json();})
         .then(function (data) {
           entries = data;
