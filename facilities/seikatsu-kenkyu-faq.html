@@ -240,9 +240,67 @@
       color: var(--dark);
     }
 
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 4px;
+      background: var(--paper);
+    }
+
+    .info-table th,
+    .info-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .info-table th {
+      width: 28%;
+      background: var(--table-head);
+      color: var(--dark);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      background: var(--paper);
+    }
+
+    .main-content h2 {
+      margin: 28px 0 14px;
+      padding: 7px 12px;
+      background: var(--dark);
+      border-left: 8px solid var(--tomato);
+      color: var(--paper);
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--box-bg);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+
     @media (max-width: 760px) {
-      .page-header {
-        padding: 20px 0 16px;
+
+      .info-table th,
+      .info-table td {
+        display: block;
+        width: auto;
+      }
+
+      .info-table th {
+        border-bottom: none;
+        white-space: normal;
+      }
+
+      .info-table td {
+        border-top: none;
       }
 
       .page-header .container {
@@ -358,6 +416,21 @@
           </div>
 
         </div>
+
+        <h2 id="contact">このページについてのお問い合わせ先</h2>
+        <table class="info-table">
+          <tr>
+            <th>担当</th>
+            <td>生活研究所・お問い合わせ係</td>
+          </tr>
+          <tr>
+            <th>電話</th>
+            <td>ぬぬー ぬかピコー 9439（くらし探究）</td>
+          </tr>
+        </table>
+        <p>
+          ※ご質問にはできる限りお答えいたしますが、お答えできない場合もございます。
+        </p>
 
       </div>
 
