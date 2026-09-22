@@ -9,6 +9,42 @@
 ### 追加 / 変更 / 修正
 - ファイルパス: 内容
 
+-----------
+
+## 2026-09-22（1）
+---
+### 追加
+- `facilities/kominkan-boshu.html`:「令和8年度 市民講座・サークル活動 参加者募集」ページを新設。チラシ画像のクリック拡大機能を追加
+- `facilities/kominkan-mandan.html`:サークル活動「おじさん漫談」の詳細ページを新設。外来シリーズ書庫・現代病相談窓口記録ファイルに登場するおじさんとの関連について言及
+
+### 変更
+- `facilities/kominkan.html`:イントロ文を追加、不要な囲み・表を整理。「市民講座・サークル活動 参加者募集」「おじさん漫談」への関連情報リンクを追加
+- `facilities/kiroku-nuka-clinic-archive.html`:「おじさん漫談」との関連について一言追加、関連情報にリンクを追加
+- `about/gendaibyo-soudan-game.html`:「おじさん漫談」との関連について一言追加、関連情報にリンクを追加
+- `about/sitemap.html`・`data/search-index.json`:「市民講座・サークル活動 参加者募集」「おじさん漫談」の2ページを追加
+---
+
+## 2026-09-21
+---
+### 追加
+- `facilities/pp-postal-river-letter.html`:リバーレター「便」ページを新設(のちに名称・表示・関連情報を整理)
+- `facilities/seikatsu-kenkyu.html`:生活研究所ページを新設
+- `news/news-20260913-01.html`・`news-20260916-01.html`・`news-20260917-01.html`・`news-20260917-02.html`:9/13〜9/17分のお知らせを追加(9/18分は追加後に削除)
+- `pdfs/toshokan-dayori/toshokan-dayori-202609.pdf`:図書館だより9月号を追加
+
+### 変更
+- `facilities/pp-postal-river-letter.html`:誤字修正、表示崩れ対策CSSの追加、不要なリンク・関連情報の削除、お客様の声の追加、文章の整理
+- `facilities/pp-postal-group.html`:リバーレター便への案内・リンクを追加
+- `facilities/pp-postal-faq.html`・`facilities/pp-postal-stamp.html`・`facilities/pp-postal-yubin-hagaki.html`・`facilities/shoten.html`:イントロ文を追加
+- `facilities/shoten.html`:「このページの内容」を追加するレイアウト変更
+- `facilities/toshokan.html`:イントロ文を追加、図書館だより9月号を反映
+- `facilities/toshokan-zosho.html`:市ゆかりの著者刊行物を追加
+- `facilities/seikatsu-kenkyu.html`:掲載画像を削除しページ内容を修正、本文を一部加筆
+
+### 修正
+- `facilities/toshokan.html`・`facilities/toshokan-zosho.html`・`facilities/pp-postal-yubin-hagaki.html`・`facilities/shoten.html`:レイアウト崩れを修正
+---
+
 ## 2026-09-20
 ---
 ### 変更
