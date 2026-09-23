@@ -11,6 +11,26 @@
 
 -----------
 
+## 2026-09-23（3）
+---
+### 追加
+- `facilities/jikan-shiyou-soudan.html`:時間効率支援課「時間の使い方相談」ページを新設(よくある相談10問)
+- `facilities/kiroku-seisaku-ka-nokosumono.html`:記録政策課「記録政策課が残すもの」ハブページを新設。市史編纂室がまとめた5資料(ピコぬ市の歴史・年表・市史編纂事業について・行政記録第一号・未整理資料室)への案内リンクと一言説明を掲載
+
+### 変更
+- `facilities/jikan-koritsu-shien-ka.html`:「時間の使い方相談」への案内リンクを本文・関連情報に追加
+- `facilities/kiroku-seisaku-ka.html`:「記録政策課が残すもの」への案内リンクを本文に追加。関連情報にも掲載し、「記録・資料」「関連情報」の2ブロックに整理
+- `facilities/kiroku-seisaku-ka.html`:主な業務の「広報ぬかピコの編集・発行」を「広報ぬかピコの保管・記録」に修正(編集・発行は秘書広報課の管轄のため)
+- `about/koho-archive.html`:バックナンバーの保管・閲覧窓口の案内文を「秘書広報課」から「記録政策課」に修正。関連情報に記録政策課へのリンクを追加
+- `images/facilities/nukapiko-museum.jpg`:画像を差し替え
+- `data/gairai-archive.json`:既存作品数点(蜂の巣の話・ラーメンの話・梅雨明けの話・七夕の話・ピコピコの話・コーヒーの話・ラーメンの話②)の内容を編集
+- `about/sitemap.html`・`data/search-index.json`:「時間の使い方相談」「記録政策課が残すもの」の2ページを追加
+
+### 修正
+- `facilities/kominkan.html`:表デザイン変更の作業時に、誤って`kominkan-boshu.html`の内容で上書きされていたものを、正しい中央公民館ページの内容に復元
+- `facilities/kominkan-boshu.html`:上記の誤操作により反映されていなかった、市民講座・サークル活動の表の改良(列分け・スマホ幅でのカード表示・横スクロール対応)を正しく反映
+---
+
 ## 2026-09-23（2）
 ---
 ### 変更
