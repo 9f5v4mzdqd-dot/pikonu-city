@@ -11,6 +11,20 @@
 
 -----------
 
+## 2026-09-23（2）
+---
+### 変更
+- `facilities/kiroku-nuka-clinic-archive.html`:デザインを「キロクぬかクリニック」仕様から「市立図書館」(`toshokan.html`)仕様に統一。`js/common.js`・`css/style.css`を使わないスタンドアロン構成に変更し、配色・フォント・ボックス装飾をtoshokan.htmlに合わせた
+- `facilities/kiroku-nuka-clinic-archive.html`:`<title>`・meta descriptionをクリニックの付属ページという表現から、市立図書館が収蔵する書庫という説明に変更
+- `facilities/kiroku-nuka-clinic-archive.html`:パンくずを「施設案内 ➡ 市立図書館 ➡ 外来シリーズ 書庫」の4階層に変更
+- `facilities/kiroku-nuka-clinic-archive.html`:サイドバー「関連情報」をクリニック系リンク多数(医師紹介・研究資料・問診表・おじさん漫談・グッズ等)から、市立図書館・蔵書案内・キロクぬかクリニックの3件に整理
+
+※`gairai-archive.json`の読み込み、カテゴリー絞り込み、月別アーカイブ、作品の開閉表示、noteリンク等のJS機能・作品データに変更なし
+---
+
+//ここに2026.9.23（1）を入れる//
+
+---
 ## 2026-09-22（3）
 ---
 ### 変更
