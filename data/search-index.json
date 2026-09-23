@@ -115,6 +115,11 @@
     "category": "施設案内"
   },
   {
+    "title": "時間の使い方相談",
+    "url": "facilities/jikan-shiyou-soudan.html",
+    "category": "施設案内"
+  },
+  {
     "title": "連結技術推進課",
     "url": "facilities/renketsu-suishin-ka.html",
     "category": "施設案内"
@@ -414,19 +419,20 @@
     "url": "facilities/kankyoka-ochiba-kijun.html",
     "category": "施設案内"
   },
-    {
+  {
     "title": "ピコぬ市生活研究所",
     "url": "facilities/seikatsu-kenkyu.html",
     "category": "施設案内"
   },
   {
-    "title": "2026年度研究報告", 
-  "url": "facilities/seikatsu-kenkyu-report.html",
-   "category": "施設案内"
-   },
-   { "title": "生活研究所 よくある質問（FAQ）", 
-   "url": "facilities/seikatsu-kenkyu-faq.html",
-    "category": "施設案内" 
+    "title": "2026年度研究報告",
+    "url": "facilities/seikatsu-kenkyu-report.html",
+    "category": "施設案内"
+  },
+  {
+    "title": "生活研究所 よくある質問（FAQ）",
+    "url": "facilities/seikatsu-kenkyu-faq.html",
+    "category": "施設案内"
   },
   {
     "title": "市の概要",
