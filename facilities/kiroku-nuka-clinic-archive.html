@@ -126,6 +126,7 @@
         <div class="sidebar-block">
           <h2>関連情報</h2>
           <ul>
+            <li><a href="toshokan.html">市立図書館</a></li>
             <li><a href="kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
             <li><a href="shinryo-kamoku.html">診療科目一覧</a></li>
             <li><a href="../facilities/gendaibyo-db.html">現代病データベース</a></li>
@@ -147,7 +148,7 @@
     </div>
   </main>
 
-  <script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "キロクぬかクリニック", href: "kiroku-nuka-clinic.html" }, { label: "外来シリーズ 書庫" }] };</script>
+  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "index.html"}, {label: "市立図書館", href: "toshokan.html"}, {label: "外来シリーズ 書庫"}]};</script>
   <script src="../js/common.js"></script>
   <script>
     (function () {
@@ -195,13 +196,13 @@
         var order = [];
         allEntries.forEach(function (e) {
           var key = monthKeyOf(e);
-          if (!(key in counts)) { counts[key] = 0; order.push(key); }
+          if (!(key in counts)) {counts[key] = 0; order.push(key);}
           counts[key]++;
         });
         order.sort(function (a, b) {
           if (a === NO_MONTH_KEY) return 1;
           if (b === NO_MONTH_KEY) return -1;
-          return b.localeCompare(a, "ja", { numeric: true });
+          return b.localeCompare(a, "ja", {numeric: true});
         });
 
         var html = '<li><a href="#" data-month="" class="' + (activeMonth === null ? "active" : "") + '">' +
@@ -267,7 +268,7 @@
       }
 
       fetch("../data/gairai-archive.json?t=" + Date.now())
-        .then(function (res) { return res.json(); })
+        .then(function (res) {return res.json();})
         .then(function (entries) {
           if (!Array.isArray(entries) || entries.length === 0) {
             listEl.innerHTML = "<p>ただいま準備中です。近日公開予定です。</p>";
