@@ -11,7 +11,22 @@
 
 -----------
 
+## 2026-09-24（2）
+---
+### 追加
+- `facilities/shiyakusho-parking.html`:市役所「駐車場・駐輪場のご案内」ページを新設。利用時間・収容台数・注意事項、敷地内配置図(SVGマップ)を掲載
+- `facilities/koutsukyoku-bicycle.html`:交通局「放置自転車の撤去・返還手続きのご案内」ページを新設。撤去について、保管場所、返還手続きに必要なもの、よくあるご質問、保管所へのアクセス、問い合わせ先を掲載
 
+### 変更
+- `facilities/shiyakusho-floor.html`:敷地内配置図としてSVGマップを追加。議会事務局へのリンクを追加。セクション間の余白を調整。2〜5階の「入り口」表記を削除
+- `facilities/shiyakusho.html`:所在地セクションに「アクセス」欄(駐車場・駐輪場のご案内へのリンク)を追加。関連情報・フロアマップのリード文を追加
+- `facilities/gikai.html`:議事録へのリンクを追加。末尾の文章を削除
+- `facilities/fukushika.html`:文章とボタン画像を変更
+- `facilities/koutsukyoku.html`:「放置自転車の撤去・返還手続きのご案内」への導線を追加
+- `facilities/shiyakusho-parking.html`:放置自転車ページへのリンクを追加
+- `images/facilities/seikatsu-kyosei-ka.jpg`・`images/facilities/fukushika.jpg`・`images/facilities/fukushika-button.jpg`:画像を差し替え
+- `about/sitemap.html`・`data/search-index.json`:「駐車場・駐輪場のご案内」「放置自転車の撤去・返還手続きのご案内」の2ページを追加
+---
 
 ## 2026-09-24（1）
 ---
