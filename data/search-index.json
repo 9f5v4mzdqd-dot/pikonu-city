@@ -99,6 +99,11 @@
     "url": "facilities/shiyakusho-floor.html",
     "category": "施設案内"
   },
+  { 
+    "title": "駐車場・駐輪場のご案内",
+   "url": "facilities/shiyakusho-parking.html", 
+   "category": "施設案内" 
+  },
   {
     "title": "市民課",
     "url": "facilities/shiminka.html",
