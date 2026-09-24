@@ -3,39 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>市役所フロア案内 | 施設案内 | ピコぬ市公式ホームページ</title>
-  <meta name="description" content="ピコぬ市役所本庁舎の各階のご案内です。">
+  <title>施設案内 | ピコぬ市公式ホームページ</title>
+  <meta name="description" content="ピコぬ市の主な公共施設の一覧です。">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../css/style.css">
-  <style>
-    /* このページのみ: 課名をタイル状のカードにする追加スタイル */
-    .dept-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 8px;
-      padding: 12px 18px;
-    }
-
-    .dept-card {
-      display: block;
-      padding: 10px 12px;
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      background: var(--color-bg-alt);
-      color: var(--color-text);
-      text-decoration: none;
-      font-size: .92rem;
-      text-align: center;
-    }
-
-    .dept-card:hover {
-      background: var(--color-primary-light);
-      text-decoration: none;
-    }
-  </style>
 </head>
 
 <body id="top">
@@ -43,164 +17,124 @@
   <main id="main">
     <div class="page-header">
       <div class="container">
-        <h1>市役所フロア案内</h1>
-        <p class="lead">ピコぬ市役所本庁舎の各階をご案内します。各課の業務内容については、それぞれの課のページをご確認ください。</p>
+        <h1>施設案内</h1>
+        <p class="lead">市内の主な公共施設をご案内します。</p>
       </div>
     </div>
 
-    <div class="content-layout">
+    <div class="content-layout full">
       <div class="main-content">
-        <div class="floor-list">
-          <div class="floor-card">
-            <div class="floor-label">1階</div>
-            <div class="dept-grid">
-              <a class="dept-card" href="shiminka.html">市民課</a>
-              <a class="dept-card" href="kaikeika.html">会計課</a>
-              <a class="dept-card" href="goods.html">公式グッズ販売窓口</a>
-              <a class="dept-card" href="syokudo.html">市役所食堂</a>
+        <div class="facility-grid">
+          <h2 class="visually-hidden">施設一覧</h2>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/shiyakusho.jpg" alt="市役所 庁舎外観" loading="lazy"></div>
+            <div class="body">
+              <h3>市役所</h3>
+              <p>各種窓口業務のほか、市政に関するお問い合わせ全般に対応しています。</p>
+              <a href="shiyakusho.html">詳しく見る &gt;</a>
             </div>
           </div>
-          <div class="floor-card">
-            <div class="floor-label">2階</div>
-            <div class="dept-grid">
-              <a class="dept-card" href="kiroku-seisaku-ka.html">記録政策課</a>
-              <a class="dept-card" href="kankyoka.html">環境課</a>
-              <a class="dept-card" href="kurashi-junkan-ka.html">暮らしと循環推進課</a>
-              <a class="dept-card" href="../services/gendaibyo-sodan.html">現代病相談窓口</a>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/kiroku-nuka-clinic.jpg" alt="キロクぬかクリニック 外観"
+                loading="lazy"></div>
+            <div class="body">
+              <h3>キロクぬかクリニック</h3>
+              <p>現代病専門医療センター。原因の分類しにくい不調に、記録という切り口から向き合います。</p>
+              <a href="kiroku-nuka-clinic.html">詳しく見る &gt;</a>
             </div>
           </div>
-          <div class="floor-card">
-            <div class="floor-label">3階</div>
-            <div class="dept-grid">
-              <a class="dept-card" href="seikatsu-kyosei-ka.html">生活共生課</a>
-              <a class="dept-card" href="jikan-koritsu-shien-ka.html">時間効率支援課</a>
-              <a class="dept-card" href="kanko-ka.html">観光課</a>
-              <a class="dept-card" href="hisho-kouhou-ka.html">秘書広報課</a>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/koutsukyoku.jpg" alt="ピコぬ市交通局 記録町駅" loading="lazy"></div>
+            <div class="body">
+              <h3>ピコぬ市交通局</h3>
+              <p>市内を結ぶ鉄道路線を運行しています。ピコぬ中央駅・連結橋駅・記録町駅の3駅。</p>
+              <a href="koutsukyoku.html">詳しく見る &gt;</a>
             </div>
           </div>
-          <div class="floor-card">
-            <div class="floor-label">4階</div>
-            <div class="dept-grid">
-              <a class="dept-card" href="toshikeikaku.html">都市計画課</a>
-              <a class="dept-card" href="renketsu-suishin-ka.html">連結技術推進課</a>
-              <a class="dept-card" href="fuyoufukyuhozonka.html">不要不急保存課</a>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/nukapiko-museum.jpg" alt="ぬかピコ民芸博物館 外観" loading="lazy">
+            </div>
+            <div class="body">
+              <h3>ぬかピコ民芸博物館</h3>
+              <p>ピコぬ市の記録文化の中心。日用品と記録の間にあるものを収蔵・展示しています。</p>
+              <a href="nukapiko-museum.html">詳しく見る &gt;</a>
             </div>
           </div>
-          <div class="floor-card">
-            <div class="floor-label">5階</div>
-            <div class="dept-grid">
-              <a class="dept-card" href="gikai.html">議場</a>
-              <a class="dept-card" href="gikai.html">議会事務局</a>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/goods/shop-interior.jpg" alt="公式グッズ" loading="lazy"></div>
+            <div class="body">
+              <h3>公式グッズ</h3>
+              <p>SUZURIで販売中のピコぬ市オフィシャルグッズ(ピコぬくんレポート)。</p>
+              <a href="goods.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/suidoukyoku-river.jpg" alt="市の水源であるぬかピコ川の渓流"
+                loading="lazy"></div>
+            <div class="body">
+              <h3>上下水道局</h3>
+              <p>暮らしを支える水、未来へ残す水。水質管理や水道施設の維持管理を行っています。</p>
+              <a href="suidoukyoku.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/keisatsu.jpg" alt="ピコぬ市警察署 庁舎外観" loading="lazy"></div>
+            <div class="body">
+              <h3>ピコぬ市警察署</h3>
+              <p>落とし物記録、行方不明記録の保護、デジタル安全相談、市民相談。</p>
+              <a href="keisatsu.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/toshokan.jpg" alt="市立図書館 外観(旧市立小学校校舎)" loading="lazy">
+            </div>
+            <div class="body">
+              <h3>市立図書館</h3>
+              <p>記録と静けさを大切にする図書館。非効率文庫など独自コーナーがあります。</p>
+              <a href="toshokan.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/kominkan.jpg" alt="中央公民館 外観" loading="lazy"></div>
+            <div class="body">
+              <h3>中央公民館</h3>
+              <p>市民の学習活動やサークル活動、地域交流などに利用できる施設です。</p>
+              <a href="kominkan.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/shokokai.jpg" alt="ピコぬ市商工会 記録町商工会館 外観" loading="lazy">
+            </div>
+            <div class="body">
+              <h3>ピコぬ市商工会</h3>
+              <p>記録町の商店街を中心に、市内事業者の活動を支援しています。</p>
+              <a href="shokokai.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/shop/pp-postal-main.jpg" alt="ピコぬ市郵政グループ イメージ画像"
+                loading="lazy"></div>
+            <div class="body">
+              <h3>ピコぬ市郵政グループ（PP）</h3>
+              <p>ピコぬ市内の郵便・荷物・窓口業務を担うグループです。</p>
+              <a href="pp-postal-group.html">詳しく見る &gt;</a>
+            </div>
+          </div>
+          <div class="facility-card">
+            <div class="thumb"><img src="../images/facilities/shop/seikatsu-kenkyu001.jpg" alt="生活研究所のイメージ画像"
+                loading="lazy"></div>
+            <div class="body">
+              <h3>ピコぬ市生活研究所</h3>
+              <p>毎日の暮らしの中にある「なんとなく気になる」を拾い上げ、観察・記録・検討しています。</p>
+              <a href="seikatsu-kenkyu.html">詳しく見る &gt;</a>
             </div>
           </div>
         </div>
-
-        <h2>主な手続き</h2>
-        <table class="info-table">
-          <tr>
-            <th>項目</th>
-            <th>担当</th>
-            <th>詳細</th>
-          </tr>
-          <tr>
-            <td>住民票・戸籍・住所変更等の届出</td>
-            <td>1階 市民課</td>
-            <td><a href="../services/juminhyo.html">住民票</a>・<a href="../services/koseki.html">戸籍</a>・<a
-                href="../services/jumin-todoke.html">住所変更等の届出</a></td>
-          </tr>
-          <tr>
-            <td>市への支払い・公金に関すること</td>
-            <td>1階 会計課</td>
-            <td><a href="kaikeika.html">会計課</a></td>
-          </tr>
-          <tr>
-            <td>公式グッズの購入について</td>
-            <td>1階 公式グッズ販売窓口</td>
-            <td><a href="goods.html">公式グッズ</a></td>
-          </tr>
-          <tr>
-            <td>お食事・食券について</td>
-            <td>1階 市役所食堂</td>
-            <td><a href="syokudo.html">市役所食堂</a></td>
-          </tr>
-          <tr>
-            <td>記録の保存・寄贈に関する相談</td>
-            <td>2階 記録政策課</td>
-            <td><a href="kiroku-seisaku-ka.html">記録政策課</a></td>
-          </tr>
-          <tr>
-            <td>ごみ・環境に関すること</td>
-            <td>2階 環境課</td>
-            <td><a href="../services/gomi.html">ごみ収集について</a></td>
-          </tr>
-          <tr>
-            <td>庭づくり・資源循環に関する相談</td>
-            <td>2階 暮らしと循環推進課</td>
-            <td><a href="kurashi-junkan-ka.html">暮らしと循環推進課</a></td>
-          </tr>
-          <tr>
-            <td>現代病に関する相談</td>
-            <td>2階 現代病相談窓口</td>
-            <td><a href="../services/gendaibyo-sodan.html">現代病相談窓口</a></td>
-          </tr>
-          <tr>
-            <td>暮らし全般・困りごとに関する相談</td>
-            <td>3階 生活共生課</td>
-            <td><a href="seikatsu-kyosei-ka.html">生活共生課</a></td>
-          </tr>
-          <tr>
-            <td>時間効率に関する相談</td>
-            <td>3階 時間効率支援課</td>
-            <td><a href="jikan-koritsu-shien-ka.html">時間効率支援課</a></td>
-          </tr>
-          <tr>
-            <td>観光に関するお問い合わせ</td>
-            <td>3階 観光課</td>
-            <td><a href="kanko-ka.html">観光課</a></td>
-          </tr>
-          <tr>
-            <td>広報・取材に関するお問い合わせ</td>
-            <td>3階 秘書広報課</td>
-            <td><a href="hisho-kouhou-ka.html">秘書広報課</a></td>
-          </tr>
-          <tr>
-            <td>まちづくり・都市計画に関する相談</td>
-            <td>4階 都市計画課</td>
-            <td><a href="toshikeikaku.html">都市計画課</a></td>
-          </tr>
-          <tr>
-            <td>連結技術・インフラに関するお問い合わせ</td>
-            <td>4階 連結技術推進課</td>
-            <td><a href="renketsu-suishin-ka.html">連結技術推進課</a></td>
-          </tr>
-          <tr>
-            <td>不要不急保存に関する相談</td>
-            <td>4階 不要不急保存課</td>
-            <td><a href="fuyoufukyuhozonka.html">不要不急保存課</a></td>
-          </tr>
-          <tr>
-            <td>議会に関するお問い合わせ</td>
-            <td>5階 議会事務局</td>
-            <td><a href="gikai.html">議会事務局</a></td>
-          </tr>
-        </table>
       </div>
-
-      <aside class="sidebar">
-        <div class="sidebar-block">
-          <h2>関連情報</h2>
-          <ul>
-            <li><a href="shiyakusho.html">市役所</a></li>
-            <li><a href="../services/jumin-todoke.html">住所変更・各種届出</a></li>
-            <li><a href="../services/juminhyo.html">住民票の案内</a></li>
-            <li><a href="../services/koseki.html">戸籍の案内</a></li>
-          </ul>
-        </div>
-      </aside>
     </div>
   </main>
 
-  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "index.html"}, {label: "市役所", href: "shiyakusho.html"}, {label: "市役所フロア案内"}]};</script>
+  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内"}]};</script>
   <script src="../js/common.js"></script>
 </body>
 
