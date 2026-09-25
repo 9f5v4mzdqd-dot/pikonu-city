@@ -441,45 +441,64 @@
 
         <h2 id="section-map">■ フロアマップ</h2>
         <div class="info-box">
-          <h3>1階</h3>
-          <div style="margin-bottom:14px;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-label="1階 フロアマップ"
-              style="max-width:100%;height:auto;background-color:#9fbcc4;font-family:'MS Pゴシック',sans-serif;">
-              <rect x="20" y="20" width="680" height="440" fill="none" stroke="#333333" stroke-width="4" />
-              <rect x="40" y="40" width="220" height="130" fill="#e8e8e8" stroke="#333333" stroke-width="2"
-                stroke-dasharray="4,4" />
-              <text x="150" y="100" font-size="14" font-weight="bold" fill="#666666" text-anchor="middle">収蔵庫</text>
-              <text x="150" y="120" font-size="11" fill="#888888" text-anchor="middle">（関係者以外立入禁止）</text>
-              <rect x="280" y="40" width="400" height="230" fill="#ffffff" stroke="#333333" stroke-width="2" />
-              <text x="480" y="140" font-size="16" font-weight="bold" fill="#333333" text-anchor="middle">第1展示室</text>
-              <text x="480" y="165" font-size="12" fill="#555555" text-anchor="middle">【郷土の農具・暮らしの道具】</text>
-              <rect x="40" y="430" width="100" height="30" fill="#ffffff" stroke="#333333" stroke-width="2" />
-              <text x="90" y="450" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">正面出入口</text>
-              <rect x="40" y="300" width="150" height="90" fill="#f0f0f0" stroke="#333333" stroke-width="2" />
-              <text x="115" y="340" font-size="13" font-weight="bold" fill="#333333" text-anchor="middle">受付・ショップ</text>
-              <text x="115" y="360" font-size="10" fill="#777777" text-anchor="middle">（入館料 300円）</text>
-              <circle cx="280" cy="350" r="45" fill="#f0f0f0" stroke="#333333" stroke-width="2" />
-              <path d="M 280 305 A 45 45 0 1 0 325 350 A 30 30 0 1 0 280 320 A 15 15 0 1 0 295 350" fill="none"
-                stroke="#666666" stroke-width="2" />
-              <circle cx="280" cy="350" r="6" fill="#333333" />
-              <text x="280" y="412" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">らせん階段</text>
-              <text x="280" y="426" font-size="9" fill="#666666" text-anchor="middle">（2Fへ）</text>
-              <rect x="380" y="290" width="170" height="150" fill="#ffffff" stroke="#333333" stroke-width="2" />
-              <text x="465" y="360" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">第2展示室</text>
-              <text x="465" y="380" font-size="11" fill="#777777" text-anchor="middle">【ピコぬ市の歴史・写真資料】</text>
-              <rect x="565" y="290" width="115" height="70" fill="#ffffff" stroke="#333333" stroke-width="2" />
-              <text x="622" y="328" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">エレベーター</text>
-              <text x="622" y="345" font-size="10" fill="#0066cc" text-anchor="middle">EV (2Fへ)</text>
-              <rect x="565" y="370" width="115" height="70" fill="#ffffff" stroke="#333333" stroke-width="2" />
-              <text x="622" y="405" font-size="11" font-weight="bold" fill="#333333" text-anchor="middle">多目的トイレ</text>
-              <text x="622" y="423" font-size="10" fill="#777777" text-anchor="middle">W.C (オストメイト)</text>
-            </svg>
-          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="100%" height="auto"
+            style="background-color: #8ab3ba; font-family: 'MS Pゴシック', sans-serif;">
+            <!-- 外枠（建物壁面） -->
+            <rect x="20" y="20" width="680" height="440" fill="none" stroke="#333333" stroke-width="4" />
+
+            <!-- 1. 収蔵庫（左上・関係者以外立入禁止） -->
+            <rect x="40" y="40" width="220" height="130" fill="#e8e8e8" stroke="#333333" stroke-width="2"
+              stroke-dasharray="4,4" />
+            <text x="150" y="100" font-size="14" font-weight="bold" fill="#666666" text-anchor="middle">収蔵庫</text>
+            <text x="150" y="120" font-size="11" fill="#888888" text-anchor="middle">（関係者以外立入禁止）</text>
+
+            <!-- 2. 第1展示室（右上・常設） -->
+            <rect x="280" y="40" width="400" height="230" fill="#ffffff" stroke="#333333" stroke-width="2" />
+            <text x="480" y="125" font-size="16" font-weight="bold" fill="#333333" text-anchor="middle">第1展示室</text>
+            <text x="480" y="150" font-size="12" fill="#555555" text-anchor="middle">【郷土の農具・暮らしの道具】</text>
+            <!-- からくり模型の注記（絶妙な手作り感） -->
+            <rect x="340" y="175" width="280" height="65" fill="#fcf8e3" stroke="#d6e9c6" stroke-width="1.5" rx="4" />
+            <text x="480" y="200" font-size="12" font-weight="bold" fill="#8a6d3b"
+              text-anchor="middle">★再現ジオラマ・からくり模型</text>
+            <text x="480" y="222" font-size="10" fill="#8a6d3b" text-anchor="middle">（赤ボタンを押すと農家の人形が動きます）</text>
+
+            <!-- 3. 出入口（左下） -->
+            <rect x="40" y="430" width="100" height="30" fill="#ffffff" stroke="#333333" stroke-width="2" />
+            <text x="90" y="450" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">正面出入口</text>
+
+            <!-- 4. 受付・ショップ（左下壁沿い） -->
+            <rect x="40" y="300" width="150" height="90" fill="#f0f0f0" stroke="#333333" stroke-width="2" />
+            <text x="115" y="340" font-size="13" font-weight="bold" fill="#333333" text-anchor="middle">受付・ショップ</text>
+            <text x="115" y="360" font-size="10" fill="#777777" text-anchor="middle">（入館料 300円）</text>
+
+            <!-- 5. らせん階段（中央ロビー） -->
+            <circle cx="280" cy="350" r="45" fill="#f0f0f0" stroke="#333333" stroke-width="2" />
+            <path d="M 280 305 A 45 45 0 1 0 325 350 A 30 30 0 1 0 280 320 A 15 15 0 1 0 295 350" fill="none"
+              stroke="#666666" stroke-width="2" />
+            <circle cx="280" cy="350" r="6" fill="#333333" />
+            <text x="280" y="412" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">らせん階段</text>
+            <text x="280" y="426" font-size="9" fill="#666666" text-anchor="middle">（2Fへ）</text>
+
+            <!-- 6. 第3展示室（右下） -->
+            <rect x="380" y="290" width="170" height="150" fill="#ffffff" stroke="#333333" stroke-width="2" />
+            <text x="465" y="360" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">第2展示室</text>
+            <text x="465" y="380" font-size="11" fill="#777777" text-anchor="middle">【ピコぬ市の歴史・写真資料】</text>
+
+            <!-- 7. エレベーター＆多目的トイレ（右端） -->
+            <rect x="565" y="290" width="115" height="70" fill="#ffffff" stroke="#333333" stroke-width="2" />
+            <text x="622" y="328" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">エレベーター</text>
+            <text x="622" y="345" font-size="10" fill="#0066cc" text-anchor="middle">EV (2Fへ)</text>
+
+            <rect x="565" y="370" width="115" height="70" fill="#ffffff" stroke="#333333" stroke-width="2" />
+            <text x="622" y="405" font-size="11" font-weight="bold" fill="#333333" text-anchor="middle">多目的トイレ</text>
+            <text x="622" y="423" font-size="10" fill="#777777" text-anchor="middle">W.C (オストメイト)</text>
+          </svg>
+
 
           <h3>2階</h3>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-label="2階 フロアマップ"
-              style="max-width:100%;height:auto;background-color:#e3c86f;font-family:'MS Pゴシック',sans-serif;">
+              style="max-width:100%;height:auto;background-color:#cfc193;font-family:'MS Pゴシック',sans-serif;">
               <rect x="20" y="20" width="680" height="440" fill="none" stroke="#333333" stroke-width="4" />
               <rect x="40" y="40" width="220" height="130" fill="#e8e8e8" stroke="#333333" stroke-width="2"
                 stroke-dasharray="4,4" />
