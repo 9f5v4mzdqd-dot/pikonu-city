@@ -3,13 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>研究資料 | キロクぬかクリニック | ピコぬ市公式ホームページ</title>
+  <title>研究資料 | キロクぬかクリニック</title>
   <meta name="description" content="キロクぬかクリニックが公開する、現代病に関する研究資料です。">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -19,6 +18,7 @@
     :root {
       --cl-bg: #0b0e14;
       --cl-panel: #101720;
+      --cl-panel-2: #0e1420;
       --cl-accent: #3cffdc;
       --cl-accent-dim: #1f9c8a;
       --cl-text: #d7ece9;
@@ -29,62 +29,116 @@
       --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
       background: var(--cl-bg);
-    }
-
-    .page-header {
-      background: var(--cl-bg);
-      border-bottom: 1px solid var(--cl-border);
-    }
-
-    .page-header h1,
-    .page-header .lead {
-      font-family: var(--cl-mincho);
       color: var(--cl-text);
+      font-family: var(--cl-sans);
+      line-height: 1.7;
     }
 
-    .content-layout {
-      background: var(--cl-bg);
-    }
-
-    .breadcrumb {
-      background: var(--cl-bg);
-      border-bottom: 1px solid var(--cl-border);
-    }
-
-    .breadcrumb a {
-      color: var(--cl-text-sub);
-    }
-
-    .breadcrumb li:last-child {
-      color: var(--cl-text);
-    }
-
-    .site-footer {
-      background: var(--cl-bg);
-      border-top: 1px solid var(--cl-border);
-      color: var(--cl-text-sub);
-    }
-
-    .site-footer a {
-      color: var(--cl-text-sub);
-    }
-
-    .site-footer a:hover {
+    a {
       color: var(--cl-accent);
     }
 
-    .clinic-page {
+    .clinic-header {
+      background: var(--cl-bg);
+      border-bottom: 1px solid var(--cl-border);
+      padding: 22px 20px 18px;
+    }
+
+    .clinic-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .clinic-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .clinic-badge {
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--cl-accent);
+      color: var(--cl-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
       font-family: var(--cl-mincho);
+    }
+
+    .clinic-name {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: var(--cl-accent);
+      letter-spacing: .06em;
+      margin: 0;
+      font-family: var(--cl-mono);
+    }
+
+    .clinic-tagline {
+      font-size: .82rem;
+      color: var(--cl-text-sub);
+      margin: 4px 0 0;
+      font-family: var(--cl-mono);
+    }
+
+    .clinic-nav {
+      background: var(--cl-panel-2);
+      border-bottom: 1px solid var(--cl-border);
+      overflow-x: auto;
+    }
+
+    .clinic-nav ul {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+      list-style: none;
+      display: flex;
+      gap: 2px;
+      white-space: nowrap;
+    }
+
+    .clinic-nav a {
+      display: inline-block;
+      padding: 11px 14px;
+      color: var(--cl-text-sub);
+      text-decoration: none;
+      font-family: var(--cl-mono);
+      font-size: .78rem;
+      letter-spacing: .03em;
+      border-bottom: 2px solid transparent;
+    }
+
+    .clinic-nav a:hover {
+      color: var(--cl-accent);
+    }
+
+    .clinic-nav a.is-current {
+      color: var(--cl-accent);
+      border-bottom-color: var(--cl-accent);
+    }
+
+    .clinic-main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+      font-family: var(--cl-mincho);
+    }
+
+    .clinic-main p {
       color: var(--cl-text);
     }
 
-    .clinic-page p {
-      color: var(--cl-text);
-    }
-
-    .clinic-page h2 {
+    .clinic-main h2 {
       border-left: none;
       padding-left: 0;
       color: var(--cl-text);
@@ -92,10 +146,6 @@
       margin-top: 2.2em;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--cl-border);
-    }
-
-    .clinic-page a {
-      color: var(--cl-accent);
     }
 
     .clinic-panel {
@@ -139,22 +189,6 @@
     .kenkyu-card p.body {
       font-size: .9rem;
       margin: 0 0 12px;
-    }
-
-    .kenkyu-link {
-      display: inline-block;
-      font-family: var(--cl-mono);
-      font-size: .82rem;
-      color: var(--cl-accent);
-      background: none;
-      border: 1px solid var(--cl-accent);
-      padding: 6px 16px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .kenkyu-link:hover {
-      background: rgba(60, 255, 220, 0.08);
     }
 
     .kenkyu-script {
@@ -237,148 +271,184 @@
       margin-top: 3px;
     }
 
-    .clinic-page .info-box {
+    .clinic-info-box {
       background: var(--cl-panel);
       border: 1px solid var(--cl-accent-dim);
       border-left: 3px solid var(--cl-accent);
       color: var(--cl-text);
+      padding: 16px 20px;
+      margin: 0 0 1.4em;
     }
 
-    .clinic-sidebar .sidebar-block {
-      background: var(--cl-panel);
+    .clinic-linklist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--cl-mono);
+      font-size: .8rem;
+    }
+
+    .clinic-linklist li {
       border: 1px solid var(--cl-border);
-      padding: 16px 18px;
+      padding: 6px 12px;
     }
 
-    .clinic-sidebar .sidebar-block h2 {
+    .clinic-linklist a {
+      color: var(--cl-text-sub);
+      text-decoration: none;
+    }
+
+    .clinic-linklist a:hover {
       color: var(--cl-accent);
-      font-size: .95rem;
-      margin-top: 0;
     }
 
-    .clinic-sidebar .sidebar-block a {
-      color: var(--cl-text) !important;
+    .clinic-footer {
+      border-top: 1px solid var(--cl-border);
+      padding: 24px 20px;
+      text-align: center;
+      font-family: var(--cl-mono);
+      font-size: .75rem;
+      color: var(--cl-text-sub);
     }
 
-    .clinic-sidebar .sidebar-block a:hover {
-      color: var(--cl-accent) !important;
+    .clinic-footer p {
+      margin: 4px 0;
+    }
+
+    .clinic-footer a {
+      color: var(--cl-text-sub);
+    }
+
+    .clinic-footer a:hover {
+      color: var(--cl-accent);
+    }
+
+    @media (max-width: 600px) {
+      .clinic-main {
+        padding: 24px 16px 40px;
+      }
     }
   </style>
 </head>
 
 <body id="top">
 
-  <main id="main">
-    <div class="page-header">
-      <div class="container">
-        <h1>研究資料</h1>
-        <p class="lead">Research Archive</p>
+  <header class="clinic-header">
+    <div class="clinic-header-inner">
+      <div class="clinic-badge-row">
+        <div class="clinic-badge">記</div>
+        <div>
+          <p class="clinic-name">キロクぬかクリニック</p>
+          <p class="clinic-tagline">症状として説明しづらいものを、まず記録する。</p>
+        </div>
       </div>
     </div>
+  </header>
 
-    <div class="content-layout">
-      <div class="main-content clinic-page">
+  <nav class="clinic-nav" aria-label="クリニック内ナビゲーション">
+    <ul>
+      <li><a href="kiroku-nuka-clinic.html">TOP</a></li>
+      <li><a href="shinryo-kamoku.html">診療科目</a></li>
+      <li><a href="kiroku-nuka-clinic-director.html">医師紹介</a></li>
+      <li><a href="kiroku-nuka-clinic-kenkyu.html" class="is-current">研究資料</a></li>
+      <li><a href="gendaibyo-db.html">現代病DB</a></li>
+      <li><a href="../services/kiroku-nuka-monshinhyo.html">問診表</a></li>
+      <li><a href="kiroku-nuka-clinic-archive.html">外来書庫</a></li>
+    </ul>
+  </nav>
 
-        <p>
-          キロクぬかクリニックでは、現代人に見られるさまざまな症状について研究を行っています。
-        </p>
-        <p>
-          診察記録、患者の発話、処方後の経過などをもとに、現代病に関する研究資料を公開しています。
-        </p>
+  <main id="main" class="clinic-main">
 
-        <h2>公開資料</h2>
+    <p>
+      キロクぬかクリニックでは、現代人に見られるさまざまな症状について研究を行っています。
+    </p>
+    <p>
+      診察記録、患者の発話、処方後の経過などをもとに、現代病に関する研究資料を公開しています。
+    </p>
 
-        <div class="kenkyu-card">
-          <span class="kenkyu-no">研究資料 No.001</span>
-          <h3>主語他者化硬化症について</h3>
-          <p class="kenkyu-meta">対象：1例</p>
-          <p class="body">
-            自分の話をしているにもかかわらず、本人がなかなか出てこない症例について。
-          </p>
+    <h2>公開資料</h2>
 
-          <details class="kenkyu-script">
-            <summary>研究資料を読む</summary>
-            <div class="kenkyu-script-body">
-              <h4>症例</h4>
-              <p>30代男性。</p>
-              <p>主訴：気分の落ち込み、不眠、食欲低下。</p>
-              <p>妻が子どもを連れて家を出たことを契機に受診。</p>
-              <p>診察中、妻についての発言が多く認められた。</p>
-              <p>妻の性格。<br>妻の発言。<br>妻との関係。</p>
-              <p>母親への相談歴あり。</p>
-              <p>本人による自己申告：<br>「電話して私は謝ったんですけど」</p>
+    <div class="kenkyu-card">
+      <span class="kenkyu-no">研究資料 No.001</span>
+      <h3>主語他者化硬化症について</h3>
+      <p class="kenkyu-meta">対象：1例</p>
+      <p class="body">
+        自分の話をしているにもかかわらず、本人がなかなか出てこない症例について。
+      </p>
 
-              <h4>記録</h4>
-              <p>発話中における主語の変化を確認。</p>
-              <p class="shusai">妻<br>↓<br>私<br>↓<br>妻<br>↓<br>母<br>↓<br>夫婦</p>
-              <p>本人についての発言：1度のみ。</p>
-              <p><strong>主語他者化硬化症。</strong></p>
+      <details class="kenkyu-script">
+        <summary>研究資料を読む</summary>
+        <div class="kenkyu-script-body">
+          <h4>症例</h4>
+          <p>30代男性。</p>
+          <p>主訴：気分の落ち込み、不眠、食欲低下。</p>
+          <p>妻が子どもを連れて家を出たことを契機に受診。</p>
+          <p>診察中、妻についての発言が多く認められた。</p>
+          <p>妻の性格。<br>妻の発言。<br>妻との関係。</p>
+          <p>母親への相談歴あり。</p>
+          <p>本人による自己申告：<br>「電話して私は謝ったんですけど」</p>
 
-              <h4>処方</h4>
-              <div class="rx">
-                <div class="rx-name">『私が』</div>
-                <div class="rx-detail">1日3回　毎食後1語　28日分</div>
-              </div>
-              <div class="rx">
-                <div class="rx-name">『悪かった』</div>
-                <div class="rx-detail">発作時1回1語　14回分</div>
-              </div>
-              <div class="rx">
-                <div class="rx-name">『そうかもしれない』</div>
-                <div class="rx-detail">就寝前1回1語　28日分</div>
-              </div>
+          <h4>記録</h4>
+          <p>発話中における主語の変化を確認。</p>
+          <p class="shusai">妻<br>↓<br>私<br>↓<br>妻<br>↓<br>母<br>↓<br>夫婦</p>
+          <p>本人についての発言：1度のみ。</p>
+          <p><strong>主語他者化硬化症。</strong></p>
 
-              <h4>追跡記録</h4>
-              <p>処方後、<br>「これ飲めば妻は戻りますか」<br>との発言あり。</p>
-              <p>効能には個人差あり。</p>
-            </div>
-          </details>
+          <h4>処方</h4>
+          <div class="rx">
+            <div class="rx-name">『私が』</div>
+            <div class="rx-detail">1日3回　毎食後1語　28日分</div>
+          </div>
+          <div class="rx">
+            <div class="rx-name">『悪かった』</div>
+            <div class="rx-detail">発作時1回1語　14回分</div>
+          </div>
+          <div class="rx">
+            <div class="rx-name">『そうかもしれない』</div>
+            <div class="rx-detail">就寝前1回1語　28日分</div>
+          </div>
+
+          <h4>追跡記録</h4>
+          <p>処方後、<br>「これ飲めば妻は戻りますか」<br>との発言あり。</p>
+          <p>効能には個人差あり。</p>
         </div>
-
-        <h2>研究対象</h2>
-        <p>当院では、以下のような症状について研究しています。</p>
-        <div class="clinic-panel">
-          <ul style="margin:0; padding-left:1.2em;">
-            <li>主語他者化硬化症</li>
-            <li>迷走性本の通りやったのに症</li>
-            <li>自家焙煎性回帰症(石器時代)</li>
-            <li>その他、現代社会において確認される未分類の症状</li>
-          </ul>
-        </div>
-        <p style="font-size:.86rem; color:var(--cl-text-sub);">研究対象は随時追加されます。</p>
-
-        <h2>研究について</h2>
-        <p>
-          研究は診察の合間に行われています。
-        </p>
-        <p>
-          研究室の所在については、現在確認できません。
-        </p>
-
-        <div class="info-box">
-          ※本ページに掲載されている研究資料は架空のものです。実際の医学・医療に関する研究結果ではありません。
-        </div>
-
-      </div>
-
-      <aside class="sidebar clinic-sidebar">
-        <div class="sidebar-block">
-          <h2>関連情報</h2>
-          <ul>
-            <li><a href="kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
-            <li><a href="kiroku-nuka-clinic-director.html">医師紹介</a></li>
-            <li><a href="shinryo-kamoku.html">診療科目一覧</a></li>
-            <li><a href="../services/kiroku-nuka-monshinhyo.html">問診表</a></li>
-            <li><a href="kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a></li>
-            <li><a href="../facilities/gendaibyo-db.html">現代病データベース</a></li>
-          </ul>
-        </div>
-      </aside>
+      </details>
     </div>
+
+    <h2>研究対象</h2>
+    <p>当院では、以下のような症状について研究しています。</p>
+    <div class="clinic-panel">
+      <ul style="margin:0; padding-left:1.2em;">
+        <li>主語他者化硬化症</li>
+        <li>迷走性本の通りやったのに症</li>
+        <li>自家焙煎性回帰症(石器時代)</li>
+        <li>その他、現代社会において確認される未分類の症状</li>
+      </ul>
+    </div>
+    <p style="font-size:.86rem; color:var(--cl-text-sub);">研究対象は随時追加されます。</p>
+
+    <h2>研究について</h2>
+    <p>
+      研究は診察の合間に行われています。
+    </p>
+    <p>
+      研究室の所在については、現在確認できません。
+    </p>
+
+    <div class="clinic-info-box">
+      ※本ページに掲載されている研究資料は架空のものです。実際の医学・医療に関する研究結果ではありません。
+    </div>
+
   </main>
 
-  <script>window.PAGE_META = {nav: "facilities", breadcrumb: [{label: "施設案内", href: "index.html"}, {label: "キロクぬかクリニック", href: "kiroku-nuka-clinic.html"}, {label: "研究資料"}]};</script>
-  <script src="../js/common.js"></script>
+  <footer class="clinic-footer">
+    <p>KIROKU-NUKA CLINIC</p>
+    <p><a href="../index.html">ピコぬ市公式サイトへ戻る</a></p>
+  </footer>
+
 </body>
 
 </html>

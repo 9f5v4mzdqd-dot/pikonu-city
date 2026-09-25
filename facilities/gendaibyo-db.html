@@ -2,13 +2,12 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>現代病データベース | キロクぬかクリニック | ピコぬ市公式ホームページ</title>
+<title>現代病データベース | キロクぬかクリニック</title>
 <meta name="description" content="キロクぬかクリニックにおける現代病の診断記録データベースです。外来名・病名・症状概要から検索できます。">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&family=M+PLUS+1+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -16,6 +15,7 @@
   :root {
     --cl-bg: #0b0e14;
     --cl-panel: #101720;
+    --cl-panel-2: #0e1420;
     --cl-accent: #3cffdc;
     --cl-accent-dim: #1f9c8a;
     --cl-text: #d7ece9;
@@ -26,120 +26,161 @@
     --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
   }
 
-  body { background: var(--cl-bg); }
-  .page-header { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
-  .page-header h1, .page-header .lead { font-family: var(--cl-mincho); color: var(--cl-text); }
-  .content-layout { background: var(--cl-bg); }
-  .breadcrumb { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); }
-  .breadcrumb a { color: var(--cl-text-sub); }
-  .breadcrumb li:last-child { color: var(--cl-text); }
-  .site-footer { background: var(--cl-bg); border-top: 1px solid var(--cl-border); color: var(--cl-text-sub); }
-  .site-footer a { color: var(--cl-text-sub); }
-  .site-footer a:hover { color: var(--cl-accent); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cl-bg); color: var(--cl-text); font-family: var(--cl-sans); line-height: 1.7; }
+  a { color: var(--cl-accent); }
 
-  .clinic-page { font-family: var(--cl-mincho); color: var(--cl-text); line-height: 1.9; letter-spacing: .02em; }
-  .clinic-page p { color: var(--cl-text); }
-  .clinic-page a { color: var(--cl-accent); }
-  .clinic-page .facility-photo { border-color: var(--cl-border); filter: saturate(.7) contrast(1.05); }
+  .clinic-header { background: var(--cl-bg); border-bottom: 1px solid var(--cl-border); padding: 22px 20px 18px; }
+  .clinic-header-inner { max-width: 860px; margin: 0 auto; }
+  .clinic-badge-row { display: flex; align-items: center; gap: 16px; }
+  .clinic-badge {
+    width: 52px; height: 52px; border: 1px solid var(--cl-accent); color: var(--cl-accent);
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    flex-shrink: 0; font-family: var(--cl-mincho);
+  }
+  .clinic-name { font-size: 1.15rem; font-weight: bold; color: var(--cl-accent); letter-spacing: .06em; margin: 0; font-family: var(--cl-mono); }
+  .clinic-tagline { font-size: .82rem; color: var(--cl-text-sub); margin: 4px 0 0; font-family: var(--cl-mono); }
 
+  .clinic-nav { background: var(--cl-panel-2); border-bottom: 1px solid var(--cl-border); overflow-x: auto; }
+  .clinic-nav ul { max-width: 860px; margin: 0 auto; padding: 0 20px; list-style: none; display: flex; gap: 2px; white-space: nowrap; }
+  .clinic-nav a {
+    display: inline-block; padding: 11px 14px; color: var(--cl-text-sub); text-decoration: none;
+    font-family: var(--cl-mono); font-size: .78rem; letter-spacing: .03em; border-bottom: 2px solid transparent;
+  }
+  .clinic-nav a:hover { color: var(--cl-accent); }
+  .clinic-nav a.is-current { color: var(--cl-accent); border-bottom-color: var(--cl-accent); }
+
+  .clinic-main { max-width: 860px; margin: 0 auto; padding: 32px 20px 48px; font-family: var(--cl-mincho); line-height: 1.9; letter-spacing: .02em; }
+  .clinic-main p { color: var(--cl-text); }
+
+  .facility-photo {
+    width: 100%; border: 1px solid var(--cl-border); margin: 0 0 1.6em; display: block;
+    filter: saturate(.7) contrast(1.05);
+  }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  .gb-search { margin: 1.4em 0; display: flex; gap: 8px; }
   .gb-search input[type="search"] {
-    background: var(--cl-panel);
-    border: 1px solid var(--cl-border);
-    color: var(--cl-text);
-    font-family: var(--cl-sans);
+    flex: 1; background: var(--cl-panel); border: 1px solid var(--cl-border); color: var(--cl-text);
+    font-family: var(--cl-sans); padding: 10px 14px; font-size: .95rem;
   }
   .gb-search input[type="search"]::placeholder { color: var(--cl-text-sub); }
-  .gb-count { font-family: var(--cl-mono); font-size: .8rem; color: var(--cl-text-sub); }
+  .gb-count { font-family: var(--cl-mono); font-size: .8rem; color: var(--cl-text-sub); margin-bottom: .8em; }
 
-  .gb-table { font-family: var(--cl-sans); font-size: .84rem; }
-  .gb-table th, .gb-table td { border-color: var(--cl-border); color: var(--cl-text); }
+  .gb-table { width: 100%; border-collapse: collapse; font-family: var(--cl-sans); font-size: .84rem; }
+  .gb-table th, .gb-table td { border: 1px solid var(--cl-border); padding: 10px 12px; text-align: left; vertical-align: top; color: var(--cl-text); }
   .gb-table th { background: var(--cl-panel); color: var(--cl-accent); font-weight: normal; }
+  .gb-num { width: 3em; color: var(--cl-text-sub); }
+  .gb-gairai { width: 9em; white-space: nowrap; }
+  .gb-byomei { width: 13em; color: var(--cl-accent); }
   .gb-date { color: var(--cl-text-sub); }
-  .gb-byomei { color: var(--cl-accent); }
+  .gb-row.gb-hidden { display: none; }
   .gb-loading, .gb-noresult { color: var(--cl-text-sub); font-family: var(--cl-mincho); }
+  .gb-noresult { display: none; padding: 2em 0; text-align: center; }
+  .gb-noresult.gb-visible { display: block; }
 
-  .clinic-page .info-box {
-    background: var(--cl-panel);
-    border: 1px solid var(--cl-accent-dim);
-    border-left: 3px solid var(--cl-accent);
-    color: var(--cl-text);
+  .clinic-info-box {
+    background: var(--cl-panel); border: 1px solid var(--cl-accent-dim); border-left: 3px solid var(--cl-accent);
+    color: var(--cl-text); padding: 16px 20px; margin: 0 0 1.4em;
   }
 
-  .clinic-sidebar .sidebar-block {
-    background: var(--cl-panel); border: 1px solid var(--cl-border); padding: 16px 18px;
+  .clinic-linklist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--cl-mono); font-size: .8rem; }
+  .clinic-linklist li { border: 1px solid var(--cl-border); padding: 6px 12px; }
+  .clinic-linklist a { color: var(--cl-text-sub); text-decoration: none; }
+  .clinic-linklist a:hover { color: var(--cl-accent); }
+
+  .clinic-main h2 {
+    border-left: none; padding-left: 0; color: var(--cl-text); font-family: var(--cl-mincho); font-weight: 600;
+    font-size: 1.02rem; margin-top: 2.2em; padding-bottom: 8px; border-bottom: 1px solid var(--cl-border);
   }
-  .clinic-sidebar .sidebar-block h2 { color: var(--cl-accent); font-size: .95rem; margin-top: 0; font-family: var(--cl-mincho); }
-  .clinic-sidebar .sidebar-block a { color: var(--cl-text) !important; }
-  .clinic-sidebar .sidebar-block a:hover { color: var(--cl-accent) !important; }
+
+  .clinic-footer { border-top: 1px solid var(--cl-border); padding: 24px 20px; text-align: center; font-family: var(--cl-mono); font-size: .75rem; color: var(--cl-text-sub); }
+  .clinic-footer p { margin: 4px 0; }
+  .clinic-footer a { color: var(--cl-text-sub); }
+  .clinic-footer a:hover { color: var(--cl-accent); }
+
+  @media (max-width: 600px) {
+    .clinic-main { padding: 24px 16px 40px; }
+  }
 </style>
 </head>
 <body id="top">
 
-<main id="main">
-  <div class="page-header">
-    <div class="container">
-      <h1>現代病データベース</h1>
-      <p class="lead">キロクぬかクリニックにおける現代病の診断記録です。外来名・病名・症状から検索できます。</p>
-    </div>
-  </div>
-
-  <div class="content-layout">
-    <div class="main-content clinic-page">
-      <img class="facility-photo" src="../images/sections/gendaibyo-db-monitor.jpg" alt="ネオン線で描かれた電子カルテ画面のイメージ">
-      <p>
-        キロクぬかクリニック現代病専門外来の診断記録をデータベース化し、公開しています。診断名や症状から記録を検索・閲覧できます。
-        ご希望の方は、
-        <a href="../services/gendaibyo-sodan.html">現代病相談</a>のご利用もあわせてご検討ください。
-      </p>
-
-      <div class="gb-search">
-        <label class="visually-hidden" for="gb-search-input">外来名・病名・症状で検索</label>
-        <input type="search" id="gb-search-input" placeholder="外来名・病名・症状で検索(例:自分語り、ラーメン、AI)">
-      </div>
-      <p class="gb-count" id="gb-count"></p>
-
-      <table class="gb-table">
-        <thead>
-          <tr>
-            <th class="gb-num">No.</th>
-            <th class="gb-date">日付</th>
-            <th class="gb-gairai">外来名</th>
-            <th class="gb-byomei">診断された病名</th>
-            <th class="gb-summary">症状概要</th>
-            <th class="gb-note">note</th>
-          </tr>
-        </thead>
-        <tbody id="gb-tbody">
-        </tbody>
-      </table>
-      <p class="gb-loading" id="gb-loading">読み込み中...</p>
-      <p class="gb-noresult" id="gb-noresult">該当する記録が見つかりませんでした。</p>
-      <div class="info-box">
-        点数(診療報酬点数表との対応)は現在整理中です。準備が整い次第、各項目に追記します。
+<header class="clinic-header">
+  <div class="clinic-header-inner">
+    <div class="clinic-badge-row">
+      <div class="clinic-badge">記</div>
+      <div>
+        <p class="clinic-name">キロクぬかクリニック</p>
+        <p class="clinic-tagline">症状として説明しづらいものを、まず記録する。</p>
       </div>
     </div>
-
-    <aside class="sidebar clinic-sidebar">
-      <div class="sidebar-block">
-        <h2>関連情報</h2>
-       <ul>
-          <li><a href="kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
-          <li><a href="kiroku-nuka-clinic-director.html">医師紹介</a></li>
-          <li><a href="kiroku-nuka-clinic-kenkyu.html">研究資料</a></li>
-          <li><a href="kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a></li>
-          <li><a href="shinryo-kamoku.html">診療科目一覧</a></li>
-          <li><a href="../services/kiroku-nuka-monshinhyo.html">問診表</a></li>
-          <li><a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
-          <li><a href="../services/gendaibyo-sodan.html">現代病相談</a></li>
-          <li><a href="../about/jorei-gendaibyo.html">現代病対策条例</a></li>
-        </ul>
-      </div>
-    </aside>
   </div>
+</header>
+
+<nav class="clinic-nav" aria-label="クリニック内ナビゲーション">
+  <ul>
+    <li><a href="kiroku-nuka-clinic.html">TOP</a></li>
+    <li><a href="shinryo-kamoku.html">診療科目</a></li>
+    <li><a href="kiroku-nuka-clinic-director.html">医師紹介</a></li>
+    <li><a href="kiroku-nuka-clinic-kenkyu.html">研究資料</a></li>
+    <li><a href="gendaibyo-db.html" class="is-current">現代病DB</a></li>
+    <li><a href="../services/kiroku-nuka-monshinhyo.html">問診表</a></li>
+    <li><a href="kiroku-nuka-clinic-archive.html">外来書庫</a></li>
+  </ul>
+</nav>
+
+<main id="main" class="clinic-main">
+  <img class="facility-photo" src="../images/sections/gendaibyo-db-monitor.jpg" alt="ネオン線で描かれた電子カルテ画面のイメージ">
+  <p>
+    キロクぬかクリニック現代病専門外来の診断記録をデータベース化し、公開しています。診断名や症状から記録を検索・閲覧できます。
+    ご希望の方は、
+    <a href="../services/gendaibyo-sodan.html">現代病相談</a>のご利用もあわせてご検討ください。
+  </p>
+
+  <div class="gb-search">
+    <label class="visually-hidden" for="gb-search-input">外来名・病名・症状で検索</label>
+    <input type="search" id="gb-search-input" placeholder="外来名・病名・症状で検索(例:自分語り、ラーメン、AI)">
+  </div>
+  <p class="gb-count" id="gb-count"></p>
+
+  <table class="gb-table">
+    <thead>
+      <tr>
+        <th class="gb-num">No.</th>
+        <th class="gb-date">日付</th>
+        <th class="gb-gairai">外来名</th>
+        <th class="gb-byomei">診断された病名</th>
+        <th class="gb-summary">症状概要</th>
+        <th class="gb-note">note</th>
+      </tr>
+    </thead>
+    <tbody id="gb-tbody">
+    </tbody>
+  </table>
+  <p class="gb-loading" id="gb-loading">読み込み中...</p>
+  <p class="gb-noresult" id="gb-noresult">該当する記録が見つかりませんでした。</p>
+  <div class="clinic-info-box">
+    点数(診療報酬点数表との対応)は現在整理中です。準備が整い次第、各項目に追記します。
+  </div>
+
+  <h2>その他の関連情報</h2>
+  <ul class="clinic-linklist">
+    <li><a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
+    <li><a href="../services/gendaibyo-sodan.html">現代病相談</a></li>
+    <li><a href="../about/jorei-gendaibyo.html">現代病対策条例</a></li>
+  </ul>
 </main>
 
-<script>window.PAGE_META = { nav: "facilities", breadcrumb: [{ label: "施設案内", href: "index.html" }, { label: "キロクぬかクリニック", href: "kiroku-nuka-clinic.html" }, { label: "現代病データベース" }] };</script>
-<script src="../js/common.js"></script>
+<footer class="clinic-footer">
+  <p>KIROKU-NUKA CLINIC</p>
+  <p><a href="../index.html">ピコぬ市公式サイトへ戻る</a></p>
+</footer>
+
 <script>
 (function () {
   var input = document.getElementById("gb-search-input");
