@@ -324,6 +324,50 @@
       color: var(--onion);
     }
 
+    /* 図書館フロアマップの拡大表示(ライトボックス) */
+    .map-zoom-wrap {
+      cursor: zoom-in;
+    }
+
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(36, 55, 70, 0.85);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .lightbox-overlay.is-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-overlay svg {
+      max-width: 90vw;
+      max-height: 85vh;
+      background: var(--paper);
+      border: 4px solid var(--paper);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+      color: var(--paper);
+      background: var(--onion);
+      border: 2px solid var(--paper);
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 32px;
+      cursor: pointer;
+    }
+
     @media (max-width: 760px) {
       .page-header {
         padding: 20px 0 16px;
@@ -547,8 +591,9 @@
         </div>
 
         <h2 id="section-6">■ 図書館の建物について</h2>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 850" width="100%" height="auto"
+
+        <div class="map-zoom-wrap" onclick="openMapLightbox()">
+        <svg id="library-floor-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 850" width="100%" height="auto"
           style="background-color: #f5eedc; font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'メイリオ', sans-serif;">
 
           <!-- 全体背景（木造校舎のあたたかい質感） -->
@@ -798,6 +843,7 @@
           </g>
 
         </svg>
+        </div>
         <div class="info-box">
           <p>
             ピコぬ市立図書館は、閉校となった旧市立小学校の木造校舎を活用した図書館です。
@@ -871,12 +917,41 @@
         </div>
       </aside>
     </div>
+
+    <!-- フロアマップ拡大表示用ライトボックス -->
+    <div class="lightbox-overlay" id="map-lightbox" onclick="closeMapLightbox()">
+      <button type="button" class="lightbox-close" onclick="closeMapLightbox()">✕</button>
+      <div id="map-lightbox-content"></div>
+    </div>
   </main>
 
   <footer>
     <div>市立図書館</div>
     <div>Copyright © 市立図書館 All Rights Reserved.</div>
   </footer>
+
+  <script>
+    function openMapLightbox() {
+      var original = document.getElementById('library-floor-map');
+      var clone = original.cloneNode(true);
+      clone.removeAttribute('width');
+      clone.removeAttribute('height');
+      clone.style.width = '100%';
+      clone.style.height = 'auto';
+      var container = document.getElementById('map-lightbox-content');
+      container.innerHTML = '';
+      container.appendChild(clone);
+      document.getElementById('map-lightbox').classList.add('is-open');
+    }
+
+    function closeMapLightbox() {
+      document.getElementById('map-lightbox').classList.remove('is-open');
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMapLightbox();
+    });
+  </script>
 
 </body>
 
