@@ -3,13 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>問診表 | キロクぬかクリニック | ピコぬ市公式ホームページ</title>
+  <title>問診表 | キロクぬかクリニック</title>
   <meta name="description" content="キロクぬかクリニックの独自問診表です。受診前にご自身の状態を記録していただけます。">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -19,6 +18,7 @@
     :root {
       --cl-bg: #0b0e14;
       --cl-panel: #101720;
+      --cl-panel-2: #0e1420;
       --cl-accent: #3cffdc;
       --cl-accent-dim: #1f9c8a;
       --cl-text: #d7ece9;
@@ -27,65 +27,118 @@
       --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
       --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
       --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
+    }
 
+    * {
+      box-sizing: border-box;
     }
 
     body {
+      margin: 0;
       background: var(--cl-bg);
-    }
-
-    .page-header {
-      background: var(--cl-bg);
-      border-bottom: 1px solid var(--cl-border);
-    }
-
-    .page-header h1,
-    .page-header .lead {
-      font-family: var(--cl-mincho);
       color: var(--cl-text);
+      font-family: var(--cl-sans);
+      line-height: 1.7;
     }
 
-    .content-layout {
-      background: var(--cl-bg);
-    }
-
-    .breadcrumb {
-      background: var(--cl-bg);
-      border-bottom: 1px solid var(--cl-border);
-    }
-
-    .breadcrumb a {
-      color: var(--cl-text-sub);
-    }
-
-    .breadcrumb li:last-child {
-      color: var(--cl-text);
-    }
-
-    .site-footer {
-      background: var(--cl-bg);
-      border-top: 1px solid var(--cl-border);
-      color: var(--cl-text-sub);
-    }
-
-    .site-footer a {
-      color: var(--cl-text-sub);
-    }
-
-    .site-footer a:hover {
+    a {
       color: var(--cl-accent);
     }
 
-    .monshin-page {
+    .clinic-header {
+      background: var(--cl-bg);
+      border-bottom: 1px solid var(--cl-border);
+      padding: 22px 20px 18px;
+    }
+
+    .clinic-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .clinic-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .clinic-badge {
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--cl-accent);
+      color: var(--cl-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
       font-family: var(--cl-mincho);
+    }
+
+    .clinic-name {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: var(--cl-accent);
+      letter-spacing: .06em;
+      margin: 0;
+      font-family: var(--cl-mono);
+    }
+
+    .clinic-tagline {
+      font-size: .82rem;
+      color: var(--cl-text-sub);
+      margin: 4px 0 0;
+      font-family: var(--cl-mono);
+    }
+
+    .clinic-nav {
+      background: var(--cl-panel-2);
+      border-bottom: 1px solid var(--cl-border);
+      overflow-x: auto;
+    }
+
+    .clinic-nav ul {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+      list-style: none;
+      display: flex;
+      gap: 2px;
+      white-space: nowrap;
+    }
+
+    .clinic-nav a {
+      display: inline-block;
+      padding: 11px 14px;
+      color: var(--cl-text-sub);
+      text-decoration: none;
+      font-family: var(--cl-mono);
+      font-size: .78rem;
+      letter-spacing: .03em;
+      border-bottom: 2px solid transparent;
+    }
+
+    .clinic-nav a:hover {
+      color: var(--cl-accent);
+    }
+
+    .clinic-nav a.is-current {
+      color: var(--cl-accent);
+      border-bottom-color: var(--cl-accent);
+    }
+
+    .clinic-main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+      font-family: var(--cl-mincho);
+    }
+
+    .clinic-main p {
       color: var(--cl-text);
     }
 
-    .monshin-page p {
-      color: var(--cl-text);
-    }
-
-    .monshin-page h2 {
+    .clinic-main h2 {
       border-left: none;
       padding-left: 0;
       color: var(--cl-text);
@@ -93,10 +146,6 @@
       margin-top: 2.2em;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--cl-border);
-    }
-
-    .monshin-page a {
-      color: var(--cl-accent);
     }
 
     .monshin-panel {
@@ -355,39 +404,72 @@
       color: var(--cl-accent);
     }
 
+    .clinic-linklist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--cl-mono);
+      font-size: .8rem;
+    }
+
+    .clinic-linklist li {
+      border: 1px solid var(--cl-border);
+      padding: 6px 12px;
+    }
+
+    .clinic-linklist a {
+      color: var(--cl-text-sub);
+      text-decoration: none;
+    }
+
+    .clinic-linklist a:hover {
+      color: var(--cl-accent);
+    }
+
+    .clinic-footer {
+      border-top: 1px solid var(--cl-border);
+      padding: 24px 20px;
+      text-align: center;
+      font-family: var(--cl-mono);
+      font-size: .75rem;
+      color: var(--cl-text-sub);
+    }
+
+    .clinic-footer p {
+      margin: 4px 0;
+    }
+
+    .clinic-footer a {
+      color: var(--cl-text-sub);
+    }
+
+    .clinic-footer a:hover {
+      color: var(--cl-accent);
+    }
+
     @media print {
       body {
         background: #ffffff !important;
       }
 
-      .site-header-utility,
-      .site-header-main,
-      .global-nav,
-      .breadcrumb,
-      .site-footer,
-      .sidebar,
-      .pagetop,
+      .clinic-header,
+      .clinic-nav,
+      .clinic-footer,
+      .clinic-linklist,
       .no-print,
       #monshinForm {
         display: none !important;
       }
 
-      .page-header {
-        display: none !important;
-      }
-
-      .content-layout {
-        background: #ffffff !important;
-        display: block !important;
-      }
-
-      .main-content {
-        width: 100% !important;
+      .clinic-main {
         max-width: none !important;
+        color: #000 !important;
       }
 
-      .monshin-page,
-      .monshin-page p {
+      .clinic-main p {
         color: #000 !important;
       }
 
@@ -429,176 +511,171 @@
       }
     }
 
-    .monshin-sidebar .sidebar-block {
-      background: var(--cl-panel);
-      border: 1px solid var(--cl-border);
-      padding: 16px 18px;
-    }
-
-    .monshin-sidebar .sidebar-block h2 {
-      color: var(--cl-accent);
-      font-size: .95rem;
-      margin-top: 0;
-    }
-
-    .monshin-sidebar .sidebar-block a {
-      color: var(--cl-text) !important;
-    }
-
-    .monshin-sidebar .sidebar-block a:hover {
-      color: var(--cl-accent) !important;
+    @media (max-width: 600px) {
+      .clinic-main {
+        padding: 24px 16px 40px;
+      }
     }
   </style>
 </head>
 
 <body id="top">
 
-  <main id="main">
-    <div class="page-header">
-      <div class="container">
-        <h1>問診表</h1>
-        <p class="lead">キロクぬかクリニック 独自問診表</p>
+  <header class="clinic-header">
+    <div class="clinic-header-inner">
+      <div class="clinic-badge-row">
+        <div class="clinic-badge">記</div>
+        <div>
+          <p class="clinic-name">キロクぬかクリニック</p>
+          <p class="clinic-tagline">症状として説明しづらいものを、まず記録する。</p>
+        </div>
       </div>
     </div>
+  </header>
 
-    <div class="content-layout">
-      <div class="main-content monshin-page">
-        <p>
-          受診前に、ご自身の状態を記録してください。正しい答えを探す必要はありません。
-          入力内容は送信されず、この画面上でのみ処理されます。
-        </p>
+  <nav class="clinic-nav" aria-label="クリニック内ナビゲーション">
+    <ul>
+      <li><a href="../facilities/kiroku-nuka-clinic.html">TOP</a></li>
+      <li><a href="../facilities/shinryo-kamoku.html">診療科目</a></li>
+      <li><a href="../facilities/kiroku-nuka-clinic-director.html">医師紹介</a></li>
+      <li><a href="../facilities/kiroku-nuka-clinic-kenkyu.html">研究資料</a></li>
+      <li><a href="../facilities/gendaibyo-db.html">現代病DB</a></li>
+      <li><a href="kiroku-nuka-monshinhyo.html" class="is-current">問診表</a></li>
+      <li><a href="../facilities/kiroku-nuka-clinic-archive.html">外来書庫</a></li>
+    </ul>
+  </nav>
 
-        <form id="monshinForm">
-          <h2>基本情報</h2>
-          <div class="monshin-panel">
-            <div class="monshin-field">
-              <label class="q"><span class="qnum">Q1</span>お名前(記録名でも構いません)</label>
-              <input type="text" id="q1" placeholder="例:ｷﾞ:/rE-ﾌ^%a">
-            </div>
-            <div class="monshin-field">
-              <label class="q"><span class="qnum">Q2</span>本日、最も気になっていること</label>
-              <textarea id="q2" placeholder="うまく言葉にならない場合は、思いついた単語だけでも構いません"></textarea>
-            </div>
-          </div>
+  <main id="main" class="clinic-main">
+    <p>
+      受診前に、ご自身の状態を記録してください。正しい答えを探す必要はありません。
+      入力内容は送信されず、この画面上でのみ処理されます。
+    </p>
 
-          <h2>状態の記録</h2>
-          <div class="monshin-panel">
-            <div class="monshin-field">
-              <label class="q"><span class="qnum">Q3</span>他人の何気ない一言を、後から何度も思い返してしまうことがある</label>
-              <div class="monshin-choices">
-                <label><input type="radio" name="q3" value="よくある">よくある</label>
-                <label><input type="radio" name="q3" value="たまにある">たまにある</label>
-                <label><input type="radio" name="q3" value="あまりない">あまりない</label>
-                <label><input type="radio" name="q3" value="わからない">わからない</label>
-              </div>
-            </div>
-
-            <div class="monshin-field">
-              <label class="q"><span class="qnum">Q4</span>「要するに何が言いたいの?」と、自分でも思ってしまう瞬間がある</label>
-              <div class="monshin-choices">
-                <label><input type="radio" name="q4" value="よくある">よくある</label>
-                <label><input type="radio" name="q4" value="たまにある">たまにある</label>
-                <label><input type="radio" name="q4" value="あまりない">あまりない</label>
-                <label><input type="radio" name="q4" value="わからない">わからない</label>
-              </div>
-            </div>
-
-            <div class="monshin-field">
-              <label class="q"><span class="qnum">Q5</span>語尾を伸ばしたり、間を埋める言葉が増えている自覚がある</label>
-              <div class="monshin-choices">
-                <label><input type="radio" name="q5" value="よくある">よくある</label>
-                <label><input type="radio" name="q5" value="たまにある">たまにある</label>
-                <label><input type="radio" name="q5" value="あまりない">あまりない</label>
-                <label><input type="radio" name="q5" value="わからない">わからない</label>
-              </div>
-            </div>
-
-            <div class="monshin-field">
-              <label class="q"><span class="qnum">Q6</span>「分かりやすい答え」がないと、落ち着かなくなる度合い</label>
-              <div class="monshin-scale">
-                <span style="font-family:var(--cl-mono); font-size:.78rem; color:var(--cl-text-sub);">低</span>
-                <input type="range" id="q6" min="0" max="10" value="5">
-                <span style="font-family:var(--cl-mono); font-size:.78rem; color:var(--cl-text-sub);">高</span>
-                <span class="monshin-scale-val" id="q6val">5</span>
-              </div>
-              <ul class="monshin-scale-guide">
-                <li>① まったく気にならない</li>
-                <li>② 少し気になる</li>
-                <li>③ まあまあ気になる</li>
-                <li>④ かなり気になる</li>
-                <li>⑤ 答えを出せぬままでは帰れない</li>
-              </ul>
-            </div>
-
-            <div class="monshin-field">
-              <label class="q"><span class="qnum">Q7</span>自分の話をしていたはずが、いつの間にか他人の話にすり替わっていた経験</label>
-              <div class="monshin-choices">
-                <label><input type="radio" name="q7" value="心当たりがある">心当たりがある</label>
-                <label><input type="radio" name="q7" value="ない">ない</label>
-                <label><input type="radio" name="q7" value="考えたくない">考えたくない</label>
-              </div>
-            </div>
-          </div>
-
-          <h2>備考</h2>
-          <div class="monshin-panel">
-            <div class="monshin-field">
-              <label class="q"><span class="qnum">Q8</span>その他、記録しておきたいこと</label>
-              <textarea id="q8" placeholder="任意"></textarea>
-            </div>
-          </div>
-
-          <button type="submit" class="monshin-submit">確認する</button>
-        </form>
-
-        <div id="monshinResult">
-          <div class="monshin-result-panel">
-            <p class="rtag">RECORD COMPLETE</p>
-            <h3>記録を受け付けました</h3>
-
-            <div class="monshin-plan-notice">
-              <p class="plan-notice-title">通院プラン会員向けの受付です</p>
-              <p>
-                この問診票をnoteで送信できるのは、<strong>「キロクぬかクリニック通院プラン」(月額¥500)</strong>にご登録の方のみです。
-                未登録の方は、下記のコピー・送信は行わずにお戻りください。
-              </p>
-            </div>
-
-            <dl id="monshinSummary"></dl>
-
-            <div class="monshin-copy-block">
-              <button type="button" id="copyMonshinBtn" class="monshin-submit">問診票をコピーする</button>
-              <p id="copyStatus"></p>
-              <div class="monshin-action-row no-print">
-                <a href="https://note.com/messages/rooms" target="_blank" rel="noopener" id="noteLink"
-                  class="monshin-link-btn">noteメッセージを開く</a>
-                <button type="button" id="printMonshinBtn" class="monshin-link-btn">問診票を印刷する</button>
-              </div>
-            </div>
-
-            <p style="margin-top:20px; font-size:.82rem; color:var(--cl-text-sub);">
-              この記録は診断を確定するものではありません。気になる状態が続く場合は、
-              <a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a>までお越しください。
-            </p>
-          </div>
+    <form id="monshinForm">
+      <h2>基本情報</h2>
+      <div class="monshin-panel">
+        <div class="monshin-field">
+          <label class="q"><span class="qnum">Q1</span>お名前(記録名でも構いません)</label>
+          <input type="text" id="q1" placeholder="例:ｷﾞ:/rE-ﾌ^%a">
+        </div>
+        <div class="monshin-field">
+          <label class="q"><span class="qnum">Q2</span>本日、最も気になっていること</label>
+          <textarea id="q2" placeholder="うまく言葉にならない場合は、思いついた単語だけでも構いません"></textarea>
         </div>
       </div>
 
-      <aside class="sidebar monshin-sidebar">
-        <div class="sidebar-block">
-          <h2>関連情報</h2>
-          <ul>
-            <li><a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>
-            <li><a href="../facilities/kiroku-nuka-clinic-director.html">医師紹介</a></li>
-            <li><a href="../facilities/kiroku-nuka-clinic-kenkyu.html">研究資料</a></li>
-            <li><a href="../facilities/kiroku-nuka-clinic-archive.html">外来シリーズ 書庫</a></li>
-            <li><a href="../facilities/gendaibyo-db.html">現代病データベース</a></li>
-            <li><a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
+      <h2>状態の記録</h2>
+      <div class="monshin-panel">
+        <div class="monshin-field">
+          <label class="q"><span class="qnum">Q3</span>他人の何気ない一言を、後から何度も思い返してしまうことがある</label>
+          <div class="monshin-choices">
+            <label><input type="radio" name="q3" value="よくある">よくある</label>
+            <label><input type="radio" name="q3" value="たまにある">たまにある</label>
+            <label><input type="radio" name="q3" value="あまりない">あまりない</label>
+            <label><input type="radio" name="q3" value="わからない">わからない</label>
+          </div>
+        </div>
+
+        <div class="monshin-field">
+          <label class="q"><span class="qnum">Q4</span>「要するに何が言いたいの?」と、自分でも思ってしまう瞬間がある</label>
+          <div class="monshin-choices">
+            <label><input type="radio" name="q4" value="よくある">よくある</label>
+            <label><input type="radio" name="q4" value="たまにある">たまにある</label>
+            <label><input type="radio" name="q4" value="あまりない">あまりない</label>
+            <label><input type="radio" name="q4" value="わからない">わからない</label>
+          </div>
+        </div>
+
+        <div class="monshin-field">
+          <label class="q"><span class="qnum">Q5</span>語尾を伸ばしたり、間を埋める言葉が増えている自覚がある</label>
+          <div class="monshin-choices">
+            <label><input type="radio" name="q5" value="よくある">よくある</label>
+            <label><input type="radio" name="q5" value="たまにある">たまにある</label>
+            <label><input type="radio" name="q5" value="あまりない">あまりない</label>
+            <label><input type="radio" name="q5" value="わからない">わからない</label>
+          </div>
+        </div>
+
+        <div class="monshin-field">
+          <label class="q"><span class="qnum">Q6</span>「分かりやすい答え」がないと、落ち着かなくなる度合い</label>
+          <div class="monshin-scale">
+            <span style="font-family:var(--cl-mono); font-size:.78rem; color:var(--cl-text-sub);">低</span>
+            <input type="range" id="q6" min="0" max="10" value="5">
+            <span style="font-family:var(--cl-mono); font-size:.78rem; color:var(--cl-text-sub);">高</span>
+            <span class="monshin-scale-val" id="q6val">5</span>
+          </div>
+          <ul class="monshin-scale-guide">
+            <li>① まったく気にならない</li>
+            <li>② 少し気になる</li>
+            <li>③ まあまあ気になる</li>
+            <li>④ かなり気になる</li>
+            <li>⑤ 答えを出せぬままでは帰れない</li>
           </ul>
         </div>
-      </aside>
+
+        <div class="monshin-field">
+          <label class="q"><span class="qnum">Q7</span>自分の話をしていたはずが、いつの間にか他人の話にすり替わっていた経験</label>
+          <div class="monshin-choices">
+            <label><input type="radio" name="q7" value="心当たりがある">心当たりがある</label>
+            <label><input type="radio" name="q7" value="ない">ない</label>
+            <label><input type="radio" name="q7" value="考えたくない">考えたくない</label>
+          </div>
+        </div>
+      </div>
+
+      <h2>備考</h2>
+      <div class="monshin-panel">
+        <div class="monshin-field">
+          <label class="q"><span class="qnum">Q8</span>その他、記録しておきたいこと</label>
+          <textarea id="q8" placeholder="任意"></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="monshin-submit">確認する</button>
+    </form>
+
+    <div id="monshinResult">
+      <div class="monshin-result-panel">
+        <p class="rtag">RECORD COMPLETE</p>
+        <h3>記録を受け付けました</h3>
+
+        <div class="monshin-plan-notice">
+          <p class="plan-notice-title">通院プラン会員向けの受付です</p>
+          <p>
+            この問診票をnoteで送信できるのは、<strong>「キロクぬかクリニック通院プラン」(月額¥500)</strong>にご登録の方のみです。
+            未登録の方は、下記のコピー・送信は行わずにお戻りください。
+          </p>
+        </div>
+
+        <dl id="monshinSummary"></dl>
+
+        <div class="monshin-copy-block">
+          <button type="button" id="copyMonshinBtn" class="monshin-submit">問診票をコピーする</button>
+          <p id="copyStatus"></p>
+          <div class="monshin-action-row no-print">
+            <a href="https://note.com/messages/rooms" target="_blank" rel="noopener" id="noteLink"
+              class="monshin-link-btn">noteメッセージを開く</a>
+            <button type="button" id="printMonshinBtn" class="monshin-link-btn">問診票を印刷する</button>
+          </div>
+        </div>
+
+        <p style="margin-top:20px; font-size:.82rem; color:var(--cl-text-sub);">
+          この記録は診断を確定するものではありません。気になる状態が続く場合は、
+          <a href="../facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a>までお越しください。
+        </p>
+      </div>
     </div>
+
+    <h2>その他の関連情報</h2>
+    <ul class="clinic-linklist">
+      <li><a href="../about/gendaibyo-uranai.html">今日のラッキー現代病占い</a></li>
+    </ul>
   </main>
+
+  <footer class="clinic-footer">
+    <p>KIROKU-NUKA CLINIC</p>
+    <p><a href="../index.html">ピコぬ市公式サイトへ戻る</a></p>
+  </footer>
 
   <script>
     var form = document.getElementById("monshinForm");
@@ -684,15 +761,6 @@
     });
   </script>
 
-  <script>window.PAGE_META = {
-      nav: "services", breadcrumb: [
-        {label: "ホーム", href: "../index.html"},
-        {label: "施設案内", href: "../facilities/index.html"},
-        {label: "キロクぬかクリニック", href: "../facilities/kiroku-nuka-clinic.html"},
-        {label: "問診表"}
-      ]
-    };</script>
-  <script src="../js/common.js"></script>
 </body>
 
 </html>
