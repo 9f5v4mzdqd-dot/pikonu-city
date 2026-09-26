@@ -11,7 +11,7 @@
 
 -----------
 
-## 2026-09-25〜26
+## 2026-09-25（2）
 ---
 ### 変更
 - `facilities/kiroku-nuka-clinic.html`・`facilities/kiroku-nuka-clinic-director.html`・`facilities/kiroku-nuka-clinic-kenkyu.html`・`facilities/shinryo-kamoku.html`・`facilities/gendaibyo-db.html`・`services/kiroku-nuka-monshinhyo.html`:キロクぬかクリニック関連6ページを、共通ヘッダー・パンくず・共通フッター・共通サイドバー・2カラムレイアウトを使わない独立サイト仕様に変更。クリニック家族ページ間の専用ナビゲーションを新設。ダーク背景・ミントグリーン・M PLUS 1 Code等の独自デザインは維持
@@ -20,6 +20,17 @@
 - `images/facilities/kiroku-nuka-clinic.jpg`・`images/facilities/shiyakusho.jpg`:画像を差し替え
 ---
 
+## 2026-09-25（1）
+---
+### 追加
+- `facilities/shiyakusho-floor.html`:1階〜5階それぞれにSVGによるフロアマップ(フロアマップジェネレーターで作成)を追加。各課へのリンク付き
+- `facilities/toshokan.html`:「図書館の建物について」のフロアマップ(SVG)にクリックで拡大表示する機能(ライトボックス)を追加
+- `about/cable-tv.html`:「週間番組表」をSVGによる番組表に置き換え。番組名クリックで「番組紹介」内の該当する説明までスクロール・ハイライトする機能を追加
+
+### 変更
+- `facilities/shiyakusho-floor.html`:各階セクション(`floor-card`)の間に余白を追加
+- `about/cable-tv.html`:従来のHTML表(`info-table`)による週間番組表を削除
+---
 ## 2026-09-24（2）
 ---
 ### 追加
