@@ -11,6 +11,15 @@
 
 -----------
 
+## 2026-09-25〜26
+---
+### 変更
+- `facilities/kiroku-nuka-clinic.html`・`facilities/kiroku-nuka-clinic-director.html`・`facilities/kiroku-nuka-clinic-kenkyu.html`・`facilities/shinryo-kamoku.html`・`facilities/gendaibyo-db.html`・`services/kiroku-nuka-monshinhyo.html`:キロクぬかクリニック関連6ページを、共通ヘッダー・パンくず・共通フッター・共通サイドバー・2カラムレイアウトを使わない独立サイト仕様に変更。クリニック家族ページ間の専用ナビゲーションを新設。ダーク背景・ミントグリーン・M PLUS 1 Code等の独自デザインは維持
+- `facilities/kiroku-nuka-clinic.html`:マップ(SVG)を追加。枠線・サイズ・中央寄せ・右端の線消え等を調整
+- `data/gairai-archive.json`:外来シリーズ書庫に新規2作品(【創作ショートショート】「さねのこうじ 恒一」別バージョン・ブラックホールとカニカマ)を追加
+- `images/facilities/kiroku-nuka-clinic.jpg`・`images/facilities/shiyakusho.jpg`:画像を差し替え
+---
+
 ## 2026-09-24（2）
 ---
 ### 追加
