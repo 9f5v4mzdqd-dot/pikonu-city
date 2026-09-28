@@ -68,6 +68,7 @@
     main.innerHTML = '<div class="box"><h2>当サイトについて</h2>' +
       '<div class="body"><p>ピコぬ新聞社は、ピコぬ市内のささやかな出来事を1999年からお伝えしている個人ニュースサイトです。</p>' +
       '<p>リンクはご自由にどうぞ。ニュースのタレコミ、キリ番のご報告は掲示板(準備中)までお願いします。</p>' +
+      '<p>リンクバナー(88×31)：<br><img src="images/banner.gif" width="88" height="31" alt="ピコぬ新聞社"></p>' +
       '<p class="admin">更新は気が向いたときに行います。</p></div>' +
       '<p class="back"><a href="#">[トップへ戻る]</a></p></div>';
   }
@@ -100,7 +101,7 @@
   }
 
   function initMood() {
-    var moods = ['Very Nu.', 'Slightly Nu.', 'Nu... probably.', 'Not Nu today.', 'Nu Nu Nu!', 'Nu? Nu.', 'とてもぬ'];
+    var moods = ['Very Nu.', 'Slightly Nu.', 'Nu... probably.', 'Not Nu today.', 'Nu Nu Nu!'];
     document.getElementById('nu-mood').textContent = moods[Math.floor(Math.random() * moods.length)];
   }
 
