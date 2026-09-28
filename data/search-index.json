@@ -60,6 +60,11 @@
     "category": "施設案内"
   },
   {
+    "title": "キロクぬかクリニック(入口)",
+    "url": "facilities/kiroku-nuka-clinic-top.html",
+    "category": "施設案内"
+  },
+  {
     "title": "キロクぬかクリニック",
     "url": "facilities/kiroku-nuka-clinic.html",
     "category": "施設案内"
@@ -99,10 +104,10 @@
     "url": "facilities/shiyakusho-floor.html",
     "category": "施設案内"
   },
-  { 
+  {
     "title": "駐車場・駐輪場のご案内",
-   "url": "facilities/shiyakusho-parking.html", 
-   "category": "施設案内" 
+    "url": "facilities/shiyakusho-parking.html",
+    "category": "施設案内"
   },
   {
     "title": "市民課",
@@ -409,7 +414,7 @@
     "url": "facilities/koutsukyoku-stations.html",
     "category": "施設案内"
   },
-   {
+  {
     "title": "放置自転車の撤去・返還手続きについて",
     "url": "facilities/koutsukyoku-bicycle.html",
     "category": "施設案内"

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>キロクぬかクリニック | 入口</title>
+  <meta name="description" content="ピコぬ市立医療センター、キロクぬかクリニックの入口ページです。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&family=M+PLUS+1+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --cl-bg: #0b0e14;
+      --cl-panel: #101720;
+      --cl-panel-2: #0e1420;
+      --cl-accent: #3cffdc;
+      --cl-accent-dim: #1f9c8a;
+      --cl-text: #d7ece9;
+      --cl-text-sub: #8fa8a4;
+      --cl-border: #22383a;
+
+      --cl-mono: "M PLUS 1 Code", "SFMono-Regular", Consolas, monospace;
+      --cl-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
+      --cl-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px;
+      background: var(--cl-bg);
+      color: var(--cl-text);
+      font-family: var(--cl-sans);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .entrance {
+      width: min(760px, 100%);
+      text-align: center;
+    }
+
+    .title {
+      margin: 0 0 8px;
+      color: var(--cl-accent);
+      font-family: var(--cl-mincho);
+      font-size: 1.7rem;
+      font-weight: normal;
+      letter-spacing: 0.08em;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      color: var(--cl-text-sub);
+      font-family: var(--cl-mono);
+      font-size: 0.85rem;
+    }
+
+    .door {
+      width: min(260px, 65vw);
+      margin: 0 auto 28px;
+    }
+
+    .door a {
+      display: block;
+    }
+
+    .door a:hover .door-frame,
+    .door a:focus-visible .door-frame {
+      stroke: var(--cl-accent-dim);
+    }
+
+    .description {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      padding: 20px 24px;
+      background: var(--cl-panel);
+      border: 1px solid var(--cl-border);
+      text-align: left;
+      font-family: var(--cl-sans);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .description a {
+      color: var(--cl-accent);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .actions a {
+      display: inline-block;
+      min-width: 180px;
+      padding: 12px 20px;
+      border: 1px solid var(--cl-border);
+      background: var(--cl-panel-2);
+      color: var(--cl-text);
+      font-family: var(--cl-mono);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .actions a:hover {
+      border-color: var(--cl-accent);
+      color: var(--cl-accent);
+    }
+
+    .actions a.enter {
+      border-color: var(--cl-accent-dim);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 18px;
+      }
+
+      .title {
+        font-size: 1.35rem;
+      }
+
+      .description {
+        padding: 16px;
+        font-size: 0.9rem;
+      }
+
+      .actions a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="entrance">
+
+    <h1 class="title">キロクぬかクリニック</h1>
+
+    <p class="subtitle">ピコぬ市立医療センター</p>
+
+    <!-- 入口ドア -->
+    <div class="door">
+      <a href="kiroku-nuka-clinic.html" aria-label="クリニックに入る">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="キロクぬかクリニックの入口ドア">
+
+          <!-- ドア -->
+          <rect class="door-frame" x="45" y="20" width="210" height="360" rx="4" fill="#101720" stroke="#22383a"
+            stroke-width="8" />
+
+          <!-- 小窓 -->
+          <rect x="72" y="50" width="156" height="125" fill="#0e1420" stroke="#3cffdc" stroke-width="5" />
+
+
+
+          <!-- ドアノブ -->
+          <circle cx="210" cy="220" r="8" fill="#3cffdc" />
+
+          <!-- 下部ライン -->
+          <line x1="75" y1="330" x2="225" y2="330" stroke="#22383a" stroke-width="5" />
+        </svg>
+      </a>
+    </div>
+
+    <section class="description">
+      現在の待ち時間:記録されていません。<br>
+      お呼びするまで、<a href="../services/kiroku-nuka-monshinhyo.html">問診表</a>を記入してお待ちください。
+    </section>
+
+    <nav class="actions" aria-label="入口メニュー">
+      <a href="index.html">市の施設へ戻る</a>
+
+    </nav>
+
+  </main>
+
+</body>
+
+</html>
