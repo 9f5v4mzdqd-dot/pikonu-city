@@ -174,7 +174,7 @@
       '<a href="' + BASE + 'game/negi-game.html"><img src="' + BASE + 'images/banners/banner-negi-game.jpg" alt="ネギ盛り限界チャレンジ！カタブツ職員に見つかる前にネギをたくさん盛ろう！"></a>' +
       '<a href="' + BASE + 'about/neko-game.html"><img src="' + BASE + 'images/banners/banner-neko-game.jpg" alt="ピコぬ市 Ifシミュレーション 宝くじと猫と、世界経済の終焉 遊んでみる"></a>' +
       '<a href="' + BASE + 'about/gendaibyo-soudan-game.html"><img src="' + BASE + 'images/banners/banner-gendaibyo-sodan-game.jpg" alt="現代病相談窓口記録ファイル ファイルを見る"></a>' +
-      '<a href="' + BASE + 'about/fm-piconu.html"><img src="' + BASE + 'images/banners/banner-fm-piconu.jpg" alt="FMピコぬ「ピックアップ!ピコぬ市ラジオ」 P-800型ピコぬくんがお届けする市政広報ラジオ番組"></a>' +
+      '<a href="' + BASE + 'pikonu-shimbun/index.html"><img src="' + BASE + 'images/banners/pikonu-shimbun-banner.jpg" alt="ピコぬ新聞社 たぶん必要なニュース"></a>' +
       "</div></div>";
 
     var footerHtml =
