@@ -1,67 +1,90 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ピコぬ新聞社 - The News You (Maybe) Need</title>
-<meta name="description" content="ピコぬ新聞社公式ホームページ since 1999。ピコぬ市のささやかなニュースをお届けします。">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ピコぬ新聞社 - The News You (Maybe) Need</title>
+  <meta name="description" content="ピコぬ新聞社公式ホームページ since 1999。ピコぬ市のささやかなニュースをお届けします。">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div id="wrap">
+  <div id="wrap">
 
-  <table class="header" summary="ヘッダー">
-    <tr>
-      <td class="logo-cell">
-        <a href="#" class="logo" aria-label="ピコぬ新聞社 トップへ">
-          <span class="c1">ピ</span><span class="c2">コ</span><span class="c3">ぬ</span><span class="c4">新</span><span class="c5">聞</span><span class="c6">社</span>
-        </a>
-        <span class="icon-slot"><img src="p-icon-001.png" alt="ピコぬ" width="64" height="64" onerror="this.style.display='none'"></span>
-      </td>
-      <td class="catch-cell">
-        Welcome to the official homepage of Pikonu News Agency!<br>
-        ピコぬ新聞社公式ホームページへようこそ！ since 1999<br>
-        <span class="counter-label">Visitor No.</span> <span id="counter" class="counter">000000</span>
-        <span class="counter-note">(キリ番報告待ってます!)</span>
-      </td>
-    </tr>
-  </table>
+    <table class="header" summary="ヘッダー">
+      <tr>
+        <td class="logo-cell">
+          <a href="#" class="logo" aria-label="ピコぬ新聞社 トップへ">
+            <span class="c1">ピ</span><span class="c2">コ</span><span class="c3">ぬ</span><span class="c4">新</span><span
+              class="c5">聞</span><span class="c6">社</span>
+          </a>
+          <span class="icon-slot"><img src="p-icon-001.png" alt="ピコぬ" width="64" height="64"
+              onerror="this.style.display='none'"></span>
+        </td>
+        <td class="catch-cell">
+          Welcome to the official homepage of Pikonu News Agency!<br>
+          ピコぬ新聞社公式ホームページへようこそ！ since 1999<br>
+          <span class="counter-label">Visitor No.</span> <span id="counter" class="counter">000000</span>
+          <span class="counter-note">(キリ番報告待ってます!)</span>
+        </td>
+      </tr>
+    </table>
 
-  <div class="ticker"><span class="new n1">NEW</span> <span class="new n2">NEW</span> <span id="ticker-text">Updates: Articles page updated! Local map added... Wait, did it update?</span></div>
+    <div class="ticker"><span class="new n1">NEW</span> <span class="new n2">NEW</span> <span id="ticker-text">Updates:
+        Articles page updated! Local map added... Wait, did it update?</span></div>
 
-  <table class="layout" summary="本文レイアウト">
-    <tr>
-      <td class="main-cell" id="main" role="main" aria-live="polite">
-        <p>読み込み中です...</p>
-      </td>
-      <td class="side-cell">
-        <div class="side-box"><a class="linkfree" href="#about">リンクフリー!</a></div>
-        <div class="side-box">
-          <div class="side-title">メニュー</div>
-          <ul class="menu">
-            <li><a href="#">[Archives]</a></li>
-            <li><a href="#log">[過去ログ]</a></li>
-            <li><a href="#about">[ニュースタレコミ]</a></li>
-            <li><a href="#about">[掲示板/キリ番報告]</a></li>
-            <li><a href="#about">[当サイトについて]</a></li>
-          </ul>
-        </div>
-        <div class="side-box">
-          <div class="side-title">ぬ情報</div>
-          <div class="nu-info">
-            <span class="icon-slot small"><img src="p-icon-001.png" alt="" width="32" height="32" onerror="this.style.display='none'"></span>
-            Today's Nu Mood:<br><span id="nu-mood">Very Nu.</span>
+    <table class="layout" summary="本文レイアウト">
+      <tr>
+        <td class="main-cell" id="main" role="main" aria-live="polite">
+          <p>読み込み中です...</p>
+        </td>
+        <td class="side-cell">
+          <div class="side-box"><a class="linkfree" href="#about">リンクフリー!</a></div>
+          <div class="side-box">
+            <div class="side-title">メニュー</div>
+            <ul class="menu">
+              <li><a href="#">[Archives]</a></li>
+              <li><a href="#log">[過去ログ]</a></li>
+              <li><a href="#about">[ニュースタレコミ]</a></li>
+              <li><a href="#about">[掲示板/キリ番報告]</a></li>
+              <li><a href="#about">[当サイトについて]</a></li>
+            </ul>
           </div>
-        </div>
-      </td>
-    </tr>
-  </table>
+          <div class="side-box">
+            <div class="side-title">ぬ情報</div>
+            <div class="nu-info">
+              <span class="icon-slot small"><img src="p-icon-001.png" alt="" width="32" height="32"
+                  onerror="this.style.display='none'"></span>
+              Today's Nu Mood:<br><span id="nu-mood">Very Nu.</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
 
-  <p class="recommend">[Internet Explorer 5.5以上推奨]</p>
-  <p class="fund"><span>ピコぬ保護基金 - 募金お願いします!</span></p>
-  <p class="footer">(C) 1999-2001 ピコぬ新聞社 / 転載・リンクはご自由にどうぞ(事後報告不要)</p>
+    <p class="recommend">[Internet Explorer 5.5以上推奨]</p>
+    <div class="banners">
+      <a class="banner b1" href="#about"><span class="b-icon" aria-hidden="true">📢</span><span
+          class="b-text"><strong>広告募集中！</strong>ピコぬ新聞社では広告を募集しています</span></a>
+      <div class="banner b2"><span class="b-icon" aria-hidden="true">🍞</span><span
+          class="b-text"><strong>ピコぬ堂</strong>焼きたてパンあります</span></div>
+      <a class="banner b3" href="../facilities/toshokan.html"><span class="b-icon" aria-hidden="true">📚</span><span
+          class="b-text"><strong>ピコぬ市立図書館</strong>本を借りよう</span></a>
+      <div class="banner b4"><span class="b-icon" aria-hidden="true">🖋️</span><span
+          class="b-text"><strong>ぬかばな文具店</strong>ボールペン 1本 80円</span></div>
+      <a class="banner b5" href="../facilities/koutsukyoku.html"><span class="b-icon" aria-hidden="true">🚲</span><span
+          class="b-text"><strong>ピコぬ市交通局</strong>自転車は決められた場所へ</span></a>
+      <div class="banner b6"><span class="b-icon" aria-hidden="true">🗃️</span><span
+          class="b-text"><strong>公文書館</strong>記録を保存しています</span></div>
+      <div class="banner b7"><span class="b-icon" aria-hidden="true">🍵</span><span
+          class="b-text"><strong>謎の自販機</strong>100円　何が出るかはお楽しみ</span></div>
+      <div class="banner b8"><span class="b-icon" aria-hidden="true">🐦</span><span
+          class="b-text"><strong>ぴこぬどり保護基金</strong>ご協力お願いします</span></div>
+    </div>
 
-</div>
-<script src="app.js"></script>
+  </div>
+  <script src="app.js"></script>
 </body>
+
 </html>
