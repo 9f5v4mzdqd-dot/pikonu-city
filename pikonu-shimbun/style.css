@@ -1,0 +1,80 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 8px;
+  background: #c0c0c0;
+  color: #000;
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Osaka", sans-serif;
+  font-size: 14px; line-height: 1.6;
+}
+a:link { color: #0000ff; }
+a:visited { color: #800080; }
+a:hover { color: #ff0000; }
+a:focus-visible { outline: 2px dotted #000; outline-offset: 2px; }
+#wrap { max-width: 980px; margin: 0 auto; }
+table { border-collapse: collapse; width: 100%; }
+td { vertical-align: top; }
+
+/* header */
+.header td { padding: 6px 4px; vertical-align: middle; }
+.logo-cell { width: 55%; }
+.logo { text-decoration: none; font-size: 46px; font-weight: bold; letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; }
+.c1 { color: #ff0000; } .c2 { color: #00cc00; } .c3 { color: #ffff00; }
+.c4 { color: #00ccff; } .c5 { color: #3366ff; } .c6 { color: #cc33cc; }
+.icon-slot { display: inline-block; width: 64px; height: 64px; vertical-align: middle; margin-left: 8px; }
+.icon-slot.small { width: 32px; height: 32px; margin: 0 6px 0 0; }
+.icon-slot img { image-rendering: pixelated; }
+.catch-cell { text-align: right; font-size: 15px; }
+.counter-label { font-size: 18px; }
+.counter { display: inline-block; background: #000; color: #fff; font-family: "Courier New", monospace;
+  font-size: 20px; letter-spacing: 3px; padding: 0 4px; }
+.counter-note { background: #000; color: #fff; font-size: 12px; padding: 1px 4px; }
+
+/* ticker */
+.ticker { background: #f0f0f0; border: 2px solid #000080; outline: 1px solid #fff; padding: 4px 8px; margin: 6px 0; }
+.new { font-weight: bold; padding: 0 4px; font-size: 13px; }
+.n1 { background: #ffff00; color: #ff0000; } .n2 { background: #3333cc; color: #fff; }
+
+/* layout */
+.layout td { padding: 0; }
+.main-cell { width: 78%; padding-right: 10px !important; }
+.side-cell { width: 22%; min-width: 150px; }
+.box, .side-box { background: #f0f0f0; border: 3px double #000080; margin-bottom: 8px; }
+.box { padding: 8px 10px; }
+.box h2 { margin: 0 0 4px; font-size: 18px; }
+.box h2 .tag { color: #ff0000; }
+.box h2 a { color: #000080; }
+.box .en { color: #000080; font-weight: bold; }
+.meta { font-size: 12px; color: #555; }
+.list-frame { background: #f0f0f0; border: 1px solid #000; padding: 6px; margin-bottom: 8px; }
+.list-frame .box { margin-bottom: 6px; }
+.thumb { float: left; margin: 4px 10px 4px 0; border: 1px solid #000; width: 145px; height: 105px; object-fit: cover; background: #999; }
+.body p { margin: 0.6em 0; }
+.clear { clear: both; }
+.admin { color: #008000; margin: 6px 0 0; }
+.admin::before { content: "管理人コメント: "; font-weight: bold; }
+.back { margin-top: 10px; }
+.pager { display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; font-size: 13px; }
+.log-list { margin: 0; padding-left: 1.4em; }
+
+/* sidebar */
+.linkfree { display: block; padding: 6px; text-align: center; font-weight: bold; font-size: 17px; color: #fff !important; background: #000080; text-decoration: none; }
+.side-box { border-width: 3px; }
+.side-title { background: #000080; color: #fff; text-align: center; font-weight: bold; font-size: 17px; padding: 3px; }
+.menu { list-style: none; margin: 0; padding: 6px 8px; }
+.menu li { line-height: 1.7; }
+.nu-info { padding: 8px; font-size: 12px; }
+
+.recommend { text-align: center; color: #000080; margin: 12px 0 4px; }
+.fund { text-align: center; margin: 4px 0; }
+.fund span { display: inline-block; background: #000; color: #ffee00; border: 3px solid #f00; font-size: 22px; padding: 4px 16px; }
+.footer { text-align: center; font-size: 12px; color: #444; }
+
+@media (max-width: 700px) {
+  .header, .header tbody, .header tr, .header td,
+  .layout, .layout tbody, .layout tr, .layout td { display: block; width: 100%; }
+  .catch-cell { text-align: left; }
+  .logo { font-size: 34px; }
+  .main-cell { padding-right: 0 !important; }
+  .fund span { font-size: 16px; }
+}

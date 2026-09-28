@@ -1,0 +1,48 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "date": "2001-10-15",
+      "category": "Special",
+      "categoryJa": "特集",
+      "titleEn": "1st Issue Special: A Humble Start!",
+      "title": "創刊号：つつましく開始！",
+      "summary": "ピコぬ新聞社、ここに創刊。まずは3本立てでお届けします。",
+      "body": [
+        "本日、ピコぬ新聞社は創刊号をお届けします。取材班は管理人1名、カメラは使い捨て1台です。",
+        "今後は週に1回程度、気が向いたときに更新します。ご意見・タレコミはお気軽にどうぞ。"
+      ],
+      "adminComment": "ついに始めてしまいました。生温かく見守ってください。"
+    },
+    {
+      "id": 2,
+      "date": "2001-10-15",
+      "category": "News",
+      "categoryJa": "ニュース",
+      "titleEn": "Local Pikonu Nu Population Sees Modest Increase (A Humble Victory)",
+      "title": "地元のピコぬ生息数が微増（ささやかな勝利）",
+      "summary": "市内の溝周辺で確認されたピコぬの数が、前回調査より3匹増えました。",
+      "image": "images/nu-001.jpg",
+      "imageAlt": "岩の上のピコぬ",
+      "body": [
+        "管理人が独自に行った目視調査の結果、市内の溝周辺で確認されたピコぬの数が前回より3匹増加しました。",
+        "増えた理由は不明です。少なくとも管理人は何もしていません。"
+      ],
+      "adminComment": "いいニュースですが、増えたのは3匹だけです。まあ、この調子でいきましょう。(笑)"
+    },
+    {
+      "id": 3,
+      "date": "2001-10-15",
+      "category": "Column",
+      "categoryJa": "コラム",
+      "titleEn": "The Unnoticed Wonders of Pikonu Ditch Algae",
+      "title": "ピコぬ溝藻の知られざる驚異",
+      "summary": "誰も注目しない溝の藻類について、管理人が3時間ほど観察しました。",
+      "body": [
+        "ピコぬ市の溝には、緑色の藻がひっそりと生えています。誰も気にしませんが、確実にそこにあります。",
+        "観察の結果、藻は昨日より少し伸びていました。以上です。"
+      ],
+      "adminComment": "3時間見ていたら、日が暮れました。"
+    }
+  ]
+}
