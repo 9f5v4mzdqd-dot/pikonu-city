@@ -187,7 +187,7 @@
       '<li><a href="' + BASE + 'services/gendaibyo-sodan.html">現代病相談</a></li>' +
       "</ul></div>" +
       "<div><h2>施設案内</h2><ul>" +
-      '<li><a href="' + BASE + 'facilities/kiroku-nuka-clinic.html">キロクぬかクリニック</a></li>' +
+      '<li><a href="' + BASE + 'facilities/kiroku-nuka-clinic-top.html">キロクぬかクリニック</a></li>' +
       '<li><a href="' + BASE + 'facilities/nukapiko-museum.html">ぬかピコ民芸博物館</a></li>' +
       '<li><a href="' + BASE + 'facilities/shiyakusho.html">市役所</a></li>' +
       '<li><a href="' + BASE + 'facilities/toshokan.html">市立図書館</a></li>' +
