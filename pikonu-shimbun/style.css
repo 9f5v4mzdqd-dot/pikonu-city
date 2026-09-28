@@ -409,6 +409,19 @@ a.banner:hover {
   background: #ffffcc;
 }
 
+.banners-s {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.banners-s img {
+  display: block;
+  border: 0;
+}
+
 @media (max-width: 700px) {
 
   .header,
