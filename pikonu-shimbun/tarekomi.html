@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ニュース・情報タレコミ窓口 - ピコぬ新聞社</title>
+<style>
+body {
+  background-color: #f0f0f0;
+  color: #000;
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 15px;
+}
+
+/* 枠組み */
+.container {
+  width: 580px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 14px;
+  background-color: #000080;
+  color: #fff;
+  padding: 4px 8px;
+  margin: 0 0 10px 0;
+}
+
+.notice-box {
+  border: 1px dashed #666;
+  background-color: #ffffcc;
+  padding: 8px;
+  margin-bottom: 12px;
+  font-size: 11px;
+}
+
+/* 入力フォームテーブル */
+table.form-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #999;
+}
+
+table.form-table th {
+  width: 130px;
+  background-color: #e0e0e0;
+  border: 1px solid #999;
+  padding: 5px;
+  text-align: left;
+  vertical-align: top;
+  font-weight: normal;
+}
+
+table.form-table td {
+  border: 1px solid #999;
+  padding: 5px;
+  background-color: #fff;
+}
+
+input[type="text"], textarea, select {
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 12px;
+  border: 1px solid #666;
+}
+
+.input-full {
+  width: 95%;
+}
+
+.btn-submit {
+  margin-top: 10px;
+  padding: 3px 15px;
+  background-color: #e0e0e0;
+  border: 2px outset #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn-submit:active {
+  border-style: inset;
+}
+
+.footer-links {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 11px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>■ ニュース・情報タレコミ受付窓口</h1>
+
+  <div class="notice-box">
+    <b>【タレコミに関するご注意】</b><br>
+    ・ピコぬ市内に関する情報であれば、大小問わず受付けております。<br>
+    ・お寄せいただいた情報は、編集部の判断および<b>紙面の空き具合</b>により掲載されます。<br>
+    ・取材謝礼・原稿料等はお支払いできません。<br>
+    ・匿名の情報提供につきましては、原則として裏付け取材を行いません。
+  </div>
+
+  <!-- 送信ボタンを押すと「tarekomi-thanks.html」にジャンプするだけ -->
+  <form action="tarekomi-thanks.html" method="get">
+    <table class="form-table">
+      <tr>
+        <th>お名前（ハンドル名可）</th>
+        <td><input type="text" name="name" class="input-full" value="匿名"></td>
+      </tr>
+      <tr>
+        <th>連絡先（メールアドレス等）</th>
+        <td><input type="text" name="contact" class="input-full"><br><span style="font-size: 10px; color: #666;">※原則として編集部からの返信はありません</span></td>
+      </tr>
+      <tr>
+        <th>発生場所（地区）</th>
+        <td>
+          <select name="area">
+            <option>ピコぬ市 全域</option>
+            <option>駅前周辺</option>
+            <option>市役所付近</option>
+            <option>住宅街・路地裏</option>
+            <option>その他・不明</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>タレコミ内容 <span style="color:red;">*</span></th>
+        <td>
+          <textarea name="body" rows="6" class="input-full" required></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th>参考画像添付</th>
+        <td>
+          <input type="file" disabled><br>
+          <span style="font-size: 10px; color: #888;">※現在、サーバーの容量制限のため画像添付機能は停止中です。</span>
+        </td>
+      </tr>
+    </table>
+
+    <div style="text-align: center;">
+      <input type="submit" class="btn-submit" value="タレコミを送信する">
+    </div>
+  </form>
+
+  <div class="footer-links">
+    [ <a href="index.html">ピコぬ新聞社トップへ戻る</a> ]
+  </div>
+</div>
+
+</body>
+</html>
