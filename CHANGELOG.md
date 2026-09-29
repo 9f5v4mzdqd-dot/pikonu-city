@@ -11,6 +11,19 @@
 
 -----------
 
+## 2026-09-28
+---
+### 追加
+- `pikonu-shimbun/`:新規サイト「ピコぬ新聞社」(`index.html`・`app.js`・`style.css`・`data/articles.json`)を新設。記事の追加・バナーメーカー(`banner-maker.html`)・点滅バナー(ぴこぬどり基金)を実装
+- `js/common.js`・`images/banners/pikonu-shimbun-banner.jpg`:全ページ共通フッターのバナー群に「ピコぬ新聞社」を追加
+- `facilities/kiroku-nuka-clinic-top.html`:キロクぬかクリニック「入口」ページを新設。ドアのSVGに「PUSH」の表示を追加、見出しを「入口」から「entrance」表記に修正
+
+### 変更
+- 市サイト側の各ページ(`index.html`・`facilities/index.html`・`facilities/fukushika.html`・`facilities/gendaibyo-db.html`・`facilities/jikan-koritsu-shien-ka.html`・`facilities/shinryo-kamoku.html`・`facilities/shiyakusho.html`・`facilities/syokudo.html`・`facilities/kiroku-nuka-clinic-archive.html`・`js/common.js`・`about/faq.html`・`about/gendaibyo-soudan-game.html`・`about/gendaibyo-uranai.html`・`about/gyousei-kiroku-01.html`・`about/jorei-gendaibyo.html`・`about/jusho-ichiran.html`・`about/mayoigo.html`・`about/telephone.html`・`news/news-20260620-01.html`・`news/news-20260710-01.html`・`services/gendaibyo-sodan.html`):キロクぬかクリニックへのリンク先を、本体(`kiroku-nuka-clinic.html`)から入口ページ(`kiroku-nuka-clinic-top.html`)に付け替え。クリニック家族ページ間の導線は変更なし
+- `about/sitemap.html`・`data/search-index.json`:「キロクぬかクリニック(入口)」を追加
+- `IDEAS.md`:ピコぬ新聞に関するアイデアを追記
+---
+
 ## 2026-09-25（2）
 ---
 ### 変更
