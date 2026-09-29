@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ピコぬ市民掲示板 & キリ番報告処 - ピコぬ新聞社</title>
+<style>
+body {
+  background-color: #333333;
+  color: #ffffff;
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 15px;
+}
+
+a { color: #00ffff; }
+a:visited { color: #cc99ff; }
+
+.container {
+  width: 620px;
+  margin: 0 auto;
+  background-color: #222222;
+  border: 2px ridge #999999;
+  padding: 12px;
+}
+
+h1 {
+  font-size: 15px;
+  color: #ffff00;
+  border-bottom: 1px dashed #ffff00;
+  padding-bottom: 4px;
+  margin-top: 0;
+}
+
+.rule-box {
+  background-color: #111111;
+  border: 1px solid #666666;
+  padding: 8px;
+  font-size: 11px;
+  color: #cccccc;
+  margin-bottom: 15px;
+}
+
+/* 投稿フォームエリア */
+.form-area {
+  background-color: #2b2b2b;
+  border: 1px solid #555555;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.form-table {
+  width: 100%;
+}
+
+.form-table td {
+  padding: 3px;
+  font-size: 12px;
+}
+
+input[type="text"], textarea {
+  background-color: #000000;
+  color: #00ff00;
+  border: 1px solid #666666;
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 12px;
+}
+
+.btn-post {
+  background-color: #444444;
+  color: #ffffff;
+  border: 2px outset #777777;
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+.btn-post:active {
+  border-style: inset;
+}
+
+/* ログ表示エリア */
+.post-entry {
+  background-color: #1a1a1a;
+  border: 1px solid #444444;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+
+.post-header {
+  color: #00ffff;
+  font-weight: bold;
+  border-bottom: 1px dotted #444444;
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+}
+
+.post-num { color: #ff9900; }
+.post-name { color: #ffffff; }
+.post-date { color: #888888; font-weight: normal; font-size: 10px; }
+
+.post-body {
+  color: #dddddd;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.admin-res {
+  margin-top: 6px;
+  padding: 4px 6px;
+  background-color: #2a2200;
+  border-left: 3px solid #ffff00;
+  color: #ffffaa;
+  font-size: 11px;
+}
+
+.footer-links {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 11px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>■ ピコぬ市民掲示板 & キリ番報告処</h1>
+
+  <div class="rule-box">
+    <b>【掲示板利用ルール】</b><br>
+    ・キリ番（1000, 7777, 10000等）を踏んだ方は報告してください（踏み逃げ厳禁）。<br>
+    ・誹謗中傷、商用告知、実在しない自治体に関するデマの投稿は禁止します。<br>
+    ・管理人判断により予告なく投稿データが消去される場合があります。
+  </div>
+
+  <!-- 投稿フォーム（押すとエラー画面へ） -->
+  <div class="form-area">
+    <form action="bbs-error.html" method="get">
+      <table class="form-table">
+        <tr>
+          <td width="80">お名前：</td>
+          <td><input type="text" name="name" size="20" value="名無しぬ"></td>
+        </tr>
+        <tr>
+          <td>題名：</td>
+          <td><input type="text" name="title" size="35"></td>
+        </tr>
+        <tr>
+          <td valign="top">コメント：</td>
+          <td><textarea name="message" rows="3" cols="45"></textarea></td>
+        </tr>
+        <tr>
+          <td>削除キー：</td>
+          <td><input type="text" name="pass" size="8"> <span style="font-size:10px; color:#aaa;">(数字4桁)</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" class="btn-post" value="投稿する">
+            <input type="reset" class="btn-post" value="リセット">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <!-- 掲示板ログ -->
+
+  <!-- 記事104 -->
+  <div class="post-entry">
+    <div class="post-header">
+      [<span class="post-num">104</span>] <span class="post-title">カサカサ音について</span>
+      投稿者：<span class="post-name">通りすがり</span>
+      <span class="post-date">200X/08/12(日) 18:42</span>
+    </div>
+    <div class="post-body">昨日の夕方、役所裏の路地でカサカサ音がしたのは風ですか？それとも鳥ですか？
+かなり連続した音だったので気になっています。</div>
+  </div>
+
+  <!-- 記事103 -->
+  <div class="post-entry">
+    <div class="post-header">
+      [<span class="post-num">103</span>] <span class="post-title">Re: 7777GET!!!</span>
+      投稿者：<span class="post-name">Web担当（管理者）</span>
+      <span class="post-date">200X/08/10(金) 11:05</span>
+    </div>
+    <div class="post-body">> 102: ぬぬ さん
+ご報告ありがとうございます。
+当サイトのアクセスカウンターは5分おきに自動補正（減算）される仕組みのため、7777番は実質的に存在しません。7778番と同等とみなしますのでご了承ください。</div>
+  </div>
+
+  <!-- 記事102 -->
+  <div class="post-entry">
+    <div class="post-header">
+      [<span class="post-num">102</span>] <span class="post-title">7777GET!!!</span>
+      投稿者：<span class="post-name">ぬぬ</span>
+      <span class="post-date">200X/08/10(金) 09:22</span>
+    </div>
+    <div class="post-body">7777踏みました！キリ番報告です！
+記念の壁紙とかありますか？カキコ失礼しました〜！</div>
+  </div>
+
+  <!-- 記事101 -->
+  <div class="post-entry">
+    <div class="post-header">
+      [<span class="post-num">101</span>] <span class="post-title">ぬかばなの開花時期</span>
+      投稿者：<span class="post-name">園芸部員</span>
+      <span class="post-date">200X/08/01(水) 14:15</span>
+    </div>
+    <div class="post-body">今年のぬかばなは例年より枯れ葉の落ちが早い気がします。
+目立たない花ですが、全体を支えているので大事に育てたいですね。</div>
+    <div class="admin-res">
+      レス：おっしゃる通りです。目立たない場所こそ全体を支えています。（Web担当）
+    </div>
+  </div>
+
+  <div class="footer-links">
+    [ <a href="index.html">ピコぬ新聞社トップへ戻る</a> ]
+  </div>
+</div>
+
+</body>
+</html>

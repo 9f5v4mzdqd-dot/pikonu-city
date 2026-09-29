@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ERROR - ピコぬ市民掲示板</title>
+<style>
+body {
+  background-color: #333333;
+  color: #ff3333;
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 30px;
+  text-align: center;
+}
+
+.error-box {
+  width: 450px;
+  margin: 0 auto;
+  background-color: #000000;
+  border: 2px solid #ff0000;
+  padding: 20px;
+  text-align: left;
+}
+
+h1 {
+  font-size: 14px;
+  color: #ff0000;
+  border-bottom: 1px solid #ff0000;
+  padding-bottom: 4px;
+  margin-top: 0;
+}
+
+.code {
+  font-family: monospace;
+  color: #aaaaaa;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+a { color: #00ffff; }
+</style>
+</head>
+<body>
+
+<div class="error-box">
+  <h1>■ 掲示板エラー (BBS ERROR)</h1>
+
+  <p style="color:#ffffff;">
+    現在、サーバービジー状態または保守点検中のため、新規投稿の受け付けを停止しております。
+  </p>
+
+  <p style="color:#cccccc; font-size: 11px;">
+    ・連続投稿防止フィルターが作動した可能性があります。<br>
+    ・しばらく時間をおいてから再度お試しいただくか、ピコぬ新聞社プレス事業部までお問い合わせください。
+  </p>
+
+  <div class="code">
+    Error Code: PKN-403-BBS_WRITE_RESTRICTED<br>
+    Server: pikonu-shimbun-db02
+  </div>
+
+  <div style="margin-top: 20px; text-align: center;">
+    [ <a href="bbs.html">掲示板へ戻る</a> ]
+  </div>
+</div>
+
+</body>
+</html>
