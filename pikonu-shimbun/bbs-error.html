@@ -17,6 +17,8 @@ body {
 
 .error-box {
   width: 450px;
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   background-color: #000000;
   border: 2px solid #ff0000;
@@ -40,6 +42,10 @@ h1 {
 }
 
 a { color: #00ffff; }
+
+@media (max-width: 480px) {
+  body { margin: 12px; }
+}
 </style>
 </head>
 <body>

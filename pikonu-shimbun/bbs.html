@@ -19,6 +19,8 @@ a:visited { color: #cc99ff; }
 
 .container {
   width: 620px;
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   background-color: #222222;
   border: 2px ridge #999999;
@@ -118,6 +120,13 @@ input[type="text"], textarea {
   text-align: center;
   margin-top: 20px;
   font-size: 11px;
+}
+
+@media (max-width: 480px) {
+  body { margin: 8px; }
+  .form-table, .form-table tbody, .form-table tr, .form-table td { display: block; width: auto; }
+  .form-table td:first-child { padding-top: 8px; }
+  input[type="text"], textarea { width: 100%; box-sizing: border-box; }
 }
 </style>
 </head>
