@@ -101,7 +101,7 @@
   }
 
   function initMood() {
-    var moods = ['Very Nu.', 'Slightly Nu.', 'Nu... probably.', 'Not Nu today.', 'Nu Nu Nu!'];
+    var moods = ['Very Nu.', 'Slightly Nu.', 'Nu... probably.', 'Not Nu today.', 'Nu Nu Nu!', 'とてもぬ', 'ぬ...かもしれぬ'];
     document.getElementById('nu-mood').textContent = moods[Math.floor(Math.random() * moods.length)];
   }
 

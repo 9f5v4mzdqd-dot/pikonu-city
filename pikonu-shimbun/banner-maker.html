@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ピコぬGIFバナー工房 Ver1.10</title>
+<title>ピコぬGIFバナー工房 Ver1.21 (平成ポップ版)</title>
 <style>
 body{margin:0;padding:12px;background:#008080;font-family:"ＭＳ Ｐゴシック","MS PGothic","Osaka",sans-serif;font-size:13px;color:#000;line-height:1.5}
-.winbox{max-width:560px;margin:0 auto;background:#c0c0c0;border:2px outset #fff;box-shadow:2px 2px 0 #000}
+.winbox{max-width:580px;margin:0 auto;background:#c0c0c0;border:2px outset #fff;box-shadow:2px 2px 0 #000}
 .title{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-weight:bold;padding:3px 6px;display:flex;justify-content:space-between}
 .title span.btns b{display:inline-block;width:16px;height:14px;background:#c0c0c0;border:2px outset #fff;color:#000;font-size:10px;line-height:12px;text-align:center;margin-left:2px}
 .menu{padding:2px 6px;border-bottom:1px solid #808080}
 .menu span{margin-right:14px}
 .body{padding:8px}
 fieldset{border:2px groove #fff;margin:0 0 8px;padding:6px 10px 8px}
-legend{padding:0 4px}
+legend{padding:0 4px;font-weight:bold}
 .row{display:flex;align-items:center;gap:8px;margin:4px 0;flex-wrap:wrap}
 .row label{min-width:88px}
 input[type=text],textarea,select{font-family:inherit;font-size:13px;background:#fff;border:2px inset #fff;padding:1px 3px}
 textarea{width:16em;resize:none}
-input[type=color]{width:44px;height:24px;padding:0;border:2px inset #fff;background:#c0c0c0}
-button,a.btn{font-family:inherit;font-size:13px;background:#c0c0c0;border:2px outset #fff;padding:3px 14px;color:#000;text-decoration:none;cursor:pointer;display:inline-block}
+input[type=color]{width:44px;height:24px;padding:0;border:2px inset #fff;background:#c0c0c0;cursor:pointer}
+button,a.btn{font-family:inherit;font-size:13px;background:#c0c0c0;border:2px outset #fff;padding:3px 10px;color:#000;text-decoration:none;cursor:pointer;display:inline-block}
 button:active,a.btn:active{border-style:inset}
 .prev{background:#fff;border:2px inset #fff;padding:8px;text-align:center}
 .prev img{display:inline-block;vertical-align:middle;image-rendering:pixelated}
@@ -41,28 +41,71 @@ button:active,a.btn:active{border-style:inset}
 .manual-win .caution ul{background:#fff5f0;border:2px dashed #ff6600;padding:8px 8px 8px 1.8em;margin:4px 0 0}
 .manual-win .caution li b{color:#cc3300}
 .manual-win .copyright{text-align:center;font-size:12px;color:#444;margin:14px 0 2px;border-top:1px solid #c0c0c0;padding-top:8px}
+.preset-btns{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}
+.preset-btn{font-size:11px;padding:1px 6px}
 </style>
 </head>
 <body>
 <div id="win" class="winbox">
-  <div class="title"><span>ピコぬGIFバナー工房 Ver1.10</span><span class="btns"><b>_</b><b>□</b><b>×</b></span></div>
+  <div class="title"><span>ピコぬGIFバナー工房 Ver1.21 (平成ポップ)</span><span class="btns"><b>_</b><b>□</b><b>×</b></span></div>
   <div class="menu"><span>ファイル(F)</span><span>編集(E)</span><span>表示(V)</span><span>ヘルプ(H)</span></div>
   <div class="body">
-    <fieldset><legend>1. バナー文字</legend>
+    <fieldset><legend>1. バナー文字・デザイン</legend>
       <div class="row"><label for="txt">文字(2行まで)</label><textarea id="txt" rows="2" maxlength="40">ピコぬ新聞社</textarea></div>
+      <div class="row"><label for="effect">文字スタイル</label>
+        <select id="effect">
+          <option value="none">標準 (フチなし)</option>
+          <option value="outline" selected>袋文字 (くっきり白フチ)</option>
+          <option value="shadow">影付き</option>
+        </select>
+      </div>
       <div class="row"><label for="badge">バッジ</label>
-        <select id="preset"><option value="">(なし)</option><option>NEW!</option><option>おすすめ!</option><option>広告募集中!</option><option>UP!</option><option>キリ番!</option><option value="__">自由入力</option></select>
-        <input type="text" id="badge" size="10" maxlength="8" value="NEW!"></div>
+        <select id="preset">
+          <option value="">(なし)</option>
+          <option>NEW!</option>
+          <option>おすすめ!</option>
+          <option>♥キリ番!</option>
+          <option>★踏み逃げ禁止!</option>
+          <option>👑10000HIT!</option>
+          <option>UP!</option>
+          <option value="__">自由入力</option>
+        </select>
+        <input type="text" id="badge" size="12" maxlength="10" value="♥キリ番!">
+      </div>
     </fieldset>
-    <fieldset><legend>2. サイズ・色・点滅</legend>
+
+    <fieldset><legend>2. サイズ・色・平成デコ</legend>
       <div class="row"><label for="sizeSel">サイズ</label>
-        <select id="sizeSel"><option value="88x31">88×31 リンクバナー</option><option value="120x60">120×60 ミニバナー</option><option value="200x40">200×40</option><option value="234x60">234×60 ハーフバナー</option><option value="468x60">468×60 フルバナー</option><option value="custom">自由入力</option></select></div>
+        <select id="sizeSel"><option value="88x31">88×31 リンクバナー</option><option value="120x60">120×60 ミニバナー</option><option value="200x40">200×40</option><option value="234x60">234×60 ハーフバナー</option><option value="468x60">468×60 フルバナー</option><option value="custom">自由入力</option></select>
+      </div>
       <div class="row"><label for="wIn">幅×高さ</label><input type="text" id="wIn" size="4" maxlength="3" value="88"> × <input type="text" id="hIn" size="4" maxlength="3" value="31"> <span class="note">(幅16〜600、高さ16〜200)</span></div>
-      <div class="row"><label for="bg">背景色</label><input type="color" id="bg" value="#0000cc"> <label for="fg" style="min-width:0">文字色</label><input type="color" id="fg" value="#ffffff"></div>
+      
+      <div class="row"><label>カラーパレット</label>
+        <div class="preset-btns">
+          <button type="button" class="preset-btn" data-bg="#ffc0cb" data-fg="#ff007f">ゆめかわピンク</button>
+          <button type="button" class="preset-btn" data-bg="#000000" data-fg="#00ffcc">Y2Kネオン</button>
+          <button type="button" class="preset-btn" data-bg="#ffffcc" data-fg="#ff6699">平成ファンシー</button>
+          <button type="button" class="preset-btn" data-bg="#0000cc" data-fg="#ffffff">レトロぶるー</button>
+        </div>
+      </div>
+      
+      <div class="row"><label for="bg">背景色</label><input type="color" id="bg" value="#ffc0cb"> <label for="fg" style="min-width:0">文字色</label><input type="color" id="fg" value="#ff007f"></div>
+      
+      <div class="row"><label for="pat">背景模様</label>
+        <select id="pat">
+          <option value="none">べた塗り</option>
+          <option value="dot">ドット (水玉)</option>
+          <option value="stripe">斜めストライプ</option>
+          <option value="grid">格子 (チェック)</option>
+        </select>
+      </div>
+
       <div class="row"><label for="spd">点滅速度</label>
-        <select id="spd"><option value="0">静止</option><option value="100">ゆっくり</option><option value="50" selected>ふつう</option><option value="25">はやい</option><option value="10">超はやい</option></select></div>
+        <select id="spd"><option value="0">静止</option><option value="100">ゆっくり</option><option value="50" selected>ふつう</option><option value="25">はやい</option><option value="10">超はやい</option></select>
+      </div>
       <div class="row"><label for="frame">枠線</label><input type="checkbox" id="frame" checked> <label for="frame" style="min-width:0">つける</label></div>
     </fieldset>
+
     <fieldset><legend>3. できあがり(<span id="dim">88×31</span> GIF)</legend>
       <div class="prev"><img id="out" alt="作成したバナー"><br><br><img id="outBig" class="big" alt="拡大表示"></div>
       <div class="row" style="margin-top:8px"><a class="btn" id="dl" download="banner.gif" href="#">保存(S)</a> <button type="button" id="about">バージョン情報</button> <span class="note" id="size"></span></div>
@@ -77,19 +120,20 @@ button:active,a.btn:active{border-style:inset}
   <div class="menu"><span>ファイル(F)</span><span>編集(E)</span><span>表示(V)</span><span>ヘルプ(H)</span></div>
   <div class="body">
     <h2>ピコぬGIFバナー工房 取扱説明書</h2>
-    <p class="lead">「ピコぬGIFバナー工房」へようこそ！昔懐かしいWindows 98風の画面で、誰でも簡単に点滅するアニメーションGIFバナーが作れるツールですぬ(´ω｀)</p>
+    <p class="lead">「ピコぬGIFバナー工房」へようこそ！昔懐かしいWindows 98風の画面で、誰でも簡単に点滅するアニメーションGIFバナーが作れるツールですぬ(´ω｀) 平成ポップ版では、袋文字や背景模様、カラーパレットのワンタッチ切り替えも使えるようになりましたぬ。</p>
 
     <h3>✨ このツールの特徴</h3>
     <ul>
       <li><b>安心・安全！</b>：画像作成はすべてお使いのパソコン・スマホ内で完結します。サーバーにデータや画像が送信されることはありません。</li>
       <li><b>インストール不要</b>：ブラウザですぐに使えます。</li>
       <li><b>レトロで本格的</b>：2001年頃の個人サイトに置かれていたような、懐かしい点滅バナー（88×31など）が手軽に作れます。</li>
+      <li><b>平成ポップな飾りつけ</b>：袋文字・影付き文字、水玉・ストライプ・格子の背景模様、ゆめかわ配色のワンタッチパレットが使えます。</li>
     </ul>
 
     <h3>🛠️ 使い方ガイド</h3>
     <ol>
-      <li><b>バナー文字を入力</b>：本文（最大2行・40文字）やバッジを設定します。※文字を大きくしたい時はバッジなしがおすすめです。</li>
-      <li><b>サイズ・色・点滅を設定</b>：サイズ、背景色・文字色、点滅速度、枠線の有無を選びます。</li>
+      <li><b>バナー文字・デザインを入力</b>：本文（最大2行・40文字）、文字スタイル（標準／袋文字／影付き）、バッジを設定します。※文字を大きくしたい時はバッジなしがおすすめです。</li>
+      <li><b>サイズ・色・平成デコを設定</b>：サイズ、カラーパレット（ワンタッチ切替可）、背景模様、点滅速度、枠線の有無を選びます。</li>
       <li><b>保存</b>：「保存(S)」ボタンを押すか、画像を右クリック（スマホは長押し）して保存します。</li>
     </ol>
 
@@ -98,6 +142,7 @@ button:active,a.btn:active{border-style:inset}
       <ul>
         <li><b>フォントについて</b>：お使いの端末のフォントで描画されるため、環境によって文字の形が少し変わる場合があります。</li>
         <li><b>設定の保持</b>：ページを再読み込み（リロード）すると初期値に戻ります。作成したバナーはこまめに保存してくださいぬ。</li>
+        <li><b>文字と模様の組み合わせ</b>：背景模様や袋文字を濃い色同士で組み合わせると、文字が読みにくくなることがあります。プレビューを見ながら調整してくださいぬ。</li>
         <li><b>メニューバー</b>：画面上部の「ファイル」「編集」などは2001年風の雰囲気を味わうための飾り（デザイン）ですぬ(´ω｀)</li>
       </ul>
     </div>
@@ -105,6 +150,7 @@ button:active,a.btn:active{border-style:inset}
     <p class="copyright">(C) ピコぬ新聞社 2001</p>
   </div>
 </div>
+
 <script>
 (function(){
 'use strict';
@@ -114,17 +160,39 @@ var big=document.createElement('canvas'),bx2=big.getContext('2d',{willReadFreque
 function rgb(h){return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)];}
 function fnt(p,b){return (b?'bold ':'')+p+'px "ＭＳ Ｐゴシック","MS PGothic","Osaka","Meiryo","Hiragino Kaku Gothic ProN",sans-serif';}
 
-// 文字を4倍の大きさで描いてから縮小し、濃淡(0〜7)のマスクを返す
-function mask(lines,bx,by,bw,bh,maxPx,bold){
+// 濃淡(0〜7)のマスクを返す
+function mask(lines,bx,by,bw,bh,maxPx,bold,effect){
   var n=lines.length,px=Math.min(maxPx,Math.floor(bh/n)),minPx=Math.max(6,Math.round(H*(n>1?0.26:0.32))),wid;
+  
+  // 文字幅の計算（袋文字や影の幅も考慮してフチ太さを補正）
   function calc(){bx2.font=fnt(px*S,bold);return Math.max.apply(null,lines.map(function(l){return bx2.measureText(l).width;}))/S;}
   wid=calc();
   while(wid>bw&&px>minPx){px--;wid=calc();}
   var sx=wid>bw?bw/wid:1;
-  bx2.clearRect(0,0,W*S,H*S);bx2.fillStyle='#000';bx2.textAlign='center';bx2.textBaseline='middle';
+  
+  bx2.clearRect(0,0,W*S,H*S);bx2.textAlign='center';bx2.textBaseline='middle';
   bx2.save();bx2.translate((bx+bw/2)*S,0);bx2.scale(sx,1);
-  lines.forEach(function(l,i){bx2.fillText(l,0,(by+bh*(i+0.5)/n)*S);});
+
+  lines.forEach(function(l,i){
+    var py=(by+bh*(i+0.5)/n)*S;
+    
+    if(effect==='outline'){
+      // 白フチが太すぎて文字がつぶれないよう、適度な太さ(S*1.2px)に抑える
+      bx2.strokeStyle='#ffffff';
+      bx2.lineWidth=Math.max(2, Math.round(S * 1.2));
+      bx2.lineJoin='round';
+      bx2.strokeText(l,0,py);
+    }else if(effect==='shadow'){
+      bx2.fillStyle='#000000';
+      bx2.fillText(l, S, py + S);
+    }
+    
+    // 文字本体を描画
+    bx2.fillStyle='#000000';
+    bx2.fillText(l,0,py);
+  });
   bx2.restore();
+
   var d=bx2.getImageData(0,0,W*S,H*S).data,m=new Uint8Array(W*H),x,y,u,v,sum,a;
   for(y=by;y<by+bh;y++)for(x=bx;x<bx+bw;x++){
     sum=0;
@@ -135,21 +203,41 @@ function mask(lines,bx,by,bw,bh,maxPx,bold){
   return {m:m,w:Math.ceil(wid*sx)};
 }
 
-// パレット: 0〜7=背景→文字色の濃淡 / 8〜15=バッジ地→バッジ文字の濃淡
+// パレット構成: 0〜7=背景→文字色の濃淡 / 8〜15=バッジ地(赤)→バッジ文字(黄)
 function frame(inv,o){
   var f=new Uint8Array(W*H),i,x,y,l;
-  f.fill(inv?7:0);
-  if(o.frame){for(i=0;i<W;i++){f[i]=7;f[(H-1)*W+i]=7;}for(i=0;i<H;i++){f[i*W]=7;f[i*W+W-1]=7;}}
+  
+  // 背景模様の描画
+  for(y=0;y<H;y++){
+    for(x=0;x<W;x++){
+      var bgVal = inv ? 7 : 0;
+      var patVal = inv ? 5 : 2; // 模様用の色の濃さ
+      if(o.pat==='dot' && (x%4===0 && y%4===0)) bgVal = patVal;
+      else if(o.pat==='stripe' && ((x+y)%4<2)) bgVal = patVal;
+      else if(o.pat==='grid' && (x%4===0 || y%4===0)) bgVal = patVal;
+      f[y*W+x] = bgVal;
+    }
+  }
+
+  // 枠線
+  if(o.frame){
+    for(i=0;i<W;i++){f[i]=7;f[(H-1)*W+i]=7;}
+    for(i=0;i<H;i++){f[i*W]=7;f[i*W+W-1]=7;}
+  }
+
+  // バッジ
   if(o.tag){
     var tw=Math.min(o.bw,o.tag.w+4),rx=Math.floor(o.x0+(o.bw-tw)/2);
     for(y=2;y<2+o.th;y++)for(x=rx;x<rx+tw;x++)f[y*W+x]=inv?15:8;
     for(i=0;i<f.length;i++){l=o.tag.m[i];if(l)f[i]=inv?15-l:8+l;}
   }
+
+  // 本文
   for(i=0;i<f.length;i++){l=o.main.m[i];if(l)f[i]=inv?7-l:l;}
   return f;
 }
 
-// LZW + GIF89a
+// LZW + GIF89a エンコーダ
 function lzw(px,mcs){
   var clear=1<<mcs,eoi=clear+1,size=mcs+1,next=eoi+1,dict=new Map(),out=[],cur=0,nb=0,i;
   function put(c){cur|=c<<nb;nb+=size;while(nb>=8){out.push(cur&255);cur>>=8;nb-=8;}}
@@ -169,6 +257,7 @@ function lzw(px,mcs){
   if(nb>0)out.push(cur&255);
   return out;
 }
+
 function gif(frames,pal,delay){
   var b=[];
   function w16(v){b.push(v&255,(v>>8)&255);}
@@ -196,12 +285,12 @@ function make(){
   big.width=W*S;big.height=H*S;
   var lines=$('txt').value.split(/\r?\n/).filter(function(s){return s.trim()!=='';}).slice(0,2);
   if(!lines.length)lines=[' '];
-  var badge=$('badge').value.trim(),hasF=$('frame').checked;
+  var badge=$('badge').value.trim(),hasF=$('frame').checked,effect=$('effect').value,pat=$('pat').value;
   var x0=hasF?2:1,bw=W-x0*2,th=Math.round(H*0.35);
-  var tag=badge?mask([badge],x0,2,bw,th,th-1,true):null;
+  var tag=badge?mask([badge],x0,2,bw,th,th-1,true,'none'):null;
   var top=tag?2+th:x0,bh=(H-x0)-top;
-  var main=mask(lines,x0,top,bw,bh,Math.round(H*(tag?0.52:0.71)),true);
-  var o={frame:hasF,tag:tag,main:main,x0:x0,bw:bw,th:th};
+  var main=mask(lines,x0,top,bw,bh,Math.round(H*(tag?0.52:0.71)),true,effect);
+  var o={frame:hasF,tag:tag,main:main,x0:x0,bw:bw,th:th,pat:pat};
   var spd=parseInt($('spd').value,10);
   var frames=[frame(false,o)];
   if(spd>0)frames.push(frame(true,o));
@@ -222,6 +311,7 @@ function make(){
   $('size').textContent='ファイルサイズ: '+bytes.length+' バイト';
 }
 
+// イベント設定
 $('sizeSel').addEventListener('change',function(){
   if(this.value!=='custom'){var p=this.value.split('x');$('wIn').value=p[0];$('hIn').value=p[1];}
   make();
@@ -238,11 +328,18 @@ $('preset').addEventListener('change',function(){
   if(this.value==='__'){$('badge').focus();return;}
   $('badge').value=this.value;make();
 });
-['txt','badge','bg','fg','spd','frame'].forEach(function(id){
+Array.prototype.forEach.call(document.querySelectorAll('.preset-btn'),function(btn){
+  btn.addEventListener('click',function(){
+    $('bg').value=this.getAttribute('data-bg');
+    $('fg').value=this.getAttribute('data-fg');
+    make();
+  });
+});
+['txt','badge','bg','fg','spd','frame','effect','pat'].forEach(function(id){
   $(id).addEventListener('input',make);$(id).addEventListener('change',make);
 });
 $('about').addEventListener('click',function(){
-  alert('ピコぬGIFバナー工房 Ver1.10\n(C)ピコぬ新聞社 2001\n\nこのソフトはフリーソフトです。\n作ったバナーは自由にお使いください。');
+  alert('ピコぬGIFバナー工房 Ver1.21 (平成ポップ版)\n(C)ピコぬ新聞社 2001\n\nこのソフトはフリーソフトです。\n平成レトロなかわいいバナーを自由に作ってくださいぬ(´ω｀)');
 });
 make();
 })();
