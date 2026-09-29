@@ -1,295 +1,353 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ピコぬ市指定・謎の自動販売機</title>
-<style>
-body {
-  background: #2b3a42;
-  color: #fff;
-  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  padding: 20px;
-  text-align: center;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ピコぬ市指定・謎の自動販売機</title>
+  <style>
+    body {
+      background: #2b3a42;
+      color: #fff;
+      font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
 
-h1 {
-  font-size: 16px;
-  color: #ffff80;
-  margin-bottom: 5px;
-}
+    h1 {
+      font-size: 16px;
+      color: #ffff80;
+      margin-bottom: 5px;
+    }
 
-p.note {
-  font-size: 12px;
-  color: #ccc;
-  margin-bottom: 20px;
-}
+    p.note {
+      font-size: 12px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
 
-/* 自販機本体 */
-.vending-machine {
-  width: 270px;
-  margin: 0 auto;
-  background: #a8a8a8;
-  border: 4px solid #fff;
-  border-right-color: #555;
-  border-bottom-color: #555;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  box-sizing: border-box;
-}
+    /* 自販機本体 */
+    .vending-machine {
+      width: 270px;
+      margin: 0 auto;
+      background: #a8a8a8;
+      border: 4px solid #fff;
+      border-right-color: #555;
+      border-bottom-color: #555;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      box-sizing: border-box;
+    }
 
-/* ディスプレイ窓 */
-.display-window {
-  background: #000;
-  border: 2px inset #fff;
-  padding: 10px 5px;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-around;
-}
+    /* ディスプレイ窓 */
+    .display-window {
+      background: #000;
+      border: 2px inset #fff;
+      padding: 10px 5px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-around;
+    }
 
-.item-slot {
-  width: 70px;
-  background: #222;
-  border: 1px solid #555;
-  padding: 6px 2px;
-  position: relative;
-}
+    .item-slot {
+      width: 70px;
+      background: #222;
+      border: 1px solid #555;
+      padding: 6px 2px;
+      position: relative;
+    }
 
-.item-name {
-  color: #ff3366;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
+    .item-name {
+      color: #ff3366;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
 
-.price {
-  font-size: 9px;
-  color: #ffff80;
-  margin-top: 2px;
-}
+    .price {
+      font-size: 9px;
+      color: #ffff80;
+      margin-top: 2px;
+    }
 
-/* チェックボックスを隠す */
-input[type="checkbox"] {
-  display: none;
-}
+    /* チェックボックスを隠す */
+    input[type="checkbox"] {
+      display: none;
+    }
 
-/* 購入ボタン */
-.btn-buy {
-  display: block;
-  margin: 6px auto 0;
-  background: #d40000;
-  color: #fff;
-  font-size: 10px;
-  padding: 3px 0;
-  border: 2px outset #fff;
-  cursor: pointer;
-  user-select: none;
-}
+    /* 購入ボタン */
+    .btn-buy {
+      display: block;
+      margin: 6px auto 0;
+      background: #d40000;
+      color: #fff;
+      font-size: 10px;
+      padding: 3px 0;
+      border: 2px outset #fff;
+      cursor: pointer;
+      user-select: none;
+    }
 
-.btn-buy:active {
-  border-style: inset;
-}
+    .btn-buy:active {
+      border-style: inset;
+    }
 
-/* ボタンの切り替え仕掛け（押すたびに次の層が表示される） */
-.btn-layer {
-  display: none;
-}
-/* 最初はlayer1を表示 */
-.btn-layer-1 { display: block; }
+    /* ボタンの切り替え仕掛け（押すたびに次の層が表示される） */
+    .btn-layer {
+      display: none;
+    }
 
-/* 1回押したらlayer2を表示 */
-#sw1-1:checked ~ .vending-machine .slot-1 .btn-layer-1,
-#sw2-1:checked ~ .vending-machine .slot-2 .btn-layer-1,
-#sw3-1:checked ~ .vending-machine .slot-3 .btn-layer-1 { display: none; }
+    /* 最初はlayer1を表示 */
+    .btn-layer-1 {
+      display: block;
+    }
 
-#sw1-1:checked ~ .vending-machine .slot-1 .btn-layer-2,
-#sw2-1:checked ~ .vending-machine .slot-2 .btn-layer-2,
-#sw3-1:checked ~ .vending-machine .slot-3 .btn-layer-2 { display: block; }
+    /* 1回押したらlayer2を表示 */
+    #sw1-1:checked~.vending-machine .slot-1 .btn-layer-1,
+    #sw2-1:checked~.vending-machine .slot-2 .btn-layer-1,
+    #sw3-1:checked~.vending-machine .slot-3 .btn-layer-1 {
+      display: none;
+    }
 
-/* 2回押したらlayer3を表示 */
-#sw1-2:checked ~ .vending-machine .slot-1 .btn-layer-2,
-#sw2-2:checked ~ .vending-machine .slot-2 .btn-layer-2,
-#sw3-2:checked ~ .vending-machine .slot-3 .btn-layer-2 { display: none; }
+    #sw1-1:checked~.vending-machine .slot-1 .btn-layer-2,
+    #sw2-1:checked~.vending-machine .slot-2 .btn-layer-2,
+    #sw3-1:checked~.vending-machine .slot-3 .btn-layer-2 {
+      display: block;
+    }
 
-#sw1-2:checked ~ .vending-machine .slot-1 .btn-layer-3,
-#sw2-2:checked ~ .vending-machine .slot-2 .btn-layer-3,
-#sw3-2:checked ~ .vending-machine .slot-3 .btn-layer-3 { display: block; }
+    /* 2回押したらlayer3を表示 */
+    #sw1-2:checked~.vending-machine .slot-1 .btn-layer-2,
+    #sw2-2:checked~.vending-machine .slot-2 .btn-layer-2,
+    #sw3-2:checked~.vending-machine .slot-3 .btn-layer-2 {
+      display: none;
+    }
 
-/* 取り出し口 */
-.outlet {
-  background: #111;
-  border: 3px inset #666;
-  height: 70px;
-  margin-top: 15px;
-  position: relative;
-  overflow: hidden;
-}
+    #sw1-2:checked~.vending-machine .slot-1 .btn-layer-3,
+    #sw2-2:checked~.vending-machine .slot-2 .btn-layer-3,
+    #sw3-2:checked~.vending-machine .slot-3 .btn-layer-3 {
+      display: block;
+    }
 
-.outlet-label {
-  font-size: 10px;
-  color: #666;
-  margin-top: 2px;
-}
+    /* 取り出し口 */
+    .outlet {
+      background: #111;
+      border: 3px inset #666;
+      height: 70px;
+      margin-top: 15px;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* 出てくる商品カード */
-.can {
-  position: absolute;
-  top: -70px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 180px;
-  background: #ffffcc;
-  color: #000;
-  border: 2px solid #000;
-  padding: 5px;
-  font-size: 11px;
-  box-shadow: 2px 2px 0 #000;
-  opacity: 0;
-  text-align: left;
-}
+    .outlet-label {
+      font-size: 10px;
+      color: #666;
+      margin-top: 2px;
+    }
 
-/* アニメーション定義 */
-@keyframes drop {
-  0% { top: -70px; opacity: 0; }
-  70% { top: 12px; opacity: 1; }
-  85% { top: 6px; }
-  100% { top: 10px; opacity: 1; }
-}
+    /* 出てくる商品カード */
+    .can {
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      background: #ffffcc;
+      color: #000;
+      border: 2px solid #000;
+      padding: 5px;
+      font-size: 11px;
+      box-shadow: 2px 2px 0 #000;
+      opacity: 0;
+      text-align: left;
+    }
 
-/* 各判定ごとの落下アニメーション */
-/* 左ボタン（スロット1）の3種 */
-#sw1-1:checked ~ .vending-machine .outlet .item-1-1 { animation: drop 0.3s forwards; }
-#sw1-2:checked ~ .vending-machine .outlet .item-1-2 { animation: drop 0.3s forwards; }
-#sw1-3:checked ~ .vending-machine .outlet .item-1-3 { animation: drop 0.3s forwards; }
+    /* アニメーション定義 */
+    @keyframes drop {
+      0% {
+        top: -70px;
+        opacity: 0;
+      }
 
-/* 中央ボタン（スロット2）の3種 */
-#sw2-1:checked ~ .vending-machine .outlet .item-2-1 { animation: drop 0.3s forwards; }
-#sw2-2:checked ~ .vending-machine .outlet .item-2-2 { animation: drop 0.3s forwards; }
-#sw2-3:checked ~ .vending-machine .outlet .item-2-3 { animation: drop 0.3s forwards; }
+      70% {
+        top: 12px;
+        opacity: 1;
+      }
 
-/* 右ボタン（スロット3）の3種 */
-#sw3-1:checked ~ .vending-machine .outlet .item-3-1 { animation: drop 0.3s forwards; }
-#sw3-2:checked ~ .vending-machine .outlet .item-3-2 { animation: drop 0.3s forwards; }
-#sw3-3:checked ~ .vending-machine .outlet .item-3-3 { animation: drop 0.3s forwards; }
+      85% {
+        top: 6px;
+      }
 
-.footer-text {
-  margin-top: 15px;
-  font-size: 11px;
-  color: #aaa;
-}
-</style>
+      100% {
+        top: 10px;
+        opacity: 1;
+      }
+    }
+
+    /* 各判定ごとの落下アニメーション */
+    /* 左ボタン（スロット1）の3種 */
+    #sw1-1:checked~.vending-machine .outlet .item-1-1 {
+      animation: drop 0.3s forwards;
+    }
+
+    #sw1-2:checked~.vending-machine .outlet .item-1-2 {
+      animation: drop 0.3s forwards;
+    }
+
+    #sw1-3:checked~.vending-machine .outlet .item-1-3 {
+      animation: drop 0.3s forwards;
+    }
+
+    /* 中央ボタン（スロット2）の3種 */
+    #sw2-1:checked~.vending-machine .outlet .item-2-1 {
+      animation: drop 0.3s forwards;
+    }
+
+    #sw2-2:checked~.vending-machine .outlet .item-2-2 {
+      animation: drop 0.3s forwards;
+    }
+
+    #sw2-3:checked~.vending-machine .outlet .item-2-3 {
+      animation: drop 0.3s forwards;
+    }
+
+    /* 右ボタン（スロット3）の3種 */
+    #sw3-1:checked~.vending-machine .outlet .item-3-1 {
+      animation: drop 0.3s forwards;
+    }
+
+    #sw3-2:checked~.vending-machine .outlet .item-3-2 {
+      animation: drop 0.3s forwards;
+    }
+
+    #sw3-3:checked~.vending-machine .outlet .item-3-3 {
+      animation: drop 0.3s forwards;
+    }
+
+    .footer-text {
+      margin-top: 15px;
+      font-size: 11px;
+      color: #aaa;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>ピコぬ市指定・謎の自動販売機</h1>
-<p class="note">※ボタンを押すたびに何かが落ちてきます</p>
+  <h1>ピコぬ市指定・謎の自動販売機</h1>
+  <p class="note">※ボタンを押すたびに何かが落ちてきます</p>
 
-<!-- 隠しスイッチ群（CSSのみで状態を切り替える仕掛け） -->
-<input type="checkbox" id="sw1-1">
-<input type="checkbox" id="sw1-2">
-<input type="checkbox" id="sw1-3">
+  <!-- 隠しスイッチ群（CSSのみで状態を切り替える仕掛け） -->
+  <input type="checkbox" id="sw1-1">
+  <input type="checkbox" id="sw1-2">
+  <input type="checkbox" id="sw1-3">
 
-<input type="checkbox" id="sw2-1">
-<input type="checkbox" id="sw2-2">
-<input type="checkbox" id="sw2-3">
+  <input type="checkbox" id="sw2-1">
+  <input type="checkbox" id="sw2-2">
+  <input type="checkbox" id="sw2-3">
 
-<input type="checkbox" id="sw3-1">
-<input type="checkbox" id="sw3-2">
-<input type="checkbox" id="sw3-3">
+  <input type="checkbox" id="sw3-1">
+  <input type="checkbox" id="sw3-2">
+  <input type="checkbox" id="sw3-3">
 
-<div class="vending-machine">
+  <div class="vending-machine">
 
-  <!-- 商品ディスプレイ（全3スロット） -->
-  <div class="display-window">
-    
-    <!-- スロット1 -->
-    <div class="item-slot slot-1">
-      <div class="item-name">？？？</div>
-      <div class="price">￥110</div>
-      <div class="btn-layer btn-layer-1"><label for="sw1-1" class="btn-buy">押す</label></div>
-      <div class="btn-layer btn-layer-2"><label for="sw1-2" class="btn-buy">押す</label></div>
-      <div class="btn-layer btn-layer-3"><label for="sw1-3" class="btn-buy">押す</label></div>
+    <!-- 商品ディスプレイ（全3スロット） -->
+    <div class="display-window">
+
+      <!-- スロット1 -->
+      <div class="item-slot slot-1">
+        <div class="item-name">？？？</div>
+        <div class="price">￥110</div>
+        <div class="btn-layer btn-layer-1"><label for="sw1-1" class="btn-buy">押す</label></div>
+        <div class="btn-layer btn-layer-2"><label for="sw1-2" class="btn-buy">押す</label></div>
+        <div class="btn-layer btn-layer-3"><label for="sw1-3" class="btn-buy">押す</label></div>
+      </div>
+
+      <!-- スロット2 -->
+      <div class="item-slot slot-2">
+        <div class="item-name">？？？</div>
+        <div class="price">￥110</div>
+        <div class="btn-layer btn-layer-1"><label for="sw2-1" class="btn-buy">押す</label></div>
+        <div class="btn-layer btn-layer-2"><label for="sw2-2" class="btn-buy">押す</label></div>
+        <div class="btn-layer btn-layer-3"><label for="sw2-3" class="btn-buy">押す</label></div>
+      </div>
+
+      <!-- スロット3 -->
+      <div class="item-slot slot-3">
+        <div class="item-name">？？？</div>
+        <div class="price">￥110</div>
+        <div class="btn-layer btn-layer-1"><label for="sw3-1" class="btn-buy">押す</label></div>
+        <div class="btn-layer btn-layer-2"><label for="sw3-2" class="btn-buy">押す</label></div>
+        <div class="btn-layer btn-layer-3"><label for="sw3-3" class="btn-buy">押す</label></div>
+      </div>
+
     </div>
 
-    <!-- スロット2 -->
-    <div class="item-slot slot-2">
-      <div class="item-name">？？？</div>
-      <div class="price">￥110</div>
-      <div class="btn-layer btn-layer-1"><label for="sw2-1" class="btn-buy">押す</label></div>
-      <div class="btn-layer btn-layer-2"><label for="sw2-2" class="btn-buy">押す</label></div>
-      <div class="btn-layer btn-layer-3"><label for="sw2-3" class="btn-buy">押す</label></div>
-    </div>
+    <!-- 取り出し口 -->
+    <div class="outlet">
+      <div class="outlet-label">PUSH / 取り出し口</div>
 
-    <!-- スロット3 -->
-    <div class="item-slot slot-3">
-      <div class="item-name">？？？</div>
-      <div class="price">￥110</div>
-      <div class="btn-layer btn-layer-1"><label for="sw3-1" class="btn-buy">押す</label></div>
-      <div class="btn-layer btn-layer-2"><label for="sw3-2" class="btn-buy">押す</label></div>
-      <div class="btn-layer btn-layer-3"><label for="sw3-3" class="btn-buy">押す</label></div>
-    </div>
+      <!-- 出てくる全9種類の中身 -->
+      <!-- スロット1の3種 -->
+      <div class="can item-1-1">📄 <b>ピコぬ市報（2004年8月号）</b><br>※第3ページだけ破れている</div>
+      <div class="can item-1-2">🍵 <b>ぬか茶（微炭酸）</b><br>ほんのりぬかの香ばしさ</div>
+      <div class="can item-1-3">🔑 <b>使い道のわからない鍵</b><br>「図書倉庫」と書いてある</div>
 
+      <!-- スロット2の3種 -->
+      <div class="can item-2-1">📦 <b>市役所のシュレッダーくず</b><br>ぎっしり詰まっている</div>
+      <div class="can item-2-2">🍿 <b>ぴこぬ羽毛スナック</b><br>口の中で一瞬で溶ける</div>
+      <div class="can item-2-3">🪙 <b>10円玉（ぬるい）</b><br>なぜか返却された</div>
+
+      <!-- スロット3の3種 -->
+      <div class="can item-3-1">🖊️ <b>「ピコぬ温泉」の粗品ペン</b><br>インクが出にくい</div>
+      <div class="can item-3-2">📼 <b>ラベルのないVHSテープ</b><br>カビが少し生えている</div>
+      <div class="can item-3-3">🍃 <b>ぬかばなの枯れ葉</b><br>カリカリに乾いている</div>
+
+    </div>
   </div>
 
-  <!-- 取り出し口 -->
-  <div class="outlet">
-    <div class="outlet-label">PUSH / 取り出し口</div>
-    
-    <!-- 出てくる全9種類の中身 -->
-    <!-- スロット1の3種 -->
-    <div class="can item-1-1">📄 <b>ピコぬ市報（2004年8月号）</b><br>※第3ページだけ破れている</div>
-    <div class="can item-1-2">🍵 <b>ぬか茶（微炭酸）</b><br>ほんのりぬかの香ばしさ</div>
-    <div class="can item-1-3">🔑 <b>使い道のわからない鍵</b><br>「図書倉庫」と書いてある</div>
+  <p class="footer-text">設置：ピコぬ新聞社 プレス事業部</p>
 
-    <!-- スロット2の3種 -->
-    <div class="can item-2-1">📦 <b>市役所のシュレッダーくず</b><br>ぎっしり詰まっている</div>
-    <div class="can item-2-2">🍿 <b>ぴこぬ羽毛スナック</b><br>口の中で一瞬で溶ける</div>
-    <div class="can item-2-3">🪙 <b>10円玉（ぬるい）</b><br>なぜか返却された</div>
+  <p class="footer-text">
+    <a href="index.html" style="color:#ffff80; text-decoration:none;">
+      ← ピコぬ新聞社へ戻る
+    </a>
+  </p>
 
-    <!-- スロット3の3種 -->
-    <div class="can item-3-1">🖊️ <b>「ピコぬ温泉」の粗品ペン</b><br>インクが出にくい</div>
-    <div class="can item-3-2">📼 <b>ラベルのないVHSテープ</b><br>カビが少し生えている</div>
-    <div class="can item-3-3">🍃 <b>ぬかばなの枯れ葉</b><br>カリカリに乾いている</div>
+  <script>
+    // ファミコン風の「ピコ♪」声を合成して鳴らす関数
+    function playPikoSound() {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
 
-  </div>
-</div>
+      // ファミコンっぽい矩形波（Square wave）に設定
+      osc.type = 'square';
 
-<p class="footer-text">設置：ピコぬ新聞社 プレス事業部</p>
+      // 音の高さ（ピコ♪の音程：880Hz → 1760Hzに一瞬で跳ね上がる）
+      osc.frequency.setValueAtTime(880, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.08);
 
-<script>
-// ファミコン風の「ピコ♪」声を合成して鳴らす関数
-function playPikoSound() {
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
+      // 音量（ポツッと切れる感じ）
+      gain.gain.setValueAtTime(0.1, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
 
-  // ファミコンっぽい矩形波（Square wave）に設定
-  osc.type = 'square';
-  
-  // 音の高さ（ピコ♪の音程：880Hz → 1760Hzに一瞬で跳ね上がる）
-  osc.frequency.setValueAtTime(880, ctx.currentTime);
-  osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.08);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
 
-  // 音量（ポツッと切れる感じ）
-  gain.gain.setValueAtTime(0.1, ctx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.08);
+    }
 
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc.start();
-  osc.stop(ctx.currentTime + 0.08);
-}
-
-// すべての「押す」ボタン（label）にクリックイベントを登録
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.btn-buy').forEach(btn => {
-    btn.addEventListener('click', () => {
-      playPikoSound();
+    // すべての「押す」ボタン（label）にクリックイベントを登録
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.btn-buy').forEach(btn => {
+        btn.addEventListener('click', () => {
+          playPikoSound();
+        });
+      });
     });
-  });
-});
-</script>
+  </script>
 </body>
+
 </html>
