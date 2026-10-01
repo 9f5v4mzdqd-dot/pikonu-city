@@ -19,6 +19,8 @@ a:visited { color: #cc99ff; }
 
 .container {
   width: 620px;
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   background-color: #000011;
   border: 2px ridge #444499;
@@ -64,6 +66,8 @@ h2 {
   background-color: #111122;
   border: 1px solid #333366;
   width: 288px;
+  flex: 1 1 260px;
+  max-width: 100%;
   padding: 8px;
   box-sizing: border-box;
 }
@@ -122,6 +126,11 @@ h2 {
   text-align: center;
   margin-top: 20px;
   font-size: 11px;
+}
+
+@media (max-width: 480px) {
+  body { margin: 8px; }
+  .aa-box { font-size: 10px; }
 }
 </style>
 </head>
