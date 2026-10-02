@@ -11,15 +11,17 @@
 
 -----------
 ## 2026-10-02(2)
-### 追加（`### 追加`の末尾に）
+### 追加
 - `pdfs/shotengai-dayori/shotengai-dayori-vol2.pdf`:商店街だより vol.2(2026年10月号)を追加
 - `news/news-20261002-02.html`:「商店街だより vol.2」を公開しましたを追加
+- `news/news-20260921-01.html`〜`news/news-20261002-01.html`:お知らせ記事8本(9/21〜10/2分)を追加
 
-### 変更（`### 変更`の末尾に）
+### 変更
 - `facilities/shokokai.html`:商店街だより vol.2へのリンクを追加
 - `news/index.html`・`news/category-koho.html`・`index.html`:お知らせ一覧に追記
+- `news/index.html`・`news/category-koho.html`・`news/category-bunka.html`・`news/category-kurashi.html`・`index.html`:お知らせ一覧に追記、トップページのお知らせ欄を最新5件に更新
 
-### 修正（`### 修正`の末尾に）
+### 修正
 - `facilities/shokokai.html`:商店街だよりvol.2のリンク表記(`vo2>`)を修正
 
 ## 2026-10-02(1)
