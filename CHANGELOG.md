@@ -10,6 +10,71 @@
 - ファイルパス: 内容
 
 -----------
+## 2026-10-02
+---
+### 追加
+- `pdfs/koho-nukapiko/koho-nukapiko-202610.pdf`:広報ぬかピコ「令和8年10月号」を追加(特集:落ち葉の弔い)
+
+### 変更
+- `about/koho-archive.html`:一覧に令和8年10月号(特集:街路樹の葉、三十二枚が落葉 ほか)を追加
+
+### 修正
+- `index.html`:トップページの「お知らせ」のリンク先(`news-YYYYMMDD-NN.html`)のパスを`news/`付きに修正し、リンク切れを解消
+- `pdfs/koho-nukapiko/koho-nukapiko-202610.pdf`:表記ゆれを修正して差し替え
+---
+
+## 2026-10-01
+---
+### 追加
+- `pikonu-shimbun/shukusaku.html`:縮刷版に2004年10月1日付(No.145)・10月2日付(No.146)の見出しを追加
+- `pikonu-shimbun/diary.html`:更新日記に10月1日・2日付(落ち葉・洗濯バサミ関連)の記述を追記
+- `about/sitemap.html`・`data/search-index.json`:「Web担当者特製・壁紙＆AA配布処」(`pikonu-shimbun/download.html`)を追加
+
+### 変更
+- `about/sitemap.html`・`data/search-index.json`・`pikonu-shimbun/index.html`:ピコぬ新聞社関連のリストを整理(「当サイトについて」を追加、並び順・表記を調整)
+- `pikonu-shimbun/download.html`:内容を調整
+
+### 修正
+- `pikonu-shimbun/shukusaku.html`:存在しないページへのリンク(`archive.html`)を解除
+---
+
+## 2026-09-30
+---
+### 追加
+- `pikonu-shimbun/about.html`:「会社概要・アクセス」を新設
+- `pikonu-shimbun/renraku.html`:「市民連絡欄(おたより・お悔やみ・お尋ね)」を新設
+- `pikonu-shimbun/diary.html`:「Web担当者のつぶやき・更新日記」を新設
+- `pikonu-shimbun/shukusaku.html`:「縮刷版・過去紙面見出し目録」を新設
+- `pikonu-shimbun/download.html`:「Web担当者特製・壁紙＆AA配布処」を新設
+- `about/sitemap.html`・`data/search-index.json`:上記の会社概要・市民連絡欄・つぶやき日記・縮刷版を追加
+
+### 変更
+- `pikonu-shimbun/index.html`:新設ページへの導線を追加
+- `pikonu-shimbun/bbs.html`・`bbs-error.html`・`tarekomi.html`・`tarekomi-thanks.html`:スマホ表示を調整、タレコミへのリンクを追加
+- `pikonu-shimbun/bbs.html`・`renraku.html`:投稿年の「200X」表記を「2004」に統一
+- `NEXT_TASKS.md`:追記
+---
+
+## 2026-09-29
+---
+### 追加
+- `pikonu-shimbun/vending.html`:「ピコぬ市指定・謎の自動販売機」を新設
+- `pikonu-shimbun/tarekomi.html`・`tarekomi-thanks.html`:「ニュース・情報タレコミ窓口」と送信完了ページを新設
+- `pikonu-shimbun/bbs.html`・`bbs-error.html`:「ピコぬ市民掲示板 & キリ番報告処」とエラーページを新設
+- `pikonu-shimbun/images/banner-pikonu-city.gif`:ピコぬ市役所バナーを追加
+- `pikonu-shimbun/data/articles.json`:記事を20件追加
+- `about/sitemap.html`・`data/search-index.json`:ピコぬ新聞社・GIFバナー工房・謎の自販機・タレコミ窓口・市民掲示板を追加
+
+### 変更
+- `pikonu-shimbun/banner-maker.html`:取扱説明書へのリンクを追加。デザインを「平成ポップ版」(Ver1.21)に変更。新聞社へ戻るリンクを追加
+- `pikonu-shimbun/app.js`:「ぬ情報」の表示内容を追加
+- `pikonu-shimbun/index.html`:市役所バナー・自販機・タレコミ・掲示板への導線を追加
+- `pikonu-shimbun/vending.html`:新聞社へ戻るリンクを追加
+
+### 修正
+- `pikonu-shimbun/data/articles.json`:誤字を修正
+- `pikonu-shimbun/index.html`:バナー画像のパスを修正
+---
 
 ## 2026-09-28
 ---
@@ -17,6 +82,9 @@
 - `pikonu-shimbun/`:新規サイト「ピコぬ新聞社」(`index.html`・`app.js`・`style.css`・`data/articles.json`)を新設。記事の追加・バナーメーカー(`banner-maker.html`)・点滅バナー(ぴこぬどり基金)を実装
 - `js/common.js`・`images/banners/pikonu-shimbun-banner.jpg`:全ページ共通フッターのバナー群に「ピコぬ新聞社」を追加
 - `facilities/kiroku-nuka-clinic-top.html`:キロクぬかクリニック「入口」ページを新設。ドアのSVGに「PUSH」の表示を追加、見出しを「入口」から「entrance」表記に修正
+- `pikonu-shimbun/banner-maker-manual.html`・`pikonu-shimbun/banner-maker-spec.md`:ピコぬGIFバナー工房の取扱説明書と仕様書を追加(`### 追加`の末尾に)
+- `pikonu-shimbun/banner-maker.html`:バナーのサイズ調整機能を追加(`### 変更`の末尾に)
+- `NEXT_TASKS.md`:追記(`### 変更`の末尾に)
 
 ### 変更
 - 市サイト側の各ページ(`index.html`・`facilities/index.html`・`facilities/fukushika.html`・`facilities/gendaibyo-db.html`・`facilities/jikan-koritsu-shien-ka.html`・`facilities/shinryo-kamoku.html`・`facilities/shiyakusho.html`・`facilities/syokudo.html`・`facilities/kiroku-nuka-clinic-archive.html`・`js/common.js`・`about/faq.html`・`about/gendaibyo-soudan-game.html`・`about/gendaibyo-uranai.html`・`about/gyousei-kiroku-01.html`・`about/jorei-gendaibyo.html`・`about/jusho-ichiran.html`・`about/mayoigo.html`・`about/telephone.html`・`news/news-20260620-01.html`・`news/news-20260710-01.html`・`services/gendaibyo-sodan.html`):キロクぬかクリニックへのリンク先を、本体(`kiroku-nuka-clinic.html`)から入口ページ(`kiroku-nuka-clinic-top.html`)に付け替え。クリニック家族ページ間の導線は変更なし
