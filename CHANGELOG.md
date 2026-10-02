@@ -10,7 +10,19 @@
 - ファイルパス: 内容
 
 -----------
-## 2026-10-02
+## 2026-10-02(2)
+### 追加（`### 追加`の末尾に）
+- `pdfs/shotengai-dayori/shotengai-dayori-vol2.pdf`:商店街だより vol.2(2026年10月号)を追加
+- `news/news-20261002-02.html`:「商店街だより vol.2」を公開しましたを追加
+
+### 変更（`### 変更`の末尾に）
+- `facilities/shokokai.html`:商店街だより vol.2へのリンクを追加
+- `news/index.html`・`news/category-koho.html`・`index.html`:お知らせ一覧に追記
+
+### 修正（`### 修正`の末尾に）
+- `facilities/shokokai.html`:商店街だよりvol.2のリンク表記(`vo2>`)を修正
+
+## 2026-10-02(1)
 ---
 ### 追加
 - `pdfs/koho-nukapiko/koho-nukapiko-202610.pdf`:広報ぬかピコ「令和8年10月号」を追加(特集:落ち葉の弔い)
