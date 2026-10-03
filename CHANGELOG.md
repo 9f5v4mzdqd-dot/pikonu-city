@@ -10,6 +10,17 @@
 - ファイルパス: 内容
 
 -----------
+
+## 2026-10-03（1）
+---
+### 追加
+- `pdfs/kominkan-dayori/kominkan-dayori2026.10.pdf`:公民館だより Vol.1(2026年10月号)を追加
+- `news/news-20261003-01.html`:「公民館だより Vol.1」を公開しましたを追加
+
+### 変更
+- `facilities/kominkan.html`:「公民館だより」セクションを追加し、ページ内メニューにも追加
+- `news/index.html`・`news/category-koho.html`・`index.html`:お知らせ一覧に追記
+---
 ## 2026-10-02（3）
 ### 追加
 - `pdfs/kominkan-dayori2026.10.pdf`:公民館だより Vol.1(2026年10月号)を追加
