@@ -10,6 +10,16 @@
 - ファイルパス: 内容
 
 -----------
+## 2026-10-03（6）
+---
+### 追加
+- `pikonu-shimbun/kobunsho.html`:「ピコぬ市公文書館 収蔵資料検索ポータル」を新設
+
+### 変更
+- `pikonu-shimbun/index.html`:ヘッダー下に、サイトの紹介文が右から左に流れる行(マーキー)を追加
+- `pikonu-shimbun/index.html`:公文書館バナーを、公文書館ページへのリンクに変更
+- `about/sitemap.html`・`data/search-index.json`:「ピコぬ市公文書館」を追加
+---
 
 ## 2026-10-03（5）
 ### 追加
