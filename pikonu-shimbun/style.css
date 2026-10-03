@@ -154,17 +154,6 @@ td {
   color: #fff;
 }
 
-/* 流れる紹介文 */
-.marquee-line {
-  background: #f0f0f0;
-  border: 2px solid #000080;
-  outline: 1px solid #fff;
-  padding: 4px 8px;
-  margin: 6px 0;
-  color: #000080;
-  font-size: 13px;
-}
-
 /* layout */
 .layout td {
   padding: 0;
