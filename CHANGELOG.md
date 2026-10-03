@@ -10,6 +10,12 @@
 - ファイルパス: 内容
 
 -----------
+## 2026-10-03（4）
+### 追加
+- `pikonu-shimbun/images/curve-mirror800600.jpg`・`curve-mirror1200800.jpg`:壁紙No.01「役所裏のカーブミラー」の画像を追加
+
+### 変更
+- `pikonu-shimbun/download.html`:壁紙No.01のサンプル表示とダウンロードリンクを、実画像に差し替え
 
 ## 2026-10-03（3）
 ---
