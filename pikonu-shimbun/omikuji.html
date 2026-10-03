@@ -1,111 +1,113 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>本日の目立たない運勢・ピコぬみくじ - ピコぬ新聞社</title>
-<style>
-body {
-  background-color: #000022;
-  color: #ffffff;
-  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-  margin: 15px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>本日の目立たない運勢・ピコぬみくじ - ピコぬ新聞社</title>
+  <style>
+    body {
+      background-color: #000022;
+      color: #ffffff;
+      font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 15px;
+    }
 
-.omikuji-box {
-  width: 500px;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto;
-  background-color: #111122;
-  border: 2px groove #444488;
-  padding: 15px;
-  text-align: center;
-}
+    .omikuji-box {
+      width: 500px;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin: 0 auto;
+      background-color: #111122;
+      border: 2px groove #444488;
+      padding: 15px;
+      text-align: center;
+    }
 
-.title {
-  color: #00ffcc;
-  font-weight: bold;
-  font-size: 13px;
-  border-bottom: 1px dashed #00ffcc;
-  padding-bottom: 5px;
-  margin-bottom: 12px;
-}
+    .title {
+      color: #00ffcc;
+      font-weight: bold;
+      font-size: 13px;
+      border-bottom: 1px dashed #00ffcc;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
 
-/* AA用スタイル（ズレ防止） */
-.aa-text {
-  font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Mona", sans-serif;
-  font-size: 12px;
-  line-height: 1.2;
-  white-space: pre;
-  overflow-x: auto;
-  display: inline-block;
-  text-align: left;
-  margin: 10px 0;
-  color: #ffffaa;
-}
+    /* AA用スタイル（ズレ防止） */
+    .aa-text {
+      font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Mona", sans-serif;
+      font-size: 12px;
+      line-height: 1.2;
+      white-space: pre;
+      overflow-x: auto;
+      display: inline-block;
+      text-align: left;
+      margin: 10px 0;
+      color: #ffffaa;
+    }
 
-.btn-draw {
-  background-color: #223355;
-  color: #ffff00;
-  border: 2px outset #5566aa;
-  font-family: "ＭＳ Ｐゴシック", sans-serif;
-  font-size: 12px;
-  padding: 6px 16px;
-  cursor: pointer;
-  margin: 10px 0;
-}
+    .btn-draw {
+      background-color: #223355;
+      color: #ffff00;
+      border: 2px outset #5566aa;
+      font-family: "ＭＳ Ｐゴシック", sans-serif;
+      font-size: 12px;
+      padding: 6px 16px;
+      cursor: pointer;
+      margin: 10px 0;
+    }
 
-.btn-draw:active {
-  border-style: inset;
-}
+    .btn-draw:active {
+      border-style: inset;
+    }
 
-#result-area {
-  display: none;
-  margin-top: 15px;
-  background-color: #000000;
-  border: 1px solid #555555;
-  padding: 12px;
-  text-align: left;
-}
+    #result-area {
+      display: none;
+      margin-top: 15px;
+      background-color: #000000;
+      border: 1px solid #555555;
+      padding: 12px;
+      text-align: left;
+    }
 
-.fortune-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #ff3366;
-  border-bottom: 1px dotted #444444;
-  padding-bottom: 4px;
-  margin-bottom: 8px;
-  text-align: center;
-}
+    .fortune-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #ff3366;
+      border-bottom: 1px dotted #444444;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
 
-.item-label {
-  color: #00ffff;
-  font-weight: bold;
-}
+    .item-label {
+      color: #00ffff;
+      font-weight: bold;
+    }
 
-.notice-text {
-  font-size: 10px;
-  color: #777799;
-  margin-top: 15px;
-  text-align: left;
-}
-</style>
+    .notice-text {
+      font-size: 10px;
+      color: #777799;
+      margin-top: 15px;
+      text-align: left;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="omikuji-box">
-  <div class="title">■ ピコぬ市公式・本日の目立たない運勢鑑定（1日1回推奨）</div>
-  
-  <p style="font-size: 11px; color: #cccccc; margin-bottom: 5px;">
-    目立たない場所から全体の運気を静かに占います。<br>
-    ※大吉や大凶などの極端な運勢は含まれておりません。
-  </p>
+  <div class="omikuji-box">
+    <div class="title">■ ピコぬ市公式・本日の目立たない運勢鑑定（1日1回推奨）</div>
 
-  <!-- おみくじ箱のAA -->
-  <pre class="aa-text" id="omikuji-aa">
+    <p style="font-size: 11px; color: #cccccc; margin-bottom: 5px;">
+      目立たない場所から全体の運気を静かに占います。<br>
+      ※大吉や大凶などの極端な運勢は含まれておりません。
+    </p>
+
+    <!-- おみくじ箱のAA -->
+    <pre class="aa-text" id="omikuji-aa">
       ┌────────┐
       │  ピコぬみくじ  │
       │   ┌────┐   │
@@ -114,29 +116,29 @@ body {
       │     (・∀・)   │ ＜ カラカラ…
       └────────┘
   </pre>
-  <br>
+    <br>
 
-  <button class="btn-draw" onclick="drawOmikuji()">［ おみくじ箱を振る ］</button>
+    <button class="btn-draw" onclick="drawOmikuji()">［ おみくじ箱を振る ］</button>
 
-  <!-- 結果表示エリア -->
-  <div id="result-area">
-    <div class="fortune-title" id="fortune-val">【 微吉 】</div>
-    <div style="margin-bottom: 8px;" id="fortune-desc">
-      全体的に可もなく不可もない穏やかな一日です。誰も見ていない場所での作業がはかどります。
+    <!-- 結果表示エリア -->
+    <div id="result-area">
+      <div class="fortune-title" id="fortune-val">【 微吉 】</div>
+      <div style="margin-bottom: 8px;" id="fortune-desc">
+        全体的に可もなく不可もない穏やかな一日です。誰も見ていない場所での作業がはかどります。
+      </div>
+      <hr style="border: 0; border-top: 1px dashed #333333; margin: 8px 0;">
+      <div><span class="item-label">・ラッキー目立たないスポット：</span><span id="spot-val">市役所裏のカーブミラー前</span></div>
+      <div><span class="item-label">・ラッキーアクション：</span><span id="action-val">自販機8号機のボタンを意味なく眺める</span></div>
+      <div><span class="item-label">・注意人物：</span><span id="person-val">環境衛生課のポエティック監視員</span></div>
     </div>
-    <hr style="border: 0; border-top: 1px dashed #333333; margin: 8px 0;">
-    <div><span class="item-label">・ラッキー目立たないスポット：</span><span id="spot-val">市役所裏のカーブミラー前</span></div>
-    <div><span class="item-label">・ラッキーアクション：</span><span id="action-val">自販機8号機のボタンを意味なく眺める</span></div>
-    <div><span class="item-label">・注意人物：</span><span id="person-val">環境衛生課のポエティック監視員</span></div>
-  </div>
 
-  <hr style="border: 0; border-top: 1px solid #333366; margin: 20px 0 10px 0;">
+    <hr style="border: 0; border-top: 1px solid #333366; margin: 20px 0 10px 0;">
 
-  <!-- 市の花「ぬかばな」のAA領域 -->
-  <div style="color: #00ffcc; font-size: 11px; text-align: left; font-weight: bold;">
-    ■ ピコぬ市の花「ぬかばな」（開花）
-  </div>
-  <pre class="aa-text" style="color: #aaffaa;">
+    <!-- 市の花「ぬかばな」のAA領域 -->
+    <div style="color: #00ffcc; font-size: 11px; text-align: left; font-weight: bold;">
+      ■ ピコぬ市の花「ぬかばな」（開花）
+    </div>
+    <pre class="aa-text" style="color: #aaffaa;">
       (⌒)
       (⌒) | (⌒) ＜ 目立たない場所から全体を支えています
       ＼ ｜ ／
@@ -148,61 +150,63 @@ body {
       🌾
   </pre>
 
-  <div class="notice-text">
-    【Web管理担当より】<br>
-    ※サーバーの乱数発生器が古いため、同じ結果が連続して出ることがありますがあらかじめご了承ください。
+    <div class="notice-text">
+      【Web管理担当より】<br>
+      ※サーバーの乱数発生器が古いため、同じ結果が連続して出ることがありますがあらかじめご了承ください。
+    </div>
+
+    <div style="font-size:11px; margin-top:15px;">[ <a href="index.html">←新聞社へ戻る</a> ]</div>
   </div>
-</div>
 
-<script>
-const fortunes = [
-  {
-    title: "【 微吉 】",
-    desc: "全体的に可もなく不可もない穏やかな一日です。誰も見ていない場所での作業がはかどります。",
-    spot: "市役所裏のカーブミラー前（角度調整済み）",
-    action: "自販機8号機のボタンを意味なく眺める",
-    person: "環境衛生課のポエティック監視員"
-  },
-  {
-    title: "【 地味吉 】",
-    desc: "存在感を限りなく消すことで平穏が得られます。目立たない場所こそがあなたの定位置です。",
-    spot: "市役所地下通路の標語ポスター前",
-    action: "足元のぬかばなと雑草の境界線を見極める",
-    person: "7777キリ番を踏もうとしている市民"
-  },
-  {
-    title: "【 ぬか吉 】",
-    desc: "足元にかすかな幸運が転がっています。ただし、他の人から見ればただの枯れ葉です。",
-    spot: "歩道上の名もなき落ち葉の元・滞在エリア",
-    action: "ぬか茶（微炭酸）の炭酸の抜け具合を確認する",
-    person: "スキャナの修理を諦めたWeb担当者"
-  },
-  {
-    title: "【 凡吉 】",
-    desc: "特に何も起きない最高の平凡です。周囲の喧騒をよそに静かな空間を支えてください。",
-    spot: "二階ベランダの物干し竿（風化前）",
-    action: "古いエアコンの「ピコ…」という結露音に耳を澄ます",
-    person: "82歳の「風でしょうね」と言った女性"
-  },
-  {
-    title: "【 減算吉 】",
-    desc: "焦って行動すると期待値が少しずつ引かれます。一歩引いた立ち位置が吉と出ます。",
-    spot: "アクセスカウンターの減算シークエンス内部",
-    action: "手動での紙面文字起こし（進捗率1.2%）を手伝う",
-    person: "「7777が無効化された」とお叱りメールを送ってきた人"
-  }
-];
+  <script>
+    const fortunes = [
+      {
+        title: "【 微吉 】",
+        desc: "全体的に可もなく不可もない穏やかな一日です。誰も見ていない場所での作業がはかどります。",
+        spot: "市役所裏のカーブミラー前（角度調整済み）",
+        action: "自販機8号機のボタンを意味なく眺める",
+        person: "環境衛生課のポエティック監視員"
+      },
+      {
+        title: "【 地味吉 】",
+        desc: "存在感を限りなく消すことで平穏が得られます。目立たない場所こそがあなたの定位置です。",
+        spot: "市役所地下通路の標語ポスター前",
+        action: "足元のぬかばなと雑草の境界線を見極める",
+        person: "7777キリ番を踏もうとしている市民"
+      },
+      {
+        title: "【 ぬか吉 】",
+        desc: "足元にかすかな幸運が転がっています。ただし、他の人から見ればただの枯れ葉です。",
+        spot: "歩道上の名もなき落ち葉の元・滞在エリア",
+        action: "ぬか茶（微炭酸）の炭酸の抜け具合を確認する",
+        person: "スキャナの修理を諦めたWeb担当者"
+      },
+      {
+        title: "【 凡吉 】",
+        desc: "特に何も起きない最高の平凡です。周囲の喧騒をよそに静かな空間を支えてください。",
+        spot: "二階ベランダの物干し竿（風化前）",
+        action: "古いエアコンの「ピコ…」という結露音に耳を澄ます",
+        person: "82歳の「風でしょうね」と言った女性"
+      },
+      {
+        title: "【 減算吉 】",
+        desc: "焦って行動すると期待値が少しずつ引かれます。一歩引いた立ち位置が吉と出ます。",
+        spot: "アクセスカウンターの減算シークエンス内部",
+        action: "手動での紙面文字起こし（進捗率1.2%）を手伝う",
+        person: "「7777が無効化された」とお叱りメールを送ってきた人"
+      }
+    ];
 
-function drawOmikuji() {
-  const btn = document.querySelector('.btn-draw');
-  const resArea = document.getElementById('result-area');
-  const aaBox = document.getElementById('omikuji-aa');
-  
-  btn.disabled = true;
-  btn.textContent = 'ガラガラ…（手動抽選中）';
+    function drawOmikuji() {
+      const btn = document.querySelector('.btn-draw');
+      const resArea = document.getElementById('result-area');
+      const aaBox = document.getElementById('omikuji-aa');
 
-  // 振っている最中にAAがシャカシャカ揺れる演出
-  aaBox.textContent = `
+      btn.disabled = true;
+      btn.textContent = 'ガラガラ…（手動抽選中）';
+
+      // 振っている最中にAAがシャカシャカ揺れる演出
+      aaBox.textContent = `
       ┌────────┐
       │  ピコぬみくじ  │
       │   ┌────┐   │
@@ -212,17 +216,17 @@ function drawOmikuji() {
       └────────┘
   `;
 
-  setTimeout(() => {
-    const picked = fortunes[Math.floor(Math.random() * fortunes.length)];
+      setTimeout(() => {
+        const picked = fortunes[Math.floor(Math.random() * fortunes.length)];
 
-    document.getElementById('fortune-val').textContent = picked.title;
-    document.getElementById('fortune-desc').textContent = picked.desc;
-    document.getElementById('spot-val').textContent = picked.spot;
-    document.getElementById('action-val').textContent = picked.action;
-    document.getElementById('person-val').textContent = picked.person;
+        document.getElementById('fortune-val').textContent = picked.title;
+        document.getElementById('fortune-desc').textContent = picked.desc;
+        document.getElementById('spot-val').textContent = picked.spot;
+        document.getElementById('action-val').textContent = picked.action;
+        document.getElementById('person-val').textContent = picked.person;
 
-    // 出た後のAA
-    aaBox.textContent = `
+        // 出た後のAA
+        aaBox.textContent = `
       ┌────────┐
       │  ピコぬみくじ  │
       │   ┌────┐   │
@@ -232,12 +236,13 @@ function drawOmikuji() {
       └────────┘
     `;
 
-    resArea.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = '［ もう一度振る ］';
-  }, 800);
-}
-</script>
+        resArea.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = '［ もう一度振る ］';
+      }, 800);
+    }
+  </script>
 
 </body>
+
 </html>

@@ -1,254 +1,238 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-  <meta charset="UTF-8">
-  <title>ピコぬ市公文書館 - 収蔵資料検索ポータル</title>
-  <style>
-    body {
-      background-color: #f0f0e8;
-      color: #000000;
-      font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-      font-size: 12px;
-      line-height: 1.4;
-      margin: 10px;
-    }
-
-    a {
-      color: #0000cc;
-    }
-
-    a:visited {
-      color: #551a8b;
-    }
-
-    .header-title {
-      font-size: 18px;
-      font-weight: bold;
-      color: #003366;
-      border-bottom: 2px solid #003366;
-      padding-bottom: 4px;
-    }
-
-    .marquee-box {
-      background-color: #ffffcc;
-      border: 1px solid #cccc99;
-      padding: 3px;
-      font-size: 12px;
-      margin: 8px 0;
-    }
-
-    .counter {
-      color: #ff0000;
-      font-family: monospace;
-      font-weight: bold;
-    }
-
-    .section-title {
-      background-color: #003366;
-      color: #ffffff;
-      font-weight: bold;
-      padding: 3px 6px;
-      margin-top: 15px;
-      font-size: 13px;
-    }
-
-    .doc-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 5px;
-      background-color: #ffffff;
-    }
-
-    .doc-table th {
-      background-color: #e0e0d0;
-      border: 1px solid #999988;
-      padding: 4px;
-      text-align: center;
-      font-size: 12px;
-    }
-
-    .doc-table td {
-      border: 1px solid #cccccc;
-      padding: 4px;
-      font-size: 12px;
-    }
-
-    .tag-perm {
-      color: #008800;
-      font-weight: bold;
-    }
-
-    .tag-lim {
-      color: #cc6600;
-      font-weight: bold;
-    }
-
-    .text-box {
-      background-color: #ffffff;
-      border: 1px solid #cccccc;
-      padding: 10px;
-      font-family: "ＭＳ ゴシック", "MS Gothic", monospace;
-      font-size: 12px;
-      white-space: pre-wrap;
-      margin-top: 5px;
-    }
-
-    .footer {
-      margin-top: 30px;
-      border-top: 1px solid #999999;
-      padding-top: 8px;
-      text-align: center;
-      font-size: 11px;
-      color: #666666;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ピコぬ市公文書館 - 収蔵資料検索ポータル</title>
+<style>
+body {
+  background-color: #f0f0e8;
+  color: #000000;
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 10px;
+}
+a { color: #0000cc; }
+a:visited { color: #551a8b; }
+.header-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #003366;
+  border-bottom: 2px solid #003366;
+  padding-bottom: 4px;
+}
+.marquee-box {
+  background-color: #ffffcc;
+  border: 1px solid #cccc99;
+  padding: 3px;
+  font-size: 12px;
+  margin: 8px 0;
+}
+.counter {
+  color: #ff0000;
+  font-family: monospace;
+  font-weight: bold;
+}
+.section-title {
+  background-color: #003366;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 3px 6px;
+  margin-top: 15px;
+  font-size: 13px;
+}
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+  background-color: #ffffff;
+}
+.doc-table th {
+  background-color: #e0e0d0;
+  border: 1px solid #999988;
+  padding: 4px;
+  text-align: center;
+  font-size: 12px;
+}
+.doc-table td {
+  border: 1px solid #cccccc;
+  padding: 4px;
+  font-size: 12px;
+}
+.tag-perm { color: #008800; font-weight: bold; }
+.tag-lim { color: #cc6600; font-weight: bold; }
+.text-box {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  font-family: "ＭＳ ゴシック", "MS Gothic", monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  margin-top: 5px;
+}
+.footer {
+  margin-top: 30px;
+  border-top: 1px solid #999999;
+  padding-top: 8px;
+  text-align: center;
+  font-size: 11px;
+  color: #666666;
+}
+.container {
+  width: 720px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.doc-table {
+  display: block;
+  overflow-x: auto;
+}
+</style>
 </head>
-
 <body>
 
-  <a name="top"></a>
+<div class="container">
 
-  <div class="header-title">ピコぬ市公文書館 収蔵資料検索ポータル</div>
+<a name="top"></a>
 
-  <div class="marquee-box">
-    <marquee scrollamount="3">
-      ようこそ！ピコぬ市公文書館へ。当館では市役所各課および市議会から移管された歴史的公文書・議会記録を保管しています。※現在、一部目録のデジタル化試験運用中です・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・
-    </marquee>
+<div class="header-title">ピコぬ市公文書館 収蔵資料検索ポータル</div>
+
+<div class="marquee-box">
+  <marquee scrollamount="3">ようこそ！ピコぬ市公文書館へ。当館では市役所各課および市議会から移管された歴史的公文書・議会記録を保管しています。※現在、一部目録のデジタル化試験運用中です・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・</marquee>
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td>アクセスカウンター：［ <span class="counter">0 0 1 4 8 2 9</span> ］（2004年10月1日開設）</td>
+    <td align="right">最終更新日：2004年10月15日</td>
+  </tr>
+</table>
+
+<div class="section-title">■ 公文書館からのお知らせ</div>
+<table width="100%" border="1" bordercolor="#cccccc" cellspacing="0" cellpadding="4" style="background:#ffffff; margin-top:5px;">
+  <tr>
+    <td width="100" align="center" bgcolor="#f5f5f5">2004/10/15</td>
+    <td>平成15年度『ぬかばな群生地境界確認調査』の目録データを追加しました。</td>
+  </tr>
+  <tr>
+    <td align="center" bgcolor="#f5f5f5">2004/10/08</td>
+    <td>ピコぬ市議会広報バックナンバー（第12号〜第18号・テキスト版）を公開しました。</td>
+  </tr>
+  <tr>
+    <td align="center" bgcolor="#f5f5f5">2004/10/01</td>
+    <td>ピコぬ市公文書館Webポータル（試作版）を開設いたしました。</td>
+  </tr>
+</table>
+
+<div class="section-title">■ 移管公文書・目録一覧（検索試運転版）</div>
+<p style="margin: 5px 0;">※原本の閲覧には市役所1階「公文書公開窓口」での閲覧申請が必要です。</p>
+
+<table class="doc-table">
+  <tr>
+    <th width="90">資料番号</th>
+    <th width="110">作成部署</th>
+    <th>件名 / 文書名</th>
+    <th width="80">作成年度</th>
+    <th width="70">保存区分</th>
+  </tr>
+  <tr>
+    <td align="center">公-建設-042</td>
+    <td>建設課 道路維持係</td>
+    <td>役所裏カーブミラー設置申請および角度変更微調整の記録</td>
+    <td align="center">昭和58年度</td>
+    <td align="center"><span class="tag-perm">永年保存</span></td>
+  </tr>
+  <tr>
+    <td align="center">公-環境-108</td>
+    <td>環境保全課</td>
+    <td>第3回 ぬかばな高密度群生調査結果概要報告書</td>
+    <td align="center">平成12年度</td>
+    <td align="center"><span class="tag-perm">永年保存</span></td>
+  </tr>
+  <tr>
+    <td align="center">公-総務-201</td>
+    <td>総務課 広報係</td>
+    <td>市指定鳥類「ピコぬどり」飛翔目撃情報に関する確認調査（該当なし）</td>
+    <td align="center">平成15年度</td>
+    <td align="center"><span class="tag-lim">10年保存</span></td>
+  </tr>
+  <tr>
+    <td align="center">公-議会-018</td>
+    <td>市議会 事務局</td>
+    <td>ピコぬ市議会広報 第18号（平成16年5月「市内の静寂維持に関する決議」）</td>
+    <td align="center">平成16年度</td>
+    <td align="center"><span class="tag-perm">永年保存</span></td>
+  </tr>
+  <tr>
+    <td align="center">公-商工-019</td>
+    <td>商工振興課</td>
+    <td>市内自動販売機設置台数および夜間点滅シグナル稼働状況調査</td>
+    <td align="center">平成09年度</td>
+    <td align="center"><span class="tag-lim">10年保存</span></td>
+  </tr>
+  <tr>
+    <td align="center">公-議会-015</td>
+    <td>市議会 事務局</td>
+    <td>ピコぬ市議会広報 第15号（平成15年8月「ぬかばな条例改訂審議」特集）</td>
+    <td align="center">平成15年度</td>
+    <td align="center"><span class="tag-perm">永年保存</span></td>
+  </tr>
+  <tr>
+    <td align="center">公-庶務-005</td>
+    <td>市民課 庶務係</td>
+    <td>庁舎ベランダ備品（青い洗濯バサミ等）経年劣化・交換指示書</td>
+    <td align="center">平成14年度</td>
+    <td align="center"><span class="tag-lim">5年保存</span></td>
+  </tr>
+  <tr>
+    <td align="center">公-議会-012</td>
+    <td>市議会 事務局</td>
+    <td>ピコぬ市議会広報 第12号（平成14年11月特別号・決算審査）</td>
+    <td align="center">平成14年度</td>
+    <td align="center"><span class="tag-perm">永年保存</span></td>
+  </tr>
+</table>
+
+<div class="section-title">■ ピコぬ市議会広報 バックナンバー公開室（テキストアーカイブ）</div>
+<p style="margin: 5px 0;">※通信速度への配慮のため、テキスト形式（.txt/HTML）での公開を行っております。各号の［テキスト版を読む］をクリックすると本文へ移動します。</p>
+
+<table class="doc-table">
+  <tr>
+    <th width="110">発行年月</th>
+    <th width="80">号数</th>
+    <th>主な審議内容・特集</th>
+    <th width="120">本文リンク</th>
+  </tr>
+  <tr>
+    <td align="center">平成16年5月</td>
+    <td align="center">第18号</td>
+    <td>市内の静寂維持に関する決議 / 役所裏カーブミラー補修予算の件</td>
+    <td align="center"><a href="#gikai18">［テキスト版を読む］</a></td>
+  </tr>
+  <tr>
+    <td align="center">平成15年8月</td>
+    <td align="center">第15号</td>
+    <td>ぬかばな群生地保護条例の改正案について / 質疑応答（市民課）</td>
+    <td align="center"><a href="#gikai15">［テキスト版を読む］</a></td>
+  </tr>
+  <tr>
+    <td align="center">平成14年11月</td>
+    <td align="center">第12号</td>
+    <td>平成14年度決算審査特別委員会報告 / 青い洗濯バサミ等備品購入費</td>
+    <td align="center"><a href="#gikai12">［テキスト版を読む］</a></td>
+  </tr>
+</table>
+
+<!-- テキスト本文エリア -->
+<div style="margin-top: 25px;">
+
+  <!-- 第18号 -->
+  <a name="gikai18"></a>
+  <div style="background:#e0e0d0; padding:4px 8px; font-weight:bold; border:1px solid #999988; margin-top:15px;">
+    ■ ピコぬ市議会広報 第18号（平成16年5月発行・テキスト版）
   </div>
-
-  <table width="100%" border="0" cellspacing="0" cellpadding="2">
-    <tr>
-      <td>アクセスカウンター：［ <span class="counter">0 0 1 4 8 2 9</span> ］（2004年10月1日開設）</td>
-      <td align="right">最終更新日：2004年10月15日</td>
-    </tr>
-  </table>
-
-  <div class="section-title">■ 公文書館からのお知らせ</div>
-  <table width="100%" border="1" bordercolor="#cccccc" cellspacing="0" cellpadding="4"
-    style="background:#ffffff; margin-top:5px;">
-    <tr>
-      <td width="100" align="center" bgcolor="#f5f5f5">2004/10/15</td>
-      <td>平成15年度『ぬかばな群生地境界確認調査』の目録データを追加しました。</td>
-    </tr>
-    <tr>
-      <td align="center" bgcolor="#f5f5f5">2004/10/08</td>
-      <td>ピコぬ市議会広報バックナンバー（第12号〜第18号・テキスト版）を公開しました。</td>
-    </tr>
-    <tr>
-      <td align="center" bgcolor="#f5f5f5">2004/10/01</td>
-      <td>ピコぬ市公文書館Webポータル（試作版）を開設いたしました。</td>
-    </tr>
-  </table>
-
-  <div class="section-title">■ 移管公文書・目録一覧（検索試運転版）</div>
-  <p style="margin: 5px 0;">※原本の閲覧には市役所1階「公文書公開窓口」での閲覧申請が必要です。</p>
-
-  <table class="doc-table">
-    <tr>
-      <th width="90">資料番号</th>
-      <th width="110">作成部署</th>
-      <th>件名 / 文書名</th>
-      <th width="80">作成年度</th>
-      <th width="70">保存区分</th>
-    </tr>
-    <tr>
-      <td align="center">公-建設-042</td>
-      <td>建設課 道路維持係</td>
-      <td>役所裏カーブミラー設置申請および角度変更微調整の記録</td>
-      <td align="center">昭和58年度</td>
-      <td align="center"><span class="tag-perm">永年保存</span></td>
-    </tr>
-    <tr>
-      <td align="center">公-環境-108</td>
-      <td>環境保全課</td>
-      <td>第3回 ぬかばな高密度群生調査結果概要報告書</td>
-      <td align="center">平成12年度</td>
-      <td align="center"><span class="tag-perm">永年保存</span></td>
-    </tr>
-    <tr>
-      <td align="center">公-総務-201</td>
-      <td>総務課 広報係</td>
-      <td>市指定鳥類「ぴこぬどり」飛翔目撃情報に関する確認調査（該当なし）</td>
-      <td align="center">平成15年度</td>
-      <td align="center"><span class="tag-lim">10年保存</span></td>
-    </tr>
-    <tr>
-      <td align="center">公-議会-018</td>
-      <td>市議会 事務局</td>
-      <td>ピコぬ市議会広報 第18号（平成16年5月「市内の静寂維持に関する決議」）</td>
-      <td align="center">平成16年度</td>
-      <td align="center"><span class="tag-perm">永年保存</span></td>
-    </tr>
-    <tr>
-      <td align="center">公-商工-019</td>
-      <td>商工振興課</td>
-      <td>市内自動販売機設置台数および夜間点滅シグナル稼働状況調査</td>
-      <td align="center">平成09年度</td>
-      <td align="center"><span class="tag-lim">10年保存</span></td>
-    </tr>
-    <tr>
-      <td align="center">公-議会-015</td>
-      <td>市議会 事務局</td>
-      <td>ピコぬ市議会広報 第15号（平成15年8月「ぬかばな条例改訂審議」特集）</td>
-      <td align="center">平成15年度</td>
-      <td align="center"><span class="tag-perm">永年保存</span></td>
-    </tr>
-    <tr>
-      <td align="center">公-庶務-005</td>
-      <td>市民課 庶務係</td>
-      <td>庁舎ベランダ備品（青い洗濯バサミ等）経年劣化・交換指示書</td>
-      <td align="center">平成14年度</td>
-      <td align="center"><span class="tag-lim">5年保存</span></td>
-    </tr>
-    <tr>
-      <td align="center">公-議会-012</td>
-      <td>市議会 事務局</td>
-      <td>ピコぬ市議会広報 第12号（平成14年11月特別号・決算審査）</td>
-      <td align="center">平成14年度</td>
-      <td align="center"><span class="tag-perm">永年保存</span></td>
-    </tr>
-  </table>
-
-  <div class="section-title">■ ピコぬ市議会広報 バックナンバー公開室（テキストアーカイブ）</div>
-  <p style="margin: 5px 0;">※通信速度への配慮のため、テキスト形式（.txt/HTML）での公開を行っております。各号の［テキスト版を読む］をクリックすると本文へ移動します。</p>
-
-  <table class="doc-table">
-    <tr>
-      <th width="110">発行年月</th>
-      <th width="80">号数</th>
-      <th>主な審議内容・特集</th>
-      <th width="120">本文リンク</th>
-    </tr>
-    <tr>
-      <td align="center">平成16年5月</td>
-      <td align="center">第18号</td>
-      <td>市内の静寂維持に関する決議 / 役所裏カーブミラー補修予算の件</td>
-      <td align="center"><a href="#gikai18">［テキスト版を読む］</a></td>
-    </tr>
-    <tr>
-      <td align="center">平成15年8月</td>
-      <td align="center">第15号</td>
-      <td>ぬかばな群生地保護条例の改正案について / 質疑応答（市民課）</td>
-      <td align="center"><a href="#gikai15">［テキスト版を読む］</a></td>
-    </tr>
-    <tr>
-      <td align="center">平成14年11月</td>
-      <td align="center">第12号</td>
-      <td>平成14年度決算審査特別委員会報告 / 青い洗濯バサミ等備品購入費</td>
-      <td align="center"><a href="#gikai12">［テキスト版を読む］</a></td>
-    </tr>
-  </table>
-
-  <!-- テキスト本文エリア -->
-  <div style="margin-top: 25px;">
-
-    <!-- 第18号 -->
-    <a name="gikai18"></a>
-    <div style="background:#e0e0d0; padding:4px 8px; font-weight:bold; border:1px solid #999988; margin-top:15px;">
-      ■ ピコぬ市議会広報 第18号（平成16年5月発行・テキスト版）
-    </div>
-    <pre class="text-box">============================================================
+  <pre class="text-box">============================================================
 ピコぬ市議会広報 第18号（平成16年5月15日発行）
 編集・発行：ピコぬ市議会 事務局
 ============================================================
@@ -274,23 +258,23 @@
    何らかの規制を行う考えはあるか。
  答：現時点では事業者への協力依頼にとどめる方針である。（商工振興課）
 ------------------------------------------------------------</pre>
-    <div style="text-align:right; font-size:11px; margin-top:2px;">
-      ［<a href="#top">▲ページトップへ戻る</a>］
-    </div>
+  <div style="text-align:right; font-size:11px; margin-top:2px;">
+    ［<a href="#top">▲ページトップへ戻る</a>］
+  </div>
 
-    <!-- 第15号 -->
-    <a name="gikai15"></a>
-    <div style="background:#e0e0d0; padding:4px 8px; font-weight:bold; border:1px solid #999988; margin-top:20px;">
-      ■ ピコぬ市議会広報 第15号（平成15年8月発行・テキスト版）
-    </div>
-    <pre class="text-box">============================================================
+  <!-- 第15号 -->
+  <a name="gikai15"></a>
+  <div style="background:#e0e0d0; padding:4px 8px; font-weight:bold; border:1px solid #999988; margin-top:20px;">
+    ■ ピコぬ市議会広報 第15号（平成15年8月発行・テキスト版）
+  </div>
+  <pre class="text-box">============================================================
 ピコぬ市議会広報 第15号（平成15年8月15日発行）
 編集・発行：ピコぬ市議会 事務局
 ============================================================
 
 【目次】
 1. ぬかばな群生地保護条例の改訂案審議について
-2. 市指定鳥類「ぴこぬどり」目撃情報調査の報告
+2. 市指定鳥類「ピコぬどり」目撃情報調査の報告
 3. 市民課窓口の備品等管理に関する質疑
 
 ------------------------------------------------------------
@@ -299,21 +283,21 @@
  持ち去り行為を制限する改訂案が提出され、慎重な審議ののち
  原案どおり可決されました。
 
-■ 2. 「ぴこぬどり」確認調査報告について
+■ 2. 「ピコぬどり」確認調査報告について
  平成15年度に市民より寄せられた飛翔目撃情報（計3件）について
  総務課による現地確認調査が行われましたが、いずれも該当する
  個体は確認されなかった旨が報告されました。
 ------------------------------------------------------------</pre>
-    <div style="text-align:right; font-size:11px; margin-top:2px;">
-      ［<a href="#top">▲ページトップへ戻る</a>］
-    </div>
+  <div style="text-align:right; font-size:11px; margin-top:2px;">
+    ［<a href="#top">▲ページトップへ戻る</a>］
+  </div>
 
-    <!-- 第12号 -->
-    <a name="gikai12"></a>
-    <div style="background:#e0e0d0; padding:4px 8px; font-weight:bold; border:1px solid #999988; margin-top:20px;">
-      ■ ピコぬ市議会広報 第12号（平成14年11月発行・テキスト版）
-    </div>
-    <pre class="text-box">============================================================
+  <!-- 第12号 -->
+  <a name="gikai12"></a>
+  <div style="background:#e0e0d0; padding:4px 8px; font-weight:bold; border:1px solid #999988; margin-top:20px;">
+    ■ ピコぬ市議会広報 第12号（平成14年11月発行・テキスト版）
+  </div>
+  <pre class="text-box">============================================================
 ピコぬ市議会広報 第12号（平成14年11月15日特別号）
 編集・発行：ピコぬ市議会 事務局
 ============================================================
@@ -331,29 +315,29 @@
  市民課庶務係より要求のありました庁舎ベランダ備品（青い洗濯バサミ等）
  経年劣化に伴う補充・交換経費（合計840円）について承認されました。
 ------------------------------------------------------------</pre>
-    <div style="text-align:right; font-size:11px; margin-top:2px;">
-      ［<a href="#top">▲ページトップへ戻る</a>］
-    </div>
-
+  <div style="text-align:right; font-size:11px; margin-top:2px;">
+    ［<a href="#top">▲ページトップへ戻る</a>］
   </div>
 
-  <div class="section-title">■ 利用案内・お問い合わせ</div>
-  <div style="background:#ffffff; border:1px solid #ccc; padding:8px; margin-top:5px;">
-    <strong>【開館時間】</strong> 午前9:00 ～ 午後4:30（土・日・祝日・年末年始を除く）<br>
-    <strong>【所在地】</strong> 〒000-0000 ピコぬ市役所地下1階 アーカイブ保管室隣接<br>
-    <strong>【連絡先】</strong> E-Mail: <a
-      href="mailto:kobunsho@city.pikonu.example.jp">kobunsho@city.pikonu.example.jp</a>（※返信にお時間をいただく場合があります）
-  </div>
+</div>
 
-  <div style="text-align:center; margin-top:20px; font-size:11px;">
-    [ <a href="index.html">ピコぬ新聞社トップへ戻る</a> ]
-  </div>
+<div class="section-title">■ 利用案内・お問い合わせ</div>
+<div style="background:#ffffff; border:1px solid #ccc; padding:8px; margin-top:5px;">
+  <strong>【開館時間】</strong> 午前9:00 ～ 午後4:30（土・日・祝日・年末年始を除く）<br>
+  <strong>【所在地】</strong> 〒000-0000 ピコぬ市役所地下1階 アーカイブ保管室隣接<br>
+  <strong>【連絡先】</strong> E-Mail: <a href="mailto:kobunsho@city.pikonu.example.jp">kobunsho@city.pikonu.example.jp</a>（※返信にお時間をいただく場合があります）
+</div>
 
-  <div class="footer">
-    推奨ブラウザ：Netscape Navigator 4.0以上 / Internet Explorer 5.0以上（画面サイズ 1024×768 ピクセル推奨）<br>
-    Copyright (C) 2004 Pikonu City Archives. All Rights Reserved.
-  </div>
+<div class="footer">
+  推奨ブラウザ：Netscape Navigator 4.0以上 / Internet Explorer 5.0以上（画面サイズ 1024×768 ピクセル推奨）<br>
+  Copyright (C) 2004 Pikonu City Archives. All Rights Reserved.
+</div>
+
+<div style="text-align:center; font-size:11px; margin:15px 0 5px 0;">
+  ［ <a href="index.html">←新聞社に戻る</a> ］
+</div>
+
+</div>
 
 </body>
-
 </html>
