@@ -22,15 +22,15 @@
 ---
 
 ## 2026-10-03（5）
+---
 ### 追加
 - `pikonu-shimbun/shinbun-kiriban.html`:「キリ番チェッカー」を新設
-- `pikonu-shimbun/images/banner-7777kiriban.gif`:キリ番チェッカー用バナー画像を追加
 - `pikonu-shimbun/omikuji.html`:「ピコぬみくじ」を新設
+- `pikonu-shimbun/images/banner-7777kiriban.gif`:キリ番チェッカー用バナー画像を追加
 
 ### 変更
-- `pikonu-shimbun/index.html`:キリ番チェッカーへのバナーを追加。サイドメニューにピコぬみくじへのリンクを追加
-- `about/sitemap.html`・`data/search-index.json`:「キリ番チェッカー」を追加
-- `pikonu-shimbun/index.html`:サイドメニューにピコぬみくじへのリンクを追加
+- `pikonu-shimbun/index.html`:キリ番チェッカーへのバナーを追加。サイドメニューにピコぬみくじへのリンクを追加。ヘッダー下に、サイトの紹介文が右から左に流れる行(マーキー)を追加
+- `about/sitemap.html`・`data/search-index.json`:「キリ番チェッカー」「ピコぬみくじ」を追加
 ---
 
 ## 2026-10-03（4）
