@@ -360,6 +360,15 @@ JSON化・動的生成などの仕組み変更も行わない。
 新しく同種のCMSを増やす場合も、この3つのいずれかの管理フォームをコピーして
 `FILE_PATH`を書き換えるのが確実。
 
+## お知らせ一覧の自動表示
+
+お知らせを追加するときに編集するのは、`news/index.html` の `<ul class="notice-list">` だけです。
+
+- トップページ(`index.html`)の一覧は、`news/index.html` の先頭5件を自動で表示する(`data-news-limit="5"`)。
+- 各カテゴリページ(`news/category-*.html`)の一覧は、`news/index.html` から該当カテゴリの項目だけを自動で表示する(`data-news-category="カテゴリ名"`)。`<li>` の `data-category` と同じ文字列にすること。
+- 仕組みは `js/common.js` の `bindNewsLists()`。取得に失敗したときは、各ページのHTMLに書かれた一覧がそのまま表示される(トップページとカテゴリページの `<li>` は予備なので、更新しなくてよい)。
+- 新しいカテゴリページを作るときは、`<ul class="notice-list" id="notice-list" data-news-category="カテゴリ名">` とする。
+
 ## サイト内検索(`data/search-index.json`)
 
 ヘッダーの検索ボックス(`js/common.js`)は、次の2つを組み合わせて検索結果を出す。
