@@ -10,6 +10,18 @@
 - ファイルパス: 内容
 
 -----------
+
+## 2026-10-03（5）
+---
+### 追加
+- `pikonu-shimbun/shinbun-kiriban.html`:「キリ番チェッカー」を新設
+- `pikonu-shimbun/images/banner-7777kiriban.gif`:キリ番チェッカー用バナー画像を追加
+
+### 変更
+- `pikonu-shimbun/index.html`:キリ番チェッカーへのバナーを追加
+- `about/sitemap.html`・`data/search-index.json`:「キリ番チェッカー」を追加
+---
+
 ## 2026-10-03（4）
 ### 追加
 - `pikonu-shimbun/images/curve-mirror800600.jpg`・`curve-mirror1200800.jpg`:壁紙No.01「役所裏のカーブミラー」の画像を追加

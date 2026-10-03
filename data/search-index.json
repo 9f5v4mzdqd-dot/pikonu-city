@@ -550,10 +550,10 @@
     "category": "お楽しみコンテンツ"
   },
   {
-  "title": "当サイトについて",
-  "url": "pikonu-shimbun/index.html#about",
-  "category": "お楽しみコンテンツ"
-},
+    "title": "当サイトについて",
+    "url": "pikonu-shimbun/index.html#about",
+    "category": "お楽しみコンテンツ"
+  },
   {
     "title": "ピコぬGIFバナー工房",
     "url": "pikonu-shimbun/banner-maker.html",
@@ -563,6 +563,11 @@
     "title": "謎の自販機",
     "url": "pikonu-shimbun/vending.html",
     "category": "お楽しみコンテンツ"
+  },
+  {
+    "title": "キリ番チェッカー",
+    "url": "pikonu-shimbun/shinbun-kiriban.html",
+    "category": "ピコぬ新聞社"
   },
   {
     "title": "ニュース・情報タレコミ受付窓口",
