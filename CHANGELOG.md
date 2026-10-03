@@ -11,6 +11,17 @@
 
 -----------
 
+## 2026-10-03（2）
+---
+### 追加
+- `pdfs/toshokan-dayori/toshokan-dayori-202610.pdf`:図書館だより 2026年10月号を追加
+
+### 変更
+- `facilities/toshokan.html`:図書館だより 2026年10月号へのリンクを追加
+- `news/news-20261003-01.html`:「図書館だより 10月号」の案内を追加し、タイトルを「『公民館だより Vol.1』『図書館だより 10月号』を公開しました」に変更
+- `news/index.html`・`news/category-koho.html`・`index.html`:上記記事のタイトルを更新
+---
+
 ## 2026-10-03（1）
 ---
 ### 追加
