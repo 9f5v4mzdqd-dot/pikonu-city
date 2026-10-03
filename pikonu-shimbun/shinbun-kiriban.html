@@ -16,7 +16,7 @@
     }
 
     .kiriban-box {
-      width: 450px;
+      width: 480px;
       max-width: 100%;
       box-sizing: border-box;
       margin: 0 auto;
@@ -24,6 +24,20 @@
       border: 2px ridge #5555aa;
       padding: 15px;
       text-align: center;
+    }
+
+    /* AA用スタイル（最初は非表示） */
+    .aa-text {
+      font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Mona", sans-serif;
+      font-size: 12px;
+      line-height: 1.2;
+      white-space: pre;
+      overflow-x: auto;
+      display: none;
+      /* 初期状態は隠す */
+      text-align: left;
+      margin: 15px auto 5px auto;
+      color: #aaffaa;
     }
 
     .counter-display {
@@ -36,7 +50,7 @@
       border: 2px inset #666666;
       padding: 8px 15px;
       display: inline-block;
-      margin: 10px 0;
+      margin: 15px 0 10px 0;
     }
 
     .btn-check {
@@ -45,9 +59,9 @@
       border: 2px outset #666699;
       font-family: "ＭＳ Ｐゴシック", sans-serif;
       font-size: 12px;
-      padding: 4px 12px;
+      padding: 6px 14px;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 5px;
     }
 
     .btn-check:active {
@@ -55,7 +69,7 @@
     }
 
     #result-msg {
-      margin-top: 15px;
+      margin-top: 10px;
       padding: 10px;
       background-color: #220000;
       border: 1px solid #880000;
@@ -68,20 +82,8 @@
     .notice-text {
       font-size: 10px;
       color: #8888aa;
-      margin-top: 12px;
-    }
-
-    .back-link {
       margin-top: 15px;
-      font-size: 11px;
-    }
-
-    .back-link a {
-      color: #00ffff;
-    }
-
-    .back-link a:visited {
-      color: #cc99ff;
+      text-align: left;
     }
   </style>
 </head>
@@ -92,26 +94,27 @@
     <div style="color: #00ffff; font-weight: bold; font-size: 13px;">
       ■ 掲示板アクセス記念・7777キリ番チェッカー
     </div>
-    <div style="font-size: 11px; color: #cccccc; margin-top: 5px;">
+
+    <div style="font-size: 11px; color: #cccccc; margin-top: 10px;">
       現在のカウント（キリ番「7777」まであと 1 アクセス！）
     </div>
 
-    <!-- カウンター（最初から7776が表示されている） -->
+    <!-- カウンター（最初から7776） -->
     <div class="counter-display" id="counter">007776</div>
     <br>
 
     <button class="btn-check" onclick="tryKiriban()">［ カウンターを更新してキリ番を踏む！ ］</button>
 
-    <!-- 結果メッセージ表示エリア -->
+    <!-- ボタンを押すとヌッと出現するピコぬくんAA -->
+    <pre class="aa-text" id="piko-aa"></pre>
+
+    <!-- 結果メッセージ -->
     <div id="result-msg"></div>
 
     <div class="notice-text">
-      ※当サイトのアクセスカウンターはサーバー負荷軽減のため、定期的に減算処理を行っております。<br>
-      ※キリ番報告のお問い合わせメールには返信いたしかねます（Web管理担当）。
-    </div>
-
-    <div class="back-link">
-      [ <a href="index.html">←新聞社に戻る</a> ]
+      【管理担当より】<br>
+      ※当サイトのアクセスカウンターはサーバー負荷軽減のため、5分おきに自動減算処理を行っております。<br>
+      ※キリ番報告のお問い合わせメールには返信いたしかねます。
     </div>
   </div>
 
@@ -121,29 +124,55 @@
     function tryKiriban() {
       const counterEl = document.getElementById('counter');
       const msgEl = document.getElementById('result-msg');
+      const aaEl = document.getElementById('piko-aa');
+
+      // AAエリアを表示させる
+      aaEl.style.display = 'inline-block';
 
       if (!clicked) {
-        // 1回目のクリック：自動減算が発動して7771に飛ぶ
+        // 1回目のクリック
         counterEl.textContent = '007771';
-        counterEl.style.color = '#ff3333'; // 一瞬赤くなる
+        counterEl.style.color = '#ff3333';
+
+        aaEl.textContent =
+          `       ▲
+      (〇)
+    /  _  \\
+   ( ・ ・ )
+   (   ヮ  )  ＜ 7777キリ番は存在しませんぬ(´ω｀)
+  /│┌───┐│\\
+ ( ││ Ｐ ││ )
+  \\└┴───┴┘/
+     |__|__|`;
 
         msgEl.innerHTML = `
       <b>【エラー：キリ番通過失敗】</b><br>
-      申し訳ありません。あなたがボタンを押した直前（5分おきの自動減算シークエンス）により、カウンターが <b>-5</b> 減算されました。<br><br>
+      申し訳ありません。あなたがボタンを押した直前（自動減算シークエンス）により、カウンターが <b>-5</b> 減算されました。<br><br>
       現在値：<b>007771</b><br>
       ※7777番は正常にスキップ（減算）されました。物理的に踏むことはできません。
     `;
         msgEl.style.display = 'block';
         clicked = true;
       } else {
-        // 2回目以降のクリック：さらに減って離れていく
+        // 2回目以降のクリック
         let current = parseInt(counterEl.textContent, 10);
-        current -= Math.floor(Math.random() * 4) + 3; // 3〜6減算
+        current -= Math.floor(Math.random() * 4) + 3;
         counterEl.textContent = String(current).padStart(6, '0');
 
+        aaEl.textContent =
+          `       ▲
+      (〇)
+    /  _  \\
+   ( ・ ヮ・)  ＜ 押せば押すほど遠ざかるぬ(´ω｀)
+   (   ヮ  ) 
+  /│┌───┐│\\
+ ( ││ Ｐ ││ )
+  \\└┴───┴┘/
+     |__|__|`;
+
         msgEl.innerHTML = `
-      <b>【エラー：減算処理中】</b><br>
-      アクセスが集中したため、さらに自動減算が実行されました。<br>
+      <b>【エラー：さらに減算処理中】</b><br>
+      アクセス集中により、追加の自動減算が実行されました。<br>
       現在値：<b>${String(current).padStart(6, '0')}</b><br>
       ※キリ番からは刻一刻と遠ざかっています。あきらめてBBSへお戻りください。
     `;
