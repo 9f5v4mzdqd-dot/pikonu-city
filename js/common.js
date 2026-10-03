@@ -447,6 +447,46 @@
     bindSiteSearchInstance("site-search-mobile", "site-search-results-mobile");
   }
 
+  /* お知らせ一覧の自動表示
+     news/index.html の .notice-list を読み取り、次の属性をもつ <ul> を最新の内容に置き換える。
+       data-news-limit="5"        … 先頭から指定した件数だけ表示(トップページ用)
+       data-news-category="広報"  … 指定したカテゴリだけ表示(カテゴリページ用)
+     取得に失敗したときは、HTMLに書かれている一覧をそのまま残す。 */
+  function bindNewsLists() {
+    var lists = document.querySelectorAll(".notice-list[data-news-limit], .notice-list[data-news-category]");
+    if (!lists.length) return;
+    fetch(BASE + "news/index.html?v=" + Date.now())
+      .then(function (res) {
+        if (!res.ok) throw new Error("fetch failed");
+        return res.text();
+      })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var source = Array.prototype.filter.call(doc.querySelectorAll(".notice-list li"), function (li) {
+          var a = li.querySelector("a");
+          var href = a ? a.getAttribute("href") : "";
+          return href && href !== "#"; // 実ページ未作成のダミーリンクは対象外
+        });
+        lists.forEach(function (ul) {
+          var category = ul.getAttribute("data-news-category");
+          var limit = parseInt(ul.getAttribute("data-news-limit"), 10);
+          var items = source.filter(function (li) {
+            return !category || li.getAttribute("data-category") === category;
+          });
+          if (!isNaN(limit)) items = items.slice(0, limit);
+          if (!items.length) return;
+          ul.innerHTML = "";
+          items.forEach(function (li) {
+            var copy = document.importNode(li, true);
+            var a = copy.querySelector("a");
+            a.setAttribute("href", BASE + "news/" + a.getAttribute("href"));
+            ul.appendChild(copy);
+          });
+        });
+      })
+      .catch(function () { /* 失敗時はHTML内の一覧を残す */ });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     renderHeader();
     renderFooter();
@@ -455,5 +495,6 @@
     bindPageTop();
     renderKiribanCounter();
     bindSiteSearch();
+    bindNewsLists();
   });
 })();
