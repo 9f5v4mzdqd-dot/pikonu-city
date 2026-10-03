@@ -24,17 +24,24 @@
 ---
 
 ## 2026-10-03（4）
+---
 ### 追加
+- `pikonu-shimbun/shinbun-kiriban.html`:「キリ番チェッカー」を新設(ピコぬくんのAA表示つき)
+- `pikonu-shimbun/omikuji.html`:「ピコぬみくじ」を新設
 - `pikonu-shimbun/images/curve-mirror800600.jpg`・`curve-mirror1200800.jpg`:壁紙No.01「役所裏のカーブミラー」の画像を追加
 - `pikonu-shimbun/images/pinboke-nukabana800600.jpg`・`pinboke-nukabana1200800.jpg`:壁紙No.02「ぬかばなの静寂」の画像を追加
+- `pikonu-shimbun/images/pikonu_saver_*_1024x768.jpg`:スクリーンセーバー風壁紙10点(自販機・データ処理画面・ぬかばな・ぴこぬどり・シグナル・ただいま整備中・キリ番警告・カーブミラー・洗濯バサミ・カレー)を追加
+- `pikonu-shimbun/download.html`:「スクリーンセーバー風壁紙(1024x768)」セクションを新設。AAを4点追加(市役所裏のカーブミラー・ベランダの洗濯バサミ・ピコぬくん2種)
 
 ### 変更
-- `pikonu-shimbun/download.html`:壁紙No.01・No.02のサンプル表示とダウンロードリンクを、実画像に差し替え。ダウンロードサイズ表記を「800x600 / 1200x800」に変更
----
-## 2026-10-03（3）
----
-### 変更
-- `about/unei-rireki.html`:運営履歴に、令和8年8月下旬〜10月3日分の更新を追記(8月下旬のまとめ、9/1、9/2〜4、9/8、9/10〜11、9/12、9/13、9/14〜17、9/18〜19、9/20〜21、9/22〜23、9/24〜25、9/28、9/29〜10/1、10/2〜3)
+- `pikonu-shimbun/index.html`:キリ番チェッカーへのバナーを追加。サイドメニューにピコぬみくじへのリンクを追加
+- `pikonu-shimbun/download.html`:壁紙No.01・No.02のサンプル表示とダウンロードリンクを実画像に差し替え。ダウンロードサイズ表記を「800x600 / 1200x800」に変更。AAセクションの番号を繰り下げ
+- `pikonu-shimbun/shukusaku.html`:文字色を濃いブルーに変更
+- `about/sitemap.html`・`data/search-index.json`:「キリ番チェッカー」「ピコぬみくじ」を追加
+
+### 修正
+- `pikonu-shimbun/shukusaku.html`:表の見出し行の崩れと、重複していた年ヘッダー行を修正
+- `pikonu-shimbun/download.html`:AA「Web管理担当」の`<body>`表記がタグとして解釈されて表示されない不具合を修正。壁紙のダウンロードリンクに`download`属性を追加
 ---
 
 ## 2026-10-03（2）
