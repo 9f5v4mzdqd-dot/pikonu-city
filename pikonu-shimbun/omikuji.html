@@ -15,7 +15,7 @@ body {
 }
 
 .omikuji-box {
-  width: 480px;
+  width: 500px;
   max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto;
@@ -32,6 +32,19 @@ body {
   border-bottom: 1px dashed #00ffcc;
   padding-bottom: 5px;
   margin-bottom: 12px;
+}
+
+/* AA用スタイル（ズレ防止） */
+.aa-text {
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Mona", sans-serif;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: pre;
+  overflow-x: auto;
+  display: inline-block;
+  text-align: left;
+  margin: 10px 0;
+  color: #ffffaa;
 }
 
 .btn-draw {
@@ -79,14 +92,6 @@ body {
   margin-top: 15px;
   text-align: left;
 }
-
-.back-link {
-  margin-top: 15px;
-  font-size: 11px;
-}
-
-.back-link a { color: #00ffff; }
-.back-link a:visited { color: #cc99ff; }
 </style>
 </head>
 <body>
@@ -94,13 +99,26 @@ body {
 <div class="omikuji-box">
   <div class="title">■ ピコぬ市公式・本日の目立たない運勢鑑定（1日1回推奨）</div>
   
-  <p style="font-size: 11px; color: #cccccc;">
+  <p style="font-size: 11px; color: #cccccc; margin-bottom: 5px;">
     目立たない場所から全体の運気を静かに占います。<br>
     ※大吉や大凶などの極端な運勢は含まれておりません。
   </p>
 
+  <!-- おみくじ箱のAA -->
+  <pre class="aa-text" id="omikuji-aa">
+      ┌────────┐
+      │  ピコぬみくじ  │
+      │   ┌────┐   │
+      │   │ ［77］ │   │
+      │   └────┘   │
+      │     (・∀・)   │ ＜ カラカラ…
+      └────────┘
+  </pre>
+  <br>
+
   <button class="btn-draw" onclick="drawOmikuji()">［ おみくじ箱を振る ］</button>
 
+  <!-- 結果表示エリア -->
   <div id="result-area">
     <div class="fortune-title" id="fortune-val">【 微吉 】</div>
     <div style="margin-bottom: 8px;" id="fortune-desc">
@@ -112,18 +130,31 @@ body {
     <div><span class="item-label">・注意人物：</span><span id="person-val">環境衛生課のポエティック監視員</span></div>
   </div>
 
+  <hr style="border: 0; border-top: 1px solid #333366; margin: 20px 0 10px 0;">
+
+  <!-- 市の花「ぬかばな」のAA領域 -->
+  <div style="color: #00ffcc; font-size: 11px; text-align: left; font-weight: bold;">
+    ■ ピコぬ市の花「ぬかばな」（開花）
+  </div>
+  <pre class="aa-text" style="color: #aaffaa;">
+      (⌒)
+      (⌒) | (⌒) ＜ 目立たない場所から全体を支えています
+      ＼ ｜ ／
+      (⌒) (・∀・) (⌒)
+      ／ ｜ ＼
+      (⌒) | (⌒)
+      ||
+      || （枯れ葉は秋に静かに落ちます）
+      🌾
+  </pre>
+
   <div class="notice-text">
     【Web管理担当より】<br>
     ※サーバーの乱数発生器が古いため、同じ結果が連続して出ることがありますがあらかじめご了承ください。
   </div>
-
-  <div class="back-link">
-    [ <a href="index.html">←新聞社へ戻る</a> ]
-  </div>
 </div>
 
 <script>
-// ピコぬ市ならではのシュールな運勢データ群
 const fortunes = [
   {
     title: "【 微吉 】",
@@ -165,13 +196,23 @@ const fortunes = [
 function drawOmikuji() {
   const btn = document.querySelector('.btn-draw');
   const resArea = document.getElementById('result-area');
+  const aaBox = document.getElementById('omikuji-aa');
   
   btn.disabled = true;
   btn.textContent = 'ガラガラ…（手動抽選中）';
 
-  // 2000年代風の「ダミーのウェイト時間（0.8秒）」
+  // 振っている最中にAAがシャカシャカ揺れる演出
+  aaBox.textContent = `
+      ┌────────┐
+      │  ピコぬみくじ  │
+      │   ┌────┐   │
+      │   │ ［??］ │   │
+      │   └────┘   │
+      │   (；´∀｀)   │ ＜ ガラガラガラ…！
+      └────────┘
+  `;
+
   setTimeout(() => {
-    // ランダム選定
     const picked = fortunes[Math.floor(Math.random() * fortunes.length)];
 
     document.getElementById('fortune-val').textContent = picked.title;
@@ -179,6 +220,17 @@ function drawOmikuji() {
     document.getElementById('spot-val').textContent = picked.spot;
     document.getElementById('action-val').textContent = picked.action;
     document.getElementById('person-val').textContent = picked.person;
+
+    // 出た後のAA
+    aaBox.textContent = `
+      ┌────────┐
+      │  ピコぬみくじ  │
+      │   ┌────┐   │
+      │   │ ［77］ │   │
+      │   └────┘   │
+      │     (・∀・)   │ ＜ ポトン。（出たぬ）
+      └────────┘
+    `;
 
     resArea.style.display = 'block';
     btn.disabled = false;
