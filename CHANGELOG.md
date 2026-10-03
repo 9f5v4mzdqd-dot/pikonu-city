@@ -13,9 +13,10 @@
 ## 2026-10-03（4）
 ### 追加
 - `pikonu-shimbun/images/curve-mirror800600.jpg`・`curve-mirror1200800.jpg`:壁紙No.01「役所裏のカーブミラー」の画像を追加
+- `pikonu-shimbun/images/pinboke-nukabana800600.jpg`・`pinboke-nukabana1200800.jpg`:壁紙No.02「ぬかばなの静寂」の画像を追加
 
 ### 変更
-- `pikonu-shimbun/download.html`:壁紙No.01のサンプル表示とダウンロードリンクを、実画像に差し替え
+- `pikonu-shimbun/download.html`:壁紙No.01・No.02のサンプル表示とダウンロードリンクを、実画像に差し替え。ダウンロードサイズ表記を「800x600 / 1200x800」に変更
 
 ## 2026-10-03（3）
 ---
